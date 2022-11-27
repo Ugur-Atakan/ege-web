@@ -108,7 +108,7 @@ const packageDetails = {
     "corporation1": {
         title: 'Starter',
         href: '/form-your-company-step2?packageType=inc1',
-        price: 369,
+        price: 349,
         frequency: '',
         description: 'Expedited Filing (1-3 business days).',
         description2: 'Everything you need to perfectly start your company.',
@@ -181,203 +181,203 @@ const packageDetails = {
 
 const pricing= {
     "Alabama" : {
-        "Corporation": [ 369, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 395, 595],
+        "LLC": [ 395, 595]
     },
     "Alaska" : {
-        "Corporation": [ 369, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 409, 609],
+        "LLC": [ 409, 609]
     },
     "Arizona" : {
-        "Corporation": [ 369, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 250, 450],
+        "LLC": [ 276, 476]
     },
     "Arkansas" : {
-        "Corporation": [ 369, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 198, 398],
+        "LLC": [ 198, 398]
     },
     "California" : {
-        "Corporation": [ 369, 769, 1769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 157, 557, 1557],
+        "LLC": [ 157, 357]
     },
     "Colorado" : {
-        "Corporation": [ 369, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 189, 389],
+        "LLC": [ 139, 339]
     },
     "Connecticut" : {
-        "Corporation": [ 369, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 409, 609],
+        "LLC": [ 276, 476]
     },
     "Delaware" : {
-        "Corporation": [ 369, 769, 1769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 349, 599, 1299],
+        "LLC": [ 322, 522]
     },
     "Florida" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Georgia" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Hawaii" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Idaho" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Illinois" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Indiana" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Iowa" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Kansas" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Kentucky" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Louisiana" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Maine" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Maryland" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Massachusetts" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },  
     "Michigan" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Minnesota" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Mississippi" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Missouri" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Montana" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Nebraska" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Nevada" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "New Hampshire" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "New Jersey" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "New Mexico" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "New York" : {
-        "Corporation": [ 369, 769, 1769],
+        "Corporation": [ 349, 769, 1769],
         "LLC": [ 299, 599]
     },
     "North Carolina" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "North Dakota" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Ohio" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Oklahoma" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Oregon" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Pennsylvania" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Rhode Island" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "South Carolina" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "South Dakota" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Tennessee" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Texas" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Utah" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Vermont" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Virginia" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Washington" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "West Virginia" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Wisconsin" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Wyoming" : {
-        "Corporation": [ 369, 769],
+        "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     }
 }
@@ -537,7 +537,7 @@ function OnboardingForm() {
         updateCompanyInfo()
 
         dataFetchedRef.current = true;
-    })
+    }, [updateCompanyInfo, updatePricing]);
 
     function formSubmitHandler(event) {
         event.preventDefault()

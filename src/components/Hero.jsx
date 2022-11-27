@@ -1,6 +1,6 @@
 import HeroForm from './HeroForm'
 
-export function HeroNext() {
+export function Hero() {
   return (
     <div className="relative overflow-hidden">
       <div className="relative pt-6 pb-16 sm:pb-24">
@@ -49,3 +49,5 @@ export function HeroNext() {
     </div>      
   )
 }
+
+export default Hero

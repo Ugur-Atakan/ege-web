@@ -119,7 +119,7 @@ export function Navbar() {
             </a>
           </div>
           <div className="-my-2 -mr-2 md:hidden">
-            <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+            <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
               <span className="sr-only">Open menu</span>
               <Bars3Icon className="h-6 w-6" aria-hidden="true" />
             </Popover.Button>
@@ -132,7 +132,7 @@ export function Navbar() {
                     <Popover.Button
                       className={classNames(
                         open ? 'text-gray-900' : 'text-gray-500',
-                        'group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
+                        'group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
                       )}
                     >
                       <span>Start Your Business</span>
@@ -164,7 +164,7 @@ export function Navbar() {
                             >
                               <div className="flex md:h-full lg:flex-col">
                                 <div className="flex-shrink-0">
-                                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12">
+                                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-blue-500 text-white sm:h-12 sm:w-12">
                                     <item.icon className="h-6 w-6" aria-hidden="true" />
                                   </span>
                                 </div>
@@ -173,7 +173,7 @@ export function Navbar() {
                                     <p className="text-base font-medium text-gray-900">{item.name}</p>
                                     <p className="mt-1 text-sm text-gray-500">{item.description}</p>
                                   </div>
-                                  <p className="mt-2 text-sm font-medium text-indigo-600 lg:mt-4">
+                                  <p className="mt-2 text-sm font-medium text-blue-600 lg:mt-4">
                                     Learn more
                                     <span aria-hidden="true"> &rarr;</span>
                                   </p>
@@ -208,7 +208,7 @@ export function Navbar() {
                     <Popover.Button
                       className={classNames(
                         open ? 'text-gray-900' : 'text-gray-500',
-                        'group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
+                        'group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
                       )}
                     >
                       <span>More</span>
@@ -290,7 +290,7 @@ export function Navbar() {
                               </ul>
                             </div>
                             <div className="mt-6 text-sm font-medium">
-                              <a href="#" className="text-indigo-600 hover:text-indigo-500">
+                              <a href="#" className="text-blue-600 hover:text-blue-500">
                                 View all posts
                                 <span aria-hidden="true"> &rarr;</span>
                               </a>
@@ -328,12 +328,12 @@ export function Navbar() {
                 <div>
                   <img
                     className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                    src="https://tailwindui.com/img/logos/mark.svg?color=blue&shade=600"
                     alt="Your Company"
                   />
                 </div>
                 <div className="-mr-2">
-                  <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                  <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
                     <span className="sr-only">Close menu</span>
                     <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                   </Popover.Button>
@@ -348,7 +348,7 @@ export function Navbar() {
                         href={item.href}
                         className="-m-3 flex items-center rounded-lg p-3 hover:bg-gray-50"
                       >
-                        <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12">
+                        <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-blue-500 text-white sm:h-12 sm:w-12">
                           <item.icon className="h-6 w-6" aria-hidden="true" />
                         </div>
                         <div className="ml-4 text-base font-medium text-gray-900">{item.name}</div>
@@ -356,7 +356,7 @@ export function Navbar() {
                     ))}
                   </div>
                   <div className="mt-8 text-base">
-                    <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+                    <a href="#" className="font-medium text-blue-600 hover:text-blue-500">
                       View all products
                       <span aria-hidden="true"> &rarr;</span>
                     </a>
@@ -388,13 +388,13 @@ export function Navbar() {
               <div className="mt-6">
                 <a
                   href="#"
-                  className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                  className="flex w-full items-center justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700"
                 >
                   Sign up
                 </a>
                 <p className="mt-6 text-center text-base font-medium text-gray-500">
                   Existing customer?{' '}
-                  <a href="#" className="text-indigo-600 hover:text-indigo-500">
+                  <a href="#" className="text-blue-600 hover:text-blue-500">
                     Sign in
                   </a>
                 </p>
