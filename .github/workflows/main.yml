@@ -22,6 +22,6 @@ jobs:
           rm -rf build node_modules
           npm install --force
           CI=false npm run build
-          cd out
+          cd build
 
           /usr/local/bin/aws --region eu-central-1 s3 sync . $S3_BUCKET_NAME
