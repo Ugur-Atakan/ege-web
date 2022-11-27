@@ -1,78 +1,163 @@
-import { BoltIcon, EnvelopeIcon, GlobeAltIcon, ScaleIcon } from '@heroicons/react/24/outline'
-import { FormationSteps } from './FormationSteps'
+import { useEffect, useState } from 'react'
+import { Tab } from '@headlessui/react'
+import clsx from 'clsx'
+
+import { Container } from '../components/Container'
+import backgroundImage from '../images/background-features.jpg'
+import screenshotPrimary1 from '../images/screenshots/primary1.png'
+import screenshotPrimary2 from '../images/screenshots/primary2.png'
+import screenshotPrimary3 from '../images/screenshots/primary3.png'
+import screenshotPrimary4 from '../images/screenshots/primary4.png'
 
 const features = [
   {
-    name: 'Competitive rates',
-    description: 'We offer competitive rates for all of our services.',
-    icon: GlobeAltIcon,
+    title: 'Business Formation and EIN',
+    description:
+      "Fast and simple company formation with worry free services and expert support to help you get filed accurately and on time. We'll also help you get your EIN for US residents and non-residents.",
+    image: screenshotPrimary1,
   },
   {
-    name: 'No hidden fees',
+    title: 'Post-Incorporation Documents',
     description:
-      'No hourly charges, no hidden fees, no surprises.',
-    icon: ScaleIcon,
+      "We provide a full suite of post-incorporation documents to help you complete your business formation. Stock Issuance to Owners, Corporate Resolutions, Operating Agreement for LLCs, and Bylaws for Corporations, and more.",
+    image: screenshotPrimary2,
   },
   {
-    name: 'Fast and Reliable Service',
+    title: 'Virtual Mailbox',
     description:
-      'We work directly with the state to ensure your documents are filed quickly and accurately.',
-    icon: BoltIcon,
+      "A virtual mailbox makes it easier to manage your mail & packages remotely. We'll provide you with a mailbox address in US. You can use this address to receive mail and packages. We'll scan and email you the documents.",
+    image: screenshotPrimary3,
   },
   {
-    name: 'Decades of Experience In The Field',
+    title: 'Apostille and Notarization Services',
     description:
-      'Exceptional professional service serves as a symbol of our vision as our clients deserves the best there is.',
-    icon: EnvelopeIcon,
+      "We provide apostille and notarization services for documents that need to be used in foreign countries. We'll notarize your documents and get them apostilled by the Secretary of State.",
+    image: screenshotPrimary4,
   },
 ]
 
-export default function PrimaryFeatures() {
-  return (
-    <div className=" overflow-hidden bg-gray-50">
-      <div className="relative mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:px-8">
-        <svg
-          className="absolute top-0 left-full -translate-x-1/2 -translate-y-3/4 transform lg:left-auto lg:right-full lg:translate-x-2/3 lg:translate-y-1/4"
-          width={404}
-          height={784}
-          fill="none"
-          viewBox="0 0 404 784"
-          aria-hidden="true"
-        >
-          <defs>
-            <pattern
-              id="8b1b5f72-e944-4457-af67-0c6d15a99f38"
-              x={0}
-              y={0}
-              width={20}
-              height={20}
-              patternUnits="userSpaceOnUse"
-            >
-              <rect x={0} y={0} width={4} height={4} className="text-gray-200" fill="currentColor" />
-            </pattern>
-          </defs>
-          <rect width={404} height={784} fill="url(#8b1b5f72-e944-4457-af67-0c6d15a99f38)" />
-        </svg>
+export function PrimaryFeatures() {
+  let [tabOrientation, setTabOrientation] = useState('horizontal')
 
-        <div className="relative lg:grid lg:grid-cols-3 lg:gap-x-8">
-          <div className="lg:col-span-1">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Why us?</h2>
-          </div>
-          <dl className="mt-10 space-y-10 sm:grid sm:grid-cols-2 sm:gap-x-8 sm:gap-y-10 sm:space-y-0 lg:col-span-2 lg:mt-0">
-            {features.map((feature) => (
-              <div key={feature.name}>
-                <dt>
-                  <div className="flex h-12 w-12 items-center justify-center rounded-md bg-indigo-500 text-white">
-                    <feature.icon className="h-6 w-6" aria-hidden="true" />
-                  </div>
-                  <p className="mt-5 text-lg font-medium leading-6 text-gray-900">{feature.name}</p>
-                </dt>
-                <dd className="mt-2 text-base text-gray-500">{feature.description}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
+  useEffect(() => {
+    let lgMediaQuery = window.matchMedia('(min-width: 1024px)')
+
+    function onMediaQueryChange({ matches }) {
+      setTabOrientation(matches ? 'vertical' : 'horizontal')
+    }
+
+    onMediaQueryChange(lgMediaQuery)
+    lgMediaQuery.addEventListener('change', onMediaQueryChange)
+
+    return () => {
+      lgMediaQuery.removeEventListener('change', onMediaQueryChange)
+    }
+  }, [])
+
+  return (
+    <section
+      id="features"
+      aria-labelledby="features-title"
+      className="relative overflow-hidden bg-blue-600 pt-20 pb-28 sm:py-32"
+    >
+      <div className="absolute top-1/2 left-1/2 -translate-x-[44%] -translate-y-[42%]">
+        <img
+          src={backgroundImage}
+          alt=""
+          width={2245}
+          height={1636}
+          layout="fixed"
+        />
       </div>
-    </div>
+      <Container className="relative">
+        <div className="max-w-2xl md:mx-auto md:text-center xl:max-w-none">
+          <h2
+            id="features-title"
+            className="font-display text-3xl tracking-tight text-white sm:text-4xl md:text-5xl"
+          >
+            Everything you need to start...
+          </h2>
+          <p className="mt-6 text-lg tracking-tight text-blue-100">
+          From developing an idea, to making it official, to turning it into a money-making business, our platform have you covered from A to Z.
+          </p>
+        </div>
+        <Tab.Group
+          as="div"
+          className="mt-16 grid grid-cols-1 items-center gap-y-2 pt-10 sm:gap-y-6 md:mt-20 lg:grid-cols-12 lg:pt-0"
+          vertical={tabOrientation === 'vertical'}
+        >
+          {({ selectedIndex }) => (
+            <>
+              <div className="-mx-4 flex overflow-x-auto pb-4 sm:mx-0 sm:overflow-visible sm:pb-0 lg:col-span-5">
+                <Tab.List className="relative z-10 flex space-x-4 whitespace-nowrap px-4 sm:mx-auto sm:px-0 lg:mx-0 lg:block lg:space-y-1 lg:space-x-0 lg:whitespace-normal">
+                  {features.map((feature, featureIndex) => (
+                    <div
+                      key={feature.title}
+                      className={clsx(
+                        'group relative rounded-full py-1 px-4 lg:rounded-r-none lg:rounded-l-xl lg:p-6',
+                        {
+                          'bg-white lg:bg-white/10 lg:ring-1 lg:ring-inset lg:ring-white/10':
+                            selectedIndex === featureIndex,
+                          'hover:bg-white/10 lg:hover:bg-white/5':
+                            selectedIndex !== featureIndex,
+                        }
+                      )}
+                    >
+                      <h3>
+                        <Tab
+                          className={clsx(
+                            'font-display text-lg [&:not(:focus-visible)]:focus:outline-none',
+                            {
+                              'text-blue-600 lg:text-white':
+                                selectedIndex === featureIndex,
+                              'text-blue-100 hover:text-white lg:text-white':
+                                selectedIndex !== featureIndex,
+                            }
+                          )}
+                        >
+                          <span className="absolute inset-0 rounded-full lg:rounded-r-none lg:rounded-l-xl" />
+                          {feature.title}
+                        </Tab>
+                      </h3>
+                      <p
+                        className={clsx('mt-2 hidden text-sm lg:block', {
+                          'text-white': selectedIndex === featureIndex,
+                          'text-blue-100 group-hover:text-white':
+                            selectedIndex !== featureIndex,
+                        })}
+                      >
+                        {feature.description}
+                      </p>
+                    </div>
+                  ))}
+                </Tab.List>
+              </div>
+              <Tab.Panels className="lg:col-span-7">
+                {features.map((feature) => (
+                  <Tab.Panel key={feature.title} unmount={false}>
+                    <div className="relative sm:px-6 lg:hidden">
+                      <div className="absolute -inset-x-4 -top-[6.5rem] -bottom-[4.25rem] bg-white/10 ring-1 ring-inset ring-white/10 sm:inset-x-0 sm:rounded-t-xl" />
+                      <p className="relative mx-auto max-w-2xl text-base text-white sm:text-center">
+                        {feature.description}
+                      </p>
+                    </div>
+                    <div className="relative mt-10 aspect-[1085/730] w-[45rem] overflow-hidden rounded-xl bg-slate-50 shadow-xl shadow-blue-900/20 sm:w-auto lg:mt-0 lg:w-[67.8125rem]">
+                      <img
+                        src={feature.image}
+                        alt=""
+                        layout="fill"
+                        sizes="(min-width: 1024px) 67.8125rem, (min-width: 640px) 100vw, 45rem"
+                      />
+                    </div>
+                  </Tab.Panel>
+                ))}
+              </Tab.Panels>
+            </>
+          )}
+        </Tab.Group>
+      </Container>
+    </section>
   )
 }
+
+export default PrimaryFeatures

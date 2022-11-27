@@ -1,152 +1,236 @@
-import { InboxIcon, SparklesIcon } from '@heroicons/react/24/outline'
+import { useId } from 'react'
+import { Tab } from '@headlessui/react'
+import clsx from 'clsx'
 
-export default function SecondaryFeatures() {
+import { Container } from '../components/Container'
+import screenshotContacts from '../images/screenshots/contacts.png'
+import screenshotInventory from '../images/screenshots/inventory.png'
+import screenshotProfitLoss from '../images/screenshots/profit-loss.png'
+
+const features = [
+  {
+    name: 'Foreign Qualification',
+    summary: 'Is your company planning to conduct business in a state that is not the company’s state of incorporatiton?',
+    description:
+      'Then, you may need to apply for foreign qualification. In the U.S., an entity that seeks to conduct business outside of its state of formation is considered “foreign”. States may require “foreign qualifications” from the “foreign” entities before transacting any business.',
+    image: screenshotProfitLoss,
+    icon: function ReportingIcon() {
+      let id = useId()
+      return (
+        <>
+          <defs>
+            <linearGradient
+              id={id}
+              x1="11.5"
+              y1={18}
+              x2={36}
+              y2="15.5"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop offset=".194" stopColor="#fff" />
+              <stop offset={1} stopColor="#6692F1" />
+            </linearGradient>
+          </defs>
+          <path
+            d="m30 15-4 5-4-11-4 18-4-11-4 7-4-5"
+            stroke={`url(#${id})`}
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </>
+      )
+    },
+  },
+  {
+    name: 'Revival and Dissolution',
+    summary:
+      'Has your company been suspended by the State? Or are you winding-down the operations?',
+    description:
+      'When a company has failed to pay their taxes or maintain a Registered Agent, the company may fall into a status other than good standing, losing its right to transact business. To return your entity back into a good standing status, a Certificate of Renewal and Revival must be filed and all outstanding taxes and filing fees must be paid.',
+    image: screenshotInventory,
+    icon: function InventoryIcon() {
+      return (
+        <>
+          <path
+            opacity=".5"
+            d="M8 17a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2Z"
+            fill="#fff"
+          />
+          <path
+            opacity=".3"
+            d="M8 24a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2Z"
+            fill="#fff"
+          />
+          <path
+            d="M8 10a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2Z"
+            fill="#fff"
+          />
+        </>
+      )
+    },
+  },
+  {
+    name: 'Compliance Reminder',
+    summary:
+      'Do you need a reminder to file your annual report or pay your franchise taxes?',
+    description:
+      'Forming a company is just your first interaction with the State. All states in the U.S., including Delaware, have a number of reporting requirements from companies formed/qualified within their state. For instance, most states will require businesses to file annual reports and/or pay taxes in order to remain compliant and in good standing.',
+    image: screenshotContacts,
+    icon: function ContactsIcon() {
+      return (
+        <>
+          <path
+            opacity=".5"
+            d="M25.778 25.778c.39.39 1.027.393 1.384-.028A11.952 11.952 0 0 0 30 18c0-6.627-5.373-12-12-12S6 11.373 6 18c0 2.954 1.067 5.659 2.838 7.75.357.421.993.419 1.384.028.39-.39.386-1.02.036-1.448A9.959 9.959 0 0 1 8 18c0-5.523 4.477-10 10-10s10 4.477 10 10a9.959 9.959 0 0 1-2.258 6.33c-.35.427-.354 1.058.036 1.448Z"
+            fill="#fff"
+          />
+          <path
+            d="M12 28.395V28a6 6 0 0 1 12 0v.395A11.945 11.945 0 0 1 18 30c-2.186 0-4.235-.584-6-1.605ZM21 16.5c0-1.933-.5-3.5-3-3.5s-3 1.567-3 3.5 1.343 3.5 3 3.5 3-1.567 3-3.5Z"
+            fill="#fff"
+          />
+        </>
+      )
+    },
+  },
+]
+
+function Feature({ feature, isActive, className, ...props }) {
   return (
-    <div className="relative overflow-hidden bg-white pt-16 pb-32">
-      <div className="relative">
-        <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
-          <div className="mx-auto max-w-xl px-4 sm:px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0">
-            <div>
-              <div>
-                <span className="flex h-12 w-12 items-center justify-center rounded-md bg-indigo-600">
-                  <InboxIcon className="h-6 w-6 text-white" aria-hidden="true" />
-                </span>
-              </div>
-              <div className="mt-6">
-                <h2 className="text-3xl font-bold tracking-tight text-gray-900">Select your filing package and services.</h2>
-                <p className="mt-4 text-lg text-gray-500">
-                Choose from one of the company formation packages and-or add-on services. Your options include registered agent, employer ID number (EIN), annual compliance calendar, expedited filing and office suite rentals.
-                </p>
-                <div className="mt-6">
-                  <a
-                    href="#"
-                    className="inline-flex rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-                  >
-                    Get started
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="mt-12 sm:mt-16 lg:mt-0">
-            <div className="-mr-48 pl-4 sm:pl-6 md:-mr-16 lg:relative lg:m-0 lg:h-full lg:px-0">
-              <img
-                className="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
-                src="https://tailwindui.com/img/component-images/inbox-app-screenshot-1.jpg"
-                alt="Inbox user interface"
-              />
-            </div>
-          </div>
-        </div>
+    <div
+      className={clsx(className, { 'opacity-75 hover:opacity-100': !isActive })}
+      {...props}
+    >
+      <div
+        className={clsx('w-9 rounded-lg', {
+          'bg-blue-600': isActive,
+          'bg-slate-500': !isActive,
+        })}
+      >
+        <svg aria-hidden="true" className="h-9 w-9" fill="none">
+          <feature.icon />
+        </svg>
       </div>
-      <div className="mt-24">
-        <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
-          <div className="mx-auto max-w-xl px-4 sm:px-6 lg:col-start-2 lg:mx-0 lg:max-w-none lg:py-32 lg:px-0">
-            <div>
-              <div>
-                <span className="flex h-12 w-12 items-center justify-center rounded-md bg-indigo-600">
-                  <SparklesIcon className="h-6 w-6 text-white" aria-hidden="true" />
-                </span>
-              </div>
-              <div className="mt-6">
-                <h2 className="text-3xl font-bold tracking-tight text-gray-900">We file your documents with the state</h2>
-                <p className="mt-4 text-lg text-gray-500">
-                Our team collects and files all the necessary paperwork with the state in order to officially form your business.
-                </p>
-                <div className="mt-6">
-                  <a
-                    href="#"
-                    className="inline-flex rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-                  >
-                    Get started
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="mt-12 sm:mt-16 lg:col-start-1 lg:mt-0">
-            <div className="-ml-48 pr-4 sm:pr-6 md:-ml-16 lg:relative lg:m-0 lg:h-full lg:px-0">
-              <img
-                className="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:right-0 lg:h-full lg:w-auto lg:max-w-none"
-                src="https://tailwindui.com/img/component-images/inbox-app-screenshot-2.jpg"
-                alt="Customer profile user interface"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="mt-24">
-        <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
-          <div className="mx-auto max-w-xl px-4 sm:px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0">
-            <div>
-              <div>
-                <span className="flex h-12 w-12 items-center justify-center rounded-md bg-indigo-600">
-                  <InboxIcon className="h-6 w-6 text-white" aria-hidden="true" />
-                </span>
-              </div>
-              <div className="mt-6">
-                <h2 className="text-3xl font-bold tracking-tight text-gray-900">The state confirms your business.</h2>
-                <p className="mt-4 text-lg text-gray-500">
-                The Division of Corporations could take anywhere from 2-3 business days for e-filing or up to 3 to 5 days for mail filings to process the paperwork. With our expedited service receive your formation documents will be approved in no-time.
-                </p>
-                <div className="mt-6">
-                  <a
-                    href="#"
-                    className="inline-flex rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-                  >
-                    Get started
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="mt-12 sm:mt-16 lg:mt-0">
-            <div className="-mr-48 pl-4 sm:pl-6 md:-mr-16 lg:relative lg:m-0 lg:h-full lg:px-0">
-              <img
-                className="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
-                src="https://tailwindui.com/img/component-images/inbox-app-screenshot-1.jpg"
-                alt="Inbox user interface"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="mt-24">
-        <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
-          <div className="mx-auto max-w-xl px-4 sm:px-6 lg:col-start-2 lg:mx-0 lg:max-w-none lg:py-32 lg:px-0">
-            <div>
-              <div>
-                <span className="flex h-12 w-12 items-center justify-center rounded-md bg-indigo-600">
-                  <SparklesIcon className="h-6 w-6 text-white" aria-hidden="true" />
-                </span>
-              </div>
-              <div className="mt-6">
-                <h2 className="text-3xl font-bold tracking-tight text-gray-900">We deliver all documents to you</h2>
-                <p className="mt-4 text-lg text-gray-500">
-                Your documents include your business formation certificate and employer identification number (EIN).
-                </p>
-                <div className="mt-6">
-                  <a
-                    href="#"
-                    className="inline-flex rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-                  >
-                    Get started
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="mt-12 sm:mt-16 lg:col-start-1 lg:mt-0">
-            <div className="-ml-48 pr-4 sm:pr-6 md:-ml-16 lg:relative lg:m-0 lg:h-full lg:px-0">
-              <img
-                className="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:right-0 lg:h-full lg:w-auto lg:max-w-none"
-                src="https://tailwindui.com/img/component-images/inbox-app-screenshot-2.jpg"
-                alt="Customer profile user interface"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
+      <h3
+        className={clsx('mt-6 text-sm font-medium', {
+          'text-blue-600': isActive,
+          'text-slate-600': !isActive,
+        })}
+      >
+        {feature.name}
+      </h3>
+      <p className="mt-2 font-display text-xl text-slate-900">
+        {feature.summary}
+      </p>
+      <p className="mt-4 text-sm text-slate-600">{feature.description}</p>
     </div>
   )
 }
+
+function FeaturesMobile() {
+  return (
+    <div className="-mx-4 mt-20 space-y-10 overflow-hidden px-4 sm:-mx-6 sm:px-6 lg:hidden">
+      {features.map((feature) => (
+        <div key={feature.name}>
+          <Feature feature={feature} className="mx-auto max-w-2xl" isActive />
+          <div className="relative mt-10 pb-10">
+            <div className="absolute -inset-x-4 bottom-0 top-8 bg-slate-200 sm:-inset-x-6" />
+            <div className="relative mx-auto aspect-[844/428] w-[52.75rem] overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-900/5 ring-1 ring-slate-500/10">
+              <img
+                src={feature.image}
+                alt=""
+                layout="fill"
+                sizes="52.75rem"
+              />
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function FeaturesDesktop() {
+  return (
+    <Tab.Group as="div" className="hidden lg:mt-20 lg:block">
+      {({ selectedIndex }) => (
+        <>
+          <Tab.List className="grid grid-cols-3 gap-x-8">
+            {features.map((feature, featureIndex) => (
+              <Feature
+                key={feature.name}
+                feature={{
+                  ...feature,
+                  name: (
+                    <Tab className="[&:not(:focus-visible)]:focus:outline-none">
+                      <span className="absolute inset-0" />
+                      {feature.name}
+                    </Tab>
+                  ),
+                }}
+                isActive={featureIndex === selectedIndex}
+                className="relative"
+              />
+            ))}
+          </Tab.List>
+          <Tab.Panels className="relative mt-20 overflow-hidden rounded-4xl bg-slate-200 px-14 py-16 xl:px-16">
+            <div className="-mx-5 flex">
+              {features.map((feature, featureIndex) => (
+                <Tab.Panel
+                  static
+                  key={feature.name}
+                  className={clsx(
+                    'px-5 transition duration-500 ease-in-out [&:not(:focus-visible)]:focus:outline-none',
+                    {
+                      'opacity-60': featureIndex !== selectedIndex,
+                    }
+                  )}
+                  style={{ transform: `translateX(-${selectedIndex * 100}%)` }}
+                  aria-hidden={featureIndex !== selectedIndex}
+                >
+                  <div className="relative aspect-[844/428] w-[52.75rem] overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-900/5 ring-1 ring-slate-500/10">
+                    <img
+                      src={feature.image}
+                      alt=""
+                      layout="fill"
+                      sizes="52.75rem"
+                    />
+                  </div>
+                </Tab.Panel>
+              ))}
+            </div>
+            <div className="pointer-events-none absolute inset-0 rounded-4xl ring-1 ring-inset ring-slate-900/10" />
+          </Tab.Panels>
+        </>
+      )}
+    </Tab.Group>
+  )
+}
+
+export function SecondaryFeatures() {
+  return (
+    <section
+      id="secondary-features"
+      aria-labelledby="secondary-features-title"
+      className="pt-20 pb-14 sm:pb-20 sm:pt-32 lg:pb-32"
+    >
+      <Container>
+        <div className="mx-auto max-w-2xl md:text-center">
+          <h2
+            id="secondary-features-title"
+            className="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl"
+          >
+            and manage your business.
+          </h2>
+          <p className="mt-4 text-lg tracking-tight text-slate-700">
+            We have made it easy to create and manage your business documents
+          </p>
+        </div>
+        <FeaturesMobile />
+        <FeaturesDesktop />
+      </Container>
+    </section>
+  )
+}
+
+export default SecondaryFeatures

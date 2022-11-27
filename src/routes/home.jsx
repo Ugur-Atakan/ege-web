@@ -1,8 +1,8 @@
 
 import { Navbar } from '../components/Navbar';
-import { HeroNext } from '../components/HeroNext'
-import PrimaryFeatures from '../components/PrimaryFeaturesNext';
-import SecondaryFeatures from '../components/SecondaryFeaturesNext';
+import { Hero } from '../components/Hero'
+import PrimaryFeatures from '../components/PrimaryFeatures';
+import SecondaryFeatures from '../components/SecondaryFeatures';
 import CallToAction from '../components/CallToAction';
 import WhyUs from '../components/WhyUs';
 import Testimonials from '../components/Testimonials';
@@ -22,7 +22,7 @@ export function Home() {
             </header>
             <Navbar />
             <main>
-                <HeroNext />
+                <Hero />
                 <PrimaryFeatures   />
                 <SecondaryFeatures />
                 <CallToAction />
