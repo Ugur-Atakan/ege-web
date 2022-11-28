@@ -117,7 +117,7 @@ function HeroForm () {
       "companyName": cName,
       "userEmail": uEmail,
       "companyType": cType,
-      "stateofusa": cState
+      "companyState": cState
     }
     console.log(payload);
 
