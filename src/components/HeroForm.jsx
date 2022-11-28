@@ -114,9 +114,10 @@ function HeroForm () {
     localStorage.setItem('userEmail', uEmail)
 
     let payload = {
-      companyName: cName,
-      userEmail: uEmail,
-      companyType: cType
+      "companyName": cName,
+      "userEmail": uEmail,
+      "companyType": cType,
+      "stateofusa": cState
     }
     console.log(payload);
 
@@ -131,7 +132,7 @@ function HeroForm () {
       if (jsonData.Status) {
           console.log("Company onboarded successfully with id: " + jsonData.data.id);
           localStorage.setItem('onboardingId', jsonData.data.id);
-          window.location.href = '/onboarding';
+          window.location.href = '/onboarding#pricing';
       }
     })
     .catch(function (error) {
