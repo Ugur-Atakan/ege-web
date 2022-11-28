@@ -10,175 +10,176 @@ const companyTypes = [
 ]
 
 const states = [
-      { id: 1, name: 'Alabama' },
-      { id: 2, name: 'Alaska' },
-      { id: 3, name: 'Arizona' },
-      { id: 4, name: 'Arkansas' },
-      { id: 5, name: 'California' },
-      { id: 6, name: 'Colorado' },
-      { id: 7, name: 'Connecticut' },
-      { id: 8, name: 'Delaware' },
-      { id: 9, name: 'Florida' },
-      { id: 10, name: 'Georgia' },
-      { id: 11, name: 'Hawaii' },
-      { id: 12, name: 'Idaho' },
-      { id: 13, name: 'Illinois' },
-      { id: 14, name: 'Indiana' },
-      { id: 15, name: 'Iowa' },
-      { id: 16, name: 'Kansas' },
-      { id: 17, name: 'Kentucky' },
-      { id: 18, name: 'Louisiana' },
-      { id: 19, name: 'Maine' },
-      { id: 20, name: 'Maryland' },
-      { id: 21, name: 'Massachusetts' },
-      { id: 22, name: 'Michigan' },
-      { id: 23, name: 'Minnesota' },
-      { id: 24, name: 'Mississippi' },
-      { id: 25, name: 'Missouri' },
-      { id: 26, name: 'Montana' },
-      { id: 27, name: 'Nebraska' },
-      { id: 28, name: 'Nevada' },
-      { id: 29, name: 'New Hampshire' },
-      { id: 30, name: 'New Jersey' },
-      { id: 31, name: 'New Mexico' },
-      { id: 32, name: 'New York' },
-      { id: 33, name: 'North Carolina' },
-      { id: 34, name: 'North Dakota' },
-      { id: 35, name: 'Ohio' },
-      { id: 36, name: 'Oklahoma' },
-      { id: 37, name: 'Oregon' },
-      { id: 38, name: 'Pennsylvania' },
-      { id: 39, name: 'Rhode Island' },
-      { id: 40, name: 'South Carolina' },
-      { id: 41, name: 'South Dakota' },
-      { id: 42, name: 'Tennessee' },
-      { id: 43, name: 'Texas' },
-      { id: 44, name: 'Utah' },
-      { id: 45, name: 'Vermont' },
-      { id: 46, name: 'Virginia' },
-      { id: 47, name: 'Washington' },
-      { id: 48, name: 'West Virginia' },
-      { id: 49, name: 'Wisconsin' },
-      { id: 50, name: 'Wyoming' }
+    { id: 1, name: 'Alabama' },
+    { id: 2, name: 'Alaska' },
+    { id: 3, name: 'Arizona' },
+    { id: 4, name: 'Arkansas' },
+    { id: 5, name: 'California' },
+    { id: 6, name: 'Colorado' },
+    { id: 7, name: 'Connecticut' },
+    { id: 8, name: 'Delaware' },
+    { id: 9, name: 'Florida' },
+    { id: 10, name: 'Georgia' },
+    { id: 11, name: 'Hawaii' },
+    { id: 12, name: 'Idaho' },
+    { id: 13, name: 'Illinois' },
+    { id: 14, name: 'Indiana' },
+    { id: 15, name: 'Iowa' },
+    { id: 16, name: 'Kansas' },
+    { id: 17, name: 'Kentucky' },
+    { id: 18, name: 'Louisiana' },
+    { id: 19, name: 'Maine' },
+    { id: 20, name: 'Maryland' },
+    { id: 21, name: 'Massachusetts' },
+    { id: 22, name: 'Michigan' },
+    { id: 23, name: 'Minnesota' },
+    { id: 24, name: 'Mississippi' },
+    { id: 25, name: 'Missouri' },
+    { id: 26, name: 'Montana' },
+    { id: 27, name: 'Nebraska' },
+    { id: 28, name: 'Nevada' },
+    { id: 29, name: 'New Hampshire' },
+    { id: 30, name: 'New Jersey' },
+    { id: 31, name: 'New Mexico' },
+    { id: 32, name: 'New York' },
+    { id: 33, name: 'North Carolina' },
+    { id: 34, name: 'North Dakota' },
+    { id: 35, name: 'Ohio' },
+    { id: 36, name: 'Oklahoma' },
+    { id: 37, name: 'Oregon' },
+    { id: 38, name: 'Pennsylvania' },
+    { id: 39, name: 'Rhode Island' },
+    { id: 40, name: 'South Carolina' },
+    { id: 41, name: 'South Dakota' },
+    { id: 42, name: 'Tennessee' },
+    { id: 43, name: 'Texas' },
+    { id: 44, name: 'Utah' },
+    { id: 45, name: 'Vermont' },
+    { id: 46, name: 'Virginia' },
+    { id: 47, name: 'Washington' },
+    { id: 48, name: 'Washington DC' },
+    { id: 49, name: 'West Virginia' },
+    { id: 50, name: 'Wisconsin' },
+    { id: 51, name: 'Wyoming' }
   ]
-
+  
 const packageDetails = {
-    "llc1": {
-        title: 'Registate LLC Gold',
-        frequency: '',
-        description: 'Expedited Filing (1-3 business days).',
-        description2: 'Everything you need to perfectly start your company.',
-        features: [
-            '1 Year Registered Agent Fee',
-            'Company Formation State Filing Fees',
-            'EIN Application Fee',
-            'Free Company Name Check', 
-            'Certificate of Formation', 
-            'Lifetime Customer Support (Phone & Email)',
-            'Customizable Banking Resolution',
-            'Electronic Delivery of State Documents',
-            'Customizable Members Meeting Minutes',
-            'Access to Digital Copies of the Documents',
-            'Access to Registate Online Dashboard',
-            ],
-        cta: 'Select LLC Gold',
-        mostPopular: false,
-        id: 'llc1'
-    },
-    "llc2": {
-        title: 'Registate LLC Premium',
-        frequency: '',
-        description: 'Expedited Filing (1-3 business days).',
-        description2: 'Everything you need to diligently operate and manage your company.',
-        features: [
-        'Everything in Gold',
-        '1 Year Free Virtual Mailbox Service',
+"llc1": {
+    title: 'Registate LLC Gold',
+    frequency: '',
+    description: 'Expedited Filing (1-3 business days).',
+    description2: 'Everything you need to perfectly start your company.',
+    features: [
+        '1 Year Registered Agent Fee',
+        'Company Formation State Filing Fees',
+        'EIN Application Fee',
+        'Free Company Name Check', 
+        'Certificate of Formation', 
+        'Lifetime Customer Support (Phone & Email)',
+        'Customizable Banking Resolution',
+        'Electronic Delivery of State Documents',
+        'Customizable Members Meeting Minutes',
+        'Access to Digital Copies of the Documents',
+        'Access to Registate Online Dashboard',
+        ],
+    cta: 'Select LLC Gold',
+    mostPopular: false,
+    id: 'llc1'
+},
+"llc2": {
+    title: 'Registate LLC Premium',
+    frequency: '',
+    description: 'Expedited Filing (1-3 business days).',
+    description2: 'Everything you need to diligently operate and manage your company.',
+    features: [
+    'Everything in Gold',
+    '1 Year Free Compliance Calendar',
+    'Assisting payment of franchise tax and annual report filing fees',
+    'Operating Agreement',
+    'LLC Membership Certificate',
+    'LLC Interest Purchase Agreement',
+    'Business Contract Templates',
+    ],
+    cta: 'Select LLC Premium',
+    mostPopular: true,
+    id: 'llc2'
+},
+"llc3": {
+},
+"corporation1": {
+    title: 'Starter',
+    href: '/form-your-company-step2?packageType=inc1',
+    price: 349,
+    frequency: '',
+    description: 'Expedited Filing (1-3 business days).',
+    description2: 'Everything you need to perfectly start your company.',
+    features: [
+        '1 Year Registered Agent Fee',
+        'Company Formation State Filing Fees',
+        'EIN Application Fee',
+        'Free Company Name Check', 
+        'Certificate of InCorporation', 
+        'Statement of Incorporator',
+        'Lifetime Customer Support (Phone & Email)',
+        'Customizable Corporation Bylaws',
+        'Customizable Corporate Banking Resolution',
+        'Customizable Corporate Meeting Minutes',
+        'Electronic Delivery of State Documents',
+        'Access to Digital Copies of the Documents',
+        'Access to Registate Online Dashboard'    
+    ],
+    cta: 'Select Starter',
+    mostPopular: false,
+    id: 'corp1'
+},
+"corporation2": {
+    title: 'Start Up',
+    href: '/form-your-company-step2?packageType=inc2',
+    price: 769,
+    frequency: '',
+    description: 'Expedited Filing (1-3 business days).',
+    description2: 'Everything you need to diligently operate and manage your company.',
+    features: [
+        'Everything in Starter',
         '1 Year Free Compliance Calendar',
         'Assisting payment of franchise tax and annual report filing fees',
-        'Operating Agreement',
-        'LLC Interest Purchase Agreement',
-        'Business Contract Templates',
-        ],
-        cta: 'Select LLC Premium',
-        mostPopular: true,
-        id: 'llc2'
-    },
-    "llc3": {
-    },
-    "corporation1": {
-        title: 'Starter',
-        href: '/form-your-company-step2?packageType=inc1',
-        price: 349,
-        frequency: '',
-        description: 'Expedited Filing (1-3 business days).',
-        description2: 'Everything you need to perfectly start your company.',
-        features: [
-            '1 Year Registered Agent Fee',
-            'Company Formation State Filing Fees',
-            'EIN Application Fee',
-            'Free Company Name Check', 
-            'Certificate of InCorporation', 
-            'Statement of Incorporator',
-            'Lifetime Customer Support (Phone & Email)',
-            'Customizable Corporation Bylaws',
-            'Customizable Corporate Banking Resolution',
-            'Customizable Corporate Meeting Minutes',
-            'Electronic Delivery of State Documents',
-            'Access to Digital Copies of the Documents',
-            'Access to Registate Online Dashboard'    
-        ],
-        cta: 'Select Starter',
-        mostPopular: false,
-        id: 'corp1'
-    },
-    "corporation2": {
-        title: 'Start Up',
-        href: '/form-your-company-step2?packageType=inc2',
-        price: 769,
-        frequency: '',
-        description: 'Expedited Filing (1-3 business days).',
-        description2: 'Everything you need to diligently operate and manage your company.',
-        features: [
-            'Everything in Starter',
-            '1 Year Free Virtual Mailbox Service',
-            '1 Year Free Compliance Calendar',
-            'Assisting payment of franchise tax and annual report filing fees',
-            'Stock Issuance to Shareholders',
-            'Stock Purchase Agreements',
-            'Vesting Schedules for Founders - Recommended for Tech Founders',
-            'Captable/Stock Ledger',
-            '83b IRS forms for Founders',
-            'Initial Board and Stockholder Resolutions'
-        ],
-        cta: 'Select Start Up',
-        mostPopular: true,
-        id: 'corp2'
-    },
-    "corporation3": {
-        title: 'Scale Up',
-        href: '/form-your-company-step2?packageType=inc3',
-        price: 1769,
-        frequency: '',
-        description: 'Expedited Filing (1-3 business days). ',
-        description2: 'Everything you need to operate, manage and grow your company.',
-        features: [
-            'Everything in Startup',
-            'Confidential Information and Inventions Assignment Agreement',
-            'Technology Transfer Agreement',
-            'Mutual Non Disclosure Agreement',
-            'ESOP Reservation Documents',
-            'Stock Option Grant Contract Templates',
-            'Option Plan for Employees/Consultants and Advisors',
-            'SAFE Financing Documents',
-            'Convertible Note Financing Documents',
-            'All template documents to be ready for funding'
-        ],
-        cta: 'Select Scale Up',
-        mostPopular: false,
-        id: 'corp3'
-    }
+        'Stock Issuance to Shareholders',
+        'Stock Purchase Agreements',
+        'Stock Certificates',
+        'Vesting Schedules for Founders - Recommended for Tech Founders',
+        'Captable/Stock Ledger',
+        '83b IRS forms for Founders',
+        'Initial Board and Stockholder Resolutions'
+    ],
+    cta: 'Select Start Up',
+    mostPopular: true,
+    id: 'corp2'
+},
+"corporation3": {
+    title: 'Scale Up',
+    href: '/form-your-company-step2?packageType=inc3',
+    price: 1769,
+    frequency: '',
+    description: 'Expedited Filing (1-3 business days). ',
+    description2: 'Everything you need to operate, manage and grow your company.',
+    features: [
+        'Everything in Startup',
+        'Confidential Information and Inventions Assignment Agreement',
+        'Technology Transfer Agreement',
+        'Mutual Non Disclosure Agreement',
+        'ESOP Reservation Documents',
+        'Stock Option Grant Contract Templates',
+        'Option Plan for Employees/Consultants and Advisors',
+        'SAFE Financing Documents',
+        'Convertible Note Financing Documents',
+        'All template documents to be ready for funding'
+    ],
+    cta: 'Select Scale Up',
+    mostPopular: false,
+    id: 'corp3'
 }
-
+}
+    
 const pricing= {
     "Alabama" : {
         "Corporation": [ 395, 595],
@@ -209,178 +210,183 @@ const pricing= {
         "LLC": [ 276, 476]
     },
     "Delaware" : {
-        "Corporation": [ 349, 599, 1299],
-        "LLC": [ 322, 522]
+        "Corporation": [ 349, 649, 1449],
+        "LLC": [ 322, 622]
     },
     "Florida" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 210, 410],
+        "LLC": [ 266, 466]
     },
     "Georgia" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 333, 533],
+        "LLC": [ 333, 533]
     },
     "Hawaii" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 230, 430],
+        "LLC": [ 230, 430]
     },
     "Idaho" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 261, 461],
+        "LLC": [ 261, 461]
     },
     "Illinois" : {
         "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Indiana" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 441, 641],
+        "LLC": [ 416, 616]
     },
     "Iowa" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 203, 403],
+        "LLC": [ 203, 403]
     },
     "Kansas" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 244, 444],
+        "LLC": [ 323, 523]
     },
     "Kentucky" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 209, 409],
+        "LLC": [ 193, 393]
     },
     "Louisiana" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 286, 486],
+        "LLC": [ 286, 486]
     },
     "Maine" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 356, 556],
+        "LLC": [ 387, 587]
     },
     "Maryland" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 377, 577],
+        "LLC": [ 355, 555]
     },
     "Massachusetts" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 425, 625],
+        "LLC": [ 688, 888]
     },  
     "Michigan" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 214, 414],
+        "LLC": [ 203, 403]
     },
     "Minnesota" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 312, 512],
+        "LLC": [ 203, 403]
     },
     "Mississippi" : {
         "Corporation": [ 349, 769],
         "LLC": [ 299, 599]
     },
     "Missouri" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 208, 408],
+        "LLC": [ 208, 408]
     },
     "Montana" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 245, 445],
+        "LLC": [ 245, 445]
     },
     "Nebraska" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 258, 458],
+        "LLC": [ 264, 464]
     },
     "Nevada" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 884, 1084],
+        "LLC": [ 575, 775]
     },
     "New Hampshire" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 312, 512],
+        "LLC": [ 288, 488]
     },
     "New Jersey" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 286, 486],
+        "LLC": [ 286, 486]
     },
     "New Mexico" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 241, 441],
+        "LLC": [ 189, 389]
     },
     "New York" : {
-        "Corporation": [ 349, 769, 1769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 286, 486, 999],
+        "LLC": [ 363, 563]
     },
     "North Carolina" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 284, 484],
+        "LLC": [ 284, 484]
     },
     "North Dakota" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 281, 481],
+        "LLC": [ 317, 517]
     },
     "Ohio" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 281, 481],
+        "LLC": [ 254, 454]
     },
     "Oklahoma" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 206, 406],
+        "LLC": [ 259, 459]
     },
     "Oregon" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 241, 441],
+        "LLC": [ 241, 441]
     },
     "Pennsylvania" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 287, 487],
+        "LLC": [ 287, 487]
     },
     "Rhode Island" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 397, 597],
+        "LLC": [ 313, 513]
     },
     "South Carolina" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 487, 687],
+        "LLC": [ 288, 488]
     },
     "South Dakota" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 306, 506],
+        "LLC": [ 306, 506]
     },
     "Tennessee" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 263, 463],
+        "LLC": [ 469, 669   ]
     },
     "Texas" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 447, 647],
+        "LLC": [ 447, 647]
     },
     "Utah" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 209, 409],
+        "LLC": [ 209, 409]
     },
     "Vermont" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 281, 481],
+        "LLC": [ 281, 481]
     },
     "Virginia" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 229, 429],
+        "LLC": [ 255, 455]
     },
     "Washington" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 368, 568],
+        "LLC": [ 368, 568]
+    },
+    "Washington DC" : {
+        "Corporation": [ 305, 505],
+        "LLC": [ 305, 505]
     },
     "West Virginia" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 281, 481],
+        "LLC": [ 306, 506]
     },
     "Wisconsin" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 255, 455],
+        "LLC": [ 286, 486]
     },
     "Wyoming" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
+        "Corporation": [ 232, 432],
+        "LLC": [ 232, 432]
     }
-}
+  }
+  
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -708,8 +714,37 @@ function OnboardingForm() {
                         {
                             packagePrices.map((packagePrice, index) => {
                                 let item = packageDetails[companyType.toLowerCase()+(index+1)]
-
                                 console.log("packageDetail[" + companyType.toLowerCase()+(index+1) + "]")
+                                if (companyState !== "Delaware") {
+                                    if (index === 0) {
+                                      //if item.features doesn't include Business Address Fee, add it
+                                      if (!item.features.includes("1 Year Business Address Fee")) {
+                                        item.features.splice(1, 0, "1 Year Business Address Fee")
+                                      }
+                                    }
+                                    if (index === 1) {
+                                      //if item.features includes it remove it
+                                      if (item.features.includes("1 Year Virtual Mailbox Fee")) {
+                                        item.features.splice(1, 2)
+                                      }
+                                    }
+                                  }
+                                  if (companyState === "Delaware") {
+                                    if (index === 0) {
+                                      //if item.features include it remove it
+                                      if (item.features.includes("1 Year Business Address Fee")) {
+                                        item.features.splice(1, 1)
+                                      }
+                                    }
+                                    if (index === 1) {
+                                      if (!item.features.includes("1 Year Virtual Mailbox Fee")) {
+                                        item.features.splice(1, 0, "1 Year Virtual Mailbox Fee")
+                                      }
+                                      if (!item.features.includes("1 Year Business Address Fee")) {
+                                        item.features.splice(2, 0, "1 Year Business Address Fee")
+                                      }
+                                    }
+                                }
                                 return (
                                         <div
                                         key={item.id}

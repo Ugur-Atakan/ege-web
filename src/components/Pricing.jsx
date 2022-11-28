@@ -53,9 +53,10 @@ const states = [
   { id: 45, name: 'Vermont' },
   { id: 46, name: 'Virginia' },
   { id: 47, name: 'Washington' },
-  { id: 48, name: 'West Virginia' },
-  { id: 49, name: 'Wisconsin' },
-  { id: 50, name: 'Wyoming' }
+  { id: 48, name: 'Washington DC' },
+  { id: 49, name: 'West Virginia' },
+  { id: 50, name: 'Wisconsin' },
+  { id: 51, name: 'Wyoming' }
 ]
 
 const packageDetails = {
@@ -88,10 +89,10 @@ const packageDetails = {
     description2: 'Everything you need to diligently operate and manage your company.',
     features: [
     'Everything in Gold',
-    '1 Year Free Virtual Mailbox Service',
     '1 Year Free Compliance Calendar',
     'Assisting payment of franchise tax and annual report filing fees',
     'Operating Agreement',
+    'LLC Membership Certificate',
     'LLC Interest Purchase Agreement',
     'Business Contract Templates',
     ],
@@ -136,11 +137,11 @@ const packageDetails = {
     description2: 'Everything you need to diligently operate and manage your company.',
     features: [
         'Everything in Starter',
-        '1 Year Free Virtual Mailbox Service',
         '1 Year Free Compliance Calendar',
         'Assisting payment of franchise tax and annual report filing fees',
         'Stock Issuance to Shareholders',
         'Stock Purchase Agreements',
+        'Stock Certificates',
         'Vesting Schedules for Founders - Recommended for Tech Founders',
         'Captable/Stock Ledger',
         '83b IRS forms for Founders',
@@ -176,206 +177,210 @@ const packageDetails = {
 }
 
 const pricing= {
-"Alabama" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Alaska" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Arizona" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Arkansas" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"California" : {
-    "Corporation": [ 349, 769, 1769],
-    "LLC": [ 299, 599]
-},
-"Colorado" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Connecticut" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Delaware" : {
-    "Corporation": [ 349, 769, 1769],
-    "LLC": [ 299, 599]
-},
-"Florida" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Georgia" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Hawaii" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Idaho" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Illinois" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Indiana" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Iowa" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Kansas" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Kentucky" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Louisiana" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Maine" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Maryland" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Massachusetts" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},  
-"Michigan" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Minnesota" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Mississippi" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Missouri" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Montana" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Nebraska" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Nevada" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"New Hampshire" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"New Jersey" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"New Mexico" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"New York" : {
-    "Corporation": [ 349, 769, 1769],
-    "LLC": [ 299, 599]
-},
-"North Carolina" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"North Dakota" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Ohio" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Oklahoma" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Oregon" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Pennsylvania" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Rhode Island" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"South Carolina" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"South Dakota" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Tennessee" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Texas" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Utah" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Vermont" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Virginia" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Washington" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"West Virginia" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Wisconsin" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-},
-"Wyoming" : {
-    "Corporation": [ 349, 769],
-    "LLC": [ 299, 599]
-}
+  "Alabama" : {
+      "Corporation": [ 395, 595],
+      "LLC": [ 395, 595]
+  },
+  "Alaska" : {
+      "Corporation": [ 409, 609],
+      "LLC": [ 409, 609]
+  },
+  "Arizona" : {
+      "Corporation": [ 250, 450],
+      "LLC": [ 276, 476]
+  },
+  "Arkansas" : {
+      "Corporation": [ 198, 398],
+      "LLC": [ 198, 398]
+  },
+  "California" : {
+      "Corporation": [ 157, 557, 1557],
+      "LLC": [ 157, 357]
+  },
+  "Colorado" : {
+      "Corporation": [ 189, 389],
+      "LLC": [ 139, 339]
+  },
+  "Connecticut" : {
+      "Corporation": [ 409, 609],
+      "LLC": [ 276, 476]
+  },
+  "Delaware" : {
+      "Corporation": [ 349, 649, 1449],
+      "LLC": [ 322, 622]
+  },
+  "Florida" : {
+      "Corporation": [ 210, 410],
+      "LLC": [ 266, 466]
+  },
+  "Georgia" : {
+      "Corporation": [ 333, 533],
+      "LLC": [ 333, 533]
+  },
+  "Hawaii" : {
+      "Corporation": [ 230, 430],
+      "LLC": [ 230, 430]
+  },
+  "Idaho" : {
+      "Corporation": [ 261, 461],
+      "LLC": [ 261, 461]
+  },
+  "Illinois" : {
+      "Corporation": [ 349, 769],
+      "LLC": [ 299, 599]
+  },
+  "Indiana" : {
+      "Corporation": [ 441, 641],
+      "LLC": [ 416, 616]
+  },
+  "Iowa" : {
+      "Corporation": [ 203, 403],
+      "LLC": [ 203, 403]
+  },
+  "Kansas" : {
+      "Corporation": [ 244, 444],
+      "LLC": [ 323, 523]
+  },
+  "Kentucky" : {
+      "Corporation": [ 209, 409],
+      "LLC": [ 193, 393]
+  },
+  "Louisiana" : {
+      "Corporation": [ 286, 486],
+      "LLC": [ 286, 486]
+  },
+  "Maine" : {
+      "Corporation": [ 356, 556],
+      "LLC": [ 387, 587]
+  },
+  "Maryland" : {
+      "Corporation": [ 377, 577],
+      "LLC": [ 355, 555]
+  },
+  "Massachusetts" : {
+      "Corporation": [ 425, 625],
+      "LLC": [ 688, 888]
+  },  
+  "Michigan" : {
+      "Corporation": [ 214, 414],
+      "LLC": [ 203, 403]
+  },
+  "Minnesota" : {
+      "Corporation": [ 312, 512],
+      "LLC": [ 203, 403]
+  },
+  "Mississippi" : {
+      "Corporation": [ 349, 769],
+      "LLC": [ 299, 599]
+  },
+  "Missouri" : {
+      "Corporation": [ 208, 408],
+      "LLC": [ 208, 408]
+  },
+  "Montana" : {
+      "Corporation": [ 245, 445],
+      "LLC": [ 245, 445]
+  },
+  "Nebraska" : {
+      "Corporation": [ 258, 458],
+      "LLC": [ 264, 464]
+  },
+  "Nevada" : {
+      "Corporation": [ 884, 1084],
+      "LLC": [ 575, 775]
+  },
+  "New Hampshire" : {
+      "Corporation": [ 312, 512],
+      "LLC": [ 288, 488]
+  },
+  "New Jersey" : {
+      "Corporation": [ 286, 486],
+      "LLC": [ 286, 486]
+  },
+  "New Mexico" : {
+      "Corporation": [ 241, 441],
+      "LLC": [ 189, 389]
+  },
+  "New York" : {
+      "Corporation": [ 286, 486, 999],
+      "LLC": [ 363, 563]
+  },
+  "North Carolina" : {
+      "Corporation": [ 284, 484],
+      "LLC": [ 284, 484]
+  },
+  "North Dakota" : {
+      "Corporation": [ 281, 481],
+      "LLC": [ 317, 517]
+  },
+  "Ohio" : {
+      "Corporation": [ 281, 481],
+      "LLC": [ 254, 454]
+  },
+  "Oklahoma" : {
+      "Corporation": [ 206, 406],
+      "LLC": [ 259, 459]
+  },
+  "Oregon" : {
+      "Corporation": [ 241, 441],
+      "LLC": [ 241, 441]
+  },
+  "Pennsylvania" : {
+      "Corporation": [ 287, 487],
+      "LLC": [ 287, 487]
+  },
+  "Rhode Island" : {
+      "Corporation": [ 397, 597],
+      "LLC": [ 313, 513]
+  },
+  "South Carolina" : {
+      "Corporation": [ 487, 687],
+      "LLC": [ 288, 488]
+  },
+  "South Dakota" : {
+      "Corporation": [ 306, 506],
+      "LLC": [ 306, 506]
+  },
+  "Tennessee" : {
+      "Corporation": [ 263, 463],
+      "LLC": [ 469, 669   ]
+  },
+  "Texas" : {
+      "Corporation": [ 447, 647],
+      "LLC": [ 447, 647]
+  },
+  "Utah" : {
+      "Corporation": [ 209, 409],
+      "LLC": [ 209, 409]
+  },
+  "Vermont" : {
+      "Corporation": [ 281, 481],
+      "LLC": [ 281, 481]
+  },
+  "Virginia" : {
+      "Corporation": [ 229, 429],
+      "LLC": [ 255, 455]
+  },
+  "Washington" : {
+      "Corporation": [ 368, 568],
+      "LLC": [ 368, 568]
+  },
+  "Washington DC" : {
+      "Corporation": [ 305, 505],
+      "LLC": [ 305, 505]
+  },
+  "West Virginia" : {
+      "Corporation": [ 281, 481],
+      "LLC": [ 306, 506]
+  },
+  "Wisconsin" : {
+      "Corporation": [ 255, 455],
+      "LLC": [ 286, 486]
+  },
+  "Wyoming" : {
+      "Corporation": [ 232, 432],
+      "LLC": [ 232, 432]
+  }
 }
 
 const companyTypes = [
@@ -455,7 +460,7 @@ function Plan({ name, price, description, description2, href, features, featured
 }
 
 export function Pricing() {
-  let [companyState, setCompanyState] = useState(localStorage.getItem('companyState') || 'Delaware')
+  let [companyState, setCompanyState] = useState(localStorage.getItem('companyState')||'Delaware')
   let [companyType, setCompanyType] = useState(localStorage.getItem('companyType') || 'Corporation')
   let [packagePrices, setPackagePrices] = useState(pricing[companyState][companyType])
   let [selectedState, setSelectedState] = useState(states.find(state => state.name === companyState))
@@ -466,6 +471,8 @@ export function Pricing() {
     companyState = localStorage.getItem('companyState')
     companyType = localStorage.getItem('companyType')
     console.log({"companyState": companyState, "companyType": companyType})
+    setSelectedState(states.find(state => state.name === companyState))
+    setSelectedType(companyTypes.find(type => type.name === companyType))
 
     if (companyType && companyState) {
       setPackagePrices(pricing[companyState][companyType])
@@ -653,6 +660,36 @@ export function Pricing() {
         {
           packagePrices.map((packagePrice, index) => {
               let item = packageDetails[companyType.toLowerCase()+(index+1)]
+              if (companyState !== "Delaware") {
+                if (index === 0) {
+                  //if item.features doesn't include Business Address Fee, add it
+                  if (!item.features.includes("1 Year Business Address Fee")) {
+                    item.features.splice(1, 0, "1 Year Business Address Fee")
+                  }
+                }
+                if (index === 1) {
+                  //if item.features includes it remove it
+                  if (item.features.includes("1 Year Virtual Mailbox Fee")) {
+                    item.features.splice(1, 2)
+                  }
+                }
+              }
+              if (companyState === "Delaware") {
+                if (index === 0) {
+                  //if item.features include it remove it
+                  if (item.features.includes("1 Year Business Address Fee")) {
+                    item.features.splice(1, 1)
+                  }
+                }
+                if (index === 1) {
+                  if (!item.features.includes("1 Year Virtual Mailbox Fee")) {
+                    item.features.splice(1, 0, "1 Year Virtual Mailbox Fee")
+                  }
+                  if (!item.features.includes("1 Year Business Address Fee")) {
+                    item.features.splice(2, 0, "1 Year Business Address Fee")
+                  }
+                }
+              }
               console.log("packageDetail[" + companyType.toLowerCase()+(index+1) + "]")
               console.log(item)
               return (

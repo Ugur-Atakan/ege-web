@@ -131,7 +131,7 @@ function HeroForm () {
       if (jsonData.Status) {
           console.log("Company onboarded successfully with id: " + jsonData.data.id);
           localStorage.setItem('onboardingId', jsonData.data.id);
-          window.location.href = '/onboarding#pricing';
+          window.location.href = '/#pricing';
       }
     })
     .catch(function (error) {
