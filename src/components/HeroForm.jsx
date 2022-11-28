@@ -131,7 +131,7 @@ function HeroForm () {
       if (jsonData.Status) {
           console.log("Company onboarded successfully with id: " + jsonData.data.id);
           localStorage.setItem('onboardingId', jsonData.data.id);
-          window.location.href = '/#pricing';
+          window.location.href = '/onboarding';
       }
     })
     .catch(function (error) {
@@ -158,8 +158,8 @@ function HeroForm () {
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
             />
         </div>
-        <div className="grid grid-cols-2">
-          <div id="companyStateDiv" className="flex flex-col">
+        <div className="grid grid-cols-2 mx-auto">
+          <div id="companyStateDiv" className="flex flex-col pr-1">
           <Listbox value={selectedState} onChange={handleCompanyStateChange}>
                   {({ open }) => (
                       <>
@@ -218,7 +218,7 @@ function HeroForm () {
                   )}
           </Listbox>
           </div>
-          <div id="companyTypeDiv" className="flex flex-col">
+          <div id="companyTypeDiv" className="flex flex-col pl-1">
             <Listbox value={selectedType} onChange={handleCompanyTypeChange}>
                   {({ open }) => (
                       <>

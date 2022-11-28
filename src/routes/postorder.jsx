@@ -13,7 +13,7 @@ export function PostOrder() {
     //Read order id from query string
     let [searchParams, setSearchParams] = useSearchParams();
     let orderId = searchParams.get("orderId");
-    let paymentReceived = searchParams.get("sucess");
+    let paymentReceived = searchParams.get("success");
     let [success, setSuccess] = useState(false);
     let [open, setOpen] = useState(true);
     let [onboardingId, setOnboardingId] = useState(localStorage.getItem("onboardingId"));
