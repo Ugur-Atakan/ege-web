@@ -536,8 +536,8 @@ export function Pricing() {
             It doesn't matter if you're just starting or scaling up your business, we have a carefully crafted and the most cost efficient plan for you.
           </p>
         </div>
-        <div className="grid grid-cols-2 px-12 py-6">
-          <div id="companyStateDiv" className="flex flex-col px-12">
+        <div className="grid grid-cols-2 mx-auto">
+          <div id="companyStateDiv" className="flex flex-col pr-1">
           <Listbox value={selectedState} onChange={handleCompanyStateChange}>
                   {({ open }) => (
                       <>
@@ -596,7 +596,7 @@ export function Pricing() {
                   )}
           </Listbox>
           </div>
-          <div id="companyTypeDiv" className="flex flex-col px-12">
+          <div id="companyTypeDiv" className="flex flex-col pl-1">
             <Listbox value={selectedType} onChange={handleCompanyTypeChange}>
                   {({ open }) => (
                       <>
