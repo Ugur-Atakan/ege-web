@@ -1,5 +1,6 @@
 import { Disclosure } from '@headlessui/react'
 import { ChevronDownIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
+import React from 'react'
 
 const faqs = [
   { 
@@ -74,6 +75,11 @@ export function Faqs2() {
 
 export default function Faqs() {
   return (
+    <section
+    id="faqs"
+    aria-labelledby="faqs-title"
+    className="py-20 sm:py-32"
+  >
     <div className="bg-gray-50">
       <div className="mx-auto max-w-7xl py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl divide-y-2 divide-gray-200">
@@ -109,5 +115,6 @@ export default function Faqs() {
         </div>
       </div>
     </div>
+  </section>
   )
 }

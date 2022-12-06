@@ -1,561 +1,130 @@
 
-import React, { Fragment, useState, useEffect, useRef } from 'react'
-import { Listbox, Transition, RadioGroup } from '@headlessui/react'
-import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
+import React, { useState, useEffect, useRef, useReducer } from 'react'
 import axios from "axios";
-
-const companyTypes = [
-    { name: 'LLC'},
-    { name: 'Corporation'}
-]
-
-const states = [
-    { id: 1, name: 'Alabama' },
-    { id: 2, name: 'Alaska' },
-    { id: 3, name: 'Arizona' },
-    { id: 4, name: 'Arkansas' },
-    { id: 5, name: 'California' },
-    { id: 6, name: 'Colorado' },
-    { id: 7, name: 'Connecticut' },
-    { id: 8, name: 'Delaware' },
-    { id: 9, name: 'Florida' },
-    { id: 10, name: 'Georgia' },
-    { id: 11, name: 'Hawaii' },
-    { id: 12, name: 'Idaho' },
-    { id: 13, name: 'Illinois' },
-    { id: 14, name: 'Indiana' },
-    { id: 15, name: 'Iowa' },
-    { id: 16, name: 'Kansas' },
-    { id: 17, name: 'Kentucky' },
-    { id: 18, name: 'Louisiana' },
-    { id: 19, name: 'Maine' },
-    { id: 20, name: 'Maryland' },
-    { id: 21, name: 'Massachusetts' },
-    { id: 22, name: 'Michigan' },
-    { id: 23, name: 'Minnesota' },
-    { id: 24, name: 'Mississippi' },
-    { id: 25, name: 'Missouri' },
-    { id: 26, name: 'Montana' },
-    { id: 27, name: 'Nebraska' },
-    { id: 28, name: 'Nevada' },
-    { id: 29, name: 'New Hampshire' },
-    { id: 30, name: 'New Jersey' },
-    { id: 31, name: 'New Mexico' },
-    { id: 32, name: 'New York' },
-    { id: 33, name: 'North Carolina' },
-    { id: 34, name: 'North Dakota' },
-    { id: 35, name: 'Ohio' },
-    { id: 36, name: 'Oklahoma' },
-    { id: 37, name: 'Oregon' },
-    { id: 38, name: 'Pennsylvania' },
-    { id: 39, name: 'Rhode Island' },
-    { id: 40, name: 'South Carolina' },
-    { id: 41, name: 'South Dakota' },
-    { id: 42, name: 'Tennessee' },
-    { id: 43, name: 'Texas' },
-    { id: 44, name: 'Utah' },
-    { id: 45, name: 'Vermont' },
-    { id: 46, name: 'Virginia' },
-    { id: 47, name: 'Washington' },
-    { id: 48, name: 'Washington DC' },
-    { id: 49, name: 'West Virginia' },
-    { id: 50, name: 'Wisconsin' },
-    { id: 51, name: 'Wyoming' }
-  ]
-  
-const packageDetails = {
-"llc1": {
-    title: 'Registate LLC Gold',
-    frequency: '',
-    description: 'Expedited Filing (1-3 business days).',
-    description2: 'Everything you need to perfectly start your company.',
-    features: [
-        '1 Year Registered Agent Fee',
-        'Company Formation State Filing Fees',
-        'EIN Application Fee',
-        'Free Company Name Check', 
-        'Certificate of Formation', 
-        'Lifetime Customer Support (Phone & Email)',
-        'Customizable Banking Resolution',
-        'Electronic Delivery of State Documents',
-        'Customizable Members Meeting Minutes',
-        'Access to Digital Copies of the Documents',
-        'Access to Registate Online Dashboard',
-        ],
-    cta: 'Select LLC Gold',
-    mostPopular: false,
-    id: 'llc1'
-},
-"llc2": {
-    title: 'Registate LLC Premium',
-    frequency: '',
-    description: 'Expedited Filing (1-3 business days).',
-    description2: 'Everything you need to diligently operate and manage your company.',
-    features: [
-    'Everything in Gold',
-    '1 Year Free Compliance Calendar',
-    'Assisting payment of franchise tax and annual report filing fees',
-    'Operating Agreement',
-    'LLC Membership Certificate',
-    'LLC Interest Purchase Agreement',
-    'Business Contract Templates',
-    ],
-    cta: 'Select LLC Premium',
-    mostPopular: true,
-    id: 'llc2'
-},
-"llc3": {
-},
-"corporation1": {
-    title: 'Starter',
-    href: '/form-your-company-step2?packageType=inc1',
-    price: 349,
-    frequency: '',
-    description: 'Expedited Filing (1-3 business days).',
-    description2: 'Everything you need to perfectly start your company.',
-    features: [
-        '1 Year Registered Agent Fee',
-        'Company Formation State Filing Fees',
-        'EIN Application Fee',
-        'Free Company Name Check', 
-        'Certificate of InCorporation', 
-        'Statement of Incorporator',
-        'Lifetime Customer Support (Phone & Email)',
-        'Customizable Corporation Bylaws',
-        'Customizable Corporate Banking Resolution',
-        'Customizable Corporate Meeting Minutes',
-        'Electronic Delivery of State Documents',
-        'Access to Digital Copies of the Documents',
-        'Access to Registate Online Dashboard'    
-    ],
-    cta: 'Select Starter',
-    mostPopular: false,
-    id: 'corp1'
-},
-"corporation2": {
-    title: 'Start Up',
-    href: '/form-your-company-step2?packageType=inc2',
-    price: 769,
-    frequency: '',
-    description: 'Expedited Filing (1-3 business days).',
-    description2: 'Everything you need to diligently operate and manage your company.',
-    features: [
-        'Everything in Starter',
-        '1 Year Free Compliance Calendar',
-        'Assisting payment of franchise tax and annual report filing fees',
-        'Stock Issuance to Shareholders',
-        'Stock Purchase Agreements',
-        'Stock Certificates',
-        'Vesting Schedules for Founders - Recommended for Tech Founders',
-        'Captable/Stock Ledger',
-        '83b IRS forms for Founders',
-        'Initial Board and Stockholder Resolutions'
-    ],
-    cta: 'Select Start Up',
-    mostPopular: true,
-    id: 'corp2'
-},
-"corporation3": {
-    title: 'Scale Up',
-    href: '/form-your-company-step2?packageType=inc3',
-    price: 1769,
-    frequency: '',
-    description: 'Expedited Filing (1-3 business days). ',
-    description2: 'Everything you need to operate, manage and grow your company.',
-    features: [
-        'Everything in Startup',
-        'Confidential Information and Inventions Assignment Agreement',
-        'Technology Transfer Agreement',
-        'Mutual Non Disclosure Agreement',
-        'ESOP Reservation Documents',
-        'Stock Option Grant Contract Templates',
-        'Option Plan for Employees/Consultants and Advisors',
-        'SAFE Financing Documents',
-        'Convertible Note Financing Documents',
-        'All template documents to be ready for funding'
-    ],
-    cta: 'Select Scale Up',
-    mostPopular: false,
-    id: 'corp3'
-}
-}
-    
-const pricing= {
-    "Alabama" : {
-        "Corporation": [ 395, 595],
-        "LLC": [ 395, 595]
-    },
-    "Alaska" : {
-        "Corporation": [ 409, 609],
-        "LLC": [ 409, 609]
-    },
-    "Arizona" : {
-        "Corporation": [ 250, 450],
-        "LLC": [ 276, 476]
-    },
-    "Arkansas" : {
-        "Corporation": [ 198, 398],
-        "LLC": [ 198, 398]
-    },
-    "California" : {
-        "Corporation": [ 157, 557, 1557],
-        "LLC": [ 157, 357]
-    },
-    "Colorado" : {
-        "Corporation": [ 189, 389],
-        "LLC": [ 139, 339]
-    },
-    "Connecticut" : {
-        "Corporation": [ 409, 609],
-        "LLC": [ 276, 476]
-    },
-    "Delaware" : {
-        "Corporation": [ 349, 649, 1449],
-        "LLC": [ 322, 622]
-    },
-    "Florida" : {
-        "Corporation": [ 210, 410],
-        "LLC": [ 266, 466]
-    },
-    "Georgia" : {
-        "Corporation": [ 333, 533],
-        "LLC": [ 333, 533]
-    },
-    "Hawaii" : {
-        "Corporation": [ 230, 430],
-        "LLC": [ 230, 430]
-    },
-    "Idaho" : {
-        "Corporation": [ 261, 461],
-        "LLC": [ 261, 461]
-    },
-    "Illinois" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
-    },
-    "Indiana" : {
-        "Corporation": [ 441, 641],
-        "LLC": [ 416, 616]
-    },
-    "Iowa" : {
-        "Corporation": [ 203, 403],
-        "LLC": [ 203, 403]
-    },
-    "Kansas" : {
-        "Corporation": [ 244, 444],
-        "LLC": [ 323, 523]
-    },
-    "Kentucky" : {
-        "Corporation": [ 209, 409],
-        "LLC": [ 193, 393]
-    },
-    "Louisiana" : {
-        "Corporation": [ 286, 486],
-        "LLC": [ 286, 486]
-    },
-    "Maine" : {
-        "Corporation": [ 356, 556],
-        "LLC": [ 387, 587]
-    },
-    "Maryland" : {
-        "Corporation": [ 377, 577],
-        "LLC": [ 355, 555]
-    },
-    "Massachusetts" : {
-        "Corporation": [ 425, 625],
-        "LLC": [ 688, 888]
-    },  
-    "Michigan" : {
-        "Corporation": [ 214, 414],
-        "LLC": [ 203, 403]
-    },
-    "Minnesota" : {
-        "Corporation": [ 312, 512],
-        "LLC": [ 203, 403]
-    },
-    "Mississippi" : {
-        "Corporation": [ 349, 769],
-        "LLC": [ 299, 599]
-    },
-    "Missouri" : {
-        "Corporation": [ 208, 408],
-        "LLC": [ 208, 408]
-    },
-    "Montana" : {
-        "Corporation": [ 245, 445],
-        "LLC": [ 245, 445]
-    },
-    "Nebraska" : {
-        "Corporation": [ 258, 458],
-        "LLC": [ 264, 464]
-    },
-    "Nevada" : {
-        "Corporation": [ 884, 1084],
-        "LLC": [ 575, 775]
-    },
-    "New Hampshire" : {
-        "Corporation": [ 312, 512],
-        "LLC": [ 288, 488]
-    },
-    "New Jersey" : {
-        "Corporation": [ 286, 486],
-        "LLC": [ 286, 486]
-    },
-    "New Mexico" : {
-        "Corporation": [ 241, 441],
-        "LLC": [ 189, 389]
-    },
-    "New York" : {
-        "Corporation": [ 286, 486, 999],
-        "LLC": [ 363, 563]
-    },
-    "North Carolina" : {
-        "Corporation": [ 284, 484],
-        "LLC": [ 284, 484]
-    },
-    "North Dakota" : {
-        "Corporation": [ 281, 481],
-        "LLC": [ 317, 517]
-    },
-    "Ohio" : {
-        "Corporation": [ 281, 481],
-        "LLC": [ 254, 454]
-    },
-    "Oklahoma" : {
-        "Corporation": [ 206, 406],
-        "LLC": [ 259, 459]
-    },
-    "Oregon" : {
-        "Corporation": [ 241, 441],
-        "LLC": [ 241, 441]
-    },
-    "Pennsylvania" : {
-        "Corporation": [ 287, 487],
-        "LLC": [ 287, 487]
-    },
-    "Rhode Island" : {
-        "Corporation": [ 397, 597],
-        "LLC": [ 313, 513]
-    },
-    "South Carolina" : {
-        "Corporation": [ 487, 687],
-        "LLC": [ 288, 488]
-    },
-    "South Dakota" : {
-        "Corporation": [ 306, 506],
-        "LLC": [ 306, 506]
-    },
-    "Tennessee" : {
-        "Corporation": [ 263, 463],
-        "LLC": [ 469, 669   ]
-    },
-    "Texas" : {
-        "Corporation": [ 447, 647],
-        "LLC": [ 447, 647]
-    },
-    "Utah" : {
-        "Corporation": [ 209, 409],
-        "LLC": [ 209, 409]
-    },
-    "Vermont" : {
-        "Corporation": [ 281, 481],
-        "LLC": [ 281, 481]
-    },
-    "Virginia" : {
-        "Corporation": [ 229, 429],
-        "LLC": [ 255, 455]
-    },
-    "Washington" : {
-        "Corporation": [ 368, 568],
-        "LLC": [ 368, 568]
-    },
-    "Washington DC" : {
-        "Corporation": [ 305, 505],
-        "LLC": [ 305, 505]
-    },
-    "West Virginia" : {
-        "Corporation": [ 281, 481],
-        "LLC": [ 306, 506]
-    },
-    "Wisconsin" : {
-        "Corporation": [ 255, 455],
-        "LLC": [ 286, 486]
-    },
-    "Wyoming" : {
-        "Corporation": [ 232, 432],
-        "LLC": [ 232, 432]
-    }
-  }
-  
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
-    
 
-function OnboardingForm() {
-    const dataFetchedRef = useRef(false);
-    let [companyName, setCompanyName] = useState(localStorage.getItem('companyName'))
-    let [companyState, setCompanyState] = useState(localStorage.getItem('companyState'))
-    let [companyType, setCompanyType] = useState(localStorage.getItem('companyType'))
-    let [userEmail, setUserEmail] = useState(localStorage.getItem('userEmail'))
-    let [onboardingId, setOnboardingId] = useState(localStorage.getItem('onboardingId'))
-    let [tiers, setTiers] = useState([])
-    let [showPricing, setShowPricing] = useState(false)
-    let [showSubmitButton, setShowSubmitButton] = useState(false)
-    let [selectedState, setSelectedState] = useState(states[7])
-    let [selectedType, setSelectedType] = useState(companyType)
-    let [showCompanyInfo, setShowCompanyInfo] = useState(false)
-    let [packageType, setPackageType] = useState(localStorage.getItem('packageType'))
-    let [packagePrices, setPackagePrices] = useState(JSON.parse(localStorage.getItem('packagePrices'), []))
+const OrderInformationPanel = ({ companyName, packageName, packagePrice}) => {
 
-    const updateTiers = (state, type) => {
-        console.log("Updating tiers with state", state, "and", type)
-        tiers = pricing[state][type]
-        console.log("tiers: ", tiers)
-        localStorage.setItem('packagePrices', JSON.stringify(tiers))
-        setPackagePrices(tiers)
-    }
+    return (
+        <div className="bg-blue-50 shadow sm:rounded-lg">
+            <div className="px-4 py-5 sm:p-6">
+                <div className="sm:flex sm:items-start sm:justify-between">
+                    <div>
+                        {packageName && packagePrice && (
+                            <h3 className="text-lg font-medium leading-6 text-gray-900">Selected Package: <span className="text-blue-700">{packageName} - ${packagePrice}</span></h3>
+                        )}
+                        {companyName && (
+                            <h3 className="text-lg font-medium leading-6 text-gray-900">Company Name: <span className="text-blue-700">{companyName}</span></h3>
+                        )}
+                    </div>
+                    <div className="mt-5 sm:mt-0 sm:ml-6 sm:flex sm:flex-shrink-0 sm:items-center">
+                        <button
+                            type="button" 
+                            className="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:text-sm"
+                            onClick={() => {
+                                localStorage.clear()
+                                window.location.href = "/pricing"
+                            }}
+                        >
+                        Start Over
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
 
-    const updatePricing = () => {
-        console.log("updatePricing")
-        companyState = localStorage.getItem('companyState')
-        companyType = localStorage.getItem('companyType')
-        if (companyState) {
-            console.log("Setting selectedState to:", companyState)
-            setSelectedState(states.find(state => state.name === companyState))
+
+
+const CompanyNameEmailForm = ({ setCompanyName }) => {
+
+
+    function formSubmitHandler(e) {
+        e.preventDefault();
+        let new_company_name = e.target.companyName.value;
+        console.log("companyName: " + new_company_name)
+
+        let userEmail = e.target.userEmail.value;
+        let companyType = localStorage.getItem('companyType')
+        let companyState = localStorage.getItem('companyState')
+
+        let payload = {
+            companyName: new_company_name,
+            userEmail: userEmail,
+            companyType: companyType,
+            companyState: companyState
         }
-        else {
-            localStorage.setItem('companyState', selectedState.name)
-        }
-        if (companyType) {
-            console.log("Setting selectedType to:", companyType)
-            setCompanyType(companyType)
-        }
-        if (companyType && companyState) {
-            setShowPricing(true)
-            console.log("showPricing: true")
-            updateTiers(companyState, companyType)
-        }
-    }
-
-    const updateCompanyInfo = () => {
-        console.log("updateCompanyInfo")
-        packageType = localStorage.getItem('packageType')
-        if (packageType) {
-            setShowCompanyInfo(true)
-        }
-    }
-
-
-    const stateChangeHandler = (e) => {
-        console.log("stateChangeHandler")
-        console.log("e:", e)
-        localStorage.setItem('companyState', e.name)
-        setSelectedState(states.find(state => state.name === e.name))
-        setCompanyState(e.name)
-        updatePricing()
-    }
-
-    const typeChangeHandler = (e) => {
-        console.log("typeChangeHandler")
-        console.log("e:", e)
-        localStorage.removeItem('packageType')
-        setShowCompanyInfo(false)
-        localStorage.setItem('companyType', e)
-        setCompanyType(e)
-        updatePricing()
-        submitOnboardingRequest()
-    }
-
-    const nameChangeHandler = (e) => {
-        console.log("nameChangeHandler")
-        localStorage.setItem('companyName', e.target.value)
-        setCompanyName(e.target.value)
-        submitOnboardingRequest()
-    }
-
-    const emailChangeHandler = (e) => {
-        console.log("emailChangeHandler")
-        if (e.target.value) {
-            localStorage.setItem('userEmail', e.target.value)
-            submitOnboardingRequest()
-        }
-    }
-
-    const submitOnboardingRequest = () => {
-        console.log("submitOnboardingRequest")
-        onboardingId = localStorage.getItem('onboardingId')
-        if (onboardingId) {
-            console.log("onboardingId already exists")
-            return
-        }
-        
-        companyName = localStorage.getItem('companyName')
-        userEmail = localStorage.getItem('userEmail')
-        companyType = localStorage.getItem('companyType')
-        if (companyName && companyType && userEmail) {
-            console.log("Submit Onboarding Request")
-            let payload = {
-                companyName: companyName,
-                userEmail: userEmail,
-                companyType: companyType
+        console.log(payload)
+        axios.post('https://api.registate.net/api/onboard', payload, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
+        }})
+        .then(function (response) {
+            //Parse the returned json data
+            var jsonData = JSON.parse(JSON.stringify(response.data));
+            if (jsonData.Status) {
+                console.log("Company registered successfully with id: " + jsonData.data.id);
+                localStorage.setItem('onboardingId', jsonData.data.id);
+                localStorage.setItem('companyName', new_company_name);
+                setCompanyName(new_company_name);
+                        
+                //hide the form element and show the next step
+                document.getElementById("CompanyNameEmailFormDiv").style.display = "none";
+                document.getElementById("CompanyContactInfoFormDiv").style.display = "block";
             }
-            console.log(payload);
-            axios.post('https://api.registate.net/api/onboard', payload, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
-            }})
-            .then(function (response) {
-                //Parse the returned json data
-                var jsonData = JSON.parse(JSON.stringify(response.data));
-                if (jsonData.Status) {
-                    console.log("Company registered successfully with id: " + jsonData.data.id);
-                    localStorage.setItem('onboardingId', jsonData.data.id);
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });    
-        }
-        else {
-            console.log("Missing company name, type, or email")
-        }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });    
+
     }
 
-    const selectPackageHandler = (e) => {
-        console.log("selectPackageHandler")
-        setShowCompanyInfo(true)
-        setPackageType(e)
-        localStorage.setItem('packageType', e)
-        console.log("Sending request to create onboarding")            
-    }
-    
-    useEffect(() => {
-        if (dataFetchedRef.current) return;
+    return (
+        <div className="bg-white shadow sm:rounded-lg">
+            <div className="px-4 py-5 sm:p-6">
+            <h3 className="text-lg font-medium leading-6 text-gray-900">Select a company name</h3>
+            <div className="mt-2 max-w-4xl text-sm text-gray-500">
+              <p>Enter your preferred business name here. We will do a extensive company name search and let you know if its available or not. Your email address will be used to create an account with us so that you can check the status of your application.</p>
+            </div>
+            <form className="mt-5 sm:flex sm:items-center" onSubmit={formSubmitHandler}>
+                <div className="w-full sm:max-w-sm">
+                    <div className="mt-4">
+                        <label htmlFor="companyName" className="sr-only">Company Name</label>
+                        <input type="text" name="companyName" id="companyName" className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="Company Name"></input>
+                    </div>
+                    <div className="mt-4">
+                        <label htmlFor="userEmail" className="sr-only">Email</label>
+                        <input type="email" name="userEmail" id="userEmail" className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="you@example.com"></input>
+                    </div>
+                    <div className="mt-4">
+                        <button type="submit" className="inline-flex w-full items-center justify-center rounded-md border border-transparent bg-blue-600 px-16 py-3 font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Submit</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+      )
+  }
 
-        console.log("useEffect starting")
-        setCompanyType(localStorage.getItem('companyType'))
-        setCompanyState(localStorage.getItem('companyState'))
+const CompanyContactInfoForm = () => {
 
-        updatePricing()
-        updateCompanyInfo()
+    const formSubmitHandler = (e) => {
+        e.preventDefault();
+        console.log('CompanyContactInfoForm submitted,', e)
 
-        dataFetchedRef.current = true;
-    }, [updateCompanyInfo, updatePricing]);
+        let companyContactName = e.target.firstname.value + " " + e.target.lastname.value;
+        let companyContactEmail = e.target.emailaddress.value;
+        let companyContactPhone = e.target.phonenumber.value;
+        let companyContactAddress = e.target.streetaddress.value + ", " + e.target.city.value + ", " + e.target.region.value + " " + e.target.postalcode.value + ", " + e.target.country.value;
 
-    function formSubmitHandler(event) {
-        event.preventDefault()
+        let onboardingId = localStorage.getItem('onboardingId')
+        let packageType = localStorage.getItem('packageType')
 
-        console.log('Form submitted')
-        let companyContactName = document.getElementById('contactName').value;
-        let companyContactEmail = document.getElementById('contactEmail').value;
-        let companyContactPhone = document.getElementById('contactPhone').value;
-        let companyContactAddress = document.getElementById('contactAddress').value;
-        
-        onboardingId = localStorage.getItem('onboardingId')
-        packageType = localStorage.getItem('packageType')
 
         let payload = {
             "companyContactName": companyContactName,
@@ -565,7 +134,7 @@ function OnboardingForm() {
             "onBoardId": onboardingId,
             "packageType": packageType
         }
-        console.log(payload);
+        console.log(payload)
 
         //Complete Onboarding Order with backend
         axios.post('https://api.registate.net/api/onboard-order', payload, {
@@ -581,6 +150,7 @@ function OnboardingForm() {
             if (jsonData.Status) {
                 let stripeUrl = jsonData.data.stripeUrl;
                 console.log(stripeUrl)
+                localStorage.setItem('stripeUrl', stripeUrl);
                 window.location.href = stripeUrl;
             }
         })
@@ -590,276 +160,212 @@ function OnboardingForm() {
     }
 
     return (
-        <form onSubmit={formSubmitHandler} method="POST" className="space-y-6">
-            <div>
-            <label htmlFor="name" className="sr-only">
-                Company Name
-            </label>
-            <input
-                type="text"
-                name="companyName"
-                id="companyName"
-                onBlur={nameChangeHandler}
-                autoComplete="companyName"
-                placeholder="Company Name"
-                defaultValue={ companyName }
-                required
-                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-            />
-            </div>
-            <Listbox value={selectedState} onChange={stateChangeHandler}>
-                {({ open }) => (
-                    <>
-                    <div className="relative mt-1">
-                        <Listbox.Button className="relative w-full cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 sm:text-sm">
-                        <span id="companyState" className="block truncate">{selectedState.name}</span>
-                        <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                            <ChevronUpDownIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
-                        </span>
-                        </Listbox.Button>
+        <form className="space-y-6" onSubmit={formSubmitHandler}>  
+            <div className="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6">
+                <div className="md:grid md:grid-cols-3 md:gap-6">
+                    <div className="md:col-span-1">
+                    <h3 className="text-lg font-medium leading-6 text-gray-900">Company Contact Information</h3>
+                    <p className="mt-1 text-sm text-gray-500">Use a permanent address where you can receive mail.</p>
+                    </div>
+                    <div className="mt-5 md:col-span-2 md:mt-0">
+                        <div className="grid grid-cols-6 gap-6">
+                            <div className="col-span-6 sm:col-span-3">
+                            <label htmlFor="firstname" className="block text-sm font-medium text-gray-700">
+                                First name
+                            </label>
+                            <input
+                                type="text"
+                                name="firstname"
+                                id="firstname"
+                                autoComplete="given-name"
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                            />
+                            </div>
+            
+                            <div className="col-span-6 sm:col-span-3">
+                            <label htmlFor="lastname" className="block text-sm font-medium text-gray-700">
+                                Last name
+                            </label>
+                            <input
+                                type="text"
+                                name="lastname"
+                                id="lastname"
+                                autoComplete="family-name"
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                            />
+                            </div>
+            
+                            <div className="col-span-6 sm:col-span-6 lg:col-span-3">
+                            <label htmlFor="emailaddress" className="block text-sm font-medium text-gray-700">
+                                Email address
+                            </label>
+                            <input
+                                type="text"
+                                name="emailaddress"
+                                id="emailaddress"
+                                autoComplete="email"
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                            />
+                            </div>
 
-                        <Transition
-                        show={open}
-                        as={Fragment}
-                        leave="transition ease-in duration-100"
-                        leaveFrom="opacity-100"
-                        leaveTo="opacity-0"
-                        >
-                        <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                            {states.map((state) => (
-                            <Listbox.Option
-                                id={"state" + state.id}
-                                key={state.id}
-                                className={({ active }) =>
-                                classNames(
-                                    active ? 'text-white bg-blue-600' : 'text-gray-900',
-                                    'relative cursor-default select-none py-2 pl-3 pr-9'
-                                )
-                                }
-                                value={state}
+                            <div className="col-span-6 sm:col-span-6 lg:col-span-3">
+                                <label htmlFor="phonenumber" className="block text-sm font-medium text-gray-700">
+                                    Phone Number
+                                </label>
+                                <div className="relative mt-1 rounded-md shadow-sm">
+                                    <input
+                                    type="text"
+                                    name="phonenumber"
+                                    id="phonenumber"
+                                    autoComplete="tel"
+                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                                    placeholder="+1 (123) 111-22-33"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="col-span-6">
+                            <label htmlFor="streetaddress" className="block text-sm font-medium text-gray-700">
+                                Street address
+                            </label>
+                            <input
+                                type="text"
+                                name="streetaddress"
+                                id="streetaddress"
+                                autoComplete="street-address"
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                            />
+                            </div>
+            
+                            <div className="col-span-6 sm:col-span-6 lg:col-span-2">
+                            <label htmlFor="city" className="block text-sm font-medium text-gray-700">
+                                City
+                            </label>
+                            <input
+                                type="text"
+                                name="city"
+                                id="city"
+                                autoComplete="address-level2"
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                            />
+                            </div>
+            
+                            <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                            <label htmlFor="region" className="block text-sm font-medium text-gray-700">
+                                State / Province
+                            </label>
+                            <input
+                                type="text"
+                                name="region"
+                                id="region"
+                                autoComplete="address-level1"
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                            />
+                            </div>
+            
+                            <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                            <label htmlFor="postalcode" className="block text-sm font-medium text-gray-700">
+                                ZIP / Postal code
+                            </label>
+                            <input
+                                type="text"
+                                name="postalcode"
+                                id="postalcode"
+                                autoComplete="postalcode"
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                            />
+                            </div>
+
+                            <div className="col-span-6 sm:col-span-3">
+                            <label htmlFor="country" className="block text-sm font-medium text-gray-700">
+                                Country
+                            </label>
+                            <select
+                                id="country"
+                                name="country"
+                                autoComplete="country-name"
+                                className="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
                             >
-                                {({ selected, active }) => (
-                                <>
-                                    <span className={classNames(selected ? 'font-semibold' : 'font-normal', 'block truncate')}>
-                                    {state.name}
-                                    </span>
+                                <option>United States</option>
+                                <option>Canada</option>
+                                <option>Mexico</option>
+                            </select>
+                            </div>
 
-                                    {selected ? (
-                                    <span
-                                        className={classNames(
-                                        active ? 'text-white' : 'text-blue-600',
-                                        'absolute inset-y-0 right-0 flex items-center pr-4'
-                                        )}
-                                    >
-                                        <CheckIcon className="h-5 w-5" aria-hidden="true" />
-                                    </span>
-                                    ) : null}
-                                </>
-                                )}
-                            </Listbox.Option>
-                            ))}
-                        </Listbox.Options>
-                        </Transition>
+                        </div>
                     </div>
-                    </>
-                )}
-            </Listbox>
-            <div id="companyTypeDiv" className="flex items-center justify-between">
-                <legend className="sr-only">Company Type</legend>
-                <RadioGroup value={companyType} onChange={typeChangeHandler} className="mt-2">
-                    <RadioGroup.Label className="sr-only"> Choose a corporate type </RadioGroup.Label>
-                    <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
-                    {companyTypes.map((option) => (
-                        <RadioGroup.Option
-                        key={option.name}
-                        value={option.name}
-                        className={({ active, checked }) =>
-                            classNames(
-                            active ? 'ring-2 ring-offset-2 ring-blue-500' : '',
-                            checked
-                                ? 'bg-blue-400 border-transparent text-white hover:bg-blue-500'
-                                : 'bg-white border-gray-200 text-gray-900 hover:bg-gray-50',
-                            'border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium uppercase sm:flex-1'
-                            )
-                        }
-                        >
-                        <RadioGroup.Label as="span">{option.name}</RadioGroup.Label>
-                        </RadioGroup.Option>
-                    ))}
-                    </div>
-                </RadioGroup>
+                </div>
             </div>
-            <div id="userEmailDiv">
-            <label htmlFor="email" className="sr-only">
-                Email address
-            </label>
-            <input
-                type="text"
-                name="userEmail"
-                id="userEmail"
-                autoComplete="email"
-                placeholder="Your Email"
-                defaultValue={ userEmail }
-                required
-                onBlur={emailChangeHandler}
-                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-            />
-            </div>
-            <section
-                id="pricing"
+
+            <div className="flex justify-end">
+
+            <button
+                type="submit"
+                className="ml-3 inline-flex justify-center rounded-md border border-transparent bg-blue-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
             >
-                <div id="pricingTableDiv" className="float-center">
-                    { showPricing &&  (
-                        <div className="mt-24 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-8 lg:space-y-0">
-                        {
-                            packagePrices.map((packagePrice, index) => {
-                                let item = packageDetails[companyType.toLowerCase()+(index+1)]
-                                console.log("packageDetail[" + companyType.toLowerCase()+(index+1) + "]")
-                                if (companyState !== "Delaware") {
-                                    if (index === 0) {
-                                      //if item.features doesn't include Business Address Fee, add it
-                                      if (!item.features.includes("1 Year Business Address Fee")) {
-                                        item.features.splice(1, 0, "1 Year Business Address Fee")
-                                      }
-                                    }
-                                    if (index === 1) {
-                                      //if item.features includes it remove it
-                                      if (item.features.includes("1 Year Virtual Mailbox Fee")) {
-                                        item.features.splice(1, 2)
-                                      }
-                                    }
-                                  }
-                                  if (companyState === "Delaware") {
-                                    if (index === 0) {
-                                      //if item.features include it remove it
-                                      if (item.features.includes("1 Year Business Address Fee")) {
-                                        item.features.splice(1, 1)
-                                      }
-                                    }
-                                    if (index === 1) {
-                                      if (!item.features.includes("1 Year Virtual Mailbox Fee")) {
-                                        item.features.splice(1, 0, "1 Year Virtual Mailbox Fee")
-                                      }
-                                      if (!item.features.includes("1 Year Business Address Fee")) {
-                                        item.features.splice(2, 0, "1 Year Business Address Fee")
-                                      }
-                                    }
-                                }
-                                return (
-                                        <div
-                                        key={item.id}
-                                        className="relative flex flex-col rounded-2xl border border-gray-200 bg-white p-8 shadow-sm"
-                                        > 
-                                            <div className="flex-1">
-                                                <h3 className="text-xl font-semibold text-gray-900">{item.title}</h3>
-                                                {item.mostPopular ? (
-                                                    <p className="absolute top-0 -translate-y-1/2 transform rounded-full bg-blue-500 py-1.5 px-4 text-sm font-semibold text-white">
-                                                    Most popular
-                                                    </p>
-                                                ) : null}
-                                                <p className="mt-4 flex items-baseline text-gray-900">
-                                                    <span className="text-5xl font-bold tracking-tight">${packagePrice}</span>
-                                                    <span className="ml-1 text-xl font-semibold">{item.frequency}</span>
-                                                </p>
-                                                <p className="mt-6 text-gray-500">{item.description}</p>
-                                                <p className="mt-6 text-gray-800 font-bold">{item.description2}</p>
-
-                                                {/* Feature list */}
-                                                <ul className="mt-6 space-y-6">
-                                                    {item.features.map((feature) => (
-                                                    <li key={feature} className="flex">
-                                                        <CheckIcon className="h-6 w-6 flex-shrink-0 text-blue-500" aria-hidden="true" />
-                                                        <span className="ml-3 text-gray-500">{feature}</span>
-                                                    </li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                            <button
-                                                type="button"
-                                                onClick={ selectPackageHandler.bind(this, item.id) }
-                                                className={classNames(
-                                                    item.mostPopular
-                                                    ? 'bg-blue-500 text-white hover:bg-blue-600'
-                                                    : 'bg-blue-50 text-blue-700 hover:bg-blue-100',
-                                                'mt-8 block w-full py-3 px-6 border border-transparent rounded-md text-center font-medium'
-                                                )}
-                                                >
-                                                {item.cta}
-                                            </button>
-                                        </div>
-                                        )
-                            })
-                        }
-                        </div>                
-                )}
-                </div>
-            </section>
-
-            <div id="companyInfoDiv" className="float-cente bg-red-300">
-                { showCompanyInfo && (
-                <div className="overflow-hidden bg-white py-4 px-4 sm:px-6 lg:px-8 lg:py-4">
-                    <div className="overflow-hidden bg-white py-16 px-4 sm:px-6 lg:px-8 lg:py-24">
-                    <div className="relative mx-auto max-w-4xl">
-                        <svg className="absolute left-full translate-x-1/2 transform" width="404" height="404" fill="none" viewBox="0 0 404 404" aria-hidden="true">
-                        <defs>
-                            <pattern id="85737c0e-0916-41d7-917f-596dc7edfa27" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                            <rect x="0" y="0" width="4" height="4" className="text-gray-200" fill="currentColor" />
-                            </pattern>
-                        </defs>
-                        <rect width="404" height="404" fill="url(#85737c0e-0916-41d7-917f-596dc7edfa27)" />
-                        </svg>
-                        <svg className="absolute right-full bottom-0 -translate-x-1/2 transform" width="404" height="404" fill="none" viewBox="0 0 404 404" aria-hidden="true">
-                        <defs>
-                            <pattern id="85737c0e-0916-41d7-917f-596dc7edfa27" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                            <rect x="0" y="0" width="4" height="4" className="text-gray-200" fill="currentColor" />
-                            </pattern>
-                        </defs>
-                        <rect width="404" height="404" fill="url(#85737c0e-0916-41d7-917f-596dc7edfa27)" />
-                        </svg>
-                        <div className="text-center">
-                        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Company Contact Information</h2>
-                        <p className="mt-4 text-lg leading-6 text-gray-500">This is the company contact information where you can physically receive mails.</p>
-                        </div>
-                        <div className="mt-12">
-                            <div>
-                            <label htmlFor="first-name" className="block text-sm font-medium text-gray-700">Name</label>
-                            <div className="mt-1">
-                                <input type="text" name="first-name" id="contactName" autoComplete="given-name" className="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-blue-500 focus:ring-blue-500"></input>
-                            </div>
-                            </div>
-                            <div className="sm:col-span-2">
-                            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
-                            <div className="mt-1">
-                                <input id="contactEmail" defaultValue={userEmail} name="email" type="email" autoComplete="email" className="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-blue-500 focus:ring-blue-500"></input>
-                            </div>
-                            </div>
-                            <div className="sm:col-span-2" >
-                            <label htmlFor="phone-number" className="block text-sm font-medium text-gray-700">Phone Number</label>
-                            <div className="relative mt-1 rounded-md shadow-sm">
-                                <input type="text" name="phone-number" id="contactPhone" autoComplete="tel" className="block w-full rounded-md border-gray-300 py-3 px-4 pl-20 focus:border-blue-500 focus:ring-blue-500" placeholder="+1 (555) 987-6543"></input>
-                            </div>
-                            </div>
-                            <div className="sm:col-span-2">
-                            <label htmlFor="address" className="block text-sm font-medium text-gray-700">Address</label>
-                            <div className="mt-1">
-                                <textarea id="contactAddress" name="address" rows="4" className="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
-                            </div>
-                            </div>
-                            <div className="sm:col-span-2">
-                            <button 
-                                onClick={formSubmitHandler} 
-                                className="inline-flex w-full items-center justify-center rounded-md border border-transparent bg-blue-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                                Review and Pay
-                            </button>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                )}
+                Save
+            </button>
             </div>
-        </form>
-    )
-  }
 
-  export default OnboardingForm
+      </form>
+    );
+};
+
+
+
+
+const OnboardingForm = () => {
+    let [packageName, setPackageName] = useState(localStorage.getItem('packageName'))
+    let [packagePrice, setPackagePrice] = useState(localStorage.getItem('packagePrice'))
+    let [companyName, setCompanyName] = useState(localStorage.getItem('companyName'))
+    let [packageType, setPackageType] = useState(localStorage.getItem('packageType'))
+
+    useEffect(() => {
+        console.log("OnboardingForm useEffect")
+        //Check if packageType is defined in local storage, if not redirect to /pricing
+        let packageType = localStorage.getItem('packageType')
+        if (!packageType) {
+            console.log("packageType not defined, redirecting to /pricing")
+            window.location.href = "/pricing"
+        }
+
+        let onboardingId = localStorage.getItem('onboardingId')
+        if (onboardingId) {
+            //Display onboarding info panel
+            document.getElementById("CompanyNameEmailFormDiv").style.display = "none";
+            document.getElementById("CompanyContactInfoFormDiv").style.display = "block";
+        }
+        else {
+            document.getElementById("CompanyNameEmailFormDiv").style.display = "block";
+            document.getElementById("CompanyContactInfoFormDiv").style.display = "none";
+        }
+    }, [localStorage.getItem('packageType')]);
+
+
+    return (
+        <div className="mx-auto max-w-4xl">
+            <div id="description" className="px-6 text-center">
+                <h2 className="mt-6 font-bold tracking-tight text-gray-900 text-4xl">
+                Complete forming <span className="text-blue-700">{
+                                        localStorage.getItem('companyType') === 'LLC' ? 'an LLC' : 'a Corporation'
+                }</span> in <span className="text-blue-600">{localStorage.getItem('companyState')}</span>
+                </h2>
+            </div>
+            <div id="OrderInformationDiv" className="mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+                <OrderInformationPanel companyName={companyName} packageName={packageName} packagePrice={packagePrice} />
+            </div>
+            <div id="CompanyNameEmailFormDiv" className="mx-auto px-4 sm:px-6 lg:px-8 mt-10">            
+                <CompanyNameEmailForm setCompanyName={setCompanyName}/>
+            </div>
+            <div id="CompanyContactInfoFormDiv" className="px-6 py-6">
+                <CompanyContactInfoForm />
+            </div>
+        </div>
+    )
+}
+
+
+
+
+
+export default OnboardingForm

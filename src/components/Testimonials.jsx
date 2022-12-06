@@ -1,68 +1,70 @@
 import { Container } from '../components/Container'
-import avatarImage1 from '../images/avatars/avatar-1.png'
-import avatarImage2 from '../images/avatars/avatar-2.png'
-import avatarImage3 from '../images/avatars/avatar-3.png'
-import avatarImage4 from '../images/avatars/avatar-4.png'
-import avatarImage5 from '../images/avatars/avatar-5.png'
+import utkan from '../images/avatars/utkan.png'
+import noyan from '../images/avatars/noyan.png'
+import ufuk from '../images/avatars/ufuk.png'
+import derya from '../images/avatars/derya.png'
+import duygu from '../images/avatars/duygu.png'
+import mert from '../images/avatars/mert.png'
+import React from 'react'
 
 const testimonials = [
   [
     {
       content:
-        'TaxPal is so easy to use I can’t help but wonder if it’s really doing the things the government expects me to do.',
+        'Starting a company in the US can be overwhelming. Registate team is very qualified and benefits from extensive expertise in this area. They offer a full package that you can start and manage your startup easily. I would definitely recommend them to any entrepreneur who decide to start their own business in the US.',
       author: {
-        name: 'Sheryl Berge',
-        role: 'CEO at Lynch LLC',
-        image: avatarImage1,
+        name: 'Utkan Sanda',
+        role: 'CEO at Exairon Inc.',
+        image: utkan,
       },
     },
     {
       content:
-        'I’m trying to get a hold of someone in support, I’m in a lot of trouble right now and they are saying it has something to do with my books. Please get back to me right away.',
+      'I was more than happy with the service I received from Registate. The notarization and apostille orders were completed very quickly without any problem and I would not hesitate to recommend them to anyone.',
       author: {
-        name: 'Amy Hahn',
-        role: 'Director at Velocity Industries',
-        image: avatarImage4,
-      },
-    },
-  ],
-  [
-    {
-      content:
-        'The best part about TaxPal is every time I pay my employees, my bank balance doesn’t go down like it used to. Looking forward to spending this extra cash when I figure out why my card is being declined.',
-      author: {
-        name: 'Leland Kiehn',
-        role: 'Founder of Kiehn and Sons',
-        image: avatarImage5,
-      },
-    },
-    {
-      content:
-        'There are so many things I had to do with my old software that I just don’t do at all with TaxPal. Suspicious but I can’t say I don’t love it.',
-      author: {
-        name: 'Erin Powlowski',
-        role: 'COO at Armstrong Inc',
-        image: avatarImage2,
+        name: 'Noyan Berker',
+        role: 'CEO at Mimiq Inc.',
+        image: noyan,
       },
     },
   ],
   [
     {
       content:
-        'I used to have to remit tax to the EU and with TaxPal I somehow don’t have to do that anymore. Nervous to travel there now though.',
+        "We use Registate's mailbox services and they have helped us to obtain certified copies of some State documents. Smooth, fast and high quality service. Highly recommend them.",
       author: {
-        name: 'Peter Renolds',
-        role: 'Founder of West Inc',
-        image: avatarImage3,
+        name: 'Ufuk Dag',
+        role: 'CEO at Cameralyze Inc',
+        image: ufuk,
       },
     },
     {
       content:
-        'This is the fourth email I’ve sent to your support team. I am literally being held in jail for tax fraud. Please answer your damn emails, this is important.',
+      "Registate has very a simple process for registering a company in the US. From first inquiry to the end, everything went smoothly. They registered my company in a day and I was able to get EIN instantly with premium service although I am a non-resident.",
       author: {
-        name: 'Amy Hahn',
-        role: 'Director at Velocity Industries',
-        image: avatarImage4,
+        name: 'Derya Kavarna',
+        role: 'CEO at DigiMe Inc.',
+        image: derya,
+      },
+    }
+  ],
+  [
+    {
+      content:
+      "We were not happy with our previous registered agent so we changed it to Registate. Their compliance reminder service is very useful to keep us up to date with our annual reports and franchise tax payments. We are very happy with their top-notch services.",
+      author: {
+        name: 'Duygu Kutluoglu Kilic',
+        role: 'CEO at FineDine',
+        image: duygu,
+      },
+    },
+    {
+      content:
+      "They registered my company, got EIN instantly, assisted me opening a bank account and help notarization of couple of documents. 5 stars service and a great team!",
+      author: {
+        name: 'Mert Yildiz',
+        role: 'Founder at Bonded Technologies Inc',
+        image: mert,
       },
     },
   ],
@@ -84,8 +86,28 @@ export function Testimonials() {
             Trusted & Recommended By Respected Enterprises.
           </h2>
           <p className="mt-4 text-lg tracking-tight text-slate-700">
-            
           </p>
+        </div>
+        <div className="bg-white">
+            <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:px-8">
+                <div className="grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5">
+                <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
+                    <img className="h-12" src="https://tailwindui.com/img/logos/tuple-logo-gray-400.svg" alt="Tuple"></img>
+                </div>
+                <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
+                    <img className="h-12" src="https://tailwindui.com/img/logos/mirage-logo-gray-400.svg" alt="Mirage"></img>
+                </div>
+                <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
+                    <img className="h-12" src="https://tailwindui.com/img/logos/statickit-logo-gray-400.svg" alt="StaticKit"></img>
+                </div>
+                <div className="col-span-1 flex justify-center md:col-span-3 lg:col-span-1">
+                    <img className="h-12" src="https://tailwindui.com/img/logos/transistor-logo-gray-400.svg" alt="Transistor"></img>
+                </div>
+                <div className="col-span-2 flex justify-center md:col-span-3 lg:col-span-1">
+                    <img className="h-12" src="https://tailwindui.com/img/logos/workcation-logo-gray-400.svg" alt="Workcation"></img>
+                </div>
+                </div>
+            </div>
         </div>
         <ul className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:gap-8 lg:mt-20 lg:max-w-none lg:grid-cols-3">
           {testimonials.map((column, columnIndex) => (

@@ -8,21 +8,23 @@ import WhyUs from '../components/WhyUs';
 import Testimonials from '../components/Testimonials';
 import Pricing from '../components/Pricing';
 import Faqs from '../components/Faqs';
+import Customers from '../components/Customers';
+import Footer from '../components/Footer';
+import React from 'react';
 
 export function Home() {
     localStorage.clear()
     return (
         <>
-            <Navbar />
             <main>
                 <Hero />
+                <Customers />
                 <PrimaryFeatures   />
                 <SecondaryFeatures />
                 <CallToAction />
                 <WhyUs />
                 <Testimonials />
-                <Pricing />
-                <Faqs />
+                <Footer />
             </main>
         </>
     )

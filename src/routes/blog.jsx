@@ -1,3 +1,5 @@
+import React from 'react'
+
 const posts = [
     {
       title: 'Boost your conversion rate',

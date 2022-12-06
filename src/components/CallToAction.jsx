@@ -1,5 +1,6 @@
 import { Container } from '../components/Container'
 import backgroundImage from '../images/background-call-to-action.jpg'
+import React from 'react'
 
 export function CallToAction() {
   return (
@@ -27,7 +28,7 @@ export function CallToAction() {
           <button
               type="submit"
               onClick={() => {
-                window.location.href = '/onboarding'
+                window.location.href = '/pricing'
               }}
               className="flex w-full justify-center rounded-md border border-transparent bg-white py-2 px-4 text-xl font-medium shadow-sm hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 "
             >

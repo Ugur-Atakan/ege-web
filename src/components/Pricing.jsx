@@ -1,9 +1,9 @@
 import clsx from 'clsx'
 
 import { Container } from '../components/Container'
-import { useState, useEffect, Fragment } from 'react'
-import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
-import { Listbox, Transition, RadioGroup } from '@headlessui/react'
+import { useState, useEffect } from 'react'
+
+import React from 'react'
 
 const states = [
   { id: 1, name: 'Alabama' },
@@ -101,10 +101,25 @@ const packageDetails = {
     id: 'llc2'
 },
 "llc3": {
+  title: 'Registate LLC Premium',
+  frequency: '',
+  description: 'Expedited Filing (1-3 business days).',
+  description2: 'Everything you need to diligently operate and manage your company.',
+  features: [
+  'Everything in Gold',
+  '1 Year Free Compliance Calendar',
+  'Assisting payment of franchise tax and annual report filing fees',
+  'Operating Agreement',
+  'LLC Membership Certificate',
+  'LLC Interest Purchase Agreement',
+  'Business Contract Templates',
+  ],
+  cta: 'Select LLC Premium',
+  mostPopular: true,
+  id: 'llc3'
 },
 "corporation1": {
     title: 'Starter',
-    href: '/form-your-company-step2?packageType=inc1',
     price: 349,
     frequency: '',
     description: 'Expedited Filing (1-3 business days).',
@@ -126,11 +141,10 @@ const packageDetails = {
     ],
     cta: 'Select Starter',
     mostPopular: false,
-    id: 'corp1'
+    id: 'corporation1'
 },
 "corporation2": {
     title: 'Start Up',
-    href: '/form-your-company-step2?packageType=inc2',
     price: 769,
     frequency: '',
     description: 'Expedited Filing (1-3 business days).',
@@ -149,11 +163,10 @@ const packageDetails = {
     ],
     cta: 'Select Start Up',
     mostPopular: true,
-    id: 'corp2'
+    id: 'corporation2'
 },
 "corporation3": {
     title: 'Scale Up',
-    href: '/form-your-company-step2?packageType=inc3',
     price: 1769,
     frequency: '',
     description: 'Expedited Filing (1-3 business days). ',
@@ -172,7 +185,7 @@ const packageDetails = {
     ],
     cta: 'Select Scale Up',
     mostPopular: false,
-    id: 'corp3'
+    id: 'corporation3'
 }
 }
 
@@ -392,41 +405,48 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-function Plan({ name, price, description, description2, href, features, featured = false }) {
+function Plan(props) {
 
+  const clickHandler = () => {
+      localStorage.setItem("packageId", props.packageId)
+      localStorage.setItem("packageName", props.name)
+      localStorage.setItem("packageType", props.packageType)
+      localStorage.setItem("packagePrice", props.price)
+      window.location.href = props.href
+  }
   return (
-    <section
+    <section 
       className={clsx('flex flex-col rounded-3xl px-6 sm:px-8', {
-        'order-first bg-blue-600 py-8 lg:order-none': featured,
-        'lg:py-8': !featured,
+        'order-first bg-blue-600 py-8 lg:order-none': props.featured,
+        'lg:py-8': !props.featured,
       })}
     >
-      <h3 className="mt-5 font-display text-lg text-white">{name}</h3>
+      <h3 className="mt-5 font-display text-lg text-white">{props.name}</h3>
       <p
         className={clsx('mt-2 text-base', {
-          'text-white': featured,
-          'text-slate-400': !featured,
+          'text-white': props.featured,
+          'text-slate-400': !props.featured,
         })}
       >
-        {description}
-        {description2}
+        {props.description}
+        {props.description2}
       </p>
       <p className="order-first font-display text-5xl font-light tracking-tight text-white">
-        ${price}
+        ${props.price}
       </p>
       <ul
         className={clsx('order-last mt-10 space-y-3 text-sm', {
-          'text-white': featured,
-          'text-slate-200': !featured,
+          'text-white': props.featured,
+          'text-slate-200': !props.featured,
         })}
       >
-        {features.map((feature) => (
+        {props.features.map((feature) => (
           <li key={feature} className="flex">
             <svg
               aria-hidden="true"
               className={clsx('h-6 w-6 flex-none', {
-                'fill-white stroke-white': featured,
-                'fill-slate-400 stroke-slate-400': !featured,
+                'fill-white stroke-white': props.featured,
+                'fill-slate-400 stroke-slate-400': !props.featured,
               })}
             >
               <path
@@ -443,17 +463,17 @@ function Plan({ name, price, description, description2, href, features, featured
                 strokeLinejoin="round"
               />
             </svg>
-            <span className="ml-4">{feature}</span>
+            <span className="ml-4" >{feature}</span>
           </li>
         ))}
       </ul>
       {/* if selected */}
-      {featured && (
-      <a className="group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-white text-slate-900 hover:bg-blue-50 active:bg-blue-200 active:text-slate-600 focus-visible:outline-white mt-8" aria-label="Get started with the Small business plan for $15" href="/onboarding">Get started</a>
+      {props.featured && (
+      <button className="group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-white text-slate-900 hover:bg-blue-50 active:bg-blue-200 active:text-slate-600 focus-visible:outline-white mt-8" aria-label="Get started with the Small business plan for $15"  onClick={clickHandler.bind(this)} >Get started</button>
       )}
       {/* if not selected */}
-      {!featured && (
-        <a className="group inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm focus:outline-none ring-slate-700 text-white hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white mt-8" aria-label="Get started with the Starter plan for ${price}" href="/onboarding">Get started</a>
+      {!props.featured && (
+        <button className="group inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm focus:outline-none ring-slate-700 text-white hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white mt-8" aria-label="Get started with the Starter plan for ${price}" onClick={clickHandler.bind(this)}>Get started</button>
       )}
     </section>
   )
@@ -463,16 +483,12 @@ export function Pricing() {
   let [companyState, setCompanyState] = useState(localStorage.getItem('companyState')||'Delaware')
   let [companyType, setCompanyType] = useState(localStorage.getItem('companyType') || 'Corporation')
   let [packagePrices, setPackagePrices] = useState(pricing[companyState][companyType])
-  let [selectedState, setSelectedState] = useState(states.find(state => state.name === companyState))
   let [selectedType, setSelectedType] = useState(companyTypes.find(type => type.name === companyType))
 
   const updatePricing = () => {
-    console.log("updatePricing")
     companyState = localStorage.getItem('companyState')
     companyType = localStorage.getItem('companyType')
-    console.log({"companyState": companyState, "companyType": companyType})
-    setSelectedState(states.find(state => state.name === companyState))
-    setSelectedType(companyTypes.find(type => type.name === companyType))
+    console.log("updatePricing to", companyState, companyType)
 
     if (companyType && companyState) {
       setPackagePrices(pricing[companyState][companyType])
@@ -486,19 +502,17 @@ export function Pricing() {
     updatePricing()
   }, [])
 
-  const handleCompanyTypeChange = (e) => {
-    console.log("handleCompanyTypeChange", e.name)
-    setSelectedType(companyTypes.find(type => type.name === e.name))
-    localStorage.setItem('companyType', e.name)
-    setCompanyType(e.name)
+  const handleCompanyTypeChange = (name) => {
+    console.log("handleCompanyTypeChange", name)
+    setCompanyType(name)
+    localStorage.setItem('companyType', name)
     updatePricing()
   }
 
-  const handleCompanyStateChange = (e) => {
-    console.log("handleCompanyStateChange", e.name)
-    setCompanyState(e.name)
-    localStorage.setItem('companyState', e.name)
-    setSelectedState(states.find(state => state.name === e.name))
+  const handleCompanyStateChange = (name) => {
+    console.log("handleCompanyStateChange", name)
+    setCompanyState(name)
+    localStorage.setItem('companyState', name)
     updatePricing()
   }
 
@@ -536,127 +550,42 @@ export function Pricing() {
             It doesn't matter if you're just starting or scaling up your business, we have a carefully crafted and the most cost efficient plan for you.
           </p>
         </div>
-        <div className="grid grid-cols-2 mx-auto">
+        <div className="grid grid-cols-2 mx-auto py-12 max-w-4xl">
           <div id="companyStateDiv" className="flex flex-col pr-1">
-          <Listbox value={selectedState} onChange={handleCompanyStateChange}>
-                  {({ open }) => (
-                      <>
-                      <div className="relative mt-1">
-                          <Listbox.Button className="relative w-full cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 sm:text-sm">
-                          <span id="companyState" className="block truncate">{selectedState.name}</span>
-                          <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                              <ChevronUpDownIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
-                          </span>
-                          </Listbox.Button>
+            <div>
+            <select
+              id="companyState"
+              name="companyState"
+              value={companyState}
+              className="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+              onChange={(e) => handleCompanyStateChange(e.target.value)}
+            >
+              {states.map((state) => (
+                <option key={state.name} value={state.name}>
+                  {state.name}
+                </option>
+              ))}
+            </select>
 
-                          <Transition
-                          show={open}
-                          as={Fragment}
-                          leave="transition ease-in duration-100"
-                          leaveFrom="opacity-100"
-                          leaveTo="opacity-0"
-                          >
-                          <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                              {states.map((state) => (
-                              <Listbox.Option
-                                  id={"state" + state.id}
-                                  key={state.id}
-                                  className={({ active }) =>
-                                  classNames(
-                                      active ? 'text-white bg-blue-600' : 'text-gray-900',
-                                      'relative cursor-default select-none py-2 pl-3 pr-9'
-                                  )
-                                  }
-                                  value={state}
-                              >
-                                  {({ selected, active }) => (
-                                  <>
-                                      <span className={classNames(selected ? 'font-semibold' : 'font-normal', 'block truncate')}>
-                                      {state.name}
-                                      </span>
-
-                                      {selected ? (
-                                      <span
-                                          className={classNames(
-                                          active ? 'text-white' : 'text-blue-600',
-                                          'absolute inset-y-0 right-0 flex items-center pr-4'
-                                          )}
-                                      >
-                                          <CheckIcon className="h-5 w-5" aria-hidden="true" />
-                                      </span>
-                                      ) : null}
-                                  </>
-                                  )}
-                              </Listbox.Option>
-                              ))}
-                          </Listbox.Options>
-                          </Transition>
-                      </div>
-                      </>
-                  )}
-          </Listbox>
+            </div>
           </div>
           <div id="companyTypeDiv" className="flex flex-col pl-1">
-            <Listbox value={selectedType} onChange={handleCompanyTypeChange}>
-                  {({ open }) => (
-                      <>
-                      <div className="relative mt-1">
-                          <Listbox.Button className="relative w-full cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 sm:text-sm">
-                          <span id="companyType" className="block truncate">{selectedType.name}</span>
-                          <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                              <ChevronUpDownIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
-                          </span>
-                          </Listbox.Button>
-
-                          <Transition
-                          show={open}
-                          as={Fragment}
-                          leave="transition ease-in duration-100"
-                          leaveFrom="opacity-100"
-                          leaveTo="opacity-0"
-                          >
-                          <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                              {companyTypes.map((option) => (
-                              <Listbox.Option
-                                  id={"companyType" + option.id}
-                                  key={option.id}
-                                  className={({ active }) =>
-                                  classNames(
-                                      active ? 'text-white bg-blue-600' : 'text-gray-900',
-                                      'relative cursor-default select-none py-2 pl-3 pr-9'
-                                  )
-                                  }
-                                  value={option}
-                              >
-                                  {({ selected, active }) => (
-                                  <>
-                                      <span className={classNames(selected ? 'font-semibold' : 'font-normal', 'block truncate')}>
-                                      {option.name}
-                                      </span>
-
-                                      {selected ? (
-                                      <span
-                                          className={classNames(
-                                          active ? 'text-white' : 'text-blue-600',
-                                          'absolute inset-y-0 right-0 flex items-center pr-4'
-                                          )}
-                                      >
-                                          <CheckIcon className="h-5 w-5" aria-hidden="true" />
-                                      </span>
-                                      ) : null}
-                                  </>
-                                  )}
-                              </Listbox.Option>
-                              ))}
-                          </Listbox.Options>
-                          </Transition>
-                      </div>
-                      </>
-                  )}
-            </Listbox>
+          <select
+              id="companyType"
+              name="companyType"
+              value={companyType}
+              className="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+              onChange={(e) => handleCompanyTypeChange(e.target.value)}
+            >
+              {companyTypes.map((type) => (
+                <option key={type.name} value={type.name}>
+                  {type.name}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
-        <div className="mx-4 mt-16 grid max-w-2xl grid-cols-1 gap-y-10 sm:mx-auto lg:-mx-8 lg:max-w-none lg:grid-cols-3 xl:mx-0 xl:gap-x-8">
+        <div className="lg:flex lg:justify-center mx-4 mt-16 grid max-w-2xl grid-cols-1 gap-y-10 sm:mx-auto lg:-mx-8 lg:max-w-none lg:grid-cols-3 xl:mx-0 xl:gap-x-8">
         {
           packagePrices.map((packagePrice, index) => {
               let item = packageDetails[companyType.toLowerCase()+(index+1)]
@@ -693,15 +622,20 @@ export function Pricing() {
               console.log("packageDetail[" + companyType.toLowerCase()+(index+1) + "]")
               console.log(item)
               return (
+                <div key={item.id + index}>
                 <Plan
                   name={item.title}
                   price={packagePrice}
                   description={item.description}
                   description2={item.description2}
+                  packageId={companyState.toLocaleLowerCase() + "_" + item.id}
                   href="/onboarding"
                   features={item.features}
                   featured={index === 1}
+                  keyName={item.id + index}
+                  packageType={item.id}
                 />
+                </div>
               )
           })
         }

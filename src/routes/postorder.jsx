@@ -14,10 +14,7 @@ export function PostOrder() {
     let [searchParams, setSearchParams] = useSearchParams();
     let orderId = searchParams.get("orderId");
     let paymentReceived = searchParams.get("success");
-    let [success, setSuccess] = useState(false);
     let [open, setOpen] = useState(true);
-    let [onboardingId, setOnboardingId] = useState(localStorage.getItem("onboardingId"));
-
 
     const handleExit = (e) => {
         console.log("handleExit: " + e);                                                                                        
@@ -29,18 +26,32 @@ export function PostOrder() {
     
     useEffect(() => {
         console.log("orderId: " + orderId);
-        console.log("success: " + success);
+        console.log("paymentReceived: " + paymentReceived);
 
         //If payment is received
         if (paymentReceived == 1) {
-            console.log("Order processed by Stripe successfully");
+            console.log("Assuming the order is processed by Stripe successfully");
             //Post order to backend
             let payload = {
                 "orderId": orderId,
                 "success": true
             }
             console.log(payload);
-            if (onboardingId) {
+            console.log("Checking if the order exists in backend")
+
+            //Check if the order exists in backend. If response is 404, then the order does not exist
+            axios.get('https://api.registate.net/api/order/' + orderId, {
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
+              }
+            })
+            .then(function (response) {
+                //if order exists, then update the order status
+
+                var jsonData = JSON.parse(JSON.stringify(response.data));
+                console.log(jsonData)
+
                 axios.post('https://api.registate.net/api/order-process', payload, {
                     headers: {
                         'Content-Type': 'application/json',
@@ -50,16 +61,20 @@ export function PostOrder() {
                 .then(function (response) {
                     //Parse the returned json data
                     var jsonData = JSON.parse(JSON.stringify(response.data));
+                    console.log(jsonData)
                     if (jsonData.Status) {
-                        console.log("Order saved to backend successfully");
-                        setSuccess(true);
+                        console.log("Order status saved to backend successfully");
                     }
                 })
                 .catch(function (error) {
                     console.log(error);
                     alert(JSON.stringify(error))
                 })
-            }
+            })
+            .catch(function (error) {
+                console.log(error);
+                return
+            })
         }
     }, [paymentReceived]);
 

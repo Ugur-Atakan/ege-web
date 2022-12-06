@@ -8,6 +8,7 @@ import screenshotPrimary1 from '../images/screenshots/primary1.png'
 import screenshotPrimary2 from '../images/screenshots/primary2.png'
 import screenshotPrimary3 from '../images/screenshots/primary3.png'
 import screenshotPrimary4 from '../images/screenshots/primary4.png'
+import React from 'react'
 
 const features = [
   {

@@ -1,3 +1,4 @@
+import React from 'react'
 import { BoltIcon, DevicePhoneMobileIcon, GlobeAltIcon, ScaleIcon } from '@heroicons/react/24/outline'
 
 const features = [
