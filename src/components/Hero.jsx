@@ -4,7 +4,7 @@ import HeroImage from '../images/hero.png'
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import Logo from '../images/logo2x.png.webp'
+import Logo from '../images/registatelogo.svg'
 
 
 const navigation = [
