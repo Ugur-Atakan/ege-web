@@ -123,7 +123,7 @@ export default function Hero() {
               </div>
               <div className="rounded-md shadow">
                   <a
-                    href="/pricing"
+                    href="/pricing/form-my-company"
                     className="flex w-fit rounded-md border border-transparent bg-blue-600 px-8 py-3 text-base font-medium text-white hover:bg-blue-700 md:py-4 md:px-10 md:text-2xl mx-auto"
                   >
                     Form My Company 

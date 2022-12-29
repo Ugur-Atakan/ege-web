@@ -1,12 +1,12 @@
 import { Navbar } from '../components/Navbar'
 import React from "react";
 
-import { Pricing } from '../components/Pricing'
+import { Pricing } from '../components/PricingFormMyCompany'
 import Faqs from '../components/Faqs';
 import Footer from '../components/Footer';
 
 //Define Pricing component
-export function PricingPage () {
+export function PricingFormMyCompany () {
   return (
     <main>
         <Navbar />

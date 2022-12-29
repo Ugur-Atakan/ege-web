@@ -11,6 +11,7 @@ import React from 'react'
 const features = [
   {
     name: 'Foreign Qualification',
+    href: '#foreign-qualification',
     summary: 'Is your company planning to conduct business in a state that is not the company’s state of incorporatiton?',
     description:
       'Then, you may need to apply for foreign qualification. In the U.S., an entity that seeks to conduct business outside of its state of formation is considered “foreign”. States may require “foreign qualifications” from the “foreign” entities before transacting any business.',
@@ -45,6 +46,7 @@ const features = [
   },
   {
     name: 'Revival and Dissolution',
+    href: '#revival-and-dissolution',
     summary:
       'Has your company been suspended by the State? Or are you winding-down the operations?',
     description:
@@ -73,6 +75,7 @@ const features = [
   },
   {
     name: 'Compliance Reminder',
+    href: '#compliance-reminder',
     summary:
       'Do you need a reminder to file your annual report or pay your franchise taxes?',
     description:
@@ -98,6 +101,7 @@ const features = [
 
 function Feature({ feature, isActive, className, ...props }) {
   return (
+    <a href={feature.href} className="group">
     <div
       className={clsx(className, { 'opacity-75 hover:opacity-100': !isActive })}
       {...props}
@@ -125,6 +129,7 @@ function Feature({ feature, isActive, className, ...props }) {
       </p>
       <p className="mt-4 text-sm text-slate-600">{feature.description}</p>
     </div>
+    </a>
   )
 }
 
@@ -134,17 +139,6 @@ function FeaturesMobile() {
       {features.map((feature) => (
         <div key={feature.name}>
           <Feature feature={feature} className="mx-auto max-w-2xl" isActive />
-          <div className="relative mt-10 pb-10">
-            <div className="absolute -inset-x-4 bottom-0 top-8 bg-slate-200 sm:-inset-x-6" />
-            <div className="relative mx-auto aspect-[844/428] w-[52.75rem] overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-900/5 ring-1 ring-slate-500/10">
-              <img
-                src={feature.image}
-                alt=""
-                layout="fill"
-                sizes="52.75rem"
-              />
-            </div>
-          </div>
         </div>
       ))}
     </div>
@@ -174,34 +168,7 @@ function FeaturesDesktop() {
               />
             ))}
           </Tab.List>
-          <Tab.Panels className="relative mt-20 overflow-hidden rounded-4xl bg-slate-200 px-14 py-16 xl:px-16">
-            <div className="-mx-5 flex">
-              {features.map((feature, featureIndex) => (
-                <Tab.Panel
-                  static
-                  key={feature.name}
-                  className={clsx(
-                    'px-5 transition duration-500 ease-in-out [&:not(:focus-visible)]:focus:outline-none',
-                    {
-                      'opacity-60': featureIndex !== selectedIndex,
-                    }
-                  )}
-                  style={{ transform: `translateX(-${selectedIndex * 100}%)` }}
-                  aria-hidden={featureIndex !== selectedIndex}
-                >
-                  <div className="relative aspect-[844/428] w-[52.75rem] overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-900/5 ring-1 ring-slate-500/10">
-                    <img
-                      src={feature.image}
-                      alt=""
-                      layout="fill"
-                      sizes="52.75rem"
-                    />
-                  </div>
-                </Tab.Panel>
-              ))}
-            </div>
-            <div className="pointer-events-none absolute inset-0 rounded-4xl ring-1 ring-inset ring-slate-900/10" />
-          </Tab.Panels>
+
         </>
       )}
     </Tab.Group>

@@ -1,6 +1,6 @@
 
 import Hero from '../components/Hero'
-import PrimaryFeatures from '../components/PrimaryFeatures';
+import Features from '../components/Features';
 import SecondaryFeatures from '../components/SecondaryFeatures';
 import CallToAction from '../components/CallToAction';
 import WhyUs from '../components/WhyUs';
@@ -16,7 +16,7 @@ export function Home() {
             <main>
                 <Hero />
                 <Customers />
-                <PrimaryFeatures   />
+                <Features />
                 <SecondaryFeatures />
                 <CallToAction />
                 <WhyUs />

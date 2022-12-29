@@ -8,7 +8,10 @@ import { Blog } from './routes/blog'
 import { Home } from './routes/home'
 import { Onboarding } from './routes/onboarding'
 import { PostOrder } from './routes/postorder'
-import { PricingPage } from './routes/pricing'
+import { PricingFormMyCompany } from './routes/pricing-form-my-company'
+import { PricingPostIncorporationDocuments } from './routes/pricing-post-incorporation-documents'
+import { PricingVirtualMailbox } from './routes/pricing-virtual-mailbox'
+import { PricingApostilleAndNotorizationServices } from './routes/pricing-apostille-and-notarization-services'
 
 const App = () => {
   return (
@@ -18,7 +21,10 @@ const App = () => {
             <Route exact path="/" element={<Home/>}/>
             <Route exact path="/blog" element={<Blog/>}/>
             <Route exact path="/onboarding" element={<Onboarding/>}/>
-            <Route exact path="/pricing" element={<PricingPage/>}/>
+            <Route exact path="/pricing/form-my-company" element={<PricingFormMyCompany/>}/>
+            <Route exact path="/pricing/post-incorporation-documents" element={<PricingPostIncorporationDocuments/>}/>
+            <Route exact path="/pricing/apostille-and-notorization-services" element={<PricingApostilleAndNotorizationServices/>}/>
+            <Route exact path="/pricing/virtual-mailbox" element={<PricingVirtualMailbox/>}/>
             <Route exact path="/post-order" element={<PostOrder/>}/>
             <Route path="*" elemenvt={<Home/>}/>
           </Routes>

@@ -28,11 +28,11 @@ export function CallToAction() {
           <button
               type="submit"
               onClick={() => {
-                window.location.href = '/pricing'
+                window.location.href = '/pricing/form-my-company'
               }}
               className="flex w-full justify-center rounded-md border border-transparent bg-white py-2 px-4 text-xl font-medium shadow-sm hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 "
             >
-             Get Started
+             Form My Company
             </button>
         </div>
       </Container>
