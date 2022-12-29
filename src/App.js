@@ -23,7 +23,7 @@ const App = () => {
             <Route exact path="/onboarding" element={<Onboarding/>}/>
             <Route exact path="/pricing/form-my-company" element={<PricingFormMyCompany/>}/>
             <Route exact path="/pricing/post-incorporation-documents" element={<PricingPostIncorporationDocuments/>}/>
-            <Route exact path="/pricing/apostille-and-notorization-services" element={<PricingApostilleAndNotorizationServices/>}/>
+            <Route exact path="/pricing/apostille-and-notarization-services" element={<PricingApostilleAndNotorizationServices/>}/>
             <Route exact path="/pricing/virtual-mailbox" element={<PricingVirtualMailbox/>}/>
             <Route exact path="/post-order" element={<PostOrder/>}/>
             <Route path="*" elemenvt={<Home/>}/>
