@@ -6,8 +6,6 @@ import { Popover, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Logo from '../images/logo2x.png.webp'
 
-//https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1425&q=80
-
 
 const navigation = [
   { name: 'Pricing', href: 'pricing' },
@@ -80,7 +78,7 @@ export default function Hero() {
                     <div>
                       <img
                         className="h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                        src={Logo}
                         alt=""
                       />
                     </div>
@@ -113,7 +111,7 @@ export default function Hero() {
             </Transition>
           </Popover>
           <main className="mx-auto mt-10 max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
-            <div className="sm:text-center lg:text-left">
+            <div className="sm:text-center lg:text-center">
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
                 <span className="block xl:inline">Start and Manage Your Business in the US With</span>{' '}
                 <span className="block text-blue-600 xl:inline">Registate</span>
@@ -126,11 +124,11 @@ export default function Hero() {
               <div className="rounded-md shadow">
                   <a
                     href="/pricing"
-                    className="flex w-full items-center justify-center rounded-md border border-transparent bg-blue-600 px-8 py-3 text-base font-medium text-white hover:bg-blue-700 md:py-4 md:px-10 md:text-2xl"
+                    className="flex w-fit rounded-md border border-transparent bg-blue-600 px-8 py-3 text-base font-medium text-white hover:bg-blue-700 md:py-4 md:px-10 md:text-2xl mx-auto"
                   >
-                    Get started
+                    Form My Company 
                   </a>
-                </div>
+              </div>
               <div className="inline-flex items-center divide-x divide-gray-300 mx-auto">
                 <div className="flex flex-shrink-0 pr-5">
                   <StarIcon className="h-5 w-5 text-yellow-400" aria-hidden="true" />
@@ -141,7 +139,7 @@ export default function Hero() {
                 </div>
                 <div className="min-w-0 flex-1 py-1 pl-5 text-sm text-gray-500 sm:py-3">
                   <span className="font-medium text-gray-900">Rated 5 stars</span> by over{' '}
-                  <span className="font-medium text-blue-600">500 happy customers</span>
+                  <span className="font-medium text-blue-600">100+ happy customers</span>
                 </div>
               </div>
             </div>
