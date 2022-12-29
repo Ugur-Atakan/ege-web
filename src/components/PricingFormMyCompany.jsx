@@ -1,7 +1,6 @@
 import clsx from 'clsx'
-
 import { Container } from '../components/Container'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 import React from 'react'
 
@@ -480,10 +479,12 @@ function Plan(props) {
 }
 
 export function Pricing() {
-  let [companyState, setCompanyState] = useState(localStorage.getItem('companyState')||'Delaware')
-  let [companyType, setCompanyType] = useState(localStorage.getItem('companyType') || 'Corporation')
-  let [packagePrices, setPackagePrices] = useState(pricing[companyState][companyType])
-  let [selectedType, setSelectedType] = useState(companyTypes.find(type => type.name === companyType))
+  let [companyState, setCompanyState] = useState("");
+  let [companyType, setCompanyType] = useState("");
+  let [showPricingPackages, setShowPricingPackages] = useState(false);
+  let [packagePrices, setPackagePrices] = useState()
+  const pricingPackagesRef = useRef(null);
+
 
   const updatePricing = () => {
     companyState = localStorage.getItem('companyState')
@@ -493,6 +494,12 @@ export function Pricing() {
     if (companyType && companyState) {
       setPackagePrices(pricing[companyState][companyType])
       console.log("packagePrices", pricing[companyState][companyType])
+    }
+
+    if (companyState !== "" && companyType !== "") {
+      setShowPricingPackages(true);
+    } else {
+      setShowPricingPackages(false);
     }
   }
 
@@ -507,6 +514,12 @@ export function Pricing() {
     setCompanyType(name)
     localStorage.setItem('companyType', name)
     updatePricing()
+    if (companyState !== "") {
+      // Wait for the pricingPackages element to be available in the DOM
+      setTimeout(() => {
+        document.getElementById("pricingPackages").scrollIntoView({ behavior: "smooth" });
+      }, 200);
+    }
   }
 
   const handleCompanyStateChange = (name) => {
@@ -557,11 +570,16 @@ export function Pricing() {
               id="companyState"
               name="companyState"
               value={companyState}
-              className="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+              placeholder="Select State"
+              className="mt-1 block w-full rounded-md px-4 py-3 pl-3 pr-10 text-2xl focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 h-18 border-blue-400 border-4"
               onChange={(e) => handleCompanyStateChange(e.target.value)}
             >
+              <option value=""> Select State </option>
               {states.map((state) => (
-                <option key={state.name} value={state.name}>
+                <option 
+                  key={state.name} 
+                  value={state.name}
+                >
                   {state.name}
                 </option>
               ))}
@@ -570,22 +588,27 @@ export function Pricing() {
             </div>
           </div>
           <div id="companyTypeDiv" className="flex flex-col pl-1">
-          <select
+            <select
               id="companyType"
               name="companyType"
               value={companyType}
-              className="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md px-4 py-3 pl-3 pr-10 text-2xl focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 h-18 border-4 border-blue-400"
               onChange={(e) => handleCompanyTypeChange(e.target.value)}
             >
+              <option value=""> Select Company Type </option>
               {companyTypes.map((type) => (
-                <option key={type.name} value={type.name}>
+                <option 
+                  key={type.name} 
+                  value={type.name} 
+                >
                   {type.name}
                 </option>
               ))}
             </select>
           </div>
         </div>
-        <div className="lg:flex lg:justify-center mx-4 mt-16 grid max-w-2xl grid-cols-1 gap-y-10 sm:mx-auto lg:-mx-8 lg:max-w-none lg:grid-cols-3 xl:mx-0 xl:gap-x-8">
+        {showPricingPackages && (
+        <div id="pricingPackages" className="lg:flex lg:justify-center mx-4 mt-16 grid max-w-2xl grid-cols-1 gap-y-10 sm:mx-auto lg:-mx-8 lg:max-w-none lg:grid-cols-3 xl:mx-0 xl:gap-x-8">
         {
           packagePrices.map((packagePrice, index) => {
               let item = packageDetails[companyType.toLowerCase()+(index+1)]
@@ -640,6 +663,7 @@ export function Pricing() {
           })
         }
         </div>
+        )}
       </Container>
     </section>
   )
