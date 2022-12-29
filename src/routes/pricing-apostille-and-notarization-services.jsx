@@ -1,7 +1,7 @@
 import { Navbar } from '../components/Navbar'
 import React from "react";
 
-import { Pricing } from '../components/Pricing'
+import { Pricing } from '../components/PricingApostilleAndNotorizationServices'
 import Faqs from '../components/Faqs';
 import Footer from '../components/Footer';
 
