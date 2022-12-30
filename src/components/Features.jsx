@@ -8,6 +8,36 @@ import screenshotPrimary4 from '../images/screenshots/features4.png'
 import screenshotPrimary5 from '../images/screenshots/features5.png'
 
 export default function Features() {
+
+  const scrollHandler = () => {
+    // select all the feature divs
+    const featureDivs = document.querySelectorAll('div[id^="feature"]');
+
+    // helper function to calculate the opacity based on the position of the element
+    const calculateOpacity = (element) => {
+        // get the position of the element relative to the viewport
+        const rect = element.getBoundingClientRect();
+
+        // calculate the distance from the center of the viewport
+        const distanceFromCenter = Math.abs(rect.top + rect.height / 2 - window.innerHeight / 2);
+
+        // set the opacity based on the distance from the center of the viewport
+        // you can adjust the formula to control the rate at which the element fades out
+        return 1 - distanceFromCenter / (window.innerHeight / 2);
+    };
+
+    // for each feature div, calculate the opacity and update the style
+    featureDivs.forEach((div) => {
+        const opacity = calculateOpacity(div);
+        div.style.opacity = opacity;
+    });
+  };
+  
+  // add a scroll event listener to the window
+  window.addEventListener('scroll', () => {
+    requestAnimationFrame(scrollHandler);
+  }, { passive: true });
+
   return (
     <div className="relative overflow-hidden bg-white pt-16 pb-32">
       <div className="mx-auto max-w-7xl text-center mb-20">
@@ -21,7 +51,7 @@ export default function Features() {
             From developing an idea, to making it official, to turning it into a money-making business, our platform have you covered from A to Z.
         </p>
       </div>
-      <div className="relative">
+      <div id="feature1" className="relative">
         <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
           <div className="mx-auto max-w-xl px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0">
             <div>
@@ -77,9 +107,8 @@ export default function Features() {
             </div>
           </div>
         </div>
-      </div>
-      
-      <div className="mt-24">
+      </div>      
+      <div id="feature2" className="mt-24">
         <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
           <div className="mx-auto max-w-xl px-6 lg:col-start-2 lg:mx-0 lg:max-w-none lg:py-32 lg:px-0">
             <div>
@@ -115,7 +144,7 @@ export default function Features() {
           </div>
         </div>
       </div>
-      <div className="mt-24 relative">
+      <div id="feature3" className="mt-24 relative">
         <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
           <div className="mx-auto max-w-xl px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0">
             <div>
@@ -172,7 +201,7 @@ export default function Features() {
           </div>
         </div>
       </div>
-      <div className="mt-24">
+      <div id="feature4" className="mt-24">
         <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
           <div className="mx-auto max-w-xl px-6 lg:col-start-2 lg:mx-0 lg:max-w-none lg:py-32 lg:px-0">
             <div>
@@ -208,7 +237,7 @@ export default function Features() {
           </div>
         </div>
       </div>
-      <div className="mt-24 relative">
+      <div id="feature5" className="mt-24 relative">
         <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
           <div className="mx-auto max-w-xl px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0">
             <div>
