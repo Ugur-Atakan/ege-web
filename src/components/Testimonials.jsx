@@ -40,7 +40,7 @@ const testimonials = [
     },
     {
       content:
-      "Registate has very a simple process for registering a company in the US. From first inquiry to the end, everything went smoothly. They registered my company in a day and I was able to get EIN instantly with premium service although I am a non-resident.",
+      "Registate has a very simple process for registering a company in the US. From first inquiry to the end, everything went smoothly. They registered my company in a day and I was able to get EIN instantly with premium service although I am a non-resident.",
       author: {
         name: 'Derya Kavarna',
         role: 'CEO at DigiMe Inc.',

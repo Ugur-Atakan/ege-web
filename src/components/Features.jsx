@@ -5,6 +5,7 @@ import screenshotPrimary1 from '../images/screenshots/features1.png'
 import screenshotPrimary2 from '../images/screenshots/features2.png'
 import screenshotPrimary3 from '../images/screenshots/features3.png'
 import screenshotPrimary4 from '../images/screenshots/features4.png'
+import screenshotPrimary5 from '../images/screenshots/features5.png'
 
 export default function Features() {
   return (
@@ -77,6 +78,7 @@ export default function Features() {
           </div>
         </div>
       </div>
+      
       <div className="mt-24">
         <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
           <div className="mx-auto max-w-xl px-6 lg:col-start-2 lg:mx-0 lg:max-w-none lg:py-32 lg:px-0">
@@ -201,6 +203,62 @@ export default function Features() {
                 className="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:right-0 lg:h-full lg:w-auto lg:max-w-none"
                 src={screenshotPrimary4}
                 alt="Customer profile user interface"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="mt-24 relative">
+        <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
+          <div className="mx-auto max-w-xl px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0">
+            <div>
+              <div>
+                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-600">
+                  <InboxIcon className="h-8 w-8 text-white" aria-hidden="true" />
+                </span>
+              </div>
+              <div className="mt-6">
+                <h2 className="text-3xl font-bold tracking-tight text-gray-900">US Bank Account Assistance</h2>
+                <p className="mt-4 text-lg text-gray-500">
+                Our team is here to make the process of setting up a US bank account as quick and easy as possible. We will assist you every step of the way, answering any questions you may have and providing all necessary corporate documents for the bank. With our expertise and support, you can have your US bank account up and running in no time.                </p>
+                <div className="mt-6">
+                  <a
+                    href="/pricing/virtual-mailbox"
+                    className="inline-flex rounded-lg bg-blue-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-blue-600 hover:bg-blue-700 hover:ring-blue-700"
+                  >
+                    Open a US Bank Account
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div className="mt-8 border-t border-gray-200 pt-6">
+              <blockquote>
+                <div>
+                  <p className="text-base text-gray-500">
+                    &ldquo;Registate made the process of opening a bank account in the US quick and easy. Their team provided expert guidance and all necessary documents, resulting in a stress-free experience.&rdquo;
+                  </p>
+                </div>
+                <footer className="mt-3">
+                  <div className="flex items-center space-x-3">
+                    <div className="flex-shrink-0">
+                      <img
+                        className="h-6 w-6 rounded-full"
+                        src={ufuk}
+                        alt=""
+                      />
+                    </div>
+                    <div className="text-base font-medium text-gray-700">Cihan Sahin, CEO of OpsBeacon Inc.</div>
+                  </div>
+                </footer>
+              </blockquote>
+            </div>
+          </div>
+          <div className="mt-12 sm:mt-16 lg:mt-0">
+            <div className="-mr-48 pl-4 sm:pl-6 md:-mr-16 lg:relative lg:m-0 lg:h-full lg:px-0">
+              <img
+                className="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
+                src={screenshotPrimary5}
+                alt="Dashboard user interface"
               />
             </div>
           </div>

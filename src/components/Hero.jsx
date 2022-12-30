@@ -1,5 +1,5 @@
 import { StarIcon } from '@heroicons/react/20/solid'
-import React from 'react'
+import React , { useState, useEffect } from 'react'
 import HeroImage from '../images/hero.png'
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
@@ -13,6 +13,52 @@ const navigation = [
   { name: 'Testimonials', href: '#testimonials' },
   { name: 'FAQs', href: '#faqs' },
 ]
+
+function TypingHeader() {
+  const [text, setText] = useState('');
+  const [messageIndex, setMessageIndex] = useState(0);
+  const messages = [
+    'Incorporator',
+    'Legal Clerk',
+    'Notary Public',
+    'Paralegal',
+    'Startup Advisor',
+    'Registered Agent',
+    'Office Admin',
+    'Bookeeper',
+    'Consultant',
+    'Punching Bag',
+    'Best Friend'
+
+  ]
+
+  useEffect(() => {
+    let i = 0;
+    const typingInterval = setInterval(() => {
+      setText(messages[messageIndex].substring(0, i));
+      i++;
+      if (i > messages[messageIndex].length) {
+        clearInterval(typingInterval);
+        setTimeout(() => {
+          setText('');
+          setMessageIndex((messageIndex + 1) % messages.length);
+        }, 1000);
+      }
+    }, 100);
+  }, [messageIndex]);
+
+  return (
+    <>
+      <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
+        <span className="block xl:inline">We are your</span>
+      </h1>
+      <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
+        <span className="block text-blue-600 xl:inline">{text}</span>
+        <span className="text-yellow-500">|</span>
+      </h1>
+    </>
+  );
+}
 
 export default function Hero() {
   return (
@@ -100,24 +146,15 @@ export default function Hero() {
                       </a>
                     ))}
                   </div>
-                  <a
-                    href="#"
-                    className="block w-full bg-gray-50 px-5 py-3 text-center font-medium text-indigo-600 hover:bg-gray-100"
-                  >
-                    Log in
-                  </a>
                 </div>
               </Popover.Panel>
             </Transition>
           </Popover>
           <main className="mx-auto mt-10 max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
             <div className="sm:text-center lg:text-center">
-              <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
-                <span className="block xl:inline">Start and Manage Your Business in the US With</span>{' '}
-                <span className="block text-blue-600 xl:inline">Registate</span>
-              </h1>
-              <p className="mt-3 text-base text-gray-500 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-xl lg:mx-0">
-                 The most comprehensive all-in-one business platform with all the features and tools you need to start and manage your company in any state of the US.
+              <TypingHeader />
+              <p className="mt-3 text-base text-gray-800 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-2xl lg:mx-0">
+              Effortlessly start and manage your company in any US state from anywhere in the world with our comprehensive all-in-one business platform
               </p>
               <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
               </div>
