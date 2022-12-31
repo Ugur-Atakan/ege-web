@@ -34,7 +34,7 @@ export function WhyUs() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="sm:text-center">
           <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Why work with us?</p>
-          <p className="mx-auto mt-6 max-w-4xl text-lg leading-8 text-gray-600">
+          <p className="mx-auto mt-6 max-w-6xl text-lg leading-8 text-gray-600">
           We are a team of lawyers, CPAs, and entrepreneurs who have helped thousands of companies to start and manage successful businesses in the US for many years. We know the challenges you face and the concerns you have. This is why we have built Registate as a comprehensive platform that will take care of everything for you and give you piece of mind so you can focus on your business.
           </p>
         </div>
