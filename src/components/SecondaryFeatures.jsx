@@ -103,13 +103,13 @@ function Feature({ feature, isActive, className, ...props }) {
   return (
     <a href={feature.href} className="group">
     <div
-      className={clsx(className, { 'opacity-75 hover:opacity-100': !isActive })}
+      className={clsx(className, { 'opacity-85 hover:opacity-100': !isActive })}
       {...props}
     >
       <div
         className={clsx('w-9 rounded-lg', {
           'bg-blue-600': isActive,
-          'bg-slate-500': !isActive,
+          'bg-slate-600': !isActive,
         })}
       >
         <svg aria-hidden="true" className="h-9 w-9" fill="none">
@@ -117,10 +117,7 @@ function Feature({ feature, isActive, className, ...props }) {
         </svg>
       </div>
       <h3
-        className={clsx('mt-6 text-sm font-medium', {
-          'text-blue-600': isActive,
-          'text-slate-600': !isActive,
-        })}
+        className={clsx('mt-6 text-sm font-medium text-slate-600')}
       >
         {feature.name}
       </h3>
@@ -163,7 +160,7 @@ function FeaturesDesktop() {
                     </Tab>
                   ),
                 }}
-                isActive={featureIndex === selectedIndex}
+                isActive
                 className="relative"
               />
             ))}

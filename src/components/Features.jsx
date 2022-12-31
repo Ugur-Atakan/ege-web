@@ -15,16 +15,29 @@ export default function Features() {
 
     // helper function to calculate the opacity based on the position of the element
     const calculateOpacity = (element) => {
-        // get the position of the element relative to the viewport
-        const rect = element.getBoundingClientRect();
-
-        // calculate the distance from the center of the viewport
-        const distanceFromCenter = Math.abs(rect.top + rect.height / 2 - window.innerHeight / 2);
-
-        // set the opacity based on the distance from the center of the viewport
-        // you can adjust the formula to control the rate at which the element fades out
-        return 1 - distanceFromCenter / (window.innerHeight / 2);
-    };
+      // get the position of the element relative to the viewport
+      const rect = element.getBoundingClientRect();
+  
+      let opacity;
+      const divisor = 0.7;
+      if (rect.top > window.innerHeight || rect.bottom < 0) {
+          // the element is completely out of the viewport
+          opacity = 0;
+      } else if (rect.top < 0) {
+          // the element is partially above the viewport
+          opacity = 1 + rect.top / rect.height;
+          opacity = opacity / divisor - 0.2;
+      } else if (rect.bottom > window.innerHeight) {
+          // the element is partially below the viewport
+          opacity = 1 - (rect.bottom - window.innerHeight) / rect.height;
+          opacity = opacity / divisor;
+      } else {
+          // the element is fully within the viewport
+          opacity = 1;
+      }
+  
+      return opacity;
+  };
 
     // for each feature div, calculate the opacity and update the style
     featureDivs.forEach((div) => {

@@ -16,10 +16,10 @@ export function Home() {
             <main>
                 <Hero />
                 <Customers />
+                <WhyUs />
                 <Features />
                 <SecondaryFeatures />
                 <CallToAction />
-                <WhyUs />
                 <Testimonials />
                 <Footer />
             </main>

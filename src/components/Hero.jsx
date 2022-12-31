@@ -153,19 +153,15 @@ export default function Hero() {
           <main className="mx-auto mt-10 max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
             <div className="sm:text-center lg:text-center">
               <TypingHeader />
-              <p className="mt-3 text-base text-gray-800 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-2xl lg:mx-0">
+              <p className="mt-5 mb-5 text-base text-gray-800 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-2xl lg:mx-0">
               Effortlessly start and manage your company in any US state from anywhere in the world with our comprehensive all-in-one business platform
               </p>
-              <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-              </div>
-              <div className="rounded-md shadow">
-                  <a
-                    href="/pricing/form-my-company"
-                    className="flex w-fit rounded-md border border-transparent bg-blue-600 px-8 py-3 text-base font-medium text-white hover:bg-blue-700 md:py-4 md:px-10 md:text-2xl mx-auto"
-                  >
-                    Form My Company 
-                  </a>
-              </div>
+              <a
+                href="/pricing/form-my-company"
+                className="shadow flex w-fit rounded-md border border-transparent bg-blue-600 px-8 py-3 text-base font-medium text-white hover:bg-blue-700 md:py-4 md:px-10 md:text-2xl mx-auto mt-5"
+              >
+                Form My Company 
+              </a>
               <div className="inline-flex items-center divide-x divide-gray-300 mx-auto">
                 <div className="flex flex-shrink-0 pr-5">
                   <StarIcon className="h-5 w-5 text-yellow-400" aria-hidden="true" />
