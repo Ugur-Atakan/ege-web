@@ -6,118 +6,9 @@ import React from 'react'
 
 import axios from "axios";
 
-
-const packageDetails = {
-"llc1": {
-    title: 'Registate LLC Gold',
-    frequency: '',
-    description: 'Expedited Filing (1-3 business days).',
-    description2: 'Everything you need to perfectly start your company.',
-    features: [
-        '1 Year Registered Agent Fee',
-        'Company Formation State Filing Fees',
-        'EIN Application Fee',
-        'Free Company Name Check', 
-        'Certificate of Formation', 
-        'Lifetime Customer Support (Phone & Email)',
-        'Customizable Banking Resolution',
-        'Electronic Delivery of State Documents',
-        'Customizable Members Meeting Minutes',
-        'Access to Digital Copies of the Documents',
-        'Access to Registate Online Dashboard',
-        ],
-    cta: 'Select LLC Gold',
-    mostPopular: false,
-},
-"llc2": {
-    title: 'Registate LLC Premium',
-    frequency: '',
-    description: 'Expedited Filing (1-3 business days).',
-    description2: 'Everything you need to diligently operate and manage your company.',
-    features: [
-    'Everything in Gold',
-    '1 Year Free Compliance Calendar',
-    'Assisting payment of franchise tax and annual report filing fees',
-    'Operating Agreement',
-    'LLC Membership Certificate',
-    'LLC Interest Purchase Agreement',
-    'Business Contract Templates',
-    ],
-    cta: 'Select LLC Premium',
-    mostPopular: true,
-},
-"corp1": {
-    title: 'Starter',
-    price: 349,
-    frequency: '',
-    description: 'Expedited Filing (1-3 business days).',
-    description2: 'Everything you need to perfectly start your company.',
-    features: [
-        '1 Year Registered Agent Fee',
-        'Company Formation State Filing Fees',
-        'EIN Application Fee',
-        'Free Company Name Check', 
-        'Certificate of InCorporation', 
-        'Statement of Incorporator',
-        'Lifetime Customer Support (Phone & Email)',
-        'Customizable Corporation Bylaws',
-        'Customizable Corporate Banking Resolution',
-        'Customizable Corporate Meeting Minutes',
-        'Electronic Delivery of State Documents',
-        'Access to Digital Copies of the Documents',
-        'Access to Registate Online Dashboard'    
-    ],
-    cta: 'Select Starter',
-    mostPopular: false,
-},
-"corp2": {
-    title: 'Start Up',
-    price: 769,
-    frequency: '',
-    description: 'Expedited Filing (1-3 business days).',
-    description2: 'Everything you need to diligently operate and manage your company.',
-    features: [
-        'Everything in Starter',
-        '1 Year Free Compliance Calendar',
-        'Assisting payment of franchise tax and annual report filing fees',
-        'Stock Issuance to Shareholders',
-        'Stock Purchase Agreements',
-        'Stock Certificates',
-        'Vesting Schedules for Founders - Recommended for Tech Founders',
-        'Captable/Stock Ledger',
-        '83b IRS forms for Founders',
-        'Initial Board and Stockholder Resolutions'
-    ],
-    cta: 'Select Start Up',
-    mostPopular: true,
-},
-"corp3": {
-    title: 'Scale Up',
-    price: 1769,
-    frequency: '',
-    description: 'Expedited Filing (1-3 business days). ',
-    description2: 'Everything you need to operate, manage and grow your company.',
-    features: [
-        'Everything in Startup',
-        'Confidential Information and Inventions Assignment Agreement',
-        'Technology Transfer Agreement',
-        'Mutual Non Disclosure Agreement',
-        'ESOP Reservation Documents',
-        'Stock Option Grant Contract Templates',
-        'Option Plan for Employees/Consultants and Advisors',
-        'SAFE Financing Documents',
-        'Convertible Note Financing Documents',
-        'All template documents to be ready for funding'
-    ],
-    cta: 'Select Scale Up',
-    mostPopular: false,
-}
-}
-
 function Plan(props) {
 
   const clickHandler = () => {
-      localStorage.setItem("packageId", props.packageId)
       localStorage.setItem("packageName", props.name)
       localStorage.setItem("packageType", props.packageType)
       localStorage.setItem("packagePrice", props.price)
@@ -178,11 +69,11 @@ function Plan(props) {
       </ul>
       {/* if selected */}
       {props.featured && (
-      <button className="group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-white text-slate-900 hover:bg-blue-50 active:bg-blue-200 active:text-slate-600 focus-visible:outline-white mt-8" aria-label="Get started with the Small business plan for $15"  onClick={clickHandler.bind(this)} >{props.cta}</button>
+      <button className="group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-white text-slate-900 hover:bg-blue-50 active:bg-blue-200 active:text-slate-600 focus-visible:outline-white mt-8" aria-label="Get started with the Small business plan for $15"  onClick={clickHandler.bind(this)} >Get Started</button>
       )}
       {/* if not selected */}
       {!props.featured && (
-        <button className="group inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm focus:outline-none ring-slate-700 text-white hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white mt-8" aria-label="Get started with the Starter plan for ${price}" onClick={clickHandler.bind(this)}>{props.cta}</button>
+        <button className="group inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm focus:outline-none ring-slate-700 text-white hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white mt-8" aria-label="Get started with the Starter plan for ${price}" onClick={clickHandler.bind(this)}>Get Started</button>
       )}
     </section>
   )
@@ -374,53 +265,50 @@ export function Pricing() {
         <div id="pricingPackages" className="lg:flex lg:justify-center mx-4 mt-16 grid max-w-2xl grid-cols-1 gap-y-10 sm:mx-auto lg:-mx-8 lg:max-w-none lg:grid-cols-3 xl:mx-0 xl:gap-x-8">
         {
           packagePrices.map((packagePrice, index) => {
-              let item = packageDetails[packagePrice.orderPackageId]
               if (companyState !== "Delaware") {
                 if (index === 0) {
                   //if item.features doesn't include Business Address Fee, add it
-                  if (!item.features.includes("1 Year Business Address Fee")) {
-                    item.features.splice(1, 0, "1 Year Business Address Fee")
+                  if (!packagePrice.features.includes("1 Year Business Address Fee")) {
+                    packagePrice.features.splice(1, 0, "1 Year Business Address Fee")
                   }
                 }
                 if (index === 1) {
                   //if item.features includes it remove it
-                  if (item.features.includes("1 Year Virtual Mailbox Fee")) {
-                    item.features.splice(1, 2)
+                  if (packagePrice.features.includes("1 Year Virtual Mailbox Fee")) {
+                    packagePrice.features.splice(1, 2)
                   }
                 }
               }
               if (companyState === "Delaware") {
                 if (index === 0) {
                   //if item.features include it remove it
-                  if (item.features.includes("1 Year Business Address Fee")) {
-                    item.features.splice(1, 1)
+                  if (packagePrice.features.includes("1 Year Business Address Fee")) {
+                    packagePrice.features.splice(1, 1)
                   }
                 }
                 if (index === 1) {
-                  if (!item.features.includes("1 Year Virtual Mailbox Fee")) {
-                    item.features.splice(1, 0, "1 Year Virtual Mailbox Fee")
+                  if (!packagePrice.features.includes("1 Year Virtual Mailbox Fee")) {
+                    packagePrice.features.splice(1, 0, "1 Year Virtual Mailbox Fee")
                   }
-                  if (!item.features.includes("1 Year Business Address Fee")) {
-                    item.features.splice(2, 0, "1 Year Business Address Fee")
+                  if (!packagePrice.features.includes("1 Year Business Address Fee")) {
+                    packagePrice.features.splice(2, 0, "1 Year Business Address Fee")
                   }
                 }
               }
               console.log("packageDetail[" + packagePrice.orderPackageId + "]")
-              console.log(item)
+              console.log(packagePrice)
               return (
-                <div key={item.id + index}>
+                <div key={packagePrice.id + index}>
                 <Plan
                   name={packagePrice.orderPackage}
                   price={packagePrice.orderPackagePrice.toString().slice(0, -2)}
-                  description={item.description}
-                  description2={item.description2}
-                  packageId={companyState.toLocaleLowerCase() + "_" + item.id}
+                  description={packagePrice.description}
+                  description2={packagePrice.description2}
                   href="/onboarding"
-                  features={item.features}
+                  features={packagePrice.features}
                   featured={index === 1}
-                  keyName={item.id + index}
-                  packageType={item.id}
-                  cta={item.cta}
+                  keyName={packagePrice.id + index}
+                  packageType={packagePrice.id}
                 />
                 </div>
               )
