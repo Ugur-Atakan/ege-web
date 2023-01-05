@@ -307,18 +307,21 @@ const countries = [
     { id: 245, name: 'Zimbabwe' }
 ]
 
-const OrderInformationPanel = ({ companyName, packageName, packagePrice}) => {
+function OrderInformationPanel(props) {
+
+    let packageName = localStorage.getItem('packageName');
+    let packagePrice = localStorage.getItem('packagePrice');
 
     return (
-        <div className="bg-blue-50 shadow sm:rounded-lg">
+        <div className="bg-green-50 shadow sm:rounded-lg">
             <div className="px-4 py-5 sm:p-6">
                 <div className="sm:flex sm:items-start sm:justify-between">
                     <div>
                         {packageName && packagePrice && (
-                            <h3 className="text-lg font-medium leading-6 text-gray-900">Selected Package: <span className="text-blue-700">{packageName} - ${packagePrice}</span></h3>
+                            <h3 className="text-lg font-medium leading-6 text-gray-900">Selected Package: <span className="text-green-700">{packageName} - ${packagePrice}</span></h3>
                         )}
-                        {companyName && (
-                            <h3 className="text-lg font-medium leading-6 text-gray-900">Selected Name: <span className="text-blue-700">{companyName}</span></h3>
+                        {props.companyName && (
+                            <h3 className="text-lg font-medium leading-6 text-gray-900">Selected Name: <span className="text-green-700">{props.companyName}</span></h3>
                         )}
                     </div>
                     <div className="mt-5 sm:mt-0 sm:ml-6 sm:flex sm:flex-shrink-0 sm:items-center">
@@ -327,7 +330,7 @@ const OrderInformationPanel = ({ companyName, packageName, packagePrice}) => {
                             className="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:text-sm"
                             onClick={() => {
                                 localStorage.clear()
-                                window.location.href = "/pricing"
+                                window.location.href = "/pricing/form-my-company"
                             }}
                         >
                         Start Over
@@ -339,10 +342,7 @@ const OrderInformationPanel = ({ companyName, packageName, packagePrice}) => {
     )
 }
 
-
-
-const CompanyNameEmailForm = ({ setCompanyName }) => {
-
+function CompanyNameEmailForm(props) {
 
     function formSubmitHandler(e) {
         e.preventDefault();
@@ -372,7 +372,7 @@ const CompanyNameEmailForm = ({ setCompanyName }) => {
                 console.log("Company registered successfully with id: " + jsonData.data.id);
                 localStorage.setItem('onboardingId', jsonData.data.id);
                 localStorage.setItem('companyName', new_company_name);
-                setCompanyName(new_company_name);
+                props.setCompanyName(new_company_name);
                         
                 //hide the form element and show the next step
                 document.getElementById("CompanyNameEmailFormDiv").style.display = "none";
@@ -429,7 +429,7 @@ const CompanyNameEmailForm = ({ setCompanyName }) => {
       )
   }
 
-const CompanyContactInfoForm = () => {
+function CompanyContactInfoForm(props){
 
     const formSubmitHandler = (e) => {
         e.preventDefault();
@@ -439,10 +439,9 @@ const CompanyContactInfoForm = () => {
         let companyContactEmail = e.target.emailaddress.value;
         let companyContactPhone = e.target.phonenumber.value;
         let companyContactAddress = e.target.streetaddress.value + ", " + e.target.city.value + ", " + e.target.region.value + " " + e.target.postalcode.value + ", " + e.target.country.value;
-
         let onboardingId = localStorage.getItem('onboardingId')
         let packageType = localStorage.getItem('packageType')
-
+        let couponCode = e.target.coupon.value
 
         let payload = {
             "companyContactName": companyContactName,
@@ -450,7 +449,8 @@ const CompanyContactInfoForm = () => {
             "companyContactPhone": companyContactPhone,
             "companyContactAddress": companyContactAddress,
             "onBoardId": onboardingId,
-            "packageType": packageType
+            "packageType": packageType,
+            "couponCode": couponCode
         }
         console.log(payload)
 
@@ -482,8 +482,8 @@ const CompanyContactInfoForm = () => {
             <div className="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6">
                 <div className="md:grid md:grid-cols-3 md:gap-6">
                     <div className="md:col-span-1">
-                    <h3 className="text-lg font-medium leading-6 text-gray-900">Company Contact Information</h3>
-                    <p className="mt-1 text-sm text-gray-500">Use a permanent address where you can receive mail.</p>
+                        <h3 className="text-lg font-medium leading-6 text-gray-900">Company Contact Information</h3>
+                        <p className="mt-1 text-sm text-gray-500">Use a permanent address where you can receive mail.</p>
                     </div>
                     <div className="mt-5 md:col-span-2 md:mt-0">
                         <div className="grid grid-cols-6 gap-6">
@@ -625,14 +625,23 @@ const CompanyContactInfoForm = () => {
                                     ))}
                             </select>
                             </div>
-
+                            <div className="col-span-6">
+                                <label htmlFor="coupon" className="block text-sm font-medium text-gray-700">
+                                    Apply Coupon
+                                </label>
+                                <input
+                                    type="text"
+                                    name="coupon"
+                                    id="coupon"
+                                    className="mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div className="flex justify-end">
-
             <button
                 type="submit"
                 className="ml-3 inline-flex justify-center rounded-md border border-transparent bg-blue-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
@@ -648,11 +657,8 @@ const CompanyContactInfoForm = () => {
 
 
 
-const OnboardingForm = () => {
-    let [packageName, setPackageName] = useState(localStorage.getItem('packageName'))
-    let [packagePrice, setPackagePrice] = useState(localStorage.getItem('packagePrice'))
+function OnboardingForm() {
     let [companyName, setCompanyName] = useState(localStorage.getItem('companyName'))
-    let [packageType, setPackageType] = useState(localStorage.getItem('packageType'))
 
     useEffect(() => {
         console.log("OnboardingForm useEffect")
@@ -676,17 +682,18 @@ const OnboardingForm = () => {
     }, [localStorage.getItem('packageType')]);
 
 
+
     return (
         <div className="mx-auto max-w-4xl">
+            <div id="OrderInformationDiv" className="mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+                <OrderInformationPanel companyName={companyName} />
+            </div>
             <div id="description" className="px-6 text-center">
-                <h2 className="mt-6 font-bold tracking-tight text-gray-900 text-4xl">
-                Complete forming <span className="text-blue-700">{
+                <h2 className="mt-6 font-bold tracking-tight text-gray-900 text-5xl">
+                You are forming <span className="text-blue-700">{
                                         localStorage.getItem('companyType') === 'LLC' ? 'an LLC' : 'a Corporation'
                 }</span> in <span className="text-blue-600">{localStorage.getItem('companyState')}</span>
                 </h2>
-            </div>
-            <div id="OrderInformationDiv" className="mx-auto px-4 sm:px-6 lg:px-8 mt-10">
-                <OrderInformationPanel companyName={companyName} packageName={packageName} packagePrice={packagePrice} />
             </div>
             <div id="CompanyNameEmailFormDiv" className="mx-auto px-4 sm:px-6 lg:px-8 mt-10">            
                 <CompanyNameEmailForm setCompanyName={setCompanyName}/>
