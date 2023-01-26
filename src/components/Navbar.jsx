@@ -20,52 +20,66 @@ import {
   DocumentDuplicateIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
-
+import { useState, useEffect } from 'react'
 import Logo from '../images/logo2x.png.webp'
 
 const menu1 = [
-    {
-        name: 'Form Your Company',
-        description: 'Turning your idea into business',
-        href: '/',
-        icon: BuildingOfficeIcon,
-      },
-      {
-        name: 'Registered Agent',
-        description: 'Secure registered agent service online',
-        href: '/registered-agent',
-        icon: UserIcon,
-      },
-      {
-          name: 'Virtual MailBox',
-          description: 'Peace of minde mail processing',
-          href: '/virtual-mailbox',
-          icon: EnvelopeOpenIcon,
-      },
-      {
-        name: 'Apostille',
-        description: 'Document for use in another country',
-        href: '/apostille',
-        icon: DocumentDuplicateIcon,
-      }
+  {
+    name: 'Form Your Company',
+    description: 'Turning your idea into business',
+    href: '/form-your-company',
+    icon: BuildingOfficeIcon,
+  },
+  {
+    name: 'Registered Agent',
+    description: 'Secure registered agent service online',
+    href: '/registered-agent',
+    icon: UserIcon,
+  },
+  {
+    name: 'Virtual MailBox',
+    description: 'Peace of minde mail processing',
+    href: '/virtual-mailbox',
+    icon: EnvelopeOpenIcon,
+  },
+  {
+    name: 'Apostille',
+    description: 'Document for use in another country',
+    href: '/apostille',
+    icon: DocumentDuplicateIcon,
+  }
 ]
 const callsToAction = [
   { name: 'Watch Demo', href: '#', icon: PlayIcon },
   { name: 'View All Products', href: '#', icon: CheckCircleIcon },
   { name: 'Contact Sales', href: '#', icon: PhoneIcon },
 ]
-const company = [
-  { name: 'About', href: '#', icon: InformationCircleIcon },
-  { name: 'Customers', href: '#', icon: BuildingOfficeIcon },
-  { name: 'Press', href: '#', icon: NewspaperIcon },
-  { name: 'Careers', href: '#', icon: BriefcaseIcon },
-  { name: 'Privacy', href: '#', icon: ShieldCheckIcon },
+const recurring = [
+  { name: 'Compliance Reminder', href: '#',desc:'Remain compliant', icon: InformationCircleIcon },
+  { name: 'Registered Agent', href: '#',desc:'Secure registered agent service online', icon: BuildingOfficeIcon },
+  { name: 'Virtual MailBox', href: '#',desc:'Peace of minde mail processing', icon: NewspaperIcon },
+  { name: 'Office Address', href: '#', desc:'Decide your business office address',icon: BriefcaseIcon },
+  { name: 'Our Packages', href: '#',desc:'Keep good standing at all times', icon: ShieldCheckIcon },
+  { name: 'Virtual Phone Number', href: '#', desc:'Support services from anywhere',icon: ShieldCheckIcon },
+  { name: 'Dedicated Receptionist', href: '#', desc:'Forwarding Calls to Any Device',icon: ShieldCheckIcon },
 ]
-const resources = [
-  { name: 'Community', href: '#', icon: UserGroupIcon },
-  { name: 'Partners', href: '#', icon: GlobeAltIcon },
-  { name: 'Guides', href: '#', icon: BookmarkSquareIcon },
-  { name: 'Webinars', href: '#', icon: ComputerDesktopIcon },
+const onetime = [
+  { name: 'Foreign Qualification', href: '#',desc:'To conduct business out-of-state', icon: UserGroupIcon },
+  { name: 'Certificate of Good Standing', href: '#',desc:'Show that you are compliant', icon: GlobeAltIcon },
+  { name: 'Certified Copy Request', href: '#',desc:'Certified copy for all document', icon: BookmarkSquareIcon },
+  { name: 'EIN', href: '#',desc:'Unique nine-digit number for businesses', icon: ComputerDesktopIcon },
+  { name: 'Entity Type Conversion', href: '#', desc:'Entity into another type of entity',icon: ComputerDesktopIcon },
+  { name: 'Renewal & Revival', href: '#',desc:'Revive your company', icon: ComputerDesktopIcon },
+  { name: 'Dissolution & Cancellation', desc:'Terminate a legal entity',href: '#', icon: ComputerDesktopIcon },
+  { name: 'Certificate of Amendment',desc:"Amend company's formation documents", href: '#', icon: ComputerDesktopIcon },
+  { name: 'Doing Business As (DBA)', desc:'Trade name / Fictitious name',href: '#', icon: ComputerDesktopIcon },
+]
+const ies = [
+  { name: 'Apostille', href: '#',desc:'Document for use in another country', icon: UserGroupIcon },
+  { name: 'Certified Copy Request', href: '#',desc:'Certified copy for all documents', icon: GlobeAltIcon },
+  { name: 'EIN', href: '#',desc:'Unique nine-digit number for businesses', icon: ComputerDesktopIcon },
+  { name: 'US Bank Account Opening Support', href: '#', desc:'Have a business bank account',icon: ComputerDesktopIcon },
+  { name: 'Post Incorporation', href: '#',desc:'Properly finish company formation', icon: ComputerDesktopIcon },
 ]
 const blogPosts = [
   {
@@ -98,8 +112,16 @@ const navigation = [
 ]
 
 export function Navbar() {
+  const [isScroll, setIsScroll] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScroll(window.scrollY > 96);
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [])
   return (
-    <Popover className="relative bg-white">
+    <Popover className="fixed left-0 top-0 bg-white w-full z-50">
       <div className="pointer-events-none absolute inset-0 z-30 shadow" aria-hidden="true" />
       <div className="relative z-20">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-5 sm:px-6 sm:py-4 md:justify-start md:space-x-10 lg:px-8">
@@ -206,7 +228,7 @@ export function Navbar() {
                         'group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
                       )}
                     >
-                      <span>More</span>
+                      <span>Manage Your Business</span>
                       <ChevronDownIcon
                         className={classNames(
                           open ? 'text-gray-600' : 'text-gray-400',
@@ -235,7 +257,7 @@ export function Navbar() {
                             <div>
                               <h3 className="text-base font-medium text-gray-500">Company</h3>
                               <ul role="list" className="mt-5 space-y-6">
-                                {company.map((item) => (
+                                {onetime.map((item) => (
                                   <li key={item.name} className="flow-root">
                                     <a
                                       href={item.href}
@@ -251,7 +273,7 @@ export function Navbar() {
                             <div>
                               <h3 className="text-base font-medium text-gray-500">Resources</h3>
                               <ul role="list" className="mt-5 space-y-6">
-                                {resources.map((item) => (
+                                {recurring.map((item) => (
                                   <li key={item.name} className="flow-root">
                                     <a
                                       href={item.href}
@@ -297,10 +319,100 @@ export function Navbar() {
                   </>
                 )}
               </Popover>
+              <Popover>
+                {({ open }) => (
+                  <>
+                    <Popover.Button
+                      className={classNames(
+                        open ? 'text-gray-900' : 'text-gray-500',
+                        'group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
+                      )}
+                    >
+                      <span>International Entity Services</span>
+                      <ChevronDownIcon
+                        className={classNames(
+                          open ? 'text-gray-600' : 'text-gray-400',
+                          'ml-2 h-5 w-5 group-hover:text-gray-500'
+                        )}
+                        aria-hidden="true"
+                      />
+                    </Popover.Button>
+
+                    <Transition
+                      as={Fragment}
+                      enter="transition ease-out duration-200"
+                      enterFrom="opacity-0 -translate-y-1"
+                      enterTo="opacity-100 translate-y-0"
+                      leave="transition ease-in duration-150"
+                      leaveFrom="opacity-100 translate-y-0"
+                      leaveTo="opacity-0 -translate-y-1"
+                    >
+                      <Popover.Panel className="absolute inset-x-0 top-full z-10 hidden transform bg-white shadow-lg md:block">
+                        <div className="mx-auto grid max-w-7xl gap-y-6 px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16">
+                          {ies.map((item) => (
+                            <a
+                              key={item.name}
+                              href={item.href}
+                              className="-m-3 flex flex-col justify-between rounded-lg p-3 hover:bg-gray-50"
+                            >
+                              <div className="flex md:h-full lg:flex-col">
+                                <div className="flex-shrink-0">
+                                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-blue-500 text-white sm:h-12 sm:w-12">
+                                    <item.icon className="h-6 w-6" aria-hidden="true" />
+                                  </span>
+                                </div>
+                                <div className="ml-4 md:flex md:flex-1 md:flex-col md:justify-between lg:ml-0 lg:mt-4">
+                                  <div>
+                                    <p className="text-base font-medium text-gray-900">{item.name}</p>
+                                    <p className="mt-1 text-sm text-gray-500">{item.description}</p>
+                                  </div>
+                                  <p className="mt-2 text-sm font-medium text-blue-600 lg:mt-4">
+                                    Learn more
+                                    <span aria-hidden="true"> &rarr;</span>
+                                  </p>
+                                </div>
+                              </div>
+                            </a>
+                          ))}
+                        </div>
+                        <div className="bg-gray-50">
+                          <div className="mx-auto max-w-7xl space-y-6 px-4 py-5 sm:flex sm:space-y-0 sm:space-x-10 sm:px-6 lg:px-8">
+                            {callsToAction.map((item) => (
+                              <div key={item.name} className="flow-root">
+                                <a
+                                  href={item.href}
+                                  className="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-gray-100"
+                                >
+                                  <item.icon className="h-6 w-6 flex-shrink-0 text-gray-400" aria-hidden="true" />
+                                  <span className="ml-3">{item.name}</span>
+                                </a>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </Popover.Panel>
+                    </Transition>
+                  </>
+                )}
+              </Popover>
+              <Popover>
+                    <Popover.Button
+                      className='text-gray-500 group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:text-black focus:ring-blue-500 focus:ring-offset-2'>
+                      <span>Blog</span>
+                    </Popover.Button>
+              </Popover>
             </Popover.Group>
             <div className="flex items-center md:ml-12">
-           </div>
+            </div>
           </div>
+          <div>
+                <a
+                  href="/pricing/form-my-company"
+                  className={isScroll ? "shadow rounded-md border border-transparent font-medium text-white bg-blue-600 px-4 py-2 text-md transition-colors duration-1000" : "shadow rounded-md border border-blue-600 font-medium text-blue-600 px-4 py-2 text-md transition-colors duration-1000"}
+                >
+                  Form My Company
+                </a>
+              </div>
         </div>
       </div>
 
@@ -417,7 +529,7 @@ export function Navbar2() {
                   <img
                     alt="Your Company"
                     className="h-8 w-auto sm:h-10"
-                    src={Logo}  
+                    src={Logo}
                   />
                 </a>
                 <div className="-mr-2 flex items-center md:hidden">
@@ -482,6 +594,6 @@ export function Navbar2() {
           </Popover.Panel>
         </Transition>
       </Popover>
-  </>
+    </>
   )
 }

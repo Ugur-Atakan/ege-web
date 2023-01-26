@@ -44,8 +44,7 @@ export function PostOrder() {
             }
             console.log(payload);
             console.log("Checking if the order exists in backend")
-
-            //Check if the order exists in backend. If response is 404, then the order does not exist
+ 
             axios.get('https://api.registate.net/api/order/' + orderId, {
               headers: {
                 'Content-Type': 'application/json',

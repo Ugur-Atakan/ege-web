@@ -48,8 +48,8 @@ export default function Features() {
     <>
 
       <div className="mx-auto max-w-7xl py-24 px-8" id="feature">
-        <div id="stickyImage" className="w-[39%] h-full absolute pt-[30vh] right-0"><img src="https://peppy.health/wp-content/uploads/2022/08/wh-1400x950.jpg" /></div>
-        <div className="w-[45%] pt-[30vh]">
+        <div id="stickyImage" className="hidden md:block w-[39%] h-full absolute pt-[30vh] right-0"><img src="https://peppy.health/wp-content/uploads/2022/08/wh-1400x950.jpg" /></div>
+        <div className="w-full md:w-[45%] pt-24 md:pt-[30vh]">
           <div className="mx-auto max-w-xl px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0">
             <div>
               <div>
@@ -95,7 +95,7 @@ export default function Features() {
             </div>
           </div>
         </div>
-        <div className="w-[45%] pt-[30vh]" id="feature1">
+        <div className="w-full md:w-[45%] pt-24 md:pt-[30vh]" id="feature1">
           <div className="mx-auto max-w-xl px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0">
             <div>
               <div>
@@ -120,7 +120,7 @@ export default function Features() {
             </div>
           </div>
         </div>
-        <div className="w-[45%] pt-[30vh]" id="feature2">
+        <div className="w-full md:w-[45%] pt-24 md:pt-[30vh]" id="feature2">
           <div className="mx-auto max-w-xl px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0">
             <div>
               <div>
@@ -166,7 +166,7 @@ export default function Features() {
             </div>
           </div>
         </div>
-        <div className="w-[45%] pt-[30vh]" id="feature3">
+        <div className="w-full md:w-[45%] pt-24 md:pt-[30vh]" id="feature3">
           <div className="mx-auto max-w-xl px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0">
             <div>
               <div>
@@ -191,7 +191,7 @@ export default function Features() {
             </div>
           </div>
         </div>
-        <div className="w-[45%] pt-[30vh]" id="feature4">
+        <div className="w-full md:w-[45%] pt-24  md:pt-[30vh]" id="feature4">
           <div className="mx-auto max-w-xl px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0">
             <div>
               <div>

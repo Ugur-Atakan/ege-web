@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect, useRef, useReducer } from 'react'
-import axios from "axios";
+import axios from "axios"
+import { CheckIcon } from '@heroicons/react/24/solid'
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -58,7 +59,7 @@ const states = [
     { id: 49, name: 'West Virginia' },
     { id: 50, name: 'Wisconsin' },
     { id: 51, name: 'Wyoming' }
-  ]
+]
 
 const countries = [
     { id: 1, name: 'United States' },
@@ -326,14 +327,14 @@ function OrderInformationPanel(props) {
                     </div>
                     <div className="mt-5 sm:mt-0 sm:ml-6 sm:flex sm:flex-shrink-0 sm:items-center">
                         <button
-                            type="button" 
+                            type="button"
                             className="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:text-sm"
                             onClick={() => {
                                 localStorage.clear()
                                 window.location.href = "/pricing/form-my-company"
                             }}
                         >
-                        Start Over
+                            Start Over
                         </button>
                     </div>
                 </div>
@@ -341,7 +342,6 @@ function OrderInformationPanel(props) {
         </div>
     )
 }
-
 function CompanyNameEmailForm(props) {
 
     function formSubmitHandler(e) {
@@ -364,72 +364,72 @@ function CompanyNameEmailForm(props) {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
-        }})
-        .then(function (response) {
-            //Parse the returned json data
-            var jsonData = JSON.parse(JSON.stringify(response.data));
-            if (jsonData.Status) {
-                console.log("Company registered successfully with id: " + jsonData.data.id);
-                localStorage.setItem('onboardingId', jsonData.data.id);
-                localStorage.setItem('companyName', new_company_name);
-                props.setCompanyName(new_company_name);
-                        
-                //hide the form element and show the next step
-                document.getElementById("CompanyNameEmailFormDiv").style.display = "none";
-                document.getElementById("CompanyContactInfoFormDiv").style.display = "block";
             }
         })
-        .catch(function (error) {
-            console.log(error);
-        });    
+            .then(function (response) {
+                //Parse the returned json data
+                var jsonData = JSON.parse(JSON.stringify(response.data));
+                if (jsonData.Status) {
+                    console.log("Company registered successfully with id: " + jsonData.data.id);
+                    localStorage.setItem('onboardingId', jsonData.data.id);
+                    localStorage.setItem('companyName', new_company_name);
+                    props.setCompanyName(new_company_name);
+
+                    //hide the form element and show the next step
+                    document.getElementById("CompanyNameEmailFormDiv").style.display = "none";
+                    document.getElementById("CompanyContactInfoFormDiv").style.display = "block";
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
 
     }
 
     return (
         <div className="bg-white shadow sm:rounded-lg">
-            <div className="px-4 py-5 sm:p-6">
-            <h3 className="text-lg font-medium leading-6 text-gray-900">Select a company name</h3>
-            <div className="mt-2 max-w-4xl text-sm text-gray-500">
-              <p>Enter your preferred business name here. We will do a extensive company name search and let you know if its available or not. Your email address will be used to create an account with us so that you can check the status of your application.</p>
-            </div>
-            <form className="mt-5 sm:flex sm:items-center" onSubmit={formSubmitHandler}>
-                <div className="w-full sm:max-w-sm">
-                    <div className="mt-4">
-                        <label htmlFor="companyName" className="sr-only">Company Name</label>
-                        <input type="text" name="companyName" id="companyName" className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="Company Name"></input>
-                    </div>
-                    <div className="mt-4">
-                        <label htmlFor="userEmail" className="sr-only">Email</label>
-                        <input type="email" name="userEmail" id="userEmail" className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="you@example.com"></input>
-                    </div>
-                    <div className="mt-4">
-                        <button type="submit" className="inline-flex w-full items-center justify-center rounded-md border border-transparent bg-blue-600 px-16 py-3 font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
-                            Select Company Name
-                        </button>
-                        <p className="text-xs leading-5 text-gray-500">
-                      By submitting this form, you agree to our{' '}
-                      <a href="#" className="font-medium text-gray-900 hover:underline">
-                        Terms
-                      </a>
-                      ,{' '}
-                      <a href="#" className="font-medium text-gray-900 hover:underline">
-                        Data Policy
-                      </a>{' '}
-                      and{' '}
-                      <a href="#" className="font-medium text-gray-900 hover:underline">
-                        Cookies Policy
-                      </a>
-                      .
-                    </p>
-                    </div>
+            <div className="px-4 py-5 sm:p-6 mb-12">
+                <h3 className="text-lg font-medium leading-6 text-gray-900">Select a company name</h3>
+                <div className="mt-2 max-w-4xl text-sm text-gray-500">
+                    <p>Enter your preferred business name here. We will do a extensive company name search and let you know if its available or not. Your email address will be used to create an account with us so that you can check the status of your application.</p>
                 </div>
-            </form>
+                <form className="mt-5 sm:flex sm:items-center" onSubmit={formSubmitHandler}>
+                    <div className="w-full sm:max-w-sm">
+                        <div className="mt-4">
+                            <label htmlFor="companyName" className="sr-only">Company Name</label>
+                            <input type="text" name="companyName" id="companyName" className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="Company Name"></input>
+                        </div>
+                        <div className="mt-4">
+                            <label htmlFor="userEmail" className="sr-only">Email</label>
+                            <input type="email" name="userEmail" id="userEmail" className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="you@example.com"></input>
+                        </div>
+                        <div className="mt-4">
+                            <button type="submit" className="inline-flex w-full items-center justify-center rounded-md border border-transparent bg-blue-600 px-16 py-3 font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:mt-0 sm:w-auto sm:text-sm">
+                                Select Company Name
+                            </button>
+                            <p className="text-xs leading-5 text-gray-500">
+                                By submitting this form, you agree to our{' '}
+                                <a href="#" className="font-medium text-gray-900 hover:underline">
+                                    Terms
+                                </a>
+                                ,{' '}
+                                <a href="#" className="font-medium text-gray-900 hover:underline">
+                                    Data Policy
+                                </a>{' '}
+                                and{' '}
+                                <a href="#" className="font-medium text-gray-900 hover:underline">
+                                    Cookies Policy
+                                </a>
+                                .
+                            </p>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-      )
-  }
-
-function CompanyContactInfoForm(props){
+    )
+}
+function CompanyContactInfoForm(props) {
 
     const formSubmitHandler = (e) => {
         e.preventDefault();
@@ -459,26 +459,27 @@ function CompanyContactInfoForm(props){
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
-        }})
-        .then(function (response) {
-            //Parse the returned json data
-            var jsonData = JSON.parse(JSON.stringify(response.data));
-            console.log(jsonData)
-            // If the status is true, then redirect to the payment page
-            if (jsonData.Status) {
-                let stripeUrl = jsonData.data.stripeUrl;
-                console.log(stripeUrl)
-                localStorage.setItem('stripeUrl', stripeUrl);
-                window.location.href = stripeUrl;
             }
         })
-        .catch(function (error) {
-            console.log(error);
-        });
+            .then(function (response) {
+                //Parse the returned json data
+                var jsonData = JSON.parse(JSON.stringify(response.data));
+                console.log(jsonData)
+                // If the status is true, then redirect to the payment page
+                if (jsonData.Status) {
+                    let stripeUrl = jsonData.data.stripeUrl;
+                    console.log(stripeUrl)
+                    localStorage.setItem('stripeUrl', stripeUrl);
+                    window.location.href = stripeUrl;
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
     return (
-        <form className="space-y-6" onSubmit={formSubmitHandler}>  
+        <form className="space-y-6" onSubmit={formSubmitHandler} p>
             <div className="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6">
                 <div className="md:grid md:grid-cols-3 md:gap-6">
                     <div className="md:col-span-1">
@@ -488,42 +489,42 @@ function CompanyContactInfoForm(props){
                     <div className="mt-5 md:col-span-2 md:mt-0">
                         <div className="grid grid-cols-6 gap-6">
                             <div className="col-span-6 sm:col-span-3">
-                            <label htmlFor="firstname" className="block text-sm font-medium text-gray-700">
-                                First name
-                            </label>
-                            <input
-                                type="text"
-                                name="firstname"
-                                id="firstname"
-                                autoComplete="given-name"
-                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                            />
+                                <label htmlFor="firstname" className="block text-sm font-medium text-gray-700">
+                                    First name
+                                </label>
+                                <input
+                                    type="text"
+                                    name="firstname"
+                                    id="firstname"
+                                    autoComplete="given-name"
+                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                                />
                             </div>
-            
+
                             <div className="col-span-6 sm:col-span-3">
-                            <label htmlFor="lastname" className="block text-sm font-medium text-gray-700">
-                                Last name
-                            </label>
-                            <input
-                                type="text"
-                                name="lastname"
-                                id="lastname"
-                                autoComplete="family-name"
-                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                            />
+                                <label htmlFor="lastname" className="block text-sm font-medium text-gray-700">
+                                    Last name
+                                </label>
+                                <input
+                                    type="text"
+                                    name="lastname"
+                                    id="lastname"
+                                    autoComplete="family-name"
+                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                                />
                             </div>
-            
+
                             <div className="col-span-6 sm:col-span-6 lg:col-span-3">
-                            <label htmlFor="emailaddress" className="block text-sm font-medium text-gray-700">
-                                Email address
-                            </label>
-                            <input
-                                type="text"
-                                name="emailaddress"
-                                id="emailaddress"
-                                autoComplete="email"
-                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                            />
+                                <label htmlFor="emailaddress" className="block text-sm font-medium text-gray-700">
+                                    Email address
+                                </label>
+                                <input
+                                    type="text"
+                                    name="emailaddress"
+                                    id="emailaddress"
+                                    autoComplete="email"
+                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                                />
                             </div>
 
                             <div className="col-span-6 sm:col-span-6 lg:col-span-3">
@@ -532,42 +533,42 @@ function CompanyContactInfoForm(props){
                                 </label>
                                 <div className="relative mt-1 rounded-md shadow-sm">
                                     <input
-                                    type="text"
-                                    name="phonenumber"
-                                    id="phonenumber"
-                                    autoComplete="tel"
-                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                                    placeholder="+1 (123) 111-22-33"
+                                        type="text"
+                                        name="phonenumber"
+                                        id="phonenumber"
+                                        autoComplete="tel"
+                                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                                        placeholder="+1 (123) 111-22-33"
                                     />
                                 </div>
                             </div>
 
                             <div className="col-span-6">
-                            <label htmlFor="streetaddress" className="block text-sm font-medium text-gray-700">
-                                Street address
-                            </label>
-                            <input
-                                type="text"
-                                name="streetaddress"
-                                id="streetaddress"
-                                autoComplete="street-address"
-                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                            />
+                                <label htmlFor="streetaddress" className="block text-sm font-medium text-gray-700">
+                                    Street address
+                                </label>
+                                <input
+                                    type="text"
+                                    name="streetaddress"
+                                    id="streetaddress"
+                                    autoComplete="street-address"
+                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                                />
                             </div>
-            
+
                             <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-                            <label htmlFor="city" className="block text-sm font-medium text-gray-700">
-                                City
-                            </label>
-                            <input
-                                type="text"
-                                name="city"
-                                id="city"
-                                autoComplete="address-level2"
-                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                            />
+                                <label htmlFor="city" className="block text-sm font-medium text-gray-700">
+                                    City
+                                </label>
+                                <input
+                                    type="text"
+                                    name="city"
+                                    id="city"
+                                    autoComplete="address-level2"
+                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                                />
                             </div>
-            
+
                             <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                                 <label htmlFor="region" className="block text-sm font-medium text-gray-700">
                                     State / Province
@@ -580,50 +581,50 @@ function CompanyContactInfoForm(props){
                                 >
                                     <option value=""> Select State </option>
                                     {states.map((state) => (
-                                        <option 
-                                        key={state.name} 
-                                        value={state.name}
+                                        <option
+                                            key={state.name}
+                                            value={state.name}
                                         >
-                                        {state.name}
+                                            {state.name}
                                         </option>
                                     ))}
                                 </select>
                             </div>
-            
+
                             <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                            <label htmlFor="postalcode" className="block text-sm font-medium text-gray-700">
-                                ZIP / Postal code
-                            </label>
-                            <input
-                                type="text"
-                                name="postalcode"
-                                id="postalcode"
-                                autoComplete="postalcode"
-                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                            />
+                                <label htmlFor="postalcode" className="block text-sm font-medium text-gray-700">
+                                    ZIP / Postal code
+                                </label>
+                                <input
+                                    type="text"
+                                    name="postalcode"
+                                    id="postalcode"
+                                    autoComplete="postalcode"
+                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                                />
                             </div>
 
                             <div className="col-span-6 sm:col-span-3">
-                            <label htmlFor="country" className="block text-sm font-medium text-gray-700">
-                                Country
-                            </label>
-                            <select
-                                id="country"
-                                name="country"
-                                autoComplete="country-name"
-                                className="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
-                            >
-                                <option value="">Select Country</option>
-                                {countries.map((country) => (
-                                        <option 
-                                        key={country.name} 
-                                        value={country.name}
-                                        id={country.id}
+                                <label htmlFor="country" className="block text-sm font-medium text-gray-700">
+                                    Country
+                                </label>
+                                <select
+                                    id="country"
+                                    name="country"
+                                    autoComplete="country-name"
+                                    className="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
+                                >
+                                    <option value="">Select Country</option>
+                                    {countries.map((country) => (
+                                        <option
+                                            key={country.name}
+                                            value={country.name}
+                                            id={country.id}
                                         >
-                                        {country.name}
+                                            {country.name}
                                         </option>
                                     ))}
-                            </select>
+                                </select>
                             </div>
                             <div className="col-span-6">
                                 <label htmlFor="coupon" className="block text-sm font-medium text-gray-700">
@@ -642,22 +643,148 @@ function CompanyContactInfoForm(props){
             </div>
 
             <div className="flex justify-end">
-            <button
-                type="submit"
-                className="ml-3 inline-flex justify-center rounded-md border border-transparent bg-blue-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-            >
-                Review and Pay
-            </button>
+                <button
+                    type="submit"
+                    className="ml-3 inline-flex justify-center rounded-md border border-transparent bg-blue-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                >
+                    Review and Pay
+                </button>
             </div>
 
-      </form>
+        </form>
     );
 };
 
+function Steps(props) {
+    const steps = [
+        { id: '01', name: 'Simple pricing for your business', description: 'Select State/Type and Package information', href: '#', status: 'complete' },
+        { id: '02', name: 'Select company name', description: 'Enter your preferred company name', href: '#', status: 'current' },
+        { id: '03', name: 'Company details and checkout', description: 'Provide company contact information and checkout', href: '#', status: 'upcoming' },
+    ]
+
+    if (localStorage.getItem('companyName')) {
+        steps[1].status = 'complete'
+        steps[2].status = 'current'
+    }
+
+    function classNames(...classes) {
+        return classes.filter(Boolean).join(' ')
+    }
+    return (
+        <div className="lg:border-t lg:border-b lg:border-gray-200 ">
+            <nav aria-label="Progress">
+                <ol
+                    role="list"
+                    className="overflow-hidden rounded-md lg:flex lg:rounded-none lg:border-l lg:border-r lg:border-gray-200"
+                >
+                    {steps.map((step, stepIdx) => (
+                        <li key={step.id} className="relative overflow-hidden lg:flex-1">
+                            <div
+                                className={classNames(
+                                    stepIdx === 0 ? 'border-b-0 rounded-t-md' : '',
+                                    stepIdx === steps.length - 1 ? 'border-t-0 rounded-b-md' : '',
+                                    'border border-gray-200 overflow-hidden lg:border-0'
+                                )}
+                            >
+                                {step.status === 'complete' ? (
+                                    <a href={step.href} className="group">
+                                        <span
+                                            className="absolute top-0 left-0 h-full w-1 bg-transparent group-hover:bg-gray-200 lg:bottom-0 lg:top-auto lg:h-1 lg:w-full"
+                                            aria-hidden="true"
+                                        />
+                                        <span
+                                            className={classNames(
+                                                stepIdx !== 0 ? 'lg:pl-9' : '',
+                                                'px-6 py-5 flex items-start text-sm font-medium'
+                                            )}
+                                        >
+                                            <span className="flex-shrink-0">
+                                                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600">
+                                                    <CheckIcon className="h-6 w-6 text-white" aria-hidden="true" />
+                                                </span>
+                                            </span>
+                                            <span className="mt-0.5 ml-4 flex min-w-0 flex-col">
+                                                <span className="text-sm font-medium">{step.name}</span>
+                                                <span className="text-sm font-medium text-gray-500">{step.description}</span>
+                                            </span>
+                                        </span>
+                                    </a>
+                                ) : step.status === 'current' ? (
+                                    <a href={step.href} aria-current="step">
+                                        <span
+                                            className="absolute top-0 left-0 h-full w-1 bg-blue-600 lg:bottom-0 lg:top-auto lg:h-1 lg:w-full"
+                                            aria-hidden="true"
+                                        />
+                                        <span
+                                            className={classNames(
+                                                stepIdx !== 0 ? 'lg:pl-9' : '',
+                                                'px-6 py-5 flex items-start text-sm font-medium'
+                                            )}
+                                        >
+                                            <span className="flex-shrink-0">
+                                                <span className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-blue-600">
+                                                    <span className="text-indigo-600">{step.id}</span>
+                                                </span>
+                                            </span>
+                                            <span className="mt-0.5 ml-4 flex min-w-0 flex-col">
+                                                <span className="text-sm font-medium text-blue-600">{step.name}</span>
+                                                <span className="text-sm font-medium text-gray-500">{step.description}</span>
+                                            </span>
+                                        </span>
+                                    </a>
+                                ) : (
+                                    <a href={step.href} className="group">
+                                        <span
+                                            className="absolute top-0 left-0 h-full w-1 bg-transparent group-hover:bg-gray-200 lg:bottom-0 lg:top-auto lg:h-1 lg:w-full"
+                                            aria-hidden="true"
+                                        />
+                                        <span
+                                            className={classNames(
+                                                stepIdx !== 0 ? 'lg:pl-9' : '',
+                                                'px-6 py-5 flex items-start text-sm font-medium'
+                                            )}
+                                        >
+                                            <span className="flex-shrink-0">
+                                                <span className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-gray-300">
+                                                    <span className="text-gray-500">{step.id}</span>
+                                                </span>
+                                            </span>
+                                            <span className="mt-0.5 ml-4 flex min-w-0 flex-col">
+                                                <span className="text-sm font-medium text-gray-500">{step.name}</span>
+                                                <span className="text-sm font-medium text-gray-500">{step.description}</span>
+                                            </span>
+                                        </span>
+                                    </a>
+                                )}
+
+                                {stepIdx !== 0 ? (
+                                    <>
+                                        {/* Separator */}
+                                        <div className="absolute inset-0 top-0 left-0 hidden w-3 lg:block" aria-hidden="true">
+                                            <svg
+                                                className="h-full w-full text-gray-300"
+                                                viewBox="0 0 12 82"
+                                                fill="none"
+                                                preserveAspectRatio="none"
+                                            >
+                                                <path d="M0.5 0V31L10.5 41L0.5 51V82" stroke="currentcolor" vectorEffect="non-scaling-stroke" />
+                                            </svg>
+                                        </div>
+                                    </>
+                                ) : null}
+                            </div>
+                        </li>
+                    ))}
+                </ol>
+            </nav>
+        </div>
+    )
+}
 
 
 
-function OnboardingForm() {
+
+export default function OnboardingForm() {
     let [companyName, setCompanyName] = useState(localStorage.getItem('companyName'))
 
     useEffect(() => {
@@ -684,19 +811,22 @@ function OnboardingForm() {
 
 
     return (
-        <div className="mx-auto max-w-4xl">
+        <div className="mx-auto max-w-5xl">
+            <div>
+                <Steps />
+            </div>
             <div id="OrderInformationDiv" className="mx-auto px-4 sm:px-6 lg:px-8 mt-10">
                 <OrderInformationPanel companyName={companyName} />
             </div>
             <div id="description" className="px-6 text-center">
                 <h2 className="mt-6 font-bold tracking-tight text-gray-900 text-5xl">
-                You are forming <span className="text-blue-700">{
-                                        localStorage.getItem('companyType') === 'LLC' ? 'an LLC' : 'a Corporation'
-                }</span> in <span className="text-blue-600">{localStorage.getItem('companyState')}</span>
+                    You are forming <span className="text-blue-700">{
+                        localStorage.getItem('companyType') === 'LLC' ? 'an LLC' : 'a Corporation'
+                    }</span> in <span className="text-blue-600">{localStorage.getItem('companyState')}</span>
                 </h2>
             </div>
-            <div id="CompanyNameEmailFormDiv" className="mx-auto px-4 sm:px-6 lg:px-8 mt-10">            
-                <CompanyNameEmailForm setCompanyName={setCompanyName}/>
+            <div id="CompanyNameEmailFormDiv" className="mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+                <CompanyNameEmailForm setCompanyName={setCompanyName} />
             </div>
             <div id="CompanyContactInfoFormDiv" className="px-6 py-6">
                 <CompanyContactInfoForm />
@@ -704,9 +834,3 @@ function OnboardingForm() {
         </div>
     )
 }
-
-
-
-
-
-export default OnboardingForm

@@ -14,6 +14,8 @@ import { PricingVirtualMailbox } from './routes/pricing-virtual-mailbox'
 import { PricingApostilleAndNotorizationServices } from './routes/pricing-apostille-and-notarization-services'
 import PostIncorporation from './routes/post-incorporation'
 import Contact from './routes/contact'
+import FormYourCompany from './routes/form-your-company'
+import VirtualMailbox from './routes/virtual-mailbox';
 
 const App = () => {
   return (
@@ -22,6 +24,8 @@ const App = () => {
           <Routes>
             <Route exact path="/" element={<Home/>}/>
             <Route exact path="/post-incorp" element={<PostIncorporation/>}/>
+            <Route exact path ="/form-your-company" element={<FormYourCompany/>}/> 
+            <Route exact path ="/virtual-mailbox" element={<VirtualMailbox/>}/> 
             <Route exact path="/contact" element={<Contact/>}/>
             <Route exact path="/blog" element={<Blog/>}/>
             <Route exact path="/onboarding" element={<Onboarding/>}/>
