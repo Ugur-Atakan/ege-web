@@ -23,6 +23,7 @@ const App = () => {
         <div className='App'>
           <Routes>
             <Route exact path="/" element={<Home/>}/>
+            <Route exact path="/home" element={<Home/>}/>
             <Route exact path="/post-incorp" element={<PostIncorporation/>}/>
             <Route exact path ="/form-your-company" element={<FormYourCompany/>}/> 
             <Route exact path ="/virtual-mailbox" element={<VirtualMailbox/>}/> 
