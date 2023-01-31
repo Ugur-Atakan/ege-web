@@ -49,6 +49,7 @@ const App = () => {
             <Route exatc path='/ein' element={<Ein/>}/> 
             <Route exact path="/contact" element={<Contact/>}/>
             <Route exact path="/blog" element={<Blog/>}/>
+            <Route exact path="/blog/:id" element={<Blog/>}/>
             <Route exact path="/terms-of-service" element={<TermsOfService/>}/>
             <Route exact path="/privacy-policy" element={<PrivacyPolicy/>}/>
             <Route exact path="/faq" element={<Faqs/>}/>

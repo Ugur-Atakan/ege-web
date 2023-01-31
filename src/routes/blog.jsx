@@ -1,15 +1,13 @@
 import React from 'react'
 import { Navbar } from '../components/Navbar'
 import Footer from '../components/Footer'
-import { Blogs } from '../components/Blogs'
-function Blog() {
+import Blog  from '../components/BlogDetails'
+export default function BlogPage() {
   return (
     <main>
       <Navbar/>
-      <Blogs/>
+      <Blog/>
       <Footer/>
     </main>
   )
 }
-
-export default Blog

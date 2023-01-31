@@ -1,3 +1,8 @@
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
+import { useState } from 'react';
+
 const navigation = {
   solutions: [
     {
@@ -49,14 +54,41 @@ const navigation = {
       href: '#',
       icon: (props) => (
         <svg fill="currentColor" width="24" height="24" viewBox="0 0 24 24" {...props}>
-          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-          </svg>
+          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+        </svg>
       ),
     },
   ],
 }
 
 export default function Footer() {
+  const [subscribeMail, setSubscribeMail] = useState('')
+  const notify = () => {
+    toast("Successfully subscribed");
+  }
+  const submitHandler = (e) => {
+    e.preventDefault();
+    let payload = {
+      "email": subscribeMail,
+    }
+    console.log(payload)
+    axios.post('https://api.registate.net/api/newsletter', payload, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
+      },
+      body: JSON.stringify(payload),
+    })
+      .then(function (response) {
+        var jsonData = JSON.parse(JSON.stringify(response.data));
+        console.log(jsonData)
+        notify();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    setSubscribeMail('');
+  }
   return (
     <footer className="bg-white border-t" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
@@ -77,8 +109,8 @@ export default function Footer() {
                     </li>
                   ))}
                   <div>
-                  <a hreF='/all-products' className="text-blue-600 text-base">All Products
-                  <span aria-hidden="true"> &rarr;</span></a>
+                    <a hreF='/all-products' className="text-blue-600 text-base">All Products
+                      <span aria-hidden="true"> &rarr;</span></a>
                   </div>
                 </ul>
               </div>
@@ -127,7 +159,7 @@ export default function Footer() {
             <p className="mt-4 text-base text-gray-500">
               The latest news, articles, and resources, sent to your inbox weekly.
             </p>
-            <form className="mt-4 sm:flex sm:max-w-md">
+            <form onSubmit={submitHandler} className="mt-4 sm:flex sm:max-w-md">
               <label htmlFor="email-address" className="sr-only">
                 Email address
               </label>
@@ -136,6 +168,8 @@ export default function Footer() {
                 name="email-address"
                 id="email-address"
                 autoComplete="email"
+                value={subscribeMail}
+                onChange={e => setSubscribeMail(e.target.value)}
                 required
                 className="w-full min-w-0 appearance-none rounded-md border border-gray-300 bg-white py-2 px-4 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:border-blue-500 focus:placeholder-gray-400 focus:outline-none focus:ring-blue-500"
                 placeholder="Enter your email"

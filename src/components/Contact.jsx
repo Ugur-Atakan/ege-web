@@ -1,8 +1,52 @@
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import { Bars3Icon, EnvelopeIcon, PhoneIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import axios from 'axios';
+import { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Contact() {
+  const [firstname, setfirstname] = useState('')
+  const [lastname, setlastname] = useState('')
+  const [phone, setphone] = useState('')
+  const [email, setemail] = useState('')
+  const [subject, setsubject] = useState('')
+  const [message, setmessage] = useState('')
+
+  const notify = () => {
+    toast("Form submitted successfully");
+  }
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    let payload = {
+      "Firstname": firstname,
+      "Lastname": lastname,
+      "Email": email,
+      "Phone": phone,
+      "Subject": subject,
+      "Message": message
+    }
+    console.log(payload)
+    axios.post('https://api.registate.net/api/contact', payload, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
+      },
+      body: JSON.stringify(payload),
+    })
+      .then(function (response) {
+        var jsonData = JSON.parse(JSON.stringify(response.data));
+        console.log(jsonData)
+        notify();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    setfirstname(''); setlastname(''); setmessage(''); setphone(''); setsubject(''); setmessage(''); setemail('');
+  }
+
   return (
     <div className="bg-white">
       <main className="overflow-hidden pb-32">
@@ -13,7 +57,7 @@ export default function Contact() {
                 Contact Us
               </h1>
               <p className="mt-6 max-w-3xl text-xl text-warm-gray-500">
-              One of our services experts will reach out to you based on your communication preferences.
+                One of our services experts will reach out to you based on your communication preferences.
               </p>
             </div>
           </div>
@@ -155,7 +199,7 @@ export default function Contact() {
                   </div>
                   <h3 className="text-lg font-medium text-white">We'll follow up</h3>
                   <p className="mt-6 max-w-3xl text-base text-teal-50">
-                  Questions about plans, pricing, or availability? Just have your people call our people.
+                    Questions about plans, pricing, or availability? Just have your people call our people.
                   </p>
                   <dl className="mt-8 space-y-6">
                     <dt>
@@ -175,14 +219,14 @@ export default function Contact() {
                   </dl>
                   <h3 className="mt-6 text-lg font-medium text-white">Address</h3>
                   <p className="mt-3 max-w-3xl text-base text-teal-50">
-                  1401 Pennsylvania Ave. Unit 105 Wilmington, DE 19806, USA
+                    1401 Pennsylvania Ave. Unit 105 Wilmington, DE 19806, USA
                   </p>
                 </div>
 
                 {/* Contact form */}
                 <div className="py-10 px-6 sm:px-10 lg:col-span-2 xl:p-12">
                   <h3 className="text-lg font-medium text-warm-gray-900">Send us a message</h3>
-                  <form action="#" method="POST" className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
+                  <form id='contactform' onSubmit={submitHandler} className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
                     <div>
                       <label htmlFor="first-name" className="block text-sm font-medium text-warm-gray-900">
                         First name
@@ -192,6 +236,9 @@ export default function Contact() {
                           type="text"
                           name="first-name"
                           id="first-name"
+                          value={firstname}
+                          onChange={e => setfirstname(e.target.value)}
+                          required
                           autoComplete="given-name"
                           className="block w-full rounded-md border-warm-gray-300 py-3 px-4 text-warm-gray-900 shadow-sm focus:border-blue-600"
                         />
@@ -206,6 +253,8 @@ export default function Contact() {
                           type="text"
                           name="last-name"
                           id="last-name"
+                          value={lastname}
+                          onChange={e => setlastname(e.target.value)}
                           autoComplete="family-name"
                           className="block w-full rounded-md border-warm-gray-300 py-3 px-4 text-warm-gray-900 shadow-sm focus:border-blue-600"
                         />
@@ -220,6 +269,8 @@ export default function Contact() {
                           id="email"
                           name="email"
                           type="email"
+                          value={email}
+                          onChange={e => setemail(e.target.value)}
                           autoComplete="email"
                           className="block w-full rounded-md border-warm-gray-300 py-3 px-4 text-warm-gray-900 shadow-sm focus:border-blue-600"
                         />
@@ -239,6 +290,8 @@ export default function Contact() {
                           type="text"
                           name="phone"
                           id="phone"
+                          value={phone}
+                          onChange={e => setphone(e.target.value)}
                           autoComplete="tel"
                           className="block w-full rounded-md border-warm-gray-300 py-3 px-4 text-warm-gray-900 shadow-sm focus:border-blue-600"
                           aria-describedby="phone-optional"
@@ -254,6 +307,8 @@ export default function Contact() {
                           type="text"
                           name="subject"
                           id="subject"
+                          value={subject}
+                          onChange={e => setsubject(e.target.value)}
                           className="block w-full rounded-md border-warm-gray-300 py-3 px-4 text-warm-gray-900 shadow-sm focus:border-blue-600"
                         />
                       </div>
@@ -272,9 +327,10 @@ export default function Contact() {
                           id="message"
                           name="message"
                           rows={4}
+                          value={message}
+                          onChange={e => setmessage(e.target.value)}
                           className="block w-full rounded-md border-warm-gray-300 py-3 px-4 text-warm-gray-900 shadow-sm focus:border-blue-600"
                           aria-describedby="message-max"
-                          defaultValue={''}
                         />
                       </div>
                     </div>
@@ -291,6 +347,21 @@ export default function Contact() {
               </div>
             </div>
           </div>
+          <ToastContainer
+            position="bottom-left"
+            autoClose={5000}
+            hideProgressBar={true}
+            newestOnTop={false}
+            closeOnClick
+            toastClassName={()=>
+              "bg-blue-600 text-white items-center flex p-4 shadow-lg rounded-lg"
+            }
+            closeButton={()=>"x"}
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
         </section>
       </main>
     </div>
