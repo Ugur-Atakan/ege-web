@@ -18,6 +18,24 @@ import {
   EnvelopeOpenIcon,
   UserIcon,
   DocumentDuplicateIcon,
+  InboxStackIcon,
+  ClipboardDocumentIcon,
+  QuestionMarkCircleIcon,
+  BuildingLibraryIcon,
+  CalendarIcon,
+  ClipboardDocumentListIcon,
+  RectangleStackIcon,
+  RocketLaunchIcon,
+  PresentationChartBarIcon,
+  CubeIcon,
+  ArchiveBoxIcon,
+  CreditCardIcon,
+  DocumentTextIcon,
+  PencilSquareIcon,
+  FolderMinusIcon,
+  ArrowPathIcon,
+  ChatBubbleLeftRightIcon,
+  ReceiptPercentIcon
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { useState, useEffect } from 'react'
@@ -49,55 +67,50 @@ const menu1 = [
     icon: DocumentDuplicateIcon,
   }
 ]
-const callsToAction = [
-  { name: 'Watch Demo', href: '#', icon: PlayIcon },
-  { name: 'View All Products', href: '#', icon: CheckCircleIcon },
-  { name: 'Contact Sales', href: '#', icon: PhoneIcon },
+
+const pricing = [
+  { name: 'Form My Company', href: '/form-your-company', desc: 'Remain compliant', icon: BuildingOfficeIcon },
+  { name: 'Other Services', href: '/pricing/other-services', desc: 'Secure registered agent service online', icon: ReceiptPercentIcon },
 ]
+
 const recurring = [
-  { name: 'Compliance Reminder', href: '#',desc:'Remain compliant', icon: InformationCircleIcon },
-  { name: 'Registered Agent', href: '#',desc:'Secure registered agent service online', icon: BuildingOfficeIcon },
-  { name: 'Virtual MailBox', href: '#',desc:'Peace of minde mail processing', icon: NewspaperIcon },
-  { name: 'Office Address', href: '#', desc:'Decide your business office address',icon: BriefcaseIcon },
-  { name: 'Our Packages', href: '#',desc:'Keep good standing at all times', icon: ShieldCheckIcon },
-  { name: 'Virtual Phone Number', href: '#', desc:'Support services from anywhere',icon: ShieldCheckIcon },
-  { name: 'Dedicated Receptionist', href: '#', desc:'Forwarding Calls to Any Device',icon: ShieldCheckIcon },
+  { name: 'Compliance Reminder', href: '/compliance-reminder', desc: 'Remain compliant', icon: FolderMinusIcon },
+  { name: 'Registered Agent', href: '/registered-agent', desc: 'Secure registered agent service online', icon: BuildingOfficeIcon },
+  { name: 'Virtual MailBox', href: '/virtual-mailbox', desc: 'Peace of minde mail processing', icon: EnvelopeOpenIcon },
+  { name: 'Office Address', href: '/office-address', desc: 'Decide your business office address', icon: BriefcaseIcon },
+  { name: 'Our Packages', release: '(BETA)', href: '/our-packages', desc: 'Keep good standing at all times', icon: CubeIcon },
+  { name: 'Virtual Phone Number', release: '(BETA)', href: '/virtual-phone-number', desc: 'Support services from anywhere', icon: ChatBubbleLeftRightIcon },
+  { name: 'Dedicated Receptionist', href: '/dedicated-receptionist', desc: 'Forwarding Calls to Any Device', icon: PhoneIcon },
 ]
 const onetime = [
-  { name: 'Foreign Qualification', href: '#',desc:'To conduct business out-of-state', icon: UserGroupIcon },
-  { name: 'Certificate of Good Standing', href: '#',desc:'Show that you are compliant', icon: GlobeAltIcon },
-  { name: 'Certified Copy Request', href: '#',desc:'Certified copy for all document', icon: BookmarkSquareIcon },
-  { name: 'EIN', href: '#',desc:'Unique nine-digit number for businesses', icon: ComputerDesktopIcon },
-  { name: 'Entity Type Conversion', href: '#', desc:'Entity into another type of entity',icon: ComputerDesktopIcon },
-  { name: 'Renewal & Revival', href: '#',desc:'Revive your company', icon: ComputerDesktopIcon },
-  { name: 'Dissolution & Cancellation', desc:'Terminate a legal entity',href: '#', icon: ComputerDesktopIcon },
-  { name: 'Certificate of Amendment',desc:"Amend company's formation documents", href: '#', icon: ComputerDesktopIcon },
-  { name: 'Doing Business As (DBA)', desc:'Trade name / Fictitious name',href: '#', icon: ComputerDesktopIcon },
+  { name: 'Foreign Qualification', href: '/foreign-qualification', desc: 'To conduct business out-of-state', icon: RocketLaunchIcon },
+  { name: 'Certificate of Good Standing', href: '/certificate-of-good-standing', desc: 'Show that you are compliant', icon: BookmarkSquareIcon },
+  { name: 'Certified Copy Request', release: '(BETA)', href: '/certified-copy-request', desc: 'Certified copy for all document', icon: ClipboardDocumentListIcon },
+  { name: 'EIN', release: '(BETA)', href: '/ein', desc: 'Unique nine-digit number for businesses', icon: CalendarIcon },
+  { name: 'Entity Type Conversion', release: '(BETA)', href: '/entity-type-conversion', desc: 'Entity into another type of entity', icon: PresentationChartBarIcon },
+  { name: 'Renewal & Revival', href: '/renewal-and-revival', desc: 'Revive your company', icon: ArrowPathIcon },
+  { name: 'Dissolution & Cancellation', desc: 'Terminate a legal entity', href: '/dissolution-and-cancellation', icon: ArchiveBoxIcon },
+  { name: 'Certificate of Amendment', desc: "Amend company's formation documents", href: '/certificate-of-amendment', icon: DocumentTextIcon },
+  { name: 'Doing Business As (DBA)', desc: 'Trade name / Fictitious name', href: '/doing-business-as', icon: PencilSquareIcon },
 ]
 const ies = [
-  { name: 'Apostille', href: '#',desc:'Document for use in another country', icon: UserGroupIcon },
-  { name: 'Certified Copy Request', href: '#',desc:'Certified copy for all documents', icon: GlobeAltIcon },
-  { name: 'EIN', href: '#',desc:'Unique nine-digit number for businesses', icon: ComputerDesktopIcon },
-  { name: 'US Bank Account Opening Support', href: '#', desc:'Have a business bank account',icon: ComputerDesktopIcon },
-  { name: 'Post Incorporation', href: '#',desc:'Properly finish company formation', icon: ComputerDesktopIcon },
+  { name: 'Apostille', href: '/apostille', desc: 'Document for use in another country', icon: DocumentDuplicateIcon },
+  { name: 'Certified Copy Request', href: '/certified-copy-request', desc: 'Certified copy for all documents', icon: ClipboardDocumentListIcon },
+  { name: 'EIN', href: '/ein', desc: 'Unique nine-digit number for businesses', icon: CalendarIcon },
+  { name: 'US Bank Account Opening Support', href: '/us-bank-account-opening-support', desc: 'Have a business bank account', icon: BuildingLibraryIcon },
+  { name: 'Post Incorporation', href: '/post-incorp', desc: 'Properly finish company formation', icon: RectangleStackIcon },
 ]
-const blogPosts = [
-  {
-    id: 1,
-    name: 'Boost your conversion rate',
-    href: '#',
-    preview: 'Eget ullamcorper ac ut vulputate fames nec mattis pellentesque elementum. Viverra tempor id mus.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1558478551-1a378f63328e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2849&q=80',
-  },
-  {
-    id: 2,
-    name: 'How to use search engine optimization to drive traffic to your site',
-    href: '#',
-    preview: 'Eget ullamcorper ac ut vulputate fames nec mattis pellentesque elementum. Viverra tempor id mus.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2300&q=80',
-  },
+const support = [
+  { name: 'FAQs', href: '/faq', desc: 'Everything you need to know about the product and services', icon: QuestionMarkCircleIcon },
+  { name: 'Terms of Services', href: '/terms-of-service', desc: 'Please read these Terms carefully before using the Website.', icon: ClipboardDocumentIcon },
+  { name: 'Privacy Policy', href: '/privacy-policy', desc: 'Learn about our privacy policy', icon: ShieldCheckIcon },
+  { name: 'Contact Us', href: '/contact', desc: 'Have questions about plans, pricing and availability?', icon: InboxStackIcon },
+]
+const otherservices = [
+  { name: 'FAQs', href: '/faqs', desc: 'Everything you need to know about the product and services', icon: QuestionMarkCircleIcon },
+  { name: 'Terms of Services', href: '/terms-of-services', desc: 'Please read these Terms carefully before using the Website.', icon: ClipboardDocumentIcon },
+  { name: 'Privacy Policy', href: '/privacy-policy', desc: 'Learn about our privacy policy', icon: ShieldCheckIcon },
+  { name: 'Contact Us', href: '/contact', desc: 'Have questions about plans, pricing and availability?', icon: InboxStackIcon },
 ]
 
 function classNames(...classes) {
@@ -152,7 +165,7 @@ export function Navbar() {
                         'group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
                       )}
                     >
-                      <span>Start Your Business</span>
+                      <span>Pricing</span>
                       <ChevronDownIcon
                         className={classNames(
                           open ? 'text-gray-600' : 'text-gray-400',
@@ -171,48 +184,27 @@ export function Navbar() {
                       leaveFrom="opacity-100 translate-y-0"
                       leaveTo="opacity-0 -translate-y-1"
                     >
-                      <Popover.Panel className="absolute inset-x-0 top-full z-10 hidden transform bg-white shadow-lg md:block">
-                        <div className="mx-auto grid max-w-7xl gap-y-6 px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16">
-                          {menu1.map((item) => (
-                            <a
-                              key={item.name}
-                              href={item.href}
-                              className="-m-3 flex flex-col justify-between rounded-lg p-3 hover:bg-gray-50"
-                            >
-                              <div className="flex md:h-full lg:flex-col">
-                                <div className="flex-shrink-0">
-                                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-blue-500 text-white sm:h-12 sm:w-12">
-                                    <item.icon className="h-6 w-6" aria-hidden="true" />
-                                  </span>
-                                </div>
-                                <div className="ml-4 md:flex md:flex-1 md:flex-col md:justify-between lg:ml-0 lg:mt-4">
-                                  <div>
-                                    <p className="text-base font-medium text-gray-900">{item.name}</p>
-                                    <p className="mt-1 text-sm text-gray-500">{item.description}</p>
-                                  </div>
-                                  <p className="mt-2 text-sm font-medium text-blue-600 lg:mt-4">
-                                    Learn more
-                                    <span aria-hidden="true"> &rarr;</span>
-                                  </p>
-                                </div>
-                              </div>
-                            </a>
-                          ))}
-                        </div>
-                        <div className="bg-gray-50">
-                          <div className="mx-auto max-w-7xl space-y-6 px-4 py-5 sm:flex sm:space-y-0 sm:space-x-10 sm:px-6 lg:px-8">
-                            {callsToAction.map((item) => (
-                              <div key={item.name} className="flow-root">
-                                <a
-                                  href={item.href}
-                                  className="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-gray-100"
-                                >
-                                  <item.icon className="h-6 w-6 flex-shrink-0 text-gray-400" aria-hidden="true" />
-                                  <span className="ml-3">{item.name}</span>
-                                </a>
-                              </div>
-                            ))}
-                          </div>
+                      <Popover.Panel className="absolute top-full z-10 hidden transform bg-white shadow-lg md:block">
+                        <div className="mx-auto grid max-w-7xl gap-y-6 px-4 py-6 sm:gap-8 sm:px-6 sm:py-8 lg:px-8 lg:py-8">
+                        <ul role="list" className=" space-y-6">
+                                {pricing.map((item) => (
+                                  <li key={item.name} className="flow-root">
+                                    <a
+                                      href={item.href}
+                                      className="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-gray-50"
+                                    >
+                                      <item.icon className="h-6 w-6 flex-shrink-0 text-blue-600" aria-hidden="true" />
+                                      <div className='flex flex-col'>
+                                        <div className='flex gap-1 items-center'>
+                                          <span className="ml-4">{item.name}</span>
+                                          {item.release && <span className='text-blue-600 text-xs'>{item.release}</span>}
+                                        </div>
+                                        <span className='ml-4 text-gray-400 text-xs'>{item.desc}</span>
+                                      </div>
+                                    </a>
+                                  </li>
+                                ))}
+                              </ul>
                         </div>
                       </Popover.Panel>
                     </Transition>
@@ -228,7 +220,7 @@ export function Navbar() {
                         'group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
                       )}
                     >
-                      <span>Manage Your Business</span>
+                      <span>Products</span>
                       <ChevronDownIcon
                         className={classNames(
                           open ? 'text-gray-600' : 'text-gray-400',
@@ -250,28 +242,12 @@ export function Navbar() {
                       <Popover.Panel className="absolute inset-x-0 top-full z-10 hidden transform shadow-lg md:block">
                         <div className="absolute inset-0 flex">
                           <div className="w-1/2 bg-white" />
-                          <div className="w-1/2 bg-gray-50" />
+                          <div className="w-1/2 bg-white" />
                         </div>
-                        <div className="relative mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
-                          <nav className="grid gap-y-10 bg-white px-4 py-8 sm:grid-cols-2 sm:gap-x-8 sm:py-12 sm:px-6 lg:px-8 xl:pr-12">
+                        <div className="relative mx-auto grid max-w-7xl grid-cols-1">
+                          <nav className="grid gap-y-10 bg-white px-4 py-8 sm:grid-cols-3 sm:gap-x-8 sm:py-12 sm:px-6 lg:px-8 xl:pr-12">
                             <div>
-                              <h3 className="text-base font-medium text-gray-500">Company</h3>
-                              <ul role="list" className="mt-5 space-y-6">
-                                {onetime.map((item) => (
-                                  <li key={item.name} className="flow-root">
-                                    <a
-                                      href={item.href}
-                                      className="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-gray-50"
-                                    >
-                                      <item.icon className="h-6 w-6 flex-shrink-0 text-gray-400" aria-hidden="true" />
-                                      <span className="ml-4">{item.name}</span>
-                                    </a>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                            <div>
-                              <h3 className="text-base font-medium text-gray-500">Resources</h3>
+                              <h3 className="text-base font-medium text-gray-500">RECURRING</h3>
                               <ul role="list" className="mt-5 space-y-6">
                                 {recurring.map((item) => (
                                   <li key={item.name} className="flow-root">
@@ -279,40 +255,64 @@ export function Navbar() {
                                       href={item.href}
                                       className="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-gray-50"
                                     >
-                                      <item.icon className="h-6 w-6 flex-shrink-0 text-gray-400" aria-hidden="true" />
-                                      <span className="ml-4">{item.name}</span>
+                                      <item.icon className="h-6 w-6 flex-shrink-0 text-blue-600" aria-hidden="true" />
+                                      <div className='flex flex-col'>
+                                        <div className='flex gap-1 items-center'>
+                                          <span className="ml-4">{item.name}</span>
+                                          {item.release && <span className='text-blue-600 text-xs'>{item.release}</span>}
+                                        </div>
+                                        <span className='ml-4 text-gray-400 text-xs'>{item.desc}</span>
+                                      </div>
+                                    </a>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                            <div>
+                              <h3 className="text-base font-medium text-gray-500">ONE TIME</h3>
+                              <ul role="list" className="mt-5 space-y-6">
+                                {onetime.map((item) => (
+                                  <li key={item.name} className="flow-root">
+                                    <a
+                                      href={item.href}
+                                      className="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-gray-50"
+                                    >
+                                      <item.icon className="h-6 w-6 flex-shrink-0 text-blue-600" aria-hidden="true" />
+                                      <div className='flex flex-col'>
+                                        <div className='flex gap-1 items-center'>
+                                          <span className="ml-4">{item.name}</span>
+                                          {item.release && <span className='text-blue-600 text-xs'>{item.release}</span>}
+                                        </div>
+                                        <span className='ml-4 text-gray-400 text-xs'>{item.desc}</span>
+                                      </div>
+                                    </a>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                            <div>
+                              <h3 className="text-base font-medium text-gray-500">INTERNATIONAL ENTITY SERVICES</h3>
+                              <ul role="list" className="mt-5 space-y-6">
+                                {ies.map((item) => (
+                                  <li key={item.name} className="flow-root">
+                                    <a
+                                      href={item.href}
+                                      className="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-gray-50"
+                                    >
+                                      <item.icon className="h-6 w-6 flex-shrink-0 text-blue-600" aria-hidden="true" />
+                                      <div className='flex flex-col'>
+                                        <div className='flex gap-1 items-center'>
+                                          <span className="ml-4">{item.name}</span>
+                                          {item.release && <span className='text-blue-600 text-xs'>{item.release}</span>}
+                                        </div>
+                                        <span className='ml-4 text-gray-400 text-xs'>{item.desc}</span>
+                                      </div>
                                     </a>
                                   </li>
                                 ))}
                               </ul>
                             </div>
                           </nav>
-                          <div className="bg-gray-50 px-4 py-8 sm:py-12 sm:px-6 lg:px-8 xl:pl-12">
-                            <div>
-                              <h3 className="text-base font-medium text-gray-500">From the blog</h3>
-                              <ul role="list" className="mt-6 space-y-6">
-                                {blogPosts.map((post) => (
-                                  <li key={post.id} className="flow-root">
-                                    <a href={post.href} className="-m-3 flex rounded-lg p-3 hover:bg-gray-100">
-                                      <div className="hidden flex-shrink-0 sm:block">
-                                        <img className="h-20 w-32 rounded-md object-cover" src={post.imageUrl} alt="" />
-                                      </div>
-                                      <div className="w-0 flex-1 sm:ml-8">
-                                        <h4 className="truncate text-base font-medium text-gray-900">{post.name}</h4>
-                                        <p className="mt-1 text-sm text-gray-500">{post.preview}</p>
-                                      </div>
-                                    </a>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                            <div className="mt-6 text-sm font-medium">
-                              <a href="#" className="text-blue-600 hover:text-blue-500">
-                                View all posts
-                                <span aria-hidden="true"> &rarr;</span>
-                              </a>
-                            </div>
-                          </div>
                         </div>
                       </Popover.Panel>
                     </Transition>
@@ -328,7 +328,7 @@ export function Navbar() {
                         'group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
                       )}
                     >
-                      <span>International Entity Services</span>
+                      <span>Recources and Support</span>
                       <ChevronDownIcon
                         className={classNames(
                           open ? 'text-gray-600' : 'text-gray-400',
@@ -349,7 +349,7 @@ export function Navbar() {
                     >
                       <Popover.Panel className="absolute inset-x-0 top-full z-10 hidden transform bg-white shadow-lg md:block">
                         <div className="mx-auto grid max-w-7xl gap-y-6 px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16">
-                          {ies.map((item) => (
+                          {support.map((item) => (
                             <a
                               key={item.name}
                               href={item.href}
@@ -364,7 +364,7 @@ export function Navbar() {
                                 <div className="ml-4 md:flex md:flex-1 md:flex-col md:justify-between lg:ml-0 lg:mt-4">
                                   <div>
                                     <p className="text-base font-medium text-gray-900">{item.name}</p>
-                                    <p className="mt-1 text-sm text-gray-500">{item.description}</p>
+                                    <p className="mt-1 text-sm text-gray-500">{item.desc}</p>
                                   </div>
                                   <p className="mt-2 text-sm font-medium text-blue-600 lg:mt-4">
                                     Learn more
@@ -375,44 +375,29 @@ export function Navbar() {
                             </a>
                           ))}
                         </div>
-                        <div className="bg-gray-50">
-                          <div className="mx-auto max-w-7xl space-y-6 px-4 py-5 sm:flex sm:space-y-0 sm:space-x-10 sm:px-6 lg:px-8">
-                            {callsToAction.map((item) => (
-                              <div key={item.name} className="flow-root">
-                                <a
-                                  href={item.href}
-                                  className="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-gray-100"
-                                >
-                                  <item.icon className="h-6 w-6 flex-shrink-0 text-gray-400" aria-hidden="true" />
-                                  <span className="ml-3">{item.name}</span>
-                                </a>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
                       </Popover.Panel>
                     </Transition>
                   </>
                 )}
               </Popover>
               <Popover>
-                    <Popover.Button
-                      className='text-gray-500 group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:text-black focus:ring-blue-500 focus:ring-offset-2'>
-                      <span>Blog</span>
-                    </Popover.Button>
+                <button
+                  className='text-gray-500 group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:text-black focus:ring-blue-500 focus:ring-offset-2'>
+                  <a href='/blog'><span>Blog</span></a>
+                </button>
               </Popover>
             </Popover.Group>
             <div className="flex items-center md:ml-12">
             </div>
           </div>
-          <div>
-                <a
-                  href="/pricing/form-my-company"
-                  className={isScroll ? "shadow rounded-md border border-transparent font-medium text-white bg-blue-600 px-4 py-2 text-md transition-colors duration-1000" : "shadow rounded-md border border-blue-600 font-medium text-blue-600 px-4 py-2 text-md transition-colors duration-1000"}
-                >
-                  Form My Company
-                </a>
-              </div>
+          <div class='hidden lg:block'>
+            <a
+              href="/pricing/form-my-company"
+              className={isScroll ? "shadow rounded-md border border-transparent font-medium text-white bg-blue-600 px-4 py-2 text-md transition-colors duration-1000" : "shadow rounded-md border border-blue-600 font-medium text-blue-600 px-4 py-2 text-md transition-colors duration-1000"}
+            >
+              Form My Company
+            </a>
+          </div>
         </div>
       </div>
 
@@ -435,8 +420,8 @@ export function Navbar() {
                 <div>
                   <img
                     className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=blue&shade=600"
-                    alt="Your Company"
+                    src={Logo}
+                    alt="Registate"
                   />
                 </div>
                 <div className="-mr-2">
@@ -494,17 +479,11 @@ export function Navbar() {
               </div>
               <div className="mt-6">
                 <a
-                  href="#"
+                  href="/pricing/form-my-company"
                   className="flex w-full items-center justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700"
                 >
-                  Sign up
+                  Form My Company
                 </a>
-                <p className="mt-6 text-center text-base font-medium text-gray-500">
-                  Existing customer?{' '}
-                  <a href="#" className="text-blue-600 hover:text-blue-500">
-                    Sign in
-                  </a>
-                </p>
               </div>
             </div>
           </div>

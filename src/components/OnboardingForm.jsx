@@ -657,9 +657,9 @@ function CompanyContactInfoForm(props) {
 
 function Steps(props) {
     const steps = [
-        { id: '01', name: 'Simple pricing for your business', description: 'Select State/Type and Package information', href: '#', status: 'complete' },
-        { id: '02', name: 'Select company name', description: 'Enter your preferred company name', href: '#', status: 'current' },
-        { id: '03', name: 'Company details and checkout', description: 'Provide company contact information and checkout', href: '#', status: 'upcoming' },
+        { id: '01', name: 'Select Your Package', href: '#', status: 'complete' },
+        { id: '02', name: 'Select Company Name', href: '#', status: 'current' },
+        { id: '03', name: 'Provide Contact Information', href: '#', status: 'upcoming' },
     ]
 
     if (localStorage.getItem('companyName')) {
@@ -695,7 +695,7 @@ function Steps(props) {
                                         <span
                                             className={classNames(
                                                 stepIdx !== 0 ? 'lg:pl-9' : '',
-                                                'px-6 py-5 flex items-start text-sm font-medium'
+                                                'px-6 py-5 flex items-center text-sm font-medium'
                                             )}
                                         >
                                             <span className="flex-shrink-0">
@@ -705,12 +705,11 @@ function Steps(props) {
                                             </span>
                                             <span className="mt-0.5 ml-4 flex min-w-0 flex-col">
                                                 <span className="text-sm font-medium">{step.name}</span>
-                                                <span className="text-sm font-medium text-gray-500">{step.description}</span>
                                             </span>
                                         </span>
                                     </a>
                                 ) : step.status === 'current' ? (
-                                    <a href={step.href} aria-current="step">
+                                    <a aria-current="step">
                                         <span
                                             className="absolute top-0 left-0 h-full w-1 bg-blue-600 lg:bottom-0 lg:top-auto lg:h-1 lg:w-full"
                                             aria-hidden="true"
@@ -718,7 +717,7 @@ function Steps(props) {
                                         <span
                                             className={classNames(
                                                 stepIdx !== 0 ? 'lg:pl-9' : '',
-                                                'px-6 py-5 flex items-start text-sm font-medium'
+                                                'px-6 py-5 flex items-center text-sm font-medium'
                                             )}
                                         >
                                             <span className="flex-shrink-0">
@@ -812,11 +811,11 @@ export default function OnboardingForm() {
 
     return (
         <div className="mx-auto max-w-5xl">
-            <div>
-                <Steps />
-            </div>
-            <div id="OrderInformationDiv" className="mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+            <div id="OrderInformationDiv" className="mx-auto px-4 sm:px-6 lg:px-8 mt-2">
                 <OrderInformationPanel companyName={companyName} />
+            </div>
+            <div id="steps" className="mx-auto px-4 sm:px-6 lg:px-8 mt-2">
+                <Steps />
             </div>
             <div id="description" className="px-6 text-center">
                 <h2 className="mt-6 font-bold tracking-tight text-gray-900 text-5xl">

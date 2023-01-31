@@ -1,7 +1,7 @@
 export default function LeftImgRightText(props) {
     return (
         <div className="mx-auto max-w-7xl px-8 py-12">
-            <div className="block md:flex items-center gap-12 pt-16">
+            <div className={props.reverse ? "block md:flex flex-row-reverse items-center gap-12 pt-16" : "block md:flex items-center gap-12 pt-16"}>
                 <div className="w-full md:w-1/2">
                     <img
                         className="rounded-lg shadow-lg"
