@@ -458,23 +458,23 @@ export function Navbar() {
             </div>
             <div className="py-6 px-5">
               <div className="grid grid-cols-2 gap-4">
-                <a href="#" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
+                <a href="/pricing" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
                   Pricing
                 </a>
-                <a href="#" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
-                  Docs
+                <a href="/faq" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
+                  FAQs
                 </a>
-                <a href="#" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
+                <a href="/company" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
                   Company
                 </a>
-                <a href="#" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
+                <a href="/resources" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
                   Resources
                 </a>
-                <a href="#" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
+                <a href="/blog" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
                   Blog
                 </a>
-                <a href="#" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
-                  Contact Sales
+                <a href="/contact" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
+                  Contact Us
                 </a>
               </div>
               <div className="mt-6">

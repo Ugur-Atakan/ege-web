@@ -31,13 +31,13 @@ const navigation = {
     { name: 'Contact Us', href: '/contact' }
   ],
   company: [
-    { name: 'About', href: '/about' },
+    { name: 'About', href: '/company' },
     { name: 'Blog', href: '/blog' },
-    { name: 'Customers', href: '/customers' }
+    { name: 'Customers', href: '#.' }
   ],
   legal: [
-    { name: 'Privacy', href: '#' },
-    { name: 'Terms', href: '#' }
+    { name: 'Privacy', href: '/privacy-policy' },
+    { name: 'Terms', href: '/terms-of-service' }
   ],
   social: [
     {

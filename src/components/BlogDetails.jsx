@@ -34,7 +34,7 @@ const Blog = () => {
             const getEntry = async () => {
                 try {
                     await client.getEntry(id).then((entry) => {
-                        console.log(entry.fields.nextPost.fields.previousPost.sys.id);
+                        console.log(entry);
                         setEntry(entry);
                     })
                 } catch (error) {
@@ -130,87 +130,10 @@ const Blog = () => {
                                 </h2>
                             )
                         ))}
-                        <div className="flex justify-between">
-                            <a href={entry.fields.nextPost.fields.previousPost.sys.id}>
-                            <div className="flex gap-4 items-center shadow-lg p-2 rounded-lg bg-white border border-blue-600">
-                                <ArrowUturnDownIcon  className="w-6 text-blue-600"/>
-                                <h1 className="text-blue-600 font-bold text-md">Previous Post</h1>
-                            </div></a>
-                            <a href={entry.fields.nextPost.sys.id}>
-                            <div className="flex gap-4 items-center shadow-lg p-2 rounded-lg bg-white border border-blue-600">
-                                <h1 className="text-blue-600 font-bold text-md">Next Post</h1>
-                            </div></a>
-                        </div>
-                        <div className="flex flex-col md:flex-row overflow-hidden gap-12 mt-12">
-                            <div className="block bg-white rounded-lg shadow-xl w-full md:w-1/2">
-                                <div className="flex-shrink-0 gap">
-                                    <a href={entry.fields.nextPost.fields.previousPost.sys.id} className="block">
-                                        <img className="h-48 w-full object-cover" src={entry.fields.nextPost.fields.previousPost.fields.image.fields.file.url} alt={entry.fields.nextPost.fields.image.fields.file.title} />
-                                    </a>
-                                </div>
-                                <div className="flex flex-1 flex-col justify-between bg-white p-6">
-                                    <div className="flex-1">
-                                        <a href={entry.fields.nextPost.fields.previousPost.sys.id} className="mt-2 block">
-                                            <p className="text-xl font-semibold text-gray-900">{entry.fields.nextPost.fields.previousPost.fields.title}</p>
-                                            <p className="mt-3 text-base text-gray-500">{entry.fields.nextPost.fields.previousPost.fields.slug}</p>
-                                        </a>
-                                    </div>
-                                    <div className="mt-6 flex items-center">
-                                        <div className="flex-shrink-0">
-                                            <a href="#">
-                                                <span className="sr-only">{entry.fields.nextPost.fields.previousPost.fields.author}</span>
-                                            </a>
-                                        </div>
-                                        <div>
-                                            <p className="text-sm font-medium text-gray-900">
-                                                <a href="#" className="hover:underline">
-                                                    {entry.fields.nextPost.fields.previousPost.fields.author}
-                                                </a>
-                                            </p>
-                                            <div className="flex space-x-1 text-sm text-gray-500">
-                                                <time dateTime={entry.fields.nextPost.fields.previousPost.sys.createdAt}>{entry.fields.nextPost.fields.previousPost.sys.createdAt}</time>
-                                                <span aria-hidden="true">&middot;</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="block bg-white rounded-lg shadow-xl w-full md:w-1/2">
-                                <div className="flex-shrink-0">
-                                    <a href={entry.fields.nextPost.sys.id} className=" block">
-                                        <img className="h-48 w-full object-cover" src={entry.fields.nextPost.fields.image.fields.file.url} alt={entry.fields.nextPost.fields.image.fields.file.title} />
-                                    </a>
-                                </div>
-                                <div className="flex flex-1 flex-col justify-between bg-white p-6">
-                                    <div className="flex-1">
-                                        <a href={"blog" + entry.fields.nextPost.sys.id} className="mt-2 block">
-                                            <p className="text-xl font-semibold text-gray-900">{entry.fields.nextPost.fields.title}</p>
-                                            <p className="mt-3 text-base text-gray-500">{entry.fields.nextPost.fields.slug}</p>
-                                        </a>
-                                    </div>
-                                    <div className="mt-6 flex items-center">
-                                        <div className="flex-shrink-0">
-                                            <a href="#">
-                                                <span className="sr-only">{entry.fields.nextPost.fields.author}</span>
-                                            </a>
-                                        </div>
-                                        <div>
-                                            <p className="text-sm font-medium text-gray-900">
-                                                <a href="#" className="hover:underline">
-                                                    {entry.fields.nextPost.fields.author}
-                                                </a>
-                                            </p>
-                                            <div className="flex space-x-1 text-sm text-gray-500">
-                                                <time dateTime={entry.fields.nextPost.sys.createdAt}>{entry.fields.nextPost.sys.createdAt}</time>
-                                                <span aria-hidden="true">&middot;</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 )}
+
             </div>
         </div>
     )
