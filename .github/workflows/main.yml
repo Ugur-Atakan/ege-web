@@ -1,4 +1,4 @@
-name: rs-web
+name: registate PROD
 
 on:
   push:
@@ -27,7 +27,9 @@ jobs:
           cat > config.js << EOF
           window.ob = {};
           window.ob.config = { 
-              apiRoot: "${API_ROOT}",
+              apiRoot: "${API_ROOT}"
           };
-          EOF 
+          EOF
+          ls -l
+          cat config.js
           /usr/local/bin/aws --region eu-central-1 s3 sync . $S3_LOCATION
