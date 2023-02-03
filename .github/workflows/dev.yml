@@ -30,6 +30,4 @@ jobs:
               apiRoot: "${API_ROOT}"
           };
           EOF
-          ls -l
-          cat config.js
           /usr/local/bin/aws --region eu-central-1 s3 sync . $S3_LOCATION
