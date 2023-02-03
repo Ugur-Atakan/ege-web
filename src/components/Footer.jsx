@@ -27,7 +27,7 @@ const navigation = {
     },
   ],
   support: [
-    { name: 'Pricing', href: '/prising' },
+    { name: 'Pricing', href: '/pricing' },
     { name: 'Contact Us', href: '/contact' }
   ],
   company: [
@@ -62,17 +62,19 @@ const navigation = {
 }
 
 export default function Footer() {
-  const [subscribeMail, setSubscribeMail] = useState('')
+  const API_ROOT = window.ob.config.apiRoot;
   const notify = () => {
     toast("Successfully subscribed");
   }
   const submitHandler = (e) => {
     e.preventDefault();
+
+    let email = e.target.email.value;
     let payload = {
-      "email": subscribeMail,
+      "email": email,
     }
     console.log(payload)
-    axios.post('https://api.registate.net/api/newsletter', payload, {
+    axios.post(API_ROOT +'/api/newsletter', payload, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
@@ -87,7 +89,6 @@ export default function Footer() {
       .catch(function (error) {
         console.log(error);
       });
-    setSubscribeMail('');
   }
   return (
     <footer className="bg-white border-t" aria-labelledby="footer-heading">
@@ -165,11 +166,9 @@ export default function Footer() {
               </label>
               <input
                 type="email"
-                name="email-address"
-                id="email-address"
+                name="email"
+                id="email"
                 autoComplete="email"
-                value={subscribeMail}
-                onChange={e => setSubscribeMail(e.target.value)}
                 required
                 className="w-full min-w-0 appearance-none rounded-md border border-gray-300 bg-white py-2 px-4 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:border-blue-500 focus:placeholder-gray-400 focus:outline-none focus:ring-blue-500"
                 placeholder="Enter your email"
@@ -199,6 +198,21 @@ export default function Footer() {
           </p>
         </div>
       </div>
+      <ToastContainer
+            position="bottom-left"
+            autoClose={5000}
+            hideProgressBar={true}
+            newestOnTop={false}
+            closeOnClick
+            toastClassName={()=>
+              "bg-green-600 text-white items-center flex p-4 shadow-lg rounded-lg"
+            }
+            closeButton={()=>"x"}
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
     </footer>
   )
 }

@@ -308,15 +308,15 @@ const countries = [
     { id: 245, name: 'Zimbabwe' }
 ]
 
+const API_ROOT = window.ob.config.apiRoot;
 function OrderInformationPanel(props) {
-
     let packageName = localStorage.getItem('packageName');
     let packagePrice = localStorage.getItem('packagePrice');
 
     return (
         <div className="bg-green-50 shadow sm:rounded-lg">
-            <div className="px-4 py-5 sm:p-6">
-                <div className="sm:flex sm:items-start sm:justify-between">
+            <div className="px-4 py-5 sm:px-4 py-1">
+                <div className="sm:flex sm:items-center sm:justify-between">
                     <div>
                         {packageName && packagePrice && (
                             <h3 className="text-lg font-medium leading-6 text-gray-900">Selected Package: <span className="text-green-700">{packageName} - ${packagePrice}</span></h3>
@@ -360,7 +360,7 @@ function CompanyNameEmailForm(props) {
             companyState: companyState
         }
         console.log(payload)
-        axios.post('https://api.registate.net/api/onboard', payload, {
+        axios.post(API_ROOT +'/api/onboard', payload, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
@@ -369,6 +369,7 @@ function CompanyNameEmailForm(props) {
             .then(function (response) {
                 //Parse the returned json data
                 var jsonData = JSON.parse(JSON.stringify(response.data));
+                console.log(jsonData)
                 if (jsonData.Status) {
                     console.log("Company registered successfully with id: " + jsonData.data.id);
                     localStorage.setItem('onboardingId', jsonData.data.id);
@@ -388,7 +389,7 @@ function CompanyNameEmailForm(props) {
 
     return (
         <div className="bg-white shadow sm:rounded-lg">
-            <div className="px-4 py-5 sm:p-6 mb-12">
+            <div className="px-4 py-5 sm:p-1 mb-12">
                 <h3 className="text-lg font-medium leading-6 text-gray-900">Select a company name</h3>
                 <div className="mt-2 max-w-4xl text-sm text-gray-500">
                     <p>Enter your preferred business name here. We will do a extensive company name search and let you know if its available or not. Your email address will be used to create an account with us so that you can check the status of your application.</p>
@@ -455,7 +456,7 @@ function CompanyContactInfoForm(props) {
         console.log(payload)
 
         //Complete Onboarding Order with backend
-        axios.post('https://api.registate.net/api/onboard-order', payload, {
+        axios.post(API_ROOT +'/api/onboard-order', payload, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
@@ -487,63 +488,65 @@ function CompanyContactInfoForm(props) {
                         <p className="mt-1 text-sm text-gray-500">Use a permanent address where you can receive mail.</p>
                     </div>
                     <div className="mt-5 md:col-span-2 md:mt-0">
-                        <div className="grid grid-cols-6 gap-6">
-                            <div className="col-span-6 sm:col-span-3">
-                                <label htmlFor="firstname" className="block text-sm font-medium text-gray-700">
-                                    First name
-                                </label>
-                                <input
-                                    type="text"
-                                    name="firstname"
-                                    id="firstname"
-                                    autoComplete="given-name"
-                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                                />
-                            </div>
-
-                            <div className="col-span-6 sm:col-span-3">
-                                <label htmlFor="lastname" className="block text-sm font-medium text-gray-700">
-                                    Last name
-                                </label>
-                                <input
-                                    type="text"
-                                    name="lastname"
-                                    id="lastname"
-                                    autoComplete="family-name"
-                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                                />
-                            </div>
-
-                            <div className="col-span-6 sm:col-span-6 lg:col-span-3">
-                                <label htmlFor="emailaddress" className="block text-sm font-medium text-gray-700">
-                                    Email address
-                                </label>
-                                <input
-                                    type="text"
-                                    name="emailaddress"
-                                    id="emailaddress"
-                                    autoComplete="email"
-                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                                />
-                            </div>
-
-                            <div className="col-span-6 sm:col-span-6 lg:col-span-3">
-                                <label htmlFor="phonenumber" className="block text-sm font-medium text-gray-700">
-                                    Phone Number
-                                </label>
-                                <div className="relative mt-1 rounded-md shadow-sm">
+                        <div>
+                            <div className='flex item-center gap-4 md:gap-12 pb-4'>
+                                <div className="w-1/2">
+                                    <label htmlFor="firstname" className="block text-sm font-medium text-gray-700">
+                                        First name
+                                    </label>
                                     <input
                                         type="text"
-                                        name="phonenumber"
-                                        id="phonenumber"
-                                        autoComplete="tel"
+                                        name="firstname"
+                                        id="firstname"
+                                        autoComplete="given-name"
                                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                                        placeholder="+1 (123) 111-22-33"
+                                    />
+                                </div>
+
+                                <div className="w-1/2">
+                                    <label htmlFor="lastname" className="block text-sm font-medium text-gray-700">
+                                        Last name
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="lastname"
+                                        id="lastname"
+                                        autoComplete="family-name"
+                                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                                     />
                                 </div>
                             </div>
+                            <div className='flex item-center gap-4 md:gap-12 pb-4'>
+                                <div className="w-1/2">
+                                    <label htmlFor="emailaddress" className="block text-sm font-medium text-gray-700">
+                                        Email address
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="emailaddress"
+                                        id="emailaddress"
+                                        autoComplete="email"
+                                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                                    />
+                                </div>
 
-                            <div className="col-span-6">
+                                <div className="w-1/2">
+                                    <label htmlFor="phonenumber" className="block text-sm font-medium text-gray-700">
+                                        Phone Number
+                                    </label>
+                                    <div className="relative mt-1 rounded-md shadow-sm">
+                                        <input
+                                            type="text"
+                                            name="phonenumber"
+                                            id="phonenumber"
+                                            autoComplete="tel"
+                                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                                            placeholder="+1 (123) 111-22-33"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-span-6 pb-4">
                                 <label htmlFor="streetaddress" className="block text-sm font-medium text-gray-700">
                                     Street address
                                 </label>
@@ -555,100 +558,101 @@ function CompanyContactInfoForm(props) {
                                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                                 />
                             </div>
+                            <div className='flex-col md:flex-row flex item-center gap-4 md:gap-2 pb-4'>
+                                <div className="w-full md:w-1/4">
+                                    <label htmlFor="city" className="block text-sm font-medium text-gray-700">
+                                        City
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="city"
+                                        id="city"
+                                        autoComplete="address-level2"
+                                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                                    />
+                                </div>
 
-                            <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-                                <label htmlFor="city" className="block text-sm font-medium text-gray-700">
-                                    City
-                                </label>
-                                <input
-                                    type="text"
-                                    name="city"
-                                    id="city"
-                                    autoComplete="address-level2"
-                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                                />
-                            </div>
 
-                            <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                                <label htmlFor="region" className="block text-sm font-medium text-gray-700">
-                                    State / Province
-                                </label>
-                                <select
-                                    name="region"
-                                    id="region"
-                                    autoComplete="address-level1"
-                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                                >
-                                    <option value=""> Select State </option>
-                                    {states.map((state) => (
-                                        <option
-                                            key={state.name}
-                                            value={state.name}
-                                        >
-                                            {state.name}
-                                        </option>
-                                    ))}
-                                </select>
+                                <div className="w-full md:w-1/4">
+                                    <label htmlFor="region" className="block text-sm font-medium text-gray-700">
+                                        State / Province
+                                    </label>
+                                    <select
+                                        name="region"
+                                        id="region"
+                                        autoComplete="address-level1"
+                                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                                    >
+                                        <option value=""> Select State </option>
+                                        {states.map((state) => (
+                                            <option
+                                                key={state.name}
+                                                value={state.name}
+                                            >
+                                                {state.name}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                                <div className="w-full md:w-1/4">
+                                    <label htmlFor="country" className="block text-sm font-medium text-gray-700">
+                                        Country
+                                    </label>
+                                    <select
+                                        id="country"
+                                        name="country"
+                                        autoComplete="country-name"
+                                        className="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
+                                    >
+                                        <option value="">Select Country</option>
+                                        {countries.map((country) => (
+                                            <option
+                                                key={country.name}
+                                                value={country.name}
+                                                id={country.id}
+                                            >
+                                                {country.name}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                                <div className="w-full md:w-1/4" >
+                                    <label htmlFor="postalcode" className="block text-sm font-medium text-gray-700">
+                                        ZIP / Postal code
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="postalcode"
+                                        id="postalcode"
+                                        autoComplete="postalcode"
+                                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                                    />
+                                </div>
                             </div>
-
-                            <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                                <label htmlFor="postalcode" className="block text-sm font-medium text-gray-700">
-                                    ZIP / Postal code
-                                </label>
-                                <input
-                                    type="text"
-                                    name="postalcode"
-                                    id="postalcode"
-                                    autoComplete="postalcode"
-                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                                />
-                            </div>
-
-                            <div className="col-span-6 sm:col-span-3">
-                                <label htmlFor="country" className="block text-sm font-medium text-gray-700">
-                                    Country
-                                </label>
-                                <select
-                                    id="country"
-                                    name="country"
-                                    autoComplete="country-name"
-                                    className="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
-                                >
-                                    <option value="">Select Country</option>
-                                    {countries.map((country) => (
-                                        <option
-                                            key={country.name}
-                                            value={country.name}
-                                            id={country.id}
-                                        >
-                                            {country.name}
-                                        </option>
-                                    ))}
-                                </select>
-                            </div>
-                            <div className="col-span-6">
-                                <label htmlFor="coupon" className="block text-sm font-medium text-gray-700">
-                                    Apply Coupon
-                                </label>
-                                <input
-                                    type="text"
-                                    name="coupon"
-                                    id="coupon"
-                                    className="mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                                />
+                            <div className='block md:flex items-end justify-between'>
+                                <div className="col-span-6">
+                                    <label htmlFor="coupon" className="block text-sm font-medium text-gray-700">
+                                        Apply Coupon
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="coupon"
+                                        id="coupon"
+                                        className="mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                                    />
+                                </div>
+                                <div>
+                                    <button
+                                        type="submit"
+                                        className="mt-3 md:mt-0 inline-flex justify-center rounded-md border border-transparent bg-blue-600 py-3 px-6 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                                    >
+                                        Review and Pay
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div className="flex justify-end">
-                <button
-                    type="submit"
-                    className="ml-3 inline-flex justify-center rounded-md border border-transparent bg-blue-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                >
-                    Review and Pay
-                </button>
             </div>
 
         </form>
@@ -811,7 +815,7 @@ export default function OnboardingForm() {
 
     return (
         <div className="mx-auto max-w-5xl">
-            <div id="OrderInformationDiv" className="mx-auto px-4 sm:px-6 lg:px-8 mt-2">
+            <div id="OrderInformationDiv" className="mx-auto px-4 sm:px-6 lg:px-8 -mt-12">
                 <OrderInformationPanel companyName={companyName} />
             </div>
             <div id="steps" className="mx-auto px-4 sm:px-6 lg:px-8 mt-2">

@@ -7,34 +7,34 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function Contact() {
-  const [firstname, setfirstname] = useState('')
-  const [lastname, setlastname] = useState('')
-  const [phone, setphone] = useState('')
-  const [email, setemail] = useState('')
-  const [subject, setsubject] = useState('')
-  const [message, setmessage] = useState('')
-
+  const API_ROOT = window.ob.config.apiRoot;
   const notify = () => {
     toast("Form submitted successfully");
   }
 
   const submitHandler = (e) => {
     e.preventDefault();
+    let firstName = e.target.firstName.value;
+    let lastName = e.target.lastName.value;
+    let email = e.target.email.value;
+    let phone = e.target.phone.value;
+    let subject = e.target.subject.value;
+    let message = e.target.message.value;
+
     let payload = {
-      "Firstname": firstname,
-      "Lastname": lastname,
-      "Email": email,
-      "Phone": phone,
-      "Subject": subject,
-      "Message": message
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      phone: phone,
+      subject: subject,
+      message: message
     }
     console.log(payload)
-    axios.post('https://api.registate.net/api/contact', payload, {
+    axios.post(API_ROOT + '/api/contact', payload, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
-      },
-      body: JSON.stringify(payload),
+      }
     })
       .then(function (response) {
         var jsonData = JSON.parse(JSON.stringify(response.data));
@@ -44,7 +44,6 @@ export default function Contact() {
       .catch(function (error) {
         console.log(error);
       });
-    setfirstname(''); setlastname(''); setmessage(''); setphone(''); setsubject(''); setmessage(''); setemail('');
   }
 
   return (
@@ -228,16 +227,14 @@ export default function Contact() {
                   <h3 className="text-lg font-medium text-warm-gray-900">Send us a message</h3>
                   <form id='contactform' onSubmit={submitHandler} className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
                     <div>
-                      <label htmlFor="first-name" className="block text-sm font-medium text-warm-gray-900">
+                      <label htmlFor="firstName" className="block text-sm font-medium text-warm-gray-900">
                         First name
                       </label>
                       <div className="mt-1">
                         <input
                           type="text"
-                          name="first-name"
-                          id="first-name"
-                          value={firstname}
-                          onChange={e => setfirstname(e.target.value)}
+                          name="firstName"
+                          id="firstName"
                           required
                           autoComplete="given-name"
                           className="block w-full rounded-md border-warm-gray-300 py-3 px-4 text-warm-gray-900 shadow-sm focus:border-blue-600"
@@ -245,16 +242,14 @@ export default function Contact() {
                       </div>
                     </div>
                     <div>
-                      <label htmlFor="last-name" className="block text-sm font-medium text-warm-gray-900">
+                      <label htmlFor="lastName" className="block text-sm font-medium text-warm-gray-900">
                         Last name
                       </label>
                       <div className="mt-1">
                         <input
                           type="text"
-                          name="last-name"
-                          id="last-name"
-                          value={lastname}
-                          onChange={e => setlastname(e.target.value)}
+                          name="lastN ame"
+                          id="lastName"
                           autoComplete="family-name"
                           className="block w-full rounded-md border-warm-gray-300 py-3 px-4 text-warm-gray-900 shadow-sm focus:border-blue-600"
                         />
@@ -269,8 +264,6 @@ export default function Contact() {
                           id="email"
                           name="email"
                           type="email"
-                          value={email}
-                          onChange={e => setemail(e.target.value)}
                           autoComplete="email"
                           className="block w-full rounded-md border-warm-gray-300 py-3 px-4 text-warm-gray-900 shadow-sm focus:border-blue-600"
                         />
@@ -290,8 +283,6 @@ export default function Contact() {
                           type="text"
                           name="phone"
                           id="phone"
-                          value={phone}
-                          onChange={e => setphone(e.target.value)}
                           autoComplete="tel"
                           className="block w-full rounded-md border-warm-gray-300 py-3 px-4 text-warm-gray-900 shadow-sm focus:border-blue-600"
                           aria-describedby="phone-optional"
@@ -307,8 +298,6 @@ export default function Contact() {
                           type="text"
                           name="subject"
                           id="subject"
-                          value={subject}
-                          onChange={e => setsubject(e.target.value)}
                           className="block w-full rounded-md border-warm-gray-300 py-3 px-4 text-warm-gray-900 shadow-sm focus:border-blue-600"
                         />
                       </div>
@@ -327,8 +316,6 @@ export default function Contact() {
                           id="message"
                           name="message"
                           rows={4}
-                          value={message}
-                          onChange={e => setmessage(e.target.value)}
                           className="block w-full rounded-md border-warm-gray-300 py-3 px-4 text-warm-gray-900 shadow-sm focus:border-blue-600"
                           aria-describedby="message-max"
                         />
@@ -353,10 +340,10 @@ export default function Contact() {
             hideProgressBar={true}
             newestOnTop={false}
             closeOnClick
-            toastClassName={()=>
-              "bg-blue-600 text-white items-center flex p-4 shadow-lg rounded-lg"
+            toastClassName={() =>
+              "bg-green-600 text-white items-center flex p-4 shadow-lg rounded-lg"
             }
-            closeButton={()=>"x"}
+            closeButton={() => "x"}
             rtl={false}
             pauseOnFocusLoss
             draggable
