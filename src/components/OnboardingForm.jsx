@@ -308,8 +308,8 @@ const countries = [
     { id: 245, name: 'Zimbabwe' }
 ]
 
+const API_ROOT = window.ob.config.apiRoot;
 function OrderInformationPanel(props) {
-
     let packageName = localStorage.getItem('packageName');
     let packagePrice = localStorage.getItem('packagePrice');
 
@@ -360,7 +360,7 @@ function CompanyNameEmailForm(props) {
             companyState: companyState
         }
         console.log(payload)
-        axios.post('https://api.registate.net/api/onboard', payload, {
+        axios.post(API_ROOT +'/api/onboard', payload, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
@@ -369,6 +369,7 @@ function CompanyNameEmailForm(props) {
             .then(function (response) {
                 //Parse the returned json data
                 var jsonData = JSON.parse(JSON.stringify(response.data));
+                console.log(jsonData)
                 if (jsonData.Status) {
                     console.log("Company registered successfully with id: " + jsonData.data.id);
                     localStorage.setItem('onboardingId', jsonData.data.id);
@@ -455,7 +456,7 @@ function CompanyContactInfoForm(props) {
         console.log(payload)
 
         //Complete Onboarding Order with backend
-        axios.post('https://api.registate.net/api/onboard-order', payload, {
+        axios.post(API_ROOT +'/api/onboard-order', payload, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'

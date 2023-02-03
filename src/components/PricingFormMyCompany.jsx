@@ -6,8 +6,9 @@ import React from 'react'
 
 import axios from "axios";
 
+const API_ROOT = window.ob.config.apiRoot;
 function Plan(props) {
-
+const API_ROOT = window.ob.config.apiRoot;
   const clickHandler = () => {
       localStorage.setItem("packageName", props.name)
       localStorage.setItem("packageType", props.packageType)
@@ -103,7 +104,7 @@ export function Pricing() {
         entityTypeId: companyTypeId
       }
 
-      axios.post('https://api.registate.net/api/fe/prices', payload, {
+      axios.post(API_ROOT +'/api/fe/prices', payload, {
           headers: {
               'Content-Type': 'application/json',
               'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
@@ -131,7 +132,7 @@ export function Pricing() {
 
   useEffect(() => {
     //get the states from backend api via axios
-    axios.get('https://api.registate.net/api/fe/states', {
+    axios.get(API_ROOT +'/api/fe/states', {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
@@ -145,7 +146,7 @@ export function Pricing() {
     });
 
     //get the states from backend api via axios
-    axios.get('https://api.registate.net/api/settings/entityType', {
+    axios.get(API_ROOT +'/api/settings/entityType', {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
