@@ -262,7 +262,7 @@ export function Pricing() {
           </div>
         </div>
         {showPricingPackages && (
-        <div id="pricingPackages" className="lg:flex lg:justify-center mx-4 mt-16 grid max-w-2xl grid-cols-1 gap-y-10 sm:mx-auto lg:-mx-8 lg:max-w-none lg:grid-cols-3 xl:mx-0 xl:gap-x-8">
+        <div id="pricingPackages" className="lg:flex lg:justify-center mx-4 mt-12 pt-24 grid max-w-2xl grid-cols-1 gap-y-10 sm:mx-auto lg:-mx-8 lg:max-w-none lg:grid-cols-3 xl:mx-0 xl:gap-x-8">
         {
           packagePrices.map((packagePrice, index) => {
               if (companyState !== "Delaware") {

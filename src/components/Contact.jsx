@@ -7,10 +7,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function Contact() {
-  const [firstname, setfirstname] = useState('')
-  const [lastname, setlastname] = useState('')
+  const [firstName, setfirstName] = useState('')
+  const [lastName, setlastName] = useState('')
   const [phone, setphone] = useState('')
-  const [email, setemail] = useState('')
+  const [eMail, seteMail] = useState('')
   const [subject, setsubject] = useState('')
   const [message, setmessage] = useState('')
 
@@ -18,17 +18,18 @@ export default function Contact() {
     toast("Form submitted successfully");
   }
 
+
+
   const submitHandler = (e) => {
     e.preventDefault();
     let payload = {
-      "Firstname": firstname,
-      "Lastname": lastname,
-      "Email": email,
-      "Phone": phone,
-      "Subject": subject,
-      "Message": message
+      firstName: firstName,
+      lastName: lastName,
+      eMail: eMail,
+      phone: phone,
+      subject: subject,
+      message: message
     }
-    console.log(payload)
     axios.post('https://api.registate.net/api/contact', payload, {
       headers: {
         'Content-Type': 'application/json',
@@ -36,6 +37,7 @@ export default function Contact() {
       },
       body: JSON.stringify(payload),
     })
+    console.log(payload)
       .then(function (response) {
         var jsonData = JSON.parse(JSON.stringify(response.data));
         console.log(jsonData)
@@ -44,7 +46,7 @@ export default function Contact() {
       .catch(function (error) {
         console.log(error);
       });
-    setfirstname(''); setlastname(''); setmessage(''); setphone(''); setsubject(''); setmessage(''); setemail('');
+    setfirstName(''); setlastName(''); setmessage(''); setphone(''); setsubject(''); setmessage(''); seteMail('');
   }
 
   return (
@@ -236,8 +238,8 @@ export default function Contact() {
                           type="text"
                           name="first-name"
                           id="first-name"
-                          value={firstname}
-                          onChange={e => setfirstname(e.target.value)}
+                          value={firstName}
+                          onChange={e => setfirstName(e.target.value)}
                           required
                           autoComplete="given-name"
                           className="block w-full rounded-md border-warm-gray-300 py-3 px-4 text-warm-gray-900 shadow-sm focus:border-blue-600"
@@ -253,8 +255,8 @@ export default function Contact() {
                           type="text"
                           name="last-name"
                           id="last-name"
-                          value={lastname}
-                          onChange={e => setlastname(e.target.value)}
+                          value={lastName}
+                          onChange={e => setlastName(e.target.value)}
                           autoComplete="family-name"
                           className="block w-full rounded-md border-warm-gray-300 py-3 px-4 text-warm-gray-900 shadow-sm focus:border-blue-600"
                         />
@@ -269,8 +271,8 @@ export default function Contact() {
                           id="email"
                           name="email"
                           type="email"
-                          value={email}
-                          onChange={e => setemail(e.target.value)}
+                          value={eMail}
+                          onChange={e => seteMail(e.target.value)}
                           autoComplete="email"
                           className="block w-full rounded-md border-warm-gray-300 py-3 px-4 text-warm-gray-900 shadow-sm focus:border-blue-600"
                         />
@@ -354,7 +356,7 @@ export default function Contact() {
             newestOnTop={false}
             closeOnClick
             toastClassName={()=>
-              "bg-blue-600 text-white items-center flex p-4 shadow-lg rounded-lg"
+              "bg-green-600 text-white items-center flex p-4 shadow-lg rounded-lg"
             }
             closeButton={()=>"x"}
             rtl={false}

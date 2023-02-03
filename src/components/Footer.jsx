@@ -27,7 +27,7 @@ const navigation = {
     },
   ],
   support: [
-    { name: 'Pricing', href: '/prising' },
+    { name: 'Pricing', href: '/pricing' },
     { name: 'Contact Us', href: '/contact' }
   ],
   company: [
@@ -199,6 +199,21 @@ export default function Footer() {
           </p>
         </div>
       </div>
+      <ToastContainer
+            position="bottom-left"
+            autoClose={5000}
+            hideProgressBar={true}
+            newestOnTop={false}
+            closeOnClick
+            toastClassName={()=>
+              "bg-green-600 text-white items-center flex p-4 shadow-lg rounded-lg"
+            }
+            closeButton={()=>"x"}
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
     </footer>
   )
 }
