@@ -52,7 +52,7 @@ function TypingHeader() {
       <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
         <span className="block xl:inline">We are your</span>
       </h1>
-      <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
+      <h1 className="flex text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
         <span className="block text-blue-600 xl:inline">{text}</span>
         <span className="text-yellow-500">|</span>
       </h1>
