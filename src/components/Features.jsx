@@ -50,7 +50,7 @@ const tabs = [
         icon: InboxIcon,
         executivedesc: "We use Registate's mailbox services and they have helped us to obtain certified copies of some State documents. Smooth, fast and high quality service. Highly recommend them.",
         executivetitle: 'Ufuk Dag, CEO at Cameralyze Inc',
-        executiveimg: ufuk ,
+        executiveimg: ufuk,
         imageSrc: 'https://chiselspace.com/wp-content/uploads/2017/09/digital-mail-2-1-850x429.jpg',
         imageAlt: 'Maple organizer base with slots, supporting white polycarbonate trays of various sizes.',
       },
@@ -83,7 +83,7 @@ const tabs = [
         icon: InboxIcon,
         executivedesc: "Registate made the process of opening a bank account in the US quick and easy. Their team provided expert guidance and all necessary documents, resulting in a stress-free experience.",
         executivetitle: 'Cihan Sahin, CEO of OpsBeacon Inc.',
-        executiveimg:mert,
+        executiveimg: mert,
         imageSrc: 'https://jupiter.money/content/images/2021/11/Savings_Account.jpg',
         imageAlt: 'Maple organizer base with slots, supporting white polycarbonate trays of various sizes.',
       },
@@ -138,16 +138,21 @@ export default function Example() {
                   {tab.features.map((feature) => (
                     <div key={feature.name} className="flex flex-col-reverse lg:grid lg:grid-cols-12 lg:gap-x-8">
                       <div className="mt-6 lg:col-span-5 lg:mt-0">
-                        <div>
-                          <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-600">
-                            <feature.icon className="h-8 w-8 text-white" aria-hidden="true" />
-                          </span>
+                        <div className='flex items-center gap-4'>
+                          <div>
+                            <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-600">
+                              <feature.icon className="h-8 w-8 text-white" aria-hidden="true" />
+                            </span>
+                          </div>
+                          <div>
+                            <h2 className="text-3xl font-bold tracking-tight text-gray-900">{feature.name}</h2>
+                          </div>
                         </div>
-                        <div className="mt-6">
-                          <h2 className="text-3xl font-bold tracking-tight text-gray-900">{feature.name}</h2>
-                          <p className="mt-4 text-lg text-gray-500">
-                            {feature.description}
-                          </p>
+                          <div className="mt-6">
+                            <p className="mt-4 text-lg text-gray-500">
+                              {feature.description}
+                            </p>
+                          </div>
                           <div className="mt-6">
                             <a
                               href={feature.href}
@@ -156,7 +161,7 @@ export default function Example() {
                               {feature.button}
                             </a>
                           </div>
-                        </div>{feature.executivetitle && <div className="mt-8 border-t border-gray-200 pt-6">
+                        {feature.executivetitle && <div className="mt-8 border-t border-gray-200 pt-6">
                           <blockquote>
                             <div>
                               <p className="text-base text-gray-500">
@@ -177,7 +182,7 @@ export default function Example() {
                             </footer>
                           </blockquote>
                         </div>}
-                        
+
                       </div>
                       <div className="lg:col-span-7">
                         <div className="aspect-w-2 aspect-h-2 overflow-hidden rounded-lg bg-gray-100 sm:aspect-w-5 sm:aspect-h-2">
@@ -185,13 +190,13 @@ export default function Example() {
                         </div>
                       </div>
                     </div>
-                  ))}
-                </Tab.Panel>
               ))}
-            </Tab.Panels>
-          </Tab.Group>
-        </div>
-      </section>
+            </Tab.Panel>
+              ))}
+          </Tab.Panels>
+        </Tab.Group>
     </div>
+      </section >
+    </div >
   )
 }
