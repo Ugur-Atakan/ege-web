@@ -69,7 +69,7 @@ const menu1 = [
 ]
 
 const pricing = [
-  { name: 'Form My Company', href: '/form-your-company', desc: 'Remain compliant', icon: BuildingOfficeIcon },
+  { name: 'Form My Company', href: '/pricing/form-your-company', desc: 'Remain compliant', icon: BuildingOfficeIcon },
   { name: 'Other Services', href: '/pricing/other-services', desc: 'Secure registered agent service online', icon: ReceiptPercentIcon },
 ]
 
@@ -157,59 +157,10 @@ export function Navbar() {
           <div className="hidden md:flex md:flex-1 md:items-center md:justify-between">
             <Popover.Group as="nav" className="flex space-x-10">
               <Popover>
-                {({ open }) => (
-                  <>
-                    <Popover.Button
-                      className={classNames(
-                        open ? 'text-gray-900' : 'text-gray-500',
-                        'group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
-                      )}
-                    >
-                      <span>Pricing</span>
-                      <ChevronDownIcon
-                        className={classNames(
-                          open ? 'text-gray-600' : 'text-gray-400',
-                          'ml-2 h-5 w-5 group-hover:text-gray-500'
-                        )}
-                        aria-hidden="true"
-                      />
-                    </Popover.Button>
-
-                    <Transition
-                      as={Fragment}
-                      enter="transition ease-out duration-200"
-                      enterFrom="opacity-0 -translate-y-1"
-                      enterTo="opacity-100 translate-y-0"
-                      leave="transition ease-in duration-150"
-                      leaveFrom="opacity-100 translate-y-0"
-                      leaveTo="opacity-0 -translate-y-1"
-                    >
-                      <Popover.Panel className="absolute top-full z-10 hidden transform bg-white shadow-lg md:block">
-                        <div className="mx-auto grid max-w-7xl gap-y-6 px-4 py-6 sm:gap-8 sm:px-6 sm:py-8 lg:px-8 lg:py-8">
-                        <ul role="list" className=" space-y-6">
-                                {pricing.map((item) => (
-                                  <li key={item.name} className="flow-root">
-                                    <a
-                                      href={item.href}
-                                      className="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-gray-50"
-                                    >
-                                      <item.icon className="h-6 w-6 flex-shrink-0 text-blue-600" aria-hidden="true" />
-                                      <div className='flex flex-col'>
-                                        <div className='flex gap-1 items-center'>
-                                          <span className="ml-4">{item.name}</span>
-                                          {item.release && <span className='text-blue-600 text-xs'>{item.release}</span>}
-                                        </div>
-                                        <span className='ml-4 text-gray-400 text-xs'>{item.desc}</span>
-                                      </div>
-                                    </a>
-                                  </li>
-                                ))}
-                              </ul>
-                        </div>
-                      </Popover.Panel>
-                    </Transition>
-                  </>
-                )}
+                <button
+                  className='text-gray-500 group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:text-black focus:ring-blue-500 focus:ring-offset-2'>
+                  <a href='/pricing/form-my-company'><span>Pricing</span></a>
+                </button>
               </Popover>
               <Popover>
                 {({ open }) => (
