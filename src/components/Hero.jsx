@@ -95,7 +95,7 @@ export default function Hero() {
                 >
                   Form My Company
                 </a>
-                <div className="inline-flex items-center divide-x divide-gray-300 mx-auto">
+                <div className="flex flex-col md:flex-row py-3 gap-2 md:gap-0  md:py-0 md:inline-flex items-center divide-x divide-gray-300 mx-auto">
                   <div className="flex flex-shrink-0 pr-5">
                     <StarIcon className="h-5 w-5 text-yellow-400" aria-hidden="true" />
                     <StarIcon className="h-5 w-5 text-yellow-400" aria-hidden="true" />
