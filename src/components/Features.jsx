@@ -136,7 +136,7 @@ export default function Example() {
               {tabs.map((tab) => (
                 <Tab.Panel key={tab.name} className="space-y-16 pt-10 lg:pt-16">
                   {tab.features.map((feature) => (
-                    <div key={feature.name} className="flex flex-col-reverse lg:grid lg:grid-cols-12 lg:gap-x-8">
+                    <div key={feature.name} className="flex flex-col-reverse outline-none lg:grid lg:grid-cols-12 lg:gap-x-8">
                       <div className="mt-6 lg:col-span-5 lg:mt-0">
                         <div className='flex items-center gap-4'>
                           <div>
