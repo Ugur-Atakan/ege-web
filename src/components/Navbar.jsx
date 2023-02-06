@@ -43,9 +43,9 @@ import Logo from '../images/logo2x.png.webp'
 
 const menu1 = [
   {
-    name: 'Form Your Company',
+    name: 'Form My Company',
     description: 'Turning your idea into business',
-    href: '/form-your-company',
+    href: '/pricing/form-my-company',
     icon: BuildingOfficeIcon,
   },
   {
