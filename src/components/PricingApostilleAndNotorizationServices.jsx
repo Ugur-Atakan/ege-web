@@ -563,7 +563,7 @@ export function Pricing() {
             It doesn't matter if you're just starting or scaling up your business, we have a carefully crafted and the most cost efficient plan for you.
           </p>
         </div>
-        <div className="grid grid-cols-2 mx-auto py-12 max-w-4xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 mx-auto py-12 max-w-4xl">
           <div id="companyStateDiv" className="flex flex-col pr-1">
             <div>
             <select
@@ -608,7 +608,7 @@ export function Pricing() {
           </div>
         </div>
         {showPricingPackages && (
-        <div id="pricingPackages" className="lg:flex lg:justify-center mx-4 mt-16 grid max-w-2xl grid-cols-1 gap-y-10 sm:mx-auto lg:-mx-8 lg:max-w-none lg:grid-cols-3 xl:mx-0 xl:gap-x-8">
+        <div id="pricingPackages" className="flex flex-col-reverse lg:flex lg:justify-center mx-4 mt-16 max-w-2xl grid-cols-1 gap-y-10 sm:mx-auto lg:-mx-8 lg:max-w-none lg:grid-cols-3 xl:mx-0 xl:gap-x-8">
         {
           packagePrices.map((packagePrice, index) => {
               let item = packageDetails[companyType.toLowerCase()+(index+1)]

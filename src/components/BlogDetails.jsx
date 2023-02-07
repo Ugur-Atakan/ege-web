@@ -62,6 +62,7 @@ const Blog = () => {
                 }
                 <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
                     {posts.map((post) => (
+                        <a href={"/blog/" + post.sys.id}>
                         <div key={post.title} className="flex flex-col overflow-hidden rounded-lg shadow-lg">
                             <div className="flex-shrink-0">
                                 <img className="h-48 w-full object-cover" src={post.fields.image.fields.file.url} alt={post.fields.image.fields.title} />
@@ -93,7 +94,7 @@ const Blog = () => {
                                 </div>
                             </div>
                         </div>
-
+                        </a>
                     ))}
                 </div>
 

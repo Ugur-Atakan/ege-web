@@ -172,7 +172,7 @@ export function PostOrder() {
                       </Transition.Child>
               
                       <div className="fixed inset-0 z-10 overflow-y-auto">
-                        <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                        <div className="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0">
                           <Transition.Child
                             as={Fragment}
                             enter="ease-out duration-300"
@@ -198,14 +198,21 @@ export function PostOrder() {
                                   </div>
                                 </div>
                               </div>
-                              <div className="mt-5 sm:mt-6">
+                              <div className="mt-5 sm:mt-6 flex flex-col gap-4">
                                 <button
                                   type="button"
                                   className="inline-flex w-full justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:text-sm"
                                   onClick={() => handleExitFailed(false)}
                                 >
-                                  Go back
+                                  Finish Payment
                                 </button>
+                                  <a href='registate.com'>
+                                  <button
+                                  type="button"
+                                  className="inline-flex w-full justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:text-sm"
+                                  
+                                >Go back to home page </button>
+                                  </a>
                               </div>
                             </Dialog.Panel>
                           </Transition.Child>

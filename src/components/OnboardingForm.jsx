@@ -324,6 +324,11 @@ function OrderInformationPanel(props) {
                         {props.companyName && (
                             <h3 className="text-lg font-medium leading-6 text-gray-900">Selected Name: <span className="text-green-700">{props.companyName}</span></h3>
                         )}
+                        <h2 className="block md:hidden font-medium tracking-tight text-gray-900 text-lg">
+                            You are forming <span className="text-blue-700">{
+                                localStorage.getItem('companyType') === 'LLC' ? 'an LLC' : 'a Corporation'
+                            }</span> in <span className="text-blue-600">{localStorage.getItem('companyState')}</span>
+                        </h2>
                     </div>
                     <div className="mt-5 sm:mt-0 sm:ml-6 sm:flex sm:flex-shrink-0 sm:items-center">
                         <button
@@ -360,7 +365,7 @@ function CompanyNameEmailForm(props) {
             companyState: companyState
         }
         console.log(payload)
-        axios.post(API_ROOT +'/api/onboard', payload, {
+        axios.post(API_ROOT + '/api/onboard', payload, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
@@ -456,7 +461,7 @@ function CompanyContactInfoForm(props) {
         console.log(payload)
 
         //Complete Onboarding Order with backend
-        axios.post(API_ROOT +'/api/onboard-order', payload, {
+        axios.post(API_ROOT + '/api/onboard-order', payload, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
@@ -821,7 +826,7 @@ export default function OnboardingForm() {
             <div id="steps" className="mx-auto px-4 sm:px-6 lg:px-8 mt-2">
                 <Steps />
             </div>
-            <div id="description" className="px-6 text-center">
+            <div id="description" className="hidden md:block px-6 text-center">
                 <h2 className="mt-6 font-bold tracking-tight text-gray-900 text-5xl">
                     You are forming <span className="text-blue-700">{
                         localStorage.getItem('companyType') === 'LLC' ? 'an LLC' : 'a Corporation'

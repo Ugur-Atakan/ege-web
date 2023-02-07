@@ -52,7 +52,7 @@ function TypingHeader() {
       <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
         <span className="block xl:inline">We are your</span>
       </h1>
-      <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
+      <h1 className="flex text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
         <span className="block text-blue-600 xl:inline">{text}</span>
         <span className="text-yellow-500">|</span>
       </h1>
@@ -95,7 +95,7 @@ export default function Hero() {
                 >
                   Form My Company
                 </a>
-                <div className="inline-flex items-center divide-x divide-gray-300 mx-auto">
+                <div className="flex flex-col md:flex-row py-3 gap-2 md:gap-0  md:py-0 md:inline-flex items-center divide-x divide-gray-300 mx-auto">
                   <div className="flex flex-shrink-0 pr-5">
                     <StarIcon className="h-5 w-5 text-yellow-400" aria-hidden="true" />
                     <StarIcon className="h-5 w-5 text-yellow-400" aria-hidden="true" />
