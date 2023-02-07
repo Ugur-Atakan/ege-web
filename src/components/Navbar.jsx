@@ -279,7 +279,7 @@ export function Navbar() {
                         'group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
                       )}
                     >
-                      <span>Recources and Support</span>
+                      <span>Resources and Support</span>
                       <ChevronDownIcon
                         className={classNames(
                           open ? 'text-gray-600' : 'text-gray-400',
