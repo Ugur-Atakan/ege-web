@@ -348,7 +348,16 @@ function OrderInformationPanel(props) {
     )
 }
 function CompanyNameEmailForm(props) {
+    const [email, setEmail] = useState('');
+    const [companyName, setcompanyName] = useState('');
 
+    const onEmailChange = (evt) => {
+        setEmail(evt.target.value);
+    };
+
+    const onCompanyNameChange = (evt) => {
+        setcompanyName(evt.target.value);
+    };
     function formSubmitHandler(e) {
         e.preventDefault();
         let new_company_name = e.target.companyName.value;
@@ -379,6 +388,7 @@ function CompanyNameEmailForm(props) {
                     console.log("Company registered successfully with id: " + jsonData.data.id);
                     localStorage.setItem('onboardingId', jsonData.data.id);
                     localStorage.setItem('companyName', new_company_name);
+                    localStorage.setItem('userEmail', userEmail);
                     props.setCompanyName(new_company_name);
 
                     //hide the form element and show the next step
@@ -394,23 +404,23 @@ function CompanyNameEmailForm(props) {
 
     return (
         <div className="bg-white shadow sm:rounded-lg">
-            <div className="px-4 py-5 sm:p-1 mb-12">
+            <div className="px-4 py-5 sm:p-5 mb-12">
                 <h3 className="text-lg font-medium leading-6 text-gray-900">Select a company name</h3>
                 <div className="mt-2 max-w-4xl text-sm text-gray-500">
                     <p>Enter your preferred business name here. We will do a extensive company name search and let you know if its available or not. Your email address will be used to create an account with us so that you can check the status of your application.</p>
                 </div>
                 <form className="mt-5 sm:flex sm:items-center" onSubmit={formSubmitHandler}>
-                    <div className="w-full sm:max-w-sm">
-                        <div className="mt-4">
+                    <div className="w-full sm:max-w-md">
+                        <div className="mt-0">
                             <label htmlFor="companyName" className="sr-only">Company Name</label>
-                            <input type="text" name="companyName" id="companyName" className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="Company Name"></input>
+                            <input type="text" value={companyName} onChange={onCompanyNameChange} name="companyName" id="companyName" className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="Company Name" required></input>
                         </div>
                         <div className="mt-4">
                             <label htmlFor="userEmail" className="sr-only">Email</label>
-                            <input type="email" name="userEmail" id="userEmail" className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="you@example.com"></input>
+                            <input type="email" value={email} onChange={onEmailChange} name="userEmail" id="userEmail" className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="you@example.com" required></input>
                         </div>
                         <div className="mt-4">
-                            <button type="submit" className="inline-flex w-full items-center justify-center rounded-md border border-transparent bg-blue-600 px-16 py-3 font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:mt-0 sm:w-auto sm:text-sm">
+                            <button type="submit" className={email === '' || companyName === '' ? "inline-flex w-full items-center justify-center rounded-md border border-transparent bg-blue-300 px-16 py-3 font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:mt-0 sm:w-auto sm:text-sm pointer-events-none" : "inline-flex w-full items-center justify-center rounded-md border border-transparent bg-blue-600 px-16 py-3 font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:mt-0 sm:w-auto sm:text-sm"}>
                                 Select Company Name
                             </button>
                             <p className="text-xs leading-5 text-gray-500">
@@ -436,6 +446,43 @@ function CompanyNameEmailForm(props) {
     )
 }
 function CompanyContactInfoForm(props) {
+    const [name, setName] = useState('');
+    const [lastname, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [street, setStreet] = useState('');
+    const [city, setCity] = useState('');
+    const [state, setState] = useState('');
+    const [country, setCountry] = useState('');
+    const [zip, setZip] = useState('');
+    const[phone, setPhone] = useState('');
+
+    const onNameChange = (evt) => {
+        setName(evt.target.value);
+    };
+    const onlastNameChange = (evt) => {
+        setLastName(evt.target.value);
+    };
+    const onEmailChange = (evt) => {
+        setEmail(evt.target.value);
+    };
+    const onStreetChange = (evt) => {
+        setStreet(evt.target.value);
+    };
+    const onStateChange = (evt) => {
+        setState(evt.target.value);
+    };
+    const onCountryChange = (evt) => {
+        setCountry(evt.target.value);
+    };
+    const onZipChange = (evt) => {
+        setZip(evt.target.value);
+    };
+    const onCityChange = (evt) => {
+        setCity(evt.target.value);
+    };
+    const onPhoneChange = (evt) => {
+        setPhone(evt.target.value);
+    }
 
     const formSubmitHandler = (e) => {
         e.preventDefault();
@@ -458,7 +505,6 @@ function CompanyContactInfoForm(props) {
             "packageType": packageType,
             "couponCode": couponCode
         }
-        console.log(payload)
 
         //Complete Onboarding Order with backend
         axios.post(API_ROOT + '/api/onboard-order', payload, {
@@ -484,6 +530,7 @@ function CompanyContactInfoForm(props) {
             });
     }
 
+
     return (
         <form className="space-y-6" onSubmit={formSubmitHandler} p>
             <div className="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6">
@@ -504,6 +551,8 @@ function CompanyContactInfoForm(props) {
                                         name="firstname"
                                         id="firstname"
                                         autoComplete="given-name"
+                                        required
+                                        onChange={onNameChange}
                                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                                     />
                                 </div>
@@ -517,6 +566,8 @@ function CompanyContactInfoForm(props) {
                                         name="lastname"
                                         id="lastname"
                                         autoComplete="family-name"
+                                        required
+                                        onChange={onlastNameChange}
                                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                                     />
                                 </div>
@@ -531,6 +582,9 @@ function CompanyContactInfoForm(props) {
                                         name="emailaddress"
                                         id="emailaddress"
                                         autoComplete="email"
+                                        required
+                                        onChange={onEmailChange}
+                                        value={localStorage.getItem('userEmail')}
                                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                                     />
                                 </div>
@@ -545,6 +599,8 @@ function CompanyContactInfoForm(props) {
                                             name="phonenumber"
                                             id="phonenumber"
                                             autoComplete="tel"
+                                            required
+                                            onChange={onPhoneChange}
                                             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                                             placeholder="+1 (123) 111-22-33"
                                         />
@@ -559,6 +615,8 @@ function CompanyContactInfoForm(props) {
                                     type="text"
                                     name="streetaddress"
                                     id="streetaddress"
+                                    required
+                                    onChange={onStreetChange}
                                     autoComplete="street-address"
                                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                                 />
@@ -572,6 +630,8 @@ function CompanyContactInfoForm(props) {
                                         type="text"
                                         name="city"
                                         id="city"
+                                        required
+                                        onChange={onCityChange}
                                         autoComplete="address-level2"
                                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                                     />
@@ -586,6 +646,8 @@ function CompanyContactInfoForm(props) {
                                         name="region"
                                         id="region"
                                         autoComplete="address-level1"
+                                        required
+                                        onChange={onStateChange}
                                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                                     >
                                         <option value=""> Select State </option>
@@ -607,6 +669,7 @@ function CompanyContactInfoForm(props) {
                                         id="country"
                                         name="country"
                                         autoComplete="country-name"
+                                        onChange={onCountryChange}
                                         className="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
                                     >
                                         <option value="">Select Country</option>
@@ -630,6 +693,8 @@ function CompanyContactInfoForm(props) {
                                         name="postalcode"
                                         id="postalcode"
                                         autoComplete="postalcode"
+                                        required
+                                        onChange={onZipChange}
                                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                                     />
                                 </div>
@@ -643,13 +708,14 @@ function CompanyContactInfoForm(props) {
                                         type="text"
                                         name="coupon"
                                         id="coupon"
+                                        required
                                         className="mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                                     />
                                 </div>
                                 <div>
                                     <button
                                         type="submit"
-                                        className="mt-3 md:mt-0 inline-flex justify-center rounded-md border border-transparent bg-blue-600 py-3 px-6 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                                        className={name==='' || lastname ==='' || email === '' || street ==='' || zip ==='' || phone ==='' ? "bg-blue-300 py-3 px-6 rounded-md text-white pointer-events-none" :"mt-3 md:mt-0 inline-flex justify-center rounded-md border border-transparent bg-blue-600 py-3 px-6 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" }
                                     >
                                         Review and Pay
                                     </button>
@@ -696,7 +762,10 @@ function Steps(props) {
                                 )}
                             >
                                 {step.status === 'complete' ? (
-                                    <a href={step.href} className="group">
+                                    <a href={step.href} onClick={() => {
+                                        localStorage.clear()
+                                        window.location.href = "/pricing/form-my-company"
+                                    }} className="group">
                                         <span
                                             className="absolute top-0 left-0 h-full w-1 bg-transparent group-hover:bg-gray-200 lg:bottom-0 lg:top-auto lg:h-1 lg:w-full"
                                             aria-hidden="true"

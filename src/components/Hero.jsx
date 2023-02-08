@@ -6,14 +6,6 @@ import { Popover, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Logo from '../images/registatelogo.svg'
 
-
-const navigation = [
-  { name: 'Pricing', href: 'pricing' },
-  { name: 'Features', href: '#features' },
-  { name: 'Testimonials', href: '#testimonials' },
-  { name: 'FAQs', href: '#faqs' },
-]
-
 function TypingHeader() {
   const [text, setText] = useState('');
   const [messageIndex, setMessageIndex] = useState(0);
@@ -52,7 +44,7 @@ function TypingHeader() {
       <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
         <span className="block xl:inline">We are your</span>
       </h1>
-      <h1 className="flex text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
+      <h1 className="flex md:justify-center text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
         <span className="block text-blue-600 xl:inline">{text}</span>
         <span className="text-yellow-500">|</span>
       </h1>
@@ -68,7 +60,7 @@ export default function Hero() {
     }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll);
-},[])
+  }, [])
   return (
     <>
       <div className="relative overflow-hidden bg-white">
@@ -95,15 +87,15 @@ export default function Hero() {
                 >
                   Form My Company
                 </a>
-                <div className="flex flex-col md:flex-row py-3 gap-2 md:gap-0  md:py-0 md:inline-flex items-center divide-x divide-gray-300 mx-auto">
-                  <div className="flex flex-shrink-0 pr-5">
+                <div className="flex flex-col md:flex-row py-3 gap-2 md:gap-0  md:py-0 md:inline-flex items-center md:divide-x md:divide-gray-300 mx-auto mt-4">
+                  <div className="flex flex-shrink-0">
                     <StarIcon className="h-5 w-5 text-yellow-400" aria-hidden="true" />
                     <StarIcon className="h-5 w-5 text-yellow-400" aria-hidden="true" />
                     <StarIcon className="h-5 w-5 text-yellow-400" aria-hidden="true" />
                     <StarIcon className="h-5 w-5 text-yellow-400" aria-hidden="true" />
                     <StarIcon className="h-5 w-5 text-yellow-400" aria-hidden="true" />
                   </div>
-                  <div className="min-w-0 flex-1 py-1 pl-5 text-sm text-gray-500 sm:py-3">
+                  <div className=" min-w-0 flex-1 py-1 text-sm text-gray-500 sm:py-3">
                     <span className="font-medium text-gray-900">Rated 5 stars</span> by over{' '}
                     <span className="font-medium text-blue-600">100+ happy customers</span>
                   </div>

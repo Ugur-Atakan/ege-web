@@ -218,8 +218,8 @@ export function Pricing() {
             It doesn't matter if you're just starting or scaling up your business, we have a carefully crafted and the most cost efficient plan for you.
           </p>
         </div>
-        <div className="grid grid-cols-2 mx-auto py-12 max-w-4xl">
-          <div id="companyStateDiv" className="flex flex-col pr-1">
+        <div className="flex flex-col md:grid grid-cols-2 mx-auto py-12 max-w-4xl">
+          <div id="companyStateDiv" className="flex flex-col md:pr-1">
             <div>
             <select
               id="companyState"
@@ -242,7 +242,7 @@ export function Pricing() {
 
             </div>
           </div>
-          <div id="companyTypeDiv" className="flex flex-col pl-1">
+          <div id="companyTypeDiv" className="flex flex-col md:pl-1">
             <select
               id="companyType"
               name="companyType"
