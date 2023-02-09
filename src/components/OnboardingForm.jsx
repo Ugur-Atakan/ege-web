@@ -710,7 +710,7 @@ function CompanyContactInfoForm(props) {
                                         className="mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                                     />
                                 </div>
-                                <div>
+                                <div className='mt-4 md:mt-0'>
                                     <button
                                         type="submit"
                                         className={name==='' || lastname ==='' || email === '' || street ==='' || zip ==='' || phone ==='' ? "bg-blue-300 py-3 px-6 rounded-md text-white pointer-events-none" :"mt-3 md:mt-0 inline-flex justify-center rounded-md border border-transparent bg-blue-600 py-3 px-6 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" }

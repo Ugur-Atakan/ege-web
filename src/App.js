@@ -34,6 +34,7 @@ import DoingBusinessAs from './routes/doing-business-as';
 import Apostille from './routes/apostille';
 import AccountOpeningSupport from './routes/account-opening-support';
 import Company from './routes/company';
+import '../src/locales/en/en.js'
 const App = () => {
   return (
       <Router>
