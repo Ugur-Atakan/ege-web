@@ -70,7 +70,7 @@ function classNames(...classes) {
 
 export default function Example() {
   return (
-    <div className="bg-white">
+    <div className="bg-slate-50">
       <section aria-labelledby="features-heading" className="mx-auto max-w-7xl py-32 sm:px-2 lg:px-8">
         <div className="mx-auto max-w-2xl px-4 lg:max-w-none lg:px-0">
           {tabs.map((feature) => (
