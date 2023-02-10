@@ -11,6 +11,15 @@ export default function Contact() {
   const notify = () => {
     toast("Form submitted successfully");
   }
+  const [message, setMessage] = useState('');
+
+  const messageonChange = (e) => {
+    setMessage(e.target.value)
+  }
+
+  if (message?.length >= 500) {
+    toast("Maximum number of characters 500");
+  }
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -308,7 +317,7 @@ export default function Contact() {
                           Message
                         </label>
                         <span id="message-max" className="text-sm text-warm-gray-500">
-                          Max. 500 characters
+                          Max {500 - message.length} character
                         </span>
                       </div>
                       <div className="mt-1">
@@ -316,6 +325,9 @@ export default function Contact() {
                           id="message"
                           name="message"
                           rows={4}
+                          value={message}
+                          maxlength="500"
+                          onChange={messageonChange}
                           className="block w-full rounded-md border-warm-gray-300 py-3 px-4 text-warm-gray-900 shadow-sm focus:border-blue-600"
                           aria-describedby="message-max"
                         />
@@ -341,7 +353,7 @@ export default function Contact() {
             newestOnTop={false}
             closeOnClick
             toastClassName={() =>
-              "bg-green-600 text-white items-center flex p-4 shadow-lg rounded-lg"
+            "bg-green-600 text-white items-center flex p-4 shadow-lg rounded-lg"
             }
             closeButton={() => "x"}
             rtl={false}
