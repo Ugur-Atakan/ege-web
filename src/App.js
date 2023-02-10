@@ -34,6 +34,8 @@ import DoingBusinessAs from './routes/doing-business-as';
 import Apostille from './routes/apostille';
 import AccountOpeningSupport from './routes/account-opening-support';
 import Company from './routes/company';
+import AllProducts from './routes/all-products';
+
 import '../src/locales/en/en.js'
 const App = () => {
   return (
@@ -76,6 +78,7 @@ const App = () => {
             <Route exact path="/pricing/virtual-mailbox" element={<PricingVirtualMailbox/>}/>
             <Route exact path="/post-order" element={<PostOrder/>}/>
             <Route path="*" elemenvt={<Home/>}/>
+            <Route exact path='/all-products' element={<AllProducts/>}/>
           </Routes>
         </div>
       </Router>

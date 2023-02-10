@@ -407,7 +407,7 @@ export function Navbar() {
                     ))}
                   </div>
                   <div className="mt-8 text-base">
-                    <a href="#" className="font-medium text-blue-600 hover:text-blue-500">
+                    <a href="/all-products" className="font-medium text-blue-600 hover:text-blue-500">
                       {t('mobile_menu_all_products')}
                       <span aria-hidden="true"> &rarr;</span>
                     </a>
