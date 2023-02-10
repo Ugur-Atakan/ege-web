@@ -312,7 +312,6 @@ const API_ROOT = window.ob.config.apiRoot;
 function OrderInformationPanel(props) {
     let packageName = localStorage.getItem('packageName');
     let packagePrice = localStorage.getItem('packagePrice');
-
     return (
         <div className="bg-green-50 shadow sm:rounded-lg">
             <div className="px-4 py-5 sm:px-4 py-1">
@@ -473,6 +472,7 @@ function CompanyContactInfoForm(props) {
     };
     const onCountryChange = (evt) => {
         setCountry(evt.target.value);
+        console.log(country)
     };
     const onZipChange = (evt) => {
         setZip(evt.target.value);
@@ -630,8 +630,8 @@ function CompanyContactInfoForm(props) {
                                         id="country"
                                         name="country"
                                         autoComplete="country-name"
-                                        onChange={onCountryChange}
                                         className="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
+                                        onChange={onCountryChange}
                                     >
                                         <option value="">Select Country</option>
                                         {countries.map((country) => (
@@ -639,13 +639,13 @@ function CompanyContactInfoForm(props) {
                                                 key={country.name}
                                                 value={country.name}
                                                 id={country.id}
+                                                selected={country.value}
                                             >
                                                 {country.name}
                                             </option>
                                         ))}
                                     </select>
                                 </div>
-
                                 <div className="w-full md:w-1/4">
                                     <label htmlFor="region" className="block text-sm font-medium text-gray-700">
                                         State / Province
@@ -657,15 +657,18 @@ function CompanyContactInfoForm(props) {
                                         onChange={onStateChange}
                                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                                     >
-                                        <option value=""> Select State </option>
-                                        {states.map((state) => (
-                                            <option
-                                                key={state.name}
-                                                value={state.name}
-                                            >
-                                                {state.name}
-                                            </option>
-                                        ))}
+
+                                        <option value=""> {country === 'United States' ? 'Select State' : 'No State'}</option>
+                                        {country === 'United States' && 
+                                            states.map((state) => (
+                                                <option
+                                                    key={state.name}
+                                                    value={state.name}
+                                                >
+                                                    {state.name}
+                                                </option>
+                                            ))
+                                        }
                                     </select>
                                 </div>
                                 <div className="w-full md:w-1/4">
