@@ -2,26 +2,24 @@ import { StarIcon } from '@heroicons/react/20/solid'
 import React, { useState, useEffect } from 'react'
 import HeroImage from '../images/hero.png'
 import { Fragment } from 'react'
-import { Popover, Transition } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import Logo from '../images/registatelogo.svg'
+import { useTranslation } from 'react-i18next'
 
 function TypingHeader() {
+  const { t, i18n } = useTranslation();
   const [text, setText] = useState('');
   const [messageIndex, setMessageIndex] = useState(0);
   const messages = [
-    'Incorporator',
-    'Legal Clerk',
-    'Notary Public',
-    'Paralegal',
-    'Startup Advisor',
-    'Registered Agent',
-    'Office Admin',
-    'Bookeeper',
-    'Consultant',
-    'Punching Bag',
-    'Best Friend'
-
+    t('hero_section_title_message_1'),
+    t('hero_section_title_message_2'),
+    t('hero_section_title_message_3'),
+    t('hero_section_title_message_4'),
+    t('hero_section_title_message_5'),
+    t('hero_section_title_message_6'),
+    t('hero_section_title_message_7'),
+    t('hero_section_title_message_8'),
+    t('hero_section_title_message_9'),
+    t('hero_section_title_message_10'),
+    t('hero_section_title_message_11'),
   ]
 
   useEffect(() => {
@@ -42,7 +40,7 @@ function TypingHeader() {
   return (
     <>
       <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
-        <span className="block xl:inline">We are your</span>
+        <span className="block xl:inline">{t('hero_section_title_1')}</span>
       </h1>
       <h1 className="flex md:justify-center text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
         <span className="block text-blue-600 xl:inline">{text}</span>
@@ -53,6 +51,7 @@ function TypingHeader() {
 }
 
 export default function Hero() {
+  const { t, i18n } = useTranslation();
   const [isScroll, setIsScroll] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
@@ -79,13 +78,13 @@ export default function Hero() {
               <div className="sm:text-center lg:text-center pt-16">
                 <TypingHeader />
                 <p className="mt-5 mb-5 text-base text-gray-800 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-2xl lg:mx-0">
-                  Effortlessly start and manage your company in any US state from anywhere in the world with our comprehensive all-in-one business platform
+                 {t('hero_section_desc')}
                 </p>
                 <a
                   href="/pricing/form-my-company"
                   className="shadow flex w-fit rounded-md border border-transparent bg-blue-600 px-8 py-3 text-base font-medium text-white hover:bg-blue-700 md:py-4 md:px-10 md:text-2xl mx-auto mt-5"
                 >
-                  Form My Company
+                  {t('hero_section_button')}
                 </a>
                 <div className="flex flex-col md:flex-row py-3 gap-2 md:gap-0  md:py-0 md:inline-flex items-center md:divide-x md:divide-gray-300 mx-auto mt-4">
                   <div className="flex flex-shrink-0">
@@ -96,8 +95,8 @@ export default function Hero() {
                     <StarIcon className="h-5 w-5 text-yellow-400" aria-hidden="true" />
                   </div>
                   <div className=" min-w-0 flex-1 py-1 text-sm text-gray-500 sm:py-3">
-                    <span className="font-medium text-gray-900">Rated 5 stars</span> by over{' '}
-                    <span className="font-medium text-blue-600">100+ happy customers</span>
+                    <span className="font-medium text-gray-900">{t('hero_section_star_1')}</span> {t('hero_section_star_2')}{' '}
+                    <span className="font-medium text-blue-600">{t('hero_section_star_3')}</span>
                   </div>
                 </div>
               </div>

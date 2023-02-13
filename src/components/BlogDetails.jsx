@@ -44,7 +44,6 @@ const Blog = () => {
             getEntry();
         }
     }, [id]);
-
     return (
         <div className="relative px-6 pt-16 pb-20 lg:px-8 lg:pt-24 lg:pb-28">
             <div className="absolute inset-0">
@@ -87,7 +86,7 @@ const Blog = () => {
                                             </a>
                                         </p>
                                         <div className="flex space-x-1 text-sm text-gray-500">
-                                            <time dateTime={post.sys.createdAt}>{post.sys.createdAt}</time>
+                                            <time dateTime={post.sys.createdAt}>{post.sys.createdAt.substring(0, 10)}</time>
                                             <span aria-hidden="true">&middot;</span>
                                         </div>
                                     </div>

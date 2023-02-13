@@ -1,41 +1,44 @@
 import React from 'react'
 import { BoltIcon, DevicePhoneMobileIcon, GlobeAltIcon, ScaleIcon } from '@heroicons/react/24/outline'
+import { useTranslation } from 'react-i18next'
 
+
+export function WhyUs() {
+  const { t } = useTranslation();
 const features = [
   {
-    name: 'Decades of Experience In The Field',
+    name: t('section3_icon1_title'),
     description:
-      'Exceptional professional service serves as a symbol of our vision as our clients deserves the best there is.',
+    t('section3_icon1_desc'),
     icon: GlobeAltIcon,
   },
   {
-    name: '24/7 Customer Support',
+    name: t('section3_icon2_title'),
     description:
-    'We are always here to help you. Our customer support team is available 24/7 to answer your questions.',
+    t('section3_icon2_desc'),
     icon: ScaleIcon,
   },
   {
-    name: 'Fast and Reliable Service',
+    name: t('section3_icon3_title'),
     description:
-    'We are committed to providing you with the best service possible. We are always here to help you.',
+    t('section3_icon3_desc'),
     icon: BoltIcon,
   },
   {
-    name: 'No Hidden Fees',
+    name: t('section3_icon4_title'),
     description:
-    'No hourly charges, no hidden fees, no surprises.',
+    t('section3_icon4_desc'),
     icon: DevicePhoneMobileIcon,
   },
 ]
 
-export function WhyUs() {
   return (
     <div className="bg-white py-12 sm:py-12 lg:py-10">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="sm:text-center">
-          <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Why work with us?</p>
+          <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{t('section3_title')}</p>
           <p className="mx-auto mt-6 max-w-6xl text-lg leading-8 text-gray-600">
-          We are a team of lawyers, CPAs, and entrepreneurs who have helped thousands of companies to start and manage successful businesses in the US for many years. We know the challenges you face and the concerns you have. This is why we have built Registate as a comprehensive platform that will take care of everything for you and give you piece of mind so you can focus on your business.
+          {t('section3_desc')}
           </p>
         </div>
 

@@ -209,7 +209,7 @@ export function PostOrder() {
                                   <a href='/'>
                                   <button
                                   type="button"
-                                  className="inline-flex w-full justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:text-sm"
+                                  className="inline-flex w-full justify-center rounded-md border border-transparent bg-transparent px-4 py-2 text-base font-medium text-black focus:outline-none focus:ring-2 focus:ring-offset-2 sm:text-sm"
                                   
                                 >Go back to home page </button>
                                   </a>

@@ -312,7 +312,6 @@ const API_ROOT = window.ob.config.apiRoot;
 function OrderInformationPanel(props) {
     let packageName = localStorage.getItem('packageName');
     let packagePrice = localStorage.getItem('packagePrice');
-
     return (
         <div className="bg-green-50 shadow sm:rounded-lg">
             <div className="px-4 py-5 sm:px-4 py-1">
@@ -454,7 +453,7 @@ function CompanyContactInfoForm(props) {
     const [state, setState] = useState('');
     const [country, setCountry] = useState('');
     const [zip, setZip] = useState('');
-    const[phone, setPhone] = useState('');
+    const [phone, setPhone] = useState('');
 
     const onNameChange = (evt) => {
         setName(evt.target.value);
@@ -473,6 +472,7 @@ function CompanyContactInfoForm(props) {
     };
     const onCountryChange = (evt) => {
         setCountry(evt.target.value);
+        console.log(country)
     };
     const onZipChange = (evt) => {
         setZip(evt.target.value);
@@ -623,6 +623,55 @@ function CompanyContactInfoForm(props) {
                             </div>
                             <div className='flex-col md:flex-row flex item-center gap-4 md:gap-2 pb-4'>
                                 <div className="w-full md:w-1/4">
+                                    <label htmlFor="country" className="block text-sm font-medium text-gray-700">
+                                        Country
+                                    </label>
+                                    <select
+                                        id="country"
+                                        name="country"
+                                        autoComplete="country-name"
+                                        className="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
+                                        onChange={onCountryChange}
+                                    >
+                                        <option value="">Select Country</option>
+                                        {countries.map((country) => (
+                                            <option
+                                                key={country.name}
+                                                value={country.name}
+                                                id={country.id}
+                                                selected={country.value}
+                                            >
+                                                {country.name}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                                <div className="w-full md:w-1/4">
+                                    <label htmlFor="region" className="block text-sm font-medium text-gray-700">
+                                        State / Province
+                                    </label>
+                                    <select
+                                        name="region"
+                                        id="region"
+                                        autoComplete="address-level1"
+                                        onChange={onStateChange}
+                                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                                    >
+
+                                        <option value=""> {country === 'United States' ? 'Select State' : 'No State'}</option>
+                                        {country === 'United States' && 
+                                            states.map((state) => (
+                                                <option
+                                                    key={state.name}
+                                                    value={state.name}
+                                                >
+                                                    {state.name}
+                                                </option>
+                                            ))
+                                        }
+                                    </select>
+                                </div>
+                                <div className="w-full md:w-1/4">
                                     <label htmlFor="city" className="block text-sm font-medium text-gray-700">
                                         City
                                     </label>
@@ -637,53 +686,6 @@ function CompanyContactInfoForm(props) {
                                     />
                                 </div>
 
-
-                                <div className="w-full md:w-1/4">
-                                    <label htmlFor="region" className="block text-sm font-medium text-gray-700">
-                                        State / Province
-                                    </label>
-                                    <select
-                                        name="region"
-                                        id="region"
-                                        autoComplete="address-level1"
-                                        required
-                                        onChange={onStateChange}
-                                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                                    >
-                                        <option value=""> Select State </option>
-                                        {states.map((state) => (
-                                            <option
-                                                key={state.name}
-                                                value={state.name}
-                                            >
-                                                {state.name}
-                                            </option>
-                                        ))}
-                                    </select>
-                                </div>
-                                <div className="w-full md:w-1/4">
-                                    <label htmlFor="country" className="block text-sm font-medium text-gray-700">
-                                        Country
-                                    </label>
-                                    <select
-                                        id="country"
-                                        name="country"
-                                        autoComplete="country-name"
-                                        onChange={onCountryChange}
-                                        className="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
-                                    >
-                                        <option value="">Select Country</option>
-                                        {countries.map((country) => (
-                                            <option
-                                                key={country.name}
-                                                value={country.name}
-                                                id={country.id}
-                                            >
-                                                {country.name}
-                                            </option>
-                                        ))}
-                                    </select>
-                                </div>
                                 <div className="w-full md:w-1/4" >
                                     <label htmlFor="postalcode" className="block text-sm font-medium text-gray-700">
                                         ZIP / Postal code
@@ -708,14 +710,13 @@ function CompanyContactInfoForm(props) {
                                         type="text"
                                         name="coupon"
                                         id="coupon"
-                                        required
                                         className="mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                                     />
                                 </div>
-                                <div>
+                                <div className='mt-4 md:mt-0'>
                                     <button
                                         type="submit"
-                                        className={name==='' || lastname ==='' || email === '' || street ==='' || zip ==='' || phone ==='' ? "bg-blue-300 py-3 px-6 rounded-md text-white pointer-events-none" :"mt-3 md:mt-0 inline-flex justify-center rounded-md border border-transparent bg-blue-600 py-3 px-6 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" }
+                                        className={name === '' || lastname === '' || email === '' || street === '' || zip === '' || phone === '' ? "bg-blue-300 py-3 px-6 rounded-md text-white pointer-events-none" : "mt-3 md:mt-0 inline-flex justify-center rounded-md border border-transparent bg-blue-600 py-3 px-6 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"}
                                     >
                                         Review and Pay
                                     </button>

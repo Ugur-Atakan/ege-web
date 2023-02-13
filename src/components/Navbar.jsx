@@ -1,19 +1,13 @@
 import { React, Fragment } from 'react'
-import { Popover, Transition } from '@headlessui/react'
+import { Popover, Transition, Menu } from '@headlessui/react'
 import {
   Bars3Icon,
   BookmarkSquareIcon,
   BriefcaseIcon,
   BuildingOfficeIcon,
-  CheckCircleIcon,
-  ComputerDesktopIcon,
   GlobeAltIcon,
-  InformationCircleIcon,
-  NewspaperIcon,
   PhoneIcon,
-  PlayIcon,
   ShieldCheckIcon,
-  UserGroupIcon,
   XMarkIcon,
   EnvelopeOpenIcon,
   UserIcon,
@@ -29,7 +23,6 @@ import {
   PresentationChartBarIcon,
   CubeIcon,
   ArchiveBoxIcon,
-  CreditCardIcon,
   DocumentTextIcon,
   PencilSquareIcon,
   FolderMinusIcon,
@@ -40,78 +33,9 @@ import {
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { useState, useEffect } from 'react'
 import Logo from '../images/logo2x.png.webp'
-
-const menu1 = [
-  {
-    name: 'Form My Company',
-    description: 'Turning your idea into business',
-    href: '/pricing/form-my-company',
-    icon: BuildingOfficeIcon,
-  },
-  {
-    name: 'Registered Agent',
-    description: 'Secure registered agent service online',
-    href: '/registered-agent',
-    icon: UserIcon,
-  },
-  {
-    name: 'Virtual MailBox',
-    description: 'Peace of minde mail processing',
-    href: '/virtual-mailbox',
-    icon: EnvelopeOpenIcon,
-  },
-  {
-    name: 'Apostille',
-    description: 'Document for use in another country',
-    href: '/apostille',
-    icon: DocumentDuplicateIcon,
-  }
-]
-
-const pricing = [
-  { name: 'Form My Company', href: '/pricing/form-your-company', desc: 'Remain compliant', icon: BuildingOfficeIcon },
-  { name: 'Other Services', href: '/pricing/other-services', desc: 'Secure registered agent service online', icon: ReceiptPercentIcon },
-]
-
-const recurring = [
-  { name: 'Compliance Reminder', href: '/compliance-reminder', desc: 'Remain compliant', icon: FolderMinusIcon },
-  { name: 'Registered Agent', href: '/registered-agent', desc: 'Secure registered agent service online', icon: BuildingOfficeIcon },
-  { name: 'Virtual MailBox', href: '/virtual-mailbox', desc: 'Peace of minde mail processing', icon: EnvelopeOpenIcon },
-  { name: 'Office Address', href: '/office-address', desc: 'Decide your business office address', icon: BriefcaseIcon },
-  { name: 'Our Packages', release: '(BETA)', href: '/our-packages', desc: 'Keep good standing at all times', icon: CubeIcon },
-  { name: 'Virtual Phone Number', release: '(BETA)', href: '/virtual-phone-number', desc: 'Support services from anywhere', icon: ChatBubbleLeftRightIcon },
-  { name: 'Dedicated Receptionist', href: '/dedicated-receptionist', desc: 'Forwarding Calls to Any Device', icon: PhoneIcon },
-]
-const onetime = [
-  { name: 'Foreign Qualification', href: '/foreign-qualification', desc: 'To conduct business out-of-state', icon: RocketLaunchIcon },
-  { name: 'Certificate of Good Standing', href: '/certificate-of-good-standing', desc: 'Show that you are compliant', icon: BookmarkSquareIcon },
-  { name: 'Certified Copy Request', release: '(BETA)', href: '/certified-copy-request', desc: 'Certified copy for all document', icon: ClipboardDocumentListIcon },
-  { name: 'EIN', release: '(BETA)', href: '/ein', desc: 'Unique nine-digit number for businesses', icon: CalendarIcon },
-  { name: 'Entity Type Conversion', release: '(BETA)', href: '/entity-type-conversion', desc: 'Entity into another type of entity', icon: PresentationChartBarIcon },
-  { name: 'Renewal & Revival', href: '/renewal-and-revival', desc: 'Revive your company', icon: ArrowPathIcon },
-  { name: 'Dissolution & Cancellation', desc: 'Terminate a legal entity', href: '/dissolution-and-cancellation', icon: ArchiveBoxIcon },
-  { name: 'Certificate of Amendment', desc: "Amend company's formation documents", href: '/certificate-of-amendment', icon: DocumentTextIcon },
-  { name: 'Doing Business As (DBA)', desc: 'Trade name / Fictitious name', href: '/doing-business-as', icon: PencilSquareIcon },
-]
-const ies = [
-  { name: 'Apostille', href: '/apostille', desc: 'Document for use in another country', icon: DocumentDuplicateIcon },
-  { name: 'Certified Copy Request', href: '/certified-copy-request', desc: 'Certified copy for all documents', icon: ClipboardDocumentListIcon },
-  { name: 'EIN', href: '/ein', desc: 'Unique nine-digit number for businesses', icon: CalendarIcon },
-  { name: 'US Bank Account Opening Support', href: '/us-bank-account-opening-support', desc: 'Have a business bank account', icon: BuildingLibraryIcon },
-  { name: 'Post Incorporation', href: '/post-incorp', desc: 'Properly finish company formation', icon: RectangleStackIcon },
-]
-const support = [
-  { name: 'FAQs', href: '/faq', desc: 'Everything you need to know about the product and services', icon: QuestionMarkCircleIcon },
-  { name: 'Terms of Services', href: '/terms-of-service', desc: 'Please read these Terms carefully before using the Website.', icon: ClipboardDocumentIcon },
-  { name: 'Privacy Policy', href: '/privacy-policy', desc: 'Learn about our privacy policy', icon: ShieldCheckIcon },
-  { name: 'Contact Us', href: '/contact', desc: 'Have questions about plans, pricing and availability?', icon: InboxStackIcon },
-]
-const otherservices = [
-  { name: 'FAQs', href: '/faqs', desc: 'Everything you need to know about the product and services', icon: QuestionMarkCircleIcon },
-  { name: 'Terms of Services', href: '/terms-of-services', desc: 'Please read these Terms carefully before using the Website.', icon: ClipboardDocumentIcon },
-  { name: 'Privacy Policy', href: '/privacy-policy', desc: 'Learn about our privacy policy', icon: ShieldCheckIcon },
-  { name: 'Contact Us', href: '/contact', desc: 'Have questions about plans, pricing and availability?', icon: InboxStackIcon },
-]
+import { useTranslation } from 'react-i18next';
+import turkeyicon from '../images/turkey.png'
+import ukicon from '../images/united-kingdom.png'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -123,8 +47,81 @@ const navigation = [
   { name: 'Testimonials', href: '#testimonials' },
   { name: 'FAQs', href: '#faqs' },
 ]
+const lngs = {
+  en: { nativeName: 'English', icon: ukicon },
+  tr: { nativeName: 'Turkish', icon: turkeyicon }
+};
+
 
 export function Navbar() {
+
+  const { t, i18n } = useTranslation();
+  const menu1 = [
+    {
+      name: t('mobile_menu_title_4'),
+      description: t('mobile_menu_title_4_desc'),
+      href: '/pricing/form-my-company',
+      icon: BuildingOfficeIcon,
+    },
+    {
+      name: t('menu2_1_link_2_title'),
+      description: t('menu2_1_link_2_subtitle'),
+      href: '/registered-agent',
+      icon: UserIcon,
+    },
+    {
+      name: t('menu2_1_link_3_title'),
+      description: t('menu2_1_link_3_subtitle'),
+      href: '/virtual-mailbox',
+      icon: EnvelopeOpenIcon,
+    },
+    {
+      name: t('menu2_1_link_4_title'),
+      description: t('menu2_1_link_4_subtitle'),
+      href: '/apostille',
+      icon: DocumentDuplicateIcon,
+    }
+  ]
+
+  const pricing = [
+    { name: t('menu1_title'), href: '/pricing/form-your-company', desc: 'Remain compliant', icon: BuildingOfficeIcon },
+    { name: 'Other Services', href: '/pricing/other-services', desc: 'Secure registered agent service online', icon: ReceiptPercentIcon },
+  ]
+
+  const recurring = [
+    { name: t('menu2_1_link_1_title'), href: '/compliance-reminder', desc: t('menu2_1_link_1_subtitle'), icon: FolderMinusIcon },
+    { name: t('menu2_1_link_2_title'), href: '/registered-agent', desc: t('menu2_1_link_2_subtitle'), icon: BuildingOfficeIcon },
+    { name: t('menu2_1_link_3_title'), href: '/virtual-mailbox', desc: t('menu2_1_link_3_subtitle'), icon: EnvelopeOpenIcon },
+    { name: t('menu2_1_link_4_title'), href: '/office-address', desc: t('menu2_1_link_4_subtitle'), icon: BriefcaseIcon },
+    { name: t('menu2_1_link_5_title'), release: '(BETA)', href: '/our-packages', desc: t('menu2_1_link_5_subtitle'), icon: CubeIcon },
+    { name: t('menu2_1_link_6_title'), release: '(BETA)', href: '/virtual-phone-number', desc: t('menu2_1_link_6_subtitle'), icon: ChatBubbleLeftRightIcon },
+    { name: t('menu2_1_link_7_title'), href: '/dedicated-receptionist', desc: t('menu2_1_link_7_subtitle'), icon: PhoneIcon },
+  ]
+  const onetime = [
+    { name: t('menu2_2_link_1_title'), href: '/foreign-qualification', desc: t('menu2_2_link_1_subtitle'), icon: RocketLaunchIcon },
+    { name: t('menu2_2_link_2_title'), href: '/certificate-of-good-standing', desc: t('menu2_2_link_2_subtitle'), icon: BookmarkSquareIcon },
+    { name: t('menu2_2_link_3_title'), release: '(BETA)', href: '/certified-copy-request', desc: t('menu2_2_link_3_subtitle'), icon: ClipboardDocumentListIcon },
+    { name: t('menu2_2_link_4_title'), release: '(BETA)', href: '/ein', desc: t('menu2_2_link_4_subtitle'), icon: CalendarIcon },
+    { name: t('menu2_2_link_5_title'), release: '(BETA)', href: '/entity-type-conversion', desc: t('menu2_2_link_5_subtitle'), icon: PresentationChartBarIcon },
+    { name: t('menu2_2_link_6_title'), href: '/renewal-and-revival', desc: t('menu2_2_link_6_subtitle'), icon: ArrowPathIcon },
+    { name: t('menu2_2_link_7_title'), desc: t('menu2_2_link_7_subtitle'), href: '/dissolution-and-cancellation', icon: ArchiveBoxIcon },
+    { name: t('menu2_2_link_8_title'), desc: t('menu2_2_link_8_subtitle'), href: '/certificate-of-amendment', icon: DocumentTextIcon },
+    { name: t('menu2_2_link_9_title'), desc: t('menu2_2_link_9_subtitle'), href: '/doing-business-as', icon: PencilSquareIcon },
+  ]
+  const ies = [
+    { name: t('menu2_3_link_1_title'), href: '/apostille', desc: t('menu2_3_link_1_subtitle'), icon: DocumentDuplicateIcon },
+    { name: t('menu2_3_link_2_title'), href: '/certified-copy-request', desc: t('menu2_3_link_2_subtitle'), icon: ClipboardDocumentListIcon },
+    { name: t('menu2_3_link_3_title'), href: '/ein', desc: t('menu2_3_link_3_subtitle'), icon: CalendarIcon },
+    { name: t('menu2_3_link_4_title'), href: '/us-bank-account-opening-support', desc: t('menu2_3_link_4_subtitle'), icon: BuildingLibraryIcon },
+    { name: t('menu2_3_link_5_title'), href: '/post-incorp', desc: t('menu2_3_link_5_subtitle'), icon: RectangleStackIcon },
+  ]
+  const support = [
+    { name: t('menu3_1_title'), href: '/faq', desc: t('menu3_1_subtitle'), icon: QuestionMarkCircleIcon },
+    { name: t('menu3_2_title'), href: '/terms-of-service', desc: t('menu3_2_subtitle'), icon: ClipboardDocumentIcon },
+    { name: t('menu3_3_title'), href: '/privacy-policy', desc: t('menu3_3_subtitle'), icon: ShieldCheckIcon },
+    { name: t('menu3_4_title'), href: '/contact', desc: t('menu3_4_subtitle'), icon: InboxStackIcon },
+  ]
+
   const [isScroll, setIsScroll] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
@@ -159,7 +156,7 @@ export function Navbar() {
               <Popover>
                 <button
                   className='text-gray-500 group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:text-black focus:ring-blue-500 focus:ring-offset-2'>
-                  <a href='/pricing/form-my-company'><span>Pricing</span></a>
+                  <a href='/pricing/form-my-company'><span>{t('menu1_title')}</span></a>
                 </button>
               </Popover>
               <Popover>
@@ -171,7 +168,7 @@ export function Navbar() {
                         'group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
                       )}
                     >
-                      <span>Products</span>
+                      <span>{t('menu2_title')}</span>
                       <ChevronDownIcon
                         className={classNames(
                           open ? 'text-gray-600' : 'text-gray-400',
@@ -198,7 +195,7 @@ export function Navbar() {
                         <div className="relative mx-auto grid max-w-7xl grid-cols-1">
                           <nav className="grid gap-y-10 bg-white px-4 py-8 sm:grid-cols-3 sm:gap-x-8 sm:py-12 sm:px-6 lg:px-8 xl:pr-12">
                             <div>
-                              <h3 className="text-base font-medium text-gray-500">RECURRING</h3>
+                              <h3 className="text-base font-medium text-gray-500">{t('menu2_1_title')}</h3>
                               <ul role="list" className="mt-5 space-y-6">
                                 {recurring.map((item) => (
                                   <li key={item.name} className="flow-root">
@@ -220,7 +217,7 @@ export function Navbar() {
                               </ul>
                             </div>
                             <div>
-                              <h3 className="text-base font-medium text-gray-500">ONE TIME</h3>
+                              <h3 className="text-base font-medium text-gray-500">{t('menu2_2_title')}</h3>
                               <ul role="list" className="mt-5 space-y-6">
                                 {onetime.map((item) => (
                                   <li key={item.name} className="flow-root">
@@ -242,7 +239,7 @@ export function Navbar() {
                               </ul>
                             </div>
                             <div>
-                              <h3 className="text-base font-medium text-gray-500">INTERNATIONAL ENTITY SERVICES</h3>
+                              <h3 className="text-base font-medium text-gray-500">{t('menu2_3_title')}</h3>
                               <ul role="list" className="mt-5 space-y-6">
                                 {ies.map((item) => (
                                   <li key={item.name} className="flow-root">
@@ -279,7 +276,7 @@ export function Navbar() {
                         'group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
                       )}
                     >
-                      <span>Resources and Support</span>
+                      <span>{t('menu3_title')}</span>
                       <ChevronDownIcon
                         className={classNames(
                           open ? 'text-gray-600' : 'text-gray-400',
@@ -334,24 +331,60 @@ export function Navbar() {
               <Popover>
                 <button
                   className='text-gray-500 group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:text-black focus:ring-blue-500 focus:ring-offset-2'>
-                  <a href='/blog'><span>Blog</span></a>
+                  <a href='/blog'><span>{t('menu4_title')}</span></a>
                 </button>
               </Popover>
             </Popover.Group>
             <div className="flex items-center md:ml-12">
             </div>
           </div>
-          <div class='hidden lg:block'>
+          <div class='hidden lg:flex items-center gap-4'>
             <a
               href="/pricing/form-my-company"
               className={isScroll ? "shadow rounded-md border border-transparent font-medium text-white bg-blue-600 px-4 py-2 text-md transition-colors duration-1000" : "shadow rounded-md border border-blue-600 font-medium text-blue-600 px-4 py-2 text-md transition-colors duration-1000"}
             >
-              Form My Company
+              {t('menu_top_right_handcorner_button')}
             </a>
+            <div>
+
+              <Menu as="div" className="relative inline-block text-left">
+                <div>
+                  <Menu.Button className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
+                    <GlobeAltIcon className='h-5 w-5 text-blue-600' />
+                    <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5 text-blue-600" aria-hidden="true" />
+                  </Menu.Button>
+                </div>
+                <Transition
+                  as={Fragment}
+                  enter="transition ease-out duration-100"
+                  enterFrom="transform opacity-0 scale-95"
+                  enterTo="transform opacity-100 scale-100"
+                  leave="transition ease-in duration-75"
+                  leaveFrom="transform opacity-100 scale-100"
+                  leaveTo="transform opacity-0 scale-95"
+                >
+
+                  <Menu.Items className="absolute top-12 -right-16 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    {Object.keys(lngs).map((lang) => (
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            onClick={() => i18n.changeLanguage(lang)}
+                            className={i18n.resolvedLanguage === lang ? 'flex items-center gap-4 p-2 text-gray-900 hover:bg-gray-200 opacity-[0.5]' : 'flex items-center gap-4 p-2 text-gray-900 hover:bg-gray-200 cursor-pointer'}
+                          >
+                            <img src={lngs[lang].icon} alt='language' />
+                            <span>{lngs[lang].nativeName}</span>
+                          </a>
+                        )}
+                      </Menu.Item>
+                    ))}
+                  </Menu.Items>
+                </Transition>
+              </Menu>
+            </div>
           </div>
         </div>
       </div>
-
       <Transition
         as={Fragment}
         enter="duration-200 ease-out"
@@ -399,8 +432,8 @@ export function Navbar() {
                     ))}
                   </div>
                   <div className="mt-8 text-base">
-                    <a href="#" className="font-medium text-blue-600 hover:text-blue-500">
-                      View all products
+                    <a href="/all-products" className="font-medium text-blue-600 hover:text-blue-500">
+                      {t('mobile_menu_all_products')}
                       <span aria-hidden="true"> &rarr;</span>
                     </a>
                   </div>
@@ -409,23 +442,23 @@ export function Navbar() {
             </div>
             <div className="py-6 px-5">
               <div className="grid grid-cols-2 gap-4">
-                <a href="/pricing" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
-                  Pricing
+                <a href="/pricing/form-my-company" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
+                  {t('menu1_title')}
                 </a>
                 <a href="/faq" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
-                  FAQs
+                  {t('menu3_1_title')}
                 </a>
                 <a href="/company" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
-                  Company
+                  {t('mobile_menu_title_1')}
                 </a>
                 <a href="/resources" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
-                  Resources
+                  {t('mobile_menu_title_2')}
                 </a>
                 <a href="/blog" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
-                  Blog
+                  {t('menu4_title')}
                 </a>
                 <a href="/contact" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
-                  Contact Us
+                  {t('mobile_menu_title_3')}
                 </a>
               </div>
               <div className="mt-6">
@@ -433,7 +466,7 @@ export function Navbar() {
                   href="/pricing/form-my-company"
                   className="flex w-full items-center justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700"
                 >
-                  Form My Company
+                  {t('menu_top_right_handcorner_button')}
                 </a>
               </div>
             </div>

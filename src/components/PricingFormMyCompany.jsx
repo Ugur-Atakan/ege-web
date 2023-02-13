@@ -74,7 +74,7 @@ const API_ROOT = window.ob.config.apiRoot;
       )}
       {/* if not selected */}
       {!props.featured && (
-        <button className="group inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm focus:outline-none ring-slate-700 text-white hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white mt-8" aria-label="Get started with the Starter plan for ${price}" onClick={clickHandler.bind(this)}>Get Started</button>
+        <button className="bg-white text-black lg:bg-transparent font-semibold group inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm focus:outline-none ring-slate-700 md:text-white hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white mt-8" aria-label="Get started with the Starter plan for ${price}" onClick={clickHandler.bind(this)}>Get Started</button>
       )}
     </section>
   )
@@ -263,7 +263,7 @@ export function Pricing() {
           </div>
         </div>
         {showPricingPackages && (
-        <div id="pricingPackages" className="lg:flex lg:justify-center mx-4 mt-12 pt-24 grid max-w-2xl grid-cols-1 gap-y-10 sm:mx-auto lg:-mx-8 lg:max-w-none lg:grid-cols-3 xl:mx-0 xl:gap-x-8">
+        <div id="pricingPackages" className="flex flex-col-reverse lg:flex-row lg:flex lg:justify-center mx-4 mt-12 pt-24  max-w-2xl gap-y-10 sm:mx-auto lg:-mx-8 lg:max-w-none lg:grid-cols-3 xl:mx-0 xl:gap-x-8">
         {
           packagePrices.map((packagePrice, index) => {
               if (companyState !== "Delaware") {
