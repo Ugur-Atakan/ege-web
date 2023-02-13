@@ -1,4 +1,5 @@
 import mert from '../images/avatars/mert.png'
+import cihan from '../images/avatars/cihan.png'
 import ufuk from '../images/avatars/ufuk.png'
 import { InboxIcon, SparklesIcon } from '@heroicons/react/24/outline'
 import { useTranslation } from 'react-i18next'
@@ -18,7 +19,7 @@ const tabs = [
     href: '/ein',
     icon: InboxIcon,
     executivedesc: t('section4_card1_executive_desc'),
-    executivetitle: t('section4_card1_executiv_name'),
+    executivetitle: t('section4_card1_executive_name'),
     executiveimg: mert,
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-feature-06-detail-01.jpg',
     imageAlt: 'Maple organizer base with slots, supporting white polycarbonate trays of various sizes.',
@@ -65,7 +66,7 @@ const tabs = [
     icon: InboxIcon,
     executivedesc: t('section4_card5_executive_desc'),
     executivetitle: t('section4_card5_executive_name'),
-    executiveimg: mert,
+    executiveimg: cihan,
     imageSrc: 'https://jupiter.money/content/images/2021/11/Savings_Account.jpg',
     imageAlt: 'Maple organizer base with slots, supporting white polycarbonate trays of various sizes.',
   },
