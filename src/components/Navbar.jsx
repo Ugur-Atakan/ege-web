@@ -1,19 +1,13 @@
 import { React, Fragment } from 'react'
-import { Popover, Transition } from '@headlessui/react'
+import { Popover, Transition, Menu } from '@headlessui/react'
 import {
   Bars3Icon,
   BookmarkSquareIcon,
   BriefcaseIcon,
   BuildingOfficeIcon,
-  CheckCircleIcon,
-  ComputerDesktopIcon,
   GlobeAltIcon,
-  InformationCircleIcon,
-  NewspaperIcon,
   PhoneIcon,
-  PlayIcon,
   ShieldCheckIcon,
-  UserGroupIcon,
   XMarkIcon,
   EnvelopeOpenIcon,
   UserIcon,
@@ -29,7 +23,6 @@ import {
   PresentationChartBarIcon,
   CubeIcon,
   ArchiveBoxIcon,
-  CreditCardIcon,
   DocumentTextIcon,
   PencilSquareIcon,
   FolderMinusIcon,
@@ -58,6 +51,7 @@ const lngs = {
   en: { nativeName: 'English', icon: ukicon },
   tr: { nativeName: 'Turkish', icon: turkeyicon }
 };
+
 
 export function Navbar() {
 
@@ -352,14 +346,45 @@ export function Navbar() {
               {t('menu_top_right_handcorner_button')}
             </a>
             <div>
-              {Object.keys(lngs).map((lang) => (
-                <button type='submit' className={i18n.resolvedLanguage === lang && ''} key={lang} onClick={() => i18n.changeLanguage(lang)} disabled={i18n.resolvedLanguage === lang}>{<img src={lngs[lang].icon} />}</button>
-              ))}
+
+              <Menu as="div" className="relative inline-block text-left">
+                <div>
+                  <Menu.Button className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
+                    <GlobeAltIcon className='h-5 w-5 text-blue-600' />
+                    <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5 text-blue-600" aria-hidden="true" />
+                  </Menu.Button>
+                </div>
+                <Transition
+                  as={Fragment}
+                  enter="transition ease-out duration-100"
+                  enterFrom="transform opacity-0 scale-95"
+                  enterTo="transform opacity-100 scale-100"
+                  leave="transition ease-in duration-75"
+                  leaveFrom="transform opacity-100 scale-100"
+                  leaveTo="transform opacity-0 scale-95"
+                >
+
+                  <Menu.Items className="absolute top-12 -right-16 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    {Object.keys(lngs).map((lang) => (
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            onClick={() => i18n.changeLanguage(lang)}
+                            className={i18n.resolvedLanguage === lang ? 'flex items-center gap-4 p-2 text-gray-900 hover:bg-gray-200 opacity-[0.5]' : 'flex items-center gap-4 p-2 text-gray-900 hover:bg-gray-200 cursor-pointer'}
+                          >
+                            <img src={lngs[lang].icon} alt='language' />
+                            <span>{lngs[lang].nativeName}</span>
+                          </a>
+                        )}
+                      </Menu.Item>
+                    ))}
+                  </Menu.Items>
+                </Transition>
+              </Menu>
             </div>
           </div>
         </div>
       </div>
-
       <Transition
         as={Fragment}
         enter="duration-200 ease-out"

@@ -143,11 +143,11 @@ i18next
                 menu3_4_subtitle: "	Hizmetlerimiz, ücretlerimiz ve müsaitliğimiz hakkında sorularınız mı var?",
                 menu3_4_subtitle_1: "Daha Fazla Bilgi Alın",
                 menu4_title: "	Blog	",
-                menu_top_right_handcorner_button: "Benim Şirketim Formu",
+                menu_top_right_handcorner_button: "Şirketimi Kur",
                 mobile_menu_title_1 : 'Şirketimiz',
                 mobile_menu_title_2 : 'Kaynaklar',
                 mobile_menu_title_3 : 'İletişim',
-                mobile_menu_title_4: '	Benim Şirketim Formu"',
+                mobile_menu_title_4: 'Şirketimi Kur',
                 mobile_menu_title_4_desc:'Fikrinizi işe dönüştürmek',
                 mobile_menu_all_products:'Tüm ürünler'
             }

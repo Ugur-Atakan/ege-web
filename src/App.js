@@ -35,8 +35,7 @@ import Apostille from './routes/apostille';
 import AccountOpeningSupport from './routes/account-opening-support';
 import Company from './routes/company';
 import AllProducts from './routes/all-products';
-
-import '../src/locales/en/en.js'
+import '../src/locales/language.js'
 const App = () => {
   return (
       <Router>
