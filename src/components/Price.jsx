@@ -1,7 +1,7 @@
 export default function Price() {
   return (
       <>
-      <div className="px-6 pt-12 lg:px-8 lg:pt-20">
+      <div className="px-6 pt-12 lg:px-8 lg:pt-4">
         <div className="text-center">
           <p className="mt-2 text-3xl font-bold tracking-tight text-black sm:text-4xl lg:text-5xl">
           Pricing built for businesses of all sizes
@@ -23,7 +23,7 @@ export default function Price() {
                     className="pointer-events-none absolute inset-0 rounded-lg"
                     aria-hidden="true"
                   />
-                  <div className="rounded-t-lg bg-gradient-to-r from-[#004B9D] to-[#001E3F] px-6 pt-6 pb-10">
+                  <div className="rounded-t-lg bg-gradient-to-r from-[#004B9D] to-[#001E3F] px-6 pt-6 pb-10 -mt-8">
                     <div>
                       <h3
                         className="text-center text-3xl font-semibold tracking-tight text-white sm:-mx-6"
