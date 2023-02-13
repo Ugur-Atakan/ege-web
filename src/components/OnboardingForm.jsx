@@ -450,7 +450,6 @@ function CompanyContactInfoForm(props) {
     const [email, setEmail] = useState('');
     const [street, setStreet] = useState('');
     const [city, setCity] = useState('');
-    const [state, setState] = useState('');
     const [country, setCountry] = useState('');
     const [zip, setZip] = useState('');
     const [phone, setPhone] = useState('');
@@ -466,9 +465,6 @@ function CompanyContactInfoForm(props) {
     };
     const onStreetChange = (evt) => {
         setStreet(evt.target.value);
-    };
-    const onStateChange = (evt) => {
-        setState(evt.target.value);
     };
     const onCountryChange = (evt) => {
         setCountry(evt.target.value);
@@ -633,7 +629,7 @@ function CompanyContactInfoForm(props) {
                                         className="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
                                         onChange={onCountryChange}
                                     >
-                                        <option value="">Select Country</option>
+                                        <option>Select Country</option>
                                         {countries.map((country) => (
                                             <option
                                                 key={country.name}
@@ -654,7 +650,6 @@ function CompanyContactInfoForm(props) {
                                         name="region"
                                         id="region"
                                         autoComplete="address-level1"
-                                        onChange={onStateChange}
                                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                                     >
 
@@ -716,7 +711,7 @@ function CompanyContactInfoForm(props) {
                                 <div className='mt-4 md:mt-0'>
                                     <button
                                         type="submit"
-                                        className={name === '' || lastname === '' || email === '' || street === '' || zip === '' || phone === '' ? "bg-blue-300 py-3 px-6 rounded-md text-white pointer-events-none" : "mt-3 md:mt-0 inline-flex justify-center rounded-md border border-transparent bg-blue-600 py-3 px-6 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"}
+                                        className={name === '' || lastname === '' || street === '' || zip === '' || phone === '' || city ==='' ? "bg-blue-300 py-3 px-6 rounded-md text-white pointer-events-none" : "mt-3 md:mt-0 inline-flex justify-center rounded-md border border-transparent bg-blue-600 py-3 px-6 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"}
                                     >
                                         Review and Pay
                                     </button>
