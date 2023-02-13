@@ -1,74 +1,76 @@
 import mert from '../images/avatars/mert.png'
 import ufuk from '../images/avatars/ufuk.png'
 import { InboxIcon, SparklesIcon } from '@heroicons/react/24/outline'
-
-const tabs = [
-  {
-    name: 'Business Formation and EIN',
-    description:
-      "Fast and simple company formation with worry free services and expert support to help you get filed accurately and on time. We'll also help you get your EIN for US residents and non-residents.",
-    button: 'Form My Company',
-    href: '/ein',
-    icon: InboxIcon,
-    executivedesc: 'They registered my company, got EIN instantly, assisted me opening a bank account and help notarization of couple of documents. 5 stars service and a great team!.',
-    executivetitle: 'Mert Yildiz, Founder at Bonded Technologies Inc.',
-    executiveimg: mert,
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-feature-06-detail-01.jpg',
-    imageAlt: 'Maple organizer base with slots, supporting white polycarbonate trays of various sizes.',
-  },
-  {
-    name: 'Post-Incorporation Documents',
-    description:
-      "We provide a full suite of post-incorporation documents to help you complete your business formation. Stock Issuance to Owners, Corporate Resolutions, Operating Agreement for LLCs, and Bylaws for Corporations, and more.",
-    button: 'Learn More',
-    href: '/post-incorporation',
-    icon: SparklesIcon,
-    imageSrc: 'https://registate.net/static/media/features2.fe27dab0a08de2622778.png',
-    imageAlt: 'Maple organizer base with slots, supporting white polycarbonate trays of various sizes.',
-  },
-  {
-    name: 'Virtual Mailbox',
-    description:
-      "A virtual mailbox makes it easier to manage your mail & packages remotely. We'll provide you with a mailbox address in US. You can use this address to receive mail and packages. We'll scan and email you the documents",
-    button: 'Get a US Address',
-    href: '/virtual-mailbox',
-    icon: InboxIcon,
-    executivedesc: "We use Registate's mailbox services and they have helped us to obtain certified copies of some State documents. Smooth, fast and high quality service. Highly recommend them.",
-    executivetitle: 'Ufuk Dag, CEO at Cameralyze Inc',
-    executiveimg: ufuk,
-    imageSrc: 'https://chiselspace.com/wp-content/uploads/2017/09/digital-mail-2-1-850x429.jpg',
-    imageAlt: 'Maple organizer base with slots, supporting white polycarbonate trays of various sizes.',
-  },
-  {
-    name: 'Apostille and Notarization Services',
-    description:
-      "We provide apostille and notarization services for documents that need to be used in foreign countries. We'll notarize your documents and get them apostilled by the Secretary of State.",
-    button: 'Learn More',
-    href: '/apostille',
-    icon: SparklesIcon,
-    imageSrc: 'https://registate.net/static/media/features4.d28d6567c82c0ce9e37a.png',
-    imageAlt: 'Maple organizer base with slots, supporting white polycarbonate trays of various sizes.',
-  },
-  {
-    name: 'US Bank Account Assistance',
-    description:
-      "Our team is here to make the process of setting up a US bank account as quick and easy as possible. We will assist you every step of the way, answering any questions you may have and providing all necessary corporate documents for the bank. With our expertise and support, you can have your US bank account up and running in no time.",
-    button: 'Open a US Bank Account',
-    href: '/bank-account-opening-support',
-    icon: InboxIcon,
-    executivedesc: "Registate made the process of opening a bank account in the US quick and easy. Their team provided expert guidance and all necessary documents, resulting in a stress-free experience.",
-    executivetitle: 'Cihan Sahin, CEO of OpsBeacon Inc.',
-    executiveimg: mert,
-    imageSrc: 'https://jupiter.money/content/images/2021/11/Savings_Account.jpg',
-    imageAlt: 'Maple organizer base with slots, supporting white polycarbonate trays of various sizes.',
-  },
-]
+import { useTranslation } from 'react-i18next'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
 export default function Example() {
+  const {t} = useTranslation()
+const tabs = [
+  {
+    name: t('section4_card1_title'),
+    description:
+    t('section4_card1_desc'),
+    button: t('section4_card1_button'),
+    href: '/ein',
+    icon: InboxIcon,
+    executivedesc: t('section4_card1_executive_desc'),
+    executivetitle: t('section4_card1_executiv_name'),
+    executiveimg: mert,
+    imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-feature-06-detail-01.jpg',
+    imageAlt: 'Maple organizer base with slots, supporting white polycarbonate trays of various sizes.',
+  },
+  {
+    name: t('section4_card2_title'),
+    description:
+    t('section4_card2_desc'),
+    button: t('section4_card2_button'),
+    href: '/post-incorporation',
+    icon: SparklesIcon,
+    imageSrc: 'https://registate.net/static/media/features2.fe27dab0a08de2622778.png',
+    imageAlt: 'Maple organizer base with slots, supporting white polycarbonate trays of various sizes.',
+  },
+  {
+    name: t('section4_card3_title'),
+    description:
+    t('section4_card3_desc'),
+    button: t('section4_card3_button'),
+    href: '/virtual-mailbox',
+    icon: InboxIcon,
+    executivedesc: t('section4_card3_executive_desc'),
+    executivetitle: t('section4_card3_executive_name'),
+    executiveimg: ufuk,
+    imageSrc: 'https://chiselspace.com/wp-content/uploads/2017/09/digital-mail-2-1-850x429.jpg',
+    imageAlt: 'Maple organizer base with slots, supporting white polycarbonate trays of various sizes.',
+  },
+  {
+    name:t('section4_card4_title'),
+    description:
+    t('section4_card4_desc'),
+    button: t('section4_card4_button'),
+    href: '/apostille',
+    icon: SparklesIcon,
+    imageSrc: 'https://registate.net/static/media/features4.d28d6567c82c0ce9e37a.png',
+    imageAlt: 'Maple organizer base with slots, supporting white polycarbonate trays of various sizes.',
+  },
+  {
+    name: t('section4_card5_title'),
+    description:
+    t('section4_card5_desc'),
+    button: t('section4_card5_button'),
+    href: '/bank-account-opening-support',
+    icon: InboxIcon,
+    executivedesc: t('section4_card5_executive_desc'),
+    executivetitle: t('section4_card5_executive_name'),
+    executiveimg: mert,
+    imageSrc: 'https://jupiter.money/content/images/2021/11/Savings_Account.jpg',
+    imageAlt: 'Maple organizer base with slots, supporting white polycarbonate trays of various sizes.',
+  },
+]
+
   return (
     <div className="bg-slate-50">
       <section aria-labelledby="features-heading" className="mx-auto max-w-7xl py-32 sm:px-2 lg:px-8">

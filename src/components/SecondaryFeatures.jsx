@@ -6,7 +6,10 @@ import { Container } from '../components/Container'
 import screenshotContacts from '../images/screenshots/contacts.png'
 import screenshotInventory from '../images/screenshots/inventory.png'
 import screenshotProfitLoss from '../images/screenshots/profit-loss.png'
+import { useTranslation } from 'react-i18next'
 import React from 'react'
+
+
 
 const features = [
   {
@@ -173,6 +176,7 @@ function FeaturesDesktop() {
 }
 
 export function SecondaryFeatures() {
+  const {t} = useTranslation();
   return (
     <section
       id="secondary-features"
@@ -185,10 +189,10 @@ export function SecondaryFeatures() {
             id="secondary-features-title"
             className="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl"
           >
-            and manage your business.
+          {t('section5_title')}
           </h2>
           <p className="mt-4 text-lg tracking-tight text-slate-700">
-            We have made it easy to create and manage your business documents
+          {t('section5_desc')}
           </p>
         </div>
         <FeaturesMobile />
