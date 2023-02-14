@@ -86,8 +86,8 @@ export default function Hero() {
                 >
                   {t('hero_section_button')}
                 </a>
-                <div className="flex flex-col md:flex-row py-3 gap-2 md:gap-0  md:py-0 md:inline-flex items-center md:divide-x md:divide-gray-300 mx-auto mt-4">
-                  <div className="flex flex-shrink-0">
+                <div className="flex flex-col md:flex-row py-3 gap-2 md:gap-0  md:py-0 md:inline-flex items-center mx-auto mt-4">
+                  <div className="flex flex-shrink-0 pr-2">
                     <StarIcon className="h-5 w-5 text-yellow-400" aria-hidden="true" />
                     <StarIcon className="h-5 w-5 text-yellow-400" aria-hidden="true" />
                     <StarIcon className="h-5 w-5 text-yellow-400" aria-hidden="true" />
