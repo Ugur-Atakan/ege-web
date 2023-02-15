@@ -78,13 +78,11 @@ export default function Hero() {
               <div className="sm:text-center lg:text-center pt-16">
                 <TypingHeader />
                 <p className="mt-5 mb-5 text-base text-gray-800 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-2xl lg:mx-0">
-                 {t('hero_section_desc')}
+                  {t('hero_section_desc')}
                 </p>
-                <a
-                  href="/pricing/form-my-company"
-                  className="shadow flex w-fit rounded-md border border-transparent bg-blue-600 px-8 py-3 text-base font-medium text-white hover:bg-blue-700 md:py-4 md:px-10 md:text-2xl mx-auto mt-5"
-                >
-                  {t('hero_section_button')}
+                <a href="/pricing/form-my-company/" class="px-16 py-4 relative rounded group overflow-hidden font-medium bg-blue-600 text-white inline-block">
+                  <span class="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-blue-700 group-hover:h-full opacity-90"></span>
+                  <span class="relative group-hover:text-white text-lg"> {t('hero_section_button')}</span>
                 </a>
                 <div className="flex flex-col md:flex-row py-3 gap-2 md:gap-0  md:py-0 md:inline-flex items-center md:divide-x md:divide-gray-300 mx-auto mt-4">
                   <div className="flex flex-shrink-0">
