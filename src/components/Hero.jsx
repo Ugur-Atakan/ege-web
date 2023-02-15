@@ -19,7 +19,6 @@ function TypingHeader() {
     t('hero_section_title_message_8'),
     t('hero_section_title_message_9'),
     t('hero_section_title_message_10'),
-    t('hero_section_title_message_11'),
   ]
 
   useEffect(() => {
