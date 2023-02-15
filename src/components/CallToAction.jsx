@@ -25,15 +25,10 @@ export function CallToAction() {
           <p className="mt-4 text-lg tracking-tight text-white">
             It is time to be your own boss. Start your business today.
           </p>
-          <button
-              type="submit"
-              onClick={() => {
-                window.location.href = '/pricing/form-my-company'
-              }}
-              className="flex w-full justify-center rounded-md border border-transparent bg-white py-2 px-4 text-xl font-medium shadow-sm hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 "
-            >
-             Form My Company
-            </button>
+          <a href="#_" class="px-36 mt-8 py-4 relative rounded group overflow-hidden font-medium bg-purple-50 text-blue-600 inline-block">
+            <span class="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-blue-600 group-hover:h-full opacity-90"></span>
+            <span class="relative group-hover:text-white text-lg">Form My Company</span>
+          </a>
         </div>
       </Container>
     </section>
