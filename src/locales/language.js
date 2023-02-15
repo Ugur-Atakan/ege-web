@@ -144,6 +144,9 @@ i18next
                     section5_icon3_heading: 'Compliance Reminder',
                     section5_icon3_title: 'Do you need a reminder to file your annual report or pay your franchise taxes?',
                     section5_icon3_desc: 'Forming a company is just your first interaction with the State. All states in the U.S., including Delaware, have a number of reporting requirements from companies formed/qualified within their state. For instance, most states will require businesses to file annual reports and/or pay taxes in order to remain compliant and in good standing.',
+                    section6_title:'Get started today',
+                    section6_desc:'It is time to be your own boss. Start your business today.',
+                    section6_button:'Form My Company',
                 }
             },
             tr: {
@@ -282,6 +285,9 @@ i18next
                     section5_icon3_heading: '',
                     section5_icon3_title: '',
                     section5_icon3_desc: '',
+                    section6_title:'Get started today',
+                    section6_desc:'It is time to be your own boss. Start your business today.',
+                    section6_button:'Form My Company',
                 }
             }
         }

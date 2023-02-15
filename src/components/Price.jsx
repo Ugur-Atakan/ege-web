@@ -29,7 +29,7 @@ export default function Price() {
                         className="text-center text-3xl font-semibold tracking-tight text-white sm:-mx-6"
                         id="tier-growth"
                       >
-                        Standart
+                        Standard
                       </h3>
                       <div className="mt-4 flex items-center justify-center">
                         <span className="flex items-start px-3 text-6xl tracking-tight text-white sm:text-6xl">
