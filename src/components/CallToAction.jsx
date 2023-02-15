@@ -25,7 +25,7 @@ export function CallToAction() {
           <p className="mt-4 text-lg tracking-tight text-white">
             It is time to be your own boss. Start your business today.
           </p>
-          <a href="/pricing/form-my-company" class="px-36 mt-8 py-4 relative rounded group overflow-hidden font-medium bg-purple-50 text-blue-600 inline-block">
+          <a href="#_" class="px-36 mt-8 py-4 relative rounded group overflow-hidden font-medium bg-purple-50 text-blue-600 inline-block">
             <span class="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-blue-600 group-hover:h-full opacity-90"></span>
             <span class="relative group-hover:text-white text-lg">Form My Company</span>
           </a>
