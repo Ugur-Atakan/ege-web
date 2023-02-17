@@ -419,7 +419,7 @@ function CompanyNameEmailForm(props) {
                             <input type="email" value={email} onChange={onEmailChange} name="userEmail" id="userEmail" className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="you@example.com" required></input>
                         </div>
                         <div className="mt-4">
-                            <button type="submit" className={email === '' || companyName === '' ? "inline-flex w-full items-center justify-center rounded-md border border-transparent bg-blue-300 px-16 py-3 font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:mt-0 sm:w-auto sm:text-sm pointer-events-none" : "inline-flex w-full items-center justify-center rounded-md border border-transparent bg-blue-600 px-16 py-3 font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:mt-0 sm:w-auto sm:text-sm"}>
+                            <button id='scn-btn' type="submit" className={email === '' || companyName === '' ? "inline-flex w-full items-center justify-center rounded-md border border-transparent bg-blue-300 px-16 py-3 font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:mt-0 sm:w-auto sm:text-sm pointer-events-none" : "inline-flex w-full items-center justify-center rounded-md border border-transparent bg-blue-600 px-16 py-3 font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:mt-0 sm:w-auto sm:text-sm"}>
                                 Select Company Name
                             </button>
                             <p className="text-xs leading-5 text-gray-500">
@@ -710,6 +710,7 @@ function CompanyContactInfoForm(props) {
                                 </div>
                                 <div className='mt-4 md:mt-0'>
                                     <button
+                                        id='pay-btn'
                                         type="submit"
                                         className={name === '' || lastname === '' || street === '' || zip === '' || phone === '' || city ==='' ? "bg-blue-300 py-3 px-6 rounded-md text-white pointer-events-none" : "mt-3 md:mt-0 inline-flex justify-center rounded-md border border-transparent bg-blue-600 py-3 px-6 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"}
                                     >
