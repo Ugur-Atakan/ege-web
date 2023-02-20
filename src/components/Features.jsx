@@ -29,7 +29,7 @@ const tabs = [
     description:
     t('section4_card2_desc'),
     button: t('section4_card2_button'),
-    href: '/post-incorporation',
+    href: '/post-incorp',
     icon: SparklesIcon,
     imageSrc: 'https://registate.net/static/media/features2.fe27dab0a08de2622778.png',
     imageAlt: 'Maple organizer base with slots, supporting white polycarbonate trays of various sizes.',
