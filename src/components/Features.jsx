@@ -62,7 +62,7 @@ const tabs = [
     description:
     t('section4_card5_desc'),
     button: t('section4_card5_button'),
-    href: '/bank-account-opening-support',
+    href: '/us-bank-account-opening-support',
     icon: InboxIcon,
     executivedesc: t('section4_card5_executive_desc'),
     executivetitle: t('section4_card5_executive_name'),
