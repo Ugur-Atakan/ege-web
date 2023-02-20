@@ -36,6 +36,8 @@ import AccountOpeningSupport from './routes/account-opening-support';
 import Company from './routes/company';
 import AllProducts from './routes/all-products';
 import '../src/locales/language.js'
+import StartCompany from './routes/start-company';
+
 const App = () => {
   return (
       <Router>
@@ -78,6 +80,7 @@ const App = () => {
             <Route exact path="/post-order" element={<PostOrder/>}/>
             <Route path="*" elemenvt={<Home/>}/>
             <Route exact path='/all-products' element={<AllProducts/>}/>
+            <Route exact path='/start-company-test' element={<StartCompany/>}/>
           </Routes>
         </div>
       </Router>

@@ -19,7 +19,6 @@ function TypingHeader() {
     t('hero_section_title_message_8'),
     t('hero_section_title_message_9'),
     t('hero_section_title_message_10'),
-    t('hero_section_title_message_11'),
   ]
 
   useEffect(() => {
@@ -80,12 +79,14 @@ export default function Hero() {
                 <p className="mt-5 mb-5 text-base text-gray-800 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-2xl lg:mx-0">
                   {t('hero_section_desc')}
                 </p>
-                <a href="/pricing/form-my-company/" class="px-16 py-4 relative rounded group overflow-hidden font-medium bg-blue-600 text-white inline-block">
-                  <span class="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-blue-700 group-hover:h-full opacity-90"></span>
-                  <span class="relative group-hover:text-white text-lg"> {t('hero_section_button')}</span>
-                </a>
-                <div className="flex flex-col md:flex-row py-3 gap-2 md:gap-0  md:py-0 md:inline-flex items-center md:divide-x md:divide-gray-300 mx-auto mt-4">
-                  <div className="flex flex-shrink-0">
+                <div className='flex justify-center'>
+                  <a href="/pricing/form-my-company/" id='form-my-company' class="px-16 py-4 relative rounded group overflow-hidden font-medium bg-blue-600 text-white inline-block">
+                    <span class="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-blue-700 group-hover:h-full opacity-90"></span>
+                    <span class="relative group-hover:text-white text-lg"> {t('hero_section_button')}</span>
+                  </a>
+                </div>
+                <div className="flex flex-col md:flex-row py-3 gap-2 md:gap-0  md:py-0 md:inline-flex items-center mx-auto mt-4">
+                  <div className="flex flex-shrink-0 pr-2">
                     <StarIcon className="h-5 w-5 text-yellow-400" aria-hidden="true" />
                     <StarIcon className="h-5 w-5 text-yellow-400" aria-hidden="true" />
                     <StarIcon className="h-5 w-5 text-yellow-400" aria-hidden="true" />

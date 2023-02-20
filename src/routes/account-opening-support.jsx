@@ -12,7 +12,7 @@ export default function AccountOpeningSupport() {
   return (
     <main>
     <Navbar />
-    <LeftImgRightText img={topnotch} heading='International Entity Services' title='US Bank Account Opening Support' desc='A bank account is essential for a new business. Yet, it could be a hassle. Let us assist it you!' button='Get Started Now' href='contact' reverse='true' />
+    <LeftImgRightText img={topnotch} heading='International Entity Services' title='US Bank Account Opening Support' desc='A bank account is essential for a new business. Yet, it could be a hassle. Let us assist it you!' button='Get Started Now' href='contact' />
     <Price/>
     <Stats title="Benefits of our Bank Account Opening Support" icontitle1="Save Time" icondesc1="No need to worry about the process and necessary documents" icontitle2="Open account virtually" icondesc2='No need to go to a bank. Do it with your laptop instead!' icon1=<DocumentCheckIcon className="w-12" /> icon2=<CursorArrowRippleIcon className='w-12' /> icontitle3='FDIC-insured bank account' icon3=<NewspaperIcon className='w-12' /> icondesc3='Keep your funds protected' />
     <LeftImgRightText img={whatweneed} desc=<ul>

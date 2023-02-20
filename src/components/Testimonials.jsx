@@ -6,6 +6,11 @@ import derya from '../images/avatars/derya.png'
 import duygu from '../images/avatars/duygu.png'
 import mert from '../images/avatars/mert.png'
 import React from 'react'
+import exaironlogo from '../images/logos/exairon-logo.png'
+import mallıqlogo from '../images/logos/mallıq-logo.png'
+import cameralyzelogo from '../images/logos/cameralyze-logo.png'
+import opsbeaconlogo from '../images/logos/opsbeacon-logo.png'
+import finedinelogo from '../images/logos/finedine-logo.png'
 
 const testimonials = [
   [
@@ -20,7 +25,7 @@ const testimonials = [
     },
     {
       content:
-      'I was more than happy with the service I received from Registate. The notarization and apostille orders were completed very quickly without any problem and I would not hesitate to recommend them to anyone.',
+        'I was more than happy with the service I received from Registate. The notarization and apostille orders were completed very quickly without any problem and I would not hesitate to recommend them to anyone.',
       author: {
         name: 'Noyan Berker',
         role: 'CEO at Mimiq Inc.',
@@ -40,7 +45,7 @@ const testimonials = [
     },
     {
       content:
-      "Registate has a very simple process for registering a company in the US. From first inquiry to the end, everything went smoothly. They registered my company in a day and I was able to get EIN instantly with premium service although I am a non-resident.",
+        "Registate has a very simple process for registering a company in the US. From first inquiry to the end, everything went smoothly. They registered my company in a day and I was able to get EIN instantly with premium service although I am a non-resident.",
       author: {
         name: 'Derya Kavarna',
         role: 'CEO at DigiMe Inc.',
@@ -51,7 +56,7 @@ const testimonials = [
   [
     {
       content:
-      "We were not happy with our previous registered agent so we changed it to Registate. Their compliance reminder service is very useful to keep us up to date with our annual reports and franchise tax payments. We are very happy with their top-notch services.",
+        "We were not happy with our previous registered agent so we changed it to Registate. Their compliance reminder service is very useful to keep us up to date with our annual reports and franchise tax payments. We are very happy with their top-notch services.",
       author: {
         name: 'Duygu Kutluoglu Kilic',
         role: 'CEO at FineDine',
@@ -60,7 +65,7 @@ const testimonials = [
     },
     {
       content:
-      "They registered my company, got EIN instantly, assisted me opening a bank account and help notarization of couple of documents. 5 stars service and a great team!",
+        "They registered my company, got EIN instantly, assisted me opening a bank account and help notarization of couple of documents. 5 stars service and a great team!",
       author: {
         name: 'Mert Yildiz',
         role: 'Founder at Bonded Technologies Inc',
@@ -89,25 +94,26 @@ export function Testimonials() {
           </p>
         </div>
         <div className="bg-white">
-            <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5">
-                <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
-                    <img className="h-12" src="https://tailwindui.com/img/logos/tuple-logo-gray-400.svg" alt="Tuple"></img>
-                </div>
-                <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
-                    <img className="h-12" src="https://tailwindui.com/img/logos/mirage-logo-gray-400.svg" alt="Mirage"></img>
-                </div>
-                <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
-                    <img className="h-12" src="https://tailwindui.com/img/logos/statickit-logo-gray-400.svg" alt="StaticKit"></img>
-                </div>
-                <div className="col-span-1 flex justify-center md:col-span-3 lg:col-span-1">
-                    <img className="h-12" src="https://tailwindui.com/img/logos/transistor-logo-gray-400.svg" alt="Transistor"></img>
-                </div>
-                <div className="col-span-2 flex justify-center md:col-span-3 lg:col-span-1">
-                    <img className="h-12" src="https://tailwindui.com/img/logos/workcation-logo-gray-400.svg" alt="Workcation"></img>
-                </div>
-                </div>
+          <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5">
+              <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
+                <img className="h-12 grayscale" src={exaironlogo} alt="Tuple"></img>
+              </div>
+              <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
+                <img className="h-12 grayscale" src={mallıqlogo} alt="Mirage"></img>
+              </div>
+              <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
+                <img className="h-12 grayscale" src={cameralyzelogo} alt="cameralyze"></img>
+              </div>
+              <div className="col-span-1 flex justify-center md:col-span-3 lg:col-span-1">
+                <img className="h-12 grayscale" src={opsbeaconlogo} alt="opsbeacon"></img>
+                <span class="inline-block mt-2 -ml-1"><span class="text-[#808080] font-medium text-xl ">Ops</span><span class="text-[#808080] font-medium text-xl ">Beacon</span></span>
+              </div>
+              <div className="col-span-2 flex justify-center md:col-span-3 lg:col-span-1">
+                <img className="h-12 grayscale" src={finedinelogo} alt="finedine"></img>
+              </div>
             </div>
+          </div>
         </div>
         <ul className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:gap-8 lg:mt-20 lg:max-w-none lg:grid-cols-3">
           {testimonials.map((column, columnIndex) => (
