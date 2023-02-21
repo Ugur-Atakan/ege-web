@@ -16,7 +16,7 @@ const tabs = [
     description:
     t('section4_card1_desc'),
     button: t('section4_card1_button'),
-    href: '/ein',
+    href: '/pricing/form-my-company',
     icon: InboxIcon,
     executivedesc: t('section4_card1_executive_desc'),
     executivetitle: t('section4_card1_executive_name'),
