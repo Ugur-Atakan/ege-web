@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 export default function LeftImgRightText(props) {
     return (
         <div className={props.bgblue ?"bg-gradient-to-r from-[#004B9D] to-[#001E3F]" :"bg-transparent"}>
@@ -17,12 +18,12 @@ export default function LeftImgRightText(props) {
                             {props.desc}
                         </p>
                         <button className='mt-8'>
-                            <a
-                                href={props.href}
+                            <Link
+                                to={props.href}
                                 className={props.button && "shadow rounded-md border border-transparent font-medium text-white bg-blue-600 px-4 py-3 text-md hover:bg-white hover:text-blue-600 hover:border-blue-600"}
                             >
                                 {props.button}
-                            </a>
+                            </Link>
                         </button>
                     </div>
                 </div>

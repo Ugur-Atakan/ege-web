@@ -8,12 +8,13 @@ import { MegaphoneIcon } from '@heroicons/react/24/outline'
 import Price from '../components/Price'
 import ExclusiveSolution from '../components/ExclusiveSolution'
 import Requirements from '../components/Requirements'
+import productData from '../assets/productData'
 
 export default function ForeignQualification() {
   return (
     <main>
         <Navbar/>
-        <LeftImgRightText heading='Manage Your Business' title='Foreign Qualification' img={topnotch} desc='Is your company planning to conduct business in a state that is not the company’s state of incorporatiton? Then, you may need to apply for foreign qualification.' button='Get Started Now' href='contact'/>
+        <LeftImgRightText heading='Manage Your Business' title='Foreign Qualification' img={topnotch} desc='Is your company planning to conduct business in a state that is not the company’s state of incorporatiton? Then, you may need to apply for foreign qualification.' button='Get Started Now' href={`/products/${productData[7].link}/contact`}/>
         <Price/>
         <Stats title='Step-By-Step Guide' icon1=<MegaphoneIcon className="w-12"/> icontitle1='Provide us with the necessary information' icondesc1='Fill out the form and complete the payment.' icon2=<MegaphoneIcon className="w-12"/> icontitle2='Obtain required certificates from the state of formation' icondesc2="Our experts will compile, and if necessary, send the relevant documents for the authorized person's signature." icon3=<MegaphoneIcon className="w-12"/> icontitle3='Filing the documents' icondesc3='We file the necessary documents with the State of Delaware Division of Corporations. Once completed, you will be notified and receive the Certificate of Authority.' />
         <LeftImgRightText heading='Do not be mistaken! “Foreign qualification” does not mean being qualified to conduct business abroad.' img={whatweneed} desc='In the U.S., an entity that seeks to conduct business outside of its state of formation is considered “foreign”. States may require “foreign qualifications” from the “foreign” entities before transacting any business.In short, if you wish to register your business (foreign qualification) in a state in which your business is considered to be “alien”, you need to file for a Certificate of Authority.

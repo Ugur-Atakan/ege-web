@@ -7,12 +7,13 @@ import Stats from '../components/Stats'
 import { DocumentCheckIcon, CursorArrowRippleIcon, NewspaperIcon } from "@heroicons/react/24/outline"
 import Price from '../components/Price'
 import ExclusiveSolution from '../components/ExclusiveSolution'
+import productData from '../assets/productData'
 
 export default function DoingBusinessAs() {
     return (
         <main>
             <Navbar />
-            <LeftImgRightText img={topnotch} heading='Manage Your Business' title='Doing Business As (DBA)' desc='Do you want to amend your company’s formation documents or need a restated version of them?' button='Get Started Now' href='contact' />
+            <LeftImgRightText img={topnotch} heading='Manage Your Business' title='Doing Business As (DBA)' desc='Do you want to amend your company’s formation documents or need a restated version of them?' button='Get Started Now' href={`/products/${productData[15].link}/contact`} />
             <Price/>
             <Stats title="Some Advantages of Having a DBA" icontitle1="Provide us with the signed Amendment Certificate" icondesc1="A certificate must be filled out and signed by the company’s authorized signer." icontitle2="Review and assessment" icondesc2='Our team will review the documents you provided and determine whether there are additional fees required to be paid.' icon1=<DocumentCheckIcon className="w-12" /> icon2=<CursorArrowRippleIcon className='w-12' /> icontitle3='Filing the documents' icon3=<NewspaperIcon className='w-12' /> icondesc3='We file the Certificate of Amendment with the State of Delaware Division of Corporations. Once completed, you will be notified and receive the filed Certificate.' />
             <LeftImgRightText img={whatweneed} desc=<ul>

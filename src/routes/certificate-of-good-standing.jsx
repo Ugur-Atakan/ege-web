@@ -8,12 +8,13 @@ import {DocumentCheckIcon, CursorArrowRippleIcon, NewspaperIcon} from "@heroicon
 import Price from '../components/Price'
 import ExclusiveSolution from '../components/ExclusiveSolution'
 import Requirements from '../components/Requirements'
+import productData from '../assets/productData'
 
 export default function CertificateOfGoodStanding() {
   return (
     <main>
         <Navbar/>
-        <LeftImgRightText heading='Manage Your Business' title='Certificate of Good Standing' img={topnotch} desc='Are you registering your company to another state and in need of a Certificate of Good standing? Or do you need it for something else?' button='Get Started Now' href='contact'/>
+        <LeftImgRightText heading='Manage Your Business' title='Certificate of Good Standing' img={topnotch} desc='Are you registering your company to another state and in need of a Certificate of Good standing? Or do you need it for something else?' button='Get Started Now' href={`/products/${productData[8].link}/contact`}/>
         <Price/>
         <Stats title="Features Of A Certificate Of Good Standing" icontitle1="Excellent Support" icondesc1="Our representatives will assist you to meet your company’s need." icontitle2="Expedited Services"  icondesc2='Are you in rush? We can expedite your order!' icon1=<DocumentCheckIcon className="w-12"/> icon2=<CursorArrowRippleIcon className='w-12'/> icontitle3='Save on time' icon3=<NewspaperIcon className='w-12'/> icondesc3='You can prove that your company is in good standing.' />
         <LeftImgRightText img={whatweneed} desc='A Certificate of Good Standing (also known as a Certificate of Status, a Certificate of Existence, or a Certificate of Fact) demonstrates that your company has submitted all required reports and paid all required fees/taxes to the state, therefore verifying its existence in that state. Issued by the state authorities, the document is evidence that your company is legally permitted to conduct business activities as a properly registered company within that particular state. However, it is important to note that the Certificate of Good Standing is not a business license, which is in fact required to be obtained in order to legally conduct business. Usually, a company can legally conduct business without obtaining a Certificate of Good Standing. '/>

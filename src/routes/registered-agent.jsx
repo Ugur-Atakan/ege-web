@@ -9,11 +9,12 @@ import Stats from "../components/Stats"
 import Price from "../components/Price"
 import ExclusiveSolution from "../components/ExclusiveSolution"
 import { EnvelopeOpenIcon, InboxStackIcon, CalendarDaysIcon } from "@heroicons/react/24/outline"
+import productData from "../assets/productData"
 export default function RegisteredAgent() {
     return (
         <main>
             <Navbar />
-            <LeftImgRightText heading='Admin Management' title='Registered Agent' desc="Are you in the process of forming your company but you don't have a registered agent yet? Appoint us as your registered agent! Or, you already have a registered agent but want to change it? Appoint your Delaware registered agent to Registate!" button='Get Started Now' img={ra1} href='contact' />
+            <LeftImgRightText heading='Admin Management' title='Registered Agent' desc="Are you in the process of forming your company but you don't have a registered agent yet? Appoint us as your registered agent! Or, you already have a registered agent but want to change it? Appoint your Delaware registered agent to Registate!" button='Get Started Now' img={ra1} href={`/products/${productData[1].link}/contact`} />
             <Price />
             <LeftImgRightText title='Every company in Delaware is required to appoint a registered agent by law' desc='The State of Delaware requires that businesses have a contact person during business hours, to receive official and legal documents, including but not limited to services of process and state notifications, on behalf of the company. Basically, every company in Delaware is required to appoint a registered agent.' img={ra2} />
             <LeftImgRightText title='We are available 9AM to 5PM as your Registered Agent' desc="In principle, you or someone else from the company can be appointed as your registered agent. Yet, it can be burdensome to comply with this requirement as the registered agent must have a physical address in Delaware and be available during business hours. It is important to note that a P.O. box is not sufficient to fulfil the address requirement. It should also be noted that the name and the physical street address are available to the general public and must be easily accessible." img={ra3} reverse='true' />

@@ -8,12 +8,13 @@ import { DocumentCheckIcon, CursorArrowRippleIcon, NewspaperIcon } from "@heroic
 import Price from '../components/Price'
 import ExclusiveSolution from '../components/ExclusiveSolution'
 import Requirements from '../components/Requirements'
+import productData from '../assets/productData'
 
 export default function Ein() {
     return (
         <main>
             <Navbar />
-            <LeftImgRightText heading='Manage Your Business' title='EIN' img={topnotch} desc='Do you need assistance with filing SS-4 Form and obtaining EIN? Registate is the right choice!' button='Get Started Now' href='contact'/>
+            <LeftImgRightText heading='Manage Your Business' title='EIN' img={topnotch} desc='Do you need assistance with filing SS-4 Form and obtaining EIN? Registate is the right choice!' button='Get Started Now' href={`/products/${productData[10].link}/contact`}/>
             <Price/>
             <Stats title="Why EIN" icontitle1="To Open Bank Account" icondesc1="Banks and other financial institutions require an EIN to open an account." icontitle2="To Hire Employees" icondesc2='You need an EIN when hiring new employees as it will be used for payroll and other tax matters.' icon1=<DocumentCheckIcon className="w-12" /> icon2=<CursorArrowRippleIcon className='w-12' /> icontitle3='Need for tax filing' icon3=<NewspaperIcon className='w-12' /> icondesc3='When a tax return is filed for the company, EIN often is required to identify the company.' />
             <LeftImgRightText img={whatweneed} desc='
