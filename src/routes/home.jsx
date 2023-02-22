@@ -9,6 +9,7 @@ import Customers from '../components/Customers';
 import Footer from '../components/Footer';
 import React from 'react';
 import { Navbar } from '../components/Navbar';
+import TestimonialLogos from '../components/TestimonialLogos';
 
 export function Home() {
     localStorage.clear()
@@ -18,6 +19,7 @@ export function Home() {
                 <Navbar/>
                 <Hero />
                 <Customers />
+                <TestimonialLogos/>
                 <WhyUs />
                 <Features />
                 <SecondaryFeatures />

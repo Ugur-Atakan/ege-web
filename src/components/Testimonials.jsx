@@ -6,11 +6,6 @@ import derya from '../images/avatars/derya.png'
 import duygu from '../images/avatars/duygu.png'
 import mert from '../images/avatars/mert.png'
 import React from 'react'
-import exaironlogo from '../images/logos/exairon-logo.png'
-import mallıqlogo from '../images/logos/mallıq-logo.png'
-import cameralyzelogo from '../images/logos/cameralyze-logo.png'
-import opsbeaconlogo from '../images/logos/opsbeacon-logo.png'
-import finedinelogo from '../images/logos/finedine-logo.png'
 
 const testimonials = [
   [
@@ -83,39 +78,7 @@ export function Testimonials() {
       className="bg-slate-50 py-20 sm:py-32"
     >
       <Container>
-        <div className="mx-auto max-w-2xl md:text-center">
-          <h2
-            id="testimonials-title"
-            className="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl"
-          >
-            Trusted & Recommended By Respected Enterprises.
-          </h2>
-          <p className="mt-4 text-lg tracking-tight text-slate-700">
-          </p>
-        </div>
-        <div className="bg-white">
-          <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5">
-              <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
-                <img className="h-12 grayscale" src={exaironlogo} alt="Tuple"></img>
-              </div>
-              <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
-                <img className="h-12 grayscale" src={mallıqlogo} alt="Mirage"></img>
-              </div>
-              <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
-                <img className="h-12 grayscale" src={cameralyzelogo} alt="cameralyze"></img>
-              </div>
-              <div className="col-span-1 flex justify-center md:col-span-3 lg:col-span-1">
-                <img className="h-12 grayscale" src={opsbeaconlogo} alt="opsbeacon"></img>
-                <span class="inline-block mt-2 -ml-1"><span class="text-[#808080] font-medium text-xl ">Ops</span><span class="text-[#808080] font-medium text-xl ">Beacon</span></span>
-              </div>
-              <div className="col-span-2 flex justify-center md:col-span-3 lg:col-span-1">
-                <img className="h-12 grayscale" src={finedinelogo} alt="finedine"></img>
-              </div>
-            </div>
-          </div>
-        </div>
-        <ul className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:gap-8 lg:mt-20 lg:max-w-none lg:grid-cols-3">
+        <ul className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:gap-8 lg:mt-4 lg:max-w-none lg:grid-cols-3">
           {testimonials.map((column, columnIndex) => (
             <li key={columnIndex}>
               <ul className="space-y-6 sm:space-y-8">
