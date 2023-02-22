@@ -1,6 +1,5 @@
 import { ArrowUturnDownIcon, CheckBadgeIcon, ExclamationCircleIcon } from '@heroicons/react/20/solid'
 import { useState } from 'react';
-import PolicyContent from './PolicyContent'
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -14,14 +13,6 @@ export default function StartOnbarding() {
         setModal(!modal);
     }
 
-    const PageDisplay = () => {
-        if (page === 0) {
-            return
-        }
-        else if (page === 1) {
-            return <h1>hello world</h1>
-        }
-    }
     return (
         <>
             {modal &&
@@ -78,6 +69,29 @@ export default function StartOnbarding() {
                     </div>
                     <div className='pt-12'>
                         <h1 className='text-center text-white text-2xl font-bold'>Are you planning to raise money or go through an accelerator/incubator program?</h1>
+                    </div>
+                    <div className='flex justify-center pt-8'>
+                        <button className='shadow-lg shadow-blue-900 bg-black bg-opacity-[0.6] rounded-lg hover:bg-opacity-[0.2] text-white w-96 h-16'>Yes</button>
+                    </div>
+                    <div className='flex justify-center pt-5'>
+                        <button className='shadow-lg shadow-blue-900 bg-black bg-opacity-[0.6] rounded-lg hover:bg-opacity-[0.2] text-white w-96 h-16'>No</button>
+                    </div>
+                    <div className='flex justify-center pt-5'>
+                        <button className='shadow-lg shadow-blue-900 bg-black bg-opacity-[0.6] rounded-lg hover:bg-opacity-[0.2] text-white w-96 h-16'>Not Sure</button>
+                    </div>
+                    <div className='flex justify-center pt-5' >
+                        <button onClick={() => { setPage((currPage) => currPage + 1) }} className='shadow-lg border border-blue-900 bg-black bg-opacity-[0.6] rounded-lg hover:bg-opacity-[0.2] text-white w-96 h-16 hover:bg-white hover:text-black hover:bg-opacity-[1] hover:border-none '>Next</button>
+                    </div>
+                </div>
+            }
+             {page === 2 &&
+                <div className='fixed left-1/2 top-1/2 bg-img rounded-lg -translate-x-1/2 -translate-y-1/2 w-1/2 h-[550px]'>
+                    <div className='ml-4 mt-4 flex items-center gap-2 cursor-pointer' onClick={() => { setPage((currPage) => currPage - 1) }} >
+                        <ArrowUturnDownIcon className='w-4 text-white rotate-90' />
+                        <button className='text-white'>Back</button>
+                    </div>
+                    <div className='pt-12 px-12'>
+                        <h1 className='text-center text-white text-2xl font-bold'>Are you planning to give stocks to employees, advisors or partners?</h1>
                     </div>
                     <div className='flex justify-center pt-8'>
                         <button className='shadow-lg shadow-blue-900 bg-black bg-opacity-[0.6] rounded-lg hover:bg-opacity-[0.2] text-white w-96 h-16'>Yes</button>
