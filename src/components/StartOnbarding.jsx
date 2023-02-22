@@ -71,20 +71,20 @@ export default function StartOnbarding() {
                         <h1 className='text-center text-white text-2xl font-bold'>Are you planning to raise money or go through an accelerator/incubator program?</h1>
                     </div>
                     <div className='flex justify-center pt-8'>
-                        <button className='shadow-lg shadow-blue-900 bg-black bg-opacity-[0.6] rounded-lg hover:bg-opacity-[0.2] text-white w-96 h-16'>Yes</button>
+                        <button className='focus:border focus:border-blue-400 shadow-lg shadow-blue-900 bg-black bg-opacity-[0.6] rounded-lg hover:bg-opacity-[0.2] text-white w-96 h-16'>Yes</button>
                     </div>
                     <div className='flex justify-center pt-5'>
-                        <button className='shadow-lg shadow-blue-900 bg-black bg-opacity-[0.6] rounded-lg hover:bg-opacity-[0.2] text-white w-96 h-16'>No</button>
+                        <button className='focus:border focus:border-blue-400 shadow-lg shadow-blue-900 bg-black bg-opacity-[0.6] rounded-lg hover:bg-opacity-[0.2] text-white w-96 h-16'>No</button>
                     </div>
                     <div className='flex justify-center pt-5'>
-                        <button className='shadow-lg shadow-blue-900 bg-black bg-opacity-[0.6] rounded-lg hover:bg-opacity-[0.2] text-white w-96 h-16'>Not Sure</button>
+                        <button className='focus:border focus:border-blue-400 shadow-lg shadow-blue-900 bg-black bg-opacity-[0.6] rounded-lg hover:bg-opacity-[0.2] text-white w-96 h-16'>Not Sure</button>
                     </div>
                     <div className='flex justify-center pt-5' >
                         <button onClick={() => { setPage((currPage) => currPage + 1) }} className='shadow-lg border border-blue-900 bg-black bg-opacity-[0.6] rounded-lg hover:bg-opacity-[0.2] text-white w-96 h-16 hover:bg-white hover:text-black hover:bg-opacity-[1] hover:border-none '>Next</button>
                     </div>
                 </div>
             }
-             {page === 2 &&
+            {page === 2 &&
                 <div className='fixed left-1/2 top-1/2 bg-img rounded-lg -translate-x-1/2 -translate-y-1/2 w-1/2 h-[550px]'>
                     <div className='ml-4 mt-4 flex items-center gap-2 cursor-pointer' onClick={() => { setPage((currPage) => currPage - 1) }} >
                         <ArrowUturnDownIcon className='w-4 text-white rotate-90' />
@@ -94,16 +94,36 @@ export default function StartOnbarding() {
                         <h1 className='text-center text-white text-2xl font-bold'>Are you planning to give stocks to employees, advisors or partners?</h1>
                     </div>
                     <div className='flex justify-center pt-8'>
-                        <button className='shadow-lg shadow-blue-900 bg-black bg-opacity-[0.6] rounded-lg hover:bg-opacity-[0.2] text-white w-96 h-16'>Yes</button>
+                        <button className='focus:border focus:border-blue-400 shadow-lg shadow-blue-900 bg-black bg-opacity-[0.6] rounded-lg hover:bg-opacity-[0.2] text-white w-96 h-16'>Yes</button>
                     </div>
                     <div className='flex justify-center pt-5'>
-                        <button className='shadow-lg shadow-blue-900 bg-black bg-opacity-[0.6] rounded-lg hover:bg-opacity-[0.2] text-white w-96 h-16'>No</button>
+                        <button className='focus:border focus:border-blue-400 shadow-lg shadow-blue-900 bg-black bg-opacity-[0.6] rounded-lg hover:bg-opacity-[0.2] text-white w-96 h-16'>No</button>
                     </div>
                     <div className='flex justify-center pt-5'>
-                        <button className='shadow-lg shadow-blue-900 bg-black bg-opacity-[0.6] rounded-lg hover:bg-opacity-[0.2] text-white w-96 h-16'>Not Sure</button>
+                        <button className='focus:border focus:border-blue-400 shadow-lg shadow-blue-900 bg-black bg-opacity-[0.6] rounded-lg hover:bg-opacity-[0.2] text-white w-96 h-16'>Not Sure</button>
                     </div>
                     <div className='flex justify-center pt-5' >
                         <button onClick={() => { setPage((currPage) => currPage + 1) }} className='shadow-lg border border-blue-900 bg-black bg-opacity-[0.6] rounded-lg hover:bg-opacity-[0.2] text-white w-96 h-16 hover:bg-white hover:text-black hover:bg-opacity-[1] hover:border-none '>Next</button>
+                    </div>
+                </div>
+            }
+            {page === 3 &&
+                <div className='fixed left-1/2 top-1/2 bg-img rounded-lg -translate-x-1/2 -translate-y-1/2 w-1/2 h-[550px]'>
+                    <div className='pt-12 px-12'>
+                        <h1 className='text-center text-white text-2xl font-bold flex flex-col'>We suggest incorporating as a <span className='font-extrabold text-transparent text-3xl bg-clip-text bg-gradient-to-r from-blue-400 to-blue-900 py-3'> LLC in Wyoming </span></h1>
+                    </div>
+                    <div className='mx-24 my-4 shadow-lg shadow-blue-900 bg-black bg-opacity-[0.6] rounded-lg p-8 relative hover:bg-opacity-[0.2]'>
+                        <div className='block py-1'>
+                            <ul className='text-white'>
+                                <li className='flex items-center text-sm py-2'><div className='w-[10%]'><CheckBadgeIcon className='w-4 text-green-500' /></div><div className='w-3/4'><p>Great for startups fundraising from investors</p></div></li>
+                                <li className='flex items-center text-sm py-2'><div className='w-[10%]'><CheckBadgeIcon className='w-4 text-green-500' /></div><div className='w-3/4'><p>Ability to raise capital by issuing stock; ownership represented by shareholders</p></div></li>
+                                <li className='flex items-center text-sm py-2'><div className='w-[10%]'><CheckBadgeIcon className='w-4 text-green-500' /></div><div className='w-3/4'><p>Management structure with more operating requirements</p></div></li>
+                                <li className='flex items-center text-sm py-2'><div className='w-[10%]'><ExclamationCircleIcon className='w-4 text-red-500' /></div><div className='w-3/4'><p>More paperwork and corporate requirements such as annual meetings and minutes</p></div></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div className='flex justify-center pt-5' >
+                        <button onClick={() => { setPage((currPage) => currPage + 1) }} className='shadow-lg border border-blue-900 bg-black bg-opacity-[0.6] rounded-lg hover:bg-opacity-[0.2] text-white w-96 h-16 hover:bg-white hover:text-black hover:bg-opacity-[1] hover:border-none '>Apply suggestion</button>
                     </div>
                 </div>
             }
