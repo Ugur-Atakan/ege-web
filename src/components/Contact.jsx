@@ -59,7 +59,7 @@ export default function Contact() {
     <div className="bg-white">
       <main className="overflow-hidden pb-32">
         <div className="bg-warm-gray-50">
-          <div className="py-24 lg:py-32">
+          <div className="py-24 lg:py-24">
             <div className="relative z-10 mx-auto max-w-7xl pl-4 pr-8 sm:px-6 lg:px-8">
               <h1 className="text-4xl font-bold tracking-tight text-warm-gray-900 sm:text-5xl lg:text-6xl">
                 Contact Us
@@ -72,7 +72,7 @@ export default function Contact() {
         </div>
 
         {/* Contact section */}
-        <section className="relative bg-white" aria-labelledby="contact-heading">
+        <section className="relative bg-white -mt-16" aria-labelledby="contact-heading">
           <div className="absolute h-1/2 w-full bg-warm-gray-50" aria-hidden="true" />
           {/* Decorative dot pattern */}
           <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
