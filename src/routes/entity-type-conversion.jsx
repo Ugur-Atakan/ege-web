@@ -8,12 +8,13 @@ import Stats from '../components/Stats'
 import { DocumentCheckIcon, CursorArrowRippleIcon, NewspaperIcon } from "@heroicons/react/24/outline"
 import Price from '../components/Price'
 import ExclusiveSolution from '../components/ExclusiveSolution'
+import productData from '../assets/productData'
 
 export default function EntityTypeConversion() {
     return (
         <main>
             <Navbar />
-            <LeftImgRightText img={topnotch} heading='Manage Your Business' title='Entity Type Conversion' desc='Do you want to convert your company’s entity type to something else? Get started now!' button='Get Started Now' href='contact' />
+            <LeftImgRightText img={topnotch} heading='Manage Your Business' title='Entity Type Conversion' desc='Do you want to convert your company’s entity type to something else? Get started now!' button='Get Started Now' href={`/products/${productData[11].link}/contact`} />
             <Price/>
             <Stats title="Step-By-Step Guide" icontitle1="Provide us with the necessary documents" icondesc1="E-mail us over whatever you need, while providing the necessary documents." icontitle2="Review and assessing costs" icondesc2='Our experts will assess the cost in accordance with the information you provided. Complete the payment.' icon1=<DocumentCheckIcon className="w-12" /> icon2=<CursorArrowRippleIcon className='w-12' /> icontitle3='Filing the documents' icon3=<NewspaperIcon className='w-12' /> icondesc3='We file the necessary documents with the State of Delaware Division of Corporations. Once completed, you will be notified and receive the filed Certificate of Conversion.' />
             <LeftImgRightText img={whatweneed} heading title='When you need this' desc='For various reasons, you may need to convert your LLC to Corporation or Corporation to LLC, etc. This process is called “conversion.” To do so, you need to complete proper state filing with appropriate documents (Certificate of Conversion). As converting entity type may pose significant legal, tax and accounting implications, the process must be done seamlessly. If you need any legal advice, please consult an attorney.If you are all good to go and need assistance in filing your conversion documents, we are always happy to assist you!' />

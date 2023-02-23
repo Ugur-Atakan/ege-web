@@ -7,78 +7,7 @@ import React from 'react'
 import axios from "axios";
 
 const API_ROOT = window.ob.config.apiRoot;
-function Plan(props) {
-const API_ROOT = window.ob.config.apiRoot;
-  const clickHandler = () => {
-      localStorage.setItem("packageName", props.name)
-      localStorage.setItem("packageType", props.packageType)
-      localStorage.setItem("packagePrice", props.price)
-      window.location.href = props.href
-  }
-  return (
-    <section 
-      className={clsx('flex flex-col rounded-3xl px-6 sm:px-8', {
-        'order-first bg-blue-600 py-8 lg:order-none': props.featured,
-        'lg:py-8': !props.featured,
-      })}
-    >
-      <h3 className="mt-5 font-display text-lg text-white">{props.name}</h3>
-      <p
-        className={clsx('mt-2 text-base', {
-          'text-white': props.featured,
-          'text-slate-400': !props.featured,
-        })}
-      >
-        {props.description}
-        {props.description2}
-      </p>
-      <p className="order-first font-display text-5xl font-light tracking-tight text-white">
-        ${props.price}
-      </p>
-      <ul
-        className={clsx('order-last mt-10 space-y-3 text-sm', {
-          'text-white': props.featured,
-          'text-slate-200': !props.featured,
-        })}
-      >
-        {props.features.map((feature) => (
-          <li key={feature} className="flex">
-            <svg
-              aria-hidden="true"
-              className={clsx('h-6 w-6 flex-none', {
-                'fill-white stroke-white': props.featured,
-                'fill-slate-400 stroke-slate-400': !props.featured,
-              })}
-            >
-              <path
-                d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
-                strokeWidth={0}
-              />
-              <circle
-                cx={12}
-                cy={12}
-                r={8.25}
-                fill="none"
-                strokeWidth={1.5}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-            <span className="ml-4" >{feature}</span>
-          </li>
-        ))}
-      </ul>
-      {/* if selected */}
-      {props.featured && (
-      <button id='premium-package' className="group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-white text-slate-900 hover:bg-blue-50 active:bg-blue-200 active:text-slate-600 focus-visible:outline-white mt-8" aria-label="Get started with the Small business plan for $15"  onClick={clickHandler.bind(this)} >Get Started</button>
-      )}
-      {/* if not selected */}
-      {!props.featured && (
-        <button id='gold-package' className="bg-white text-black lg:bg-transparent font-semibold group inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm focus:outline-none ring-slate-700 md:text-white hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white mt-8" aria-label="Get started with the Starter plan for ${price}" onClick={clickHandler.bind(this)}>Get Started</button>
-      )}
-    </section>
-  )
-}
+
 
 export function Pricing() {
   let [companyState, setCompanyState] = useState("");
@@ -104,23 +33,24 @@ export function Pricing() {
         entityTypeId: companyTypeId
       }
 
-      axios.post(API_ROOT +'/api/fe/prices', payload, {
-          headers: {
-              'Content-Type': 'application/json',
-              'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
-      }})
-      .then(function (response) {
-        var jsonData = JSON.parse(JSON.stringify(response.data));
-        console.log("Response from prices API:")
-        //let prices = jsonData.map(x => x.orderPackagePrice.toString().slice(0, -2))
-        //console.log(prices)
-
-        //set package prices
-        setPackagePrices(jsonData)
+      axios.post(API_ROOT + '/api/fe/prices', payload, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
+        }
       })
-      .catch(function (error) {
-        console.log(error);
-      });
+        .then(function (response) {
+          var jsonData = JSON.parse(JSON.stringify(response.data));
+          console.log("Response from prices API:")
+          //let prices = jsonData.map(x => x.orderPackagePrice.toString().slice(0, -2))
+          //console.log(prices)
+
+          //set package prices
+          setPackagePrices(jsonData)
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     }
 
     if (companyState !== "" && companyType !== "") {
@@ -132,32 +62,34 @@ export function Pricing() {
 
   useEffect(() => {
     //get the states from backend api via axios
-    axios.get(API_ROOT +'/api/fe/states', {
+    axios.get(API_ROOT + '/api/fe/states', {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
-    }})
-    .then(function (response) {
-      var jsonData = JSON.parse(JSON.stringify(response.data));
-      setStates(jsonData)
+      }
     })
-    .catch(function (error) {
-      console.log(error);
-    });
+      .then(function (response) {
+        var jsonData = JSON.parse(JSON.stringify(response.data));
+        setStates(jsonData)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
 
     //get the states from backend api via axios
-    axios.get(API_ROOT +'/api/settings/entityType', {
+    axios.get(API_ROOT + '/api/settings/entityType', {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
-    }})
-    .then(function (response) {
-      var jsonData = JSON.parse(JSON.stringify(response.data));
-      setCompanyTypes(jsonData)
+      }
     })
-    .catch(function (error) {
-      console.log(error);
-    });  
+      .then(function (response) {
+        var jsonData = JSON.parse(JSON.stringify(response.data));
+        setCompanyTypes(jsonData)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
 
     localStorage.setItem('companyState', companyState)
     localStorage.setItem('companyType', companyType)
@@ -221,24 +153,24 @@ export function Pricing() {
         <div className="flex flex-col md:grid grid-cols-2 mx-auto py-12 max-w-4xl">
           <div id="companyStateDiv" className="flex flex-col md:pr-1">
             <div>
-            <select
-              id="companyState"
-              name="companyState"
-              value={companyState}
-              placeholder="Select State"
-              className="mt-1 block w-full rounded-md px-4 py-3 pl-3 pr-10 text-2xl focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 h-18 border-blue-400 border-4"
-              onChange={(e) => handleCompanyStateChange(e.target.value)}
-            >
-              <option value=""> Select State </option>
-              {states.map((state) => (
-                <option 
-                  key={state.id} 
-                  value={state.state}
-                >
-                  {state.state}
-                </option>
-              ))}
-            </select>
+              <select
+                id="companyState"
+                name="companyState"
+                value={companyState}
+                placeholder="Select State"
+                className="mt-1 block w-full rounded-md px-4 py-3 pl-3 pr-10 text-2xl focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 h-18 border-blue-400 border-4"
+                onChange={(e) => handleCompanyStateChange(e.target.value)}
+              >
+                <option value=""> Select State </option>
+                {states.map((state) => (
+                  <option
+                    key={state.id}
+                    value={state.state}
+                  >
+                    {state.state}
+                  </option>
+                ))}
+              </select>
 
             </div>
           </div>
@@ -252,9 +184,9 @@ export function Pricing() {
             >
               <option value=""> Select Company Type </option>
               {companyTypes.map((type) => (
-                <option 
-                  key={type.id} 
-                  value={type.entityType} 
+                <option
+                  key={type.id}
+                  value={type.entityType}
                 >
                   {type.entityType}
                 </option>
@@ -263,63 +195,136 @@ export function Pricing() {
           </div>
         </div>
         {showPricingPackages && (
-        <div id="pricingPackages" className="flex flex-col-reverse lg:flex-row lg:flex lg:justify-center mx-4 mt-12 pt-24  max-w-2xl gap-y-10 sm:mx-auto lg:-mx-8 lg:max-w-none lg:grid-cols-3 xl:mx-0 xl:gap-x-8">
-        {
-          packagePrices.map((packagePrice, index) => {
-              if (companyState !== "Delaware") {
-                if (index === 0) {
-                  //if item.features doesn't include Business Address Fee, add it
-                  if (!packagePrice.features.includes("1 Year Business Address Fee")) {
-                    packagePrice.features.splice(1, 0, "1 Year Business Address Fee")
+          <div id="pricingPackages" className="flex flex-col-reverse lg:flex-row lg:flex lg:justify-center mx-4 mt-12 pt-24  max-w-2xl gap-y-10 sm:mx-auto lg:-mx-8 lg:max-w-none lg:grid-cols-3 xl:mx-0 xl:gap-x-8">
+            {
+              packagePrices.map((packagePrice, index) => {
+                if (companyState !== "Delaware") {
+                  if (index === 0) {
+                    //if item.features doesn't include Business Address Fee, add it
+                    if (!packagePrice.features.includes("1 Year Business Address Fee")) {
+                      packagePrice.features.splice(1, 0, "1 Year Business Address Fee")
+                    }
+                  }
+                  if (index === 1) {
+                    //if item.features includes it remove it
+                    if (packagePrice.features.includes("1 Year Virtual Mailbox Fee")) {
+                      packagePrice.features.splice(1, 2)
+                    }
                   }
                 }
-                if (index === 1) {
-                  //if item.features includes it remove it
-                  if (packagePrice.features.includes("1 Year Virtual Mailbox Fee")) {
-                    packagePrice.features.splice(1, 2)
+                if (companyState === "Delaware") {
+                  if (index === 0) {
+                    //if item.features include it remove it
+                    if (packagePrice.features.includes("1 Year Business Address Fee")) {
+                      packagePrice.features.splice(1, 1)
+                    }
+                  }
+                  if (index === 1) {
+                    if (!packagePrice.features.includes("1 Year Virtual Mailbox Fee")) {
+                      packagePrice.features.splice(1, 0, "1 Year Virtual Mailbox Fee")
+                    }
+                    if (!packagePrice.features.includes("1 Year Business Address Fee")) {
+                      packagePrice.features.splice(2, 0, "1 Year Business Address Fee")
+                    }
                   }
                 }
-              }
-              if (companyState === "Delaware") {
-                if (index === 0) {
-                  //if item.features include it remove it
-                  if (packagePrice.features.includes("1 Year Business Address Fee")) {
-                    packagePrice.features.splice(1, 1)
-                  }
-                }
-                if (index === 1) {
-                  if (!packagePrice.features.includes("1 Year Virtual Mailbox Fee")) {
-                    packagePrice.features.splice(1, 0, "1 Year Virtual Mailbox Fee")
-                  }
-                  if (!packagePrice.features.includes("1 Year Business Address Fee")) {
-                    packagePrice.features.splice(2, 0, "1 Year Business Address Fee")
-                  }
-                }
-              }
-              console.log("packageDetail[" + packagePrice.orderPackageId + "]")
-              console.log(packagePrice)
-              return (
-                <div key={packagePrice.id + index}>
-                <Plan
-                  name={packagePrice.orderPackage}
-                  price={packagePrice.orderPackagePrice.toString().slice(0, -2)}
-                  description={packagePrice.description}
-                  description2={packagePrice.description2}
-                  href="/onboarding"
-                  features={packagePrice.features}
-                  featured={index === 1}
-                  keyName={packagePrice.id + index}
-                  packageType={packagePrice.id}
-                />
-                </div>
-              )
-          })
-        }
-        </div>
+                console.log("packageDetail[" + packagePrice.orderPackageId + "]")
+                console.log(packagePrice)
+                return (
+                  <div key={packagePrice.id + index}>
+                    <Plan
+                      name={packagePrice.orderPackage}
+                      price={packagePrice.orderPackagePrice.toString().slice(0, -2)}
+                      description={packagePrice.description}
+                      description2={packagePrice.description2}
+                      href="/onboarding"
+                      features={packagePrice.features}
+                      featured={index === 1}
+                      keyName={packagePrice.id + index}
+                      packageType={packagePrice.id}
+                    />
+                  </div>
+                )
+              })
+            }
+          </div>
         )}
       </Container>
     </section>
   )
+  function Plan(props) {
+    const clickHandler = () => {
+      localStorage.setItem("packageName", props.name)
+      localStorage.setItem("packageType", props.packageType)
+      localStorage.setItem("packagePrice", props.price)
+      window.location.href = props.href
+    }
+
+    return (
+      <section
+        className={clsx('flex flex-col rounded-3xl px-6 sm:px-8', {
+          'order-first bg-blue-600 py-8 lg:order-none': props.featured,
+          'lg:py-8': !props.featured,
+        })}
+      >
+        <h3 className="mt-5 font-display text-lg text-white">{props.name}</h3>
+        <p
+          className={clsx('mt-2 text-base', {
+            'text-white': props.featured,
+            'text-slate-400': !props.featured,
+          })}
+        >
+          {props.description}
+          {props.description2}
+        </p>
+        <p className="order-first font-display text-5xl font-light tracking-tight text-white">
+          ${props.price}
+        </p>
+        {/* if not selected */}
+        {props.name === 'Starter' && <button id='starter-package' className="bg-white text-black lg:bg-transparent font-semibold group inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm focus:outline-none ring-slate-700 lg:text-white hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white mt-8" aria-label="Get started with the Starter plan for ${price}" onClick={clickHandler.bind(this)}>Get Started</button>}
+        {/* if corp3 is selected */}
+        {props.name === 'Start Up' && <button id='startup-package' className="group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-white text-slate-900 hover:bg-blue-50 active:bg-blue-200 active:text-slate-600 focus-visible:outline-white mt-8" aria-label="Get started with the Small business plan for $15" onClick={clickHandler.bind(this)} >Get Started</button>}
+         {/* if selected */}
+         {props.name === 'Scale Up' && <button id='scaleup-package' className="bg-white text-black lg:bg-transparent font-semibold group inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm focus:outline-none ring-slate-700 lg:text-white hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white mt-8" aria-label="Get started with the Starter plan for ${price}" onClick={clickHandler.bind(this)}>Get Started</button>}
+         {props.name === 'Registate LLC Gold' && <button id='gold-package' className="bg-white text-black lg:bg-transparent font-semibold group inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm focus:outline-none ring-slate-700 lg:text-white hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white mt-8" aria-label="Get started with the Starter plan for ${price}" onClick={clickHandler.bind(this)}>Get Started</button>}
+         {props.name === 'Registate LLC Premium' && <button id='preimum-package'className="bg-white text-black lg:bg-white lg:text-black font-semibold group inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm focus:outline-none  hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white mt-8" aria-label="Get started with the Starter plan for ${price}" onClick={clickHandler.bind(this)}>Get Started</button>}
+        {console.log(props.name)}
+        <ul
+          className={clsx('order-last mt-10 space-y-3 text-sm', {
+            'text-white': props.featured,
+            'text-slate-200': !props.featured,
+          })}
+        >
+          {props.features.map((feature) => (
+            <li key={feature} className="flex">
+              <svg
+                aria-hidden="true"
+                className={clsx('h-6 w-6 flex-none', {
+                  'fill-white stroke-white': props.featured,
+                  'fill-slate-400 stroke-slate-400': !props.featured,
+                })}
+              >
+                <path
+                  d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
+                  strokeWidth={0}
+                />
+                <circle
+                  cx={12}
+                  cy={12}
+                  r={8.25}
+                  fill="none"
+                  strokeWidth={1.5}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              <span className="ml-4" >{feature}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
 }
 
 export default Pricing

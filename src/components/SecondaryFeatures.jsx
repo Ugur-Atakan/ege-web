@@ -14,7 +14,7 @@ import React from 'react'
 const features = [
   {
     name: 'Foreign Qualification',
-    href: '#foreign-qualification',
+    href: '/foreign-qualification',
     summary: 'Is your company planning to conduct business in a state that is not the company’s state of incorporatiton?',
     description:
       'Then, you may need to apply for foreign qualification. In the U.S., an entity that seeks to conduct business outside of its state of formation is considered “foreign”. States may require “foreign qualifications” from the “foreign” entities before transacting any business.',
@@ -49,7 +49,7 @@ const features = [
   },
   {
     name: 'Revival and Dissolution',
-    href: '#revival-and-dissolution',
+    href: '/renewal-and-revival',
     summary:
       'Has your company been suspended by the State? Or are you winding-down the operations?',
     description:
@@ -78,7 +78,7 @@ const features = [
   },
   {
     name: 'Compliance Reminder',
-    href: '#compliance-reminder',
+    href: '/compliance-reminder',
     summary:
       'Do you need a reminder to file your annual report or pay your franchise taxes?',
     description:

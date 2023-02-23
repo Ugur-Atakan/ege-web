@@ -1,12 +1,10 @@
-import { Fragment } from 'react'
-import { Popover, Transition } from '@headlessui/react'
-import { Bars3Icon, EnvelopeIcon, PhoneIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { EnvelopeIcon, PhoneIcon } from '@heroicons/react/24/outline'
 import axios from 'axios';
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function Contact() {
+export default function Contact(props) {
   const API_ROOT = window.ob.config.apiRoot;
   const notify = () => {
     toast("Form submitted successfully");
@@ -59,10 +57,10 @@ export default function Contact() {
     <div className="bg-white">
       <main className="overflow-hidden pb-32">
         <div className="bg-warm-gray-50">
-          <div className="py-24 lg:py-32">
+          <div className="py-24 lg:py-24">
             <div className="relative z-10 mx-auto max-w-7xl pl-4 pr-8 sm:px-6 lg:px-8">
-              <h1 className="text-4xl font-bold tracking-tight text-warm-gray-900 sm:text-5xl lg:text-6xl">
-                Contact Us
+              <h1 className="text-4xl capitalize font-bold tracking-tight text-warm-gray-900 sm:text-5xl lg:text-6xl">
+                {props.title ? props.title : 'Contact Us'} 
               </h1>
               <p className="mt-6 max-w-3xl text-xl text-warm-gray-500">
                 One of our services experts will reach out to you based on your communication preferences.
@@ -72,7 +70,7 @@ export default function Contact() {
         </div>
 
         {/* Contact section */}
-        <section className="relative bg-white" aria-labelledby="contact-heading">
+        <section className="relative bg-white -mt-16" aria-labelledby="contact-heading">
           <div className="absolute h-1/2 w-full bg-warm-gray-50" aria-hidden="true" />
           {/* Decorative dot pattern */}
           <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
@@ -307,7 +305,8 @@ export default function Contact() {
                           type="text"
                           name="subject"
                           id="subject"
-                          className="block w-full rounded-md border-warm-gray-300 py-3 px-4 text-warm-gray-900 shadow-sm focus:border-blue-600"
+                          className="block w-full capitalize rounded-md border-warm-gray-300 py-3 px-4 text-warm-gray-900 shadow-sm focus:border-blue-600"
+                          value={props.subject ? props.subject : null} 
                         />
                       </div>
                     </div>

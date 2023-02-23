@@ -9,12 +9,13 @@ import { DocumentCheckIcon, CursorArrowRippleIcon, NewspaperIcon } from "@heroic
 import Price from '../components/Price'
 import ExclusiveSolution from '../components/ExclusiveSolution'
 import Requirements from '../components/Requirements'
+import productData from '../assets/productData'
 
 export default function DissolutionAndCancellation() {
     return (
         <main>
             <Navbar />
-            <LeftImgRightText img={topnotch} heading='Manage Your Business' title='Dissolution/Cancellation' desc='Are you winding-down the operations of your company? Then the dissolution is the procedure that you must start.' button='Get Started Now' href='contact' />
+            <LeftImgRightText img={topnotch} heading='Manage Your Business' title='Dissolution/Cancellation' desc='Are you winding-down the operations of your company? Then the dissolution is the procedure that you must start.' button='Get Started Now' href={`/products/${productData[13].link}/contact`} />
             <Price/>
             <Stats title="Step-By-Step Guide" icontitle1="Payment of due taxes" icondesc1="All outstanding taxes and penalties must be paid before filing for dissolution/cancellation. All delinquent annual reports must be filed as well. If you need assistance with either of these, please contact us." icontitle2="Provide us with the signed Certificate of Dissolution / Cancellation" icondesc2='A certificate must be filled out and signed by the company’s authorized signer.' icon1=<DocumentCheckIcon className="w-12" /> icon2=<CursorArrowRippleIcon className='w-12' /> icontitle3='Filing the documents' icon3=<NewspaperIcon className='w-12' /> icondesc3='We file the Certificate of Dissolution/Cancellation with the State of Delaware Division of Corporations. Once completed, you will be notified and receive the filed Certificate.' />
             <LeftImgRightText img={whatweneed} desc=<ul>If you are to wind-down the operations of your corporation, then the dissolution is the procedure that you must start. If you wish to dissolve your Delaware Corporation formally, a Certificate of Dissolution must be prepared and filed. As for LLCs, a Certificate of Cancellation needs to be filed to terminate an LLC. But why should you go ahead with these formal procedures? Why not just leave the company as it is?

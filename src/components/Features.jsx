@@ -16,7 +16,7 @@ const tabs = [
     description:
     t('section4_card1_desc'),
     button: t('section4_card1_button'),
-    href: '/ein',
+    href: '/pricing/form-my-company',
     icon: InboxIcon,
     executivedesc: t('section4_card1_executive_desc'),
     executivetitle: t('section4_card1_executive_name'),
@@ -29,7 +29,7 @@ const tabs = [
     description:
     t('section4_card2_desc'),
     button: t('section4_card2_button'),
-    href: '/post-incorporation',
+    href: '/post-incorp',
     icon: SparklesIcon,
     imageSrc: 'https://registate.net/static/media/features2.fe27dab0a08de2622778.png',
     imageAlt: 'Maple organizer base with slots, supporting white polycarbonate trays of various sizes.',
@@ -62,7 +62,7 @@ const tabs = [
     description:
     t('section4_card5_desc'),
     button: t('section4_card5_button'),
-    href: '/bank-account-opening-support',
+    href: '/us-bank-account-opening-support',
     icon: InboxIcon,
     executivedesc: t('section4_card5_executive_desc'),
     executivetitle: t('section4_card5_executive_name'),
