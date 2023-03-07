@@ -1,10 +1,62 @@
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
+
+const options = {
+    // order and from where user language should be detected
+    order: ['querystring', 'cookie', 'localStorage', 'sessionStorage', 'navigator', 'htmlTag', 'path', 'detector'],
+
+    // keys or params to lookup language from
+    lookupQuerystring: 'lngs',
+    lookupCookie: 'i18next',
+    lookupLocalStorage: 'i18nextLng',
+    lookupSessionStorage: 'i18nextLng',
+    lookupFromPathIndex: 0,
+    lookupFromSubdomainIndex: 0,
+
+    // cache user language on
+    caches: ['localStorage', 'cookie'],
+    excludeCacheFor: ['cimode'], // languages to not persist (cookie, localStorage)
+
+    // optional expire and domain for set cookie
+    cookieMinutes: 10,
+    cookieDomain: 'localhost:3001',
+
+    // optional htmlTag with lang attribute, the default is:
+    htmlTag: document.documentElement,
+
+    // optional set cookie options, reference:[MDN Set-Cookie docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie)
+    cookieOptions: { path: '/', sameSite: 'strict' }
+}
+
+const detector = {
+    name: 'detector',
+
+    lookup(options) {
+        // options -> are passed in options
+    
+    },
+
+    cacheUserLanguage(lngs, options) {
+        // options -> are passed in options
+        // lng -> current language, will be called after init and on changeLanguage
+        // store it
+    },
+};
+
+const languageDetector = new LanguageDetector();
+languageDetector.addDetector(detector);
 
 i18next
+    .use(languageDetector)
     .use(initReactI18next)
     .init({
-        fallbackLng: 'en', // if you're using a language detector, do not define the lng option
+        detection: options,
+        debug: true,
+
+        interpolation: {
+            escapeValue: false, // not needed for react as it escapes by default
+        },
         resources: {
             en: {
                 translation: {
@@ -142,30 +194,30 @@ i18next
                     section5_icon3_heading: 'Compliance Reminder',
                     section5_icon3_title: 'Do you need a reminder to file your annual report or pay your franchise taxes?',
                     section5_icon3_desc: 'Forming a company is just your first interaction with the State. All states in the U.S., including Delaware, have a number of reporting requirements from companies formed/qualified within their state. For instance, most states will require businesses to file annual reports and/or pay taxes in order to remain compliant and in good standing.',
-                    section6_title:'Get started today',
-                    section6_desc:'It is time to be your own boss. Start your business today.',
-                    section6_button:'Form My Company',
-                    footer_col1_title:'Solutions',
-                    footer_col1_submenu1:'Form Your Company',
-                    footer_col1_submenu2:'Registered Agent',
-                    footer_col1_submenu3:'Virtual MailBox',
-                    footer_col1_submenu4:'Apostille',
-                    footer_col1_all_products:'All Products',
-                    footer_col2_title:'Resources and Support',
-                    footer_col2_submenu1:'Pricing',
-                    footer_col2_submenu2:'Contact Us',
-                    footer_col3_title:'Company',
-                    footer_col3_submenu1:'About',
-                    footer_col3_submenu2:'Blog',
-                    footer_col3_submenu3:'Customers',
-                    footer_col4_title:'Legal',
-                    footer_col4_submenu1:'Privacy',
-                    footer_col4_submenu2:'Terms',
-                    footer_col5_title:'Subscribe to our newsletter',
-                    footer_col5_desc:'The latest news, articles, and resources, sent to your inbox weekly.',
-                    footer_col5_input_placeholder:'Enter your mail',
-                    footer_col5_button:'Subscribe',
-                    footer_bottom_left:'© Registate 2023 All rights reserved.',
+                    section6_title: 'Get started today',
+                    section6_desc: 'It is time to be your own boss. Start your business today.',
+                    section6_button: 'Form My Company',
+                    footer_col1_title: 'Solutions',
+                    footer_col1_submenu1: 'Form Your Company',
+                    footer_col1_submenu2: 'Registered Agent',
+                    footer_col1_submenu3: 'Virtual MailBox',
+                    footer_col1_submenu4: 'Apostille',
+                    footer_col1_all_products: 'All Products',
+                    footer_col2_title: 'Resources and Support',
+                    footer_col2_submenu1: 'Pricing',
+                    footer_col2_submenu2: 'Contact Us',
+                    footer_col3_title: 'Company',
+                    footer_col3_submenu1: 'About',
+                    footer_col3_submenu2: 'Blog',
+                    footer_col3_submenu3: 'Customers',
+                    footer_col4_title: 'Legal',
+                    footer_col4_submenu1: 'Privacy',
+                    footer_col4_submenu2: 'Terms',
+                    footer_col5_title: 'Subscribe to our newsletter',
+                    footer_col5_desc: 'The latest news, articles, and resources, sent to your inbox weekly.',
+                    footer_col5_input_placeholder: 'Enter your mail',
+                    footer_col5_button: 'Subscribe',
+                    footer_bottom_left: '© Registate 2023 All rights reserved.',
                 }
             },
             tr: {
@@ -303,31 +355,33 @@ i18next
                     section5_icon3_heading: '',
                     section5_icon3_title: '',
                     section5_icon3_desc: '',
-                    section6_title:'Get started today',
-                    section6_desc:'It is time to be your own boss. Start your business today.',
-                    section6_button:'Form My Company',
-                    footer_col1_title:'Çözümler',
-                    footer_col1_submenu1:'Şirketimi Kur',
-                    footer_col1_submenu2:'Kayıtlı Temsilci',
-                    footer_col1_submenu3:'Sanal Posta Kutusu',
-                    footer_col1_submenu4:'Apostil',
-                    footer_col1_all_products:'Tüm Üürnler',
-                    footer_col2_title:'Kaynaklar ve Destek',
-                    footer_col2_submenu1:'Ücretler',
-                    footer_col2_submenu2:'İletişim',
-                    footer_col3_title:'Şirket',
-                    footer_col3_submenu1:'Hakkında',
-                    footer_col3_submenu2:'Blog',
-                    footer_col3_submenu3:'Müşteriler',
-                    footer_col4_title:'Yasal',
-                    footer_col4_submenu1:'Mahremiyet',
-                    footer_col4_submenu2:'Şartlar',
-                    footer_col5_title:'Haber bültenimize abone olun',
-                    footer_col5_desc:'Haftalık olarak gönderilecek en son haberler, makaleler ve kaynaklara erişebilmek için abone olun.',
-                    footer_col5_input_placeholder:'Mail adresinizi girin',
-                    footer_col5_button:'Abone Ol',
-                    footer_bottom_left:'© Registate 2023 Tüm hakları saklıdır.',
+                    section6_title: 'Get started today',
+                    section6_desc: 'It is time to be your own boss. Start your business today.',
+                    section6_button: 'Form My Company',
+                    footer_col1_title: 'Çözümler',
+                    footer_col1_submenu1: 'Şirketimi Kur',
+                    footer_col1_submenu2: 'Kayıtlı Temsilci',
+                    footer_col1_submenu3: 'Sanal Posta Kutusu',
+                    footer_col1_submenu4: 'Apostil',
+                    footer_col1_all_products: 'Tüm Üürnler',
+                    footer_col2_title: 'Kaynaklar ve Destek',
+                    footer_col2_submenu1: 'Ücretler',
+                    footer_col2_submenu2: 'İletişim',
+                    footer_col3_title: 'Şirket',
+                    footer_col3_submenu1: 'Hakkında',
+                    footer_col3_submenu2: 'Blog',
+                    footer_col3_submenu3: 'Müşteriler',
+                    footer_col4_title: 'Yasal',
+                    footer_col4_submenu1: 'Mahremiyet',
+                    footer_col4_submenu2: 'Şartlar',
+                    footer_col5_title: 'Haber bültenimize abone olun',
+                    footer_col5_desc: 'Haftalık olarak gönderilecek en son haberler, makaleler ve kaynaklara erişebilmek için abone olun.',
+                    footer_col5_input_placeholder: 'Mail adresinizi girin',
+                    footer_col5_button: 'Abone Ol',
+                    footer_bottom_left: '© Registate 2023 Tüm hakları saklıdır.',
                 }
             }
         }
     });
+
+export default i18next;

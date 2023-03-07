@@ -56,6 +56,7 @@ const lngs = {
 export function Navbar() {
 
   const { t, i18n } = useTranslation();
+  
   const menu1 = [
     {
       name: t('mobile_menu_title_4'),
