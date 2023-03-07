@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 const Blog = () => {
     const [posts, setPosts] = useState([]);
     const [entry, setEntry] = useState(false);
-    const { i18n } = useTranslation();
+    const {t, i18n } = useTranslation();
     const { id } = useParams();
 
     const client = createClient({
@@ -51,9 +51,9 @@ const Blog = () => {
                 {entry
                     ? null
                     : <div className="text-center">
-                        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">From the blog</h2>
+                        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{t('blog_header')}</h2>
                         <p className="mx-auto mt-3 max-w-2xl text-xl text-gray-500 sm:mt-4">
-                            Read the latest posts from our blog. All articles are written by our team of experts, so you know you're getting the best advice.
+                           {t('blog_description')}
                         </p>
                     </div>
                 }
