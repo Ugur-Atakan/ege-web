@@ -1,13 +1,15 @@
+import { useTranslation } from "react-i18next"
 export default function Price() {
+  const {t} = useTranslation();
   return (
       <>
       <div className="px-6 pt-12 lg:px-8 lg:pt-4">
         <div className="text-center">
           <p className="mt-2 text-3xl font-bold tracking-tight text-black sm:text-4xl lg:text-5xl">
-          Pricing built for businesses of all sizes
+          {t('compliance_reminder_header2_title')}
           </p>
           <p className="text-lg text-gray-500 py-6">
-          We make pricing simple and clear to ensure you are never caught off guard by any hidden fees.
+          {t('compliance_reminder_header2_text')}
           </p>
         </div>
       </div>
@@ -29,7 +31,7 @@ export default function Price() {
                         className="text-center text-3xl font-semibold tracking-tight text-white sm:-mx-6"
                         id="tier-growth"
                       >
-                        Standard
+                        {t('compliance_reminder_header2_pricebox_title')}
                       </h3>
                       <div className="mt-4 flex items-center justify-center">
                         <span className="flex items-start px-3 text-6xl tracking-tight text-white sm:text-6xl">
@@ -44,7 +46,7 @@ export default function Price() {
                           className="block w-full rounded-lg border border-transparent bg-white px-6 py-4 text-center text-xl font-medium leading-6 text-[#004B9D]"
                           aria-describedby="tier-growth"
                         >
-                          Contact Us
+                           {t('compliance_reminder_header2_pricebox_button')}
                         </a>
                       </div>
                     </div>
