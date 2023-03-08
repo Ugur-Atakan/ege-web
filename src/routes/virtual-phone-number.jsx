@@ -8,16 +8,18 @@ import Price from "../components/Price"
 import ExclusiveSolution from "../components/ExclusiveSolution"
 import {ClockIcon, BanknotesIcon, UsersIcon} from "@heroicons/react/24/outline"
 import productData from "../assets/productData"
+import { useTranslation } from "react-i18next"
 
 export default function VirtualPhoneNumber() {
+    const {t} = useTranslation();
     return (
         <main>
             <Navbar />
-            <LeftImgRightText heading='Manage Your Business' title='Virtual Phone Number' desc='For all of your business phone call needs - instead of having multiple phone systems where messages can be forgotten and misplaced, our Phonecall Forwarding Service directs all of your calls to one place, to keep your communications aligned and centralized.' button='Get Started Now' href={`/products/${productData[5].link}/contact`} img={vpn} />
+            <LeftImgRightText heading={t('virtual_phone_number_header1_uptitle_blue')} title={t('virtual_phone_number_header1_maintitle_black')} desc={t('virtual_phone_number_header1_text')} button={t('virtual_phone_number_header1_button')} href={`/products/${productData[5].link}/contact`} img={vpn} />
             <Price/>
-            <Stats title="Features Of A Virtual Phone Number" icontitle1="USA Number" icondesc1="Keep your business communication professional - have a USA phone number with the ability to select your area code." icontitle2="Simple Set Up" icondesc2='No requirements necessary, juat reach out and fill out a simple form with your details to get your professional,virtual phone number set up.' icon1=<UsersIcon className="w-12" /> icon2=<BanknotesIcon className='w-12' /> icontitle3='Stay Updated' icon3=<ClockIcon className='w-12' /> icondesc3='We forward your calls to any phone number you want. So that you can gain access to your business phone messages - and voicemails, from anywhere, anytime, in an efficient manner.' />
-            <LeftImgRightText title='Access Your Office Communications System Online' desc='We help you keep professionalism and personalism at the forefront of your business without the stress of worrying about missed calls or delayed relay of messages. We keep everything in one place for you where you, and your team members have easy access to all the communication coming in for your business.' img={vpn2} />
-            <ExclusiveSolution heading='Exclusive Solution' title='What other business help do you need?' desc='We cater to you, for any request. From startups to medium / large corporations, we have different business service bundle solutions that cover everything you could possibly need on your business journey.' rightdesc='We offer comprehensive services from business formation, post incorporation, compliance, regulatory filings, virtual mailbox and business addresses to bookkeeping, tax filings and more.' button='Learn More' />
+            <Stats title={t('virtual_phone_number_header3_title')} icontitle1={t('virtual_phone_number_header3_icon1_title')} icondesc1={t('virtual_phone_number_header3_icon1_text')} icontitle2={t('virtual_phone_number_header3_icon2_title')} icondesc2={t('virtual_phone_number_header3_icon2_text')} icon1=<UsersIcon className="w-12" /> icon2=<BanknotesIcon className='w-12' /> icontitle3={t('virtual_phone_number_header3_icon3_title')} icon3=<ClockIcon className='w-12' /> icondesc3={t('virtual_phone_number_header3_icon3_text')} />
+            <LeftImgRightText title={t('virtual_phone_number_header4_title')} desc={t('virtual_phone_number_header4_text')} img={vpn2} />
+            <ExclusiveSolution heading={t('virtual_phone_number_header5_uptitle_blue')} title={t('virtual_phone_number_header5_maintitle_black')} desc={t('virtual_phone_number_header5_text_left')} rightdesc={t('virtual_phone_number_header5_text_right')} button='Learn More' />
             <Footer />
         </main>
     )
