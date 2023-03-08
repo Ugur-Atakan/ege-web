@@ -8,16 +8,18 @@ import Price from "../components/Price"
 import ExclusiveSolution from "../components/ExclusiveSolution"
 import {ClockIcon, InboxStackIcon, ShieldCheckIcon} from "@heroicons/react/24/outline"
 import productData from "../assets/productData"
+import { useTranslation } from "react-i18next"
 
 export default function OfficeAddress() {
+    const {t} = useTranslation();
     return (
         <main>
             <Navbar />
-            <LeftImgRightText heading='Admin Management' title='Physical Office Suite' desc='Have a professional business address for your company in Delaware!' button='Get Started Now' href={`/products/${productData[3].link}/contact`} img={oa1} />
+            <LeftImgRightText heading={t('office_address_header1_uptitle_blue')} title={t('office_address_header1_uptitle_black')} desc={t('office_address_header1_text')} button={t('office_address_header1_button')} href={`/products/${productData[3].link}/contact`} img={oa1} />
             <Price/>
-            <Stats title="Benefits Of Our Office Business Address" icontitle1="Base For Your Business" icondesc1="Every business needs a base to expand. Have yours!" icontitle2="Official Documentation" icondesc2='You can use the lease on official documentation, i.e. your bank account, amazon, etc.' icon1=<ClockIcon className="w-12" /> icon2=<InboxStackIcon className='w-12' /> icontitle3='1 Year Lease' icon3=<ShieldCheckIcon className='w-12' /> icondesc3='Reliable, easy, fast-leasing transaction.' />
-            <LeftImgRightText title='Why have an Office Business Address' desc='Certain people or institutions may be discouraged if the company they are in contact with only has a P.O. box, instead of a proper business address. You can build trust and crebility by having an business address. If you are a home-based business, it can be difficult to portray a  professional image, no matter how professional your business may be. A business address can provide that for.' img={oa2} reverse='true' />
-            <ExclusiveSolution heading='Exclusive Solution' title='Interested in our “Manage your Business” packages?​' desc='Make managing your company easier! Explore our bundle solutions!' rightdesc='We provide comprehensive services from compliance, filing, business set up, mailbox, bookkeeping, tax filing and more!' button='Learn More' />
+            <Stats title={t('office_address_header3_title')} icontitle1={t('office_address_header3_icon1_title')} icondesc1={t('office_address_header3_icon1_text')} icontitle2={t('office_address_header3_icon2_title')} icondesc2={t('office_address_header3_icon2_text')} icon1=<ClockIcon className="w-12" /> icon2=<InboxStackIcon className='w-12' /> icontitle3={t('office_address_header3_icon3_title')} icon3=<ShieldCheckIcon className='w-12' /> icondesc3={t('office_address_header3_icon3_text')} />
+            <LeftImgRightText title={t('office_address_header4_title')} desc={t('office_address_header4_text')} img={oa2} reverse='true' />
+            <ExclusiveSolution heading={t('office_address_header5_uptitle_blue')} title={t('office_address_header5_uptitle_black')} desc={t('office_address_header5_text_left')} rightdesc={t('office_address_header5_text_right')} button={t('office_address_header5_button')} />
             <Footer />
         </main>
     )
