@@ -5,14 +5,16 @@ import op1 from '../images/our-packages.jpg'
 import op2 from '../images/our-packages-2.jpg'
 import Price from "../components/Price"
 import productData from "../assets/productData"
+import { useTranslation } from "react-i18next"
 
 export default function OurPackages() {
+    const {t} = useTranslation();
     return (
         <main>
             <Navbar />
-            <LeftImgRightText heading='Our Packages' title='Costs For Maintaining Your Business' desc="We are always available for a chat with our customers to help you make the best decision when it comes to our products. If you have a question or just want to keep in touch with us, we're always here to listen." button='Get Started Now' href={`/products/${productData[4].link}/contact`} img={op1} />
+            <LeftImgRightText heading={t('our_packages_header1_uptitle_blue')} title={t('our_packages_header1_uptitle_black')} desc={t('our_packages_header1_text')} button={t('our_packages_header1_button')} href={`/products/${productData[4].link}/contact`} img={op1} />
             <Price />
-            <LeftImgRightText title='We offer extensive procedures for our clients.' desc="We are more than a regular registered agent service company. We know starting a business can prove to be a hassle. Maintaining a business is also another story and can be burdensome. If not done properly or timely, even a small omission could be fatal for your business – and thus, your dreams. We strive to take this burden off from your shoulders and be a contributor to your success. Having the expertise, we are committed to assist you in achieving your goals and in this thriving business ecosystem, we offer our services for your various needs." button='Contact Us' href='contact' img={op2} reverse='true' />
+            <LeftImgRightText title={t('our_packages_header3_title')}  desc={t('our_packages_header3_text')}  button={t('our_packages_header3_button')} href='contact' img={op2} reverse='true' />
             <Footer />
         </main>
     )

@@ -9,17 +9,19 @@ import Price from '../components/Price'
 import ExclusiveSolution from '../components/ExclusiveSolution'
 import Requirements from '../components/Requirements'
 import productData from '../assets/productData'
+import { useTranslation } from 'react-i18next'
 
 export default function CertifiedCopyRequest() {
+    const {t} = useTranslation();
     return (
         <main>
             <Navbar />
-            <LeftImgRightText heading='Manage Your Business' title='Certified Copy Request' img={topnotch} desc='Are you in need of a certified copy of a company document?' button='Get Started Now' href={`/products/${productData[17].link}/contact`} />
+            <LeftImgRightText heading={t('certified_copy_request_header1_uptitle_blue')} title={t('certified_copy_request_header1_uptitle_black')} img={topnotch} desc={t('certified_copy_request_header1_text')} button={t('certified_copy_request_header1_button')}  href={`/products/${productData[17].link}/contact`} />
             <Price/>
-            <Stats title="Features Of A Certified Copy" icontitle1="Fast & Reliable" icondesc1="Have your certified copy as quick as possible." icontitle2="Shipping" icondesc2='Let us know if you need certified copies to be shipped to you or someone else.' icon1=<DocumentCheckIcon className="w-12" /> icon2=<CursorArrowRippleIcon className='w-12' /> icontitle3='Be Prepared & Save Time' icon3=<NewspaperIcon className='w-12' /> icondesc3='Be prepared beforehand and have your certified copies ready for business purposes.' />
-            <LeftImgRightText img={whatweneed} desc='Certified Copy is a copy of a company document which includes an endorsement with an accompanying certificate or Seal of the Delaware Secretary of State, stating the document in question is a true copy. In short, when the Delaware Secretary of State issues a Certified Copy, this means that the Certified Copy is a true, accurate and valid copy of the DE Corporate Document that the Secretary of State has on file. On the other hand, Plain Copy is simply a photocopy of the document, bearing no endorsements, stamps or seals. Most institutions require Certified Copies, instead of Plain Copies when processing official matters. You might need certified copies when: Applying for loans, tax filings, appy for Foreign Business Qualification, replacing the original documents, roviding legal proof for the existence of the business.' />
-            <ExclusiveSolution heading='Exclusive Solution' title='Need your certified copy with apostille certificate?' desc='If you are going to use a certified copy outside of the U.S., you will surely need an apostille certificate. Contact us now if you need one!' rightdesc='We provide comprehensive services from compliance, filing, business set up, mailbox, bookkeeping, tax filing and more.' button='Learn More' />
-            <Requirements title='Requrements' desc='None! Just decide what documents you want and we are good to go!'/>
+            <Stats title={t('certified_copy_request_header3_title')} icontitle1={t('certified_copy_request_header3_icon1_title')} icondesc1={t('certified_copy_request_header3_icon1_text')} icontitle2={t('certified_copy_request_header3_icon2_title')} icondesc2={t('certified_copy_request_header3_icon2_text')} icon1=<DocumentCheckIcon className="w-12" /> icon2=<CursorArrowRippleIcon className='w-12' /> icontitle3={t('certified_copy_request_header3_icon3_title')} icon3=<NewspaperIcon className='w-12' /> icondesc3={t('certified_copy_request_header3_icon3_text')}/>
+            <LeftImgRightText img={whatweneed} desc={t('certified_copy_request_header4_text')} />
+            <ExclusiveSolution heading={t('certified_copy_request_header5_uptitle_blue')} title={t('certified_copy_request_header5_maintitle_black')} desc={t('certified_copy_request_header5_text_left')} rightdesc={t('certified_copy_request_header5_text_right')} button={t('certified_copy_request_header5_button')} />
+            <Requirements title={t('certified_copy_request_header5_bottom_title_blue')} desc={t('certified_copy_request_header5_bottom_title_black')}/>
             <Footer />
         </main>
     )

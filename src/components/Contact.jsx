@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useTranslation } from 'react-i18next';
 
 export default function Contact(props) {
   const API_ROOT = window.ob.config.apiRoot;
@@ -52,7 +53,7 @@ export default function Contact(props) {
         console.log(error);
       });
   }
-
+  const {t} = useTranslation();
   return (
     <div className="bg-white">
       <main className="overflow-hidden pb-32">
@@ -60,10 +61,10 @@ export default function Contact(props) {
           <div className="py-24 lg:py-24">
             <div className="relative z-10 mx-auto max-w-7xl pl-4 pr-8 sm:px-6 lg:px-8">
               <h1 className="text-4xl capitalize font-bold tracking-tight text-warm-gray-900 sm:text-5xl lg:text-6xl">
-                {props.title ? props.title : 'Contact Us'} 
+                {props.title ? props.title : t('contact_us_header1_uptitle')} 
               </h1>
               <p className="mt-6 max-w-3xl text-xl text-warm-gray-500">
-                One of our services experts will reach out to you based on your communication preferences.
+                {t('contact_us_header1_text')}
               </p>
             </div>
           </div>
@@ -100,7 +101,7 @@ export default function Contact(props) {
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="relative bg-white shadow-xl">
               <h2 id="contact-heading" className="sr-only">
-                Contact us
+               {t('contact_us_header1_uptitle')}
               </h2>
 
               <div className="grid grid-cols-1 lg:grid-cols-3">
@@ -203,39 +204,39 @@ export default function Contact(props) {
                       </defs>
                     </svg>
                   </div>
-                  <h3 className="text-lg font-medium text-white">We'll follow up</h3>
+                  <h3 className="text-lg font-medium text-white">{t('contact_us_header2_text_1')}</h3>
                   <p className="mt-6 max-w-3xl text-base text-teal-50">
-                    Questions about plans, pricing, or availability? Just have your people call our people.
+                   {t('contact_us_header2_text_2')}
                   </p>
                   <dl className="mt-8 space-y-6">
                     <dt>
-                      <span className="sr-only">Phone number</span>
+                      <span className="sr-only">{t('contact_us_header3_blank_4')}</span>
                     </dt>
                     <dd className="flex text-base text-teal-50">
                       <PhoneIcon className="h-6 w-6 flex-shrink-0 text-white" aria-hidden="true" />
                       <span className="ml-3">+1 (302) 842-8687</span>
                     </dd>
                     <dt>
-                      <span className="sr-only">Email</span>
+                      <span className="sr-only">{t('contact_us_header3_blank_3')}</span>
                     </dt>
                     <dd className="flex text-base text-teal-50">
                       <EnvelopeIcon className="h-6 w-6 flex-shrink-0 text-white" aria-hidden="true" />
                       <span className="ml-3">info@registate.com</span>
                     </dd>
                   </dl>
-                  <h3 className="mt-6 text-lg font-medium text-white">Address</h3>
+                  <h3 className="mt-6 text-lg font-medium text-white">{t('contact_us_header2_text_3')}</h3>
                   <p className="mt-3 max-w-3xl text-base text-teal-50">
-                    1401 Pennsylvania Ave. Unit 105 Wilmington, DE 19806, USA
+                    {t('contact_us_header2_text_4')}
                   </p>
                 </div>
 
                 {/* Contact form */}
                 <div className="py-10 px-6 sm:px-10 lg:col-span-2 xl:p-12">
-                  <h3 className="text-lg font-medium text-warm-gray-900">Send us a message</h3>
+                  <h3 className="text-lg font-medium text-warm-gray-900">{t('contact_us_header3_title')}</h3>
                   <form id='contactform' onSubmit={submitHandler} className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
                     <div>
                       <label htmlFor="firstName" className="block text-sm font-medium text-warm-gray-900">
-                        First name
+                        {t('contact_us_header3_blank_1')}
                       </label>
                       <div className="mt-1">
                         <input
@@ -250,7 +251,7 @@ export default function Contact(props) {
                     </div>
                     <div>
                       <label htmlFor="lastName" className="block text-sm font-medium text-warm-gray-900">
-                        Last name
+                      {t('contact_us_header3_blank_2')}
                       </label>
                       <div className="mt-1">
                         <input
@@ -264,7 +265,7 @@ export default function Contact(props) {
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-warm-gray-900">
-                        Email
+                      {t('contact_us_header3_blank_3')}
                       </label>
                       <div className="mt-1">
                         <input
@@ -279,10 +280,10 @@ export default function Contact(props) {
                     <div>
                       <div className="flex justify-between">
                         <label htmlFor="phone" className="block text-sm font-medium text-warm-gray-900">
-                          Phone
+                        {t('contact_us_header3_blank_4')}
                         </label>
                         <span id="phone-optional" className="text-sm text-warm-gray-500">
-                          Optional
+                           {t('contact_us_header3_blank_4_1')}
                         </span>
                       </div>
                       <div className="mt-1">
@@ -298,7 +299,7 @@ export default function Contact(props) {
                     </div>
                     <div className="sm:col-span-2">
                       <label htmlFor="subject" className="block text-sm font-medium text-warm-gray-900">
-                        Subject
+                      {t('contact_us_header3_blank_5')}
                       </label>
                       <div className="mt-1">
                         <input
@@ -313,10 +314,10 @@ export default function Contact(props) {
                     <div className="sm:col-span-2">
                       <div className="flex justify-between">
                         <label htmlFor="message" className="block text-sm font-medium focus:border-blue-600">
-                          Message
+                        {t('contact_us_header3_blank_6')}
                         </label>
                         <span id="message-max" className="text-sm text-warm-gray-500">
-                          Max {500 - message.length} character
+                        {t('contact_us_header3_blank_6_1')}
                         </span>
                       </div>
                       <div className="mt-1">
@@ -337,7 +338,7 @@ export default function Contact(props) {
                         type="submit"
                         className="mt-2 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-blue-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-white focus:outline-none hover:text-blue-600 hover:border-blue-600 sm:w-auto"
                       >
-                        Submit Inquiry
+                        {t('contact_us_header3_button')}
                       </button>
                     </div>
                   </form>

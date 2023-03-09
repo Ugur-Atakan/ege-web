@@ -4,8 +4,10 @@ import cameralyzelogo from '../images/logos/cameralyze-logo.png'
 import opsbeaconlogo from '../images/logos/opsbeacon-logo.png'
 import finedinelogo from '../images/logos/finedine-logo.png'
 import { Container } from '../components/Container'
+import { useTranslation } from 'react-i18next'
 
 export default function TestimonialLogos() {
+    const {t} = useTranslation();
     return (
         <section
             id="testimonials"
@@ -18,7 +20,7 @@ export default function TestimonialLogos() {
                         id="testimonials-title"
                         className="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl"
                     >
-                        Trusted & Recommended By Respected Enterprises.
+                        {t('section7_title')}
                     </h2>
                     <p className="mt-4 text-lg tracking-tight text-slate-700">
                     </p>

@@ -30,7 +30,7 @@ export default function Customers() {
         >
             <div className="mx-auto max-w-7xl divide-y-2 divide-gray-200">
                 <h2 className="text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                    Meet our customers
+                    {t('section2_title')}
                 </h2>
                 <div className="mt-6 grid grid-cols-1 gap-10 lg:grid-cols-3">
                     {videos.map((video) => (

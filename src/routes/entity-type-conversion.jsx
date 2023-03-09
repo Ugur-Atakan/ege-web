@@ -9,16 +9,18 @@ import { DocumentCheckIcon, CursorArrowRippleIcon, NewspaperIcon } from "@heroic
 import Price from '../components/Price'
 import ExclusiveSolution from '../components/ExclusiveSolution'
 import productData from '../assets/productData'
+import { useTranslation } from 'react-i18next'
 
 export default function EntityTypeConversion() {
+    const {t} = useTranslation();
     return (
         <main>
             <Navbar />
-            <LeftImgRightText img={topnotch} heading='Manage Your Business' title='Entity Type Conversion' desc='Do you want to convert your company’s entity type to something else? Get started now!' button='Get Started Now' href={`/products/${productData[11].link}/contact`} />
+            <LeftImgRightText img={topnotch} heading={t('entity_type_conversion_header1_uptitle_blue')} title={t('entity_type_conversion_header1_maintitle_black')} desc={t('entity_type_conversion_header1_text')} button={t('entity_type_conversion_header1_button')} href={`/products/${productData[11].link}/contact`} />
             <Price/>
-            <Stats title="Step-By-Step Guide" icontitle1="Provide us with the necessary documents" icondesc1="E-mail us over whatever you need, while providing the necessary documents." icontitle2="Review and assessing costs" icondesc2='Our experts will assess the cost in accordance with the information you provided. Complete the payment.' icon1=<DocumentCheckIcon className="w-12" /> icon2=<CursorArrowRippleIcon className='w-12' /> icontitle3='Filing the documents' icon3=<NewspaperIcon className='w-12' /> icondesc3='We file the necessary documents with the State of Delaware Division of Corporations. Once completed, you will be notified and receive the filed Certificate of Conversion.' />
-            <LeftImgRightText img={whatweneed} heading title='When you need this' desc='For various reasons, you may need to convert your LLC to Corporation or Corporation to LLC, etc. This process is called “conversion.” To do so, you need to complete proper state filing with appropriate documents (Certificate of Conversion). As converting entity type may pose significant legal, tax and accounting implications, the process must be done seamlessly. If you need any legal advice, please consult an attorney.If you are all good to go and need assistance in filing your conversion documents, we are always happy to assist you!' />
-            <ExclusiveSolution heading='Exclusive Solutions' title='Need a certified copy of the Certificate of Conversion?' desc='If you are in need of additional copies of your Certificate of Conversion from the State, we can help you getting certified copies.' rightdesc='We provide comprehensive services from compliance, filing, business set up, mailbox, bookkeeping, tax filing and more.' button='Learn More'/>
+            <Stats title={t('entity_type_conversion_header3_title')} icontitle1={t('entity_type_conversion_header3_icon1_title')} icondesc1={t('entity_type_conversion_header3_icon1_text')} icontitle2={t('entity_type_conversion_header3_icon2_title')} icondesc2={t('entity_type_conversion_header3_icon2_text')} icon1=<DocumentCheckIcon className="w-12" /> icon2=<CursorArrowRippleIcon className='w-12' /> icontitle3={t('entity_type_conversion_header3_icon3_title')} icon3=<NewspaperIcon className='w-12' /> icondesc3={t('entity_type_conversion_header3_icon3_text')} />
+            <LeftImgRightText img={whatweneed} heading title={t('entity_type_conversion_header4_title')} desc={t('entity_type_conversion_header4_text')} />
+            <ExclusiveSolution heading={t('entity_type_conversion_header5_uptitle_blue')} title={t('entity_type_conversion_header5_maintitle_black')} desc={t('entity_type_conversion_header5_text_left')} rightdesc={t('entity_type_conversion_header5_text_right')} button={t('entity_type_conversion_header5_button')}/>
             <Footer />
         </main>
     )

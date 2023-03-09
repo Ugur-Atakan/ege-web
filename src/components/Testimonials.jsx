@@ -5,72 +5,68 @@ import ufuk from '../images/avatars/ufuk.png'
 import derya from '../images/avatars/derya.png'
 import duygu from '../images/avatars/duygu.png'
 import mert from '../images/avatars/mert.png'
-import React from 'react'
-
-const testimonials = [
-  [
-    {
-      content:
-        'Starting a company in the US can be overwhelming. Registate team is very qualified and benefits from extensive expertise in this area. They offer a full package that you can start and manage your startup easily. I would definitely recommend them to any entrepreneur who decide to start their own business in the US.',
-      author: {
-        name: 'Utkan Sanda',
-        role: 'CEO at Exairon Inc.',
-        image: utkan,
-      },
-    },
-    {
-      content:
-        'I was more than happy with the service I received from Registate. The notarization and apostille orders were completed very quickly without any problem and I would not hesitate to recommend them to anyone.',
-      author: {
-        name: 'Noyan Berker',
-        role: 'CEO at Mimiq Inc.',
-        image: noyan,
-      },
-    },
-  ],
-  [
-    {
-      content:
-        "We use Registate's mailbox services and they have helped us to obtain certified copies of some State documents. Smooth, fast and high quality service. Highly recommend them.",
-      author: {
-        name: 'Ufuk Dag',
-        role: 'CEO at Cameralyze Inc',
-        image: ufuk,
-      },
-    },
-    {
-      content:
-        "Registate has a very simple process for registering a company in the US. From first inquiry to the end, everything went smoothly. They registered my company in a day and I was able to get EIN instantly with premium service although I am a non-resident.",
-      author: {
-        name: 'Derya Kavarna',
-        role: 'CEO at DigiMe Inc.',
-        image: derya,
-      },
-    }
-  ],
-  [
-    {
-      content:
-        "We were not happy with our previous registered agent so we changed it to Registate. Their compliance reminder service is very useful to keep us up to date with our annual reports and franchise tax payments. We are very happy with their top-notch services.",
-      author: {
-        name: 'Duygu Kutluoglu Kilic',
-        role: 'CEO at FineDine',
-        image: duygu,
-      },
-    },
-    {
-      content:
-        "They registered my company, got EIN instantly, assisted me opening a bank account and help notarization of couple of documents. 5 stars service and a great team!",
-      author: {
-        name: 'Mert Yildiz',
-        role: 'Founder at Bonded Technologies Inc',
-        image: mert,
-      },
-    },
-  ],
-]
+import { useTranslation } from 'react-i18next'
 
 export function Testimonials() {
+  const { t } = useTranslation();
+
+  const testimonials = [
+    [
+      {
+        content:
+          t('section8_comment1'),
+        author: {
+          name:  t('section8_comment1_owner'),
+          image: utkan,
+        },
+      },
+      {
+        content:
+        t('section8_comment2'),
+        author: {
+          name:  t('section8_comment2_owner'),
+          image: noyan,
+        },
+      },
+    ],
+    [
+      {
+        content:
+        t('section8_comment3'),
+        author: {
+          name:  t('section8_comment3_owner'),
+          image: ufuk,
+        },
+      },
+      {
+        content:
+        t('section8_comment4'),
+        author: {
+         name: t('section8_comment4_owner'),
+          image: derya,
+        },
+      }
+    ],
+    [
+      {
+        content:
+        t('section8_comment5'),
+        author: {
+          name:  t('section8_comment5_owner'),
+          image: duygu,
+        },
+      },
+      {
+        content:
+        t('section8_comment6'),
+        author: {
+          name: t('section8_comment6_owner'),
+          image: mert,
+        },
+      },
+    ],
+  ]
+  
   return (
     <section
       id="testimonials"
@@ -100,11 +96,8 @@ export function Testimonials() {
                       </blockquote>
                       <figcaption className="relative mt-6 flex items-center justify-between border-t border-slate-100 pt-6">
                         <div>
-                          <div className="font-display text-base text-slate-900">
+                          <div className="font-display text-sm text-slate-500">
                             {testimonial.author.name}
-                          </div>
-                          <div className="mt-1 text-sm text-slate-500">
-                            {testimonial.author.role}
                           </div>
                         </div>
                         <div className="h-14 w-14 overflow-hidden rounded-full bg-slate-50">
