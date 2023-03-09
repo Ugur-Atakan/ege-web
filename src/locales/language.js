@@ -567,7 +567,7 @@ i18next
                     certificate_of_amendment_header5_uptitle_blue: "	Exclusive Solution	",
                     certificate_of_amendment_header5_maintitle_black: "	Need a certified copy of a Certificate of Dissolution?	",
                     certificate_of_amendment_header5_text_left: "	If you are in need of additional copies of a Certificate of Dissolution from the State, we can help you getting certified copies!	",
-                    certificate_of_amendment_header5_text_lright: "	We provide comprehensive services from compliance, filing, need business set up, mailbox, bookkeeping and tax filing	",
+                    certificate_of_amendment_header5_text_right: "	We provide comprehensive services from compliance, filing, need business set up, mailbox, bookkeeping and tax filing	",
                     certificate_of_amendment_header5_button: "	Learn More	",
                 }
             },
@@ -1071,7 +1071,7 @@ i18next
                     certificate_of_amendment_header5_uptitle_blue: "Size Özel Çözümler",
                     certificate_of_amendment_header5_maintitle_black: "Tadil Belgeniz'in onaylı nüshasına mı ihtiyacınız var?",
                     certificate_of_amendment_header5_text_left: "Tadil Belgeniz'in Eyalet'ten alınmış ek kopyalarına ihtiyacınız varsa, onaylı nüshalar almanıza yardımcı olabiliriz.",
-                    certificate_of_amendment_header5_text_lright: "Yasalara uyumluluk, dosyalama, şirket kurulumu, posta kutusu, defter tutma, vergi beyannamesi ve çok daha fazlasını içeren kapsamlı hizmetler sunuyoruz!",
+                    certificate_of_amendment_header5_text_right: "Yasalara uyumluluk, dosyalama, şirket kurulumu, posta kutusu, defter tutma, vergi beyannamesi ve çok daha fazlasını içeren kapsamlı hizmetler sunuyoruz!",
                     certificate_of_amendment_header5_button: "Daha Fazla Bilgi Alın",
                 }
             }
