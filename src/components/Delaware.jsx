@@ -1,10 +1,12 @@
 import delaware from '../images/delaware.webp'
+import { useTranslation } from 'react-i18next'
 
 export default function Delaware() {
+    const {t} = useTranslation();
     return (
         <div className="mx-auto max-w-7xl px-8 py-12">
             <div className="flex justify-center items-center">
-                <h1 className="text-3xl text-black font-bold text-center sm:text-4xl py-16">What are the types of documents<br />that can be apostilled in Delaware?</h1>
+                <h1 className="text-3xl text-black font-bold text-center sm:text-4xl py-16">{t('apostille_header4_title_black')}</h1>
             </div>
             <div className="block md:flex flex-row-reverse items-center gap-12 pt-16">
                 <div className="w-full md:w-1/2">
@@ -15,24 +17,24 @@ export default function Delaware() {
                     />
                 </div>
                 <div className="mx-auto max-w-prose text-base lg:ml-auto lg:mr-0 lg:max-w-lg">
-                    <h3 className="mt-2 text-2xl font-bold leading-8 tracking-tight text-blue-600">Examples of State-issued corporate documents</h3>
+                    <h3 className="mt-2 text-2xl font-bold leading-8 tracking-tight text-blue-600">{t('apostille_header4_text1')}</h3>
                     <ul className="my-4 text-lg text-gray-500 list-disc ml-8">
-                        <li>Certificate of Formation</li>
-                        <li>Certificate of Incorporation</li>
-                        <li>Certificate of Good Standing</li>
-                        <li>Certificate of Authority</li>
+                        <li>{t('apostille_header4_text_1_list1')}</li>
+                        <li>{t('apostille_header4_text_1_list2')}</li>
+                        <li>{t('apostille_header4_text_1_list3')}</li>
+                        <li>{t('apostille_header4_text_1_list4')}</li>
                     </ul>
-                    <h3 className="mt-2 text-2xl font-bold leading-8 tracking-tight text-blue-600">Examples of State-issued corporate documents</h3>
+                    <h3 className="mt-2 text-2xl font-bold leading-8 tracking-tight text-blue-600">{t('apostille_header4_text_2')}</h3>
                     <ul className="my-4 text-lg text-gray-500 list-disc ml-8">
-                        <li>Power of Attorneys</li>
-                        <li>Certificate of Incumbency</li>
+                        <li>{t('apostille_header4_text_2_list1')}</li>
+                        <li>{t('apostille_header4_text_2_list2')}</li>
                     </ul>
-                    <h3 className="mt-2 text-2xl font-bold leading-8 tracking-tight text-blue-600">Examples of State-issued corporate documents</h3>
+                    <h3 className="mt-2 text-2xl font-bold leading-8 tracking-tight text-blue-600">{t('apostille_header4_text_3')}</h3>
                     <ul className="my-4 text-lg text-gray-500 list-disc ml-8">
-                        <li>Certificate of Incumbency</li>
-                        <li>Adoption Certificates</li>
-                        <li>Death Certificates</li>
-                        <li>Driver’s Lisenses</li>
+                        <li>{t('apostille_header4_text_3_list1')}</li>
+                        <li>{t('apostille_header4_text_3_list2')}</li>
+                        <li>{t('apostille_header4_text_3_list3')}</li>
+                        <li>{t('apostille_header4_text_3_list4')}</li>
                     </ul>
                 </div>
                 

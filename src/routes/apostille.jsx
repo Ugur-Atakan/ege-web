@@ -9,17 +9,19 @@ import ExclusiveSolution from '../components/ExclusiveSolution'
 import Requirements from '../components/Requirements'
 import Delaware from '../components/Delaware'
 import productData from '../assets/productData'
+import { useTranslation } from 'react-i18next'
 
 export default function Apostille() {
+    const {t} = useTranslation();
     return (
         <main>
             <Navbar />
-            <LeftImgRightText img={topnotch} heading='International Entity Services' title='Apostille' desc='Are you in need of apostilled documents? Do you need to use your notarized/certified documents outside of the U.S.? We can obtain Certificate of Apostille / Certificate of Authentication, depending on the country that the document will be used.' button='Get Started Now' href={`/products/${productData[16].link}/contact`}/>
+            <LeftImgRightText img={topnotch} heading={t('apostille_header1_uptitle_blue')} title={t('apostille_header1_maintitle_black')} desc={t('apostille_header1_text')} button={t('apostille_header1_button')} href={`/products/${productData[16].link}/contact`}/>
             <Price/>
-            <Stats title="Features of Apostille" icontitle1="Use your documents abroad" icondesc1="If you are in need of a company document that has been filed with Delaware Division of Corporations with an apostille certificate, contact us now!." icontitle2="Shipping" icondesc2='We’ll ship your documents wherever you want.' icon1=<DocumentCheckIcon className="w-12" /> icon2=<CursorArrowRippleIcon className='w-12'/>/>
+            <Stats title={t('apostille_header3_title')} icontitle1={t('apostille_header3_icon1_title')} icondesc1={t('apostille_header3_icon1_text')} icontitle2={t('apostille_header3_icon2_title')} icondesc2={t('apostille_header3_icon2_text')} icon1=<DocumentCheckIcon className="w-12" /> icon2=<CursorArrowRippleIcon className='w-12'/>/>
             <Delaware/>
-            <ExclusiveSolution heading='Exclusive Solutions' title='Need a certified copy of an apostille certificate?' desc='If you are in need of additional copies of a Certificate of Dissolution from the State, we can help you getting certified copies!' rightdesc='We provide comprehensive services from compliance, filing, business set up, mailbox, bookkeeping, tax filing and more.' button='Learn More' />
-            <Requirements title='Requirements' desc=<ul className='list-disc'><li>Whenever an apostille service is requested for documents that have been filed with the Delaware Secretary of State, each document must be certified separatel</li><li>Any document that is in a foreign language must have the English translation attached to it. The English version must be notarized.</li></ul> />
+            <ExclusiveSolution heading={t('apostille_header5_uptitle_blue')} title={t('apostille_header5_maintitle_black')} desc={t('apostille_header5_text_left')} rightdesc={t('apostille_header5_text_right')} button={t('apostille_header5_button')}  />
+            <Requirements title={t('apostille_header5_maintitle2_title')} desc=<ul className='list-disc'><li>{t('apostille_header5_text2_1')}</li><li>{t('apostille_header5_text2_2')}</li></ul> />
             <Footer />
         </main>
     )
