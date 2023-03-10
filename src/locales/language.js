@@ -675,6 +675,16 @@ i18next
                     registate_llc_gold_list10: "Customizable Members Meeting Minutes",
                     registate_llc_gold_list11: "Access to Digital Copies of the Documents",
                     registate_llc_gold_list12: "Access to Registate Online Dashboard",
+                    registate_llc_premium_list1:'Registate LLC Premium',
+                    registate_llc_premium_list2:'Everything in Gold',
+                    registate_llc_premium_list3:'1 Year Virtual Mailbox Fee',
+                    registate_llc_premium_list4:'1 Year Business Address Fee',
+                    registate_llc_premium_list5:'1 Year Free Compliance Calendar',
+                    registate_llc_premium_list6:'Assisting payment of franchise tax and annual report filing fees',
+                    registate_llc_premium_list7:'Operating Agreement',
+                    registate_llc_premium_list8:'LLC Membership Certificate',
+                    registate_llc_premium_list9:'LLC Interest Purchase Agreement',
+                    registate_llc_premium_list10:'Business Contract Templates',
                 }
             },
             tr: {
@@ -1286,6 +1296,16 @@ i18next
                     registate_llc_gold_list10: "Kişiselleştirilebilir Şirket Toplantı Tutanakları",
                     registate_llc_gold_list11: "Belgelerin Dijital Kopyalarına Erişim",
                     registate_llc_gold_list12: "Registate Çevrimiçi Platformuna Erişim",
+                    registate_llc_premium_list1:'Registate LLC Platin Paketi',
+                    registate_llc_premium_list2:'Altın Paketindeki Her Şey',
+                    registate_llc_premium_list3:'1 Yıllık Sanal Posta Kutusu Ücreti',
+                    registate_llc_premium_list4:'1 Yıllık İş Adresi Ücreti',
+                    registate_llc_premium_list5:'1 Yıllık Ücretsiz Uyumluluk Takvimi',
+                    registate_llc_premium_list6:'Franchise Vergisi ve Yıllık Rapor Dosyalama Ücretlerinin Ödenmesine Destek',
+                    registate_llc_premium_list7:'İşletme Sözleşmesi',
+                    registate_llc_premium_list8:'LLC Üyelik Belgesi',
+                    registate_llc_premium_list9:'LLC Faiz Satın Alma Sözleşmesi',
+                    registate_llc_premium_list10:'İşletme Sözleşmesi Şablonları',
                 }
             }
         }
