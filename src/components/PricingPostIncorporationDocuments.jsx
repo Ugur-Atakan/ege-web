@@ -60,7 +60,7 @@ const states = [
 
 const packageDetails = {
 "llc1": {
-    title: 'Registate LLC Gold',
+    title: 'x',
     frequency: '',
     description: 'Expedited Filing (1-3 business days).',
     description2: 'Everything you need to perfectly start your company.',

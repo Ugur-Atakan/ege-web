@@ -12,12 +12,12 @@ import { EnvelopeOpenIcon, InboxStackIcon, CalendarDaysIcon } from "@heroicons/r
 import productData from "../assets/productData"
 import { useTranslation } from "react-i18next"
 export default function RegisteredAgent() {
-    const {t} = useTranslation()
+    const { t } = useTranslation()
     return (
         <main>
             <Navbar />
             <LeftImgRightText heading={t('registered_agent_header1_uptitle_blue')} title={t('registered_agent_header1_uptitle_black')} desc={t('registered_agent_header1_text')} button={t('registered_agent_header1_button')} img={ra1} href={`/products/${productData[1].link}/contact`} />
-            <Price />
+            <Price price={t('registered_agent_price')} />
             <LeftImgRightText title={t('registered_agent_header3_title')} desc={t('registered_agent_header3_text')} img={ra2} />
             <LeftImgRightText title={t('registered_agent_header4_title')} desc={t('registered_agent_header4_text')} img={ra3} reverse='true' />
             <LeftImgRightText title={t('registered_agent_header5_title')} desc={t('registered_agent_header5_text')} img={ra4} />

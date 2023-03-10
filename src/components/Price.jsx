@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next"
-export default function Price() {
+export default function Price(props) {
   const {t} = useTranslation();
   return (
       <>
@@ -35,8 +35,7 @@ export default function Price() {
                       </h3>
                       <div className="mt-4 flex items-center justify-center">
                         <span className="flex items-start px-3 text-6xl tracking-tight text-white sm:text-6xl">
-                          <span className="mt-2 mr-2 text-4xl font-medium tracking-tight">$</span>
-                          <span className="font-bold">550</span>
+                          <span className="font-bold text-5xl">{props.price}</span>
                         </span>
                       </div>
                       <div className="mt-10">
