@@ -108,7 +108,7 @@ export default function Footer() {
                     </li>
                   ))}
                   <div>
-                    <a hreF='/all-products' className="text-blue-600 text-base">{t('footer_col1_all_products')}
+                    <a href='/all-products' className="text-blue-600 text-base">{t('footer_col1_all_products')}
                       <span aria-hidden="true"> &rarr;</span></a>
                   </div>
                 </ul>

@@ -339,7 +339,7 @@ export function Navbar() {
             <div className="flex items-center md:ml-12">
             </div>
           </div>
-          <div class='hidden lg:flex items-center gap-4'>
+          <div className='hidden lg:flex items-center gap-4'>
             <a
               href="/pricing/form-my-company"
               className={isScroll ? "shadow rounded-md border border-transparent font-medium text-white bg-blue-600 px-4 py-2 text-md transition-colors duration-1000" : "shadow rounded-md border border-blue-600 font-medium text-blue-600 px-4 py-2 text-md transition-colors duration-1000"}

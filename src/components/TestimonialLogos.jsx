@@ -39,7 +39,7 @@ export default function TestimonialLogos() {
                             </div>
                             <div className="col-span-1 flex justify-center md:col-span-3 lg:col-span-1">
                                 <img className="h-12 grayscale" src={opsbeaconlogo} alt="opsbeacon"></img>
-                                <span class="inline-block mt-2 -ml-1"><span class="text-[#808080] font-medium text-xl ">Ops</span><span class="text-[#808080] font-medium text-xl ">Beacon</span></span>
+                                <span className="inline-block mt-2 -ml-1"><span className="text-[#808080] font-medium text-xl ">Ops</span><span className="text-[#808080] font-medium text-xl ">Beacon</span></span>
                             </div>
                             <div className="col-span-2 flex justify-center md:col-span-3 lg:col-span-1">
                                 <img className="h-12 grayscale" src={finedinelogo} alt="finedine"></img>
