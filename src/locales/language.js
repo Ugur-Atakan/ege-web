@@ -49,7 +49,7 @@ i18next
         resources: {
             en: {
                 translation: {
-                    menu1_title: "	Pricing	",
+                    menu1_title:"Pricing",
                     menu2_title: "	Products	",
                     menu2_1_title: "	RECURRING	",
                     menu2_1_link_1_title: "	Compliance Reminder	",
