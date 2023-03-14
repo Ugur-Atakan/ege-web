@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 export default function StartOnbarding() {
   const [page, setPage] = useState(0);
-  const text = "Bu metin diğer sayfada görünecek.";
+  const text = "LLC";
   document.body.classList.add("bg-slate-50");
 
   return (
