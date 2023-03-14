@@ -81,7 +81,7 @@ const App = () => {
           <Route exact path="/post-order" element={<PostOrder />} />
           <Route path="*" elemenvt={<Home />} />
           <Route exact path='/all-products' element={<AllProducts />} />
-          <Route exact path='/start-company-test' element={<StartCompany />} />
+          <Route exact path='/start-my-business' element={<StartCompany />} />
           <Route path="/products/:productlink/contact" element={<ProductSpecificContactUs />}/>
         </Routes>
       </div>

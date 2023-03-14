@@ -52,8 +52,6 @@ i18next
     .use(initReactI18next)
     .init({
         detection: options,
-        debug: true,
-
         interpolation: {
             escapeValue: false, // not needed for react as it escapes by default
         },
@@ -294,7 +292,7 @@ i18next
                     compliance_reminder_header5_text_right: 'We provide comprehensive services from compliance, filing, business set up, mailbox, bookkeeping, tax filing and more!',
                     compliance_reminder_header5_button: 'Learn More',
                     registered_agent_header1_uptitle_blue: 'Admin Management',
-                    registered_agent_header1_uptitle_black: 'Compliance Reminder',
+                    registered_agent_header1_uptitle_black: 'Registered Agent',
                     registered_agent_header1_text: "Are you in the process of forming your company but you don't have a registered agent yet? Appoint us as your registered agent! Or, you already have a registered agent but want to change it? Appoint your Delaware registered agent to Registate!",
                     registered_agent_header1_button: 'Get Started Now',
                     registered_agent_header3_title: 'Every company in Delaware is required to appoint a registered agent by law',
