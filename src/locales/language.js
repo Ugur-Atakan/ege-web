@@ -3,28 +3,19 @@ import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
 const options = {
-    // order and from where user language should be detected
-    order: ['querystring', 'cookie', 'localStorage', 'sessionStorage', 'navigator', 'htmlTag', 'path', 'detector'],
+    order: ['querystring', 'cookie', 'localStorage', 'sessionStorage', 'navigator', 'htmlTag', 'path', 'subdomain'],
 
     // keys or params to lookup language from
-    lookupQuerystring: 'lngs',
-    lookupCookie: 'i18next',
-    lookupLocalStorage: 'i18nextLng',
-    lookupSessionStorage: 'i18nextLng',
+    lookupQuerystring: 'lng',
+    lookupCookie: 'lng',
+    lookupLocalStorage: 'lng',
+    lookupSessionStorage: 'lng',
     lookupFromPathIndex: 0,
     lookupFromSubdomainIndex: 0,
 
     // cache user language on
     caches: ['localStorage', 'cookie'],
     excludeCacheFor: ['cimode'], // languages to not persist (cookie, localStorage)
-
-    // optional expire and domain for set cookie
-    cookieMinutes: 10,
-    cookieDomain: 'localhost:3001',
-
-    // optional htmlTag with lang attribute, the default is:
-    htmlTag: document.documentElement,
-
     // optional set cookie options, reference:[MDN Set-Cookie docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie)
     cookieOptions: { path: '/', sameSite: 'strict' }
 }
@@ -58,7 +49,7 @@ i18next
         resources: {
             en: {
                 translation: {
-                    menu1_title: "	Pricing	",
+                    menu1_title:"Pricing",
                     menu2_title: "	Products	",
                     menu2_1_title: "	RECURRING	",
                     menu2_1_link_1_title: "	Compliance Reminder	",
@@ -254,6 +245,8 @@ i18next
                     pricing_header2_Answer_5_1: "	The Franchise Tax is based on the company’s authorized capital.The Franchise Tax is due annually and is payable in two installments.The first installment is due on the 15th day of the 4th month after the company’s incorporation date.The second installment is due on the 15th day of the 10th month after the company’s incorporation date.The Franchise Tax is calculated as follows:",
                     pricing_header2_Answer_5_2: "Franchise Tax = Authorized Capital x 0.0015",
                     pricing_header2_Answer_5_3: "For example, if the company’s authorized capital is $100,000, the Franchise Tax is $150.00 ($100,000 x 0.0015).",
+                    pricing_header_3_question_text:"Need help choosing the right company structure for your needs?",
+                    pricing_header3_question_link:"Help me choose",
                     contact_us_header1_uptitle: 'Contact Us',
                     contact_us_header1_text: 'One of our services experts will reach out to you based on your communication preferences.',
                     contact_us_header2_text_1: "We'll follow up",
@@ -291,6 +284,7 @@ i18next
                     compliance_reminder_header5_text_left: 'Make managing your company easier! Explore our bundle solutions!',
                     compliance_reminder_header5_text_right: 'We provide comprehensive services from compliance, filing, business set up, mailbox, bookkeeping, tax filing and more!',
                     compliance_reminder_header5_button: 'Learn More',
+                    compliance_reminder_price:'$399/yearly',
                     registered_agent_header1_uptitle_blue: 'Admin Management',
                     registered_agent_header1_uptitle_black: 'Registered Agent',
                     registered_agent_header1_text: "Are you in the process of forming your company but you don't have a registered agent yet? Appoint us as your registered agent! Or, you already have a registered agent but want to change it? Appoint your Delaware registered agent to Registate!",
@@ -313,6 +307,7 @@ i18next
                     registered_agent_header7_text_left: 'Make managing your company easier! Explore our bundle solutions!',
                     registered_agent_header7_text_right: 'We provide comprehensive services from compliance, filing, business set up, mailbox, bookkeeping, tax filing and more!',
                     registered_agent_header7_button: 'Learn More',
+                    registered_agent_price:"$8.99/month Annual subscription: $74,99 (%30 discount!)",
                     virtual_mailbox_header1_uptitle_blue: 'Admin Management',
                     virtual_mailbox_header1_uptitle_black: 'Virtual MailBox',
                     virtual_mailbox_header1_text: 'A virtual mailbox makes it easier to manage your mail & packages remotely. Choose our virtual mailbox service and secure the privacy of your mail.',
@@ -332,6 +327,7 @@ i18next
                     virtual_mailbox_header5_text_left: 'Make managing your company easier! Explore our bundle solutions!',
                     virtual_mailbox_header5_text_right: 'We provide comprehensive services from compliance, filing, business set up, mailbox, bookkeeping, tax filing and more!',
                     virtual_mailbox_header5_button: 'Learn More',
+                    virtual_mailbox_price:'$9.99/month',
                     office_address_header1_uptitle_blue: 'Admin Management',
                     office_address_header1_uptitle_black: 'Physical Office Suite',
                     office_address_header1_text: 'Have a professional business address for your company in Delaware!',
@@ -351,8 +347,8 @@ i18next
                     office_address_header5_text_left: 'Make managing your company easier! Explore our bundle solutions!',
                     office_address_header5_text_right: 'We provide comprehensive services from compliance, filing, business set up, mailbox, bookkeeping, tax filing and more!',
                     office_address_header5_button: 'Learn More',
-                    our_packages_header1_uptitle_blue: "Our Packages",
-                    our_packages_header1_uptitle_black: "Costs For Maintaining Your Business",
+                    our_packages_header1_uptitle_blue: "	Our Packages	",
+                    our_packages_header1_uptitle_black: "	Ürünlerimiz söz konusu olduğunda en iyi kararı vermenize yardımcı olmak için müşterilerimizle her zaman sohbet etmeye hazırız. Bir sorunuz varsa veya sadece bizimle iletişim halinde olmak istiyorsanız, sizi her zaman dinlemek için buradayız.	",
                     our_packages_header1_text: "	We are always available for a chat with our customers to help you make the best decision when it comes to our products. If you have a question or just want to keep in touch with us, we're always here to listen.	",
                     our_packages_header1_button: "	Get Started Now	",
                     our_packages_header3_title: "	We offer extensive procedures for our clients.	",
@@ -670,6 +666,16 @@ i18next
                     registate_llc_gold_list10: "Customizable Members Meeting Minutes",
                     registate_llc_gold_list11: "Access to Digital Copies of the Documents",
                     registate_llc_gold_list12: "Access to Registate Online Dashboard",
+                    registate_llc_premium_list1:'Registate LLC Premium',
+                    registate_llc_premium_list2:'Everything in Gold',
+                    registate_llc_premium_list3:'1 Year Virtual Mailbox Fee',
+                    registate_llc_premium_list4:'1 Year Business Address Fee',
+                    registate_llc_premium_list5:'1 Year Free Compliance Calendar',
+                    registate_llc_premium_list6:'Assisting payment of franchise tax and annual report filing fees',
+                    registate_llc_premium_list7:'Operating Agreement',
+                    registate_llc_premium_list8:'LLC Membership Certificate',
+                    registate_llc_premium_list9:'LLC Interest Purchase Agreement',
+                    registate_llc_premium_list10:'Business Contract Templates',
                 }
             },
             tr: {
@@ -851,6 +857,8 @@ i18next
                     pricing_header1_text: "İşinizi yeni başlatıyor veya işinizi büyütüyor olmanız fark etmez, sizin için özenle hazırlanmış ve en uygun maliyetli planlarımız mevcut.",
                     pricing_header1_button_1: "Eyalet Seçin",
                     pricing_header1_button_2: "Şirket Türü Seçin",
+                    pricing_header3_question_text:"İhtiyaçlarınız için doğru şirket yapısını seçmek için yardıma mı ihtiyacınız var?",
+                    pricing_header3_question_link:"Seçmeme yardım et",
                     pricing_header2_title: "Sıkça Sorulan Sorular",
                     pricing_header2_text: "Beklenmedik ücretlerle karşı karşıya kalmamanız için fiyatlandırmayı basit ve anlaşılır hale getiriyoruz.",
                     pricing_header2_Question_1: "Neden Şirketimi Kurmak İçin Delaware'i Seçmeliyim?",
@@ -906,6 +914,7 @@ i18next
                     compliance_reminder_header5_text_left: 'Şirketinizi yönetmeyi kolaylaştırın! Paket çözümlerimizi keşfedin!',
                     compliance_reminder_header5_text_right: 'Yasalara uyumluluk, dosyalama, şirket kurulumu, posta kutusu, defter tutma, vergi beyannamesi ve çok daha fazlasını içeren kapsamlı hizmetler sunuyoruz!',
                     compliance_reminder_header5_button: 'Daha Fazla Bilgi Alın',
+                    compliance_reminder_price:'$399/Yıllık',
                     registered_agent_header1_uptitle_blue: 'İdari Yönetim',
                     registered_agent_header1_uptitle_black: 'Kayıtlı Temsilci',
                     registered_agent_header1_text: "Şirketinizi kurmak istiyorsunuz ancak kayıtlı bir temsilciniz yok mu? Bizi kayıtlı temsilcini olarak atayın! Ya da zaten kayıtlı bir temsilciniz var ama onu değiştirmek mi istiyorsunuz? Registate’i yeni kayıtlı temsilciniz yapın!",
@@ -928,6 +937,7 @@ i18next
                     registered_agent_header7_text_left: 'Şirketinizi yönetmeyi kolaylaştırın! Paket çözümlerimizi keşfedin!',
                     registered_agent_header7_text_right: 'Yasalara uyumluluk, dosyalama, şirket kurulumu, posta kutusu, defter tutma, vergi beyannamesi ve çok daha fazlasını içeren kapsamlı hizmetler sunuyoruz!',
                     registered_agent_header7_button: 'Daha Fazla Bilgi Alın',
+                    registered_agent_price:"Aylık/$8.99 Yıllık Abonelik: $74,99 (%30 indirim!)",
                     virtual_mailbox_header1_uptitle_blue: 'İdari Yönetim',
                     virtual_mailbox_header1_uptitle_black: 'Sanal Posta Kutusu',
                     virtual_mailbox_header1_text: 'Sanal bir posta kutusu, postalarınızı ve paketlerinizi uzaktan yönetmenizi kolaylaştırır. Sanal posta kutusu hizmetimizden yararlanın ve postalarınızın gizliliğini koruyun.',
@@ -947,6 +957,7 @@ i18next
                     virtual_mailbox_header5_text_left: 'Şirketinizi yönetmeyi kolaylaştırın! Paket çözümlerimizi keşfedin!',
                     virtual_mailbox_header5_text_right: 'Yasalara uyumluluk, dosyalama, şirket kurulumu, posta kutusu, defter tutma, vergi beyannamesi ve çok daha fazlasını içeren kapsamlı hizmetler sunuyoruz!',
                     virtual_mailbox_header5_button: 'Daha Fazla Bilgi Alın',
+                    virtual_mailbox_price:'$9.99/aylık',
                     office_address_header1_uptitle_blue: 'İdari Yönetim',
                     office_address_header1_uptitle_black: 'Fiziksel Ofis Paketi',
                     office_address_header1_text: "Delaware'de şirketiniz için profesyonel bir iş adresine sahip olun!",
@@ -966,6 +977,7 @@ i18next
                     office_address_header5_text_left: 'Şirketinizi yönetmeyi kolaylaştırın! Paket çözümlerimizi keşfedin!',
                     office_address_header5_text_right: 'Yasalara uyumluluk, dosyalama, şirket kurulumu, posta kutusu, defter tutma, vergi beyannamesi ve çok daha fazlasını içeren kapsamlı hizmetler sunuyoruz!',
                     office_address_header5_button: 'Daha Fazla Bilgi Alın',
+                    office_address_price:'',
                     our_packages_header1_uptitle_blue: "Paketlerimiz",
                     our_packages_header1_uptitle_black: "İşinizi Sürdürmenin Maliyetleri",
                     our_packages_header1_text: "Ürünlerimiz söz konusu olduğunda en iyi kararı vermenize yardımcı olmak için müşterilerimizle her zaman sohbet etmeye hazırız. Bir sorunuz varsa veya sadece bizimle iletişim halinde olmak istiyorsanız, her zaman dinlemek için buradayız.",
@@ -1277,6 +1289,16 @@ i18next
                     registate_llc_gold_list10: "Kişiselleştirilebilir Şirket Toplantı Tutanakları",
                     registate_llc_gold_list11: "Belgelerin Dijital Kopyalarına Erişim",
                     registate_llc_gold_list12: "Registate Çevrimiçi Platformuna Erişim",
+                    registate_llc_premium_list1:'Registate LLC Platin Paketi',
+                    registate_llc_premium_list2:'Altın Paketindeki Her Şey',
+                    registate_llc_premium_list3:'1 Yıllık Sanal Posta Kutusu Ücreti',
+                    registate_llc_premium_list4:'1 Yıllık İş Adresi Ücreti',
+                    registate_llc_premium_list5:'1 Yıllık Ücretsiz Uyumluluk Takvimi',
+                    registate_llc_premium_list6:'Franchise Vergisi ve Yıllık Rapor Dosyalama Ücretlerinin Ödenmesine Destek',
+                    registate_llc_premium_list7:'İşletme Sözleşmesi',
+                    registate_llc_premium_list8:'LLC Üyelik Belgesi',
+                    registate_llc_premium_list9:'LLC Faiz Satın Alma Sözleşmesi',
+                    registate_llc_premium_list10:'İşletme Sözleşmesi Şablonları',
                 }
             }
         }
