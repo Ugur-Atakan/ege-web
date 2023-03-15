@@ -300,7 +300,7 @@ export default function StartOnbarding() {
                 </div>
                 <div className="flex justify-center items-start gap-4">
                   <div className="block">
-                    <h1 className="text-blue-600 text-4xl font-bold">{firstYes || secondYes ? 'Corporation' : 'LLC'}</h1>
+                    <h1 className="text-blue-600 text-center text-4xl font-bold">{firstYes || secondYes ? 'Corporation' : 'LLC'}</h1>
                     <h2 className="text-blue-600 text-[10px] font-bold border border-blue-600 p-1 rounded-lg">
                       Company Type
                     </h2>

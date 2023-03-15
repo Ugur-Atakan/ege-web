@@ -3,9 +3,10 @@ import React, { useState, useEffect } from 'react'
 import HeroImage from '../images/hero.png'
 import { Fragment } from 'react'
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 
 function TypingHeader() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [text, setText] = useState('');
   const [messageIndex, setMessageIndex] = useState(0);
   const messages = [
@@ -79,11 +80,37 @@ export default function Hero() {
                 <p className="mt-5 mb-5 text-base text-gray-800 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-2xl lg:mx-0">
                   {t('hero_section_desc')}
                 </p>
+                <div className=' py-4 md:px-12'>
+                  <div className='pb-4'>
+                    <label htmlFor="companyname" className="sr-only">
+                    companyname
+                    </label>
+                    <input
+                      type="text"
+                      name="companyname"
+                      id="companyname"
+                      className="block outline-none w-full rounded-md border-0  px-4 py-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                      placeholder="Enter your preferred company name"
+                    />
+                  </div>
+                  <div className='pb-4'>
+                    <label htmlFor="email" className="sr-only">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      id="email"
+                      className="block outline-none w-full rounded-md border-0 px-4 py-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      placeholder="Please type your e-mail to contact you"
+                    />
+                  </div>
+                </div>
                 <div className='flex justify-center'>
-                  <a href="/pricing/form-my-company/" id='form-my-company' class="px-16 py-4 relative rounded group overflow-hidden font-medium bg-blue-600 text-white inline-block">
+                  <Link href="/pricing/form-my-company/" id='form-my-company' class="px-16 py-4 relative rounded group overflow-hidden font-medium bg-blue-600 text-white inline-block">
                     <span class="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-blue-700 group-hover:h-full opacity-90"></span>
-                    <span class="relative group-hover:text-white text-lg"> {t('hero_section_button')}</span>
-                  </a>
+                    <span class="relative group-hover:text-white text-lg">{t('hero_section_button')}</span>
+                  </Link>
                 </div>
                 <div className="flex flex-col md:flex-row py-3 gap-2 md:gap-0  md:py-0 md:inline-flex items-center mx-auto mt-4">
                   <div className="flex flex-shrink-0 pr-2">

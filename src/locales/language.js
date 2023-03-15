@@ -245,7 +245,7 @@ i18next
                     pricing_header2_Answer_5_1: "	The Franchise Tax is based on the company’s authorized capital.The Franchise Tax is due annually and is payable in two installments.The first installment is due on the 15th day of the 4th month after the company’s incorporation date.The second installment is due on the 15th day of the 10th month after the company’s incorporation date.The Franchise Tax is calculated as follows:",
                     pricing_header2_Answer_5_2: "Franchise Tax = Authorized Capital x 0.0015",
                     pricing_header2_Answer_5_3: "For example, if the company’s authorized capital is $100,000, the Franchise Tax is $150.00 ($100,000 x 0.0015).",
-                    pricing_header_3_question_text:"Need help choosing the right company structure for your needs?",
+                    pricing_header3_question_text:"Need help choosing the right company structure for your needs?",
                     pricing_header3_question_link:"Help me choose",
                     contact_us_header1_uptitle: 'Contact Us',
                     contact_us_header1_text: 'One of our services experts will reach out to you based on your communication preferences.',
