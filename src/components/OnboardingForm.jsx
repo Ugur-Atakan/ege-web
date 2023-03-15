@@ -654,7 +654,7 @@ function CompanyContactInfoForm(props) {
                                     >
 
                                         <option value=""> {country === 'United States' ? 'Select State' : 'No State'}</option>
-                                        {country === 'United States' && 
+                                        {country === 'United States' &&
                                             states.map((state) => (
                                                 <option
                                                     key={state.name}
@@ -712,7 +712,7 @@ function CompanyContactInfoForm(props) {
                                     <button
                                         id='pay-btn'
                                         type="submit"
-                                        className={name === '' || lastname === '' || street === '' || zip === '' || phone === '' || city ==='' ? "bg-blue-300 py-3 px-6 rounded-md text-white pointer-events-none" : "mt-3 md:mt-0 inline-flex justify-center rounded-md border border-transparent bg-blue-600 py-3 px-6 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"}
+                                        className={name === '' || lastname === '' || street === '' || zip === '' || phone === '' || city === '' ? "bg-blue-300 py-3 px-6 rounded-md text-white pointer-events-none" : "mt-3 md:mt-0 inline-flex justify-center rounded-md border border-transparent bg-blue-600 py-3 px-6 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"}
                                     >
                                         Review and Pay
                                     </button>
@@ -864,11 +864,13 @@ export default function OnboardingForm() {
     useEffect(() => {
         console.log("OnboardingForm useEffect")
         //Check if packageType is defined in local storage, if not redirect to /pricing
-        let packageType = localStorage.getItem('packageType')
-        if (!packageType) {
-            console.log("packageType not defined, redirecting to /pricing/form-my-company")
-            window.location.href = "/pricing/form-my-company"
-        }
+
+        //This function has been disabled because a new form has been added to the home page.
+        // let packageType = localStorage.getItem('packageType')
+        // if (!packageType) {
+        //     console.log("packageType not defined, redirecting to /pricing/form-my-company")
+        //    window.location.href = "/pricing/form-my-company"
+        // }
 
         let onboardingId = localStorage.getItem('onboardingId')
         if (onboardingId) {

@@ -3,7 +3,10 @@ import React, { useState, useEffect } from 'react'
 import HeroImage from '../images/hero.png'
 import { Fragment } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from "axios"
+
+const API_ROOT = window.ob.config.apiRoot;
 
 function TypingHeader() {
   const { t } = useTranslation();
@@ -37,6 +40,7 @@ function TypingHeader() {
     }, 100);
   }, [messageIndex]);
 
+
   return (
     <>
       <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
@@ -50,7 +54,7 @@ function TypingHeader() {
   );
 }
 
-export default function Hero() {
+export default function Hero(props) {
   const { t, i18n } = useTranslation();
   const [isScroll, setIsScroll] = useState(false);
   useEffect(() => {
@@ -60,6 +64,59 @@ export default function Hero() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll);
   }, [])
+  const [email, setEmail] = useState('');
+  const [companyName, setcompanyName] = useState('');
+  const navigate = useNavigate();
+  const landingform = "came from landing form"
+
+  const onEmailChange = (evt) => {
+    setEmail(evt.target.value);
+  };
+
+  const onCompanyNameChange = (evt) => {
+    setcompanyName(evt.target.value);
+  };
+  function formSubmitHandler(e) {
+    e.preventDefault();
+    let new_company_name = e.target.companyName.value;
+    console.log("companyName: " + new_company_name)
+
+    let userEmail = e.target.userEmail.value;
+    let companyType = localStorage.getItem('companyType')
+    let companyState = localStorage.getItem('companyState')
+
+    let payload = {
+        companyName: new_company_name,
+        userEmail: userEmail,
+        companyType: companyType,
+        companyState: companyState
+    }
+    console.log(payload)
+    axios.post(API_ROOT + '/api/onboard', payload, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
+        }
+    })
+        .then(function (response) {
+            //Parse the returned json data
+            var jsonData = JSON.parse(JSON.stringify(response.data));
+            console.log(jsonData)
+            
+            if (jsonData.Status) {
+                console.log("Company registered successfully with id: " + jsonData.data.id);
+                localStorage.setItem('onboardingId', jsonData.data.id);
+                localStorage.setItem('companyName', new_company_name);
+                localStorage.setItem('userEmail', userEmail);
+              navigate('/onboarding')
+
+            }
+            
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
   return (
     <>
       <div className="relative overflow-hidden bg-white">
@@ -80,38 +137,44 @@ export default function Hero() {
                 <p className="mt-5 mb-5 text-base text-gray-800 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-2xl lg:mx-0">
                   {t('hero_section_desc')}
                 </p>
-                <div className=' py-4 md:px-12'>
-                  <div className='pb-4'>
-                    <label htmlFor="companyname" className="sr-only">
-                    companyname
-                    </label>
-                    <input
-                      type="text"
-                      name="companyname"
-                      id="companyname"
-                      className="block outline-none w-full rounded-md border-0  px-4 py-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
-                      placeholder="Enter your preferred company name"
-                    />
+                <form  onSubmit={formSubmitHandler}>
+                  <div className=' py-4 md:px-12'>
+                    <div className='pb-4'>
+                      <label htmlFor="companyName" className="sr-only">
+                        companyname
+                      </label>
+                      <input
+                        type="text"
+                        name="companyName"
+                        id="companyName"
+                        value={companyName}
+                        onChange={onCompanyNameChange}
+                        className="block outline-none w-full rounded-md border-0  px-4 py-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                        placeholder="Enter your preferred company name"
+                      />
+                    </div>
+                    <div className='pb-4'>
+                      <label htmlFor="userEmail" className="sr-only">
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        name="userEmail"
+                        id="userEmail"
+                        value={email}
+                        onChange={onEmailChange}
+                        className="block outline-none w-full rounded-md border-0 px-4 py-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        placeholder="Please type your e-mail to contact you"
+                      />
+                    </div>
                   </div>
-                  <div className='pb-4'>
-                    <label htmlFor="email" className="sr-only">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      id="email"
-                      className="block outline-none w-full rounded-md border-0 px-4 py-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      placeholder="Please type your e-mail to contact you"
-                    />
-                  </div>
-                </div>
-                <div className='flex justify-center'>
-                  <Link href="/pricing/form-my-company/" id='form-my-company' class="px-16 py-4 relative rounded group overflow-hidden font-medium bg-blue-600 text-white inline-block">
+                  <div className='flex justify-center'>
+                  <button type="submit"  id='form-my-company' class="px-16 py-4 relative rounded group overflow-hidden font-medium bg-blue-600 text-white inline-block">
                     <span class="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-blue-700 group-hover:h-full opacity-90"></span>
                     <span class="relative group-hover:text-white text-lg">{t('hero_section_button')}</span>
-                  </Link>
+                  </button>
                 </div>
+                </form>
                 <div className="flex flex-col md:flex-row py-3 gap-2 md:gap-0  md:py-0 md:inline-flex items-center mx-auto mt-4">
                   <div className="flex flex-shrink-0 pr-2">
                     <StarIcon className="h-5 w-5 text-yellow-400" aria-hidden="true" />
