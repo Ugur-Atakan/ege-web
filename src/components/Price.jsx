@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next"
-export default function Price() {
+export default function Price(props) {
   const {t} = useTranslation();
   return (
       <>
@@ -27,16 +27,15 @@ export default function Price() {
                   />
                   <div className="rounded-t-lg bg-gradient-to-r from-[#004B9D] to-[#001E3F] px-6 pt-6 pb-10 -mt-8">
                     <div>
-                      <h3
+                      {props.price ?<h3
                         className="text-center text-3xl font-semibold tracking-tight text-white sm:-mx-6"
                         id="tier-growth"
                       >
                         {t('compliance_reminder_header2_pricebox_title')}
-                      </h3>
-                      <div className="mt-4 flex items-center justify-center">
+                      </h3> : null}
+                      <div className="flex items-center justify-center">
                         <span className="flex items-start px-3 text-6xl tracking-tight text-white sm:text-6xl">
-                          <span className="mt-2 mr-2 text-4xl font-medium tracking-tight">$</span>
-                          <span className="font-bold">550</span>
+                          <span className=" mr-2 text-5xl font-medium tracking-tight text-center">{props.price}</span>
                         </span>
                       </div>
                       <div className="mt-10">

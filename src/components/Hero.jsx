@@ -1,4 +1,4 @@
-import { StarIcon } from '@heroicons/react/20/solid'
+import { ExclamationCircleIcon, StarIcon } from '@heroicons/react/20/solid'
 import React, { useState, useEffect } from 'react'
 import HeroImage from '../images/hero.png'
 import { Fragment } from 'react'
@@ -66,6 +66,7 @@ export default function Hero(props) {
   }, [])
   const [email, setEmail] = useState('');
   const [companyName, setcompanyName] = useState('');
+  const [validation, setValidation] = useState(false);
   const navigate = useNavigate();
   const landingform = "came from landing form"
 
@@ -76,8 +77,16 @@ export default function Hero(props) {
   const onCompanyNameChange = (evt) => {
     setcompanyName(evt.target.value);
   };
+
   function formSubmitHandler(e) {
+    if (email === '' || companyName === '') {
+      e.preventDefault();
+      setValidation(true);
+      return false;
+    }
+    
     e.preventDefault();
+    setValidation(false);
     let new_company_name = e.target.companyName.value;
     console.log("companyName: " + new_company_name)
 
@@ -86,37 +95,36 @@ export default function Hero(props) {
     let companyState = localStorage.getItem('companyState')
 
     let payload = {
-        companyName: new_company_name,
-        userEmail: userEmail,
-        companyType: companyType,
-        companyState: companyState
+      companyName: new_company_name,
+      userEmail: userEmail,
+      companyType: companyType,
+      companyState: companyState
     }
     console.log(payload)
     axios.post(API_ROOT + '/api/onboard', payload, {
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
-        }
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
+      }
     })
-        .then(function (response) {
-            //Parse the returned json data
-            var jsonData = JSON.parse(JSON.stringify(response.data));
-            console.log(jsonData)
-            
-            if (jsonData.Status) {
-                console.log("Company registered successfully with id: " + jsonData.data.id);
-                localStorage.setItem('onboardingId', jsonData.data.id);
-                localStorage.setItem('companyName', new_company_name);
-                localStorage.setItem('userEmail', userEmail);
-              navigate('/onboarding')
+      .then(function (response) {
+        //Parse the returned json data
+        var jsonData = JSON.parse(JSON.stringify(response.data));
+        console.log(jsonData)
 
-            }
-            
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-}
+        if (jsonData.Status) {
+          console.log("Company registered successfully with id: " + jsonData.data.id);
+          localStorage.setItem('onboardingId', jsonData.data.id);
+          localStorage.setItem('companyName', new_company_name);
+          localStorage.setItem('userEmail', userEmail);
+          navigate('/onboarding')
+        }
+
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
   return (
     <>
       <div className="relative overflow-hidden bg-white">
@@ -137,7 +145,12 @@ export default function Hero(props) {
                 <p className="mt-5 mb-5 text-base text-gray-800 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-2xl lg:mx-0">
                   {t('hero_section_desc')}
                 </p>
-                <form  onSubmit={formSubmitHandler}>
+                {validation
+                  ? <div className='flex justify-center'>
+                    <h1 className='text-red-400 text-md flex items-center gap-2'> <ExclamationCircleIcon className='w-8' />Please fill in the blanks</h1>
+                  </div>
+                  : null}
+                <form onSubmit={formSubmitHandler}>
                   <div className=' py-4 md:px-12'>
                     <div className='pb-4'>
                       <label htmlFor="companyName" className="sr-only">
@@ -169,11 +182,11 @@ export default function Hero(props) {
                     </div>
                   </div>
                   <div className='flex justify-center'>
-                  <button type="submit"  id='form-my-company' class="px-16 py-4 relative rounded group overflow-hidden font-medium bg-blue-600 text-white inline-block">
-                    <span class="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-blue-700 group-hover:h-full opacity-90"></span>
-                    <span class="relative group-hover:text-white text-lg">{t('hero_section_button')}</span>
-                  </button>
-                </div>
+                    <button type="submit" id='form-my-company' class="px-16 py-4 relative rounded group overflow-hidden font-medium bg-blue-600 text-white inline-block">
+                      <span class="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-blue-700 group-hover:h-full opacity-90"></span>
+                      <span class="relative group-hover:text-white text-lg">{t('hero_section_button')}</span>
+                    </button>
+                  </div>
                 </form>
                 <div className="flex flex-col md:flex-row py-3 gap-2 md:gap-0  md:py-0 md:inline-flex items-center mx-auto mt-4">
                   <div className="flex flex-shrink-0 pr-2">
