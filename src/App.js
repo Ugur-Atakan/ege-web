@@ -38,6 +38,7 @@ import AllProducts from './routes/all-products';
 import '../src/locales/language.js'
 import StartCompany from './routes/start-company';
 import ProductSpecificContactUs from './routes/product-specific-contact-us';
+import Copylandingpage from './routes/copy-landing-page';
 
 const App = () => {
   return (
@@ -83,6 +84,7 @@ const App = () => {
           <Route exact path='/all-products' element={<AllProducts />} />
           <Route exact path='/start-my-business' element={<StartCompany />} />
           <Route path="/products/:productlink/contact" element={<ProductSpecificContactUs />}/>
+          <Route path="/copy-landing-page" element={<Copylandingpage />}/>
         </Routes>
       </div>
     </Router>

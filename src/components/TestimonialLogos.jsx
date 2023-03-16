@@ -25,7 +25,7 @@ export default function TestimonialLogos() {
                     <p className="mt-4 text-lg tracking-tight text-slate-700">
                     </p>
                 </div>
-                <div className="bg-white">
+                <div>
                     <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:px-8">
                         <div className="grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5">
                             <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
@@ -39,7 +39,7 @@ export default function TestimonialLogos() {
                             </div>
                             <div className="col-span-1 flex justify-center md:col-span-3 lg:col-span-1">
                                 <img className="h-12 grayscale" src={opsbeaconlogo} alt="opsbeacon"></img>
-                                <span class="inline-block mt-2 -ml-1"><span class="text-[#808080] font-medium text-xl ">Ops</span><span class="text-[#808080] font-medium text-xl ">Beacon</span></span>
+                                <span className="inline-block mt-2 -ml-1"><span className="text-[#808080] font-medium text-xl ">Ops</span><span className="text-[#808080] font-medium text-xl ">Beacon</span></span>
                             </div>
                             <div className="col-span-2 flex justify-center md:col-span-3 lg:col-span-1">
                                 <img className="h-12 grayscale" src={finedinelogo} alt="finedine"></img>

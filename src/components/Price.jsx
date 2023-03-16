@@ -25,7 +25,7 @@ export default function Price(props) {
                     className="pointer-events-none absolute inset-0 rounded-lg"
                     aria-hidden="true"
                   />
-                  <div className="rounded-t-lg bg-gradient-to-r from-[#004B9D] to-[#001E3F] px-6 pt-6 pb-10 -mt-8">
+                  <div className="rounded-lg bg-gradient-to-r from-[#004B9D] to-[#001E3F] px-6 pt-6 pb-10 -mt-8">
                     <div>
                       {props.price ?<h3
                         className="text-center text-3xl font-semibold tracking-tight text-white sm:-mx-6"
@@ -41,7 +41,7 @@ export default function Price(props) {
                       <div className="mt-10">
                       <div className="rounded-lg shadow-md">
                         <a
-                          href="#"
+                          href="/contact"
                           className="block w-full rounded-lg border border-transparent bg-white px-6 py-4 text-center text-xl font-medium leading-6 text-[#004B9D]"
                           aria-describedby="tier-growth"
                         >

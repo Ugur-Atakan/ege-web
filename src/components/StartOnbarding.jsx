@@ -208,7 +208,7 @@ export default function StartOnbarding() {
               <ArrowUturnDownIcon className="w-4 text-black rotate-90" />
               <button className="text-black">Back</button>
             </div>
-            <div className="pt-6">
+            <div className="pt-6 px-12">
               <h1 className="text-center text-black text-2xl font-bold">
                 Are you planning to raise money or go through an
                 accelerator/incubator program?
@@ -254,7 +254,7 @@ export default function StartOnbarding() {
               <ArrowUturnDownIcon className="w-4 text-black rotate-90" />
               <button className="text-black">Back</button>
             </div>
-            <div className="pt-6">
+            <div className="pt-6 px-12">
               <h1 className="text-center text-black text-2xl font-bold">
                 Do you intend to offer stocks to your employees, advisors, or
                 partners?
@@ -301,7 +301,7 @@ export default function StartOnbarding() {
                 <div className="flex justify-center items-start gap-4">
                   <div className="block">
                     <h1 className="text-blue-600 text-center text-4xl font-bold">{firstYes || secondYes ? 'Corporation' : 'LLC'}</h1>
-                    <h2 className="text-blue-600 text-[10px] font-bold border border-blue-600 p-1 rounded-lg">
+                    <h2 className="text-center text-black text-[10px] font-bold p-1 rounded-lg">
                       Company Type
                     </h2>
                   </div>
@@ -310,7 +310,7 @@ export default function StartOnbarding() {
                   </div>
                   <div className="block">
                     <h1 className="text-blue-600 text-4xl font-bold">{firstYes || secondYes ? 'Delaware' : 'Wyoming'}</h1>
-                    <h2 className="text-blue-600 text-[10px] font-bold border border-blue-600 w-min p-1 rounded-lg">
+                    <h2 className="text-black text-[10px] font-bold text-center p-1 rounded-lg">
                       State
                     </h2>
                   </div>
