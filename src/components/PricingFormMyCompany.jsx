@@ -263,11 +263,12 @@ export function Pricing() {
 
     return (
       <section
-        className={clsx('flex flex-col rounded-3xl px-6 sm:px-8', {
+        className={clsx('flex flex-col rounded-3xl px-6 sm:px-8 relative', {
           'order-first bg-blue-600 py-8 lg:order-none': props.featured,
           'lg:py-8': !props.featured,
         })}
       >
+       {props.featured && <span className='absolute right-4 top-4 text-blue-600 rounded-lg px-4 py-1 bg-white text-sm font-semibold '>Most popular</span>}
         <h3 className="mt-5 font-display text-lg text-white">{props.name}</h3>
         <p
           className={clsx('mt-2 text-base', {
