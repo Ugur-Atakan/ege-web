@@ -1,62 +1,81 @@
 import { useTranslation } from "react-i18next"
 export default function Price(props) {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   return (
-      <>
+    <>
       <div className="px-6 pt-12 lg:px-8 lg:pt-4">
         <div className="text-center">
           <p className="mt-2 text-3xl font-bold tracking-tight text-black sm:text-4xl lg:text-5xl">
-          {t('compliance_reminder_header2_title')}
+            {t('compliance_reminder_header2_title')}
           </p>
           <p className="text-lg text-gray-500 py-6">
-          {t('compliance_reminder_header2_text')}
+            {t('compliance_reminder_header2_text')}
           </p>
         </div>
       </div>
-
-      <div className="mt-16 bg-white pb-12 lg:mt-10 lg:pb-20">
-        <div className="relative z-0">
-          <div className="absolute inset-0 h-5/6 lg:h-2/3" />
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="relative lg:grid lg:grid-cols-7">
-              <div className="mx-auto mt-10 max-w-lg lg:col-start-3 lg:col-end-6 lg:row-start-1 lg:row-end-4 lg:mx-0 lg:mt-0 lg:max-w-none">
-                <div className="relative z-10 rounded-lg shadow-xl">
-                  <div
-                    className="pointer-events-none absolute inset-0 rounded-lg"
-                    aria-hidden="true"
-                  />
-                  <div className="rounded-lg bg-gradient-to-r from-[#004B9D] to-[#001E3F] px-6 pt-6 pb-10 -mt-8">
-                    <div>
-                      {props.price ?<h3
-                        className="text-center text-3xl font-semibold tracking-tight text-white sm:-mx-6"
-                        id="tier-growth"
-                      >
-                        {t('compliance_reminder_header2_pricebox_title')}
-                      </h3> : null}
-                      <div className="flex items-center justify-center">
-                        <span className="flex items-start px-3 text-6xl tracking-tight text-white sm:text-6xl">
-                          <span className=" mr-2 text-5xl font-medium tracking-tight text-center">{props.price}</span>
-                        </span>
-                      </div>
-                      <div className="mt-10">
-                      <div className="rounded-lg shadow-md">
-                        <a
-                          href="/contact"
-                          className="block w-full rounded-lg border border-transparent bg-white px-6 py-4 text-center text-xl font-medium leading-6 text-[#004B9D]"
-                          aria-describedby="tier-growth"
-                        >
-                           {t('compliance_reminder_header2_pricebox_button')}
-                        </a>
-                      </div>
-                    </div>
-                    </div>
+      <div className="px-16 lg:px-0 lg:flex items-center justify-center gap-6 pt-4 py-12">
+        <div className="rounded-lg bg-gradient-to-r from-[#004B9D] to-[#001E3F]">
+          <div className="lg:w-[550px]">
+            <div className="flex justify-center items-center p-8">
+              <div className="block">
+                <div>
+                  {props.price ? <h3
+                    className="text-center text-3xl font-semibold tracking-tight text-white sm:-mx-6"
+                    id="tier-growth"
+                  >
+                    {t('compliance_reminder_header2_pricebox_title')}
+                  </h3> : null}
+                </div>
+                <div>
+                  <h1 className="py-4 text-5xl font-medium tracking-tight text-center text-white">{props.price}</h1>
+                </div>
+                <div>
+                  <div className="rounded-lg shadow-md mt-3">
+                    <a
+                      href="/contact"
+                      className="block w-full rounded-lg border border-transparent bg-white px-6 py-4 text-center text-xl font-medium leading-6 text-[#004B9D]"
+                      aria-describedby="tier-growth"
+                    >
+                      {t('compliance_reminder_header2_pricebox_button')}
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+       {props.pricetwo? <div className="mt-6 lg:mt-0 rounded-lg bg-gradient-to-r from-[#004B9D] to-[#001E3F]">
+          <div className="lg:w-[550px]">
+            <div className="flex justify-center items-center p-8">
+              <div className="block">
+                <div>
+                  {props.pricetwo ? <h3
+                    className="text-center text-3xl font-semibold tracking-tight text-white sm:-mx-6"
+                    id="tier-growth"
+                  >
+                   Internationals
+                  </h3> : null}
+                </div>
+                <div>
+                  <h1 className="py-4 text-5xl font-medium tracking-tight text-center text-white">{props.pricetwo}</h1>
+                </div>
+                <div>
+                  <div className="rounded-lg shadow-md mt-3">
+                    <a
+                      href="/contact"
+                      className="block w-full rounded-lg border border-transparent bg-white px-6 py-4 text-center text-xl font-medium leading-6 text-[#004B9D]"
+                      aria-describedby="tier-growth"
+                    >
+                      {t('compliance_reminder_header2_pricebox_button')}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> : null}
+        
       </div>
-      </>
+    </>
   )
 }

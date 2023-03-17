@@ -687,7 +687,9 @@ i18next
                     price_package_dissolution:"$850",
                     price_package_amendment:"$700",
                     price_package_dba:"$170",
-                    price_package_apostille:"$500"
+                    price_package_apostille:"$500",
+                    price_package_ein_us:"$65",
+                    price_package_ein_internationals:"$749"
                 }
             },
             tr: {
@@ -1311,18 +1313,20 @@ i18next
                     registate_llc_premium_list8: 'LLC Üyelik Belgesi',
                     registate_llc_premium_list9: 'LLC Faiz Satın Alma Sözleşmesi',
                     registate_llc_premium_list10: 'İşletme Sözleşmesi Şablonları',
-                    price_package_compliance_reminder: '$399/yearly',
-                    price_package_registered_agent: "$8.99/month Annual subscription: $74,99 (%30 discount!)",
-                    price_package_virtual_mailbox: "$9.99/month",
+                    price_package_compliance_reminder: '$399/yıllık',
+                    price_package_registered_agent: "$8.99/aylık Yıllık abonelik: $74,99 (%30 indirimli!)",
+                    price_package_virtual_mailbox: "$9.99/aylık",
                     price_package_office_adress: "",
                     price_package_our_packages: "",
-                    price_package_certificate_of_good_standing: "$180/Small, $495/Large",
+                    price_package_certificate_of_good_standing: "$180/Küçük, $495/Büyük",
                     price_package_certified_copy_request:"$200",
                     price_package_renewal_revival:"$700",
                     price_package_dissolution:"$850",
                     price_package_amendment:"$700",
                     price_package_dba:"$170",
-                    price_package_apostille:"$500"
+                    price_package_apostille:"$500",
+                    price_package_ein_us:"$65",
+                    price_package_ein_internationals:"$749"
                 }
             }
         }
