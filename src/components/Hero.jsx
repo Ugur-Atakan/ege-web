@@ -117,7 +117,7 @@ export default function Hero(props) {
           localStorage.setItem('onboardingId', jsonData.data.id);
           localStorage.setItem('companyName', new_company_name);
           localStorage.setItem('userEmail', userEmail);
-          navigate('/onboarding')
+          navigate('/pricing/form-my-company');
         }
 
       })
@@ -150,7 +150,7 @@ export default function Hero(props) {
                     <h1 className='text-red-400 text-md flex items-center gap-2'> <ExclamationCircleIcon className='w-8' />Please fill in the blanks</h1>
                   </div>
                   : null}
-                {/* <form onSubmit={formSubmitHandler}>
+                <form onSubmit={formSubmitHandler}>
                   <div className=' py-4 md:px-12'>
                     <div className='pb-4'>
                       <label htmlFor="companyName" className="sr-only">
@@ -187,7 +187,7 @@ export default function Hero(props) {
                       <span className="relative group-hover:text-white text-lg">{t('hero_section_button')}</span>
                     </button>
                   </div>
-                </form> */}
+                </form> 
                 <div className="flex flex-col md:flex-row py-3 gap-2 md:gap-0  md:py-0 md:inline-flex items-center mx-auto mt-4">
                   <div className="flex flex-shrink-0 pr-2">
                     <StarIcon className="h-5 w-5 text-yellow-400" aria-hidden="true" />

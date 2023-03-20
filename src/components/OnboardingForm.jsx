@@ -864,13 +864,12 @@ export default function OnboardingForm() {
     useEffect(() => {
         console.log("OnboardingForm useEffect")
         //Check if packageType is defined in local storage, if not redirect to /pricing
-
         //This function has been disabled because a new form has been added to the home page.
-        // let packageType = localStorage.getItem('packageType')
-        // if (!packageType) {
-        //     console.log("packageType not defined, redirecting to /pricing/form-my-company")
-        //    window.location.href = "/pricing/form-my-company"
-        // }
+        let packageType = localStorage.getItem('packageType')
+        if (!packageType) {
+             console.log("packageType not defined, redirecting to /pricing/form-my-company")
+            window.location.href = "/pricing/form-my-company"
+         }
 
         let onboardingId = localStorage.getItem('onboardingId')
         if (onboardingId) {
