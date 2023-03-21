@@ -16,7 +16,7 @@ export function Pricing() {
   let [states, setStates] = useState([])
   let [companyTypes, setCompanyTypes] = useState([])
   const pricingPackagesRef = useRef(null);
-  const {t} = useTranslation();
+  const {t, i18n} = useTranslation();
 
 
 
@@ -238,7 +238,7 @@ export function Pricing() {
                       price={packagePrice.orderPackagePrice.toString().slice(0, -2)}
                       description={packagePrice.description}
                       description2={packagePrice.description2}
-                      href="/onboarding"
+                      href={`/${i18n.language}/onboarding`}
                       features={packagePrice.features}
                       featured={index === 1}
                       keyName={packagePrice.id + index}

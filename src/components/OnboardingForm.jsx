@@ -871,7 +871,7 @@ export default function OnboardingForm() {
         let packageType = localStorage.getItem('packageType')
         if (!packageType) {
             console.log("packageType not defined, redirecting to /pricing/form-my-company")
-            window.location.href = "/pricing/form-my-company"
+            window.location.href = `${i18n.language}/pricing/form-my-company`
         }
 
         let onboardingId = localStorage.getItem('onboardingId')
