@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 export default function StartOnbarding() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [page, setPage] = useState(0);
   //questions answers
   const [firstYes, firstSetYes] = useState(false);
@@ -249,22 +249,22 @@ export default function StartOnbarding() {
             </div>
             <div className="pt-6 px-12">
               <h1 className="text-center text-black text-2xl font-bold">
-              {t('help_me_choose_widget_question2_question')}
+                {t('help_me_choose_widget_question2_question')}
               </h1>
             </div>
             <div className="flex justify-center pt-8">
               <button onClick={secondYesAnswer} className={secondYes ? "border border-blue-600 bg-blue-200 rounded-lg border border-blue-600 text-blue-600 w-96 h-16 font-bold" : "rounded-lg border border-blue-600 text-blue-600 w-96 h-16"}>
-              {t('help_me_choose_widget_question2_answer1')}
+                {t('help_me_choose_widget_question2_answer1')}
               </button>
             </div>
             <div className="flex justify-center pt-5">
               <button onClick={secondNoAnswer} className={secondNo ? "border border-blue-600 bg-blue-200 rounded-lg border border-blue-600 text-blue-600 w-96 h-16 font-bold" : "rounded-lg border border-blue-600 text-blue-600 w-96 h-16"}>
-              {t('help_me_choose_widget_question2_answer2')}
+                {t('help_me_choose_widget_question2_answer2')}
               </button>
             </div>
             <div className="flex justify-center pt-5">
               <button onClick={secondNotSureAnswer} className={secondNotSure ? "border border-blue-600 bg-blue-200 rounded-lg border border-blue-600 text-blue-600 w-96 h-16 font-bold" : "rounded-lg border border-blue-600 text-blue-600 w-96 h-16"}>
-              {t('help_me_choose_widget_question2_answer3')}
+                {t('help_me_choose_widget_question2_answer3')}
               </button>
             </div>
             <div className="flex justify-center my-12">
@@ -284,33 +284,60 @@ export default function StartOnbarding() {
         <div className="mt-24 lg:fixed lg:left-1/2 lg:bg-white lg:shadow-xl lg:rounded-lg lg:-translate-x-1/2 -lg:translate-y-1/2">
           <div className="open-animation">
             <div className="pt-12 px-0 lg:px-12">
-              <div className="block">
-                <div className="flex justify-center">
-                  <h1 className="text-center text-black text-2xl font-bold">
-                   {t('help_me_choose_widget_answer1_title')}
-                  </h1>
+              {i18n.language === 'en'
+                ? <div className="block">
+                  <div className="flex justify-center">
+                    <h1 className="text-center text-black text-2xl font-bold">
+                      {t('help_me_choose_widget_answer1_title')}
+                    </h1>
+                  </div>
+                  <div className="flex justify-center items-start gap-4">
+                    <div className="block">
+                      <h1 className="text-blue-600 text-center text-4xl font-bold">{firstYes || secondYes ? 'Corporation' : 'LLC'}</h1>
+                      <h2 className="text-center text-black text-[10px] font-bold p-1 rounded-lg">
+                        {t('help_me_choose_widget_answer1_subtitle1')}
+                      </h2>
+                    </div>
+                    <div className="block ">
+                      <h1 className="text-blue-600 text-4xl font-bold"> {t('help_me_choose_widget_answer1_subtitle')}</h1>
+                    </div>
+                    <div className="block">
+                      <h1 className="text-blue-600 text-4xl font-bold">{firstYes || secondYes ? 'Delaware' : 'Wyoming'}</h1>
+                      <h2 className="text-black text-[10px] font-bold text-center p-1 rounded-lg">
+                        {t('help_me_choose_widget_answer1_subtitle2')}
+                      </h2>
+                    </div>
+                  </div>
                 </div>
-                <div className="flex justify-center items-start gap-4">
-                  <div className="block">
-                    <h1 className="text-blue-600 text-center text-4xl font-bold">{firstYes || secondYes ? 'Corporation' : 'LLC'}</h1>
-                    <h2 className="text-center text-black text-[10px] font-bold p-1 rounded-lg">
-                     {t('help_me_choose_widget_answer1_subtitle1')}
-                    </h2>
+                : <div className="block">
+                  <div className="flex justify-center">
+                    <h1 className="text-center text-black text-2xl font-bold">
+                      {t('help_me_choose_widget_answer1_title')}
+                    </h1>
                   </div>
-                  <div className="block ">
-                    <h1 className="text-blue-600 text-4xl font-bold"> {t('help_me_choose_widget_answer1_subtitle')}</h1>
+                  <div className="flex justify-center items-start gap-4">
+                    <div className="block">
+                      <h1 className="text-blue-600 text-4xl font-bold">{firstYes || secondYes ? 'Delaware' : 'Wyoming'}</h1>
+                      <h2 className="text-center text-black text-[10px] font-bold p-1 rounded-lg">
+                        {t('help_me_choose_widget_answer1_subtitle2')}
+                      </h2>
+                    </div>
+                    <div className="block ">
+                      <h1 className="text-blue-600 text-4xl font-bold"> {t('help_me_choose_widget_answer1_subtitle')}</h1>
+                    </div>
+                    <div className="block">
+                      <h1 className="text-blue-600 text-center text-4xl font-bold">{firstYes || secondYes ? 'Anonim Şirket' : 'LLC'}</h1>
+                      <h2 className="text-black text-[10px] font-bold text-center p-1 rounded-lg">
+                        {t('help_me_choose_widget_answer1_subtitle1')}
+                      </h2>
+                    </div>
                   </div>
-                  <div className="block">
-                    <h1 className="text-blue-600 text-4xl font-bold">{firstYes || secondYes ? 'Delaware' : 'Wyoming'}</h1>
-                    <h2 className="text-black text-[10px] font-bold text-center p-1 rounded-lg">
-                    {t('help_me_choose_widget_answer1_subtitle2')}
-                    </h2>
-                  </div>
-                </div>
-              </div>
+                </div>}
             </div>
             <div className="mx-16 lg:mx-24 my-4 bg-white rounded-lg p-8 relative border border-blue-600">
               <div className="block py-1">
+                {firstYes || secondYes
+                 ? 
                 <ul className="text-base leading-7 text-gray-600">
                   <li className="flex items-center gap-4 text-sm py-1">
                     <div>
@@ -326,7 +353,7 @@ export default function StartOnbarding() {
                     </div>
                     <div>
                       <p>
-                      {t('help_me_choose_widget_answer1_text2')}
+                        {t('help_me_choose_widget_answer1_text2')}
                       </p>
                     </div>
                   </li>
@@ -344,17 +371,55 @@ export default function StartOnbarding() {
                     </div>
                     <div>
                       <p>
-                      {t('help_me_choose_widget_answer1_text4')}
+                        {t('help_me_choose_widget_answer1_text4')}
                       </p>
                     </div>
                   </li>
                 </ul>
+                :<ul className="text-base leading-7 text-gray-600">
+                <li className="flex items-center gap-4 text-sm py-1">
+                  <div>
+                    <CheckBadgeIcon className="w-4 text-green-500" />
+                  </div>
+                  <div>
+                    <p> {t('help_me_choose_widget_answer2_text1')}</p>
+                  </div>
+                </li>
+                <li className="flex items-center gap-4 text-sm py-1">
+                  <div>
+                    <CheckBadgeIcon className="w-4 text-green-500" />
+                  </div>
+                  <div>
+                    <p>
+                      {t('help_me_choose_widget_answer2_text2')}
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-center gap-4 text-sm py-1">
+                  <div>
+                    <CheckBadgeIcon className="w-4 text-green-500" />
+                  </div>
+                  <div>
+                    <p> {t('help_me_choose_widget_answer2_text3')}</p>
+                  </div>
+                </li>
+                <li className="flex items-center gap-4 text-sm py-1">
+                  <div>
+                    <ExclamationCircleIcon className="w-4 text-red-500" />
+                  </div>
+                  <div>
+                    <p>
+                      {t('help_me_choose_widget_answer2_text4')}
+                    </p>
+                  </div>
+                </li>
+              </ul>}
               </div>
             </div>
             <div className="flex justify-center mx-16 lg:mx-0 my-12">
               <Link to={"/pricing/form-my-company"} state={{ text: text }}>
                 <button className="bg-blue-600 rounded-lg text-base font-semibold text-white shadow-sm cursor-pointer border border-blue-600 w-96 h-16">
-                {t('help_me_choose_widget_answer1_button')}
+                  {t('help_me_choose_widget_answer1_button')}
                 </button>
               </Link>
             </div>
