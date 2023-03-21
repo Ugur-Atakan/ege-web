@@ -2,8 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.open-animation{
+    animation: openanimation 2s;
+}
 
-.bg-img{
-    background-image: url(../images/bg-dark.jpg);
-    background-size: cover;
+@keyframes openanimation {
+    from {opacity: 0;}
+    to {opacity: 1;}
 }

@@ -3,6 +3,7 @@ import { Container } from '../components/Container'
 import { useState, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next';
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 const API_ROOT = window.ob.config.apiRoot;
 
@@ -193,6 +194,7 @@ export function Pricing() {
             </select>
           </div>
         </div>
+        <div className='flex justify-center items-center'><Link to='/start-my-business' className='bg-blue-600 text-white border border-blue-600 p-3 rounded-md hover:bg-white hover:text-blue-600  font-semibold'>{t('pricing_header3_question_link')}</Link></div>
         {showPricingPackages && (
           <div id="pricingPackages" className="flex flex-col-reverse lg:flex-row lg:flex lg:justify-center mx-4 mt-12 pt-24  max-w-2xl gap-y-10 sm:mx-auto lg:-mx-8 lg:max-w-none lg:grid-cols-3 xl:mx-0 xl:gap-x-8">
             {
@@ -261,11 +263,12 @@ export function Pricing() {
 
     return (
       <section
-        className={clsx('flex flex-col rounded-3xl px-6 sm:px-8', {
+        className={clsx('flex flex-col rounded-3xl px-6 sm:px-8 relative', {
           'order-first bg-blue-600 py-8 lg:order-none': props.featured,
           'lg:py-8': !props.featured,
         })}
       >
+       {props.featured && <span className='absolute right-4 top-4 text-blue-600 rounded-lg px-4 py-1 bg-white text-sm font-semibold '>Most popular</span>}
         <h3 className="mt-5 font-display text-lg text-white">{props.name}</h3>
         <p
           className={clsx('mt-2 text-base', {

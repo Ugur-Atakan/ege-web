@@ -5,7 +5,6 @@ import { Fragment } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from "axios"
-import HeroForm from './HeroForm'
 
 const API_ROOT = window.ob.config.apiRoot;
 
@@ -55,7 +54,7 @@ function TypingHeader() {
   );
 }
 
-export default function Hero(props) {
+export default function Herocopy(props) {
   const { t, i18n } = useTranslation();
   const [isScroll, setIsScroll] = useState(false);
   useEffect(() => {
@@ -65,6 +64,7 @@ export default function Hero(props) {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll);
   }, [])
+
   return (
     <>
       <div className="relative overflow-hidden bg-white">
@@ -85,13 +85,12 @@ export default function Hero(props) {
                 <p className="mt-5 mb-5 text-base text-gray-800 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-2xl lg:mx-0">
                   {t('hero_section_desc')}
                 </p>
-                <HeroForm/>
                 <div className='flex justify-center'>
-                  <a href="/pricing/form-my-company/" id='form-my-company' className="px-16 py-4 relative rounded group overflow-hidden font-medium bg-blue-600 text-white inline-block">
-                    <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-blue-700 group-hover:h-full opacity-90"></span>
-                    <span className="relative group-hover:text-white text-lg"> {t('hero_section_button')}</span>
-                  </a>
-                </div>
+                    <a href="/pricing/form-my-company" type="submit" id='form-my-company' className="px-16 py-4 relative rounded group overflow-hidden font-medium bg-blue-600 text-white inline-block">
+                      <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-blue-700 group-hover:h-full opacity-90"></span>
+                      <span className="relative group-hover:text-white text-lg">{t('hero_section_button')}</span>
+                    </a>
+                  </div>
                 <div className="flex flex-col md:flex-row py-3 gap-2 md:gap-0  md:py-0 md:inline-flex items-center mx-auto mt-4">
                   <div className="flex flex-shrink-0 pr-2">
                     <StarIcon className="h-5 w-5 text-yellow-400" aria-hidden="true" />

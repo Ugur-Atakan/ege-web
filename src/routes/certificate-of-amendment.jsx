@@ -17,7 +17,7 @@ export default function DissolutionAndCancellation() {
         <main>
             <Navbar />
             <LeftImgRightText img={topnotch} heading={t('certificate_of_amendment_header1_uptitle_blue')} title={t('certificate_of_amendment_header1_maintitle_black')} desc={t('certificate_of_amendment_header1_text')} button={t('certificate_of_amendment_header1_button')} href={`/products/${productData[14].link}/contact`} />
-            <Price/>
+            <Price price={t('price_package_amendment')} />
             <Stats title={t('certificate_of_amendment_header3_title')} icontitle1={t('certificate_of_amendment_header3_icon1_title')} icondesc1={t('certificate_of_amendment_header3_icon1_text')} icontitle2={t('certificate_of_amendment_header3_icon2_title')} icondesc2={t('certificate_of_amendment_header3_icon2_text')} icon1=<DocumentCheckIcon className="w-12" /> icon2=<CursorArrowRippleIcon className='w-12' /> icontitle3={t('certificate_of_amendment_header3_icon3_title')} icon3=<NewspaperIcon className='w-12' /> icondesc3={t('certificate_of_amendment_header3_icon3_text')} />
             <LeftImgRightText img={whatweneed} desc={t('certificate_of_amendment_header4_text')}/>
             <ExclusiveSolution heading={t('certificate_of_amendment_header5_uptitle_blue')} title={t('certificate_of_amendment_header5_maintitle_black')} desc={t('certificate_of_amendment_header5_text_left')} rightdesc={t('certificate_of_amendment_header5_text_right')}  button={t('certificate_of_amendment_header5_button')} />

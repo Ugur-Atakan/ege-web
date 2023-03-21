@@ -17,6 +17,7 @@ export default function RegisteredAgent() {
         <main>
             <Navbar />
             <LeftImgRightText heading={t('registered_agent_header1_uptitle_blue')} title={t('registered_agent_header1_uptitle_black')} desc={t('registered_agent_header1_text')} button={t('registered_agent_header1_button')} img={ra1} href={`/products/${productData[1].link}/contact`} />
+            <Price price={t('price_package_registered_agent')} />
             <Price price={t('registered_agent_price')} />
             <LeftImgRightText title={t('registered_agent_header3_title')} desc={t('registered_agent_header3_text')} img={ra2} />
             <LeftImgRightText title={t('registered_agent_header4_title')} desc={t('registered_agent_header4_text')} img={ra3} reverse='true' />

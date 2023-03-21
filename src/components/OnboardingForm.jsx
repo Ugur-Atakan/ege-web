@@ -1,7 +1,8 @@
 
-import React, { useState, useEffect, useRef, useReducer } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from "axios"
 import { CheckIcon } from '@heroicons/react/24/solid'
+import { useTranslation } from 'react-i18next'
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -310,6 +311,7 @@ const countries = [
 
 const API_ROOT = window.ob.config.apiRoot;
 function OrderInformationPanel(props) {
+    const { t, i18n } = useTranslation();
     let packageName = localStorage.getItem('packageName');
     let packagePrice = localStorage.getItem('packagePrice');
     return (
@@ -318,10 +320,10 @@ function OrderInformationPanel(props) {
                 <div className="sm:flex sm:items-center sm:justify-between">
                     <div>
                         {packageName && packagePrice && (
-                            <h3 className="text-lg font-medium leading-6 text-gray-900">Selected Package: <span className="text-green-700">{packageName} - ${packagePrice}</span></h3>
+                            <h3 className="text-lg font-medium leading-6 text-gray-900">{t('onboarding_header_title')} <span className="text-green-700">{packageName} - ${packagePrice}</span></h3>
                         )}
                         {props.companyName && (
-                            <h3 className="text-lg font-medium leading-6 text-gray-900">Selected Name: <span className="text-green-700">{props.companyName}</span></h3>
+                            <h3 className="text-lg font-medium leading-6 text-gray-900">{t('provide_contact_information_header_title2')} <span className="text-green-700">{props.companyName}</span></h3>
                         )}
                         <h2 className="block md:hidden font-medium tracking-tight text-gray-900 text-lg">
                             You are forming <span className="text-blue-700">{
@@ -338,7 +340,7 @@ function OrderInformationPanel(props) {
                                 window.location.href = "/pricing/form-my-company"
                             }}
                         >
-                            Start Over
+                            {t('provide_contact_information_header_button')}
                         </button>
                     </div>
                 </div>
@@ -347,6 +349,7 @@ function OrderInformationPanel(props) {
     )
 }
 function CompanyNameEmailForm(props) {
+    const { t } = useTranslation();
     const [email, setEmail] = useState('');
     const [companyName, setcompanyName] = useState('');
 
@@ -404,38 +407,34 @@ function CompanyNameEmailForm(props) {
     return (
         <div className="bg-white shadow sm:rounded-lg">
             <div className="px-4 py-5 sm:p-5 mb-12">
-                <h3 className="text-lg font-medium leading-6 text-gray-900">Select a company name</h3>
+                <h3 className="text-lg font-medium leading-6 text-gray-900">{t('onboarding_form_subtitle')}</h3>
                 <div className="mt-2 max-w-4xl text-sm text-gray-500">
-                    <p>Enter your preferred business name here. We will do a extensive company name search and let you know if its available or not. Your email address will be used to create an account with us so that you can check the status of your application.</p>
+                    <p>{t('onboarding_form_desc')}</p>
                 </div>
                 <form className="mt-5 sm:flex sm:items-center" onSubmit={formSubmitHandler}>
                     <div className="w-full sm:max-w-md">
                         <div className="mt-0">
                             <label htmlFor="companyName" className="sr-only">Company Name</label>
-                            <input type="text" value={companyName} onChange={onCompanyNameChange} name="companyName" id="companyName" className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="Company Name" required></input>
+                            <input type="text" value={companyName} onChange={onCompanyNameChange} name="companyName" id="companyName" className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder={t('onboarding_form_input1_placeholder')} required></input>
                         </div>
                         <div className="mt-4">
                             <label htmlFor="userEmail" className="sr-only">Email</label>
-                            <input type="email" value={email} onChange={onEmailChange} name="userEmail" id="userEmail" className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="you@example.com" required></input>
+                            <input type="email" value={email} onChange={onEmailChange} name="userEmail" id="userEmail" className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder={t('onboarding_form_input2_placeholder')} required></input>
                         </div>
                         <div className="mt-4">
                             <button id='scn-btn' type="submit" className={email === '' || companyName === '' ? "inline-flex w-full items-center justify-center rounded-md border border-transparent bg-blue-300 px-16 py-3 font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:mt-0 sm:w-auto sm:text-sm pointer-events-none" : "inline-flex w-full items-center justify-center rounded-md border border-transparent bg-blue-600 px-16 py-3 font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:mt-0 sm:w-auto sm:text-sm"}>
-                                Select Company Name
+                                {t('onboarding_form_submit_button')}
                             </button>
                             <p className="text-xs leading-5 text-gray-500">
-                                By submitting this form, you agree to our{' '}
-                                <a href="#" className="font-medium text-gray-900 hover:underline">
-                                    Terms
+                                {t('onboarding_form_policy1')}{' '}
+                                <a href="#">
+                                    {t('onboarding_form_policy2')}
                                 </a>
                                 ,{' '}
-                                <a href="#" className="font-medium text-gray-900 hover:underline">
-                                    Data Policy
-                                </a>{' '}
-                                and{' '}
-                                <a href="#" className="font-medium text-gray-900 hover:underline">
-                                    Cookies Policy
+                                {t('onboarding_form_policy3')}{' '}
+                                <a href="#">
+                                    {t('onboarding_form_policy4')}
                                 </a>
-                                .
                             </p>
                         </div>
                     </div>
@@ -445,6 +444,7 @@ function CompanyNameEmailForm(props) {
     )
 }
 function CompanyContactInfoForm(props) {
+    const { t } = useTranslation();
     const [name, setName] = useState('');
     const [lastname, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -532,15 +532,15 @@ function CompanyContactInfoForm(props) {
             <div className="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6">
                 <div className="md:grid md:grid-cols-3 md:gap-6">
                     <div className="md:col-span-1">
-                        <h3 className="text-lg font-medium leading-6 text-gray-900">Company Contact Information</h3>
-                        <p className="mt-1 text-sm text-gray-500">Use a permanent address where you can receive mail.</p>
+                        <h3 className="text-lg font-medium leading-6 text-gray-900">{t('provide_contact_information_form_title')}</h3>
+                        <p className="mt-1 text-sm text-gray-500">{t('provide_contact_information_form_subtitle')}</p>
                     </div>
                     <div className="mt-5 md:col-span-2 md:mt-0">
                         <div>
                             <div className='flex item-center gap-4 md:gap-12 pb-4'>
                                 <div className="w-1/2">
                                     <label htmlFor="firstname" className="block text-sm font-medium text-gray-700">
-                                        First name
+                                        {t('provide_contact_information_form_input1_placeholder')}
                                     </label>
                                     <input
                                         type="text"
@@ -555,7 +555,7 @@ function CompanyContactInfoForm(props) {
 
                                 <div className="w-1/2">
                                     <label htmlFor="lastname" className="block text-sm font-medium text-gray-700">
-                                        Last name
+                                        {t('provide_contact_information_form_input2_placeholder')}
                                     </label>
                                     <input
                                         type="text"
@@ -571,7 +571,7 @@ function CompanyContactInfoForm(props) {
                             <div className='flex item-center gap-4 md:gap-12 pb-4'>
                                 <div className="w-1/2">
                                     <label htmlFor="emailaddress" className="block text-sm font-medium text-gray-700">
-                                        Email address
+                                        {t('provide_contact_information_form_input3_placeholder')}
                                     </label>
                                     <input
                                         type="text"
@@ -587,7 +587,7 @@ function CompanyContactInfoForm(props) {
 
                                 <div className="w-1/2">
                                     <label htmlFor="phonenumber" className="block text-sm font-medium text-gray-700">
-                                        Phone Number
+                                        {t('provide_contact_information_form_input4_placeholder')}
                                     </label>
                                     <div className="relative mt-1 rounded-md shadow-sm">
                                         <input
@@ -605,7 +605,7 @@ function CompanyContactInfoForm(props) {
                             </div>
                             <div className="col-span-6 pb-4">
                                 <label htmlFor="streetaddress" className="block text-sm font-medium text-gray-700">
-                                    Street address
+                                    {t('provide_contact_information_form_input5_placeholder')}
                                 </label>
                                 <input
                                     type="text"
@@ -620,7 +620,7 @@ function CompanyContactInfoForm(props) {
                             <div className='flex-col md:flex-row flex item-center gap-4 md:gap-2 pb-4'>
                                 <div className="w-full md:w-1/4">
                                     <label htmlFor="country" className="block text-sm font-medium text-gray-700">
-                                        Country
+                                        {t('provide_contact_information_form_input6_placeholder')}
                                     </label>
                                     <select
                                         id="country"
@@ -644,7 +644,7 @@ function CompanyContactInfoForm(props) {
                                 </div>
                                 <div className="w-full md:w-1/4">
                                     <label htmlFor="region" className="block text-sm font-medium text-gray-700">
-                                        State / Province
+                                        {t('provide_contact_information_form_input7_placeholder')}
                                     </label>
                                     <select
                                         name="region"
@@ -654,7 +654,7 @@ function CompanyContactInfoForm(props) {
                                     >
 
                                         <option value=""> {country === 'United States' ? 'Select State' : 'No State'}</option>
-                                        {country === 'United States' && 
+                                        {country === 'United States' &&
                                             states.map((state) => (
                                                 <option
                                                     key={state.name}
@@ -668,7 +668,7 @@ function CompanyContactInfoForm(props) {
                                 </div>
                                 <div className="w-full md:w-1/4">
                                     <label htmlFor="city" className="block text-sm font-medium text-gray-700">
-                                        City
+                                        {t('provide_contact_information_form_input8_placeholder')}
                                     </label>
                                     <input
                                         type="text"
@@ -683,7 +683,7 @@ function CompanyContactInfoForm(props) {
 
                                 <div className="w-full md:w-1/4" >
                                     <label htmlFor="postalcode" className="block text-sm font-medium text-gray-700">
-                                        ZIP / Postal code
+                                        {t('provide_contact_information_form_input9_placeholder')}
                                     </label>
                                     <input
                                         type="text"
@@ -699,7 +699,7 @@ function CompanyContactInfoForm(props) {
                             <div className='block md:flex items-end justify-between'>
                                 <div className="col-span-6">
                                     <label htmlFor="coupon" className="block text-sm font-medium text-gray-700">
-                                        Apply Coupon
+                                        {t('provide_contact_information_form_input10_placeholder')}
                                     </label>
                                     <input
                                         type="text"
@@ -712,9 +712,9 @@ function CompanyContactInfoForm(props) {
                                     <button
                                         id='pay-btn'
                                         type="submit"
-                                        className={name === '' || lastname === '' || street === '' || zip === '' || phone === '' || city ==='' ? "bg-blue-300 py-3 px-6 rounded-md text-white pointer-events-none" : "mt-3 md:mt-0 inline-flex justify-center rounded-md border border-transparent bg-blue-600 py-3 px-6 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"}
+                                        className={name === '' || lastname === '' || street === '' || zip === '' || phone === '' || city === '' ? "bg-blue-300 py-3 px-6 rounded-md text-white pointer-events-none" : "mt-3 md:mt-0 inline-flex justify-center rounded-md border border-transparent bg-blue-600 py-3 px-6 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"}
                                     >
-                                        Review and Pay
+                                        {t('provide_contact_information_form_submit_button')}
                                     </button>
                                 </div>
                             </div>
@@ -728,10 +728,12 @@ function CompanyContactInfoForm(props) {
 };
 
 function Steps(props) {
+    const { t } = useTranslation();
+
     const steps = [
-        { id: '01', name: 'Select Your Package', href: '#', status: 'complete' },
-        { id: '02', name: 'Select Company Name', href: '#', status: 'current' },
-        { id: '03', name: 'Provide Contact Information', href: '#', status: 'upcoming' },
+        { id: '01', name: t('steps_step1'), href: '#', status: 'complete' },
+        { id: '02', name: t('steps_step2'), href: '#', status: 'current' },
+        { id: '03', name: t('steps_step3'), href: '#', status: 'upcoming' },
     ]
 
     if (localStorage.getItem('companyName')) {
@@ -859,11 +861,13 @@ function Steps(props) {
 
 
 export default function OnboardingForm() {
+    const { t, i18n } = useTranslation();
     let [companyName, setCompanyName] = useState(localStorage.getItem('companyName'))
 
     useEffect(() => {
         console.log("OnboardingForm useEffect")
         //Check if packageType is defined in local storage, if not redirect to /pricing
+        //This function has been disabled because a new form has been added to the home page.
         let packageType = localStorage.getItem('packageType')
         if (!packageType) {
             console.log("packageType not defined, redirecting to /pricing/form-my-company")
@@ -893,11 +897,18 @@ export default function OnboardingForm() {
                 <Steps />
             </div>
             <div id="description" className="hidden md:block px-6 text-center">
-                <h2 className="mt-6 font-bold tracking-tight text-gray-900 text-5xl">
-                    You are forming <span className="text-blue-700">{
-                        localStorage.getItem('companyType') === 'LLC' ? 'an LLC' : 'a Corporation'
-                    }</span> in <span className="text-blue-600">{localStorage.getItem('companyState')}</span>
+                {i18n.language === 'en'
+                    ? <h2 className="mt-6 font-bold tracking-tight text-gray-900 text-5xl">
+                        {t('onboarding_form_title1')} <span className="text-blue-700">{
+                            localStorage.getItem('companyType') === 'LLC' ? 'an LLC' : 'a Corporation'
+                        }</span> {t('onboarding_form_title2')} <span className="text-blue-600">{localStorage.getItem('companyState')}</span>
+                    </h2>
+                    : <h2 className="mt-6 font-bold tracking-tight text-blue-700 text-5xl">
+                      {localStorage.getItem('companyState')} <span className="text-gray-900">{t('onboarding_form_title1')}</span> <span className="text-blue-700">{
+                            localStorage.getItem('companyType') === 'LLC' ? 'LLC' : 'Anonim Şirket'
+                        } </span> <span className="text-gray-900">{t('onboarding_form_title2')}</span>
                 </h2>
+                }
             </div>
             <div id="CompanyNameEmailFormDiv" className="mx-auto px-4 sm:px-6 lg:px-8 mt-10">
                 <CompanyNameEmailForm setCompanyName={setCompanyName} />

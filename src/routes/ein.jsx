@@ -17,7 +17,7 @@ export default function Ein() {
         <main>
             <Navbar />
             <LeftImgRightText heading={t('ein_header1_uptitle_blue')} title={t('ein_header1_maintitle_black')} img={topnotch} desc={t('ein_header1_text')} button={t('ein_header1_button')}  href={`/products/${productData[10].link}/contact`}/>
-            <Price/>
+            <Price price={t('price_package_ein_us')} pricetwo={t('price_package_ein_internationals')} />
             <Stats title={t('ein_header3_title')} icontitle1={t('ein_header3_icon1_title')} icondesc1={t('ein_header3_icon1_text')} icontitle2={t('ein_header3_icon2_title')} icondesc2={t('ein_header3_icon2_text')} icon1=<DocumentCheckIcon className="w-12" /> icon2=<CursorArrowRippleIcon className='w-12' /> icontitle3={t('ein_header3_icon3_title')} icon3=<NewspaperIcon className='w-12' /> icondesc3={t('ein_header3_icon3_text')} />
             <LeftImgRightText img={whatweneed} desc={t('ein_header4_text')} />
             <ExclusiveSolution heading={t('ein_header5_uptitle_blue')} title={t('ein_header5_maintitle_black')} desc={t('ein_header5_text_left')} rightdesc={t('ein_header5_text_right')} button={t('ein_header5_button')} />

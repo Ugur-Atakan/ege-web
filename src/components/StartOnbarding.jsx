@@ -1,132 +1,431 @@
-import { ArrowUturnDownIcon, CheckBadgeIcon, ExclamationCircleIcon } from '@heroicons/react/20/solid'
-import { useState } from 'react';
-
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-}
+import {
+  ArrowUturnDownIcon,
+  CheckBadgeIcon,
+  ExclamationCircleIcon,
+} from "@heroicons/react/20/solid";
+import { useState } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function StartOnbarding() {
-    const [modal, setModal] = useState(true);
-    const [page, setPage] = useState(0)
+  const { t, i18n } = useTranslation();
+  const [page, setPage] = useState(0);
+  //questions answers
+  const [firstYes, firstSetYes] = useState(false);
+  const [firstNo, firstSetNo] = useState(false);
+  const [firstNotSure, firstSetNotSure] = useState(false);
+  const [secondYes, secondSetYes] = useState(false);
+  const [secondNo, secondSetNo] = useState(false);
+  const [secondNotSure, secondSetNotSure] = useState(false);
 
-    const toggleModal = () => {
-        setModal(!modal);
-    }
+  const firstYesAnswer = () => {
+    firstSetYes(true);
+    firstSetNo(false);
+    firstSetNotSure(false);
+  }
 
-    return (
-        <>
-            {modal &&
-                <div className='fixed left-1/2 top-1/2 bg-img rounded-lg -translate-x-1/2 -translate-y-1/2 w-1/2 h-[550px]'>
-                    <div className='pt-12'>
-                        <h1 className='text-center text-white text-2xl font-bold'>Are you deciding the best company type for your case?</h1>
-                    </div>
-                    <div className='flex items-center gap-2 p-8'>
-                        <div className='w-1/2'>
-                            <div className='shadow-lg shadow-blue-900 bg-black bg-opacity-[0.6] rounded-lg p-8 relative hover:bg-opacity-[0.2]'>
-                                <div>
-                                    <h1 className='font-bold text-white text-lg border-b border-gray-400'>LLC</h1>
-                                </div>
-                                <div className='block py-1'>
-                                    <ul className='text-white'>
-                                        <li className='flex items-center gap-2 text-sm'><div className='w-[10%]'><CheckBadgeIcon className='w-4 text-green-500' /></div><div className='w-3/4'><p>Great for small businesses due to more flexibility</p></div></li>
-                                        <li className='flex items-center gap-2 text-sm'><div className='w-[10%]'><CheckBadgeIcon className='w-4 text-green-500' /></div><div className='w-3/4'><p>Simple management structure and easier to operate</p></div></li>
-                                        <li className='flex items-center gap-2 text-sm'><div className='w-[10%]'><CheckBadgeIcon className='w-4 text-green-500' /></div><div className='w-3/4'><p>Less paperwork, corporate restrictions, no meeting requirements</p></div></li>
-                                        <li className='flex items-center gap-2 text-sm'><div className='w-[10%]'><ExclamationCircleIcon className='w-4 text-red-500' /></div><div className='w-3/4'><p>Ownership represented by members (LLCs cannot issue stock)</p></div></li>
-                                    </ul>
-                                </div>
-                            </div>
+  const firstNoAnswer = () => {
+    firstSetNo(true);
+    firstSetNotSure(false);
+    firstSetYes(false);
+  }
+
+  const firstNotSureAnswer = () => {
+    firstSetNotSure(true);
+    firstSetYes(false);
+    firstSetNo(false);
+  }
+
+  const secondYesAnswer = () => {
+    secondSetYes(true);
+    secondSetNo(false);
+    secondSetNotSure(false);
+  }
+
+  const secondNoAnswer = () => {
+    secondSetNo(true);
+    secondSetNotSure(false);
+    secondSetYes(false);
+  }
+
+  const secondNotSureAnswer = () => {
+    secondSetNotSure(true);
+    secondSetYes(false);
+    secondSetNo(false);
+  }
+
+  const text = "LLC";
+  document.body.classList.add("bg-slate-50");
+
+  return (
+    <>
+      {page === 0 && (
+        <div className="mt-24 lg:fixed lg:left-1/2 lg:bg-white lg:shadow-xl lg:rounded-lg lg:-translate-x-1/2 -lg:translate-y-1/2">
+          <div className="open-animation">
+            <div className="pt-4">
+              <h1 className="text-center text-black text-2xl font-bold px-12 lg:px-24">
+                {t('help_me_choose_widget_header1_uptitle')}
+              </h1>
+            </div>
+            <div className="block items-center gap-2 px-8 py-4">
+              <div className="w-full">
+                <div className="bg-white border border-blue-600 rounded-lg p-8 relative ">
+                  <div>
+                    <h1 className="font-bold text-black text-lg border-b border-gray-400">
+                      {t('help_me_choose_widget_box1_title')}
+                    </h1>
+                  </div>
+                  <div className="block py-1">
+                    <ul className="text-base leading-7 text-gray-600">
+                      <li className="flex items-center gap-4 text-sm py-1">
+                        <div>
+                          <CheckBadgeIcon className="w-4 text-green-500" />
                         </div>
-                        <span className='text-white'>vs</span>
-                        <div className='w-1/2'>
-                            <div className='shadow-lg shadow-blue-900 bg-black bg-opacity-[0.6] rounded-lg p-8 relative hover:bg-opacity-[0.2]'>
-                                <div>
-                                    <h1 className='font-bold text-white text-lg border-b border-gray-400'>C-Corp</h1>
-                                </div>
-                                <div className='block py-1'>
-                                    <ul className='text-white'>
-                                        <li className='flex items-center text-sm'><div className='w-[10%]'><CheckBadgeIcon className='w-4 text-green-500' /></div><div className='w-3/4'><p>Great for startups fundraising from investors</p></div></li>
-                                        <li className='flex items-center text-sm'><div className='w-[10%]'><CheckBadgeIcon className='w-4 text-green-500' /></div><div className='w-3/4'><p>Ability to raise capital by issuing stock; ownership represented by shareholders</p></div></li>
-                                        <li className='flex items-center text-sm'><div className='w-[10%]'><CheckBadgeIcon className='w-4 text-green-500' /></div><div className='w-3/4'><p>Management structure with more operating requirements</p></div></li>
-                                        <li className='flex items-center text-sm'><div className='w-[10%]'><ExclamationCircleIcon className='w-4 text-red-500' /></div><div className='w-3/4'><p>More paperwork and corporate requirements such as annual meetings and minutes</p></div></li>
-                                    </ul>
-                                </div>
-                            </div>
+                        <div>
+                          <p>
+                            {t('help_me_choose_widget_box1_text_1')}
+                          </p>
                         </div>
-                    </div>
-                    <div className='flex items-center justify-center'>
-                        <a onClick={() => { setPage((currPage) => currPage + 1) }} className='bg-black bg-opacity-[0.6] text-white rounded-lg text-center py-4 px-12 font-semibold text-md hover:bg-white hover:text-black cursor-pointer'>Take the surwey</a>
-                    </div>
-                    <div className='flex items-center justify-center mt-2'>
-                        <a onClick={toggleModal} className='text-white cursor-pointer'>Go back</a>
-                    </div>
-                </div>
-            }
-            {page === 1 &&
-                <div className='fixed left-1/2 top-1/2 bg-img rounded-lg -translate-x-1/2 -translate-y-1/2 w-1/2 h-[550px]'>
-                    <div className='ml-4 mt-4 flex items-center gap-2 cursor-pointer' onClick={() => { setPage((currPage) => currPage - 1) }} >
-                        <ArrowUturnDownIcon className='w-4 text-white rotate-90' />
-                        <button className='text-white'>Back</button>
-                    </div>
-                    <div className='pt-12'>
-                        <h1 className='text-center text-white text-2xl font-bold'>Are you planning to raise money or go through an accelerator/incubator program?</h1>
-                    </div>
-                    <div className='flex justify-center pt-8'>
-                        <button className='focus:border focus:border-blue-400 shadow-lg shadow-blue-900 bg-black bg-opacity-[0.6] rounded-lg hover:bg-opacity-[0.2] text-white w-96 h-16'>Yes</button>
-                    </div>
-                    <div className='flex justify-center pt-5'>
-                        <button className='focus:border focus:border-blue-400 shadow-lg shadow-blue-900 bg-black bg-opacity-[0.6] rounded-lg hover:bg-opacity-[0.2] text-white w-96 h-16'>No</button>
-                    </div>
-                    <div className='flex justify-center pt-5'>
-                        <button className='focus:border focus:border-blue-400 shadow-lg shadow-blue-900 bg-black bg-opacity-[0.6] rounded-lg hover:bg-opacity-[0.2] text-white w-96 h-16'>Not Sure</button>
-                    </div>
-                    <div className='flex justify-center pt-5' >
-                        <button onClick={() => { setPage((currPage) => currPage + 1) }} className='shadow-lg border border-blue-900 bg-black bg-opacity-[0.6] rounded-lg hover:bg-opacity-[0.2] text-white w-96 h-16 hover:bg-white hover:text-black hover:bg-opacity-[1] hover:border-none '>Next</button>
-                    </div>
-                </div>
-            }
-            {page === 2 &&
-                <div className='fixed left-1/2 top-1/2 bg-img rounded-lg -translate-x-1/2 -translate-y-1/2 w-1/2 h-[550px]'>
-                    <div className='ml-4 mt-4 flex items-center gap-2 cursor-pointer' onClick={() => { setPage((currPage) => currPage - 1) }} >
-                        <ArrowUturnDownIcon className='w-4 text-white rotate-90' />
-                        <button className='text-white'>Back</button>
-                    </div>
-                    <div className='pt-12 px-12'>
-                        <h1 className='text-center text-white text-2xl font-bold'>Are you planning to give stocks to employees, advisors or partners?</h1>
-                    </div>
-                    <div className='flex justify-center pt-8'>
-                        <button className='focus:border focus:border-blue-400 shadow-lg shadow-blue-900 bg-black bg-opacity-[0.6] rounded-lg hover:bg-opacity-[0.2] text-white w-96 h-16'>Yes</button>
-                    </div>
-                    <div className='flex justify-center pt-5'>
-                        <button className='focus:border focus:border-blue-400 shadow-lg shadow-blue-900 bg-black bg-opacity-[0.6] rounded-lg hover:bg-opacity-[0.2] text-white w-96 h-16'>No</button>
-                    </div>
-                    <div className='flex justify-center pt-5'>
-                        <button className='focus:border focus:border-blue-400 shadow-lg shadow-blue-900 bg-black bg-opacity-[0.6] rounded-lg hover:bg-opacity-[0.2] text-white w-96 h-16'>Not Sure</button>
-                    </div>
-                    <div className='flex justify-center pt-5' >
-                        <button onClick={() => { setPage((currPage) => currPage + 1) }} className='shadow-lg border border-blue-900 bg-black bg-opacity-[0.6] rounded-lg hover:bg-opacity-[0.2] text-white w-96 h-16 hover:bg-white hover:text-black hover:bg-opacity-[1] hover:border-none '>Next</button>
-                    </div>
-                </div>
-            }
-            {page === 3 &&
-                <div className='fixed left-1/2 top-1/2 bg-img rounded-lg -translate-x-1/2 -translate-y-1/2 w-1/2 h-[550px]'>
-                    <div className='pt-12 px-12'>
-                        <h1 className='text-center text-white text-2xl font-bold flex flex-col'>We suggest incorporating as a <span className='font-extrabold text-transparent text-3xl bg-clip-text bg-gradient-to-r from-blue-400 to-blue-900 py-3'> LLC in Wyoming </span></h1>
-                    </div>
-                    <div className='mx-24 my-4 shadow-lg shadow-blue-900 bg-black bg-opacity-[0.6] rounded-lg p-8 relative hover:bg-opacity-[0.2]'>
-                        <div className='block py-1'>
-                            <ul className='text-white'>
-                                <li className='flex items-center text-sm py-2'><div className='w-[10%]'><CheckBadgeIcon className='w-4 text-green-500' /></div><div className='w-3/4'><p>Great for startups fundraising from investors</p></div></li>
-                                <li className='flex items-center text-sm py-2'><div className='w-[10%]'><CheckBadgeIcon className='w-4 text-green-500' /></div><div className='w-3/4'><p>Ability to raise capital by issuing stock; ownership represented by shareholders</p></div></li>
-                                <li className='flex items-center text-sm py-2'><div className='w-[10%]'><CheckBadgeIcon className='w-4 text-green-500' /></div><div className='w-3/4'><p>Management structure with more operating requirements</p></div></li>
-                                <li className='flex items-center text-sm py-2'><div className='w-[10%]'><ExclamationCircleIcon className='w-4 text-red-500' /></div><div className='w-3/4'><p>More paperwork and corporate requirements such as annual meetings and minutes</p></div></li>
-                            </ul>
+                      </li>
+                      <li className="flex items-center gap-4 text-sm py-1">
+                        <div>
+                          <CheckBadgeIcon className="w-4 text-green-500" />
                         </div>
-                    </div>
-                    <div className='flex justify-center pt-5' >
-                        <button onClick={() => { setPage((currPage) => currPage + 1) }} className='shadow-lg border border-blue-900 bg-black bg-opacity-[0.6] rounded-lg hover:bg-opacity-[0.2] text-white w-96 h-16 hover:bg-white hover:text-black hover:bg-opacity-[1] hover:border-none '>Apply suggestion</button>
-                    </div>
+                        <div>
+                          <p>
+                            {t('help_me_choose_widget_box1_text_2')}
+                          </p>
+                        </div>
+                      </li>
+                      <li className="flex items-center gap-4 text-sm py-1">
+                        <div>
+                          <CheckBadgeIcon className="w-4 text-green-500" />
+                        </div>
+                        <div>
+                          <p>
+                            {t('help_me_choose_widget_box1_text_3')}
+                          </p>
+                        </div>
+                      </li>
+                      <li className="flex items-center gap-4 text-sm py-1">
+                        <div>
+                          <ExclamationCircleIcon className="w-4 text-red-500" />
+                        </div>
+                        <div>
+                          <p>
+                            {t('help_me_choose_widget_box1_text_4')}
+                          </p>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
-            }
-        </>
-    )
+              </div>
+              <span className="flex justify-center text-black font-bold">vs</span>
+              <div className="w-full">
+                <div className="bg-white border border-blue-600 rounded-lg p-8 relative">
+                  <div>
+                    <h1 className="font-bold text-black text-lg border-b border-gray-400">
+                      {t('help_me_choose_widget_box2_title')}
+                    </h1>
+                  </div>
+                  <div className="block py-1">
+                    <ul className="text-base leading-7 text-gray-600">
+                      <li className="flex items-center gap-4 text-sm py-1">
+                        <div>
+                          <CheckBadgeIcon className="w-4 text-green-500" />
+                        </div>
+                        <div>
+                          <p>
+                            {t('help_me_choose_widget_box2_text_1')}
+                          </p>
+                        </div>
+                      </li>
+                      <li className="flex items-center gap-4 text-sm py-1">
+                        <div>
+                          <CheckBadgeIcon className="w-4 text-green-500" />
+                        </div>
+                        <div>
+                          <p>
+                            {t('help_me_choose_widget_box2_text_2')}
+                          </p>
+                        </div>
+                      </li>
+                      <li className="flex items-center gap-4 text-sm py-1">
+                        <div>
+                          <CheckBadgeIcon className="w-4 text-green-500" />
+                        </div>
+                        <div>
+                          <p>
+                            {t('help_me_choose_widget_box2_text_3')}
+                          </p>
+                        </div>
+                      </li>
+                      <li className="flex items-center gap-4 text-sm py-1">
+                        <div>
+                          <ExclamationCircleIcon className="w-4 text-red-500" />
+                        </div>
+                        <div>
+                          <p>
+                            {t('help_me_choose_widget_box2_text_4')}
+                          </p>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex items-center justify-center pb-4">
+              <Link
+                onClick={() => {
+                  setPage((currPage) => currPage + 1);
+                }}
+                className="bg-blue-600 rounded-lg text-base font-semibold text-white shadow-sm p-4 cursor-pointer border border-blue-600 hover:bg-white hover:text-blue-600"
+              >
+                {t('help_me_choose_widget_button')}
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
+      {page === 1 && (
+        <div className="mt-24 lg:fixed lg:left-1/2 lg:bg-white lg:shadow-xl lg:rounded-lg lg:-translate-x-1/2 -lg:translate-y-1/2">
+          <div className="open-animation">
+            <div
+              className="ml-4 mt-4 flex items-center gap-2 cursor-pointer"
+              onClick={() => {
+                setPage((currPage) => currPage - 1);
+              }}
+            >
+              <ArrowUturnDownIcon className="w-4 text-black rotate-90" />
+              <button className="text-black">{t('help_me_choose_widget_question1_button_back')}</button>
+            </div>
+            <div className="pt-6 px-12">
+              <h1 className="text-center text-black text-2xl font-bold">
+                {t('help_me_choose_widget_question1_question')}
+              </h1>
+            </div>
+            <div className="flex justify-center pt-8">
+              <button onClick={firstYesAnswer} className={firstYes ? "border border-blue-600 bg-blue-200 rounded-lg border border-blue-600 text-blue-600 w-96 h-16 font-bold" : "rounded-lg border border-blue-600 text-blue-600 w-96 h-16"}>
+                {t('help_me_choose_widget_question1_answer1')}
+              </button>
+            </div>
+            <div className="flex justify-center pt-5">
+              <button onClick={firstNoAnswer} className={firstNo ? "border border-blue-600 bg-blue-200 rounded-lg border border-blue-600 text-blue-600 w-96 h-16 font-bold" : "rounded-lg border border-blue-600 text-blue-600 w-96 h-16"}>
+                {t('help_me_choose_widget_question1_answer2')}
+              </button>
+            </div>
+            <div className="flex justify-center pt-5">
+              <button onClick={firstNotSureAnswer} className={firstNotSure ? "border border-blue-600 bg-blue-200 rounded-lg border border-blue-600 text-blue-600 w-96 h-16 font-bold" : "rounded-lg border border-blue-600 text-blue-600 w-96 h-16"}>
+                {t('help_me_choose_widget_question1_answer3')}
+              </button>
+            </div>
+            <div className="flex justify-center my-12">
+              <button
+                onClick={() => {
+                  setPage((currPage) => currPage + 1);
+                }}
+                className="bg-blue-600 rounded-lg text-base font-semibold text-white shadow-sm cursor-pointer border border-blue-600 w-96 h-16"
+              >
+                {t('help_me_choose_widget_question1_button_next')}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      {page === 2 && (
+        <div className="mt-24 lg:fixed lg:left-1/2 lg:bg-white lg:shadow-xl lg:rounded-lg lg:-translate-x-1/2 -lg:translate-y-1/2">
+          <div className="open-animation">
+            <div
+              className="ml-4 mt-4 flex items-center gap-2 cursor-pointer"
+              onClick={() => {
+                setPage((currPage) => currPage - 1);
+              }}
+            >
+              <ArrowUturnDownIcon className="w-4 text-black rotate-90" />
+              <button className="text-black">{t('help_me_choose_widget_question2_button_back')}</button>
+            </div>
+            <div className="pt-6 px-12">
+              <h1 className="text-center text-black text-2xl font-bold">
+                {t('help_me_choose_widget_question2_question')}
+              </h1>
+            </div>
+            <div className="flex justify-center pt-8">
+              <button onClick={secondYesAnswer} className={secondYes ? "border border-blue-600 bg-blue-200 rounded-lg border border-blue-600 text-blue-600 w-96 h-16 font-bold" : "rounded-lg border border-blue-600 text-blue-600 w-96 h-16"}>
+                {t('help_me_choose_widget_question2_answer1')}
+              </button>
+            </div>
+            <div className="flex justify-center pt-5">
+              <button onClick={secondNoAnswer} className={secondNo ? "border border-blue-600 bg-blue-200 rounded-lg border border-blue-600 text-blue-600 w-96 h-16 font-bold" : "rounded-lg border border-blue-600 text-blue-600 w-96 h-16"}>
+                {t('help_me_choose_widget_question2_answer2')}
+              </button>
+            </div>
+            <div className="flex justify-center pt-5">
+              <button onClick={secondNotSureAnswer} className={secondNotSure ? "border border-blue-600 bg-blue-200 rounded-lg border border-blue-600 text-blue-600 w-96 h-16 font-bold" : "rounded-lg border border-blue-600 text-blue-600 w-96 h-16"}>
+                {t('help_me_choose_widget_question2_answer3')}
+              </button>
+            </div>
+            <div className="flex justify-center my-12">
+              <button
+                onClick={() => {
+                  setPage((currPage) => currPage + 1);
+                }}
+                className="bg-blue-600 rounded-lg text-base font-semibold text-white shadow-sm cursor-pointer border border-blue-600 w-96 h-16"
+              >
+                {t('help_me_choose_widget_question2_button_next')}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      {page === 3 && (
+        <div className="mt-24 lg:fixed lg:left-1/2 lg:bg-white lg:shadow-xl lg:rounded-lg lg:-translate-x-1/2 -lg:translate-y-1/2">
+          <div className="open-animation">
+            <div className="pt-12 px-0 lg:px-12">
+              {i18n.language === 'en'
+                ? <div className="block">
+                  <div className="flex justify-center">
+                    <h1 className="text-center text-black text-2xl font-bold">
+                      {t('help_me_choose_widget_answer1_title')}
+                    </h1>
+                  </div>
+                  <div className="flex justify-center items-start gap-4">
+                    <div className="block">
+                      <h1 className="text-blue-600 text-center text-4xl font-bold">{firstYes || secondYes ? 'Corporation' : 'LLC'}</h1>
+                      <h2 className="text-center text-black text-[10px] font-bold p-1 rounded-lg">
+                        {t('help_me_choose_widget_answer1_subtitle1')}
+                      </h2>
+                    </div>
+                    <div className="block ">
+                      <h1 className="text-blue-600 text-4xl font-bold"> {t('help_me_choose_widget_answer1_subtitle')}</h1>
+                    </div>
+                    <div className="block">
+                      <h1 className="text-blue-600 text-4xl font-bold">{firstYes || secondYes ? 'Delaware' : 'Wyoming'}</h1>
+                      <h2 className="text-black text-[10px] font-bold text-center p-1 rounded-lg">
+                        {t('help_me_choose_widget_answer1_subtitle2')}
+                      </h2>
+                    </div>
+                  </div>
+                </div>
+                : <div className="block">
+                  <div className="flex justify-center">
+                    <h1 className="text-center text-black text-2xl font-bold">
+                      {t('help_me_choose_widget_answer1_title')}
+                    </h1>
+                  </div>
+                  <div className="flex justify-center items-start gap-4">
+                    <div className="block">
+                      <h1 className="text-blue-600 text-4xl font-bold">{firstYes || secondYes ? 'Delaware' : 'Wyoming'}</h1>
+                      <h2 className="text-center text-black text-[10px] font-bold p-1 rounded-lg">
+                        {t('help_me_choose_widget_answer1_subtitle2')}
+                      </h2>
+                    </div>
+                    <div className="block ">
+                      <h1 className="text-blue-600 text-4xl font-bold"> {t('help_me_choose_widget_answer1_subtitle')}</h1>
+                    </div>
+                    <div className="block">
+                      <h1 className="text-blue-600 text-center text-4xl font-bold">{firstYes || secondYes ? 'Anonim Şirket' : 'LLC'}</h1>
+                      <h2 className="text-black text-[10px] font-bold text-center p-1 rounded-lg">
+                        {t('help_me_choose_widget_answer1_subtitle1')}
+                      </h2>
+                    </div>
+                  </div>
+                </div>}
+            </div>
+            <div className="mx-16 lg:mx-24 my-4 bg-white rounded-lg p-8 relative border border-blue-600">
+              <div className="block py-1">
+                {firstYes || secondYes
+                 ? 
+                <ul className="text-base leading-7 text-gray-600">
+                  <li className="flex items-center gap-4 text-sm py-1">
+                    <div>
+                      <CheckBadgeIcon className="w-4 text-green-500" />
+                    </div>
+                    <div>
+                      <p> {t('help_me_choose_widget_answer1_text1')}</p>
+                    </div>
+                  </li>
+                  <li className="flex items-center gap-4 text-sm py-1">
+                    <div>
+                      <CheckBadgeIcon className="w-4 text-green-500" />
+                    </div>
+                    <div>
+                      <p>
+                        {t('help_me_choose_widget_answer1_text2')}
+                      </p>
+                    </div>
+                  </li>
+                  <li className="flex items-center gap-4 text-sm py-1">
+                    <div>
+                      <CheckBadgeIcon className="w-4 text-green-500" />
+                    </div>
+                    <div>
+                      <p> {t('help_me_choose_widget_answer1_text3')}</p>
+                    </div>
+                  </li>
+                  <li className="flex items-center gap-4 text-sm py-1">
+                    <div>
+                      <ExclamationCircleIcon className="w-4 text-red-500" />
+                    </div>
+                    <div>
+                      <p>
+                        {t('help_me_choose_widget_answer1_text4')}
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+                :<ul className="text-base leading-7 text-gray-600">
+                <li className="flex items-center gap-4 text-sm py-1">
+                  <div>
+                    <CheckBadgeIcon className="w-4 text-green-500" />
+                  </div>
+                  <div>
+                    <p> {t('help_me_choose_widget_answer2_text1')}</p>
+                  </div>
+                </li>
+                <li className="flex items-center gap-4 text-sm py-1">
+                  <div>
+                    <CheckBadgeIcon className="w-4 text-green-500" />
+                  </div>
+                  <div>
+                    <p>
+                      {t('help_me_choose_widget_answer2_text2')}
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-center gap-4 text-sm py-1">
+                  <div>
+                    <CheckBadgeIcon className="w-4 text-green-500" />
+                  </div>
+                  <div>
+                    <p> {t('help_me_choose_widget_answer2_text3')}</p>
+                  </div>
+                </li>
+                <li className="flex items-center gap-4 text-sm py-1">
+                  <div>
+                    <ExclamationCircleIcon className="w-4 text-red-500" />
+                  </div>
+                  <div>
+                    <p>
+                      {t('help_me_choose_widget_answer2_text4')}
+                    </p>
+                  </div>
+                </li>
+              </ul>}
+              </div>
+            </div>
+            <div className="flex justify-center mx-16 lg:mx-0 my-12">
+              <Link to={"/pricing/form-my-company"} state={{ text: text }}>
+                <button className="bg-blue-600 rounded-lg text-base font-semibold text-white shadow-sm cursor-pointer border border-blue-600 w-96 h-16">
+                  {t('help_me_choose_widget_answer1_button')}
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
 }
