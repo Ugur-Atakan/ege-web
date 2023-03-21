@@ -6,38 +6,38 @@ import { useTranslation } from 'react-i18next';
 
 export default function Footer() {
   const API_ROOT = window.ob.config.apiRoot;
-  const {t} = useTranslation();
+  const {t, i18n} = useTranslation();
   const navigation = {
     solutions: [
       {
         name: t('footer_col1_submenu1'),
-        href: '/form-your-company',
+        href: `/${i18n.language}/form-your-company`,
       },
       {
         name: t('footer_col1_submenu2'),
-        href: '/registered-agent',
+        href: `/${i18n.language}/registered-agent`,
       },
       {
         name: t('footer_col1_submenu3'),
-        href: '/virtual-mailbox',
+        href: `/${i18n.language}/virtual-mailbox`,
       },
       {
         name: t('footer_col1_submenu4'),
-        href: '/apostille',
+        href: `/${i18n.language}/apostille`,
       },
     ],
     support: [
-      { name: t('footer_col2_submenu1'), href: '/pricing' },
-      { name:  t('footer_col2_submenu2'), href: '/contact' }
+      { name: t('footer_col2_submenu1'), href: `/${i18n.language}/pricing`, },
+      { name:  t('footer_col2_submenu2'), href: `/${i18n.language}/contact`, }
     ],
     company: [
-      { name:  t('footer_col3_submenu1'), href: '/company' },
-      { name:  t('footer_col3_submenu2'), href: '/blog' },
-      { name:  t('footer_col3_submenu3'), href: '#.' }
+      { name:  t('footer_col3_submenu1'), href: `/${i18n.language}/company`, },
+      { name:  t('footer_col3_submenu2'), href: `/${i18n.language}/blog`, },
+      { name:  t('footer_col3_submenu3'), href: `/${i18n.language}/#.`, }
     ],
     legal: [
-      { name:  t('footer_col4_submenu1'), href: '/privacy-policy' },
-      { name:  t('footer_col4_submenu2'), href: '/terms-of-service' }
+      { name:  t('footer_col4_submenu1'), href: `/${i18n.language}/privacy-policy`},
+      { name:  t('footer_col4_submenu2'), href: `/${i18n.language}/terms-of-service`}
     ],
     social: [
       {

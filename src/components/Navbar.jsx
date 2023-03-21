@@ -36,6 +36,7 @@ import Logo from '../images/logo2x.png.webp'
 import { useTranslation } from 'react-i18next';
 import turkeyicon from '../images/turkey.png'
 import ukicon from '../images/united-kingdom.png'
+import { Link, useNavigate } from 'react-router-dom'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -47,80 +48,82 @@ const navigation = [
   { name: 'Testimonials', href: '#testimonials' },
   { name: 'FAQs', href: '#faqs' },
 ]
-const lngs = {
-  en: { nativeName: 'English', icon: ukicon },
-  tr: { nativeName: 'Turkish', icon: turkeyicon }
-};
+
 
 
 export function Navbar() {
 
   const { t, i18n } = useTranslation();
-  
+  const navigate = useNavigate();
+
+  const handleLanguageChange = (lang) => {
+    i18n.changeLanguage(lang);
+    const currentPath = window.location.pathname;
+    const newPath = currentPath.replace(/^\/[a-z]{2}/, `/${lang}`);
+    navigate(newPath, { replace: true });
+  };
+
+
   const menu1 = [
     {
       name: t('mobile_menu_title_4'),
       description: t('mobile_menu_title_4_desc'),
-      href: '/pricing/form-my-company',
+      href: `/${i18n.language}/pricing/form-my-company`,
       icon: BuildingOfficeIcon,
     },
     {
       name: t('menu2_1_link_2_title'),
       description: t('menu2_1_link_2_subtitle'),
-      href: '/registered-agent',
+      href: `/${i18n.language}/registered-agent`,
       icon: UserIcon,
     },
     {
       name: t('menu2_1_link_3_title'),
       description: t('menu2_1_link_3_subtitle'),
-      href: '/virtual-mailbox',
+      href: `/${i18n.language}/virtual-mailbox`,
       icon: EnvelopeOpenIcon,
     },
     {
       name: t('menu2_1_link_4_title'),
       description: t('menu2_1_link_4_subtitle'),
-      href: '/apostille',
+      href: `/${i18n.language}/apostille`,
       icon: DocumentDuplicateIcon,
     }
   ]
 
-  const pricing = [
-    { name: t('menu1_title'), href: '/pricing/form-your-company', desc: 'Remain compliant', icon: BuildingOfficeIcon },
-    { name: 'Other Services', href: '/pricing/other-services', desc: 'Secure registered agent service online', icon: ReceiptPercentIcon },
-  ]
 
   const recurring = [
-    { name: t('menu2_1_link_1_title'), href: '/compliance-reminder', desc: t('menu2_1_link_1_subtitle'), icon: FolderMinusIcon },
-    { name: t('menu2_1_link_2_title'), href: '/registered-agent', desc: t('menu2_1_link_2_subtitle'), icon: BuildingOfficeIcon },
-    { name: t('menu2_1_link_3_title'), href: '/virtual-mailbox', desc: t('menu2_1_link_3_subtitle'), icon: EnvelopeOpenIcon },
-    { name: t('menu2_1_link_4_title'), href: '/office-address', desc: t('menu2_1_link_4_subtitle'), icon: BriefcaseIcon },
-    { name: t('menu2_1_link_5_title'), release: '(BETA)', href: '/our-packages', desc: t('menu2_1_link_5_subtitle'), icon: CubeIcon },
-    { name: t('menu2_1_link_6_title'), release: '(BETA)', href: '/virtual-phone-number', desc: t('menu2_1_link_6_subtitle'), icon: ChatBubbleLeftRightIcon },
-    { name: t('menu2_1_link_7_title'), href: '/dedicated-receptionist', desc: t('menu2_1_link_7_subtitle'), icon: PhoneIcon },
+    { name: t('menu2_1_link_1_title'), href: `/${i18n.language}/compliance-reminder`, desc: t('menu2_1_link_1_subtitle'), icon: FolderMinusIcon },
+    { name: t('menu2_1_link_2_title'), href: `/${i18n.language}/registered-agent`, desc: t('menu2_1_link_2_subtitle'), icon: BuildingOfficeIcon },
+    { name: t('menu2_1_link_3_title'), href: `/${i18n.language}/virtual-mailbox`, desc: t('menu2_1_link_3_subtitle'), icon: EnvelopeOpenIcon },
+    { name: t('menu2_1_link_4_title'), href: `/${i18n.language}/office-address`, desc: t('menu2_1_link_4_subtitle'), icon: BriefcaseIcon },
+    { name: t('menu2_1_link_5_title'), release: '(BETA)', href: `/${i18n.language}/our-packages`, desc: t('menu2_1_link_5_subtitle'), icon: CubeIcon },
+    { name: t('menu2_1_link_6_title'), release: '(BETA)', href: `/${i18n.language}/virtual-phone-number`, desc: t('menu2_1_link_6_subtitle'), icon: ChatBubbleLeftRightIcon },
+    { name: t('menu2_1_link_7_title'), href: `/${i18n.language}/dedicated-receptionist`, desc: t('menu2_1_link_7_subtitle'), icon: PhoneIcon },
   ]
   const onetime = [
-    { name: t('menu2_2_link_1_title'), href: '/foreign-qualification', desc: t('menu2_2_link_1_subtitle'), icon: RocketLaunchIcon },
-    { name: t('menu2_2_link_2_title'), href: '/certificate-of-good-standing', desc: t('menu2_2_link_2_subtitle'), icon: BookmarkSquareIcon },
-    { name: t('menu2_2_link_3_title'), release: '(BETA)', href: '/certified-copy-request', desc: t('menu2_2_link_3_subtitle'), icon: ClipboardDocumentListIcon },
-    { name: t('menu2_2_link_4_title'), release: '(BETA)', href: '/ein', desc: t('menu2_2_link_4_subtitle'), icon: CalendarIcon },
-    { name: t('menu2_2_link_5_title'), release: '(BETA)', href: '/entity-type-conversion', desc: t('menu2_2_link_5_subtitle'), icon: PresentationChartBarIcon },
-    { name: t('menu2_2_link_6_title'), href: '/renewal-and-revival', desc: t('menu2_2_link_6_subtitle'), icon: ArrowPathIcon },
-    { name: t('menu2_2_link_7_title'), desc: t('menu2_2_link_7_subtitle'), href: '/dissolution-and-cancellation', icon: ArchiveBoxIcon },
-    { name: t('menu2_2_link_8_title'), desc: t('menu2_2_link_8_subtitle'), href: '/certificate-of-amendment', icon: DocumentTextIcon },
-    { name: t('menu2_2_link_9_title'), desc: t('menu2_2_link_9_subtitle'), href: '/doing-business-as', icon: PencilSquareIcon },
+    { name: t('menu2_2_link_1_title'), href: `/${i18n.language}/foreign-qualification`, desc: t('menu2_2_link_1_subtitle'), icon: RocketLaunchIcon },
+    { name: t('menu2_2_link_2_title'), href: `/${i18n.language}/certificate-of-good-standing`, desc: t('menu2_2_link_2_subtitle'), icon: BookmarkSquareIcon },
+    { name: t('menu2_2_link_3_title'), release: '(BETA)', href: `/${i18n.language}/certified-copy-request`, desc: t('menu2_2_link_3_subtitle'), icon: ClipboardDocumentListIcon },
+    { name: t('menu2_2_link_4_title'), release: '(BETA)', href: `/${i18n.language}/ein`, desc: t('menu2_2_link_4_subtitle'), icon: CalendarIcon },
+    { name: t('menu2_2_link_5_title'), release: '(BETA)', href: `/${i18n.language}/entity-type-conversion`, desc: t('menu2_2_link_5_subtitle'), icon: PresentationChartBarIcon },
+    { name: t('menu2_2_link_6_title'), href: `/${i18n.language}/renewal-and-revival`, desc: t('menu2_2_link_6_subtitle'), icon: ArrowPathIcon },
+    { name: t('menu2_2_link_7_title'), desc: t('menu2_2_link_7_subtitle'), href: `/${i18n.language}/dissolution-and-cancellation`, icon: ArchiveBoxIcon },
+    { name: t('menu2_2_link_8_title'), desc: t('menu2_2_link_8_subtitle'), href:`/${i18n.language}/certificate-of-amendment`, icon: DocumentTextIcon },
+    { name: t('menu2_2_link_9_title'), desc: t('menu2_2_link_9_subtitle'), href:`/${i18n.language}/doing-business-as`, icon: PencilSquareIcon },
   ]
   const ies = [
-    { name: t('menu2_3_link_1_title'), href: '/apostille', desc: t('menu2_3_link_1_subtitle'), icon: DocumentDuplicateIcon },
-    { name: t('menu2_3_link_2_title'), href: '/certified-copy-request', desc: t('menu2_3_link_2_subtitle'), icon: ClipboardDocumentListIcon },
-    { name: t('menu2_3_link_3_title'), href: '/ein', desc: t('menu2_3_link_3_subtitle'), icon: CalendarIcon },
-    { name: t('menu2_3_link_4_title'), href: '/us-bank-account-opening-support', desc: t('menu2_3_link_4_subtitle'), icon: BuildingLibraryIcon },
-    { name: t('menu2_3_link_5_title'), href: '/post-incorp', desc: t('menu2_3_link_5_subtitle'), icon: RectangleStackIcon },
+    { name: t('menu2_3_link_1_title'), href: `/${i18n.language}/apostille`, desc: t('menu2_3_link_1_subtitle'), icon: DocumentDuplicateIcon },
+    { name: t('menu2_3_link_2_title'), href: `/${i18n.language}/certified-copy-request`, desc: t('menu2_3_link_2_subtitle'), icon: ClipboardDocumentListIcon },
+    { name: t('menu2_3_link_3_title'), href: `/${i18n.language}/ein`, desc: t('menu2_3_link_3_subtitle'), icon: CalendarIcon },
+    { name: t('menu2_3_link_4_title'), href: `/${i18n.language}/us-bank-account-opening-support`, desc: t('menu2_3_link_4_subtitle'), icon: BuildingLibraryIcon },
+    { name: t('menu2_3_link_5_title'), href: `/${i18n.language}/post-incorp`, desc: t('menu2_3_link_5_subtitle'), icon: RectangleStackIcon },
   ]
   const support = [
-    { name: t('menu3_1_title'), href: '/faq', desc: t('menu3_1_subtitle'), icon: QuestionMarkCircleIcon },
-    { name: t('menu3_2_title'), href: '/terms-of-service', desc: t('menu3_2_subtitle'), icon: ClipboardDocumentIcon },
-    { name: t('menu3_3_title'), href: '/privacy-policy', desc: t('menu3_3_subtitle'), icon: ShieldCheckIcon },
-    { name: t('menu3_4_title'), href: '/contact', desc: t('menu3_4_subtitle'), icon: InboxStackIcon },
+    { name: t('menu3_1_title'), href: `/${i18n.language}/faq`, desc: t('menu3_1_subtitle'), icon: QuestionMarkCircleIcon },
+    { name: t('menu3_2_title'), href: `/${i18n.language}/terms-of-service`, desc: t('menu3_2_subtitle'), icon: ClipboardDocumentIcon },
+    { name: t('menu3_3_title'), href: `/${i18n.language}/privacy-policy`, desc: t('menu3_3_subtitle'), icon: ShieldCheckIcon },
+    { name: t('menu3_4_title'), href: `/${i18n.language}/contact`, desc: t('menu3_4_subtitle'), icon: InboxStackIcon },
   ]
 
   const [isScroll, setIsScroll] = useState(false);
@@ -157,7 +160,7 @@ export function Navbar() {
               <Popover>
                 <button
                   className='text-gray-500 group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:text-black focus:ring-blue-500 focus:ring-offset-2'>
-                  <a href='/pricing/form-my-company'><span>{t('menu1_title')}</span></a>
+                  <Link to={`/${i18n.language}/pricing/form-my-company`}><span>{t('menu1_title')}</span></Link>
                 </button>
               </Popover>
               <Popover>
@@ -332,7 +335,7 @@ export function Navbar() {
               <Popover>
                 <button
                   className='text-gray-500 group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:text-black focus:ring-blue-500 focus:ring-offset-2'>
-                  <a href='/blog'><span>{t('menu4_title')}</span></a>
+                  <Link to={`/${i18n.language}/blog`}><span>{t('menu4_title')}</span></Link>
                 </button>
               </Popover>
             </Popover.Group>
@@ -366,20 +369,24 @@ export function Navbar() {
                   leaveTo="transform opacity-0 scale-95"
                 >
 
-                  <Menu.Items className="absolute top-12 -right-16 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                    {Object.keys(lngs).map((lang) => (
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            onClick={() => i18n.changeLanguage(lang)}
-                            className={i18n.resolvedLanguage === lang ? 'flex items-center gap-4 p-2 text-gray-900 hover:bg-gray-200 opacity-[0.5]' : 'flex items-center gap-4 p-2 text-gray-900 hover:bg-gray-200 cursor-pointer'}
-                          >
-                            <img src={lngs[lang].icon} alt='language' />
-                            <span>{lngs[lang].nativeName}</span>
-                          </a>
-                        )}
-                      </Menu.Item>
-                    ))}
+                  <Menu.Items className="absolute top-12 -right-10 z-10 mt-2 w-36 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+
+                    <Menu.Item>
+                      {({ active }) => (
+                        <div className='block'>
+                          <div className={i18n.language === 'en' ? 'block cursor-pointer bg-slate-100 rounded-md' : 'block cursor-pointer hover:bg-slate-200'} onClick={() => handleLanguageChange("en")}>
+                            <div className='flex items-center justify-center gap-2 p-3'>
+                              <img src={ukicon} className='h-6' /> <button className='text-gray-700'>English</button>
+                            </div>
+                          </div>
+                          <div className={i18n.language === 'tr' ? 'block cursor-pointer bg-slate-100 rounded-md' : 'block cursor-pointer hover:bg-slate-200'} onClick={() => handleLanguageChange("tr")}>
+                            <div className='flex items-center justify-center gap-2 p-3'>
+                              <img src={turkeyicon} className='h-6' /> <button className='text-gray-700'>Turkish</button>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </Menu.Item>
                   </Menu.Items>
                 </Transition>
               </Menu>
