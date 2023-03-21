@@ -857,7 +857,7 @@ i18next
                     hero_section_title_message_10: 'Noter Hizmetleri',
                     hero_section_desc: 'Kapsamlı hepsi bir arada platformumuz sayesinde, dünyanın herhangi bir yerinden, ABD’nin herhangi bir eyaletinde zahmetsizce şirketinizi kurun ve yönetmeye başlayın',
                     hero_section_button: 'Şirketimi Kur',
-                    hero_section_star_1: '100+ mutlu müşterilerimiz',
+                    hero_section_star_1: 'mutlu müşterilerimiz',
                     hero_section_star_2: 'tarafından',
                     hero_section_star_3: '5 yıldıza layık görüldü',
                     section2_title: 'Müşterilerimizle tanışın',

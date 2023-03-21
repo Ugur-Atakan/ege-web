@@ -30,7 +30,7 @@ export function CallToAction() {
           </p>
           <a href="/pricing/form-my-company" className="px-36 mt-8 py-4 relative rounded group overflow-hidden font-medium bg-purple-50 text-blue-600 inline-block">
             <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-slate-50 group-hover:h-full opacity-90"></span>
-            <span className="relative group-hover:text-blue-600 text-lg">{t('section6_button ')}</span>
+            <span className="relative group-hover:text-blue-600 text-lg">{t('section6_button')}</span>
           </a>
         </div>
       </Container>
