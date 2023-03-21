@@ -6,8 +6,10 @@ import {
 import { useState } from "react";
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function StartOnbarding() {
+  const { t } = useTranslation();
   const [page, setPage] = useState(0);
   //questions answers
   const [firstYes, firstSetYes] = useState(false);
@@ -63,7 +65,7 @@ export default function StartOnbarding() {
           <div className="open-animation">
             <div className="pt-4">
               <h1 className="text-center text-black text-2xl font-bold px-12 lg:px-24">
-                Need help choosing the right company structure for your needs?
+                {t('help_me_choose_widget_header1_uptitle')}
               </h1>
             </div>
             <div className="block items-center gap-2 px-8 py-4">
@@ -71,7 +73,7 @@ export default function StartOnbarding() {
                 <div className="bg-white border border-blue-600 rounded-lg p-8 relative ">
                   <div>
                     <h1 className="font-bold text-black text-lg border-b border-gray-400">
-                      LLC
+                      {t('help_me_choose_widget_box1_title')}
                     </h1>
                   </div>
                   <div className="block py-1">
@@ -82,8 +84,7 @@ export default function StartOnbarding() {
                         </div>
                         <div>
                           <p>
-                            LLCs are well-suited for small businesses due to their
-                            flexibility.
+                            {t('help_me_choose_widget_box1_text_1')}
                           </p>
                         </div>
                       </li>
@@ -93,8 +94,7 @@ export default function StartOnbarding() {
                         </div>
                         <div>
                           <p>
-                            They have a simple management structure and are easier
-                            to operate.
+                            {t('help_me_choose_widget_box1_text_2')}
                           </p>
                         </div>
                       </li>
@@ -104,8 +104,7 @@ export default function StartOnbarding() {
                         </div>
                         <div>
                           <p>
-                            There is less paperwork involved and no corporate
-                            restrictions or mandatory meetings.
+                            {t('help_me_choose_widget_box1_text_3')}
                           </p>
                         </div>
                       </li>
@@ -115,8 +114,7 @@ export default function StartOnbarding() {
                         </div>
                         <div>
                           <p>
-                            Ownership in LLCs is represented by members, as they
-                            cannot issue stock.
+                            {t('help_me_choose_widget_box1_text_4')}
                           </p>
                         </div>
                       </li>
@@ -129,7 +127,7 @@ export default function StartOnbarding() {
                 <div className="bg-white border border-blue-600 rounded-lg p-8 relative">
                   <div>
                     <h1 className="font-bold text-black text-lg border-b border-gray-400">
-                      C-Corp (Coorporation)
+                      {t('help_me_choose_widget_box2_title')}
                     </h1>
                   </div>
                   <div className="block py-1">
@@ -140,8 +138,7 @@ export default function StartOnbarding() {
                         </div>
                         <div>
                           <p>
-                            C-corps are ideal for startups looking to raise
-                            capital from investors.
+                            {t('help_me_choose_widget_box2_text_1')}
                           </p>
                         </div>
                       </li>
@@ -151,8 +148,7 @@ export default function StartOnbarding() {
                         </div>
                         <div>
                           <p>
-                            They can raise capital by issuing stock, and ownership
-                            is represented by shareholders.
+                            {t('help_me_choose_widget_box2_text_2')}
                           </p>
                         </div>
                       </li>
@@ -162,8 +158,7 @@ export default function StartOnbarding() {
                         </div>
                         <div>
                           <p>
-                            C-corps have a more complex management structure with
-                            more operating requirements.
+                            {t('help_me_choose_widget_box2_text_3')}
                           </p>
                         </div>
                       </li>
@@ -173,8 +168,7 @@ export default function StartOnbarding() {
                         </div>
                         <div>
                           <p>
-                            C-corps are subject to more paperwork and corporate
-                            requirements, such as annual meetings and minutes.
+                            {t('help_me_choose_widget_box2_text_4')}
                           </p>
                         </div>
                       </li>
@@ -190,7 +184,7 @@ export default function StartOnbarding() {
                 }}
                 className="bg-blue-600 rounded-lg text-base font-semibold text-white shadow-sm p-4 cursor-pointer border border-blue-600 hover:bg-white hover:text-blue-600"
               >
-                Take the surwey
+                {t('help_me_choose_widget_button')}
               </Link>
             </div>
           </div>
@@ -206,27 +200,26 @@ export default function StartOnbarding() {
               }}
             >
               <ArrowUturnDownIcon className="w-4 text-black rotate-90" />
-              <button className="text-black">Back</button>
+              <button className="text-black">{t('help_me_choose_widget_question1_button_back')}</button>
             </div>
             <div className="pt-6 px-12">
               <h1 className="text-center text-black text-2xl font-bold">
-                Are you planning to raise money or go through an
-                accelerator/incubator program?
+                {t('help_me_choose_widget_question1_question')}
               </h1>
             </div>
             <div className="flex justify-center pt-8">
               <button onClick={firstYesAnswer} className={firstYes ? "border border-blue-600 bg-blue-200 rounded-lg border border-blue-600 text-blue-600 w-96 h-16 font-bold" : "rounded-lg border border-blue-600 text-blue-600 w-96 h-16"}>
-                Yes
+                {t('help_me_choose_widget_question1_answer1')}
               </button>
             </div>
             <div className="flex justify-center pt-5">
               <button onClick={firstNoAnswer} className={firstNo ? "border border-blue-600 bg-blue-200 rounded-lg border border-blue-600 text-blue-600 w-96 h-16 font-bold" : "rounded-lg border border-blue-600 text-blue-600 w-96 h-16"}>
-                No
+                {t('help_me_choose_widget_question1_answer2')}
               </button>
             </div>
             <div className="flex justify-center pt-5">
               <button onClick={firstNotSureAnswer} className={firstNotSure ? "border border-blue-600 bg-blue-200 rounded-lg border border-blue-600 text-blue-600 w-96 h-16 font-bold" : "rounded-lg border border-blue-600 text-blue-600 w-96 h-16"}>
-                Not Sure
+                {t('help_me_choose_widget_question1_answer3')}
               </button>
             </div>
             <div className="flex justify-center my-12">
@@ -236,7 +229,7 @@ export default function StartOnbarding() {
                 }}
                 className="bg-blue-600 rounded-lg text-base font-semibold text-white shadow-sm cursor-pointer border border-blue-600 w-96 h-16"
               >
-                Next
+                {t('help_me_choose_widget_question1_button_next')}
               </button>
             </div>
           </div>
@@ -252,27 +245,26 @@ export default function StartOnbarding() {
               }}
             >
               <ArrowUturnDownIcon className="w-4 text-black rotate-90" />
-              <button className="text-black">Back</button>
+              <button className="text-black">{t('help_me_choose_widget_question2_button_back')}</button>
             </div>
             <div className="pt-6 px-12">
               <h1 className="text-center text-black text-2xl font-bold">
-                Do you intend to offer stocks to your employees, advisors, or
-                partners?
+              {t('help_me_choose_widget_question2_question')}
               </h1>
             </div>
             <div className="flex justify-center pt-8">
               <button onClick={secondYesAnswer} className={secondYes ? "border border-blue-600 bg-blue-200 rounded-lg border border-blue-600 text-blue-600 w-96 h-16 font-bold" : "rounded-lg border border-blue-600 text-blue-600 w-96 h-16"}>
-                Yes
+              {t('help_me_choose_widget_question2_answer1')}
               </button>
             </div>
             <div className="flex justify-center pt-5">
               <button onClick={secondNoAnswer} className={secondNo ? "border border-blue-600 bg-blue-200 rounded-lg border border-blue-600 text-blue-600 w-96 h-16 font-bold" : "rounded-lg border border-blue-600 text-blue-600 w-96 h-16"}>
-                No
+              {t('help_me_choose_widget_question2_answer2')}
               </button>
             </div>
             <div className="flex justify-center pt-5">
               <button onClick={secondNotSureAnswer} className={secondNotSure ? "border border-blue-600 bg-blue-200 rounded-lg border border-blue-600 text-blue-600 w-96 h-16 font-bold" : "rounded-lg border border-blue-600 text-blue-600 w-96 h-16"}>
-                Not Sure
+              {t('help_me_choose_widget_question2_answer3')}
               </button>
             </div>
             <div className="flex justify-center my-12">
@@ -282,7 +274,7 @@ export default function StartOnbarding() {
                 }}
                 className="bg-blue-600 rounded-lg text-base font-semibold text-white shadow-sm cursor-pointer border border-blue-600 w-96 h-16"
               >
-                Next
+                {t('help_me_choose_widget_question2_button_next')}
               </button>
             </div>
           </div>
@@ -295,23 +287,23 @@ export default function StartOnbarding() {
               <div className="block">
                 <div className="flex justify-center">
                   <h1 className="text-center text-black text-2xl font-bold">
-                    We suggest incorporating as a
+                   {t('help_me_choose_widget_answer1_title')}
                   </h1>
                 </div>
                 <div className="flex justify-center items-start gap-4">
                   <div className="block">
                     <h1 className="text-blue-600 text-center text-4xl font-bold">{firstYes || secondYes ? 'Corporation' : 'LLC'}</h1>
                     <h2 className="text-center text-black text-[10px] font-bold p-1 rounded-lg">
-                      Company Type
+                     {t('help_me_choose_widget_answer1_subtitle1')}
                     </h2>
                   </div>
                   <div className="block ">
-                    <h1 className="text-blue-600 text-4xl font-bold">in</h1>
+                    <h1 className="text-blue-600 text-4xl font-bold"> {t('help_me_choose_widget_answer1_subtitle')}</h1>
                   </div>
                   <div className="block">
                     <h1 className="text-blue-600 text-4xl font-bold">{firstYes || secondYes ? 'Delaware' : 'Wyoming'}</h1>
                     <h2 className="text-black text-[10px] font-bold text-center p-1 rounded-lg">
-                      State
+                    {t('help_me_choose_widget_answer1_subtitle2')}
                     </h2>
                   </div>
                 </div>
@@ -325,7 +317,7 @@ export default function StartOnbarding() {
                       <CheckBadgeIcon className="w-4 text-green-500" />
                     </div>
                     <div>
-                      <p>Great for startups fundraising from investors</p>
+                      <p> {t('help_me_choose_widget_answer1_text1')}</p>
                     </div>
                   </li>
                   <li className="flex items-center gap-4 text-sm py-1">
@@ -334,8 +326,7 @@ export default function StartOnbarding() {
                     </div>
                     <div>
                       <p>
-                        Ability to raise capital by issuing stock; ownership
-                        represented by shareholders
+                      {t('help_me_choose_widget_answer1_text2')}
                       </p>
                     </div>
                   </li>
@@ -344,7 +335,7 @@ export default function StartOnbarding() {
                       <CheckBadgeIcon className="w-4 text-green-500" />
                     </div>
                     <div>
-                      <p>Management structure with more operating requirements</p>
+                      <p> {t('help_me_choose_widget_answer1_text3')}</p>
                     </div>
                   </li>
                   <li className="flex items-center gap-4 text-sm py-1">
@@ -353,8 +344,7 @@ export default function StartOnbarding() {
                     </div>
                     <div>
                       <p>
-                        More paperwork and corporate requirements such as annual
-                        meetings and minutes
+                      {t('help_me_choose_widget_answer1_text4')}
                       </p>
                     </div>
                   </li>
@@ -364,7 +354,7 @@ export default function StartOnbarding() {
             <div className="flex justify-center mx-16 lg:mx-0 my-12">
               <Link to={"/pricing/form-my-company"} state={{ text: text }}>
                 <button className="bg-blue-600 rounded-lg text-base font-semibold text-white shadow-sm cursor-pointer border border-blue-600 w-96 h-16">
-                  Apply suggestion
+                {t('help_me_choose_widget_answer1_button')}
                 </button>
               </Link>
             </div>
