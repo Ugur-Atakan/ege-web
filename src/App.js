@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles/tailwind.css'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom'
 import Blog from './routes/blog'
 import { Home } from './routes/home'
 import { Onboarding } from './routes/onboarding'
@@ -39,15 +39,17 @@ import '../src/locales/language.js'
 import StartCompany from './routes/start-company';
 import ProductSpecificContactUs from './routes/product-specific-contact-us';
 import Copylandingpage from './routes/copy-landing-page';
+import { useTranslation } from 'react-i18next';
 
 const App = () => {
-
+  const {i18n} = useTranslation();
 
   return (
     <Router>
       <div className='App'>
         <Routes>
-          <Route exact path="/" element={<Home />} />
+        <Route path="/" element={<Navigate  to={`/${i18n.language}`} />} />
+          <Route exact path="/:lang/" element={<Home />} />
           <Route exact path="/:lang/home" element={<Home />} />
           <Route exact path="/:lang/post-incorp" element={<PostIncorporation />} />
           <Route exact path="/:lang/compliance-reminder" element={<ComplianceReminder />} />
