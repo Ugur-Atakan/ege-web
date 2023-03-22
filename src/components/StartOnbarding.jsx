@@ -319,11 +319,11 @@ export default function StartOnbarding() {
                     <div className="block">
                       <h1 className="text-blue-600 text-4xl font-bold">{firstYes || secondYes ? 'Delaware' : 'Wyoming'}</h1>
                       <h2 className="text-center text-black text-[10px] font-bold p-1 rounded-lg">
-                        {t('help_me_choose_widget_answer1_subtitle2')}
+                      {t('help_me_choose_widget_answer1_subtitle2')}
                       </h2>
                     </div>
                     <div className="block ">
-                      <h1 className="text-blue-600 text-4xl font-bold"> {t('help_me_choose_widget_answer1_subtitle')}</h1>
+                      <h1 className="text-blue-600 text-4xl font-bold -ml-2">{t('help_me_choose_widget_answer1_subtitle')}</h1>
                     </div>
                     <div className="block">
                       <h1 className="text-blue-600 text-center text-4xl font-bold">{firstYes || secondYes ? 'Anonim Şirket' : 'LLC'}</h1>

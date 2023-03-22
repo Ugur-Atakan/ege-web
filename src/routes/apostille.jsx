@@ -12,11 +12,11 @@ import productData from '../assets/productData'
 import { useTranslation } from 'react-i18next'
 
 export default function Apostille() {
-    const {t} = useTranslation();
+    const {t, i18n} = useTranslation();
     return (
         <main>
             <Navbar />
-            <LeftImgRightText img={topnotch} heading={t('apostille_header1_uptitle_blue')} title={t('apostille_header1_maintitle_black')} desc={t('apostille_header1_text')} button={t('apostille_header1_button')} href={`/products/${productData[16].link}/contact`}/>
+            <LeftImgRightText img={topnotch} heading={t('apostille_header1_uptitle_blue')} title={t('apostille_header1_maintitle_black')} desc={t('apostille_header1_text')} button={t('apostille_header1_button')} href={`/${i18n.language}/products/${productData[16].link}/contact`}/>
             <Price price={t('price_package_apostille')} />
             <Stats title={t('apostille_header3_title')} icontitle1={t('apostille_header3_icon1_title')} icondesc1={t('apostille_header3_icon1_text')} icontitle2={t('apostille_header3_icon2_title')} icondesc2={t('apostille_header3_icon2_text')} icon1=<DocumentCheckIcon className="w-12" /> icon2=<CursorArrowRippleIcon className='w-12'/>/>
             <Delaware/>

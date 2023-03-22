@@ -343,13 +343,13 @@ export function Navbar() {
             </div>
           </div>
           <div className='hidden lg:flex items-center gap-4'>
-            <a
-              href="/pricing/form-my-company"
+            <Link
+              to={`/${i18n.language}/pricing/form-my-company`}
               id="header-fmc"
               className={isScroll ? "shadow rounded-md border border-transparent font-medium text-white bg-blue-600 px-4 py-2 text-md transition-colors duration-1000" : "shadow rounded-md border border-blue-600 font-medium text-blue-600 px-4 py-2 text-md transition-colors duration-1000"}
             >
               {t('menu_top_right_handcorner_button')}
-            </a>
+            </Link>
             <div>
 
               <Menu as="div" className="relative inline-block text-left">
