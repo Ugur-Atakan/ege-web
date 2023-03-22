@@ -84,6 +84,7 @@ const App = () => {
           <Route exact path="/:lang/pricing/apostille-and-notarization-services" element={<PricingApostilleAndNotorizationServices />} />
           <Route exact path="/:lang/pricing/virtual-mailbox" element={<PricingVirtualMailbox />} />
           <Route exact path="/:lang/post-order" element={<PostOrder />} />
+          <Route exact path="/post-order" element={<PostOrder />} />
           <Route path="*" elemenvt={<Home />} />
           <Route exact path="/:lang/all-products" element={<AllProducts />} />
           <Route exact path="/:lang/start-my-business" element={<StartCompany />} />
