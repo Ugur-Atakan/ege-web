@@ -194,7 +194,7 @@ export function Pricing() {
             </select>
           </div>
         </div>
-        <div className='flex justify-center items-center'><Link to='/start-my-business' className='bg-blue-600 text-white border border-blue-600 p-3 rounded-md hover:bg-white hover:text-blue-600  font-semibold'>{t('pricing_header3_question_link')}</Link></div>
+        <div className='flex justify-center items-center'><Link to={`/${i18n.language}/start-my-business`} className='bg-blue-600 text-white border border-blue-600 p-3 rounded-md hover:bg-white hover:text-blue-600  font-semibold'>{t('pricing_header3_question_link')}</Link></div>
         {showPricingPackages && (
           <div id="pricingPackages" className="flex flex-col-reverse lg:flex-row lg:flex lg:justify-center mx-4 mt-12 pt-24  max-w-2xl gap-y-10 sm:mx-auto lg:-mx-8 lg:max-w-none lg:grid-cols-3 xl:mx-0 xl:gap-x-8">
             {
