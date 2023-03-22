@@ -2,6 +2,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 
 export default function Footer() {
@@ -108,8 +109,8 @@ export default function Footer() {
                     </li>
                   ))}
                   <div>
-                    <a href='/all-products' className="text-blue-600 text-base">{t('footer_col1_all_products')}
-                      <span aria-hidden="true"> &rarr;</span></a>
+                    <Link to={`/${i18n.language}/all-products`} className="text-blue-600 text-base">{t('footer_col1_all_products')}
+                      <span aria-hidden="true"> &rarr;</span></Link>
                   </div>
                 </ul>
               </div>

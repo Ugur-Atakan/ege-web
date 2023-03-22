@@ -715,7 +715,7 @@ i18next
                     help_me_choose_widget_question1_answer3: "	Not Sure	",
                     help_me_choose_widget_question1_button_next: "	Next	",
                     help_me_choose_widget_question2_button_back: "	Back	",
-                    help_me_choose_widget_question2_question: "	Do you intend to offer stocks to your employees, advisors, or partners?	",
+                    help_me_choose_widget_question2_question: "	Do you intend to offer stock to your employees, advisors, or partners?	",
                     help_me_choose_widget_question2_answer1: "	Yes	",
                     help_me_choose_widget_question2_answer2: "	No	",
                     help_me_choose_widget_question2_answer3: "	Not Sure	",
@@ -772,6 +772,8 @@ i18next
                     provide_contact_information_form_input9_placeholder:"Zip/Postal code",
                     provide_contact_information_form_input10_placeholder:"Apply Coupon",
                     provide_contact_information_form_submit_button:"Review and Pay",
+                    home_page_hero_section_form_input1_placeholder:"Enter your preffered company name",
+                    home_page_hero_section_form_input2_placeholder:"Please type your e-mail to contact you",
                 }
             },
             tr: {
@@ -1422,18 +1424,18 @@ i18next
                     help_me_choose_widget_box2_text_4: "C-corps, yıllık toplantılar ve tutanaklar gibi daha fazla evrak ve kurumsal gereksinimlere tabidir.",
                     help_me_choose_widget_button: "Teste başla",
                     help_me_choose_widget_question1_button_back: "Geri",
-                    help_me_choose_widget_question1_question: "	Para toplamayı mı yoksa bir hızlandırıcı/inkübatör programından mı geçmeyi planlıyorsunuz?",
+                    help_me_choose_widget_question1_question: "	Yatırım almayı mı ya da bir hızlandırıcı/inkübatör programına katılmayı mı planlıyormusunuz?",
                     help_me_choose_widget_question1_answer1: "	Evet	",
                     help_me_choose_widget_question1_answer2: "	Hayır	",
                     help_me_choose_widget_question1_answer3: "Emin değilim",
                     help_me_choose_widget_question1_button_next: "	Sonraki	",
                     help_me_choose_widget_question2_button_back: "	Geri	",
-                    help_me_choose_widget_question2_question: "	Çalışanlarınıza, danışmanlarınıza veya ortaklarınıza hisse senedi vermeyi düşünüyor musunuz?",
+                    help_me_choose_widget_question2_question: "	Çalışanlarınıza, danışmanlarınıza veya ortaklarınıza hisse opsiyonu vermeyi düşünüyor musunuz?",
                     help_me_choose_widget_question2_answer1: "	Evet	",
                     help_me_choose_widget_question2_answer2: "	Hayır	",
                     help_me_choose_widget_question2_answer3: "	Emin değilim	",
                     help_me_choose_widget_question2_button_next: "	Sonraki	",
-                    help_me_choose_widget_answer1_title: "Tavsiye ettiğimiz",
+                    help_me_choose_widget_answer1_title: "Bizim tavsiyemiz",
                     help_me_choose_widget_answer1_subtitle: "'de",
                     help_me_choose_widget_answer1_subtitle1: "Şirket Türü",
                     help_me_choose_widget_answer1_subtitle2: "Eyalet",
@@ -1486,6 +1488,8 @@ i18next
                     provide_contact_information_form_input9_placeholder:"ZIP / Posta kodu",
                     provide_contact_information_form_input10_placeholder:"Kuponu Uygula",
                     provide_contact_information_form_submit_button:"Gözden Geçir ve Ödeme Yap",
+                    home_page_hero_section_form_input1_placeholder:"Tercih ettiğiniz şirket adını girin",
+                    home_page_hero_section_form_input2_placeholder:"Sizinle iletişime geçebilmemiz için lütfen e-posta adresinizi girin",
                 }
             }
         }

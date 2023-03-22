@@ -9,14 +9,14 @@ function classNames(...classes) {
 }
 
 export default function Example() {
-  const {t} = useTranslation()
+  const {t,i18n} = useTranslation()
 const tabs = [
   {
     name: t('section4_card1_title'),
     description:
     t('section4_card1_desc'),
     button: t('section4_card1_button'),
-    href: '/pricing/form-my-company',
+    href:`/${i18n.language}/pricing/form-my-company`,
     icon: InboxIcon,
     executivedesc: t('section4_card1_executive_desc'),
     executivetitle: t('section4_card1_executive_name'),
@@ -29,7 +29,7 @@ const tabs = [
     description:
     t('section4_card2_desc'),
     button: t('section4_card2_button'),
-    href: '/post-incorp',
+    href: `/${i18n.language}/post-incorp`,
     icon: SparklesIcon,
     imageSrc: 'https://registate.net/static/media/features2.fe27dab0a08de2622778.png',
     imageAlt: 'Maple organizer base with slots, supporting white polycarbonate trays of various sizes.',
@@ -39,7 +39,7 @@ const tabs = [
     description:
     t('section4_card3_desc'),
     button: t('section4_card3_button'),
-    href: '/virtual-mailbox',
+    href: `/${i18n.language}/virtual-mailbox`,
     icon: InboxIcon,
     executivedesc: t('section4_card3_executive_desc'),
     executivetitle: t('section4_card3_executive_name'),
@@ -52,7 +52,7 @@ const tabs = [
     description:
     t('section4_card4_desc'),
     button: t('section4_card4_button'),
-    href: '/apostille',
+    href: `/${i18n.language}/apostille`,
     icon: SparklesIcon,
     imageSrc: 'https://registate.net/static/media/features4.d28d6567c82c0ce9e37a.png',
     imageAlt: 'Maple organizer base with slots, supporting white polycarbonate trays of various sizes.',
@@ -62,7 +62,7 @@ const tabs = [
     description:
     t('section4_card5_desc'),
     button: t('section4_card5_button'),
-    href: '/us-bank-account-opening-support',
+    href: `/${i18n.language}/us-bank-account-opening-support`,
     icon: InboxIcon,
     executivedesc: t('section4_card5_executive_desc'),
     executivetitle: t('section4_card5_executive_name'),

@@ -2,9 +2,10 @@ import { Container } from '../components/Container'
 import backgroundImage from '../images/background-call-to-action.jpg'
 import React from 'react'
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 export function CallToAction() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <section
@@ -28,10 +29,10 @@ export function CallToAction() {
           <p className="mt-4 text-lg tracking-tight text-white">
             {t('section6_desc')}
           </p>
-          <a href="/pricing/form-my-company" className="px-36 mt-8 py-4 relative rounded group overflow-hidden font-medium bg-purple-50 text-blue-600 inline-block">
+          <Link to={`/${i18n.language}/pricing/form-my-company`} className="px-36 mt-8 py-4 relative rounded group overflow-hidden font-medium bg-purple-50 text-blue-600 inline-block">
             <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-slate-50 group-hover:h-full opacity-90"></span>
             <span className="relative group-hover:text-blue-600 text-lg">{t('section6_button')}</span>
-          </a>
+          </Link>
         </div>
       </Container>
     </section>

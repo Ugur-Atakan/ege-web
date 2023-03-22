@@ -337,7 +337,7 @@ function OrderInformationPanel(props) {
                             className="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:text-sm"
                             onClick={() => {
                                 localStorage.clear()
-                                window.location.href = "/pricing/form-my-company"
+                                window.location.href = `/${i18n.language}/pricing/form-my-company`
                             }}
                         >
                             {t('provide_contact_information_header_button')}
@@ -728,7 +728,7 @@ function CompanyContactInfoForm(props) {
 };
 
 function Steps(props) {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
 
     const steps = [
         { id: '01', name: t('steps_step1'), href: '#', status: 'complete' },
@@ -763,7 +763,7 @@ function Steps(props) {
                                 {step.status === 'complete' ? (
                                     <a href={step.href} onClick={() => {
                                         localStorage.clear()
-                                        window.location.href = "/pricing/form-my-company"
+                                        window.location.href = `/${i18n.language}/pricing/form-my-company`
                                     }} className="group">
                                         <span
                                             className="absolute top-0 left-0 h-full w-1 bg-transparent group-hover:bg-gray-200 lg:bottom-0 lg:top-auto lg:h-1 lg:w-full"

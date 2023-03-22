@@ -10,7 +10,6 @@ import { useTranslation } from 'react-i18next'
 
 
 function Feature({ feature, isActive, className, ...props }) {
-  
   return (
     <a href={feature.href} className="group">
     <div
@@ -42,11 +41,11 @@ function Feature({ feature, isActive, className, ...props }) {
 }
 
 function FeaturesMobile() {
-  const { t } = useTranslation();
+  const { t,i18n } = useTranslation();
   const features = [
     {
       name: t('section5_icon1_heading'),
-      href: '/foreign-qualification',
+      href:`/${i18n.language}/foreign-qualification`,
       summary: t('section5_icon1_title'),
       description:
       t('section5_icon1_desc'),
@@ -81,7 +80,7 @@ function FeaturesMobile() {
     },
     {
       name: t('section5_icon2_heading'),
-      href: '/renewal-and-revival',
+      href: `/${i18n.language}/renewal-and-revival`,
       summary:
       t('section5_icon2_title'),
       description:
@@ -110,7 +109,7 @@ function FeaturesMobile() {
     },
     {
       name: t('section5_icon3_heading'),
-      href: '/compliance-reminder',
+      href: `/${i18n.language}/compliance-reminder`,
       summary:
       t('section5_icon3_title'),
       description:
@@ -146,11 +145,11 @@ function FeaturesMobile() {
 }
 
 function FeaturesDesktop() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const features = [
     {
       name: t('section5_icon1_heading'),
-      href: '/foreign-qualification',
+      href: `/${i18n.language}/foreign-qualification`,
       summary: t('section5_icon1_title'),
       description:
       t('section5_icon1_desc'),
@@ -185,7 +184,7 @@ function FeaturesDesktop() {
     },
     {
       name: t('section5_icon2_heading'),
-      href: '/renewal-and-revival',
+      href: `/${i18n.language}/renewal-and-revival`,
       summary:
       t('section5_icon2_title'),
       description:
@@ -214,7 +213,7 @@ function FeaturesDesktop() {
     },
     {
       name: t('section5_icon3_heading'),
-      href: '/compliance-reminder',
+      href: `/${i18n.language}/compliance-reminder`,
       summary:
       t('section5_icon3_title'),
       description:

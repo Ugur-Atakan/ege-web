@@ -40,7 +40,7 @@ const Blog = () => {
             }
             getEntry();
         }
-    }, [id, i18n.language]);
+    }, [id]);
 
     return (
         <div className="relative px-6 pt-16 pb-20 lg:px-8 lg:pt-24 lg:pb-28">
@@ -61,7 +61,7 @@ const Blog = () => {
                     {posts.map((post, key) => (
                         <>
                             {post.fields.language === 'Turkish' && i18n.language === 'tr'
-                                && <a href={"/blog/" + post.sys.id} key={key}>
+                                && <a href={`/${i18n.language}/blog/` + post.sys.id} key={key}>
                                     <div key={post.title} className="flex flex-col overflow-hidden rounded-lg shadow-lg">
                                         <div className="flex-shrink-0">
                                             <img className="h-48 w-full object-cover" src={post.fields.image.fields.file.url} alt={post.fields.image.fields.title} />
@@ -96,7 +96,7 @@ const Blog = () => {
                                 </a>
                             }
                              {post.fields.language === 'English' && i18n.language ==='en'
-                                && <a href={"/blog/" + post.sys.id} key={key}>
+                                && <a href={`/${i18n.language}/blog/` + post.sys.id} key={key}>
                                     <div key={post.title} className="flex flex-col overflow-hidden rounded-lg shadow-lg">
                                         <div className="flex-shrink-0">
                                             <img className="h-48 w-full object-cover" src={post.fields.image.fields.file.url} alt={post.fields.image.fields.title} />

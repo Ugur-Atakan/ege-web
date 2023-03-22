@@ -15,7 +15,7 @@ function ExclusiveSolution(props) {
                     </p>
                     <button className='mt-8'>
                         <a
-                            href="/contact"
+                            href={props.href}
                             className={props.button && "shadow rounded-md border border-transparent font-medium text-white bg-blue-600 px-4 py-3 text-md hover:bg-white hover:text-blue-600 hover:border-blue-600"}
                         >
                             {props.button}

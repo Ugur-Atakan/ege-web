@@ -319,11 +319,11 @@ export default function StartOnbarding() {
                     <div className="block">
                       <h1 className="text-blue-600 text-4xl font-bold">{firstYes || secondYes ? 'Delaware' : 'Wyoming'}</h1>
                       <h2 className="text-center text-black text-[10px] font-bold p-1 rounded-lg">
-                        {t('help_me_choose_widget_answer1_subtitle2')}
+                      {t('help_me_choose_widget_answer1_subtitle2')}
                       </h2>
                     </div>
                     <div className="block ">
-                      <h1 className="text-blue-600 text-4xl font-bold"> {t('help_me_choose_widget_answer1_subtitle')}</h1>
+                      <h1 className="text-blue-600 text-4xl font-bold -ml-2">{t('help_me_choose_widget_answer1_subtitle')}</h1>
                     </div>
                     <div className="block">
                       <h1 className="text-blue-600 text-center text-4xl font-bold">{firstYes || secondYes ? 'Anonim Şirket' : 'LLC'}</h1>
@@ -417,7 +417,7 @@ export default function StartOnbarding() {
               </div>
             </div>
             <div className="flex justify-center mx-16 lg:mx-0 my-12">
-              <Link to={"/pricing/form-my-company"} state={{ text: text }}>
+              <Link to={`/${i18n.language}/pricing/form-my-company`} state={{ text: text }}>
                 <button className="bg-blue-600 rounded-lg text-base font-semibold text-white shadow-sm cursor-pointer border border-blue-600 w-96 h-16">
                   {t('help_me_choose_widget_answer1_button')}
                 </button>
