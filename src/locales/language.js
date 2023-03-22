@@ -772,6 +772,8 @@ i18next
                     provide_contact_information_form_input9_placeholder:"Zip/Postal code",
                     provide_contact_information_form_input10_placeholder:"Apply Coupon",
                     provide_contact_information_form_submit_button:"Review and Pay",
+                    home_page_hero_section_form_input1_placeholder:"Enter your preffered company name",
+                    home_page_hero_section_form_input2_placeholder:"Please type your e-mail to contact you",
                 }
             },
             tr: {
@@ -1486,6 +1488,8 @@ i18next
                     provide_contact_information_form_input9_placeholder:"ZIP / Posta kodu",
                     provide_contact_information_form_input10_placeholder:"Kuponu Uygula",
                     provide_contact_information_form_submit_button:"Gözden Geçir ve Ödeme Yap",
+                    home_page_hero_section_form_input1_placeholder:"Tercih ettiğiniz şirket adını girin",
+                    home_page_hero_section_form_input2_placeholder:"Sizinle iletişime geçebilmemiz için lütfen e-posta adresinizi girin",
                 }
             }
         }

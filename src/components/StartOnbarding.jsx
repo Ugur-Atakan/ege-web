@@ -417,7 +417,7 @@ export default function StartOnbarding() {
               </div>
             </div>
             <div className="flex justify-center mx-16 lg:mx-0 my-12">
-              <Link to={"/pricing/form-my-company"} state={{ text: text }}>
+              <Link to={`/${i18n.language}/pricing/form-my-company`} state={{ text: text }}>
                 <button className="bg-blue-600 rounded-lg text-base font-semibold text-white shadow-sm cursor-pointer border border-blue-600 w-96 h-16">
                   {t('help_me_choose_widget_answer1_button')}
                 </button>

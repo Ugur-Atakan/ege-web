@@ -61,7 +61,7 @@ export default function HeroForm(props) {
                     localStorage.setItem('onboardingId', jsonData.data.id);
                     localStorage.setItem('companyName', new_company_name);
                     localStorage.setItem('userEmail', userEmail);
-                    navigate(`${i18n.language}/pricing/form-my-company`);
+                    navigate(`/${i18n.language}/pricing/form-my-company`);
                     props.setCompanyName(new_company_name);
                 }
 
@@ -90,7 +90,7 @@ export default function HeroForm(props) {
                             value={companyName}
                             onChange={onCompanyNameChange}
                             className="block outline-none w-full rounded-md border-0  px-4 py-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-600 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
-                            placeholder="Enter your preferred company name"
+                            placeholder={t('home_page_hero_section_form_input1_placeholder')}
                         />
                     </div>
                     <div className='pb-4'>
@@ -104,7 +104,7 @@ export default function HeroForm(props) {
                             value={email}
                             onChange={onEmailChange}
                             className="block outline-none w-full rounded-md border-0 px-4 py-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-600 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                            placeholder="Please type your e-mail to contact you"
+                            placeholder={t('home_page_hero_section_form_input2_placeholder')}
                         />
                     </div>
                 </div>

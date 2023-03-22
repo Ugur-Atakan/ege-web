@@ -451,7 +451,7 @@ export function Navbar() {
             </div>
             <div className="py-6 px-5">
               <div className="grid grid-cols-2 gap-4">
-                <a href="/pricing/form-my-company" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
+                <a href={`/${i18n.language}/pricing/form-my-company`} className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
                   {t('menu1_title')}
                 </a>
                 <a href="/faq" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
@@ -472,7 +472,7 @@ export function Navbar() {
               </div>
               <div className="mt-6">
                 <a
-                  href="/pricing/form-my-company"
+                  href={`/${i18n.language}/pricing/form-my-company`}
                   className="flex w-full items-center justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700"
                 >
                   {t('menu_top_right_handcorner_button')}
