@@ -24,7 +24,7 @@ export default function DissolutionAndCancellation() {
             <li className='ml-8 py-1 list-disc'>{t('dissolution_header4_text2')}</li>
             <li className='ml-8 py-1 list-disc'>{t('dissolution_header4_text3')}</li>
             <li className='ml-8 py-1 list-disc'>{t('dissolution_header4_text4')}</li>{t('dissolution_header4_text5')}</ul>/>
-            <ExclusiveSolution heading={t('dissolution_header5_uptitle_blue')} title={t('dissolution_header5_maintitle_black')} desc={t('dissolution_header5_text_left')} rightdesc={t('dissolution_header5_text_right')} button={t('dissolution_header5_button')} />
+            <ExclusiveSolution heading={t('dissolution_header5_uptitle_blue')} title={t('dissolution_header5_maintitle_black')} desc={t('dissolution_header5_text_left')} rightdesc={t('dissolution_header5_text_right')} button={t('dissolution_header5_button')} href={`/${i18n.language}/products/${productData[13].link}/contact`} />
             <Requirements title={t('dissolution_header5_bottom_title_blue')} desc={t('dissolution_header5_bottom_title_black')} />
             <Footer />
         </main>

@@ -19,7 +19,7 @@ export default function OfficeAddress() {
             <Price href={`/${i18n.language}/products/${productData[3].link}/contact`}/>
             <Stats title={t('office_address_header3_title')} icontitle1={t('office_address_header3_icon1_title')} icondesc1={t('office_address_header3_icon1_text')} icontitle2={t('office_address_header3_icon2_title')} icondesc2={t('office_address_header3_icon2_text')} icon1=<ClockIcon className="w-12" /> icon2=<InboxStackIcon className='w-12' /> icontitle3={t('office_address_header3_icon3_title')} icon3=<ShieldCheckIcon className='w-12' /> icondesc3={t('office_address_header3_icon3_text')} />
             <LeftImgRightText title={t('office_address_header4_title')} desc={t('office_address_header4_text')} img={oa2} reverse='true' />
-            <ExclusiveSolution heading={t('office_address_header5_uptitle_blue')} title={t('office_address_header5_uptitle_black')} desc={t('office_address_header5_text_left')} rightdesc={t('office_address_header5_text_right')} button={t('office_address_header5_button')} />
+            <ExclusiveSolution heading={t('office_address_header5_uptitle_blue')} title={t('office_address_header5_uptitle_black')} desc={t('office_address_header5_text_left')} rightdesc={t('office_address_header5_text_right')} button={t('office_address_header5_button')} href={`/${i18n.language}/products/${productData[15].link}/contact`} />
             <Footer />
         </main>
     )

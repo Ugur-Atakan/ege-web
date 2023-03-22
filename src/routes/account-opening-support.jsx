@@ -19,7 +19,7 @@ export default function AccountOpeningSupport() {
     <Price href={`/${i18n.language}/products/${productData[18].link}/contact`}/>
     <Stats title={t('us_bank_account_header3_title')} icontitle1={t('us_bank_account_header3_icon1_title')} icondesc1={t('us_bank_account_header3_icon1_text')} icontitle2={t('us_bank_account_header3_icon2_title')} icondesc2={t('us_bank_account_header3_icon2_text')} icon1=<DocumentCheckIcon className="w-12" /> icon2=<CursorArrowRippleIcon className='w-12' /> icontitle3={t('us_bank_account_header3_icon3_title')} icon3=<NewspaperIcon className='w-12' /> icondesc3={t('us_bank_account_header3_icon3_text')} />
     <LeftImgRightText img={whatweneed} desc={t('us_bank_account_header4_text')} />
-    <ExclusiveSolution heading={t('us_bank_account_header5_uptitle_blue')} title={t('us_bank_account_header5_maintitle_black')} desc={t('us_bank_account_header5_text_left')} rightdesc={t('us_bank_account_header5_text_right')} button={t('us_bank_account_header5_button')}/>
+    <ExclusiveSolution heading={t('us_bank_account_header5_uptitle_blue')} title={t('us_bank_account_header5_maintitle_black')} desc={t('us_bank_account_header5_text_left')} rightdesc={t('us_bank_account_header5_text_right')} button={t('us_bank_account_header5_button')} href={`/${i18n.language}/products/${productData[18].link}/contact`}/>
     <Footer />
 </main>
   )
