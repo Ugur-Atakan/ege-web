@@ -13,6 +13,7 @@ jobs:
     env:
       S3_LOCATION : ${{ vars.S3_LOCATION_DEV }}
       API_ROOT: ${{ vars.API_ROOT_DEV }}
+      APP_ROOT: ${{ vars.APP_ROOT_DEV }}
       AWS_ACCESS_KEY_ID: ${{ secrets.S3_UPLOADER_AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_UPLOADER_AWS_SECRET_KEY }}
       CLOUDFRONT_ID: ${{ vars.CLOUDFRONT_DEV }}
@@ -28,7 +29,8 @@ jobs:
           cat > config.js << EOF
           window.ob = {};
           window.ob.config = { 
-              apiRoot: "${API_ROOT}"
+              apiRoot: "${API_ROOT}",
+              appRoot: "${APP_ROOT}"
           };
           EOF
           /usr/local/bin/aws --region eu-central-1 s3 sync . $S3_LOCATION

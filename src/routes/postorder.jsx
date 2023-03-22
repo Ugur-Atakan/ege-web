@@ -15,12 +15,16 @@ export function PostOrder() {
     let paymentReceived = searchParams.get("success");
     let [successPayment, setsuccessPayment] = useState(false);
 
+    const API_ROOT = window.ob.config.apiRoot;
+    const APP_ROOT = window.ob.config.appRoot;
+
+
     const handleExitSuccess = (e) => {
         console.log("handleExit: " + e);                                                                                        
         setsuccessPayment(false)
         localStorage.clear()
         //redirect to dashboard
-        window.open("https://app.registate.net/login")
+        window.open(APP_ROOT + "/login")
     }
     const handleExitFailed = (e) => {
       console.log("handleExit: " + e);                                                                                        
@@ -45,7 +49,7 @@ export function PostOrder() {
             console.log(payload);
             console.log("Checking if the order exists in backend")
  
-            axios.get('https://api.registate.net/api/order/' + orderId, {
+            axios.get(API_ROOT + '/api/order/' + orderId, {
               headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
@@ -58,7 +62,7 @@ export function PostOrder() {
                 console.log("1.then")
                 console.log(jsonData)
 
-                axios.post('https://api.registate.net/api/order-process', payload, {
+                axios.post(API_ROOT + '/api/order-process', payload, {
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
