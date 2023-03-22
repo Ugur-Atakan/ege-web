@@ -32,7 +32,7 @@ export default function Price(props) {
                 <div>
                   <div className="rounded-lg shadow-md mt-3">
                     <a
-                      href="/contact"
+                      href={props.href}
                       className="block w-full rounded-lg border border-transparent bg-white px-6 py-4 text-center text-xl font-medium leading-6 text-[#004B9D]"
                       aria-describedby="tier-growth"
                     >
@@ -62,7 +62,7 @@ export default function Price(props) {
                 <div>
                   <div className="rounded-lg shadow-md mt-3">
                     <a
-                      href="/contact"
+                      href={props.href}
                       className="block w-full rounded-lg border border-transparent bg-white px-6 py-4 text-center text-xl font-medium leading-6 text-[#004B9D]"
                       aria-describedby="tier-growth"
                     >

@@ -13,7 +13,7 @@ export default function OurPackages() {
         <main>
             <Navbar />
             <LeftImgRightText heading={t('our_packages_header1_uptitle_blue')} title={t('our_packages_header1_uptitle_black')} desc={t('our_packages_header1_text')} button={t('our_packages_header1_button')} href={`/${i18n.language}/products/${productData[4].link}/contact`} img={op1} />
-            <Price />
+            <Price href={`/${i18n.language}/products/${productData[4].link}/contact`}/>
             <LeftImgRightText title={t('our_packages_header3_title')}  desc={t('our_packages_header3_text')}  button={t('our_packages_header3_button')} href='contact' img={op2} reverse='true' />
             <Footer />
         </main>
