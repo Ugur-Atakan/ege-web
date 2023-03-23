@@ -83,8 +83,7 @@ const App = () => {
           <Route exact path="/:lang/pricing/post-incorporation-documents" element={<PricingPostIncorporationDocuments />} />
           <Route exact path="/:lang/pricing/apostille-and-notarization-services" element={<PricingApostilleAndNotorizationServices />} />
           <Route exact path="/:lang/pricing/virtual-mailbox" element={<PricingVirtualMailbox />} />
-          <Route path="/post-order" element={<Navigate to={`/${i18n.language}/post-order`} />} />
-          <Route exact path="/:lang/post-order" element={<PostOrder />} />
+          <Route path="/post-order" element={<PostOrder/>} />
           <Route path="*" element={<Home />} />
           <Route exact path="/:lang/all-products" element={<AllProducts />} />
           <Route exact path="/:lang/start-my-business" element={<StartCompany />} />
