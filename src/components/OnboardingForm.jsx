@@ -871,7 +871,7 @@ export default function OnboardingForm() {
         let packageType = localStorage.getItem('packageType')
         if (!packageType) {
             console.log("packageType not defined, redirecting to /pricing/form-my-company")
-            window.location.href = `${i18n.language}/pricing/form-my-company`
+            window.location.href = `/${i18n.language}/pricing/form-my-company`
         }
 
         let onboardingId = localStorage.getItem('onboardingId')
@@ -889,8 +889,8 @@ export default function OnboardingForm() {
 
 
     return (
-        <div className="mx-auto max-w-5xl">
-            <div id="OrderInformationDiv" className="mx-auto px-4 sm:px-6 lg:px-8 -mt-12">
+        <div className="relative px-6 pt-16 pb-20 lg:px-8 lg:pt-16 lg:pb-28 mx-auto max-w-5xl ">
+            <div id="OrderInformationDiv" className="mx-auto px-4 sm:px-6 lg:px-8 lg:pt-4">
                 <OrderInformationPanel companyName={companyName} />
             </div>
             <div id="steps" className="mx-auto px-4 sm:px-6 lg:px-8 mt-2">

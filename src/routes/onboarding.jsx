@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 //Define Pricing component
 export function Onboarding () {
   return (
-    <main className='mt-32'>
+    <main>
         <Navbar />
         <OnboardingForm />
         <Footer/>

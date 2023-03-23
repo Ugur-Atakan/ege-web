@@ -42,13 +42,13 @@ import Copylandingpage from './routes/copy-landing-page';
 import { useTranslation } from 'react-i18next';
 
 const App = () => {
-  const {i18n} = useTranslation();
+  const { i18n } = useTranslation();
 
   return (
     <Router>
       <div className='App'>
         <Routes>
-        <Route path="/" element={<Navigate  to={`/${i18n.language}`} />} />
+          <Route path="/" element={<Navigate to={`/${i18n.language}`} />} />
           <Route exact path="/:lang/" element={<Home />} />
           <Route exact path="/:lang/home" element={<Home />} />
           <Route exact path="/:lang/post-incorp" element={<PostIncorporation />} />
@@ -83,9 +83,9 @@ const App = () => {
           <Route exact path="/:lang/pricing/post-incorporation-documents" element={<PricingPostIncorporationDocuments />} />
           <Route exact path="/:lang/pricing/apostille-and-notarization-services" element={<PricingApostilleAndNotorizationServices />} />
           <Route exact path="/:lang/pricing/virtual-mailbox" element={<PricingVirtualMailbox />} />
+          <Route path="/post-order" element={<Navigate to={`/${i18n.language}/post-order`} />} />
           <Route exact path="/:lang/post-order" element={<PostOrder />} />
-          <Route exact path="/post-order" element={<PostOrder />} />
-          <Route path="*" elemenvt={<Home />} />
+          <Route path="*" element={<Home />} />
           <Route exact path="/:lang/all-products" element={<AllProducts />} />
           <Route exact path="/:lang/start-my-business" element={<StartCompany />} />
           <Route path="/:lang/products/:productlink/contact" element={<ProductSpecificContactUs />} />

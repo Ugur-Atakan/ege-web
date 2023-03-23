@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next';
 import axios from "axios";
 import { Link } from 'react-router-dom';
+import Topbar from './Topbar';
 
 const API_ROOT = window.ob.config.apiRoot;
 
@@ -12,12 +13,11 @@ export function Pricing() {
   let [companyState, setCompanyState] = useState("");
   let [companyType, setCompanyType] = useState("");
   let [showPricingPackages, setShowPricingPackages] = useState(false);
-  let [packagePrices, setPackagePrices] = useState([])
-  let [states, setStates] = useState([])
-  let [companyTypes, setCompanyTypes] = useState([])
+  let [packagePrices, setPackagePrices] = useState([]);
+  let [states, setStates] = useState([]);
+  let [companyTypes, setCompanyTypes] = useState([]);
   const pricingPackagesRef = useRef(null);
   const {t, i18n} = useTranslation();
-
 
 
   const updatePricing = () => {
@@ -127,6 +127,7 @@ export function Pricing() {
         Pricing
       </h2>
       <Container>
+        <Topbar/>
         <div className="md:text-center">
           <p className="font-display text-3xl tracking-tight text-white sm:text-4xl">
             <span className="relative whitespace-nowrap">

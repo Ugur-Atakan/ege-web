@@ -1,6 +1,6 @@
 import { ExclamationCircleIcon } from "@heroicons/react/24/outline";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
@@ -12,7 +12,6 @@ export default function HeroForm(props) {
     const [companyName, setcompanyName] = useState('');
     const [validation, setValidation] = useState(false);
     const navigate = useNavigate();
-    const landingform = "came from landing form"
 
     const onEmailChange = (evt) => {
         setEmail(evt.target.value);
@@ -22,13 +21,13 @@ export default function HeroForm(props) {
         setcompanyName(evt.target.value);
     };
 
+
     function formSubmitHandler(e) {
         if (email === '' || companyName === '') {
             e.preventDefault();
             setValidation(true);
             return false;
         }
-
         e.preventDefault();
         setValidation(false);
         let new_company_name = e.target.companyName.value;
