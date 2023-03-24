@@ -60,7 +60,11 @@ export function Navbar() {
     const newPath = currentPath.replace(/^\/[a-z]{2}/, `/${lang}`);
     navigate(newPath, { replace: true });
   };
-
+  //update html lang tag
+  useEffect(() => {
+    document.documentElement.lang = i18n.language;
+  }, [i18n.language]);
+  
   const menu1 = [
     {
       name: t('mobile_menu_title_4'),

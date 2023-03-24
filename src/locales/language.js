@@ -1,11 +1,10 @@
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
+import i18n from 'i18next';
 
 const options = {
     order: ['querystring', 'cookie', 'localStorage', 'sessionStorage', 'navigator', 'htmlTag', 'path', 'subdomain'],
-    order: ['querystring', 'cookie', 'localStorage', 'sessionStorage', 'navigator', 'htmlTag', 'path', 'subdomain'],
-
     // keys or params to lookup language from
     lookupQuerystring: 'lng',
     lookupCookie: 'lng',
@@ -33,7 +32,7 @@ const detector = {
 
     },
 
-    cacheUserLanguage(lngs, options) {
+    cacheUserLanguage(lng, options) {
         // options -> are passed in options
         // lng -> current language, will be called after init and on changeLanguage
         // store it
@@ -48,6 +47,7 @@ i18next
     .use(initReactI18next)
     .init({
         detection: options,
+        debug: true,
         interpolation: {
             escapeValue: false, // not needed for react as it escapes by default
         },
@@ -55,7 +55,6 @@ i18next
             en: {
                 translation: {
                     menu1_title: "Pricing",
-                    menu1_title:"Pricing",
                     menu2_title: "	Products	",
                     menu2_1_title: "	RECURRING	",
                     menu2_1_link_1_title: "	Compliance Reminder	",
@@ -743,7 +742,7 @@ i18next
                     onboarding_header_button: "Start Over",
                     onboarding_form_title1: "You are forming",
                     onboarding_form_title2: "in",
-                    onboarding_form_title3:"an LLC",
+                    onboarding_form_title3: "an LLC",
                     onboarding_form_title4: "a corporation",
                     onboarding_form_subtitle: "Select a company name",
                     onboarding_form_desc: "Enter your preferred business name here. We will do a extensive company name search and let you know if its available or not. Your email address will be used to create an account with us so that you can check the status of your application.",
@@ -757,23 +756,26 @@ i18next
                     steps_step1: "Select Your Package",
                     steps_step2: "Select Company Name",
                     steps_step3: "Provide Contact Information",
-                    provide_contact_information_header_title2:"Selected Name:",
-                    provide_contact_information_header_button:"Start Over",
-                    provide_contact_information_form_title:"Company Contact Information",
-                    provide_contact_information_form_subtitle:"Use a permanent address where you can receive mail.",
-                    provide_contact_information_form_input1_placeholder:"First name",
-                    provide_contact_information_form_input2_placeholder:"Last name",
-                    provide_contact_information_form_input3_placeholder:"Email address",
-                    provide_contact_information_form_input4_placeholder:"Phone Number",
-                    provide_contact_information_form_input5_placeholder:"Street Address",
-                    provide_contact_information_form_input6_placeholder:"Country",
-                    provide_contact_information_form_input7_placeholder:"State/Province",
-                    provide_contact_information_form_input8_placeholder:"City",
-                    provide_contact_information_form_input9_placeholder:"Zip/Postal code",
-                    provide_contact_information_form_input10_placeholder:"Apply Coupon",
-                    provide_contact_information_form_submit_button:"Review and Pay",
-                    home_page_hero_section_form_input1_placeholder:"Enter your preffered company name",
-                    home_page_hero_section_form_input2_placeholder:"Please type your e-mail to contact you",
+                    provide_contact_information_header_title2: "Selected Name:",
+                    provide_contact_information_header_button: "Start Over",
+                    provide_contact_information_form_title: "Company Contact Information",
+                    provide_contact_information_form_subtitle: "Use a permanent address where you can receive mail.",
+                    provide_contact_information_form_input1_placeholder: "First name",
+                    provide_contact_information_form_input2_placeholder: "Last name",
+                    provide_contact_information_form_input3_placeholder: "Email address",
+                    provide_contact_information_form_input4_placeholder: "Phone Number",
+                    provide_contact_information_form_input5_placeholder: "Street Address",
+                    provide_contact_information_form_input6_placeholder: "Country",
+                    provide_contact_information_form_input7_placeholder: "State/Province",
+                    provide_contact_information_form_input8_placeholder: "City",
+                    provide_contact_information_form_input9_placeholder: "Zip/Postal code",
+                    provide_contact_information_form_input10_placeholder: "Apply Coupon",
+                    provide_contact_information_form_submit_button: "Review and Pay",
+                    home_page_hero_section_form_input1_placeholder: "Enter your preffered company name",
+                    home_page_hero_section_form_input2_placeholder: "Please type your e-mail to contact you",
+                    topbar_text1: "Great News!",
+                    topbar_text2: "is currently available to you!",
+                    topbar_text3: "We are holding",
                 }
             },
             tr: {
@@ -1459,7 +1461,7 @@ i18next
                     onboarding_header_button: "Baştan Başlayın",
                     onboarding_form_title1: "eylatinde",
                     onboarding_form_title2: "kuruyorsunuz",
-                    onboarding_form_title3:"bir LLC",
+                    onboarding_form_title3: "bir LLC",
                     onboarding_form_title4: "bir Anonim Şirket",
                     onboarding_form_subtitle: "Şirket İsmi Seçin",
                     onboarding_form_desc: "Tercih ettiğiniz işletme adını buraya girin. Kapsamlı bir şirket adı araştırması yapacağız ve uygun olup olmadığını size bildireceğiz. E-posta adresiniz, başvurunuzun durumunu kontrol edebilmeniz adına bizde bir hesap oluşturmak için kullanılacaktır.",
@@ -1473,23 +1475,26 @@ i18next
                     steps_step1: "Paketinizi Seçin",
                     steps_step2: "Şirket İsmi Seçin",
                     steps_step3: "İletişim Bilgilerinizi Sağlayın",
-                    provide_contact_information_header_title2:"Seçilen İsim:",
-                    provide_contact_information_header_button:"Baştan Başlayın",
-                    provide_contact_information_form_title:"Şirket İletişim Bilgileri",
-                    provide_contact_information_form_subtitle:"Posta alabileceğiniz kalıcı bir adres kullanın.",
-                    provide_contact_information_form_input1_placeholder:"İsim",
-                    provide_contact_information_form_input2_placeholder:"Soyisim",
-                    provide_contact_information_form_input3_placeholder:"E-posta adresi",
-                    provide_contact_information_form_input4_placeholder:"Telefon numarası",
-                    provide_contact_information_form_input5_placeholder:"Adres",
-                    provide_contact_information_form_input6_placeholder:"Ülke",
-                    provide_contact_information_form_input7_placeholder:"Eyalet / Bölge",
-                    provide_contact_information_form_input8_placeholder:"Şehir",
-                    provide_contact_information_form_input9_placeholder:"ZIP / Posta kodu",
-                    provide_contact_information_form_input10_placeholder:"Kuponu Uygula",
-                    provide_contact_information_form_submit_button:"Gözden Geçir ve Ödeme Yap",
-                    home_page_hero_section_form_input1_placeholder:"Tercih ettiğiniz şirket adını girin",
-                    home_page_hero_section_form_input2_placeholder:"Sizinle iletişime geçebilmemiz için lütfen e-posta adresinizi girin",
+                    provide_contact_information_header_title2: "Seçilen İsim:",
+                    provide_contact_information_header_button: "Baştan Başlayın",
+                    provide_contact_information_form_title: "Şirket İletişim Bilgileri",
+                    provide_contact_information_form_subtitle: "Posta alabileceğiniz kalıcı bir adres kullanın.",
+                    provide_contact_information_form_input1_placeholder: "İsim",
+                    provide_contact_information_form_input2_placeholder: "Soyisim",
+                    provide_contact_information_form_input3_placeholder: "E-posta adresi",
+                    provide_contact_information_form_input4_placeholder: "Telefon numarası",
+                    provide_contact_information_form_input5_placeholder: "Adres",
+                    provide_contact_information_form_input6_placeholder: "Ülke",
+                    provide_contact_information_form_input7_placeholder: "Eyalet / Bölge",
+                    provide_contact_information_form_input8_placeholder: "Şehir",
+                    provide_contact_information_form_input9_placeholder: "ZIP / Posta kodu",
+                    provide_contact_information_form_input10_placeholder: "Kuponu Uygula",
+                    provide_contact_information_form_submit_button: "Gözden Geçir ve Ödeme Yap",
+                    home_page_hero_section_form_input1_placeholder: "Tercih ettiğiniz şirket adını girin",
+                    home_page_hero_section_form_input2_placeholder: "Sizinle iletişime geçebilmemiz için lütfen e-posta adresinizi girin",
+                    topbar_text1: "Güzel haberlerimiz var!",
+                    topbar_text2: "senin için kullanılabilir!",
+                    topbar_text3: "Elimizde tutuyoruz",
                 }
             }
         }
