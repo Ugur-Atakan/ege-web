@@ -19,10 +19,6 @@ export function Pricing() {
   const pricingPackagesRef = useRef(null);
   const {t, i18n} = useTranslation();
 
-// we update the update Pricing function every time the language is refreshed
-  useEffect(()=>{
-    updatePricing();
-  },[i18n.language])
 
   const updatePricing = () => {
     companyState = localStorage.getItem('companyState')
@@ -99,7 +95,7 @@ export function Pricing() {
     localStorage.setItem('companyState', companyState)
     localStorage.setItem('companyType', companyType)
     updatePricing()
-  }, [])
+  }, [i18n.language])
 
   const handleCompanyTypeChange = (name) => {
     console.log("handleCompanyTypeChange", name)
