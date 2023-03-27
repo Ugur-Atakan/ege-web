@@ -8,7 +8,7 @@ export default function ExitIndent() {
                     <div>
                         <img src={exitpopupimg} className="rounded-md" />
                     </div>
-                    <diV>
+                    <div>
                         <div>
                             <h1 className='pb-4 text-center font-bold tracking-tight text-gray-900 text-3xl'>Wait! I have news for you. 20% discount!</h1>
                             <p class="text-center text-lg leading-8 text-gray-600">Lorem ıpsum dolor sit amet! Lorem ıpsum dolor sit amet!</p>
@@ -37,7 +37,7 @@ export default function ExitIndent() {
                                 </div>
                             </form>
                         </div>
-                    </diV>
+                    </div>
                 </div>
             </div>
         </div>

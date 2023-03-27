@@ -19,6 +19,10 @@ export function Pricing() {
   const pricingPackagesRef = useRef(null);
   const {t, i18n} = useTranslation();
 
+// we update the update Pricing function every time the language is refreshed
+  useEffect(()=>{
+    updatePricing();
+  },[i18n.language])
 
   const updatePricing = () => {
     companyState = localStorage.getItem('companyState')
@@ -27,10 +31,11 @@ export function Pricing() {
     if (companyType && companyState) {
       let companyTypeId = companyTypes.find(x => x.entityType === companyType).id
       let companyStateId = states.find(x => x.state === companyState).id
-
+      let langs = i18n.language ==="en" ? "en" : "tr"
       let payload = {
         stateId: companyStateId,
-        entityTypeId: companyTypeId
+        entityTypeId: companyTypeId,
+        lang:langs,
       }
 
       axios.post(API_ROOT + '/api/fe/prices', payload, {
@@ -284,13 +289,13 @@ export function Pricing() {
           ${props.price}
         </p>
         {/* if not selected */}
-        {props.name === 'Starter' && <button id='starter-package' className="bg-white text-black lg:bg-transparent font-semibold group inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm focus:outline-none ring-slate-700 lg:text-white hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white mt-8" aria-label="Get started with the Starter plan for ${price}" onClick={clickHandler.bind(this)}>Get Started</button>}
+        {props.name === 'Starter' && <button id='starter-package' className="bg-white text-black lg:bg-transparent font-semibold group inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm focus:outline-none ring-slate-700 lg:text-white hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white mt-8" aria-label="Get started with the Starter plan for ${price}" onClick={clickHandler.bind(this)}>{i18n.language==="en" ? "Get Started" : "Şimdi Başlayın"}</button>}
         {/* if corp3 is selected */}
-        {props.name === 'Start Up' && <button id='startup-package' className="group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-white text-slate-900 hover:bg-blue-50 active:bg-blue-200 active:text-slate-600 focus-visible:outline-white mt-8" aria-label="Get started with the Small business plan for $15" onClick={clickHandler.bind(this)} >Get Started</button>}
+        {props.name === 'Start Up' && <button id='startup-package' className="group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-white text-slate-900 hover:bg-blue-50 active:bg-blue-200 active:text-slate-600 focus-visible:outline-white mt-8" aria-label="Get started with the Small business plan for $15" onClick={clickHandler.bind(this)} >{i18n.language==="en" ? "Get Started" : "Şimdi Başlayın"}</button>}
          {/* if selected */}
-         {props.name === 'Scale Up' && <button id='scaleup-package' className="bg-white text-black lg:bg-transparent font-semibold group inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm focus:outline-none ring-slate-700 lg:text-white hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white mt-8" aria-label="Get started with the Starter plan for ${price}" onClick={clickHandler.bind(this)}>Get Started</button>}
-         {props.name === 'Registate LLC Gold' && <button id='gold-package' className="bg-white text-black lg:bg-transparent font-semibold group inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm focus:outline-none ring-slate-700 lg:text-white hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white mt-8" aria-label="Get started with the Starter plan for ${price}" onClick={clickHandler.bind(this)}>Get Started</button>}
-         {props.name === 'Registate LLC Premium' && <button id='preimum-package'className="bg-white text-black lg:bg-white lg:text-black font-semibold group inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm focus:outline-none  hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white mt-8" aria-label="Get started with the Starter plan for ${price}" onClick={clickHandler.bind(this)}>Get Started</button>}
+         {props.name === 'Scale Up' && <button id='scaleup-package' className="bg-white text-black lg:bg-transparent font-semibold group inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm focus:outline-none ring-slate-700 lg:text-white hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white mt-8" aria-label="Get started with the Starter plan for ${price}" onClick={clickHandler.bind(this)}>{i18n.language==="en" ? "Get Started" : "Şimdi Başlayın"}</button>}
+         {props.name === 'Registate LLC Gold' && <button id='gold-package' className="bg-white text-black lg:bg-transparent font-semibold group inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm focus:outline-none ring-slate-700 lg:text-white hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white mt-8" aria-label="Get started with the Starter plan for ${price}" onClick={clickHandler.bind(this)}>{i18n.language==="en" ? "Get Started" : "Şimdi Başlayın"}</button>}
+         {props.name === 'Registate LLC Premium' && <button id='preimum-package'className="bg-white text-black lg:bg-white lg:text-black font-semibold group inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm focus:outline-none  hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white mt-8" aria-label="Get started with the Starter plan for ${price}" onClick={clickHandler.bind(this)}>{i18n.language==="en" ? "Get Started" : "Şimdi Başlayın"}</button>}
         {console.log(props.name)}
         <ul
           className={clsx('order-last mt-10 space-y-3 text-sm', {
