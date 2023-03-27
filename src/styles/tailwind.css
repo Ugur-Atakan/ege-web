@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .open-animation{
-    animation: openanimation 2s;
+    animation: openanimation 1s;
 }
 
 @keyframes openanimation {

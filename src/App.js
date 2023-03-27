@@ -41,12 +41,14 @@ import ProductSpecificContactUs from './routes/product-specific-contact-us';
 import Copylandingpage from './routes/copy-landing-page';
 import { useTranslation } from 'react-i18next';
 import  {Navbar}  from './components/Navbar';
+import ExitIndent from './components/ExitIndent';
 
 const App = () => {
   const { i18n } = useTranslation();
 
   return (
     <Router>
+      <ExitIndent/>
       <Navbar/>
         <Routes>
           <Route path="/" element={<Navigate to={`/${i18n.language}`} />} />
