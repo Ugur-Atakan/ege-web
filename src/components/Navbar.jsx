@@ -35,7 +35,7 @@ import Logo from '../images/logo2x.png.webp'
 import { useTranslation } from 'react-i18next'
 import turkeyicon from '../images/turkey.png'
 import ukicon from '../images/united-kingdom.png'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -52,18 +52,27 @@ const navigation = [
 
 export function Navbar() {
   const { t, i18n } = useTranslation();
-  const navigate = useNavigate();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const [currentLang, setCurrentLang] = useState(i18n.language);
 
-  const handleLanguageChange = (lang) => {
-    i18n.changeLanguage(lang);
-    const currentPath = window.location.pathname;
-    const newPath = currentPath.replace(/^\/[a-z]{2}/, `/${lang}`);
-    navigate(newPath, { replace: true });
-  };
-  //update html lang tag
-  useEffect(() => {
-    document.documentElement.lang = i18n.language;
-  }, [i18n.language]);
+    useEffect(() => {
+        const lang = location.pathname.split("/")[1];
+        if (lang && currentLang !== lang) {
+            setCurrentLang(lang);
+            i18n.changeLanguage(lang);
+        } else if (!lang) {
+            setCurrentLang(i18n.language);
+            navigate(`/${i18n.language}${location.pathname}`, { replace: true });
+        }
+    }, [i18n, navigate, location.pathname, currentLang]);
+
+    const changeLanguage = (lang) => {
+        setCurrentLang(lang);
+        i18n.changeLanguage(lang);
+        const newPathname = location.pathname.replace(`/${currentLang}`, `/${lang}`);
+        navigate(newPathname, { replace: true });
+    };
   
   const menu1 = [
     {
@@ -144,14 +153,14 @@ export function Navbar() {
         <div className="relative z-20">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-5 sm:px-6 sm:py-4 md:justify-start md:space-x-10 lg:px-8">
             <div>
-              <a href="/" className="flex">
+              <Link to={`/${i18n.language}`} className="flex">
                 <span className="sr-only">Your Company</span>
                 <img
                   className="h-8 w-auto sm:h-10"
                   src={Logo}
                   alt=""
                 />
-              </a>
+              </Link>
             </div>
             <div className="-my-2 -mr-2 md:hidden">
               <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
@@ -378,12 +387,12 @@ export function Navbar() {
                       <Menu.Item>
                         {({ active }) => (
                           <div className='block'>
-                            <div className={i18n.language === 'en' ? 'block cursor-pointer bg-slate-100 rounded-md' : 'block cursor-pointer hover:bg-slate-200'} onClick={() => handleLanguageChange("en")}>
+                            <div className={i18n.language === 'en' ? 'block cursor-pointer bg-slate-100 rounded-md' : 'block cursor-pointer hover:bg-slate-200'} onClick={() => changeLanguage("en")}>
                               <div className='flex items-center justify-center gap-2 p-3'>
                                 <img src={ukicon} className='h-6' /> <button className='text-gray-700'>English</button>
                               </div>
                             </div>
-                            <div className={i18n.language === 'tr' ? 'block cursor-pointer bg-slate-100 rounded-md' : 'block cursor-pointer hover:bg-slate-200'} onClick={() => handleLanguageChange("tr")}>
+                            <div className={i18n.language === 'tr' ? 'block cursor-pointer bg-slate-100 rounded-md' : 'block cursor-pointer hover:bg-slate-200'} onClick={() => changeLanguage("tr")}>
                               <div className='flex items-center justify-center gap-2 p-3'>
                                 <img src={turkeyicon} className='h-6' /> <button className='text-gray-700'>Turkish</button>
                               </div>

@@ -316,7 +316,7 @@ function OrderInformationPanel(props) {
     let packagePrice = localStorage.getItem('packagePrice');
     return (
         <div className="bg-green-50 shadow sm:rounded-lg">
-            <div className="px-4 py-5 sm:px-4 py-1">
+            <div className="px-4 py-5 sm:px-4">
                 <div className="sm:flex sm:items-center sm:justify-between">
                     <div>
                         {packageName && packagePrice && (
@@ -427,12 +427,12 @@ function CompanyNameEmailForm(props) {
                             </button>
                             <p className="text-xs leading-5 text-gray-500">
                                 {t('onboarding_form_policy1')}{' '}
-                                <a href="#">
+                                <a href="#.">
                                     {t('onboarding_form_policy2')}
                                 </a>
                                 ,{' '}
                                 {t('onboarding_form_policy3')}{' '}
-                                <a href="#">
+                                <a href="#.">
                                     {t('onboarding_form_policy4')}
                                 </a>
                             </p>

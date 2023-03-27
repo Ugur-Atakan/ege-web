@@ -12,11 +12,9 @@ import { Navbar } from '../components/Navbar';
 import TestimonialLogos from '../components/TestimonialLogos';
 
 export function Home() {
-    localStorage.clear()
     return (
         <>
             <main>
-                <Navbar/>
                 <Hero />
                 <Customers />
                 <TestimonialLogos/>

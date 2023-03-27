@@ -75,13 +75,13 @@ const Blog = () => {
                                             </div>
                                             <div className="mt-6 flex items-center">
                                                 <div className="flex-shrink-0">
-                                                    <a href="#">
+                                                    <a href="#.">
                                                         <span className="sr-only">{post.fields.author}</span>
                                                     </a>
                                                 </div>
                                                 <div className="ml-3">
                                                     <p className="text-sm font-medium text-gray-900">
-                                                        <a href="#" className="hover:underline">
+                                                        <a href="#." className="hover:underline">
                                                             {post.fields.author}
                                                         </a>
                                                     </p>
@@ -110,13 +110,13 @@ const Blog = () => {
                                             </div>
                                             <div className="mt-6 flex items-center">
                                                 <div className="flex-shrink-0">
-                                                    <a href="#">
+                                                    <a href="#.">
                                                         <span className="sr-only">{post.fields.author}</span>
                                                     </a>
                                                 </div>
                                                 <div className="ml-3">
                                                     <p className="text-sm font-medium text-gray-900">
-                                                        <a href="#" className="hover:underline">
+                                                        <a href="#." className="hover:underline">
                                                             {post.fields.author}
                                                         </a>
                                                     </p>
@@ -156,7 +156,7 @@ const Blog = () => {
                                 </p>
                             )
                             || node.nodeType === "heading-3" && (
-                                <h2 className="text-2xl text-gray-500 py-6 font-bold text-black">
+                                <h2 className="text-2xl text-gray-500 py-6 font-bold">
                                     {
                                         node.content.map((nodecontent) => (
                                             nodecontent.nodeType === "text" && (

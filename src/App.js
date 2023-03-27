@@ -35,21 +35,22 @@ import Apostille from './routes/apostille';
 import AccountOpeningSupport from './routes/account-opening-support';
 import Company from './routes/company';
 import AllProducts from './routes/all-products';
-import '../src/locales/language.js'
+import './i18n.js'
 import StartCompany from './routes/start-company';
 import ProductSpecificContactUs from './routes/product-specific-contact-us';
 import Copylandingpage from './routes/copy-landing-page';
 import { useTranslation } from 'react-i18next';
+import  {Navbar}  from './components/Navbar';
 
 const App = () => {
   const { i18n } = useTranslation();
 
   return (
     <Router>
-      <div className='App'>
+      <Navbar/>
         <Routes>
           <Route path="/" element={<Navigate to={`/${i18n.language}`} />} />
-          <Route exact path="/:lang/" element={<Home />} />
+          <Route  path="/:lang" element={<Home />} />
           <Route exact path="/:lang/home" element={<Home />} />
           <Route exact path="/:lang/post-incorp" element={<PostIncorporation />} />
           <Route exact path="/:lang/compliance-reminder" element={<ComplianceReminder />} />
@@ -90,7 +91,6 @@ const App = () => {
           <Route path="/:lang/products/:productlink/contact" element={<ProductSpecificContactUs />} />
           <Route path="/:lang/copy-landing-page" element={<Copylandingpage />} />
         </Routes>
-      </div>
     </Router>
   );
 }
