@@ -40,7 +40,8 @@ const Blog = () => {
             }
             getEntry();
         }
-    }, [id, i18n.language]);
+    }, [id]);
+    console.log(posts)
 
     return (
         <div className="relative px-6 pt-16 pb-20 lg:px-8 lg:pt-24 lg:pb-28">
@@ -67,7 +68,7 @@ const Blog = () => {
                                         </div>
                                         <div className="flex flex-1 flex-col justify-between bg-white p-6">
                                             <div className="flex-1">
-                                                <Link to={"/blog/" + post.sys.id} className="mt-2 block">
+                                                <Link to={`/${i18n.language}/blog/` + post.sys.id}  className="mt-2 block">
                                                     <p className="text-xl font-semibold text-gray-900">{post.fields.title}</p>
                                                     <p className="mt-3 text-base text-gray-500">{post.fields.slug}</p>
                                                 </Link>
@@ -102,7 +103,7 @@ const Blog = () => {
                                         </div>
                                         <div className="flex flex-1 flex-col justify-between bg-white p-6">
                                             <div className="flex-1">
-                                                <Link to={"/blog/" + post.sys.id} className="mt-2 block">
+                                                <Link to={`/${i18n.language}/blog/` + post.sys.id} className="mt-2 block">
                                                     <p className="text-xl font-semibold text-gray-900">{post.fields.title}</p>
                                                     <p className="mt-3 text-base text-gray-500">{post.fields.slug}</p>
                                                 </Link>
@@ -166,6 +167,23 @@ const Blog = () => {
                                         ))
                                     }
                                 </h2>
+                            )
+                            || node.nodeType === "unordered-list" && (
+                                node.content.map((nodecontent) => (
+                                    nodecontent.nodeType === "list-item" && (
+                                        nodecontent.content.map((nodecontenttwo) => (
+                                            nodecontenttwo.nodeType === "paragraph" && (
+                                                <li className="text-lg text-gray-500 py-2">
+                                                {nodecontenttwo.content.map((nodecontentthree) => (
+                                                    nodecontentthree.nodeType === "text" && (
+                                                        nodecontentthree.value + " "
+                                                    )
+                                                ))}
+                                                </li>
+                                            )
+                                        ))
+                                    )
+                                ))
                             )
                             || node.nodeType === "embedded-asset-block" && (
                                 <img src={node.data.target.fields.file.url} className='rounded-lg shadow-lg my-8' alt={node.data.target.fields.file.title} />

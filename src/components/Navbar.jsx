@@ -348,7 +348,7 @@ export function Navbar() {
                 <Popover>
                   <button
                     className='text-gray-500 group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:text-black focus:ring-blue-500 focus:ring-offset-2'>
-                    <Link to={`/${i18n.language}/blog`}><span>{t('menu4_title')}</span></Link>
+                    <a href={`/${i18n.language}/blog`}><span>{t('menu4_title')}</span></a>
                   </button>
                 </Popover>
               </Popover.Group>
