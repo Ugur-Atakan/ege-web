@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { createClient } from "contentful";
 import { useTranslation } from 'react-i18next';
 
 const Blog = () => {
     const [posts, setPosts] = useState([]);
     const [entry, setEntry] = useState(false);
-    const {t, i18n } = useTranslation();
+    const { t, i18n } = useTranslation();
     const { id } = useParams();
 
     const client = createClient({
@@ -40,7 +40,7 @@ const Blog = () => {
             }
             getEntry();
         }
-    }, [id]);
+    }, [id, i18n.language]);
 
     return (
         <div className="relative px-6 pt-16 pb-20 lg:px-8 lg:pt-24 lg:pb-28">
@@ -50,40 +50,39 @@ const Blog = () => {
             <div className="relative mx-auto max-w-7xl">
                 {entry
                     ? null
-                    : <div className="text-center">
+                    : <><div className="text-center">
                         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{t('blog_header')}</h2>
                         <p className="mx-auto mt-3 max-w-2xl text-xl text-gray-500 sm:mt-4">
-                           {t('blog_description')}
+                            {t('blog_description')}
                         </p>
                     </div>
-                }
-                <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
+                    <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
                     {posts.map((post, key) => (
                         <>
                             {post.fields.language === 'Turkish' && i18n.language === 'tr'
-                                && <a href={`/${i18n.language}/blog/` + post.sys.id} key={key}>
+                                && <Link to={`/${i18n.language}/blog/` + post.sys.id} key={key}>
                                     <div key={post.title} className="flex flex-col overflow-hidden rounded-lg shadow-lg">
                                         <div className="flex-shrink-0">
                                             <img className="h-48 w-full object-cover" src={post.fields.image.fields.file.url} alt={post.fields.image.fields.title} />
                                         </div>
                                         <div className="flex flex-1 flex-col justify-between bg-white p-6">
                                             <div className="flex-1">
-                                                <a href={"/blog/" + post.sys.id} className="mt-2 block">
+                                                <Link to={"/blog/" + post.sys.id} className="mt-2 block">
                                                     <p className="text-xl font-semibold text-gray-900">{post.fields.title}</p>
                                                     <p className="mt-3 text-base text-gray-500">{post.fields.slug}</p>
-                                                </a>
+                                                </Link>
                                             </div>
                                             <div className="mt-6 flex items-center">
                                                 <div className="flex-shrink-0">
-                                                    <a href="#.">
+                                                    <Link to="#.">
                                                         <span className="sr-only">{post.fields.author}</span>
-                                                    </a>
+                                                    </Link>
                                                 </div>
                                                 <div className="ml-3">
                                                     <p className="text-sm font-medium text-gray-900">
-                                                        <a href="#." className="hover:underline">
+                                                        <Link to="#." className="hover:underline">
                                                             {post.fields.author}
-                                                        </a>
+                                                        </Link>
                                                     </p>
                                                     <div className="flex space-x-1 text-sm text-gray-500">
                                                         <time dateTime={post.sys.createdAt}>{post.sys.createdAt.substring(0, 10)}</time>
@@ -93,32 +92,32 @@ const Blog = () => {
                                             </div>
                                         </div>
                                     </div>
-                                </a>
+                                </Link>
                             }
-                             {post.fields.language === 'English' && i18n.language ==='en'
-                                && <a href={`/${i18n.language}/blog/` + post.sys.id} key={key}>
+                            {post.fields.language === 'English' && i18n.language === 'en'
+                                && <Link to={`/${i18n.language}/blog/` + post.sys.id} key={key}>
                                     <div key={post.title} className="flex flex-col overflow-hidden rounded-lg shadow-lg">
                                         <div className="flex-shrink-0">
                                             <img className="h-48 w-full object-cover" src={post.fields.image.fields.file.url} alt={post.fields.image.fields.title} />
                                         </div>
                                         <div className="flex flex-1 flex-col justify-between bg-white p-6">
                                             <div className="flex-1">
-                                                <a href={"/blog/" + post.sys.id} className="mt-2 block">
+                                                <Link to={"/blog/" + post.sys.id} className="mt-2 block">
                                                     <p className="text-xl font-semibold text-gray-900">{post.fields.title}</p>
                                                     <p className="mt-3 text-base text-gray-500">{post.fields.slug}</p>
-                                                </a>
+                                                </Link>
                                             </div>
                                             <div className="mt-6 flex items-center">
                                                 <div className="flex-shrink-0">
-                                                    <a href="#.">
+                                                    <Link to="#.">
                                                         <span className="sr-only">{post.fields.author}</span>
-                                                    </a>
+                                                    </Link>
                                                 </div>
                                                 <div className="ml-3">
                                                     <p className="text-sm font-medium text-gray-900">
-                                                        <a href="#." className="hover:underline">
+                                                        <Link to="#." className="hover:underline">
                                                             {post.fields.author}
-                                                        </a>
+                                                        </Link>
                                                     </p>
                                                     <div className="flex space-x-1 text-sm text-gray-500">
                                                         <time dateTime={post.sys.createdAt}>{post.sys.createdAt.substring(0, 10)}</time>
@@ -128,11 +127,13 @@ const Blog = () => {
                                             </div>
                                         </div>
                                     </div>
-                                </a>
+                                </Link>
                             }
                         </>
                     ))}
-                </div>
+                </div></>
+                }
+
 
                 {entry && (
                     <div className="relative mx-auto max-w-4xl">

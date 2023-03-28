@@ -37,7 +37,7 @@ export default function Topbar() {
 
     const minutes = Math.floor(countdown / 60);
     const seconds = countdown % 60;
-    const {t} = useTranslation();
+    const {t,i18n} = useTranslation();
 
     return (
         <>
@@ -47,7 +47,7 @@ export default function Topbar() {
                         <p className="text-2xl leading-6 text-white font-semibold" >
                             {t('topbar_text1')} <span className='font-bold text-blue-600'>"{localStorage.getItem('companyName')}"</span> {t('topbar_text2')}
                         </p>
-                        <p className="text-2xl leading-6 text-white font-semibold text-center ">{t('topbar_text3')} <span className='font-bold text-blue-600'>"{localStorage.getItem('companyName')}"</span></p>
+                        <p className="text-2xl leading-6 text-white font-semibold text-center ">{i18n.language ==="en" ? <>{t('topbar_text3')} <span className='font-bold text-blue-600'>"{localStorage.getItem('companyName')}"</span></> : <><span className='font-bold text-blue-600'>"{localStorage.getItem('companyName')}"</span> {t('topbar_text3')} </>}</p>
                         <p className='font-bold text-center text-white text-2xl'> {`${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`}</p>
                     </div>
                 </div>
