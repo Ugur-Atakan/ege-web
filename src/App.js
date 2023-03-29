@@ -48,7 +48,7 @@ const App = () => {
 
   return (
     <Router>
-      
+      <ExitIndent/>
         <Routes>
           <Route path="/" element={<Navigate to={`/${i18n.language}`} />} />
           <Route  path="/:lang" element={<Home />} />
