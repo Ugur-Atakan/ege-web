@@ -9,13 +9,15 @@ import LeftImgRightText from "../components/LeftImgRightText"
 import { DocumentCheckIcon, CursorArrowRippleIcon, NewspaperIcon } from "@heroicons/react/24/outline"
 import productData from '../assets/productData'
 import { useTranslation } from 'react-i18next'
+import postincorp1 from '../images/postincorp1.jpg'
+
 
 function Postincorporation() {
   const { t, i18n } = useTranslation();
   return (
     <main>
       <Navbar />
-      <LeftImgRightText img="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1567&q=80" heading={t('post_incorp_header1_uptitle_blue')} desc={t('post_incorp_header1_text')} title={t('post_incorp_header1_maintitle_black')} button={t('post_incorp_header1_button')} href={`/${i18n.language}/products/${productData[19].link}/contact`} />
+      <LeftImgRightText img={postincorp1} heading={t('post_incorp_header1_uptitle_blue')} desc={t('post_incorp_header1_text')} title={t('post_incorp_header1_maintitle_black')} button={t('post_incorp_header1_button')} href={`/${i18n.language}/products/${productData[19].link}/contact`} />
       <Price href={`/${i18n.language}/products/${productData[19].link}/contact`}/>
       <Stats title={t('post_incorp_header3_title')} icontitle1={t('post_incorp_header3_icon1_title')} icondesc1={t('post_incorp_header3_icon1_text')} icontitle2={t('post_incorp_header3_icon2_title')} icondesc2={t('post_incorp_header3_icon2_text')} icon1=<DocumentCheckIcon className="w-12" /> icon2=<CursorArrowRippleIcon className='w-12' /> icontitle3={t('post_incorp_header3_icon3_title')} icon3=<NewspaperIcon className='w-12' /> icondesc3={t('post_incorp_header3_icon3_text')} />
       <LeftTextRightImg title={t('post_incorp_header4_title')} />

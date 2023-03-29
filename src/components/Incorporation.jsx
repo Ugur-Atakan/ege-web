@@ -1,5 +1,5 @@
 import {useTranslation} from 'react-i18next'
-
+import postincorp2 from '../images/postincorp2.jpg'
 function Corporation(props) {
     const {t} = useTranslation();
   return (
@@ -21,7 +21,7 @@ function Corporation(props) {
                 <div className="w-full md:w-1/2">
                     <img
                         className="rounded-lg shadow-lg"
-                        src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1567&q=80"
+                        src={postincorp2}
                         alt=""
                     />
                 </div>

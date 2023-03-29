@@ -1,4 +1,4 @@
-import delaware from '../images/delaware.webp'
+import apostille2 from '../images/apostille2.png'
 import { useTranslation } from 'react-i18next'
 
 export default function Delaware() {
@@ -12,7 +12,7 @@ export default function Delaware() {
                 <div className="w-full md:w-1/2">
                     <img
                         className="rounded-lg shadow-lg"
-                        src={delaware}
+                        src={apostille2}
                         alt=""
                     />
                 </div>
