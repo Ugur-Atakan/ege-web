@@ -17,7 +17,7 @@ export function Testimonials() {
           t('section8_comment1'),
         author: {
           name:  t('section8_comment1_owner'),
-          image: utkan,
+          image: ufuk,
         },
       },
       {
@@ -25,7 +25,7 @@ export function Testimonials() {
         t('section8_comment2'),
         author: {
           name:  t('section8_comment2_owner'),
-          image: noyan,
+          image: utkan,
         },
       },
     ],
@@ -35,7 +35,7 @@ export function Testimonials() {
         t('section8_comment3'),
         author: {
           name:  t('section8_comment3_owner'),
-          image: ufuk,
+          image: duygu,
         },
       },
       {
@@ -43,7 +43,7 @@ export function Testimonials() {
         t('section8_comment4'),
         author: {
          name: t('section8_comment4_owner'),
-          image: derya,
+          image: noyan,
         },
       }
     ],
@@ -53,7 +53,7 @@ export function Testimonials() {
         t('section8_comment5'),
         author: {
           name:  t('section8_comment5_owner'),
-          image: duygu,
+          image: derya,
         },
       },
       {
