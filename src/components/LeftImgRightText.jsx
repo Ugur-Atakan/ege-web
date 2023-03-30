@@ -25,6 +25,9 @@ export default function LeftImgRightText(props) {
                                 {props.button}
                             </Link>
                         </button>
+                        <button className="mt-8">
+                            {props.calendly}
+                        </button>
                     </div>
                 </div>
             </div>

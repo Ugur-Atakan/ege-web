@@ -46,6 +46,8 @@
 "menu2_3_link_4_subtitle": "Get help for opening a business bank account",
 "menu2_3_link_5_title": "Post Incorporation",
 "menu2_3_link_5_subtitle": "Properly finish company formation",
+"menu2_3_link_6_title": "Free Tax Consultation",
+"menu2_3_link_6_subtitle": "Book your free tax consultation session",
 "menu3_title": "Resources and Support",
 "menu3_1_title": "FAQs",
 "menu3_1_subtitle": "Everything you need to know about the product and services",
@@ -720,5 +722,12 @@
 "home_page_hero_section_form_input2_placeholder": "Please type your e-mail to contact you",
 "topbar_text1": "Great News!",
 "topbar_text2": "is currently available to you!",
-"topbar_text3": "We are holding"
+"topbar_text3": "We are holding",
+"free_tax_consultant_title":"Free Tax Consultation",
+"free_tax_consultant_desc":"If you are feeling overwhelmed or confused by our tax situation, consider taking advantage of my free tax consultancy service. As a tax expert, we are here to help you navigate the complex world of taxes and provide you with personalized advice tailored to your unique circumstances",
+"free_tax_consultant_calendly_text":"Book online sesion",
+"free_tax_consultant_price":"Free",
+"notfound_title":"Looks like you've found the doorway to the great nothing",
+"notfound_desc":"Sorry about that! Please visit our hompage to get where you need to go.",
+"notfound_button":"Home Page"
 }

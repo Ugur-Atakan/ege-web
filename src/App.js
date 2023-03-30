@@ -42,6 +42,8 @@ import Copylandingpage from './routes/copy-landing-page';
 import { useTranslation } from 'react-i18next';
 import  {Navbar}  from './components/Navbar';
 import ExitIndent from './components/ExitIndent';
+import Freetaxconsultation from './routes/free-tax-consultation';
+import Notfound from './routes/notfound';
 
 const App = () => {
   const { i18n } = useTranslation();
@@ -86,11 +88,13 @@ const App = () => {
           <Route exact path="/:lang/pricing/apostille-and-notarization-services" element={<PricingApostilleAndNotorizationServices />} />
           <Route exact path="/:lang/pricing/virtual-mailbox" element={<PricingVirtualMailbox />} />
           <Route path="/post-order" element={<PostOrder/>} />
-          <Route path="*" element={<Home />} />
+          <Route exact path="*" element={<Notfound />} />
+          <Route exact path="/notfound" element={<Notfound />} />
           <Route exact path="/:lang/all-products" element={<AllProducts />} />
           <Route exact path="/:lang/start-my-business" element={<StartCompany />} />
           <Route path="/:lang/products/:productlink/contact" element={<ProductSpecificContactUs />} />
           <Route path="/:lang/copy-landing-page" element={<Copylandingpage />} />
+          <Route path="/:lang/free-tax-consultation" element={<Freetaxconsultation />}/>
         </Routes>
     </Router>
   );

@@ -57,21 +57,27 @@ export function Navbar() {
     const [currentLang, setCurrentLang] = useState(i18n.language);
 
     useEffect(() => {
-        const lang = location.pathname.split("/")[1];
-        if (lang && currentLang !== lang) {
-            setCurrentLang(lang);
-            i18n.changeLanguage(lang);
-        } else if (!lang) {
-            setCurrentLang(i18n.language);
-            navigate(`/${i18n.language}${location.pathname}`, { replace: true });
-        }
+      const lang = location.pathname.split("/")[1];
+      if (lang && currentLang !== lang && (lang === "en" || lang === "tr")) {
+        setCurrentLang(lang);
+        i18n.changeLanguage(lang);
+      } else if (!lang) {
+        setCurrentLang(i18n.language);
+        navigate(`/${i18n.language}${location.pathname}`, { replace: true });
+      } else if (lang !== "en" && lang !== "tr") {
+        navigate("/notfound", { replace: true });
+      }
     }, [i18n, navigate, location.pathname, currentLang]);
-
+    
     const changeLanguage = (lang) => {
+      if (lang === "en" || lang === "tr") {
         setCurrentLang(lang);
         i18n.changeLanguage(lang);
         const newPathname = location.pathname.replace(`/${currentLang}`, `/${lang}`);
         navigate(newPathname, { replace: true });
+      } else {
+        navigate("/notfound", { replace: true });
+      }
     };
   
   const menu1 = [
