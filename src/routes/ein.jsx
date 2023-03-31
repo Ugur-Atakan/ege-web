@@ -33,7 +33,6 @@ export default function Ein() {
             <li>{t('ein_header6_list9')}</li>
             <li>{t('ein_header6_list10')}</li>
             <li>{t('ein_header6_list11')}</li>
-            <li>{t('ein_header6_list12')}</li>
             </ul>/>
             <Footer />
         </main>
