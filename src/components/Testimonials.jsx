@@ -17,7 +17,7 @@ export function Testimonials() {
           t('section8_comment1'),
         author: {
           name:  t('section8_comment1_owner'),
-          image: ufuk,
+          image: utkan,
         },
       },
       {
@@ -25,7 +25,7 @@ export function Testimonials() {
         t('section8_comment2'),
         author: {
           name:  t('section8_comment2_owner'),
-          image: utkan,
+          image: ufuk,
         },
       },
     ],

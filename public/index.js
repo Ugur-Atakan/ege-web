@@ -245,9 +245,8 @@ $(document).ready(function () {
         $.removeData( document.body, "stick_var" );
     }
 
-    $.stick_close = function()
-    {
-        stick_close();
-    }
+    $( "#popupclose" ).click(function() {
+        $("#stickLayer").css("display", "none");
+      });
 
 }( jQuery ));
