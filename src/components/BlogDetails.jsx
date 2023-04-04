@@ -41,7 +41,6 @@ const Blog = () => {
             getEntry();
         }
     }, [id]);
-    console.log(posts)
 
     return (
         <div className="relative px-6 pt-16 pb-20 lg:px-8 lg:pt-24 lg:pb-28">

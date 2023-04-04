@@ -6,7 +6,7 @@ export default function ExitIndent() {
     }
     return (
         <div id="stickLayer" style={{ display: "none" }} className="stick_popup">
-            <div id="popupclose" class="stick_close" onClick={closePopup}>X</div>
+            <div id="popupclose" className="stick_close" onClick={closePopup}>X</div>
             <div className="stick_content">
                 <div className='flex items-center gap-6'>
                     <div>
