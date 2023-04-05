@@ -1,4 +1,4 @@
-import exitpopupimg from '../images/exit-popup.jpg'
+/* import exitpopupimg from '../images/exit-popup.jpg'
 
 export default function ExitIndent() {
     const closePopup = ()=> {
@@ -47,3 +47,4 @@ export default function ExitIndent() {
         </div>
     )
 }
+ */

@@ -7,7 +7,7 @@
  *
  */
 
-$(document).ready(function () {
+/* $(document).ready(function () {
 
     $.stickToMe({
       layer: '#stickLayer',
@@ -249,4 +249,4 @@ $(document).ready(function () {
         $("#stickLayer").css("display", "none");
       });
 
-}( jQuery ));
+}( jQuery )); */
