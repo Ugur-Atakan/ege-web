@@ -12,6 +12,7 @@ $(document).ready(function () {
     $.stickToMe({
       layer: '#stickLayer',
       maxamount: 1,
+      maxtime : 1,
       delay:60,
       cookie:true,
     });
@@ -28,10 +29,10 @@ $(document).ready(function () {
             trigger: ['top'],
             maxtime : 0,
             mintime : 0,
-            delay: 0,
+            delay: 60,
             interval: 0,
-            maxamount : 0,
-            cookie : false,
+            maxamount : 1,
+            cookie : true,
             bgclickclose : true,
             escclose : true,
             onleave : function (e) {},

@@ -15,7 +15,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) !important;
-    width: 50%;
+    width: 35%;
 	box-shadow: 0px 0px 7px #4a4a4a;
 	-moz-box-shadow: 0px 0px 7px #4a4a4a;
 	-webkit-box-shadow: 0px 0px 7px #4a4a4a;
@@ -32,20 +32,15 @@
 .stick_close {
 	cursor: pointer;
 	position: relative;
-	top: 0px;
-	left: 0px;
+	top: 5px;
+	left: -10px;
 	float: right;
-	font-family: Arial;
 	font-size: 18px;
 	background-color: transparent;
-	color: #4c4c4c;
 	padding: 5px;
 	padding-left: 10px;
 	padding-right: 10px;
 	text-decoration: none;
-	font-family:Arial,sans-serif;
-	font-size: 1xpx;
-	font-weight:bold;
 }
 #stickLayer{
 	display: none !important;
