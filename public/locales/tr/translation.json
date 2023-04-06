@@ -721,5 +721,9 @@
     "free_tax_consultant_price": "Ücretsiz",
     "notfound_title": "Görünüşe göre büyük hiçliğe giden kapıyı bulmuşsun",
     "notfound_desc": "Bunun için üzgünüz, aradığınız sayfayı bulmak için lütfen ana sayfaya gidin.",
-    "notfound_button": "Ana Sayfa"
+    "notfound_button": "Ana Sayfa",
+    "exit_intent_popup_title":"Gitmeden Önce %15 İndirim Kazanın!",
+    "exit_intent_popup_desc": "Email adresinizi bırakın ve bir sonraki siparişinizde geçerli indirim kuponu kazanın",
+    "exit_intent_popup_submit_button":"Gönder",
+    "exit_intent_popup_bottom_info":"Hayır teşekkürler, daha fazla ödeyince daha mutlu oluyorum :)"
 }

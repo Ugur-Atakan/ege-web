@@ -444,7 +444,7 @@ function CompanyNameEmailForm(props) {
     )
 }
 function CompanyContactInfoForm(props) {
-    const { t } = useTranslation();
+    const { t,i18n } = useTranslation();
     const [name, setName] = useState('');
     const [lastname, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -491,6 +491,7 @@ function CompanyContactInfoForm(props) {
         let onboardingId = localStorage.getItem('onboardingId')
         let packageType = localStorage.getItem('packageType')
         let couponCode = e.target.coupon.value
+        let langs = i18n.language ==="en" ? "en" : "tr"
 
         let payload = {
             "companyContactName": companyContactName,
@@ -499,7 +500,8 @@ function CompanyContactInfoForm(props) {
             "companyContactAddress": companyContactAddress,
             "onBoardId": onboardingId,
             "packageType": packageType,
-            "couponCode": couponCode
+            "couponCode": couponCode,
+            "lang": langs
         }
 
         //Complete Onboarding Order with backend

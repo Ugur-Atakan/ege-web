@@ -729,5 +729,9 @@
     "free_tax_consultant_price": "Free",
     "notfound_title": "Looks like you've found the doorway to the great nothing",
     "notfound_desc": "Sorry about that! Please visit our hompage to get where you need to go.",
-    "notfound_button": "Home Page"
+    "notfound_button": "Home Page",
+    "exit_intent_popup_title":"Get 15% Off Before You Go!",
+    "exit_intent_popup_desc": "Leave your email address and get a valid discount coupon on your purchase",
+    "exit_intent_popup_submit_button":"Send an email",
+    "exit_intent_popup_bottom_info":"No thanks, I'm happier when I pay more :)"
 }

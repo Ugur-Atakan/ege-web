@@ -1,7 +1,9 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next';
 import exitpopupimg from '../images/exit-popup.jpg'
 
 export default function ExitIndent() {
+    const {t} = useTranslation();
     const [showModal, setShowModal] = useState(true);
     return (
        showModal && 
@@ -10,8 +12,8 @@ export default function ExitIndent() {
        <div className="stick_content p-16">
            <div className='block items-center'>
                <div>
-                   <h1 className='pb-4 text-center font-bold tracking-tight text-gray-900 text-3xl'>Get 15% Off Before You Go!</h1>
-                   <p className='mt-4 text-lg text-gray-500 text-center'>Leave your email address and get a valid discount coupon on your purchase</p>
+                   <h1 className='pb-4 text-center font-bold tracking-tight text-gray-900 text-3xl'>{t('exit_intent_popup_title')}</h1>
+                   <p className='mt-4 text-lg text-gray-500 text-center'>{t('exit_intent_popup_desc')}</p>
                </div>
            </div>
            <div className='block py-4'>
@@ -33,12 +35,12 @@ export default function ExitIndent() {
                            type="submit"
                            className="flex w-full items-center justify-center rounded-md border border-transparent bg-blue-600 py-3 px-4 text-base font-medium text-white hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                        >
-                           Submit
+                           {t('exit_intent_popup_submit_button')}
                        </button>
                    </div>
                </form>
-               <div className="relative -bottom-12">
-               <p className='text-md text-gray-500 text-center'>No thanks, I'm happier when I pay more :)</p>
+               <div className="relative -bottom-12 cursor-pointer" onClick={()=> setShowModal(false)}>
+               <p className='text-md text-gray-500 text-center'>{t('exit_intent_popup_bottom_info')}</p>
                </div>
            </div>
        </div>

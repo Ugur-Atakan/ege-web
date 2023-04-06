@@ -62,6 +62,15 @@ export function Pricing() {
   }
 
   useEffect(() => {
+    // Reorder the states putting Delaware and New York at the top
+    const reorderStates = (states) => {
+      const topStates = ['Delaware', 'Wyoming'];
+      const topStatesList = states.filter((state) => topStates.includes(state.state));
+      const remainingStates = states.filter((state) => !topStates.includes(state.state));
+
+      return [...topStatesList, ...remainingStates];
+    };
+
     //get the states from backend api via axios
     axios.get(API_ROOT + '/api/fe/states', {
       headers: {
@@ -71,7 +80,8 @@ export function Pricing() {
     })
       .then(function (response) {
         var jsonData = JSON.parse(JSON.stringify(response.data));
-        setStates(jsonData)
+        const reorderedStates = reorderStates(jsonData);
+        setStates(reorderedStates)
       })
       .catch(function (error) {
         console.log(error);
