@@ -47,7 +47,9 @@
 	font-size: 1xpx;
 	font-weight:bold;
 }
-
+#stickLayer{
+	display: none !important;
+}
 /* 
 CSS3 animation keyframes.
 */
