@@ -89,7 +89,7 @@ const App = () => {
           <Route exact path="/:lang/pricing/virtual-mailbox" element={<PricingVirtualMailbox />} />
           <Route path="/post-order" element={<PostOrder/>} />
           <Route exact path="*" element={<Notfound />} />
-          <Route exact path="/notfound" element={<Notfound />} />
+          <Route exact path="/:lang/notfound" element={<Notfound />} />
           <Route exact path="/:lang/all-products" element={<AllProducts />} />
           <Route exact path="/:lang/start-my-business" element={<StartCompany />} />
           <Route path="/:lang/products/:productlink/contact" element={<ProductSpecificContactUs />} />
