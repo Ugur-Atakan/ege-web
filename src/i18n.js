@@ -7,7 +7,7 @@ i18n
   .use(Backend)
   .use(LanguageDetector)
   .init({
-    fallbacklng: 'en',
+    lng:'en',
     interpolation: {
       escapeValue: false // HTML gibi çevrilmeyi beklemeyen değerleri güvenle çevirmek için gerekli
     }
