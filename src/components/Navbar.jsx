@@ -65,7 +65,7 @@ export function Navbar() {
         setCurrentLang(i18n.language);
         navigate(`/${i18n.language}${location.pathname}`, { replace: true });
       } else if (lang !== "en" && lang !== "tr") {
-        navigate("/notfound", { replace: true });
+        navigate(`/${i18n.language}/notfound/`, { replace: true });
       }
     }, [i18n, navigate, location.pathname, currentLang]);
     
@@ -76,7 +76,7 @@ export function Navbar() {
         const newPathname = location.pathname.replace(`/${currentLang}`, `/${lang}`);
         navigate(newPathname, { replace: true });
       } else {
-        navigate("/notfound", { replace: true });
+        navigate(`/${i18n.language}/notfound/`, { replace: true });
       }
     };
   
