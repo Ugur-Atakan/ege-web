@@ -17,7 +17,7 @@ export function Pricing() {
   let [states, setStates] = useState([]);
   let [companyTypes, setCompanyTypes] = useState([]);
   const pricingPackagesRef = useRef(null);
-  const {t, i18n} = useTranslation();
+  const { t, i18n } = useTranslation();
 
 
   const updatePricing = () => {
@@ -27,11 +27,11 @@ export function Pricing() {
     if (companyType && companyState) {
       let companyTypeId = companyTypes.find(x => x.entityType === companyType).id
       let companyStateId = states.find(x => x.state === companyState).id
-      let langs = i18n.language ==="en" ? "en" : "tr"
+      let langs = i18n.language === "en" ? "en" : "tr"
       let payload = {
         stateId: companyStateId,
         entityTypeId: companyTypeId,
-        lang:langs,
+        lang: langs,
       }
 
       axios.post(API_ROOT + '/api/fe/prices', payload, {
@@ -126,7 +126,25 @@ export function Pricing() {
     localStorage.setItem('companyState', name)
     updatePricing()
   }
+  // added recommended text for Deleware and Wyoming
+  useEffect(() => {
+    if (states.length > 0) {
+      const updatedArray = states.map((obj, i) => {
+        if (i === 0) {
+          return { ...obj, state: "Delaware (Recommended for C-Corp)" };
+        } else if (i === 1) {
+          return { ...obj, state: "Wyoming (Recommended for LLC)" };
+        } else {
+          return obj;
+        }
+      });
 
+      if (JSON.stringify(states) !== JSON.stringify(updatedArray)) {
+        setStates(updatedArray);
+      }
+    }
+  }, [states]);
+  
 
   return (
     <section
@@ -138,7 +156,7 @@ export function Pricing() {
         Pricing
       </h2>
       <Container>
-        <Topbar/>
+        <Topbar />
         <div className="md:text-center">
           <p className="font-display text-3xl tracking-tight text-white sm:text-4xl">
             <span className="relative whitespace-nowrap">
@@ -159,7 +177,7 @@ export function Pricing() {
             {t('pricing_header1_uptitle_2')}
           </p>
           <p className="mt-4 text-lg text-slate-400 max-w-6xl justify-center">
-          {t('pricing_header1_text')}
+            {t('pricing_header1_text')}
           </p>
         </div>
         <div className="flex flex-col md:grid grid-cols-2 mx-auto py-12 max-w-4xl">
@@ -280,7 +298,7 @@ export function Pricing() {
           'lg:py-8': !props.featured,
         })}
       >
-       {props.featured && <span className='absolute right-4 top-4 text-blue-600 rounded-lg px-4 py-1 bg-white text-sm font-semibold '>Most popular</span>}
+        {props.featured && <span className='absolute right-4 top-4 text-blue-600 rounded-lg px-4 py-1 bg-white text-sm font-semibold '>Most popular</span>}
         <h3 className="mt-5 font-display text-lg text-white">{props.name}</h3>
         <p
           className={clsx('mt-2 text-base', {
@@ -295,13 +313,13 @@ export function Pricing() {
           ${props.price}
         </p>
         {/* if not selected */}
-        {props.name === 'Starter' && <button id='starter-package' className="bg-white text-black lg:bg-transparent font-semibold group inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm focus:outline-none ring-slate-700 lg:text-white hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white mt-8" aria-label="Get started with the Starter plan for ${price}" onClick={clickHandler.bind(this)}>{i18n.language==="en" ? "Get Started" : "Bu Paketi Seçin"}</button>}
+        {props.name === 'Starter' && <button id='starter-package' className="bg-white text-black lg:bg-transparent font-semibold group inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm focus:outline-none ring-slate-700 lg:text-white hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white mt-8" aria-label="Get started with the Starter plan for ${price}" onClick={clickHandler.bind(this)}>{i18n.language === "en" ? "Get Started" : "Bu Paketi Seçin"}</button>}
         {/* if corp3 is selected */}
-        {props.name === 'Start Up' && <button id='startup-package' className="group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-white text-slate-900 hover:bg-blue-50 active:bg-blue-200 active:text-slate-600 focus-visible:outline-white mt-8" aria-label="Get started with the Small business plan for $15" onClick={clickHandler.bind(this)} >{i18n.language==="en" ? "Get Started" : "Bu Paketi Seçin"}</button>}
-         {/* if selected */}
-         {props.name === 'Scale Up' && <button id='scaleup-package' className="bg-white text-black lg:bg-transparent font-semibold group inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm focus:outline-none ring-slate-700 lg:text-white hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white mt-8" aria-label="Get started with the Starter plan for ${price}" onClick={clickHandler.bind(this)}>{i18n.language==="en" ? "Get Started" : "Bu Paketi Seçin"}</button>}
-         {props.name === 'Registate LLC Gold' && <button id='gold-package' className="bg-white text-black lg:bg-transparent font-semibold group inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm focus:outline-none ring-slate-700 lg:text-white hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white mt-8" aria-label="Get started with the Starter plan for ${price}" onClick={clickHandler.bind(this)}>{i18n.language==="en" ? "Get Started" : "Bu Paketi Seçin"}</button>}
-         {props.name === 'Registate LLC Premium' && <button id='preimum-package'className="bg-white text-black lg:bg-white lg:text-black font-semibold group inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm focus:outline-none  hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white mt-8" aria-label="Get started with the Starter plan for ${price}" onClick={clickHandler.bind(this)}>{i18n.language==="en" ? "Get Started" : "Bu Paketi Seçin"}</button>}
+        {props.name === 'Start Up' && <button id='startup-package' className="group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-white text-slate-900 hover:bg-blue-50 active:bg-blue-200 active:text-slate-600 focus-visible:outline-white mt-8" aria-label="Get started with the Small business plan for $15" onClick={clickHandler.bind(this)} >{i18n.language === "en" ? "Get Started" : "Bu Paketi Seçin"}</button>}
+        {/* if selected */}
+        {props.name === 'Scale Up' && <button id='scaleup-package' className="bg-white text-black lg:bg-transparent font-semibold group inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm focus:outline-none ring-slate-700 lg:text-white hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white mt-8" aria-label="Get started with the Starter plan for ${price}" onClick={clickHandler.bind(this)}>{i18n.language === "en" ? "Get Started" : "Bu Paketi Seçin"}</button>}
+        {props.name === 'Registate LLC Gold' && <button id='gold-package' className="bg-white text-black lg:bg-transparent font-semibold group inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm focus:outline-none ring-slate-700 lg:text-white hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white mt-8" aria-label="Get started with the Starter plan for ${price}" onClick={clickHandler.bind(this)}>{i18n.language === "en" ? "Get Started" : "Bu Paketi Seçin"}</button>}
+        {props.name === 'Registate LLC Premium' && <button id='preimum-package' className="bg-white text-black lg:bg-white lg:text-black font-semibold group inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm focus:outline-none  hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white mt-8" aria-label="Get started with the Starter plan for ${price}" onClick={clickHandler.bind(this)}>{i18n.language === "en" ? "Get Started" : "Bu Paketi Seçin"}</button>}
         {console.log(props.name)}
         <ul
           className={clsx('order-last mt-10 space-y-3 text-sm', {
