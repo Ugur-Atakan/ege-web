@@ -700,14 +700,14 @@ function CompanyContactInfoForm(props) {
                             </div>
                             <div className='block md:flex items-end justify-between'>
                                 <div className="col-span-6">
-                                    <label htmlFor="coupon" className="block text-sm font-medium text-gray-700">
+                                    <label htmlFor="coupon" className="block text-xs font-medium text-gray-400">
                                         {t('provide_contact_information_form_input10_placeholder')}
                                     </label>
                                     <input
                                         type="text"
                                         name="coupon"
                                         id="coupon"
-                                        className="mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                                        className="w-3/4 mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                                     />
                                 </div>
                                 <div className='mt-4 md:mt-0'>

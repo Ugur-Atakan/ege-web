@@ -126,14 +126,14 @@ export function Pricing() {
     localStorage.setItem('companyState', name)
     updatePricing()
   }
-  // added recommended text for Deleware and Wyoming
+  /* // added recommended text for Deleware and Wyoming
   useEffect(() => {
     if (states.length > 0) {
       const updatedArray = states.map((obj, i) => {
         if (i === 0) {
-          return { ...obj, state: "Delaware (Recommended for C-Corp)" };
+          return { ...obj, state: "Buraktest" };
         } else if (i === 1) {
-          return { ...obj, state: "Wyoming (Recommended for LLC)" };
+          return { ...obj, state: "Ceylantest" };
         } else {
           return obj;
         }
@@ -143,7 +143,7 @@ export function Pricing() {
         setStates(updatedArray);
       }
     }
-  }, [states]);
+  }, [states]); */
   
 
   return (
