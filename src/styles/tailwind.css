@@ -2,11 +2,120 @@
 @tailwind components;
 @tailwind utilities;
 
-.open-animation{
-    animation: openanimation 1s;
+.open-animation {
+  animation: openanimation 1s;
 }
 
 @keyframes openanimation {
-    from {opacity: 0;}
-    to {opacity: 1;}
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.hero-section {
+  -webkit-clip-path: ellipse(70% 74% at 50% 26%);
+  clip-path: ellipse(70% 74% at 50% 26%);
+}
+
+body {
+  background-color: #ECEFF1;
+}
+
+.compare-registate::before {
+  content: url('../images/Stars.png');
+  position: absolute;
+  right: -2rem;
+  top: -3rem;
+  -webkit-animation: breathing 3s ease-out infinite normal;
+  animation: breathing 3s ease-out infinite normal;
+  -webkit-font-smoothing: antialiased;
+}
+
+.last-row {
+  border-bottom-right-radius: 24px;
+  border-bottom-left-radius: 24px;
+}
+
+@keyframes breathing {
+  0% {
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+
+  25% {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+
+  60% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+  }
+
+  100% {
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+
+.hero-section {
+  background-image: url('../images/bg.png');
+  background-size: cover;
+}
+
+.animate-rocket {
+  animation: moveRocket 3s linear forwards;
+}
+
+@keyframes moveRocket {
+  0% {
+    right: -5rem;
+  }
+
+  100% {
+    right: 0;
+  }
+}
+
+.how-to-get-started:hover .text-on {
+  color: rgba(255, 255, 255, 0.49);
+}
+
+.how-to-get-started:hover .btn-on {
+  color: white;
+}
+
+.slick-initialized .slick-slide {
+  padding: 0 7px;
+}
+
+.slick-next {
+  right: auto;
+  left: -7rem;
+}
+
+.slick-next:before {
+  content: "";
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  background-image: url('../images/line.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 1;
+  border: 1px solid white;
+  border-radius: 100%;
+  padding:30px;
+}
+
+.slick-prev {
+  display: none !important;
 }

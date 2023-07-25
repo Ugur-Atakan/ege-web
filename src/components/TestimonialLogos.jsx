@@ -15,16 +15,6 @@ export default function TestimonialLogos() {
             className="bg-slate-50 py-20 sm:pt-4 sm:pb-24"
         >
             <Container>
-                <div className="mx-auto max-w-2xl md:text-center">
-                    <h2
-                        id="testimonials-title"
-                        className="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl"
-                    >
-                        {t('section7_title')}
-                    </h2>
-                    <p className="mt-4 text-lg tracking-tight text-slate-700">
-                    </p>
-                </div>
                 <div>
                     <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:px-8">
                         <div className="grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5">
