@@ -2,6 +2,7 @@ import Slider from "react-slick";
 import calendar from '../images/calendar.png';
 import hat from '../images/hat.png';
 import folder from '../images/folder.png';
+import protectionicon from '../images/protection-icon.png';
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -29,8 +30,8 @@ export function SupportYourBusiness() {
       <div className="mx-auto max-w-5xl p6 lg:px-12 lg:py-24">
         <h1 className="font-bold text-[64px] leading-[64px] text-white text-center">Support your business needs <h1 className="text-[#9EE248]">after formation</h1></h1>
       </div>
-      <div style={{ marginLeft: '175px', width: 'calc(100% - 175px)' }}>
-      <Slider {...settings}>
+      <div className="after-formation" style={{ marginLeft: '175px', width: 'calc(100% - 175px)' }}>
+        <Slider {...settings}>
           <div className="max-w-sm min-h-[600px] shadow-lg bg-white rounded-[32px] relative">
             <img className="w-full relative -top-12 -right-6" src={calendar} alt="Products" />
             <div className="pl-6 pr-16 py-2">
@@ -81,7 +82,21 @@ export function SupportYourBusiness() {
           </div>
         </Slider>
       </div>
-      <div className="mx-auto max-w-7xl p-6 lg:px-12">
+      <div className="mx-auto max-w-5xl border-t mt-16 border-white border-opacity-[0.20] py-12">
+      <div className="grid grid-cols-1 md:grid-cols:2 lg:grid-cols-3 items-start gap-2">
+          <div className="flex items-start gap-3 justify-center">
+            <img src={protectionicon} className='w-6 h-6' alt="protection icon" />
+            <p className="text-white font-bold text-lg leading-6">In house USA based CPAs and Lawyers</p>
+          </div>
+          <div className="flex items-start gap-3 justify-center">
+            <img src={protectionicon} className='w-6 h-6' alt="protection icon" />
+            <p className="text-white font-bold text-lg leading-6">Fast document approve. Physical office proximity to state HQ</p>
+          </div>
+          <div className="flex items-start gap-3 justify-center">
+            <img src={protectionicon} className='w-6 h-6' alt="protection icon" />
+            <p className="text-white font-bold text-lg leading-6">60-Day money-back guarantee</p>
+          </div>
+        </div>
       </div>
     </div>
   )
