@@ -33,7 +33,7 @@ import CertificateOfAmendment from './routes/certificate-of-amendment';
 import DoingBusinessAs from './routes/doing-business-as';
 import Apostille from './routes/apostille';
 import AccountOpeningSupport from './routes/account-opening-support';
-import Company from './routes/company';
+import Company from './routes/company-type';
 import AllProducts from './routes/all-products';
 import './i18n.js'
 import StartCompany from './routes/start-company';
@@ -75,7 +75,7 @@ const App = () => {
           <Route exact path="/:lang/doing-business-as" element={<DoingBusinessAs />} />
           <Route exact path="/:lang/apostille" element={<Apostille />} />
           <Route exact path="/:lang/us-bank-account-opening-support" element={<AccountOpeningSupport />} />
-          <Route exact path="/:lang/company" element={<Company />} />
+          <Route exact path="/:lang/company-type" element={<Company />} />
           <Route exact path="/:lang/contact" element={<Contact />} />
           <Route exact path="/:lang/blog" element={<Blog />} />
           <Route exact path="/:lang/blog/:id" element={<Blog />} />

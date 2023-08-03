@@ -21,12 +21,9 @@
   clip-path: ellipse(70% 74% at 50% 26%);
 }
 
-#faqs {
-  clip-path: ellipse(100% 77% at 50% 30%);
-}
-
 body {
   background-color: #ECEFF1;
+  font-family: 'Inter', sans-serif;
 }
 
 .compare-registate::before {
@@ -197,4 +194,20 @@ body {
 
 .slick-prev:before {
   content: '';
+}
+
+.not-sure::before{
+content:'Recommended';
+position: absolute;
+top: -1rem;
+right: 1rem;
+background-color: #1649FF;
+color: white;
+padding: 0.5rem 1rem;
+border-radius: 1rem;
+}
+
+.company-type {
+    background-image: url('../images/choose-bg.png');
+    background-size: cover;
 }

@@ -5,12 +5,14 @@ import {
 } from "@heroicons/react/20/solid";
 import { useState } from "react";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { XMarkIcon } from "@heroicons/react/24/outline";
+import tickicon from '../images/tick.png'
 
 export default function StartOnbarding() {
   const { t, i18n } = useTranslation();
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   //questions answers
   const [firstYes, firstSetYes] = useState(false);
   const [firstNo, firstSetNo] = useState(false);
@@ -56,179 +58,60 @@ export default function StartOnbarding() {
   }
 
   const text = "LLC";
-  document.body.classList.add("bg-slate-50");
+
+  const navigate = useNavigate();
+
+
 
   return (
-    <>
-      {page === 0 && (
-        <div className="mt-24 lg:fixed lg:left-1/2 lg:bg-white lg:shadow-xl lg:rounded-lg lg:-translate-x-1/2 -lg:translate-y-1/2">
-          <div className="open-animation">
-            <div className="pt-4">
-              <h1 className="text-center text-black text-2xl font-bold px-12 lg:px-24">
-                {t('help_me_choose_widget_header1_uptitle')}
-              </h1>
+    <div className='company-type py-12'>
+      {page === 1 && (
+        <div className="mx-auto max-w-7xl bg-white lg:shadow-xl rounded-2xl open-animation">
+          <div className="flex justify-between items-center py-4 px-12">
+            <div
+              className="ml-4 text-[#1649FF] font-semibold mt-4 flex items-center gap-2 cursor-pointer w-fit"
+              onClick={() => navigate(-1)}
+            >
+              <ArrowUturnDownIcon className="w-4  rotate-90" />
+              <button>{t('help_me_choose_widget_question1_button_back')}</button>
             </div>
-            <div className="block items-center gap-2 px-8 py-4">
-              <div className="w-full">
-                <div className="bg-white border border-blue-600 rounded-lg p-8 relative ">
-                  <div>
-                    <h1 className="font-bold text-black text-lg border-b border-gray-400">
-                      {t('help_me_choose_widget_box1_title')}
-                    </h1>
-                  </div>
-                  <div className="block py-1">
-                    <ul className="text-base leading-7 text-gray-600">
-                      <li className="flex items-center gap-4 text-sm py-1">
-                        <div>
-                          <CheckBadgeIcon className="w-4 text-green-500" />
-                        </div>
-                        <div>
-                          <p>
-                            {t('help_me_choose_widget_box1_text_1')}
-                          </p>
-                        </div>
-                      </li>
-                      <li className="flex items-center gap-4 text-sm py-1">
-                        <div>
-                          <CheckBadgeIcon className="w-4 text-green-500" />
-                        </div>
-                        <div>
-                          <p>
-                            {t('help_me_choose_widget_box1_text_2')}
-                          </p>
-                        </div>
-                      </li>
-                      <li className="flex items-center gap-4 text-sm py-1">
-                        <div>
-                          <CheckBadgeIcon className="w-4 text-green-500" />
-                        </div>
-                        <div>
-                          <p>
-                            {t('help_me_choose_widget_box1_text_3')}
-                          </p>
-                        </div>
-                      </li>
-                      <li className="flex items-center gap-4 text-sm py-1">
-                        <div>
-                          <ExclamationCircleIcon className="w-4 text-red-500" />
-                        </div>
-                        <div>
-                          <p>
-                            {t('help_me_choose_widget_box1_text_4')}
-                          </p>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <span className="flex justify-center text-black font-bold">vs</span>
-              <div className="w-full">
-                <div className="bg-white border border-blue-600 rounded-lg p-8 relative">
-                  <div>
-                    <h1 className="font-bold text-black text-lg border-b border-gray-400">
-                      {t('help_me_choose_widget_box2_title')}
-                    </h1>
-                  </div>
-                  <div className="block py-1">
-                    <ul className="text-base leading-7 text-gray-600">
-                      <li className="flex items-center gap-4 text-sm py-1">
-                        <div>
-                          <CheckBadgeIcon className="w-4 text-green-500" />
-                        </div>
-                        <div>
-                          <p>
-                            {t('help_me_choose_widget_box2_text_1')}
-                          </p>
-                        </div>
-                      </li>
-                      <li className="flex items-center gap-4 text-sm py-1">
-                        <div>
-                          <CheckBadgeIcon className="w-4 text-green-500" />
-                        </div>
-                        <div>
-                          <p>
-                            {t('help_me_choose_widget_box2_text_2')}
-                          </p>
-                        </div>
-                      </li>
-                      <li className="flex items-center gap-4 text-sm py-1">
-                        <div>
-                          <CheckBadgeIcon className="w-4 text-green-500" />
-                        </div>
-                        <div>
-                          <p>
-                            {t('help_me_choose_widget_box2_text_3')}
-                          </p>
-                        </div>
-                      </li>
-                      <li className="flex items-center gap-4 text-sm py-1">
-                        <div>
-                          <ExclamationCircleIcon className="w-4 text-red-500" />
-                        </div>
-                        <div>
-                          <p>
-                            {t('help_me_choose_widget_box2_text_4')}
-                          </p>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="flex items-center justify-center pb-4">
-              <Link
-                onClick={() => {
-                  setPage((currPage) => currPage + 1);
-                }}
-                className="bg-blue-600 rounded-lg text-base font-semibold text-white shadow-sm p-4 cursor-pointer border border-blue-600 hover:bg-white hover:text-blue-600"
-              >
-                {t('help_me_choose_widget_button')}
-              </Link>
+            <div
+              className="ml-4 mt-4 flex items-center gap-2 cursor-pointer w-fit"
+              onClick={() => navigate(-1)}
+            >
+              <XMarkIcon className="w-6 text-black rotate-90" />
+
             </div>
           </div>
-        </div>
-      )}
-      {page === 1 && (
-        <div className="mt-24 lg:fixed lg:left-1/2 lg:bg-white lg:shadow-xl lg:rounded-lg lg:-translate-x-1/2 -lg:translate-y-1/2">
-          <div className="open-animation">
-            <div
-              className="ml-4 mt-4 flex items-center gap-2 cursor-pointer"
-              onClick={() => {
-                setPage((currPage) => currPage - 1);
-              }}
-            >
-              <ArrowUturnDownIcon className="w-4 text-black rotate-90" />
-              <button className="text-black">{t('help_me_choose_widget_question1_button_back')}</button>
-            </div>
-            <div className="pt-6 px-12">
-              <h1 className="text-center text-black text-2xl font-bold">
+          <div className="max-w-3xl mx-auto py-10">
+            <div className="text-center">
+              <h1 className="text-[2.5rem] font-semibold leading-[2.75rem] text-[#222222]">
                 {t('help_me_choose_widget_question1_question')}
               </h1>
             </div>
-            <div className="flex justify-center pt-8">
-              <button onClick={firstYesAnswer} className={firstYes ? "border border-blue-600 bg-blue-200 rounded-lg border border-blue-600 text-blue-600 w-96 h-16 font-bold" : "rounded-lg border border-blue-600 text-blue-600 w-96 h-16"}>
+          </div>
+          <div className="max-w-lg mx-auto pb-12">
+            <div className="py-2">
+              <button onClick={firstYesAnswer} className={firstYes ? "py-6 px-6 text-left bg-blue-200 rounded-[1.25rem] border border-blue-600 text-[#222222] text-[1.375rem] leading-[1.625rem] w-full font-semibold" : "text-left rounded-[1.25rem] border border-[#C8C8C8] text-[#222222] text-[1.375rem] leading-[1.625rem] w-full py-6 px-6 font-semibold"}>
                 {t('help_me_choose_widget_question1_answer1')}
               </button>
             </div>
-            <div className="flex justify-center pt-5">
-              <button onClick={firstNoAnswer} className={firstNo ? "border border-blue-600 bg-blue-200 rounded-lg border border-blue-600 text-blue-600 w-96 h-16 font-bold" : "rounded-lg border border-blue-600 text-blue-600 w-96 h-16"}>
+            <div className="py-2">
+              <button onClick={firstNoAnswer} className={firstNo ? "py-6 px-6 text-left bg-blue-200 rounded-[1.25rem] border border-blue-600 text-[#222222] text-[1.375rem] leading-[1.625rem] w-full font-semibold" : "text-left rounded-[1.25rem] border border-[#C8C8C8] text-[#222222] text-[1.375rem] leading-[1.625rem] w-full py-6 px-6 font-semibold"}>
                 {t('help_me_choose_widget_question1_answer2')}
               </button>
             </div>
-            <div className="flex justify-center pt-5">
-              <button onClick={firstNotSureAnswer} className={firstNotSure ? "border border-blue-600 bg-blue-200 rounded-lg border border-blue-600 text-blue-600 w-96 h-16 font-bold" : "rounded-lg border border-blue-600 text-blue-600 w-96 h-16"}>
+            <div className="py-2">
+              <button onClick={firstNotSureAnswer} className={firstNotSure ? "py-6 px-6 text-left bg-blue-200 rounded-[1.25rem] border border-blue-600 text-[#222222] text-[1.375rem] leading-[1.625rem] w-full font-semibold" : "text-left rounded-[1.25rem] border border-[#C8C8C8] text-[#222222] text-[1.375rem] leading-[1.625rem] w-full py-6 px-6 font-semibold"}>
                 {t('help_me_choose_widget_question1_answer3')}
               </button>
             </div>
-            <div className="flex justify-center my-12">
+            <div className="py-6">
               <button
                 onClick={() => {
                   setPage((currPage) => currPage + 1);
                 }}
-                className="bg-blue-600 rounded-lg text-base font-semibold text-white shadow-sm cursor-pointer border border-blue-600 w-96 h-16"
-              >
+                className="py-6 px-6 text-center bg-[#1649FF] rounded-[1.25rem] border border-blue-600 text-white text-[1.375rem] leading-[1.625rem] w-full font-semibold">
                 {t('help_me_choose_widget_question1_button_next')}
               </button>
             </div>
@@ -236,196 +119,218 @@ export default function StartOnbarding() {
         </div>
       )}
       {page === 2 && (
-        <div className="mt-24 lg:fixed lg:left-1/2 lg:bg-white lg:shadow-xl lg:rounded-lg lg:-translate-x-1/2 -lg:translate-y-1/2">
-          <div className="open-animation">
+        <div className="mx-auto max-w-7xl bg-white lg:shadow-xl rounded-2xl open-animation">
+          <div className="flex justify-between items-center py-4 px-12">
             <div
-              className="ml-4 mt-4 flex items-center gap-2 cursor-pointer"
+              className="ml-4 text-[#1649FF] font-semibold  mt-4 flex items-center gap-2 cursor-pointer w-fit"
               onClick={() => {
                 setPage((currPage) => currPage - 1);
               }}
             >
-              <ArrowUturnDownIcon className="w-4 text-black rotate-90" />
-              <button className="text-black">{t('help_me_choose_widget_question2_button_back')}</button>
+              <ArrowUturnDownIcon className="w-4 rotate-90" />
+              <button>{t('help_me_choose_widget_question1_button_back')}</button>
             </div>
-            <div className="pt-6 px-12">
-              <h1 className="text-center text-black text-2xl font-bold">
+            <div
+              className="ml-4 mt-4 flex items-center gap-2 cursor-pointer w-fit"
+              onClick={() => navigate(-1)}
+            >
+              <XMarkIcon className="w-6 text-black rotate-90" />
+
+            </div>
+          </div>
+          <div className="max-w-3xl mx-auto py-10">
+            <div className="text-center">
+              <h1 className="text-[2.5rem] font-semibold leading-[2.75rem] text-[#222222]">
                 {t('help_me_choose_widget_question2_question')}
               </h1>
             </div>
-            <div className="flex justify-center pt-8">
-              <button onClick={secondYesAnswer} className={secondYes ? "border border-blue-600 bg-blue-200 rounded-lg border border-blue-600 text-blue-600 w-96 h-16 font-bold" : "rounded-lg border border-blue-600 text-blue-600 w-96 h-16"}>
+          </div>
+          <div className="max-w-lg mx-auto pb-12">
+            <div className="py-2">
+              <button onClick={secondYesAnswer} className={secondYes ? "py-6 px-6 text-left bg-blue-200 rounded-[1.25rem] border border-blue-600 text-[#222222] text-[1.375rem] leading-[1.625rem] w-full font-semibold" : "text-left rounded-[1.25rem] border border-[#C8C8C8] text-[#222222] text-[1.375rem] leading-[1.625rem] w-full py-6 px-6 font-semibold"}>
                 {t('help_me_choose_widget_question2_answer1')}
               </button>
             </div>
-            <div className="flex justify-center pt-5">
-              <button onClick={secondNoAnswer} className={secondNo ? "border border-blue-600 bg-blue-200 rounded-lg border border-blue-600 text-blue-600 w-96 h-16 font-bold" : "rounded-lg border border-blue-600 text-blue-600 w-96 h-16"}>
+            <div className="py-2">
+              <button onClick={secondNoAnswer} className={secondNo ? "py-6 px-6 text-left bg-blue-200 rounded-[1.25rem] border border-blue-600 text-[#222222] text-[1.375rem] leading-[1.625rem] w-full font-semibold" : "text-left rounded-[1.25rem] border border-[#C8C8C8] text-[#222222] text-[1.375rem] leading-[1.625rem] w-full py-6 px-6 font-semibold"}>
                 {t('help_me_choose_widget_question2_answer2')}
               </button>
             </div>
-            <div className="flex justify-center pt-5">
-              <button onClick={secondNotSureAnswer} className={secondNotSure ? "border border-blue-600 bg-blue-200 rounded-lg border border-blue-600 text-blue-600 w-96 h-16 font-bold" : "rounded-lg border border-blue-600 text-blue-600 w-96 h-16"}>
+            <div className="py-2">
+              <button onClick={secondNotSureAnswer} className={secondNotSure ? "py-6 px-6 text-left bg-blue-200 rounded-[1.25rem] border border-blue-600 text-[#222222] text-[1.375rem] leading-[1.625rem] w-full font-semibold" : "text-left rounded-[1.25rem] border border-[#C8C8C8] text-[#222222] text-[1.375rem] leading-[1.625rem] w-full py-6 px-6 font-semibold"}>
                 {t('help_me_choose_widget_question2_answer3')}
               </button>
             </div>
-            <div className="flex justify-center my-12">
+            <div className="py-6">
               <button
                 onClick={() => {
                   setPage((currPage) => currPage + 1);
                 }}
-                className="bg-blue-600 rounded-lg text-base font-semibold text-white shadow-sm cursor-pointer border border-blue-600 w-96 h-16"
-              >
-                {t('help_me_choose_widget_question2_button_next')}
+                className="py-6 px-6 text-center bg-[#1649FF] rounded-[1.25rem] border border-blue-600 text-white text-[1.375rem] leading-[1.625rem] w-full font-semibold">
+                {t('help_me_choose_widget_question1_button_next')}
               </button>
             </div>
           </div>
         </div>
       )}
       {page === 3 && (
-        <div className="mt-24 lg:fixed lg:left-1/2 lg:bg-white lg:shadow-xl lg:rounded-lg lg:-translate-x-1/2 -lg:translate-y-1/2">
-          <div className="open-animation">
-            <div className="pt-12 px-0 lg:px-12">
-              {i18n.language === 'en'
-                ? <div className="block">
-                  <div className="flex justify-center">
-                    <h1 className="text-center text-black text-2xl font-bold">
-                      {t('help_me_choose_widget_answer1_title')}
-                    </h1>
+        <div className="mx-auto max-w-7xl bg-white lg:shadow-xl rounded-2xl open-animation">
+          <div className="flex justify-between items-center py-4 px-12">
+            <div
+              className="ml-4 text-[#1649FF] font-semibold  mt-4 flex items-center gap-2 cursor-pointer w-fit"
+              onClick={() => {
+                setPage((currPage) => currPage - 1);
+              }}
+            >
+              <ArrowUturnDownIcon className="w-4 rotate-90" />
+              <button>{t('help_me_choose_widget_question1_button_back')}</button>
+            </div>
+            <div
+              className="ml-4 mt-4 flex items-center gap-2 cursor-pointer w-fit"
+              onClick={() => navigate(-1)}
+            >
+              <XMarkIcon className="w-6 text-black rotate-90" />
+
+            </div>
+          </div>
+          <div className="max-w-3xl mx-auto py-10">
+            {i18n.language === 'en'
+              ? <div className="block">
+                <div className="flex justify-center">
+                  <h1 className="text-[2.5rem] font-semibold leading-[2.75rem] text-[#222222]">
+                    {t('help_me_choose_widget_answer1_title')}
+                  </h1>
+                </div>
+                <div className="flex justify-center items-start gap-4">
+                  <div className="block">
+                    <h1 className="text-blue-600 text-[2.5rem] font-semibold leading-[2.75rem]">{firstYes || secondYes ? 'Corporation' : 'LLC'}</h1>
                   </div>
-                  <div className="flex justify-center items-start gap-4">
-                    <div className="block">
-                      <h1 className="text-blue-600 text-center text-4xl font-bold">{firstYes || secondYes ? 'Corporation' : 'LLC'}</h1>
-                      <h2 className="text-center text-black text-[10px] font-bold p-1 rounded-lg">
-                        {t('help_me_choose_widget_answer1_subtitle1')}
-                      </h2>
-                    </div>
-                    <div className="block ">
-                      <h1 className="text-blue-600 text-4xl font-bold"> {t('help_me_choose_widget_answer1_subtitle')}</h1>
-                    </div>
-                    <div className="block">
-                      <h1 className="text-blue-600 text-4xl font-bold">{firstYes || secondYes ? 'Delaware' : 'Wyoming'}</h1>
-                      <h2 className="text-black text-[10px] font-bold text-center p-1 rounded-lg">
-                        {t('help_me_choose_widget_answer1_subtitle2')}
-                      </h2>
-                    </div>
+                  <div className="block">
+                    <h1 className="text-[#222222] text-[2.5rem] font-semibold leading-[2.75rem]"> {t('help_me_choose_widget_answer1_subtitle')}</h1>
+                  </div>
+                  <div className="block">
+                    <h1 className="text-blue-600 text-[2.5rem] font-semibold leading-[2.75rem]">{firstYes || secondYes ? 'Delaware' : 'Wyoming'}</h1>
                   </div>
                 </div>
-                : <div className="block">
-                  <div className="flex justify-center">
-                    <h1 className="text-center text-black text-2xl font-bold">
-                      {t('help_me_choose_widget_answer1_title')}
-                    </h1>
+              </div>
+              : <div className="block">
+                <div className="flex justify-center">
+                  <h1 className="text-center text-black text-2xl font-bold">
+                    {t('help_me_choose_widget_answer1_title')}
+                  </h1>
+                </div>
+                <div className="flex justify-center items-start gap-4">
+                  <div className="block">
+                    <h1 className="text-blue-600 text-[2.5rem] font-semibold leading-[2.75rem]">{firstYes || secondYes ? 'Delaware' : 'Wyoming'}</h1>
                   </div>
-                  <div className="flex justify-center items-start gap-4">
-                    <div className="block">
-                      <h1 className="text-blue-600 text-4xl font-bold">{firstYes || secondYes ? 'Delaware' : 'Wyoming'}</h1>
-                      <h2 className="text-center text-black text-[10px] font-bold p-1 rounded-lg">
-                      {t('help_me_choose_widget_answer1_subtitle2')}
-                      </h2>
-                    </div>
-                    <div className="block ">
-                      <h1 className="text-blue-600 text-4xl font-bold -ml-2">{t('help_me_choose_widget_answer1_subtitle')}</h1>
-                    </div>
-                    <div className="block">
-                      <h1 className="text-blue-600 text-center text-4xl font-bold">{firstYes || secondYes ? 'Anonim Şirket' : 'LLC'}</h1>
-                      <h2 className="text-black text-[10px] font-bold text-center p-1 rounded-lg">
-                        {t('help_me_choose_widget_answer1_subtitle1')}
-                      </h2>
-                    </div>
+                  <div className="block ">
+                    <h1 className="text-[#222222] text-[2.5rem] font-semibold leading-[2.75rem]">{t('help_me_choose_widget_answer1_subtitle')}</h1>
                   </div>
-                </div>}
-            </div>
-            <div className="mx-16 lg:mx-24 my-4 bg-white rounded-lg p-8 relative border border-blue-600">
-              <div className="block py-1">
-                {firstYes || secondYes
-                 ? 
-                <ul className="text-base leading-7 text-gray-600">
-                  <li className="flex items-center gap-4 text-sm py-1">
+                  <div className="block">
+                    <h1 className="text-blue-600 text-[2.5rem] font-semibold leading-[2.75rem]">{firstYes || secondYes ? 'Anonim Şirket' : 'LLC'}</h1>
+                  </div>
+                </div>
+              </div>}
+          </div>
+          <div className="mx-auto max-w-sm">
+            <div className="block py-1">
+              {firstYes || secondYes
+                ?
+                <ul>
+                  <li className="flex items-start gap-4 py-1">
                     <div>
-                      <CheckBadgeIcon className="w-4 text-green-500" />
+                      <img src={tickicon} className='w-6 h-6' alt='tick icon' />
                     </div>
-                    <div>
-                      <p> {t('help_me_choose_widget_answer1_text1')}</p>
+                    <div className="w-full">
+                      <p className="text-lg font-semibold leading-6 text-[#222222]"> {t('help_me_choose_widget_answer1_text1')}</p>
                     </div>
                   </li>
-                  <li className="flex items-center gap-4 text-sm py-1">
+                  <li className="flex items-start gap-4 py-2">
                     <div>
-                      <CheckBadgeIcon className="w-4 text-green-500" />
+                      <img src={tickicon} className='w-6 h-6' alt='tick icon' />
                     </div>
-                    <div>
-                      <p>
+                    <div className="w-full">
+                      <p className="text-lg font-semibold leading-6 text-[#222222]">
                         {t('help_me_choose_widget_answer1_text2')}
                       </p>
                     </div>
                   </li>
-                  <li className="flex items-center gap-4 text-sm py-1">
+                  <li className="flex items-start gap-4 py-2">
                     <div>
-                      <CheckBadgeIcon className="w-4 text-green-500" />
+                      <img src={tickicon} className='w-6 h-6' alt='tick icon' />
                     </div>
-                    <div>
-                      <p> {t('help_me_choose_widget_answer1_text3')}</p>
+                    <div className="w-full">
+                      <p className="text-lg font-semibold leading-6 text-[#222222]"> {t('help_me_choose_widget_answer1_text3')}</p>
                     </div>
                   </li>
-                  <li className="flex items-center gap-4 text-sm py-1">
+                  <li className="flex items-start gap-4 py-2">
                     <div>
-                      <ExclamationCircleIcon className="w-4 text-red-500" />
+                      <img src={tickicon} className='w-6 h-6' alt='tick icon' />
                     </div>
-                    <div>
-                      <p>
+                    <div className="w-full">
+                      <p className="text-lg font-semibold leading-6 text-[#222222]">
                         {t('help_me_choose_widget_answer1_text4')}
                       </p>
                     </div>
                   </li>
                 </ul>
-                :<ul className="text-base leading-7 text-gray-600">
-                <li className="flex items-center gap-4 text-sm py-1">
-                  <div>
-                    <CheckBadgeIcon className="w-4 text-green-500" />
-                  </div>
-                  <div>
-                    <p> {t('help_me_choose_widget_answer2_text1')}</p>
-                  </div>
-                </li>
-                <li className="flex items-center gap-4 text-sm py-1">
-                  <div>
-                    <CheckBadgeIcon className="w-4 text-green-500" />
-                  </div>
-                  <div>
-                    <p>
-                      {t('help_me_choose_widget_answer2_text2')}
-                    </p>
-                  </div>
-                </li>
-                <li className="flex items-center gap-4 text-sm py-1">
-                  <div>
-                    <CheckBadgeIcon className="w-4 text-green-500" />
-                  </div>
-                  <div>
-                    <p> {t('help_me_choose_widget_answer2_text3')}</p>
-                  </div>
-                </li>
-                <li className="flex items-center gap-4 text-sm py-1">
-                  <div>
-                    <ExclamationCircleIcon className="w-4 text-red-500" />
-                  </div>
-                  <div>
-                    <p>
-                      {t('help_me_choose_widget_answer2_text4')}
-                    </p>
-                  </div>
-                </li>
-              </ul>}
-              </div>
+                : <ul>
+                  <li className="flex items-start gap-4 py-1">
+                    <div>
+                      <img src={tickicon} className='w-6 h-6' alt='tick icon' />
+                    </div>
+                    <div className="w-full">
+                      <p className="text-lg font-semibold leading-6 text-[#222222]"> {t('help_me_choose_widget_answer2_text1')}</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-4 py-2">
+                    <div>
+                      <img src={tickicon} className='w-6 h-6' alt='tick icon' />
+                    </div>
+                    <div className="w-full">
+                      <p className="text-lg font-semibold leading-6 text-[#222222]">
+                        {t('help_me_choose_widget_answer2_text2')}
+                      </p>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-4 py-2">
+                    <div>
+                      <img src={tickicon} className='w-6 h-6' alt='tick icon' />
+                    </div>
+                    <div className="w-full">
+                      <p className="text-lg font-semibold leading-6 text-[#222222]"> {t('help_me_choose_widget_answer2_text3')}</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-4 py-2">
+                    <div>
+                      <img src={tickicon} className='w-6 h-6' alt='tick icon' />
+                    </div>
+                    <div className="w-full">
+                      <p className="text-lg font-semibold leading-6 text-[#222222]">
+                        {t('help_me_choose_widget_answer2_text4')}
+                      </p>
+                    </div>
+                  </li>
+                </ul>}
             </div>
-            <div className="flex justify-center mx-16 lg:mx-0 my-12">
+            <div className="py-6">
               <Link to={`/${i18n.language}/pricing/form-my-company`} state={{ text: text }}>
-                <button className="bg-blue-600 rounded-lg text-base font-semibold text-white shadow-sm cursor-pointer border border-blue-600 w-96 h-16">
-                  {t('help_me_choose_widget_answer1_button')}
+                <button className="py-6 px-6 text-center bg-[#1649FF] rounded-[1.25rem] border border-blue-600 text-white text-[1.375rem] leading-[1.625rem] w-full font-semibold">
+                  <h4>{t('help_me_choose_widget_answer1_button')}</h4>
+                </button>
+              </Link>
+            </div>
+            <div className="pb-12 pt-1">
+              <Link to={`/${i18n.language}/start-my-business/`} state={{ text: text }}>
+                <button className="text-center text-[#1649FF] text-[1.375rem] leading-[1.625rem] w-full font-semibold">
+                  <h4>Take the survey again</h4>
                 </button>
               </Link>
             </div>
           </div>
+
         </div>
       )}
-    </>
+    </div>
   );
 }

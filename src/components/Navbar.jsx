@@ -33,7 +33,9 @@ import {
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import whitelogo from '../images/logos/registate-white-logo.png'
+import logo from '../images/logo2x.png.webp'
+import chaticon from '../images/chat.png'
+import { NavLink } from 'react-router-dom';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -135,19 +137,13 @@ export function Navbar() {
     { name: t('menu3_4_title'), href: `/${i18n.language}/contact`, desc: t('menu3_4_subtitle'), icon: InboxStackIcon },
   ]
   return (
-    <div className="hero-section">
-      <div className='flex items-center justify-center'>
-        <div className='flex items-center gap-2'>
-          <p className='font-semibold text-xs leading-4 text-white'> ✨ Book a <span className='text-[#9EE248] mr-1'>free call</span>with an experienced attorney</p>
-          <ArrowRightIcon className='h-3 text-white' />
-        </div>
-      </div>
-      <header >
-        <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+    <div>
+      <header className='bg-white'>
+        <nav className="mx-auto flex h-[5.5rem] items-center justify-between p-6  lg:px-8 border-b" aria-label="Global">
           <div className="flex lg:flex-1">
-            <Link to="/" className="-m-1.5 p-1.5">
+            <Link to="/" className="">
               <span className="sr-only">Registate</span>
-              <img className="w-[116px] h-[34px]" src={whitelogo} alt="" />
+              <img className="h-10" src={logo} alt="" />
             </Link>
           </div>
           <div className="flex lg:hidden">
@@ -161,66 +157,34 @@ export function Navbar() {
             </button>
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
-            <Link to={`/${i18n.language}/pricing/form-my-company`} className="text-sm font-semibold leading-6 text-white">
-              {t('menu1_title')}
-            </Link>
-            <Link to='#.' className="text-sm font-semibold leading-6 text-white">
-              {t('menu2_title')}
-            </Link>
-            <Link to='#.' className="text-sm font-semibold leading-6 text-white">
-              {t('menu3_title')}
-            </Link>
-            <Link to={`/${i18n.language}/blog`} className="text-sm font-semibold leading-6 text-white">
-              {t('menu4_title')}
-            </Link>
+            <NavLink to={`/${i18n.language}/company-type`}  className={({ isActive }) => 'text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]' + (isActive ? ' border-b-2 border-[#1649FF] !text-[#1649FF] -mb-8' :'')}>
+              Company Type
+            </NavLink>
+            <NavLink to='#.' className="text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]">
+              State
+            </NavLink>
+            <NavLink to='#.' className="text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]">
+              Company Name
+            </NavLink>
+            <NavLink to={`/${i18n.language}/blog`} className="text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]">
+              Formation
+            </NavLink>
+            <NavLink to={`/${i18n.language}/blog`} className="text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]">
+              Summary
+            </NavLink>
+            <NavLink to={`/${i18n.language}/blog`} className="text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]">
+              Your Info
+            </NavLink>
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <div className='hidden lg:flex items-center gap-4'>
-              <div>
-                <Menu as="div" className="relative inline-block text-left">
-                  <div>
-                    <Menu.Button className="uppercase text-[14px]  font-semibold leading-5 text-white">
-                      {i18n.language}
-                    </Menu.Button>
-                  </div>
-                  <Transition
-                    as={Fragment}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
-                  >
-
-                    <Menu.Items className="absolute -right-16 z-10 mt-2 w-36 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-
-                      <Menu.Item>
-                        {({ active }) => (
-                          <div className='block'>
-                            <div className={i18n.language === 'en' ? 'block cursor-pointer bg-slate-100 rounded-md' : 'block cursor-pointer hover:bg-slate-200'} onClick={() => changeLanguage("en")}>
-                              <div className='flex items-center justify-center gap-2 p-3'>
-                                <button className='text-gray-700'>English</button>
-                              </div>
-                            </div>
-                            <div className={i18n.language === 'tr' ? 'block cursor-pointer bg-slate-100 rounded-md' : 'block cursor-pointer hover:bg-slate-200'} onClick={() => changeLanguage("tr")}>
-                              <div className='flex items-center justify-center gap-2 p-3'>
-                                <button className='text-gray-700'>Turkish</button>
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                      </Menu.Item>
-                    </Menu.Items>
-                  </Transition>
-                </Menu>
-              </div>
               <Link
                 to={`/${i18n.language}/pricing/form-my-company`}
                 id="header-fmc"
-                className='bg-white py-2 px-4 rounded-xl text-[#132F8E] font-semibold text-[14px] leading-5'
+                className='bg-white flex items-center gap-2 py-2 px-4 text-[1.125rem] font-semibold leading-[1.5rem] text-[#1649FF]'
               >
-                {t('menu_top_right_handcorner_button')}
+                <img src={chaticon} className='w-6 h-6' alt='chat icon' />
+                We're here to help
               </Link>
             </div>
           </div>
@@ -233,7 +197,7 @@ export function Navbar() {
                 <span className="sr-only">Registate</span>
                 <img
                   className="h-8 w-auto"
-                  src={whitelogo}
+                  src={logo}
                   alt=""
                 />
               </Link>

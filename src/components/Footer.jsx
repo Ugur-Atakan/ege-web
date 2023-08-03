@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 export default function Footer() {
   const API_ROOT = window.ob.config.apiRoot;
-  const {t, i18n} = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigation = {
     solutions: [
       {
@@ -29,16 +29,16 @@ export default function Footer() {
     ],
     support: [
       { name: t('footer_col2_submenu1'), href: `/${i18n.language}/pricing/form-my-company`, },
-      { name:  t('footer_col2_submenu2'), href: `/${i18n.language}/contact`, }
+      { name: t('footer_col2_submenu2'), href: `/${i18n.language}/contact`, }
     ],
     company: [
-      { name:  t('footer_col3_submenu1'), href: `/${i18n.language}/company`, },
-      { name:  t('footer_col3_submenu2'), href: `/${i18n.language}/blog`, },
-      { name:  t('footer_col3_submenu3'), href: `/${i18n.language}/#.`, }
+      { name: t('footer_col3_submenu1'), href: `/${i18n.language}/company-type`, },
+      { name: t('footer_col3_submenu2'), href: `/${i18n.language}/blog`, },
+      { name: t('footer_col3_submenu3'), href: `/${i18n.language}/#.`, }
     ],
     legal: [
-      { name:  t('footer_col4_submenu1'), href: `/${i18n.language}/privacy-policy`},
-      { name:  t('footer_col4_submenu2'), href: `/${i18n.language}/terms-of-service`}
+      { name: t('footer_col4_submenu1'), href: `/${i18n.language}/privacy-policy` },
+      { name: t('footer_col4_submenu2'), href: `/${i18n.language}/terms-of-service` }
     ],
     social: [
       {
@@ -73,7 +73,7 @@ export default function Footer() {
       "email": email,
     }
     console.log(payload)
-    axios.post(API_ROOT +'/api/newsletter', payload, {
+    axios.post(API_ROOT + '/api/newsletter', payload, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
@@ -99,27 +99,23 @@ export default function Footer() {
           <div className="grid grid-cols-2 gap-8 xl:col-span-2">
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="text-base font-medium text-gray-900">{t('footer_col1_title')}</h3>
+                <h3 className="font-semibold text-lg leading-[24px] text-black">{t('footer_col1_title')}</h3>
                 <ul role="list" className="mt-4 space-y-4">
                   {navigation.solutions.map((item) => (
                     <li key={item.name}>
-                      <a href={item.href} className="text-base text-gray-500 hover:text-gray-900">
+                      <a href={item.href} className="font-semibold text-lg leading-[24px] text-[#545454]">
                         {item.name}
                       </a>
                     </li>
                   ))}
-                  <div>
-                    <Link to={`/${i18n.language}/all-products`} className="text-blue-600 text-base">{t('footer_col1_all_products')}
-                      <span aria-hidden="true"> &rarr;</span></Link>
-                  </div>
                 </ul>
               </div>
               <div className="mt-12 md:mt-0">
-                <h3 className="text-base font-medium text-gray-900">{t('footer_col2_title')}</h3>
+                <h3 className="font-semibold text-lg leading-[24px] text-black">{t('footer_col2_title')}</h3>
                 <ul role="list" className="mt-4 space-y-4">
                   {navigation.support.map((item) => (
                     <li key={item.name}>
-                      <a href={item.href} className="text-base text-gray-500 hover:text-gray-900">
+                      <a href={item.href} className="font-semibold text-lg leading-[24px] text-[#545454]">
                         {item.name}
                       </a>
                     </li>
@@ -129,23 +125,11 @@ export default function Footer() {
             </div>
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="text-base font-medium text-gray-900">{ t('footer_col3_title')}</h3>
+                <h3 className="font-semibold text-lg leading-[24px] text-black">{t('footer_col3_title')}</h3>
                 <ul role="list" className="mt-4 space-y-4">
                   {navigation.company.map((item) => (
                     <li key={item.name}>
-                      <a href={item.href} className="text-base text-gray-500 hover:text-gray-900">
-                        {item.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="mt-12 md:mt-0">
-                <h3 className="text-base font-medium text-gray-900">{ t('footer_col4_title')}</h3>
-                <ul role="list" className="mt-4 space-y-4">
-                  {navigation.legal.map((item) => (
-                    <li key={item.name}>
-                      <a href={item.href} className="text-base text-gray-500 hover:text-gray-900">
+                      <a href={item.href} className="font-semibold text-lg leading-[24px] text-[#545454]">
                         {item.name}
                       </a>
                     </li>
@@ -155,35 +139,28 @@ export default function Footer() {
             </div>
           </div>
           <div className="mt-8 xl:mt-0">
-            <h3 className="text-base font-medium text-gray-900">{ t('footer_col5_title')}</h3>
-            <p className="mt-4 text-base text-gray-500">
-              { t('footer_col5_desc')}
+            <p className="mt-4 font-semibold text-lg leading-[24px] text-black">
+            The latest news, articles, and<br></br> resources, sent to your inbox weekly.
             </p>
-            <form onSubmit={submitHandler} className="mt-4 sm:flex sm:max-w-md">
-              <label htmlFor="email-address" className="sr-only">
-                Email address
-              </label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                autoComplete="email"
-                required
-                className="w-full min-w-0 appearance-none rounded-md border border-gray-300 bg-white py-2 px-4 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:border-blue-500 focus:placeholder-gray-400 focus:outline-none focus:ring-blue-500"
-                placeholder={ t('footer_col5_input_placeholder')}
-              />
-              <div className="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
-                <button
-                  type="submit"
-                  className="flex w-full items-center justify-center rounded-md border border-transparent bg-blue-600 py-2 px-4 text-base font-medium text-white hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                >
-                  { t('footer_col5_button')}
-                </button>
+            <form onSubmit={submitHandler} className="mt-4">
+              <label htmlFor="email-address" class="mb-2 text-sm font-medium sr-only"> Email address</label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                </div>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  autoComplete="email"
+                  required
+                  placeholder={t('footer_col5_input_placeholder')}
+                  className="block w-full p-6 pl-6 text-lg text-[#8A8A8A] rounded-[20px] bg-[#ECEFF1] focus:outline-none border-none focus:border-none focus:ring-0" />
+                <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-[#1649FF] py-4 px-7 rounded-2xl">{t('footer_col5_button')}</button>
               </div>
             </form>
           </div>
         </div>
-        <div className="mt-8 border-t border-gray-200 pt-8 md:flex md:items-center md:justify-between">
+        <div className="mt-8 border-t border-black border-opacity-[0.2] pt-8 md:flex md:items-center md:justify-between">
           <div className="flex space-x-6 md:order-2">
             {navigation.social.map((item) => (
               <a key={item.name} href={item.href} className="text-gray-400 hover:text-gray-500">
@@ -192,26 +169,26 @@ export default function Footer() {
               </a>
             ))}
           </div>
-          <p className="mt-8 text-base text-gray-400 md:order-1 md:mt-0">
+          <p className="mt-8 text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A] md:order-1 md:mt-0">
             {t('footer_bottom_left')}
           </p>
         </div>
       </div>
       <ToastContainer
-            position="bottom-left"
-            autoClose={5000}
-            hideProgressBar={true}
-            newestOnTop={false}
-            closeOnClick
-            toastClassName={()=>
-              "bg-green-600 text-white items-center flex p-4 shadow-lg rounded-lg"
-            }
-            closeButton={()=>"x"}
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          />
+        position="bottom-left"
+        autoClose={5000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        toastClassName={() =>
+          "bg-green-600 text-white items-center flex p-4 shadow-lg rounded-lg"
+        }
+        closeButton={() => "x"}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </footer>
   )
 }
