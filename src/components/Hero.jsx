@@ -69,7 +69,7 @@ export default function Example() {
             </button>
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
-            <Link to={`/${i18n.language}/pricing/form-my-company`} className="text-sm font-semibold leading-6 text-white">
+            <Link to={`/${i18n.language}/state`} className="text-sm font-semibold leading-6 text-white">
               {t('menu1_title')}
             </Link>
             <Link to='#.' className="text-sm font-semibold leading-6 text-white">
@@ -124,7 +124,7 @@ export default function Example() {
                 </Menu>
               </div>
               <Link
-                to={`/${i18n.language}/pricing/form-my-company`}
+                to={`/${i18n.language}/state`}
                 id="header-fmc"
                 className='bg-white py-2 px-4 rounded-xl text-[#132F8E] font-semibold text-[14px] leading-5'
               >
@@ -157,7 +157,7 @@ export default function Example() {
             <div className="mt-6 flow-root">
               <div className="-my-6 divide-y divide-gray-500/25">
                 <div className="space-y-2 py-6">
-                  <Link to={`/${i18n.language}/pricing/form-my-company`} className="text-sm font-semibold leading-6 text-white">
+                  <Link to={`/${i18n.language}/state`} className="text-sm font-semibold leading-6 text-white">
                     {t('menu1_title')}
                   </Link>
                   <Link to='#.' className="text-sm font-semibold leading-6 text-white">
@@ -172,7 +172,7 @@ export default function Example() {
                 </div>
                 <div className="py-6">
                   <Link
-                    to={`/${i18n.language}/pricing/form-my-company`}
+                    to={`/${i18n.language}/state`}
                     id="header-fmc"
                     className='bg-white py-2 px-4 rounded-xl text-[#132F8E] font-semibold text-[14px] leading-5'
                   >

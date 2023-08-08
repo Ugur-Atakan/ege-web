@@ -79,7 +79,7 @@ export function Navbar() {
     {
       name: t('mobile_menu_title_4'),
       description: t('mobile_menu_title_4_desc'),
-      href: `/${i18n.language}/pricing/form-my-company`,
+      href: `/${i18n.language}/state`,
       icon: BuildingOfficeIcon,
     },
     {
@@ -160,13 +160,13 @@ export function Navbar() {
             <NavLink to={`/${i18n.language}/company-type`}  className={({ isActive }) => 'text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]' + (isActive ? ' border-b-2 border-[#1649FF] !text-[#1649FF] -mb-8' :'')}>
               Company Type
             </NavLink>
-            <NavLink to='#.' className="text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]">
+            <NavLink to={`/${i18n.language}/state`} className={({ isActive }) => 'text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]' + (isActive ? ' border-b-2 border-[#1649FF] !text-[#1649FF] -mb-8' :'')}>
               State
             </NavLink>
-            <NavLink to='#.' className="text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]">
+            <NavLink to={`/${i18n.language}/company-name`} className={({ isActive }) => 'text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]' + (isActive ? ' border-b-2 border-[#1649FF] !text-[#1649FF] -mb-8' :'')}>
               Company Name
             </NavLink>
-            <NavLink to={`/${i18n.language}/blog`} className="text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]">
+            <NavLink to={`/${i18n.language}/formation`} className={({ isActive }) => 'text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]' + (isActive ? ' border-b-2 border-[#1649FF] !text-[#1649FF] -mb-8' :'')}>
               Formation
             </NavLink>
             <NavLink to={`/${i18n.language}/blog`} className="text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]">
@@ -179,7 +179,7 @@ export function Navbar() {
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <div className='hidden lg:flex items-center gap-4'>
               <Link
-                to={`/${i18n.language}/pricing/form-my-company`}
+                to={`/${i18n.language}/state`}
                 id="header-fmc"
                 className='bg-white flex items-center gap-2 py-2 px-4 text-[1.125rem] font-semibold leading-[1.5rem] text-[#1649FF]'
               >
@@ -213,7 +213,7 @@ export function Navbar() {
             <div className="mt-6 flow-root">
               <div className="-my-6 divide-y divide-gray-500/25">
                 <div className="space-y-2 py-6">
-                  <Link to={`/${i18n.language}/pricing/form-my-company`} className="text-sm font-semibold leading-6 text-white">
+                  <Link to={`/${i18n.language}/state`} className="text-sm font-semibold leading-6 text-white">
                     {t('menu1_title')}
                   </Link>
                   <Link to='#.' className="text-sm font-semibold leading-6 text-white">
@@ -228,7 +228,7 @@ export function Navbar() {
                 </div>
                 <div className="py-6">
                   <Link
-                    to={`/${i18n.language}/pricing/form-my-company`}
+                    to={`/${i18n.language}/state`}
                     id="header-fmc"
                     className='bg-white py-2 px-4 rounded-xl text-[#132F8E] font-semibold text-[14px] leading-5'
                   >

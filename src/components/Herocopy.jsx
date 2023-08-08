@@ -86,7 +86,7 @@ export default function Herocopy(props) {
                   {t('hero_section_desc')}
                 </p>
                 <div className='flex justify-center'>
-                    <Link to={`/${i18n.language}/pricing/form-my-company`} type="submit" id='form-my-company' className="px-16 py-4 relative rounded group overflow-hidden font-medium bg-blue-600 text-white inline-block">
+                    <Link to={`/${i18n.language}/state`} type="submit" id='form-my-company' className="px-16 py-4 relative rounded group overflow-hidden font-medium bg-blue-600 text-white inline-block">
                       <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-blue-700 group-hover:h-full opacity-90"></span>
                       <span className="relative group-hover:text-white text-lg">{t('hero_section_button')}</span>
                     </Link>

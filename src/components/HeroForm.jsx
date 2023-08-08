@@ -60,7 +60,7 @@ export default function HeroForm(props) {
                     localStorage.setItem('onboardingId', jsonData.data.id);
                     localStorage.setItem('companyName', new_company_name);
                     localStorage.setItem('userEmail', userEmail);
-                    navigate(`/${i18n.language}/pricing/form-my-company`);
+                    navigate(`/${i18n.language}/state`);
                     props.setCompanyName(new_company_name);
                 }
 

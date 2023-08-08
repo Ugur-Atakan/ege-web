@@ -9,7 +9,6 @@ export function Onboarding () {
     <main>
         <Navbar />
         <OnboardingForm />
-        <Footer/>
     </main>
   )
 }

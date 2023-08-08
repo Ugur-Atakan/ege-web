@@ -7,7 +7,6 @@ export default function CompanyType() {
     <main>
       <Navbar />
       <Choose />
-      <Footer />
     </main>
   )
 }

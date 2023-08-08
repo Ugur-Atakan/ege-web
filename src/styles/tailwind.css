@@ -211,3 +211,14 @@ border-radius: 1rem;
     background-image: url('../images/choose-bg.png');
     background-size: cover;
 }
+
+.wyoming::before{
+  content:'Recommended for LLC';
+  position: absolute;
+  top: -1rem;
+  right: 1rem;
+  background-color: #1649FF;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  }

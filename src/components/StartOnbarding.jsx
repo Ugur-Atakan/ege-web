@@ -314,7 +314,7 @@ export default function StartOnbarding() {
                 </ul>}
             </div>
             <div className="py-6">
-              <Link to={`/${i18n.language}/pricing/form-my-company`} state={{ text: text }}>
+              <Link to={`/${i18n.language}/state`} state={{ text: text }}>
                 <button className="py-6 px-6 text-center bg-[#1649FF] rounded-[1.25rem] border border-blue-600 text-white text-[1.375rem] leading-[1.625rem] w-full font-semibold">
                   <h4>{t('help_me_choose_widget_answer1_button')}</h4>
                 </button>

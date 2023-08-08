@@ -28,7 +28,7 @@ export default function Footer() {
       },
     ],
     support: [
-      { name: t('footer_col2_submenu1'), href: `/${i18n.language}/pricing/form-my-company`, },
+      { name: t('footer_col2_submenu1'), href: `/${i18n.language}/state`, },
       { name: t('footer_col2_submenu2'), href: `/${i18n.language}/contact`, }
     ],
     company: [

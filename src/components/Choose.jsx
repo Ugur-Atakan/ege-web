@@ -1,6 +1,6 @@
 import { ArrowLeftIcon } from '@heroicons/react/24/outline'
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import umbrella from '../images/umbrella.png'
 import puzzle from '../images/puzzle.png'
 import search from '../images/search.png'
@@ -8,10 +8,22 @@ import searchwhite from '../images/search-white.png'
 import i18n from '../i18n'
 
 export default function Choose() {
+    const [companyType, setCompanyType] =useState('');
+    localStorage.setItem('companyType', companyType);
+
+    const handleSelectLlc = () => {
+        setCompanyType('LLC');
+        window.location.href = `/${i18n.language}/state`;
+    }
+
+    const handleSelectCcorp = () => {
+        setCompanyType('C-Corp');
+        window.location.href = `/${i18n.language}/state`;
+    }
     return (
         <div className='relative'>
             <div className="mx-auto p-6 lg:px-8 bg-white">
-                <Link className='flex items-center gap-2' to='#.'>
+                <Link className='flex items-center gap-2' to='/'>
                     <ArrowLeftIcon className='text-[#1649FF] h-[18px] w-[18px]' />
                     <span className='text-[#1649FF] text-lg font-semibold'>Back</span>
                 </Link>
@@ -21,13 +33,13 @@ export default function Choose() {
                     <div className='text-center'>
                         <h1 className='text-[#222222] text-[2.5rem] font-semibold leading-[2.75rem]'>Choose a company type</h1>
                     </div>
-                    <div className='flex items-stretch justify-center gap-4 py-12'>
-                        <div className='block bg-[#ECEFF1] rounded-[2rem] p-8'>
+                    <div className='flex items-stretch justify-center gap-4 py-12' >
+                        <div className='block bg-[#ECEFF1] rounded-[2rem] p-8' onClick={handleSelectLlc}>
                             <img src={umbrella} className='w-64 h-64' alt='llc' />
                             <h2 className='text-[#222222] text-[1.75rem] font-semibold leading-[2rem]'>LLC</h2>
                             <p className='text-[#222222] text-[1.125rem] font-semibold leading-[1.5rem] pt-4'>Great for small businesses and entrepreneurs with its flexibility and tax benefits.</p>
                         </div>
-                        <div className='block bg-[#ECEFF1] rounded-[2rem] p-8'>
+                        <div className='block bg-[#ECEFF1] rounded-[2rem] p-8' onClick={handleSelectCcorp}>
                             <img src={puzzle} className='w-64 h-64' alt='llc' />
                             <h2 className='text-[#222222] text-[1.75rem] font-semibold leading-[2rem]'>C-Corp</h2>
                             <p className='text-[#222222] text-[1.125rem] font-semibold leading-[1.5rem] pt-4'>Great for small businesses and entrepreneurs with its flexibility and tax benefits.</p>
@@ -263,8 +275,8 @@ export default function Choose() {
                                                 <td className="py-4 pl-4 pr-3 text-lg font-semibold leading-[1.5rem] text-[#222222] sm:pl-0 sr-only">
                                                     sr-only
                                                 </td>
-                                                <td className="w-1/3 px-3 py-4 text-lg font-semibold leading-[1.5rem] text-[#222222]"><Link className='py-3 px-12 rounded-2xl bg-[#1649FF] text-white text-lg font-semibold leading-6' to='#.'>Start LLC</Link></td>
-                                                <td className="w-1/3 px-3 py-4 text-lg font-semibold leading-[1.5rem] text-[#222222]"><Link className='py-3 px-12 rounded-2xl bg-[#9EE248] text-white text-lg font-semibold leading-6' to='#.'>Start C-Corp</Link></td>
+                                                <td className="w-1/3 px-3 py-4 text-lg font-semibold leading-[1.5rem] text-[#222222]"><button className='py-3 px-12 rounded-2xl bg-[#1649FF] text-white text-lg font-semibold leading-6' onClick={handleSelectLlc}>Start LLC</button></td>
+                                                <td className="w-1/3 px-3 py-4 text-lg font-semibold leading-[1.5rem] text-[#222222]"><button className='py-3 px-12 rounded-2xl bg-[#9EE248] text-white text-lg font-semibold leading-6' onClick={handleSelectCcorp}>Start C-Corp</button></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -284,7 +296,7 @@ export default function Choose() {
                                 </div>
                             </div>
                             <div>
-                                <Link to='#.' className='rounded-[1.25rem] bg-white py-6 px-[4.25rem] text-black text-[1.375rem] font-semibold leading-[1.625rem]'>
+                                <Link to={`/${i18n.language}/start-my-business`} className='rounded-[1.25rem] bg-white py-6 px-[4.25rem] text-black text-[1.375rem] font-semibold leading-[1.625rem]'>
                                     Take a quiz
                                 </Link>
                             </div>
