@@ -128,10 +128,7 @@ export default function Formation() {
       </div>
       <div className='mx-auto max-w-xs'>
         <div className='w-full flex flex-col items-center justify-center'>
-          <Link to={`/${i18n.language}/formation`} className='w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer'>
-            Continue
-          </Link>
-          <p className='py-6 font-semibold  text-[22px] leading-[26px] text-[#1649FF]'>What’s included per package</p>
+          <p className='cursor-pointer py-6 font-semibold  text-[22px] leading-[26px] text-[#1649FF]'>What’s included per package</p>
         </div>
       </div>
       <div className='mx-auto max-w-5xl p-4'>
@@ -157,7 +154,7 @@ export default function Formation() {
                             ? "w-1/5 sticky top-0 z-10 hidden border-b border-gray-300 bg-white px-3 py-3.5 text-center text-2xl font-semibold text-[#1649FF] backdrop-blur backdrop-filter sm:table-cell"
                             : "w-1/5 sticky top-0 z-10 hidden border-b border-gray-300 bg-white px-3 py-3.5 text-center text-2xl font-semibold text-[#222222] backdrop-blur backdrop-filter sm:table-cell"}
                         >
-                          {price.orderPackage}
+                          {price.orderPackage.replace('Registate','')}
                           <span className='text-[16px] block font-semibold'>{'$' + (price.orderPackagePrice / 100).toFixed(0)}</span>
                         </th>
                       ))}
@@ -179,7 +176,7 @@ export default function Formation() {
                                   </td>
                                 </tr>
                                 {detailItem.details.map((detail, index) => (
-                                  <tr key={detailIndex}>
+                                  <tr key={index}>
                                     <td className='font-semibold text-lg text-left leading-6 text-[#222222] py-4'>
                                       {detail.title}
                                     </td>
@@ -193,11 +190,13 @@ export default function Formation() {
                                         <img src={detail.startup ? arrowblack : noinclude} className='h-6 w-6' alt='tick' />
                                       </div>
                                     </td>
-                                    <td className='font-semibold text-lg text-center leading-6 text-[#222222] py-4'>
-                                      <div className='flex items-center justify-center'>
-                                        <img src={detail.scaleup ? arrowblue : noinclude} className='h-6 w-6' alt='tick' />
-                                      </div>
-                                    </td>
+                                    {((companyType === 'Corporation') && (companyState==='Delaware' || companyState==='New York' || companyState==='California')) && (
+                                      <td className='font-semibold text-lg text-center leading-6 text-[#222222] py-4'>
+                                        <div className='flex items-center justify-center'>
+                                          <img src={detail.scaleup ? arrowblue : noinclude} className='h-6 w-6' alt='tick' />
+                                        </div>
+                                      </td>
+                                    )}
                                   </tr>
                                 ))}
                               </>
