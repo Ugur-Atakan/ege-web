@@ -1,0 +1,215 @@
+{
+    "packages": [
+        {
+            "details": [
+                {
+                    "title": "Business Formation and Compliance",
+                    "details": [
+                        {
+                            "title": "1 Year Registered Agent Fee",
+                            "starter": true,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "EIN Application Fee",
+                            "starter": true,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Free Company Name Check",
+                            "starter": true,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Certificate of InCorporation",
+                            "starter": true,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Statement of Incorporator",
+                            "starter": true,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Company Formation State Filing Fees",
+                            "starter": true,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Assisting payment of franchise tax and annual report filing fees",
+                            "starter": false,
+                            "startup": true,
+                            "scaleup": true
+                        }
+                    ]
+                },
+                {
+                    "title": "Document Management and Delivery",
+                    "details": [
+                        {
+                            "title": "Access to Registate Online Dashboard",
+                            "starter": true,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Access to Digital Copies of the Documents",
+                            "starter": true,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Customizable Corporate Meeting Minutes",
+                            "starter": true,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Electronic Delivery of State Documents",
+                            "starter": true,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "1 Year Business Address Fee",
+                            "starter": true,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "1 Year Virtual Mailbox Fee",
+                            "starter": false,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "1 Year Free Compliance Calendar",
+                            "starter": false,
+                            "startup": true,
+                            "scaleup": true
+                        }
+                    ]
+                },
+                {
+                    "title": "Legal and Administrative Support",
+                    "details": [
+                        {
+                            "title": "Lifetime Customer Support (Phone & Email)",
+                            "starter": true,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Customizable Corporate Banking Resolution",
+                            "starter": true,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Customizable Corporation Bylaws",
+                            "starter": true,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Stock Issuance to Shareholders",
+                            "starter": false,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Stock Purchase Agreements",
+                            "starter": false,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Stock Certificates",
+                            "starter": false,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Vesting Schedules for —  Recommended for Tech Founders",
+                            "starter": false,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Captable/Stock Ledger",
+                            "starter": false,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "83b IRS forms for Founders",
+                            "starter": false,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Initial Board and Stockholder Resolutions",
+                            "starter": false,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Confidential Information and Inventions Assignment Agreement Templates",
+                            "starter": false,
+                            "startup": false,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Technology Transfer Agreement Templates",
+                            "starter": false,
+                            "startup": false,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Mutual Non Disclosure Agreement Templates",
+                            "starter": false,
+                            "startup": false,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "ESOP Reservation Document Templates",
+                            "starter": false,
+                            "startup": false,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Stock Option Grant Contract Templates",
+                            "starter": false,
+                            "startup": false,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Template for Option Plan for Employees/Consultants and Advisors",
+                            "starter": false,
+                            "startup": false,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "SAFE Financing Documents Templates",
+                            "starter": false,
+                            "startup": false,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Convertible Note Financing Documents Templates",
+                            "starter": false,
+                            "startup": false,
+                            "scaleup": true
+                        }
+                    ]
+                }
+            ]   
+        }
+    ]
+}

@@ -6,10 +6,10 @@ import bishopwhite from '../images/bishop-white.png'
 import quencolor from '../images/queen-color.png'
 import kingblack from '../images/king-black.png'
 import axios from 'axios'
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
+import packageData from '../assets/packageData.json'
+import arrowblack from '../images/arrow-black.png'
+import arrowblue from '../images/arrow-blue.png'
+import noinclude from '../images/no-include.png'
 
 const API_ROOT = window.ob.config.apiRoot;
 
@@ -164,29 +164,49 @@ export default function Formation() {
                     </tr>
                   </thead>
                   <tbody>
-                    {packagePrices.map((prices, packageIndex) => (
-                      <React.Fragment key={packageIndex}>
-                        <tr>
-                          <td
-                            colSpan="2"
-                            className="text-2xl font-semibold leading-8 text-[#222222] pb-8 pt-16"
-                          >
-                            {packageIndex === 0 && 'Business Formation and Compliance' || packageIndex === 1 && 'Document Management and Delivery ' || packageIndex === 2 && 'Legal and Administrative Support'}
-                          </td>
-                        </tr>
-                        {prices.features.map((feature, index) => (
-                          <tr key={index}>
-                            <td
-                              className='font-semibold text-lg leading-6 text-[#222222] py-4'
-                            >
-                              {feature}
-                            </td>
-                          </tr>
+                    {packageData.packages.map((packageItem, packageIndex) => (
+                      <>
+                        {Object.keys(packageItem).map((packageTitle, titleIndex) => (
+                          <React.Fragment key={titleIndex}>
+                            {packageTitle === 'details' && packageItem[packageTitle].map((detailItem, detailIndex) => (
+                              <>
+                                <tr>
+                                  <td
+                                    colSpan="2"
+                                    className="text-2xl font-semibold leading-8 text-[#222222] pb-8 pt-16"
+                                  >
+                                    {detailItem.title}
+                                  </td>
+                                </tr>
+                                {detailItem.details.map((detail, index) => (
+                                  <tr key={detailIndex}>
+                                    <td className='font-semibold text-lg text-left leading-6 text-[#222222] py-4'>
+                                      {detail.title}
+                                    </td>
+                                    <td className='font-semibold text-lg text-center leading-6 text-[#222222] py-4'>
+                                      <div className='flex items-center justify-center'>
+                                        <img src={detail.starter ? arrowblack : noinclude} className='h-6 w-6' alt='tick' />
+                                      </div>
+                                    </td>
+                                    <td className='font-semibold text-lg text-center leading-6 text-[#222222] py-4'>
+                                      <div className='flex items-center justify-center'>
+                                        <img src={detail.startup ? arrowblack : noinclude} className='h-6 w-6' alt='tick' />
+                                      </div>
+                                    </td>
+                                    <td className='font-semibold text-lg text-center leading-6 text-[#222222] py-4'>
+                                      <div className='flex items-center justify-center'>
+                                        <img src={detail.scaleup ? arrowblue : noinclude} className='h-6 w-6' alt='tick' />
+                                      </div>
+                                    </td>
+                                  </tr>
+                                ))}
+                              </>
+                            ))}
+                          </React.Fragment>
                         ))}
-                      </React.Fragment>
+                      </>
                     ))}
                   </tbody>
-
                 </table>
               </div>
             </div>
