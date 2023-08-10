@@ -79,8 +79,10 @@ const App = () => {
           <Route exact path="/:lang/us-bank-account-opening-support" element={<AccountOpeningSupport />} />
           <Route exact path="/:lang/company-type" element={<Company />} />
           <Route exact path="/:lang/contact" element={<Contact />} />
-          <Route exact path="/:lang/blog" element={<Blog />} />
-          <Route exact path="/:lang/blog/:id" element={<Blog />} />
+          <Route path="/:lang/blog/*" component={() => {
+          window.location.href = window.location.href;
+            return null;
+          }} />
           <Route exact path="/:lang/terms-of-service" element={<TermsOfService />} />
           <Route exact path="/:lang/privacy-policy" element={<PrivacyPolicy />} />
           <Route exact path="/:lang/faq" element={<Faqs />} />
