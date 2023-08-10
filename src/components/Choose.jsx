@@ -17,7 +17,7 @@ export default function Choose() {
     }
 
     const handleSelectCcorp = () => {
-        setCompanyType('C-Corp');
+        setCompanyType('Corporation');
         window.location.href = `/${i18n.language}/state`;
     }
     return (
@@ -34,12 +34,12 @@ export default function Choose() {
                         <h1 className='text-[#222222] text-[2.5rem] font-semibold leading-[2.75rem]'>Choose a company type</h1>
                     </div>
                     <div className='flex items-stretch justify-center gap-4 py-12' >
-                        <div className='block bg-[#ECEFF1] rounded-[2rem] p-8' onClick={handleSelectLlc}>
+                        <div className='block bg-[#ECEFF1] rounded-[2rem] p-8 cursor-pointer' onClick={handleSelectLlc}>
                             <img src={umbrella} className='w-64 h-64' alt='llc' />
                             <h2 className='text-[#222222] text-[1.75rem] font-semibold leading-[2rem]'>LLC</h2>
                             <p className='text-[#222222] text-[1.125rem] font-semibold leading-[1.5rem] pt-4'>Great for small businesses and entrepreneurs with its flexibility and tax benefits.</p>
                         </div>
-                        <div className='block bg-[#ECEFF1] rounded-[2rem] p-8' onClick={handleSelectCcorp}>
+                        <div className='block bg-[#ECEFF1] rounded-[2rem] p-8 cursor-pointer' onClick={handleSelectCcorp}>
                             <img src={puzzle} className='w-64 h-64' alt='llc' />
                             <h2 className='text-[#222222] text-[1.75rem] font-semibold leading-[2rem]'>C-Corp</h2>
                             <p className='text-[#222222] text-[1.125rem] font-semibold leading-[1.5rem] pt-4'>Great for small businesses and entrepreneurs with its flexibility and tax benefits.</p>

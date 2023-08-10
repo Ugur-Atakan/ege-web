@@ -169,8 +169,8 @@ export function Navbar() {
             <NavLink to={`/${i18n.language}/formation`} className={({ isActive }) => 'text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]' + (isActive ? ' border-b-2 border-[#1649FF] !text-[#1649FF] -mb-8' :'')}>
               Formation
             </NavLink>
-            <NavLink to={`/${i18n.language}/blog`} className="text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]">
-              Summary
+            <NavLink to={`/${i18n.language}/review`} className={({ isActive }) => 'text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]' + (isActive ? ' border-b-2 border-[#1649FF] !text-[#1649FF] -mb-8' :'')}>
+              Review
             </NavLink>
             <NavLink to={`/${i18n.language}/blog`} className="text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]">
               Your Info

@@ -45,6 +45,7 @@ import ExitIndent from './components/ExitIndent';
 import Freetaxconsultation from './routes/free-tax-consultation';
 import Notfound from './routes/notfound';
 import Formation from './routes/formation';
+import Review from './routes/review';
 
 const App = () => {
   const { i18n } = useTranslation();
@@ -85,6 +86,7 @@ const App = () => {
           <Route exact path="/:lang/faq" element={<Faqs />} />
           <Route exact path="/:lang/company-name" element={<Onboarding />} />
           <Route exact path="/:lang/formation" element={<Formation />} />
+          <Route exact path="/:lang/review" element={<Review />} />
           <Route exact path="/:lang/state" element={<PricingFormMyCompany />} />
           <Route exact path="/:lang/pricing/post-incorporation-documents" element={<PricingPostIncorporationDocuments />} />
           <Route exact path="/:lang/pricing/apostille-and-notarization-services" element={<PricingApostilleAndNotorizationServices />} />
