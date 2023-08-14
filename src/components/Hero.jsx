@@ -69,7 +69,7 @@ export default function Example() {
             </button>
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
-            <Link to={`/${i18n.language}/state`} className="text-sm font-semibold leading-6 text-white">
+            <Link to={`/${i18n.language}/company-type`} className="text-sm font-semibold leading-6 text-white">
               {t('menu1_title')}
             </Link>
             <Link to='#.' className="text-sm font-semibold leading-6 text-white">

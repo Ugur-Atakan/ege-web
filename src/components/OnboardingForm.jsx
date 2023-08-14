@@ -1,5 +1,5 @@
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import i18n from "../i18n";
 
@@ -7,6 +7,8 @@ export default function OnboardingForm() {
   const [companyName, setCompanyName] = useState('');
   const [abbreviation, setAbbreviation] = useState('');
   const [abbreviationOptions, setAbbreviationOptions] = useState(['Inc']);
+  let companyType = localStorage.getItem('companyType');
+  let companyState = localStorage.getItem('companyState');
   localStorage.setItem('companyName', companyName);
 
   const handleAbbreviationChange = (name) => {
@@ -17,6 +19,14 @@ export default function OnboardingForm() {
     setCompanyName(e.target.value);
   }
 
+  useEffect(()=> {
+    if (!(companyType && companyState)) {
+      window.location.href = `/${i18n.language}/state`;
+    }
+  },[companyType, companyState])
+
+
+
   return (
     <div className='bg-white'>
     <div className="mx-auto p-6 lg:px-8">
@@ -25,11 +35,11 @@ export default function OnboardingForm() {
         <span className='text-[#1649FF] text-lg font-semibold'>Back</span>
       </Link>
     </div>
-    <div className='mx-auto max-w-md'>
-      <div className='text-center'>
-        <h1 className='font-semibold text-[40px] leading-[44px] text-[#222222]'>What great idea do you have in mind?</h1>
+    <div className='mx-auto max-w-md px-8 md:px-0'>
+      <div className='text-left md:text-center'>
+        <h1 className='font-semibold text-[26px] md:text-[40px] leading-[44px] text-[#222222]'>What great idea do you have in mind?</h1>
       </div>
-      <div className='mx-auto max-w-xl py-12'>
+      <div className='mx-auto max-w-xl py-6 md:py-12'>
         <ul className="grid w-full gap-6 md:grid-cols-1">
           <li>
             <label className="font-semibold text-lg leading-6 text-[#222222]">Company Name</label>

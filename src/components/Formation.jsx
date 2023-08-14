@@ -18,6 +18,7 @@ export default function Formation() {
   let [companyType, setCompanyType] = useState("");
   companyState = localStorage.getItem('companyState');
   companyType = localStorage.getItem('companyType');
+  let companyName = localStorage.getItem('companyName');
   let [packagePrices, setPackagePrices] = useState([]);
   let [states, setStates] = useState([]);
   let [companyTypes, setCompanyTypes] = useState([]);
@@ -49,10 +50,10 @@ export default function Formation() {
           });
       }
     }
-    if (companyState !== "" && companyType !== "") {
+    if (companyState !== "" && companyType !== "" && companyName !=='') {
       updatePricing();
     } else {
-      window.location.href = `/${i18n.language}/company-type`;
+      window.location.href = `/${i18n.language}/company-name`;
     }
   }, [companyType, companyState, states]);
 
@@ -97,10 +98,10 @@ export default function Formation() {
         </Link>
       </div>
       <div className='mx-auto max-w-5xl p-4'>
-        <div className='text-center'>
-          <h1 className='font-semibold text-[40px] leading-[44px] text-[#222222]'>Choose your package</h1>
+        <div className='text-left md:text-center'>
+          <h1 className='font-semibold text-[26px] md:text-[40px] leading-[44px] text-[#222222]'>Choose your package</h1>
         </div>
-        <div className={packagePrices.length < 3 ? 'grid grid-cols-2 gap-5 py-12' : 'grid grid-cols-3 gap-5 py-12'}>
+        <div className={packagePrices.length < 3 ? 'grid md:grid-cols-2 gap-5 py-12' : 'grid md:grid-cols-3 gap-5 py-12'}>
           {packagePrices.map((prices, index) => (
             <div className={index === 0 && 'flex flex-col gap-5 border border-[#9EE248] p-12 rounded-[20px] h-[35rem] overflow-hidden cursor-pointer' || index === 1 && 'flex flex-col gap-5 bg-[#1649FF] p-12 rounded-[20px] h-[35rem] overflow-hidden cursor-pointer' || index === 2 && 'flex flex-col gap-5 border bg-[#222222] p-12 rounded-[20px] h-[35rem] overflow-hidden cursor-pointer'}
               onClick={() => {
@@ -128,34 +129,33 @@ export default function Formation() {
       </div>
       <div className='mx-auto max-w-xs'>
         <div className='w-full flex flex-col items-center justify-center'>
-          <p className='cursor-pointer py-6 font-semibold  text-[22px] leading-[26px] text-[#1649FF]'>What’s included per package</p>
+          <p className='cursor-pointer md:py-6 font-semibold  text-[22px] leading-[26px] text-[#1649FF]'>What’s included per package</p>
         </div>
       </div>
       <div className='mx-auto max-w-5xl p-4'>
-        <div className="px-4 sm:px-6 lg:px-8">
+        <div className="px-6 lg:px-8 overflow-x-scroll overflow-y-hidden">
           <div className="mt-8 flow-root">
             <div className="-mx-4 -my-2 sm:-mx-6 lg:-mx-8">
               <div className="inline-block min-w-full py-2 align-middle">
-
                 <table className="min-w-full border-separate border-spacing-0">
                   <thead>
                     <tr>
                       <th
                         scope="col"
-                        className="w-2/5 sticky top-0 z-10 border-b border-gray-300 bg-white py-3.5 pr-3 text-left text-4xl font-semibold text-[#222222] leading-[44px] backdrop-blur backdrop-filter"
+                        className="w-2/5 sticky top-0 z-10 border-b border-gray-300 bg-white py-3.5 pr-3 text-left text-[26px] md:text-4xl font-semibold text-[#222222] leading-6 md:leading-[44px] backdrop-blur backdrop-filter"
                       >
                         Compare Packages
-                        <span className='text-lg block font-semibold'>What’s included per package</span>
+                        <span className='text-base leading-4 md:leading-normal pt-2 md:pt-0 md:text-lg block font-semibold'>What’s included per package</span>
                       </th>
                       {packagePrices.map((price, index) => (
                         <th
                           scope="col"
                           className={index === 2
-                            ? "w-1/5 sticky top-0 z-10 hidden border-b border-gray-300 bg-white px-3 py-3.5 text-center text-2xl font-semibold text-[#1649FF] backdrop-blur backdrop-filter sm:table-cell"
-                            : "w-1/5 sticky top-0 z-10 hidden border-b border-gray-300 bg-white px-3 py-3.5 text-center text-2xl font-semibold text-[#222222] backdrop-blur backdrop-filter sm:table-cell"}
+                            ? "w-1/5 sticky top-0 z-10 border-b border-gray-300 bg-white px-3 py-3.5 text-center whitespace-nowrap md:whitespace-normal text-2xl font-semibold text-[#1649FF] backdrop-blur backdrop-filter sm:table-cell"
+                            : "w-1/5 sticky top-0 z-10 border-b border-gray-300 bg-white whitespace-nowrap md:whitespace-normal px-3 py-3.5 text-center text-2xl font-semibold text-[#222222] backdrop-blur backdrop-filter sm:table-cell"}
                         >
                           {price.orderPackage.replace('Registate','')}
-                          <span className='text-[16px] block font-semibold'>{'$' + (price.orderPackagePrice / 100).toFixed(0)}</span>
+                          <span className='text-lg md:text-[16px] block font-semibold'>{'$' + (price.orderPackagePrice / 100).toFixed(0)}</span>
                         </th>
                       ))}
                     </tr>

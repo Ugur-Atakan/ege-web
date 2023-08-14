@@ -10,10 +10,10 @@ const API_ROOT = window.ob.config.apiRoot;
 export function Pricing() {
   const [companyState, setCompanyState] = useState('');
   const [otherStates, setOtherStates] = useState([]);
+  let companyType = localStorage.getItem('companyType');
   localStorage.setItem('companyState', companyState);
-  console.log(companyState)
-
   useEffect(() => {
+    const updateState = () => {
     //get the states from backend api via axios
     axios.get(API_ROOT + '/api/fe/states', {
       headers: {
@@ -29,6 +29,13 @@ export function Pricing() {
       .catch(function (error) {
         console.log(error);
       });
+    }
+
+      if (companyType !== "") {
+        updateState();
+      } else {
+        window.location.href = `/${i18n.language}/company-type`;
+      }
   },[]);
 
   const handleCompanyStateChange = (name) => {
@@ -44,9 +51,9 @@ export function Pricing() {
           <span className='text-[#1649FF] text-lg font-semibold'>Back</span>
         </Link>
       </div>
-      <div className='mx-auto max-w-2xl'>
-        <div className='text-center'>
-          <h1 className='font-semibold text-[40px] leading-[44px] text-[#222222]'>Choose your registration state</h1>
+      <div className='mx-auto max-w-2xl px-8 md:px-0'>
+        <div className='text-left md:text-center'>
+          <h1 className='font-semibold  text-[26px] md:text-[40px] leading-[32px] md:leading-[44px] text-[#222222]'>Choose your registration state</h1>
         </div>
         <div className='mx-auto max-w-xl py-12'>
           <ul className="grid w-full gap-6 md:grid-cols-1">
@@ -57,7 +64,7 @@ export function Pricing() {
                   <div className="w-full text-[22px] font-semibold leading-[26px] text-[#222222]">Wyoming</div>
                   <div className="w-[75%] pt-3 font-semibold text-lg leading-[24px] text-[#222222]">Recommended for forming an LLC due to its favorable business laws, asset protection, and low taxes.</div>
                 </div>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-12 h-12 ml-3 peer">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"  className="w-24  md:w-12 h-12 ml-3 peer">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
 
@@ -67,10 +74,10 @@ export function Pricing() {
               <input type="radio" id="hosting-big" name="hosting" value="hosting-big" className="hidden peer" />
               <label htmlFor="hosting-big" className="inline-flex items-start justify-between w-full p-5 text-gray-500 bg-white border border-[#C8C8C8] rounded-[20PX] cursor-pointer peer-checked:border-blue-600 peer-checked:border-[4px] peer-checked:text-blue-600">
                 <div className="block">
-                  <div className="w-full text-[22px] font-semibold leading-[26px] text-[#222222]">Delaware</div>
-                  <div className="w-[75%] pt-3 font-semibold text-lg leading-[24px] text-[#222222]">Recommended due to its business-friendly environment, attracting investors and providing flexibility for growth.</div>
+                  <div className="w-full text-[20px] md:text-[22px] font-semibold leading-[26px] text-[#222222]">Delaware</div>
+                  <div className="w-[75%] pt-3 font-semibold text-[16px] md:text-lg leading-[24px] text-[#222222]">Recommended due to its business-friendly environment, attracting investors and providing flexibility for growth.</div>
                 </div>
-                <svg className="w-12 h-12 ml-3 peer" aria-hidden="true" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg className="w-24 md:w-12 h-12 ml-3 peer" aria-hidden="true" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <circle cx="16" cy="16" r="13.5" stroke="currentColor" />
                 </svg>
               </label>

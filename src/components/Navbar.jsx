@@ -137,7 +137,7 @@ export function Navbar() {
     { name: t('menu3_4_title'), href: `/${i18n.language}/contact`, desc: t('menu3_4_subtitle'), icon: InboxStackIcon },
   ]
   return (
-    <div>
+    <div className='hidden md:block'>
       <header className='bg-white'>
         <nav className="mx-auto flex h-[5.5rem] items-center justify-between p-6  lg:px-8 border-b" aria-label="Global">
           <div className="flex lg:flex-1">
@@ -171,9 +171,6 @@ export function Navbar() {
             </NavLink>
             <NavLink to={`/${i18n.language}/review`} className={({ isActive }) => 'text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]' + (isActive ? ' border-b-2 border-[#1649FF] !text-[#1649FF] -mb-8' :'')}>
               Review
-            </NavLink>
-            <NavLink to={`/${i18n.language}/blog`} className="text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]">
-              Your Info
             </NavLink>
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">

@@ -1,5 +1,6 @@
+import { ArrowLeftIcon } from '@heroicons/react/24/outline';
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom'
 import i18n from '../i18n'
@@ -315,6 +316,7 @@ export default function ReviewOrder() {
     let companyName = localStorage.getItem('companyName');
     const storedPackage = localStorage.getItem('selectedPackage');
     const selectedPackage = storedPackage ? JSON.parse(storedPackage) : null;
+    const selectedPackageId = selectedPackage && selectedPackage.length > 0 ? selectedPackage[0].id : null;
     const [displayForm, setDisplayForm] = useState(false);
     const [name, setName] = useState('');
     const [lastname, setLastName] = useState('');
@@ -361,6 +363,36 @@ export default function ReviewOrder() {
         setDisplayForm(true);
     }
 
+    function formSubmitOnboardingId(e) {
+        e.preventDefault();
+        let new_company_name = companyName;
+
+        let userEmail = email
+
+        let payload = {
+            companyName: new_company_name,
+            userEmail: userEmail,
+            companyType: companyType,
+            companyState: companyState
+        }
+        axios.post(API_ROOT + '/api/onboard', payload, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
+            }
+        })
+            .then(function (response) {
+                var jsonData = JSON.parse(JSON.stringify(response.data));
+                if (jsonData.Status) {
+                    localStorage.setItem('onboardingId', jsonData.data.id);
+                }
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
     const formSubmitHandler = (e) => {
         e.preventDefault();
         console.log('CompanyContactInfoForm submitted,', e)
@@ -370,17 +402,16 @@ export default function ReviewOrder() {
         let companyContactPhone = phone;
         let companyContactAddress = street + ", " + city + ", " + zip + ", " + country;
         let onboardingId = localStorage.getItem('onboardingId');
-        let packageType = localStorage.getItem('packageType');
         let couponCode = couponcode;
-        let langs = i18n.language ==="en" ? "en" : "tr";
+        let langs = i18n.language === "en" ? "en" : "tr";
 
         let payload = {
             "companyContactName": companyContactName,
             "companyContactEmail": companyContactEmail,
             "companyContactPhone": companyContactPhone,
             "companyContactAddress": companyContactAddress,
-            "onBoardId": 341,
-            "packageType": 8,
+            "onBoardId": onboardingId,
+            "packageType": selectedPackageId,
             "couponCode": couponCode,
             "lang": langs
         }
@@ -409,183 +440,201 @@ export default function ReviewOrder() {
             });
     }
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        await formSubmitOnboardingId(e);
+        formSubmitHandler(e);
+    };
+
+    useEffect(() => {
+        if (!(companyType && companyState && companyName && storedPackage)) {
+            window.location.href = `/${i18n.language}/formation`;
+        }
+    }, [companyType, companyState, companyName, storedPackage])
+
     return (
-        <div className='flex items-start gap-12'>
-            <div className='w-[45%]'>
+        <div className='block md:flex items-start gap-12'>
+             <div className="block md:hidden py-6 px-4">
+                            <Link className='flex items-center gap-2' to={`/${i18n.language}/formation`}>
+                                <ArrowLeftIcon className='text-[#1649FF] h-[18px] w-[18px]' />
+                                <span className='text-[#1649FF] text-lg font-semibold'>Back</span>
+                            </Link>
+                        </div>
+            <div className='w-full md:w-[45%]'>
                 {displayForm
                     ?
-                    <div className='pl-10 py-8'>
+                    <div className='py-8 px-4 md:pl-10 md:py-8'>
                         <h1 className='font-semibold text-[40px] leading-[44px] text-[#222222]'>Review your information</h1>
                         <div className='bg-white border rounded-[32px] p-6 my-6'>
                             <h2 className='font-semibold text-[24px] leading-[44px] text-[#222222]'>Company Details</h2>
                             <p className='font-normal text-[16px] leading-6 text-[#222222]'>Make sure your name matches your government issued I.D.</p>
-                                <div className='py-4'>
-                                    <div className='flex item-center gap-4 md:gap-4 pb-4'>
-                                        <div className="w-1/2">
-                                            <label htmlFor="firstname" className="block font-semibold text-[14px] leading-6 text-[#222222]">
-                                                {t('provide_contact_information_form_input1_placeholder')}
-                                            </label>
-                                            <input
-                                                type="text"
-                                                name="firstname"
-                                                id="firstname"
-                                                autoComplete="given-name"
-                                                required
-                                                onChange={onNameChange}
-                                                className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
-                                            />
-                                        </div>
-
-                                        <div className="w-1/2">
-                                            <label htmlFor="lastname" className="block font-semibold text-[14px] leading-6 text-[#222222]">
-                                                {t('provide_contact_information_form_input2_placeholder')}
-                                            </label>
-                                            <input
-                                                type="text"
-                                                name="lastname"
-                                                id="lastname"
-                                                autoComplete="family-name"
-                                                required
-                                                onChange={onlastNameChange}
-                                                className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className='flex item-center gap-4 md:gap-4 pb-4'>
-                                        <div className="w-full">
-                                            <label htmlFor="emailaddress" className="block font-semibold text-[14px] leading-6 text-[#222222]">
-                                                {t('provide_contact_information_form_input3_placeholder')}
-                                            </label>
-                                            <input
-                                                type="text"
-                                                name="emailaddress"
-                                                id="emailaddress"
-                                                autoComplete="email"
-                                                required
-                                                onChange={onEmailChange}
-                                                className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className='flex item-center gap-4 md:gap-4 pb-4'>
-                                        <div className="w-full">
-                                            <label htmlFor="phonenumber" className="block font-semibold text-[14px] leading-6 text-[#222222]">
-                                                {t('provide_contact_information_form_input4_placeholder')}
-                                            </label>
-                                            <div className="relative mt-1 rounded-md shadow-sm">
-                                                <input
-                                                    type="text"
-                                                    name="phonenumber"
-                                                    id="phonenumber"
-                                                    autoComplete="tel"
-                                                    required
-                                                    onChange={onPhoneChange}
-                                                    className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
-                                                    placeholder="+1 (123) 111-22-33"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className='flex items-center justify-center gap-4 pb-4'>
-                                        <div className="w-full md:w-1/2">
-                                            <label htmlFor="country" className="block font-semibold text-[14px] leading-6 text-[#222222]">
-                                                {t('provide_contact_information_form_input6_placeholder')}
-                                            </label>
-                                            <select
-                                                id="country"
-                                                name="country"
-                                                autoComplete="country-name"
-                                                className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
-                                                onChange={onCountryChange}
-                                            >
-                                                <option>Select Country</option>
-                                                {countries.map((country) => (
-                                                    <option
-                                                        key={country.name}
-                                                        value={country.name}
-                                                        id={country.id}
-                                                        selected={country.value}
-                                                    >
-                                                        {country.name}
-                                                    </option>
-                                                ))}
-                                            </select>
-                                        </div>
-                                        <div className="w-full md:w-1/2">
-                                            <label htmlFor="region" className="block font-semibold text-[14px] leading-6 text-[#222222]">
-                                                {t('provide_contact_information_form_input7_placeholder')}
-                                            </label>
-                                            <select
-                                                name="region"
-                                                id="region"
-                                                autoComplete="address-level1"
-                                                className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
-                                            >
-
-                                                <option value=""> {country === 'United States' ? 'Select State' : 'No State'}</option>
-                                                {country === 'United States' &&
-                                                    states.map((state) => (
-                                                        <option
-                                                            key={state.name}
-                                                            value={state.name}
-                                                        >
-                                                            {state.name}
-                                                        </option>
-                                                    ))
-                                                }
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div className='flex items-center justify-center gap-4 pb-4'>
-                                        <div className="w-full md:w-2/4" >
-                                            <label htmlFor="postalcode" className="block font-semibold text-[14px] leading-6 text-[#222222]">
-                                                {t('provide_contact_information_form_input9_placeholder')}
-                                            </label>
-                                            <input
-                                                type="text"
-                                                name="postalcode"
-                                                id="postalcode"
-                                                autoComplete="postalcode"
-                                                required
-                                                onChange={onZipChange}
-                                                className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
-                                            />
-                                        </div>
-                                        <div className="w-full md:w-2/4">
-                                            <label htmlFor="city" className="block font-semibold text-[14px] leading-6 text-[#222222]">
-                                                {t('provide_contact_information_form_input8_placeholder')}
-                                            </label>
-                                            <input
-                                                type="text"
-                                                name="city"
-                                                id="city"
-                                                required
-                                                onChange={onCityChange}
-                                                autoComplete="address-level2"
-                                                className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="w-full">
-                                        <label htmlFor="streetaddress" className="block font-semibold text-[14px] leading-6 text-[#222222]">
-                                            {t('provide_contact_information_form_input5_placeholder')}
+                            <div className='py-4'>
+                                <div className='flex item-center gap-4 md:gap-4 pb-4'>
+                                    <div className="w-1/2">
+                                        <label htmlFor="firstname" className="block font-semibold text-[14px] leading-6 text-[#222222]">
+                                            {t('provide_contact_information_form_input1_placeholder')}
                                         </label>
                                         <input
                                             type="text"
-                                            name="streetaddress"
-                                            id="streetaddress"
-                                            onChange={onStreetChange}
+                                            name="firstname"
+                                            id="firstname"
+                                            autoComplete="given-name"
                                             required
-                                            autoComplete="street-address"
+                                            onChange={onNameChange}
+                                            className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
+                                        />
+                                    </div>
+
+                                    <div className="w-1/2">
+                                        <label htmlFor="lastname" className="block font-semibold text-[14px] leading-6 text-[#222222]">
+                                            {t('provide_contact_information_form_input2_placeholder')}
+                                        </label>
+                                        <input
+                                            type="text"
+                                            name="lastname"
+                                            id="lastname"
+                                            autoComplete="family-name"
+                                            required
+                                            onChange={onlastNameChange}
                                             className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
                                         />
                                     </div>
                                 </div>
+                                <div className='flex item-center gap-4 md:gap-4 pb-4'>
+                                    <div className="w-full">
+                                        <label htmlFor="emailaddress" className="block font-semibold text-[14px] leading-6 text-[#222222]">
+                                            {t('provide_contact_information_form_input3_placeholder')}
+                                        </label>
+                                        <input
+                                            type="text"
+                                            name="emailaddress"
+                                            id="emailaddress"
+                                            autoComplete="email"
+                                            required
+                                            onChange={onEmailChange}
+                                            className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
+                                        />
+                                    </div>
+                                </div>
+                                <div className='flex item-center gap-4 md:gap-4 pb-4'>
+                                    <div className="w-full">
+                                        <label htmlFor="phonenumber" className="block font-semibold text-[14px] leading-6 text-[#222222]">
+                                            {t('provide_contact_information_form_input4_placeholder')}
+                                        </label>
+                                        <div className="relative mt-1 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                name="phonenumber"
+                                                id="phonenumber"
+                                                autoComplete="tel"
+                                                required
+                                                onChange={onPhoneChange}
+                                                className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
+                                                placeholder="+1 (123) 111-22-33"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className='flex items-center justify-center gap-4 pb-4'>
+                                    <div className="w-full md:w-1/2">
+                                        <label htmlFor="country" className="block font-semibold text-[14px] leading-6 text-[#222222]">
+                                            {t('provide_contact_information_form_input6_placeholder')}
+                                        </label>
+                                        <select
+                                            id="country"
+                                            name="country"
+                                            autoComplete="country-name"
+                                            className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
+                                            onChange={onCountryChange}
+                                        >
+                                            <option>Select Country</option>
+                                            {countries.map((country) => (
+                                                <option
+                                                    key={country.name}
+                                                    value={country.name}
+                                                    id={country.id}
+                                                    selected={country.value}
+                                                >
+                                                    {country.name}
+                                                </option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                    <div className="w-full md:w-1/2">
+                                        <label htmlFor="region" className="block font-semibold text-[14px] leading-6 text-[#222222]">
+                                            {t('provide_contact_information_form_input7_placeholder')}
+                                        </label>
+                                        <select
+                                            name="region"
+                                            id="region"
+                                            autoComplete="address-level1"
+                                            className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
+                                        >
+
+                                            <option value=""> {country === 'United States' ? 'Select State' : 'No State'}</option>
+                                            {country === 'United States' &&
+                                                states.map((state) => (
+                                                    <option
+                                                        key={state.name}
+                                                        value={state.name}
+                                                    >
+                                                        {state.name}
+                                                    </option>
+                                                ))
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className='flex items-center justify-center gap-4 pb-4'>
+                                    <div className="w-full md:w-2/4" >
+                                        <label htmlFor="postalcode" className="block font-semibold text-[14px] leading-6 text-[#222222]">
+                                            {t('provide_contact_information_form_input9_placeholder')}
+                                        </label>
+                                        <input
+                                            type="text"
+                                            name="postalcode"
+                                            id="postalcode"
+                                            autoComplete="postalcode"
+                                            required
+                                            onChange={onZipChange}
+                                            className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
+                                        />
+                                    </div>
+                                    <div className="w-full md:w-2/4">
+                                        <label htmlFor="city" className="block font-semibold text-[14px] leading-6 text-[#222222]">
+                                            {t('provide_contact_information_form_input8_placeholder')}
+                                        </label>
+                                        <input
+                                            type="text"
+                                            name="city"
+                                            id="city"
+                                            required
+                                            onChange={onCityChange}
+                                            autoComplete="address-level2"
+                                            className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="w-full">
+                                    <label htmlFor="streetaddress" className="block font-semibold text-[14px] leading-6 text-[#222222]">
+                                        {t('provide_contact_information_form_input5_placeholder')}
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="streetaddress"
+                                        id="streetaddress"
+                                        onChange={onStreetChange}
+                                        required
+                                        autoComplete="street-address"
+                                        className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </div>
                     :
-                    <div className='pl-10 py-8'>
-                        <h1 className='font-semibold text-[40px] leading-[44px] text-[#222222]'>Order Review</h1>
+                    <div className='py-8 px-4 md:pl-10 md:py-8'>
+                        <h1 className='font-semibold text-[26px] md:text-[40px] leading-[44px] text-[#222222]'>Order Review</h1>
                         <div className='bg-white border rounded-[32px] p-6 my-6'>
                             <h2 className='font-semibold text-[24px] leading-[44px] text-[#222222]'>Company Details</h2>
                             <div className='flex items-center justify-between py-2'>
@@ -638,8 +687,8 @@ export default function ReviewOrder() {
                     </div>
                 }
             </div>
-            <div className='w-[55%]'>
-                <div className='bg-white p-6 relative'>
+            <div className='w-full py-0 px-4 md:px-0 -mt-6 md:mt-0 mb-12 md:mb-0 md:w-[55%]'>
+                <div className='bg-white rounded-[32px] md:rounded-none p-6 relative'>
                     <div className='flex items-center justify-between'>
                         <h2 className='font-semibold text-lg leading-[44px] text-[#222222]'>Order Summary</h2>
                         <h2 className='font-semibold text-lg leading-[44px] text-[#1649FF]'>USD</h2>
@@ -658,10 +707,10 @@ export default function ReviewOrder() {
                             </>
                         ))}
                     </div>
-                    <div className='mt-96'>
+                    <div className='md:mt-96'>
                         <div className='flex flex-col gap-6'>
-                            <button className='font-semibold  text-left text-[16px] leading-6 text-[#1649FF]' onClick={()=> setCouponCode(true)}>Add Coupon Code</button>
-                            {couponcode && <input type='text' name="couponCode" id="couponCode" className="mt-1 block w-1/2 rounded-[20px] border-[#C8C8C8] py-2 shadow-sm" onChange={couponcode} />}
+                            <button className='font-semibold  text-left text-[16px] leading-6 text-[#1649FF]' onClick={() => setCouponCode(true)}>Add Coupon Code</button>
+                            {couponcode && <input type='text' name="couponCode" id="couponCode" className="-mt-2 mb-4 md:mb-0 md:mt-1 block w-full md:w-1/2 rounded-[20px] border-[#C8C8C8] py-2 shadow-sm" onChange={couponcode} />}
                         </div>
                         <div className='flex items-center justify-between py-4'>
                             <div>
@@ -672,7 +721,7 @@ export default function ReviewOrder() {
                             ))}
                         </div>
                         <div className='flex items-center justify-center py-4'>
-                            <Link onClick={displayForm ? formSubmitHandler : displayHandleForm} className='bg-[#1649FF] w-full text-center text-white font-semibold text-lg py-2 rounded-[20px]'>Continiue </Link>
+                            <Link onClick={displayForm ? handleSubmit : displayHandleForm} className='bg-[#1649FF] w-full text-center text-white font-semibold text-lg py-2 rounded-[20px]'>Continiue </Link>
                         </div>
                     </div>
                 </div>
