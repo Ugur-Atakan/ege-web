@@ -1,6 +1,6 @@
-import React from 'react';
+import { React, useEffect  } from 'react';
 import './styles/tailwind.css'
-import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Navigate, Route, Routes, useParams } from 'react-router-dom'
 import Blog from './routes/blog'
 import { Home } from './routes/home'
 import { Onboarding } from './routes/onboarding'
@@ -79,10 +79,10 @@ const App = () => {
           <Route exact path="/:lang/us-bank-account-opening-support" element={<AccountOpeningSupport />} />
           <Route exact path="/:lang/company-type" element={<Company />} />
           <Route exact path="/:lang/contact" element={<Contact />} />
-          <Route path="/:lang/blog/*" component={() => {
-          window.location.href = window.location.href;
-            return null;
-          }} />
+          <Route
+            path="/:lang/blog/*"
+            element={<RedirectToBlogServer />}
+          />
           <Route exact path="/:lang/terms-of-service" element={<TermsOfService />} />
           <Route exact path="/:lang/privacy-policy" element={<PrivacyPolicy />} />
           <Route exact path="/:lang/faq" element={<Faqs />} />
@@ -106,5 +106,15 @@ const App = () => {
   );
 }
 
+const RedirectToBlogServer = () => {
+  const { lang } = useParams();
+
+  useEffect(() => {
+    const blogUrl = `${window.location.origin}/${lang}/blog`;
+    window.location.replace(blogUrl);
+  }, [lang]);
+
+  return null;
+};
 
 export default App;
