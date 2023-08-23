@@ -10,6 +10,7 @@ const API_ROOT = window.ob.config.apiRoot;
 export function Pricing() {
   const [companyState, setCompanyState] = useState('');
   const [otherStates, setOtherStates] = useState([]);
+  const [selectedLLC, setSelectedLLC] = useState(false);
   let companyType = localStorage.getItem('companyType');
   localStorage.setItem('companyState', companyState);
   useEffect(() => {
@@ -33,6 +34,9 @@ export function Pricing() {
 
       if (companyType !== "") {
         updateState();
+        if(companyType === 'LLC'){
+          setSelectedLLC(true);
+        }
       } else {
         window.location.href = `/${i18n.language}/company-type`;
       }
@@ -57,9 +61,9 @@ export function Pricing() {
         </div>
         <div className='mx-auto max-w-xl py-12'>
           <ul className="grid w-full gap-6 md:grid-cols-1">
-            <li onClick={()=> setCompanyState('Wyoming')}>
+            <li onClick={()=> setCompanyState('Wyoming')} className={selectedLLC === true ? 'order-1' : 'order-2'}>
               <input type="radio" id="hosting-small" name="hosting" value="hosting-small" className="hidden peer" required />
-              <label htmlFor="hosting-small" className="relative inline-flex items-start justify-between w-full p-5 bg-white border border-[#C8C8C8] rounded-[20px] cursor-pointer peer-checked:border-blue-600 peer-checked:border-[4px] wyoming peer-checked:text-blue-600">
+              <label htmlFor="hosting-small" className={`relative inline-flex items-start justify-between w-full p-5 bg-white border border-[#C8C8C8] rounded-[20px] cursor-pointer peer-checked:border-blue-600 peer-checked:border-[4px] peer-checked:text-blue-600 ${selectedLLC === true && 'wyoming'}`}>
                 <div className="block">
                   <div className="w-full text-[22px] font-semibold leading-[26px] text-[#222222]">Wyoming</div>
                   <div className="w-[75%] pt-3 font-semibold text-lg leading-[24px] text-[#222222]">Recommended for forming an LLC due to its favorable business laws, asset protection, and low taxes.</div>
@@ -70,9 +74,9 @@ export function Pricing() {
 
               </label>
             </li>
-            <li onClick={()=> setCompanyState('Delaware')}>
+            <li onClick={()=> setCompanyState('Delaware')} className={selectedLLC===true ? 'order-2' : 'order-1'}>
               <input type="radio" id="hosting-big" name="hosting" value="hosting-big" className="hidden peer" />
-              <label htmlFor="hosting-big" className="inline-flex items-start justify-between w-full p-5 text-gray-500 bg-white border border-[#C8C8C8] rounded-[20PX] cursor-pointer peer-checked:border-blue-600 peer-checked:border-[4px] peer-checked:text-blue-600">
+              <label htmlFor="hosting-big" className={`relative inline-flex items-start justify-between w-full p-5 text-gray-500 bg-white border border-[#C8C8C8] rounded-[20PX] cursor-pointer peer-checked:border-blue-600 peer-checked:border-[4px] peer-checked:text-blue-600 ${selectedLLC === false && 'delaware'}`}>
                 <div className="block">
                   <div className="w-full text-[20px] md:text-[22px] font-semibold leading-[26px] text-[#222222]">Delaware</div>
                   <div className="w-[75%] pt-3 font-semibold text-[16px] md:text-lg leading-[24px] text-[#222222]">Recommended due to its business-friendly environment, attracting investors and providing flexibility for growth.</div>
@@ -82,7 +86,7 @@ export function Pricing() {
                 </svg>
               </label>
             </li>
-            <li>
+            <li className='order-3'>
               <select
                 id="companyState"
                 name="companyState"
@@ -103,7 +107,7 @@ export function Pricing() {
               </select>
 
             </li>
-            <Link to={`/${i18n.language}/company-name/`} className='w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer'>
+            <Link to={`/${i18n.language}/company-name/`} className='order-4 w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer'>
               <button>
                 Continue
               </button>

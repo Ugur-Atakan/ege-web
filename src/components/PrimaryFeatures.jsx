@@ -41,7 +41,7 @@ export function SupportYourBusiness() {
               </p>
             </div>
             <div className="px-6 pt-6 pb-4 absolute bottom-0">
-              <span className="inline-block py-1 text-[22px] leading-[26px] font-semibold text-[#1649FF] mr-2 mb-2">Get for $5.99/month </span>
+              <span className="inline-block py-1 text-[22px] leading-[26px] font-semibold text-[#1649FF] mr-2 mb-2">Contact Us </span>
             </div>
           </div>
           <div className="max-w-sm  min-h-[600px] overflow-hidden shadow-lg bg-white rounded-[32px] relative">
@@ -53,7 +53,7 @@ export function SupportYourBusiness() {
               </p>
             </div>
             <div className="px-6 pt-6 pb-4 absolute bottom-0">
-              <span className="inline-block py-1 text-[22px] leading-[26px] font-semibold text-[#1649FF] mr-2 mb-2">Get for $5.99/month </span>
+              <span className="inline-block py-1 text-[22px] leading-[26px] font-semibold text-[#1649FF] mr-2 mb-2">Contact Us </span>
             </div>
           </div>
           <div className="max-w-sm  min-h-[600px] overflow-hidden shadow-lg bg-white rounded-[32px] relative">
@@ -65,7 +65,7 @@ export function SupportYourBusiness() {
               </p>
             </div>
             <div className="px-6 pt-6 pb-4 absolute bottom-0">
-              <span className="inline-block py-1 text-[22px] leading-[26px] font-semibold text-[#1649FF] mr-2 mb-2">Get for $5.99/month </span>
+              <span className="inline-block py-1 text-[22px] leading-[26px] font-semibold text-[#1649FF] mr-2 mb-2">Contact Us </span>
             </div>
           </div>
           <div className="max-w-sm  min-h-[600px] overflow-hidden shadow-lg bg-white rounded-[32px] relative">
@@ -77,7 +77,7 @@ export function SupportYourBusiness() {
               </p>
             </div>
             <div className="px-6 pt-6 pb-4 absolute bottom-0">
-              <span className="inline-block py-1 text-[22px] leading-[26px] font-semibold text-[#1649FF] mr-2 mb-2">Get for $5.99/month </span>
+              <span className="inline-block py-1 text-[22px] leading-[26px] font-semibold text-[#1649FF] mr-2 mb-2">Contact Us </span>
             </div>
           </div>
         </Slider>

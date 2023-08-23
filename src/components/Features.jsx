@@ -13,7 +13,7 @@ export default function Example() {
     slidesToScroll: 1,
   };
   return (
-    <div className="bg-white relative">
+    <div className="bg-white relative overflow-hidden">
       <div className="p-6 lg:px-36 lg:py-36">
         <div className="flex items-start gap-4">
           <div className="w-1/4">

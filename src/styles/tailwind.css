@@ -16,13 +16,9 @@
   }
 }
 
-.hero-section {
-  -webkit-clip-path: ellipse(70% 74% at 50% 26%);
-  clip-path: ellipse(70% 74% at 50% 26%);
-}
-
 body {
   font-family: 'Inter', sans-serif;
+  background-color: #ECEFF1;
 }
 
 .compare-registate::before {
@@ -67,13 +63,23 @@ body {
 }
 
 .hero-section {
-  background-image: url('../images/bg.png');
+  background-image: url('../images/hero-bg.png');
   background-size: cover;
+  padding-bottom: 4rem;
 }
 
-.animate-rocket {
+.hero-section::before {
+  background: url('../images/animation.png') no-repeat;
+  content: "";
+  position: absolute;
+  bottom: -3rem;
+  right: 0;
+  display: inline-block;
+  width: 50rem;
+  height: 50rem;
   animation: moveRocket 3s linear forwards;
 }
+
 
 @keyframes moveRocket {
   0% {
@@ -126,7 +132,7 @@ body {
 
 .founders .slick-arrow.slick-next.slick-disabled {
   right: auto;
-  left: -25rem;
+  left: -35rem;
   top: auto;
   bottom: -1rem;
   display: inline-block;
@@ -144,7 +150,7 @@ body {
 
 .founders .slick-arrow.slick-next {
   right: auto;
-  left: -25rem;
+  left: -35rem;
   top: auto;
   bottom: -1rem;
   display: inline-block;
@@ -170,7 +176,7 @@ body {
   border-radius: 100%;
   padding: 30px;
   rotate: 180deg;
-  left: -18rem;
+  left: -30rem;
   top: auto;
   bottom: 3rem;
   background-color: transparent;
@@ -185,7 +191,7 @@ body {
   border-radius: 100%;
   padding: 30px;
   rotate: 180deg;
-  left: -18rem;
+  left: -30rem;
   top: auto;
   bottom: 3rem;
   background-color: #1649FF;
@@ -195,24 +201,8 @@ body {
   content: '';
 }
 
-.not-sure::before{
-content:'Recommended';
-position: absolute;
-top: -1rem;
-right: 1rem;
-background-color: #1649FF;
-color: white;
-padding: 0.5rem 1rem;
-border-radius: 1rem;
-}
-
-.company-type {
-    background-image: url('../images/choose-bg.png');
-    background-size: cover;
-}
-
-.wyoming::before{
-  content:'Recommended for LLC';
+.not-sure::before {
+  content: 'Recommended';
   position: absolute;
   top: -1rem;
   right: 1rem;
@@ -220,4 +210,31 @@ border-radius: 1rem;
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 1rem;
-  }
+}
+
+.company-type {
+  background-image: url('../images/choose-bg.png');
+  background-size: cover;
+}
+
+.wyoming::before {
+  content: 'Recommended for LLC';
+  position: absolute;
+  top: -1rem;
+  right: 1rem;
+  background-color: #1649FF;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+}
+
+.delaware::before {
+  content: 'Recommended for Delaware';
+  position: absolute;
+  top: -1rem;
+  right: 1rem;
+  background-color: #1649FF;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+}

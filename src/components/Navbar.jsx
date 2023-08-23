@@ -33,7 +33,7 @@ import {
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import logo from '../images/logo2x.png.webp'
+import logo from '../images/logo-blue.webp'
 import chaticon from '../images/chat.png'
 import { NavLink } from 'react-router-dom';
 
