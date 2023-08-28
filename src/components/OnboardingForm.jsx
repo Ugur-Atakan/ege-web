@@ -6,7 +6,7 @@ import i18n from "../i18n";
 export default function OnboardingForm() {
   const [companyName, setCompanyName] = useState('');
   const [abbreviation, setAbbreviation] = useState('');
-  const [abbreviationOptions, setAbbreviationOptions] = useState(['Inc']);
+  const [abbreviationOptions, setAbbreviationOptions] = useState(['Inc','Incorporated', 'Co.','Corp','Corporation','Limited','Ltd.']);
   let companyType = localStorage.getItem('companyType');
   let companyState = localStorage.getItem('companyState');
   localStorage.setItem('companyName', companyName);

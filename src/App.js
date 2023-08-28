@@ -1,6 +1,6 @@
-import { React, useEffect  } from 'react';
+import { React  } from 'react';
 import './styles/tailwind.css'
-import { BrowserRouter as Router, Navigate, Route, Routes, useParams } from 'react-router-dom'
+import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom'
 import Blog from './routes/blog'
 import { Home } from './routes/home'
 import { Onboarding } from './routes/onboarding'
@@ -46,6 +46,7 @@ import Freetaxconsultation from './routes/free-tax-consultation';
 import Notfound from './routes/notfound';
 import Formation from './routes/formation';
 import Review from './routes/review';
+import BlogDetail from './components/BlogDetail';
 
 const App = () => {
   const { i18n } = useTranslation();
@@ -80,8 +81,8 @@ const App = () => {
           <Route exact path="/:lang/company-type" element={<Company />} />
           <Route exact path="/:lang/contact" element={<Contact />} />
           <Route
-            path="/:lang/blog/*"
-            element={<RedirectToBlogServer />}
+            path="/:lang/blog/"
+            element={<Blog />}
           />
           <Route exact path="/:lang/terms-of-service" element={<TermsOfService />} />
           <Route exact path="/:lang/privacy-policy" element={<PrivacyPolicy />} />
@@ -101,20 +102,10 @@ const App = () => {
           <Route path="/:lang/products/:productlink/contact" element={<ProductSpecificContactUs />} />
           <Route path="/:lang/copy-landing-page" element={<Copylandingpage />} />
           <Route path="/:lang/free-tax-consultation" element={<Freetaxconsultation />}/>
+          <Route path="/:lang/blog/:slug" element={<BlogDetail />}/>
         </Routes>
     </Router>
   );
 }
-
-const RedirectToBlogServer = () => {
-  const { lang } = useParams();
-
-  useEffect(() => {
-    const blogUrl = `${window.location.origin}/${lang}/blog`;
-    window.location.replace(blogUrl);
-  }, [lang]);
-
-  return null;
-};
 
 export default App;

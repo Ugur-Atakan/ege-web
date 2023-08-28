@@ -68,7 +68,7 @@ export default function Example() {
 
   return (
     <div className="hero-section">
-      <header className={`absolute inset-x-0 top-0 z-50 ${isSticky ? '!fixed !bg-[#ECEFF1]' : ''}`}>
+      <header className={`absolute inset-x-0 top-0 z-50 ${isSticky ? 'lg:!fixed !bg-[#ECEFF1]' : ''}`}>
         <nav className={`hidden mx-auto max-w-7xl p-6 lg:px-2 ${isSticky ? '!lg:hidden' : 'lg:block'}`}>
           <div className='flex items-center justify-center -mt-4 pb-2 border-[#ECEFF1] border-b-[1px] border-opacity-10'>
             <div className='flex items-center gap-2'>
@@ -82,21 +82,24 @@ export default function Example() {
             </div>
           </div>
         </nav>
-        <nav className={`mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-2 lg:p-0 ${isSticky && 'border-b border-[#C8C8C8] lg:p-4'}`} aria-label="Global">
+        <nav className={`mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-2 lg:p-0 ${isSticky && 'border-b border-[#C8C8C8] lg:p-4 lg:py-4'}`} aria-label="Global">
           <div className="flex lg:flex-1">
             <Link to="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Registate</span>
               <img className="w-[116px] h-[34px]" src={isSticky ? bluelogo : whitelogo} alt="" />
             </Link>
           </div>
-          <div className="flex lg:hidden">
+          <div className="flex gap-x-3 lg:hidden">
+            <Link to={`/${i18n.language}/company-type`} className='bg-white rounded-[28px] py-3 px-4 text-[16px] leading-[22px] font-semibold text-[#1649FF]'>
+              Open a business
+            </Link>
             <button
               type="button"
               className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-400"
-              onClick={() => setMobileMenuOpen(true)}
+            // onClick={() => setMobileMenuOpen(true)}
             >
               <span className="sr-only">Open main menu</span>
-              <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+              <Bars3Icon className="h-8 w-8" aria-hidden="true" />
             </button>
           </div>
           <div className="hidden lg:hidden lg:gap-x-12">

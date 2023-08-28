@@ -36,10 +36,10 @@ export function Complience() {
             <div className='block pt-12'>
               <div className='flex items-center gap-4'>
                 <img src={bagicon} className='w-[28px] h-[28px]' alt='icon' />
-                <p className='font-semibold text-[28px] leading-[32px] text-black'>Your all-inclusive one stop-shop</p>
+                <p className='font-semibold text-[28px] leading-[32px] text-black'>Your all-inclusive one stop-shop</p>
               </div>
               <div className='ml-12 mt-4'>
-                <p className='font-semibold text-lg leading-[24px] text-black'>Get your legal, accounting and business formation service from one company.</p>
+                <p className='font-semibold text-lg leading-[24px] text-black'>Get your all business needs from one company.</p>
               </div>
             </div>
           </div>

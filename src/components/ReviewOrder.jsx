@@ -721,7 +721,7 @@ export default function ReviewOrder() {
                             ))}
                         </div>
                         <div className='flex items-center justify-center py-4'>
-                            <Link onClick={displayForm ? handleSubmit : displayHandleForm} className='bg-[#1649FF] w-full text-center text-white font-semibold text-lg py-2 rounded-[20px]'>Continiue </Link>
+                            <Link onClick={displayForm ? handleSubmit : displayHandleForm} className='bg-[#1649FF] w-full text-center text-white font-semibold text-lg py-2 rounded-[20px]'>Continue</Link>
                         </div>
                     </div>
                 </div>

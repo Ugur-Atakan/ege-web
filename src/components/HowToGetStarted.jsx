@@ -22,7 +22,7 @@ export default function HowToGetStarted() {
                         <div className="bg-white rounded-[28px] p-8 relative  hover:bg-[#1649FF] hover:text-white how-to-get-started">
                             <h1 className="font-semibold text-[22px] leading-6">Start your business</h1>
                             <p className="text-lg text-[#070707] text-opacity-[30%] leading-6 mt-4 text-on pb-6">Verify that your desired name is available. We’ll file all the paperwork. </p>
-                            <Link to={`/${i18n.language}/company-type`} className="btn-on text-[#1649FF] font-semibold text-lg text-left bottom-0">Completed application</Link>
+                            <Link to={`/${i18n.language}/company-type`} className="btn-on text-[#1649FF] font-semibold text-lg text-left bottom-0">Complete and application</Link>
                         </div>
                         <div className="bg-white rounded-[28px] p-8 relative hover:bg-[#1649FF] hover:text-white how-to-get-started">
                             <h1 className="font-semibold text-[22px] leading-6">Get your EIN and run your business</h1>

@@ -26,7 +26,7 @@ export default function IncorporateBusiness() {
 
     return (
         <div className="bg-white">
-            <div className="mx-auto max-w-7xl p-6 lg:px-12">
+            <div className="mx-auto max-w-7xl lg:p-6 lg:px-12">
                 <div className="relative">
                     <video
                         autoPlay
@@ -35,7 +35,7 @@ export default function IncorporateBusiness() {
                         width="2432" height="1442"
                         alt="product video"
                         key={videoSource}
-                        className="rounded-md bg-white/5 shadow-2xl ring-1 ring-white/10 outline-none"
+                        className="lg:rounded-md bg-white/5 shadow-2xl ring-1 ring-white/10 outline-none"
                     >
                         <source
                             src={videoSource}
@@ -49,7 +49,7 @@ export default function IncorporateBusiness() {
                         </div>
                     </div>
                 </div>
-                <div className="block lg:flex items-start justify-between pt-12 pb-24 lg:px-12">
+                <div className="block lg:flex items-start justify-between pt-12 pb-24 px-6 lg:px-12">
                     <div className="w-full lg:w-[60%]">
                         <h1 className='font-bold  text-[32px] lg:text-[64px] text-black leading-[38px] lg:leading-[64px] mb-6 lg:mb-24'>Incorporate business from anywhere</h1>
                         <Link
@@ -63,10 +63,10 @@ export default function IncorporateBusiness() {
                         <div>
                             <p className="font-semibold text-lg leading-[24px]">You can incorporate a US business from almost anywhere on Earth. We’ll get you set up with a US business address.</p>
                             <Link
-                                to="#"
+                                 to={`/${i18n.language}/company-type`}
                                 className="inline-block text-center lg:hidden mt-8 rounded-2xl py-[14px] px-6 font-semibold text-lg text-[#222222] bg-[#9EE248]"
                             >
-
+                                Open a business
                             </Link>
                         </div>
                     </div>

@@ -112,7 +112,7 @@ export default function Faqs() {
               <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-[#1649FF] py-4 px-7 rounded-2xl">Start now</button>
             </div>
             <Link className='text-center' to={`/${i18n.language}/start-my-business`}>
-              <p className='text-[#8A8A8A] block lg:flex items-center justify-center gap-1'>or take a quiz to choose a <span className='flex items-center gap-1 text-[#9EE248] cursor-pointer'>company type first <ArrowRightIcon className='w-4 h-4' /> </span></p>
+              <p className='text-[#8A8A8A] block lg:flex items-center justify-center gap-1'>or take a quiz to choose a <span className='flex justify-center items-center gap-1 text-[#9EE248] cursor-pointer'>company type first <ArrowRightIcon className='w-4 h-4' /> </span></p>
             </Link>
           </div>
         </div>

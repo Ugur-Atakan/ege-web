@@ -12,33 +12,33 @@ export default function Footer() {
     solutions: [
       {
         name: t('footer_col1_submenu1'),
-        href: `/${i18n.language}/form-your-company`,
+        href: `/${i18n.language}/company-type`,
       },
       {
         name: t('footer_col1_submenu2'),
-        href: `/${i18n.language}/registered-agent`,
+        href: `/${i18n.language}/contact`,
       },
       {
         name: t('footer_col1_submenu3'),
-        href: `/${i18n.language}/virtual-mailbox`,
+        href: `/${i18n.language}/contact`,
       },
       {
         name: t('footer_col1_submenu4'),
-        href: `/${i18n.language}/apostille`,
+        href: `/${i18n.language}/contact`,
       },
     ],
     support: [
-      { name: t('footer_col2_submenu1'), href: `/${i18n.language}/state`, },
+      { name: t('footer_col2_submenu1'), href: `/${i18n.language}/contact`, },
       { name: t('footer_col2_submenu2'), href: `/${i18n.language}/contact`, }
     ],
     company: [
-      { name: t('footer_col3_submenu1'), href: `/${i18n.language}/company-type`, },
+      { name: t('footer_col3_submenu1'), href: `/${i18n.language}/contact`, },
       { name: t('footer_col3_submenu2'), href: `/${i18n.language}/blog`, },
-      { name: t('footer_col3_submenu3'), href: `/${i18n.language}/#.`, }
+      { name: t('footer_col3_submenu3'), href: `/${i18n.language}/contact`, }
     ],
     legal: [
-      { name: t('footer_col4_submenu1'), href: `/${i18n.language}/privacy-policy` },
-      { name: t('footer_col4_submenu2'), href: `/${i18n.language}/terms-of-service` }
+      { name: t('footer_col4_submenu1'), href: `/${i18n.language}/contact` },
+      { name: t('footer_col4_submenu2'), href: `/${i18n.language}/contact` }
     ],
     social: [
       {

@@ -99,37 +99,39 @@ body {
   color: white;
 }
 
+@media only screen and (min-width: 1024px) {
 .slick-initialized .slick-slide {
   padding: 0 7px;
 }
-
-.after-formation .slick-next {
-  right: auto;
-  left: -7rem;
+.founders .slick-arrow.slick-prev.slick-disabled {
+  background-image: url('../images/reverse-line.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 1;
+  border: 1px solid #C8C8C8;
+  border-radius: 100%;
+  padding: 30px;
+  rotate: 180deg;
+  left: -30rem;
+  top: auto;
+  bottom: 3rem;
+  background-color: transparent;
 }
 
-.after-formation .slick-next:before {
-  content: "";
-  display: inline-block;
-  height: 30px;
-  width: 30px;
+.founders .slick-arrow.slick-prev {
   background-image: url('../images/line.png');
   background-position: center center;
   background-repeat: no-repeat;
   opacity: 1;
-  border: 1px solid white;
+  border: 1px solid #C8C8C8;
   border-radius: 100%;
   padding: 30px;
+  rotate: 180deg;
+  left: -30rem;
+  top: auto;
+  bottom: 3rem;
+  background-color: #1649FF;
 }
-
-.after-formation .slick-prev {
-  display: none !important;
-}
-
-.founders .slick-next:before {
-  content: "";
-}
-
 .founders .slick-arrow.slick-next.slick-disabled {
   right: auto;
   left: -35rem;
@@ -165,36 +167,33 @@ body {
   padding: 30px;
   background-color: #1649FF;
 }
-
-
-.founders .slick-arrow.slick-prev.slick-disabled {
-  background-image: url('../images/reverse-line.svg');
-  background-position: center center;
-  background-repeat: no-repeat;
-  opacity: 1;
-  border: 1px solid #C8C8C8;
-  border-radius: 100%;
-  padding: 30px;
-  rotate: 180deg;
-  left: -30rem;
-  top: auto;
-  bottom: 3rem;
-  background-color: transparent;
 }
 
-.founders .slick-arrow.slick-prev {
+.after-formation .slick-next {
+  right: auto;
+  left: -7rem;
+}
+
+.after-formation .slick-next:before {
+  content: "";
+  display: inline-block;
+  height: 30px;
+  width: 30px;
   background-image: url('../images/line.png');
   background-position: center center;
   background-repeat: no-repeat;
   opacity: 1;
-  border: 1px solid #C8C8C8;
+  border: 1px solid white;
   border-radius: 100%;
   padding: 30px;
-  rotate: 180deg;
-  left: -30rem;
-  top: auto;
-  bottom: 3rem;
-  background-color: #1649FF;
+}
+
+.after-formation .slick-prev {
+  display: none !important;
+}
+
+.founders .slick-next:before {
+  content: "";
 }
 
 .slick-prev:before {
@@ -210,6 +209,77 @@ body {
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 1rem;
+}
+
+.founders-section .slick-list {
+  overflow: visible !important;
+  clip-path: inset( -100vw -100vw -100vw 0 );
+  margin: 0 75px 0 0;
+}
+
+.founders .slick-slide {
+  padding: 0 10px 0 0;
+}
+
+.founders .slick-arrow.slick-prev {
+  background-image: url('../images/line.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 1;
+  border: 1px solid #C8C8C8;
+  border-radius: 100%;
+  padding: 25px;
+  rotate: 180deg;
+  right: 0;
+  top: -6.5rem;
+  left: auto;
+  background-color: #1649FF;
+}
+
+.founders .slick-arrow.slick-next {
+  right: 4rem;
+  left: auto;
+  top: -3.2rem;
+  background-image: url('../images/line.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 1;
+  border: 1px solid #C8C8C8;
+  border-radius: 100%;
+  padding: 25px;
+  background-color: #1649FF;
+}
+
+.founders .slick-arrow.slick-next.slick-disabled {
+  right: 4rem;
+  left: auto;
+  top: -3.2rem;
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  background-image: url('../images/reverse-line.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 1;
+  border: 1px solid #C8C8C8;
+  border-radius: 100%;
+  padding: 25px;
+  background-color: transparent;
+}
+
+.founders .slick-arrow.slick-prev.slick-disabled {
+  background-image: url('../images/reverse-line.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 1;
+  border: 1px solid #C8C8C8;
+  border-radius: 100%;
+  padding: 25px;
+  rotate: 180deg;
+  left: auto;
+  top: -6.5rem;
+  right: 0;
+  background-color: transparent;
 }
 
 .company-type {
@@ -237,4 +307,17 @@ body {
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 1rem;
+}
+
+.slick-track
+{
+    display: flex !important;
+}
+
+.slick-slide
+{
+    height: inherit !important;
+    background-color: white;
+    border-radius: 32px;
+    margin: 0 7px;
 }
