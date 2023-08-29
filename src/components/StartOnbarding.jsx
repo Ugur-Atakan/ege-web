@@ -1,11 +1,9 @@
 import {
   ArrowUturnDownIcon,
-  CheckBadgeIcon,
-  ExclamationCircleIcon,
 } from "@heroicons/react/20/solid";
 import { useState } from "react";
 import React from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import tickicon from '../images/tick.png'
@@ -20,6 +18,7 @@ export default function StartOnbarding() {
   const [secondYes, secondSetYes] = useState(false);
   const [secondNo, secondSetNo] = useState(false);
   const [secondNotSure, secondSetNotSure] = useState(false);
+  const navigate = useNavigate();
 
   const firstYesAnswer = () => {
     firstSetYes(true);
@@ -57,10 +56,15 @@ export default function StartOnbarding() {
     secondSetNo(false);
   }
 
-  const text = "LLC";
-
-  const navigate = useNavigate();
-
+const handleCompanyType = () => {
+  if(firstYes || secondYes) {
+    localStorage.setItem('companyType', 'Corporation');
+    localStorage.setItem('companyState', 'Delaware');
+  }else{
+    localStorage.setItem('companyType', 'LLC');
+    localStorage.setItem('companyState', 'Wyoming');
+  }
+}
 
 
   return (
@@ -314,14 +318,14 @@ export default function StartOnbarding() {
                 </ul>}
             </div>
             <div className="py-6">
-              <Link to={`/${i18n.language}/state`} state={{ text: text }}>
+              <Link onClick={handleCompanyType} to={`/${i18n.language}/company-name`}>
                 <button className="py-6 px-6 text-center bg-[#1649FF] rounded-[1.25rem] border border-blue-600 text-white text-[1.375rem] leading-[1.625rem] w-full font-semibold">
                   <h4>{t('help_me_choose_widget_answer1_button')}</h4>
                 </button>
               </Link>
             </div>
             <div className="pb-12 pt-1">
-              <Link to={`/${i18n.language}/start-my-business/`} state={{ text: text }}>
+              <Link to={`/${i18n.language}/start-my-business/`}>
                 <button className="text-center text-[#1649FF] text-[1.375rem] leading-[1.625rem] w-full font-semibold">
                   <h4>Take the survey again</h4>
                 </button>

@@ -25,7 +25,7 @@ export default function Compare() {
         setSelectedPackageName(e.target.value);
     }
     return (
-        <>
+        <div className="bg-[#ECEFF1]">
             <div className="mx-auto max-w-[966px] p-6 lg:px-12">
                 <div className="text-left lg:text-center pt-12 lg:pt-8">
                     <h1 className="font-bold text-[32px] lg:text-[64px] text-[#222222] leading-[38px] lg:leading-[64px]">Compare and save money <span className="text-[#1649FF] font-bold ">with our Starter package</span></h1>
@@ -195,6 +195,6 @@ export default function Compare() {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }

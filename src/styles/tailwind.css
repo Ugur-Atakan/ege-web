@@ -18,7 +18,9 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #ECEFF1;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .compare-registate::before {

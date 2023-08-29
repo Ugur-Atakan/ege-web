@@ -68,7 +68,7 @@ export function Pricing() {
                   <div className="w-full text-[22px] font-semibold leading-[26px] text-[#222222]">Wyoming</div>
                   <div className="w-[75%] pt-3 font-semibold text-lg leading-[24px] text-[#222222]">Recommended for forming an LLC due to its favorable business laws, asset protection, and low taxes.</div>
                 </div>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"  className="w-24  md:w-12 h-12 ml-3 peer">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"   className={`w-24 md:w-12 mt-4 ml-3 peer" ${localStorage.getItem('companyState') ==='Wyoming' && 'bg-blue-600 rounded-full border-2 border-white'}`}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
 
@@ -81,7 +81,7 @@ export function Pricing() {
                   <div className="w-full text-[20px] md:text-[22px] font-semibold leading-[26px] text-[#222222]">Delaware</div>
                   <div className="w-[75%] pt-3 font-semibold text-[16px] md:text-lg leading-[24px] text-[#222222]">Recommended due to its business-friendly environment, attracting investors and providing flexibility for growth.</div>
                 </div>
-                <svg className="w-24 md:w-12 h-12 ml-3 peer" aria-hidden="true" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg className={`w-24 md:w-12 mt-4 ml-3 peer" ${localStorage.getItem('companyState') ==='Delaware' && 'bg-blue-600 rounded-full border-2 border-white'}`} aria-hidden="true" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <circle cx="16" cy="16" r="13.5" stroke="currentColor" />
                 </svg>
               </label>

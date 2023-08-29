@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 export default function HowToGetStarted() {
     const { i18n } = useTranslation();
     return (
-        <>
-            <div className="mx-auto max-w-xl p-6 lg:px-8">
+        <div className="bg-[#ECEFF1]">
+            <div className="mx-auto max-w-xl p-6 lg:px-8 bg-[#ECEFF1]">
                 <div className="text-left text-[26px] leading-8 lg:text-center lg:text-[40px] lg:leading-[44px] text-black font-semibold">
                     How to get started in 4 minutes
                 </div>
@@ -37,6 +37,6 @@ export default function HowToGetStarted() {
                     All essentials included in Starter <span className="flex items-center gap-1 text-[#1649FF]">from $232 <ArrowSmallDownIcon className="w-5 h-5" /></span>
                 </div>
             </div>
-        </>
+        </div>
     )
 }

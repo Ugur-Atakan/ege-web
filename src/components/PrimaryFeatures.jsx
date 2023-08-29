@@ -92,13 +92,16 @@ export function SupportYourBusiness() {
           {selectedPackages.map((pac, index) => {
             return (
               <div className="p-4">
+                <div>
+                  <img src={pac.img} alt=''/>
+                </div>
                 <div className="font-semibold text-[40px] leading-[38px] lg:leading-[44px] text-[#222222]">
                   {pac.name}
                 </div>
                 <div className="font-semibold text-[16px] lg:text-lg leading-[22px] text-[#222222] pt-4 flex-1">
                   {pac.description}
                 </div>
-                  <button className="absolute bottom-0 py-1 text-[22px] leading-[26px] font-semibold text-[#1649FF]">{pac.button}</button>
+                  <button className="absolute bottom-3 py-1 text-[22px] leading-[26px] font-semibold text-[#1649FF]">{pac.button}</button>
               </div>
             )
           })}

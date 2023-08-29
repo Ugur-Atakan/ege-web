@@ -77,10 +77,10 @@ export default function Choose() {
                                                 <th scope="col" className="w-1/2 md:w-1/3 py-3.5 md:pl-4 pr-3 text-left text-[1.375rem] font-semibold text-[#222222] leading-[1.625rem] sm:pl-0">
                                                     Main differences
                                                 </th>
-                                                <th scope="col" className="hidden md:block w-1/3 px-3 py-3.5 text-left text-[1.375rem] font-semibold text-[#222222] leading-[1.625rem]">
+                                                <th scope="col" className="hidden md:table-cell w-1/3 px-3 py-3.5 text-left text-[1.375rem] font-semibold text-[#222222] leading-[1.625rem]">
                                                     LLC
                                                 </th>
-                                                <th scope="col" className="hidden md:block w-1/3 px-3 py-3.5 text-left text-[1.375rem] font-semibold text-[#222222] leading-[1.625rem]">
+                                                <th scope="col" className="hidden md:table-cell w-1/3 px-3 py-3.5 text-left text-[1.375rem] font-semibold text-[#222222] leading-[1.625rem]">
                                                     C-Corp
                                                 </th>
                                             </tr>
