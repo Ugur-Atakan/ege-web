@@ -18,6 +18,7 @@ import filetext from '../images/file-text-dynamic.png';
 import sheild from '../images/sheild-dynamic.png';
 import dollar from '../images/dollar-dynamic.png';
 import locker from '../images/locker-dynamic.png';
+import { useCallback } from "react";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -32,46 +33,73 @@ function SampleNextArrow(props) {
 
 
 export function SupportYourBusiness() {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const stayCompliantPackage = [
-    { name: 'Compliance Reminder', description: 'Stay in compliance with laws, regulations, and requirements.', button: 'Contact us', href: `/${i18n.language}/contact`, img: hat },
-    { name: 'Renewal & Revival', description: 'Services for documents that need to be used in foreign countries.', button: 'Contact us', href: `/${i18n.language}/contact`, img: folder },
-    { name: 'Certificate of Good Standing', description: 'Show that your business is in good standing.', button: 'Contact us', href: `/${i18n.language}/contact`, img: calendar },
-    { name: 'Registered Agent', description: 'Ensure legal compliance by designating a professional agent for official correspondence and legal notices.', button: 'Contact us', href: `/${i18n.language}/contact`, img: tic },
-    { name: 'Virtual Mailbox', description: 'Manage your mail digitally, allowing you to access and organize yoru postal communications from anywhere', button: 'Contact us', href: `/${i18n.language}/contact`, img: at },
-    { name: 'Office Address', description: 'Establish a professional business presence with a prime physical address for credibility and communication.', button: 'Contact us', href: `/${i18n.language}/contact`, img: navigator },
-    { name: 'Virtual Phone Number', description: 'Enhance accessibility and professionalism with a virtual phone number, redirecting calls to your preferred device.', button: 'Contact us', href: `/${i18n.language}/contact`, img: mail },
-    { name: 'Dedicated Receptionist', description: 'Impress clients with a dedicated receptionist handling calls, appointments, and inquiries on behalf of your business.', button: 'Contact us', href: `/${i18n.language}/contact`, img: phone },
-    { name: 'Foreign Qualification', description: 'Expand your operations across state lines seamlessly by meeting all requirements for conducting business in new jurisdictions.', button: 'Contact us', href: `/${i18n.language}/contact`, img: travel },
-    { name: 'Certified Copy Request', description: 'Obtain verified copies of vital documents for legal, regulatory, or administrative purposes.', button: 'Contact us', href: `/${i18n.language}/contact`, img: folder },
-    { name: 'Dissolution & Cancellation', description: 'Navigate the process of formally closing your business entity in compliance with relevant regulations.', button: 'Contact us', href: `/${i18n.language}/contact`, img: axe },
-    { name: 'Certificate of Amendment', description: 'Reflect changes to your business structure, name, or other key details with an official certificate.', button: 'Contact us', href: `/${i18n.language}/contact`, img: folder },
-    { name: 'Doing Business As (DBA)', description: 'Operate under an assumed name for branding flexibility while staying compliant with the necessary regulations.', button: 'Contact us', href: `/${i18n.language}/contact`, img: wallet },
-    { name: 'Apostille', description: 'Authenticate your documents for international use, ensuring their legal validity in foreign countries.', button: 'Contact us', href: `/${i18n.language}/contact`, img: filetext }
+    { name: t('after_formation_package1_title'), description: t('after_formation_package1_description'), button: t('after_formation_package1_button'), href: `/${i18n.language}/contact`, img: hat },
+    { name: t('after_formation_package2_title'), description: t('after_formation_package2_description'), button: t('after_formation_package2_button'), href: `/${i18n.language}/contact`, img: folder },
+    { name: t('after_formation_package3_title'), description: t('after_formation_package3_description'), button: t('after_formation_package3_button'), href: `/${i18n.language}/contact`, img: calendar },
+    { name: t('after_formation_package4_title'), description: t('after_formation_package4_description'), button: t('after_formation_package4_button'), href: `/${i18n.language}/contact`, img: tic },
+    { name: t('after_formation_package5_title'), description: t('after_formation_package5_description'), button: t('after_formation_package5_button'), href: `/${i18n.language}/contact`, img: at },
+    { name: t('after_formation_package6_title'), description: t('after_formation_package6_description'), button: t('after_formation_package6_button'), href: `/${i18n.language}/contact`, img: navigator },
+    { name: t('after_formation_package7_title'), description: t('after_formation_package7_description'), button: t('after_formation_package7_button'), href: `/${i18n.language}/contact`, img: mail },
+    { name: t('after_formation_package8_title'), description: t('after_formation_package8_description'), button: t('after_formation_package8_button'), href: `/${i18n.language}/contact`, img: phone },
+    { name: t('after_formation_package9_title'), description: t('after_formation_package9_description'), button: t('after_formation_package9_button'), href: `/${i18n.language}/contact`, img: travel },
+    { name: t('after_formation_package10_title'), description: t('after_formation_package10_description'), button: t('after_formation_package10_button'), href: `/${i18n.language}/contact`, img: folder },
+    { name: t('after_formation_package11_title'), description: t('after_formation_package11_description'), button: t('after_formation_package11_button'), href: `/${i18n.language}/contact`, img: axe },
+    { name: t('after_formation_package12_title'), description: t('after_formation_package12_description'), button: t('after_formation_package12_button'), href: `/${i18n.language}/contact`, img: folder },
+    { name: t('after_formation_package13_title'), description: t('after_formation_package13_description'), button: t('after_formation_package13_button'), href: `/${i18n.language}/contact`, img: wallet },
+    { name: t('after_formation_package14_title'), description: t('after_formation_package14_description'), button: t('after_formation_package14_button'), href: `/${i18n.language}/contact`, img: filetext }
   ]
   const taxesPackage = [
-    { name: 'EIN (Employer Identification Numb)', description: 'Obtain a unique identifier for your business, essential for tax filing and legal recognition.', button: 'Contact us', href: `/${i18n.language}/contact`, img: sheild },
-    { name: 'Entity Type Conversion', description: 'Successfully change your business structure or entity type while adhering to legal guidelines.', button: 'Contact us', href: `/${i18n.language}/contact`, img: dollar },
-    { name: 'US Bank Account Opening Support', description: 'Receive assistance in navigating the process of opening a US bank account for your business.', button: 'Contact us', href: `/${i18n.language}/contact`, img: locker }
+    { name: t('after_formation_package15_title'), description: t('after_formation_package15_description'), button: t('after_formation_package15_button'), href: `/${i18n.language}/contact`, img: sheild },
+    { name: t('after_formation_package16_title'), description: t('after_formation_package16_description'), button: t('after_formation_package16_button'), href: `/${i18n.language}/contact`, img: dollar },
+    { name: t('after_formation_package17_title'), description: t('after_formation_package17_description'), button: t('after_formation_package17_button'), href: `/${i18n.language}/contact`, img: locker }
   ]
 
   const growYourBusinessPackage = [
-    { name: 'Post Incorporation', description: 'Access a range of services following incorporation, including compliance, documentation, and ongoing support.', button: 'Contact us', href: `/${i18n.language}/contact`, img: folder }
+    { name: t('after_formation_package18_title'), description: t('after_formation_package18_description'), button: t('after_formation_package18_button'), href: `/${i18n.language}/contact`, img: folder }
   ]
-
   const [showAllPackages, setShowAllPackages] = useState(false);
   const packagesName = ['Stay Compliant', 'Taxes & Accounting', 'Grow Your Business'];
   const [selectedPackage, setSelectedPackage] = useState(0);
-  const selectedPackages = selectedPackage === 0 && stayCompliantPackage || selectedPackage === 1 && taxesPackage || selectedPackage === 2 && growYourBusinessPackage;
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
     slidesToScroll: 1,
+    slidesToShow:4,
+    responsive:[
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 3,
+        }
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+        }
+      },
+      {
+        breakpoint: 1366,
+        settings: {
+          slidesToShow: 7,
+        }
+      },
+    ],
     nextArrow: <SampleNextArrow />,
   };
 
+  const selectedPackages = (() => {
+    if (selectedPackage === 0) {
+      return stayCompliantPackage;
+    } else if (selectedPackage === 1) {
+      return taxesPackage;
+    } else if (selectedPackage === 2) {
+      return growYourBusinessPackage;
+    }
+  })();
 
   return (
     <div className="bg-[#1649FF] overflow-hidden">
@@ -87,24 +115,22 @@ export function SupportYourBusiness() {
           )
         })}
       </div>
-      <div className="after-formation hidden lg:block relative" style={{ marginLeft: '175px', width: 'calc(100% - 175px)' }}>
+      <div className="after-formation hidden lg:block relative" style={{ marginLeft: '15rem', width: 'calc(100% - 20px)' }}>
         <Slider {...settings} className='relative'>
-          {selectedPackages.map((pac, index) => {
-            return (
-              <div className="p-4">
-                <div>
-                  <img src={pac.img} alt=''/>
+          {selectedPackages.map((pac, index) => (           
+              <div  className="p-8 shadow-lg bg-white rounded-[32px] h-[35rem]">
+                <div className="flex items-center justify-center pb-4">
+                  <img src={pac.img} className='h-56' alt='' />
                 </div>
-                <div className="font-semibold text-[40px] leading-[38px] lg:leading-[44px] text-[#222222]">
+                <div className="font-semibold text-[32px] leading-[38px] lg:leading-[44px] text-[#222222]">
                   {pac.name}
                 </div>
                 <div className="font-semibold text-[16px] lg:text-lg leading-[22px] text-[#222222] pt-4 flex-1">
                   {pac.description}
                 </div>
-                  <button className="absolute bottom-3 py-1 text-[22px] leading-[26px] font-semibold text-[#1649FF]">{pac.button}</button>
-              </div>
-            )
-          })}
+                <button className="absolute bottom-4 py-1 text-[19px] leading-[26px] font-semibold text-[#1649FF]">{pac.button}</button>
+              </div> 
+          ))}
         </Slider>
       </div>
       <div className="block px-8 lg:hidden">
@@ -138,15 +164,15 @@ export function SupportYourBusiness() {
         <div className="grid grid-cols-1 md:grid-cols:2 lg:grid-cols-3 items-start gap-6 lg:gap-3">
           <div className="flex items-start gap-3 justify-start lg:justify-center">
             <img src={protectionicon} className='w-8 h-8 lg:w-6 lg:h-6' alt="protection icon" />
-            <p className="text-white font-bold text-lg leading-6">In house USA based CPAs and Lawyers</p>
+            <p className="text-white font-bold text-lg leading-6">{t('after_formation_footer1')}</p>
           </div>
           <div className="flex items-start gap-3 justify-start lg:justify-center">
             <img src={protectionicon} className='w-8 h-8 lg:w-6 lg:h-6' alt="protection icon" />
-            <p className="text-white font-bold text-lg leading-6">Fast document approve. Physical office proximity to state HQ</p>
+            <p className="text-white font-bold text-lg leading-6">{t('after_formation_footer2')}</p>
           </div>
           <div className="flex items-start gap-3 justify-start lg:justify-center">
             <img src={protectionicon} className='w-8 h-8 lg:w-6 lg:h-6' alt="protection icon" />
-            <p className="text-white font-bold text-lg leading-6">60-Day money-back guarantee</p>
+            <p className="text-white font-bold text-lg leading-6">{t('after_formation_footer3')}</p>
           </div>
         </div>
       </div>

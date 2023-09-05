@@ -65,32 +65,8 @@ body {
 }
 
 .hero-section {
-  background-image: url('../images/hero-bg.png');
+  background-image: url('../images/hero-background.jpg');
   background-size: cover;
-  padding-bottom: 4rem;
-}
-
-.hero-section::before {
-  background: url('../images/animation.png') no-repeat;
-  content: "";
-  position: absolute;
-  bottom: -3rem;
-  right: 0;
-  display: inline-block;
-  width: 50rem;
-  height: 50rem;
-  animation: moveRocket 3s linear forwards;
-}
-
-
-@keyframes moveRocket {
-  0% {
-    right: -5rem;
-  }
-
-  100% {
-    right: 0;
-  }
 }
 
 .how-to-get-started:hover .text-on {
@@ -102,73 +78,80 @@ body {
 }
 
 @media only screen and (min-width: 1024px) {
-.slick-initialized .slick-slide {
-  padding: 0 7px;
-}
-.founders .slick-arrow.slick-prev.slick-disabled {
-  background-image: url('../images/reverse-line.svg');
-  background-position: center center;
-  background-repeat: no-repeat;
-  opacity: 1;
-  border: 1px solid #C8C8C8;
-  border-radius: 100%;
-  padding: 30px;
-  rotate: 180deg;
-  left: -30rem;
-  top: auto;
-  bottom: 3rem;
-  background-color: transparent;
-}
+  .slick-initialized .slick-slide {
+    padding: 0 7px;
+  }
 
-.founders .slick-arrow.slick-prev {
-  background-image: url('../images/line.png');
-  background-position: center center;
-  background-repeat: no-repeat;
-  opacity: 1;
-  border: 1px solid #C8C8C8;
-  border-radius: 100%;
-  padding: 30px;
-  rotate: 180deg;
-  left: -30rem;
-  top: auto;
-  bottom: 3rem;
-  background-color: #1649FF;
-}
-.founders .slick-arrow.slick-next.slick-disabled {
-  right: auto;
-  left: -35rem;
-  top: auto;
-  bottom: -1rem;
-  display: inline-block;
-  height: 30px;
-  width: 30px;
-  background-image: url('../images/reverse-line.svg');
-  background-position: center center;
-  background-repeat: no-repeat;
-  opacity: 1;
-  border: 1px solid #C8C8C8;
-  border-radius: 100%;
-  padding: 30px;
-  background-color: transparent;
-}
+  .founders .slick-arrow.slick-prev.slick-disabled {
+    background-image: url('../images/reverse-line.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 1;
+    border: 1px solid #C8C8C8;
+    border-radius: 100%;
+    padding: 30px;
+    rotate: 180deg;
+    left: -30rem;
+    top: auto;
+    bottom: 3rem;
+    background-color: transparent;
+  }
 
-.founders .slick-arrow.slick-next {
-  right: auto;
-  left: -35rem;
-  top: auto;
-  bottom: -1rem;
-  display: inline-block;
-  height: 30px;
-  width: 30px;
-  background-image: url('../images/line.png');
-  background-position: center center;
-  background-repeat: no-repeat;
-  opacity: 1;
-  border: 1px solid #C8C8C8;
-  border-radius: 100%;
-  padding: 30px;
-  background-color: #1649FF;
-}
+  .founders .slick-arrow.slick-prev {
+    background-image: url('../images/line.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 1;
+    border: 1px solid #C8C8C8;
+    border-radius: 100%;
+    padding: 30px;
+    rotate: 180deg;
+    left: -30rem;
+    top: auto;
+    bottom: 3rem;
+    background-color: #1649FF;
+  }
+
+  .founders .slick-arrow.slick-next.slick-disabled {
+    right: auto;
+    left: -35rem;
+    top: auto;
+    bottom: -1rem;
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    background-image: url('../images/reverse-line.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 1;
+    border: 1px solid #C8C8C8;
+    border-radius: 100%;
+    padding: 30px;
+    background-color: transparent;
+  }
+
+  .founders .slick-arrow.slick-next {
+    right: auto;
+    left: -35rem;
+    top: auto;
+    bottom: -1rem;
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    background-image: url('../images/line.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 1;
+    border: 1px solid #C8C8C8;
+    border-radius: 100%;
+    padding: 30px;
+    background-color: #1649FF;
+  }
+  .rocket-animation{
+    transform: translate(5rem, 3%);
+    animation-duration: 6s;
+    animation-name: rocket;
+  }
 }
 
 .after-formation .slick-next {
@@ -215,7 +198,7 @@ body {
 
 .founders-section .slick-list {
   overflow: visible !important;
-  clip-path: inset( -100vw -100vw -100vw 0 );
+  clip-path: inset(-100vw -100vw -100vw 0);
   margin: 0 75px 0 0;
 }
 
@@ -311,15 +294,17 @@ body {
   border-radius: 1rem;
 }
 
-.slick-track
-{
-    display: flex !important;
-}
 
-.slick-slide
-{
-    height: inherit !important;
-    background-color: white;
-    border-radius: 32px;
-    margin: 0 7px;
+
+
+@keyframes rocket {
+  from {
+    transform: translate(45rem, 20%);
+  }
+
+  to {
+    transform: translate(5rem, 3%);
+    right: 0;
+   
+  }
 }

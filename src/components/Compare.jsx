@@ -5,21 +5,22 @@ import blackcheckicon from '../images/blackcheck.png';
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 
-const packagesName = ['Doola', 'Zenbusiness', 'Legalzoom', 'Firstbase']
-
-const packages = [
-    { name: 'Same Day Processing', icon: <InformationCircleIcon />, registate: <img src={bluecheckicon} alt='icon' />, doola: <div className="sr-only">-</div>, zenbusiness: <div className="sr-only">-</div>, legalzoom: <div className="sr-only">-</div>, firstbase: <div className="sr-only">-</div> },
-    { name: 'Fast and headache free EIN', icon: <InformationCircleIcon />, registate: <img src={bluecheckicon} alt='icon' />, doola: <div className="sr-only">-</div>, zenbusiness: <div className="sr-only">-</div>, legalzoom: <div className="sr-only">-</div>, firstbase: <div className="sr-only">-</div> },
-    { name: 'US Bank Account Assistance', icon: <InformationCircleIcon />, registate: <img src={bluecheckicon} alt='icon' />, doola: <img src={blackcheckicon} alt='icon' />, zenbusiness: <div className="sr-only">-</div>, legalzoom: <div className="sr-only">-</div>, firstbase: <div className="sr-only">-</div> },
-    { name: 'Registered Agent', icon: <InformationCircleIcon />, registate: <img src={bluecheckicon} alt='icon' />, doola: <img src={blackcheckicon} alt='icon' />, zenbusiness: <div className="text-black">$199</div>, legalzoom: <div className="text-black">$249</div>, firstbase: <div className="text-black">$100</div> },
-    { name: 'Apostille service with extra charge ', icon: <InformationCircleIcon />, registate: <img src={bluecheckicon} alt='icon' />, doola: <div className="sr-only">-</div>, zenbusiness: <div className="sr-only">-</div>, legalzoom: <div className="sr-only">-</div>, firstbase: <div className="sr-only">-</div> },
-    { name: 'State filing fees included in first year cost ', icon: <InformationCircleIcon />, registate: <img src={bluecheckicon} alt='icon' />, doola: <div className="sr-only">-</div>, zenbusiness: <div className="sr-only">-</div>, legalzoom: <div className="sr-only">-</div>, firstbase: <img src={blackcheckicon} alt='icon' /> },
-    { name: 'Total First Year Cost ', icon: <InformationCircleIcon />, registate: '$232', doola: <div className="text-black">$297</div>, zenbusiness: <div className="text-black">$449</div>, legalzoom: <div className="text-black">$510</div>, firstbase: <div className="text-black">$499</div>, description: 'Based on Wyoming state —the best choice for LLC' },
-]
 
 export default function Compare() {
-    const { i18n } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [selectedPackageName, setSelectedPackageName] = useState('');
+
+    const packagesName = ['Doola', 'Zenbusiness', 'Legalzoom', 'Firstbase']
+
+    const packages = [
+        { name: t('starter_packages_list1'), icon: <InformationCircleIcon />, registate: <img src={bluecheckicon} alt='icon' />, doola: <div className="sr-only">-</div>, zenbusiness: <div className="sr-only">-</div>, legalzoom: <div className="sr-only">-</div>, firstbase: <div className="sr-only">-</div> },
+        { name: t('starter_packages_list2'), icon: <InformationCircleIcon />, registate: <img src={bluecheckicon} alt='icon' />, doola: <div className="sr-only">-</div>, zenbusiness: <div className="sr-only">-</div>, legalzoom: <div className="sr-only">-</div>, firstbase: <div className="sr-only">-</div> },
+        { name: t('starter_packages_list3'), icon: <InformationCircleIcon />, registate: <img src={bluecheckicon} alt='icon' />, doola: <img src={blackcheckicon} alt='icon' />, zenbusiness: <div className="sr-only">-</div>, legalzoom: <div className="sr-only">-</div>, firstbase: <div className="sr-only">-</div> },
+        { name: t('starter_packages_list4'), icon: <InformationCircleIcon />, registate: <img src={bluecheckicon} alt='icon' />, doola: <img src={blackcheckicon} alt='icon' />, zenbusiness: <div className="text-black">$199</div>, legalzoom: <div className="text-black">$249</div>, firstbase: <div className="text-black">$100</div> },
+        { name: t('starter_packages_list5'), icon: <InformationCircleIcon />, registate: <img src={bluecheckicon} alt='icon' />, doola: <div className="sr-only">-</div>, zenbusiness: <div className="sr-only">-</div>, legalzoom: <div className="sr-only">-</div>, firstbase: <div className="sr-only">-</div> },
+        { name: t('starter_packages_list6'), icon: <InformationCircleIcon />, registate: <img src={bluecheckicon} alt='icon' />, doola: <div className="sr-only">-</div>, zenbusiness: <div className="sr-only">-</div>, legalzoom: <div className="sr-only">-</div>, firstbase: <img src={blackcheckicon} alt='icon' /> },
+        { name: t('starter_packages_list7'), icon: <InformationCircleIcon />, registate: '$232', doola: <div className="text-black">$297</div>, zenbusiness: <div className="text-black">$449</div>, legalzoom: <div className="text-black">$510</div>, firstbase: <div className="text-black">$499</div>, description: t('starter_packages_list7_description'), },
+    ]       
 
     const handleSelectedPackageName = (e) => {
         setSelectedPackageName(e.target.value);
@@ -28,18 +29,18 @@ export default function Compare() {
         <div className="bg-[#ECEFF1]">
             <div className="mx-auto max-w-[966px] p-6 lg:px-12">
                 <div className="text-left lg:text-center pt-12 lg:pt-8">
-                    <h1 className="font-bold text-[32px] lg:text-[64px] text-[#222222] leading-[38px] lg:leading-[64px]">Compare and save money <span className="text-[#1649FF] font-bold ">with our Starter package</span></h1>
+                    <h1 className="font-bold text-[32px] lg:text-[64px] text-[#222222] leading-[38px] lg:leading-[64px]">{t('starter_packages_title_black')} <span className="text-[#1649FF] font-bold ">{t('starter_packages_title_blue')}</span></h1>
                 </div>
             </div>
             <div className="mx-auto max-w-md px-6 py-0 lg:px-12">
                 <div className="text-left lg:text-center">
-                    <h1 className="font-bold text-lg text-[#222222]">Registate is a <span className="text-[#1649FF] mr-1 font-bold ">on-stop shop</span>for all business forming and scaling services.</h1>
+                    <h1 className="font-bold text-lg text-[#222222]">{t('starter_packages_description_first')} <span className="text-[#1649FF] mr-1 font-bold ">{t('starter_packages_description_middle')}</span>{t('starter_packages_description_last')}</h1>
                 </div>
             </div>
             <div className="mx-auto max-w-7xl p-6 lg:px-12">
                 <div className="hidden lg:block">
                     <div className="mt-8 flow-root">
-                        <div className="-mx-4 -my-2 sm:-mx-6 lg:-mx-8  overflow-y-scroll">
+                        <div className="-mx-4 -my-2 sm:-mx-6 lg:-mx-8 ">
                             <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
                                 <table className="min-w-full">
                                     <thead>
@@ -119,7 +120,7 @@ export default function Compare() {
                             to={`/${i18n.language}/company-type`}
                             className="rounded-2xl py-[14px] px-6 font-semibold text-lg text-[#222222] bg-[#9EE248]"
                         >
-                            Open a business
+                           {t('menu_top_right_handcorner_button')}
                         </Link>
                     </div>
                 </div>
@@ -190,7 +191,7 @@ export default function Compare() {
                             to={`/${i18n.language}/company-type`}
                             className="rounded-2xl py-[14px] px-6 font-semibold text-lg text-[#222222] bg-[#9EE248] w-full text-center"
                         >
-                            Open a business
+                            {t('menu_top_right_handcorner_button')}
                         </Link>
                     </div>
                 </div>

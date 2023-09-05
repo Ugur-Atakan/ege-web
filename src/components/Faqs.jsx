@@ -99,7 +99,7 @@ export default function Faqs() {
             <img src={navigatoricon} className='w-128 h-128' alt='navigator icon' />
           </div>
           <div className='text-center px-12 lg:px-0'>
-            <h1 className='relative font-bold text-[32px] leading-[38px] lg:text-[64px] lg:leading-[64px] text-white'>Get your business ready in 24 hours</h1>
+            <h1 className='relative font-bold text-[32px] leading-[38px] lg:text-[64px] lg:leading-[64px] text-white'>{t('pricing_header2_footer_title')}</h1>
           </div>
         </div>
         <div className='mx-auto max-w-lg px-4 lg:px-0'>
@@ -108,11 +108,11 @@ export default function Faqs() {
             <div class="relative mb-4">
               <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               </div>
-              <input type="text" id="businessName" class="block w-full p-6 pl-6 text-lg text-[#8A8A8A] rounded-[20px] bg-[#1B1B1B] focus:outline-none border-none focus:border-none focus:ring-0" placeholder="Your preferred business name" required />
-              <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-[#1649FF] py-4 px-7 rounded-2xl">Start now</button>
+              <input type="text" id="businessName" class="block w-full p-6 pl-6 text-lg text-[#8A8A8A] rounded-[20px] bg-[#1B1B1B] focus:outline-none border-none focus:border-none focus:ring-0" placeholder={t('pricing_header2_footer_input_text')} required />
+              <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-[#1649FF] py-4 px-7 rounded-2xl">{t('pricing_header2_footer_input_button')}</button>
             </div>
             <Link className='text-center' to={`/${i18n.language}/start-my-business`}>
-              <p className='text-[#8A8A8A] block lg:flex items-center justify-center gap-1'>or take a quiz to choose a <span className='flex justify-center items-center gap-1 text-[#9EE248] cursor-pointer'>company type first <ArrowRightIcon className='w-4 h-4' /> </span></p>
+              <p className='text-[#8A8A8A] block lg:flex items-center justify-center gap-1'>{t('pricing_header2_footer_text_gray')} <span className='flex justify-center items-center gap-1 text-[#9EE248] cursor-pointer'>{t('pricing_header2_footer_text_green')} <ArrowRightIcon className='w-4 h-4' /> </span></p>
             </Link>
           </div>
         </div>

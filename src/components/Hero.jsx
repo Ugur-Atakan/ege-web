@@ -7,11 +7,16 @@ import whitelogo from '../images/logos/registate-white-logo.png'
 import bluelogo from '../images/logo-blue.webp'
 import { ArrowRightIcon } from '@heroicons/react/24/outline'
 import { PopupButton } from "react-calendly";
+import circle from '../images/hero-circle.png';
+import variant1 from '../images/variant1.png';
+import variant2 from '../images/variant2.png';
+import rocket from '../images/rocket.png';
 
 export function CalendlyText() {
+  const { t, i18n } = useTranslation();
   return (
     <div className='cursor-pointer flex items-center gap-2'>
-      <p className='font-semibold text-xs leading-4 text-white'> ✨ Book a <span className='text-[#9EE248] mr-1'>free call</span>with an experienced attorney</p>
+      <p className='font-semibold text-xs leading-4 text-white'>{t('topbar_first_part')}<span className='text-[#9EE248] mr-1'>{t('topbar_middle_part')}</span>{t('topbar_last_part')}</p>
       <ArrowRightIcon className='h-3 text-white' />
     </div>
   )
@@ -24,6 +29,7 @@ export default function Example() {
   const location = useLocation();
   const [currentLang, setCurrentLang] = useState(i18n.language);
   const [isSticky, setIsSticky] = useState(false);
+
 
   useEffect(() => {
     const lang = location.pathname.split("/")[1];
@@ -91,7 +97,7 @@ export default function Example() {
           </div>
           <div className="flex gap-x-3 lg:hidden">
             <Link to={`/${i18n.language}/company-type`} className='bg-white rounded-[28px] py-3 px-4 text-[16px] leading-[22px] font-semibold text-[#1649FF]'>
-              Open a business
+              {t('menu_top_right_handcorner_button')}
             </Link>
             <button
               type="button"
@@ -220,35 +226,42 @@ export default function Example() {
       </header>
 
       <div className="relative isolate overflow-hidden pt-14 hero-section">
-        <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-64">
-          <div className="text-center -mt-24">
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-7xl">
-              Start a business in the USA in 24 hours <span className='text-[#9EE248]'>from anywhere</span>
+        <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-64 relative z-[3]">
+          <div className="text-left lg:text-center px-6 lg:px-0 lg:-mt-24">
+            <h1 className="text-4xl leading-[38px] font-bold tracking-tight text-white sm:text-7xl">
+              {t('hero_text_white')} <span className='text-[#9EE248]'> {t('hero_text_green')}</span>
             </h1>
             <div className='flex items-center justify-center' >
               <div className='max-w-md'>
-                <p className="mt-6 font-semibold text-lg text-white">
-                  All-in-one compliance solution for fulfilling your dreams, no matter where you are.
+                <p className="mt-6 font-semibold text-[16px] lg: leading-[22px] text-lg text-white">
+                  {t('hero_description')}
                 </p>
               </div>
             </div>
-            <div className="mt-10 flex items-center justify-center gap-x-2">
+            <div className="mt-10 flex items-center lg:justify-center gap-x-2">
               <Link
                 to={`/${i18n.language}/company-type`}
-                className="rounded-2xl py-[14px] px-6 font-semibold text-lg text-[#222222] bg-[#9EE248]"
+                className="rounded-2xl  py-3 lg:py-[14px] leading-[22px] px-6 font-semibold text-[15px] lg:text-lg text-[#222222] bg-[#9EE248]"
               >
-                Open a business
+                {t('hero_green_button')}
               </Link>
-              <Link to="#" className="rounded-2xl py-[14px] px-6 font-semibold text-lg text-white border bg-transparent">
-                How it works
+              <Link to="#" className="rounded-2xl py-3 lg:py-[14px] leading-[22px] px-6 font-semibold text-[15px] lg:text-lg text-white border bg-transparent">
+                {t('hero_transparent_button')}
               </Link>
             </div>
           </div>
         </div>
-        <div
-          className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
-          aria-hidden="true"
-        >
+        <div className='absolute top-8 -right-[45rem] lg:top-36 lg:right-0 z-0 rocket-animation'>
+          <img src={rocket} className='rocket' alt='rocket' />
+        </div>
+        <div className='absolute bottom-4 lg:bottom-16 z-[2]'>
+          <img src={variant1} className='variant1' alt='variant 1' />
+        </div>
+        <div className='absolute bottom-4 lg:bottom-14'>
+          <img src={variant2} className='variant2' alt='variant 2' />
+        </div>
+        <div className='absolute bottom-0'>
+          <img src={circle} />
         </div>
       </div>
     </div>

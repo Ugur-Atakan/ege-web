@@ -28,60 +28,38 @@ export default function BlogPost() {
         <div className="bg-white py-24 sm:py-16">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="mx-auto max-w-2xl text-center">
-                    <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">From the blog</h2>
-                    <p className="mt-2 text-lg leading-8 text-gray-600">
-                        Learn how to grow your business with our expert advice.
+                    <h2 className="text-3xl font-bold tracking-tight text-[#222222] sm:text-6xl">From the blog</h2>
+                    <p className="mt-4 text-xl leading-8 text-[#222222]">
+                        Read the latest posts from our blog. All articles are written by our team of experts, so you know you're getting the best advice.
                     </p>
                 </div>
-                <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+                <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
                     {entry?.posts.map((post) => (
-                        <article key={post.id} className="flex flex-col items-start justify-between">
-                            <div className="relative w-full">
+                        <Link to={`/${i18n.language}/blog/${post.slug}`} key={post.id} className="flex flex-col items-start justify-between shadow-lg">
+                           <div className='flex flex-col overflow-hidden rounded-lg shadow-lg'>
+                                <div className='flex-shrink-0'>
                                 <img
                                     src={post.feature_image}
                                     alt=""
-                                    className="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
+                                    className="aspect-[16/9] w-full rounded-tl-[20px] rounded-tr-[20px] bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
                                 />
-                                <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
-                            </div>
-                            <div className="max-w-xl">
-                                <div className="mt-8 flex items-center gap-x-4 text-xs">
-                                    <time dateTime={post.created_at} className="text-gray-500">
-                                        {post.created_at}
-                                    </time>
-                                    <Link
-                                        to={`${i18n.language}/blog/${post.slug}`}
-                                        className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
-                                    >
-                                        {post.title}
-                                    </Link>
                                 </div>
-                                <div className="group relative">
-                                    <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                                        <Link to={`/${i18n.language}/blog/${post.slug}`}>
-                                            <span className="absolute inset-0" />
-                                            {post.title}
-                                        </Link>
-                                    </h3>
-                                    <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{post.description}</p>
-                                </div>
-                                <div className="relative mt-8 flex items-center gap-x-4">
-                                    <img src={post.feature_image} alt="" className="h-10 w-10 rounded-full bg-gray-100" />
-                                    <div className="text-sm leading-6">
-                                        <p className="font-semibold text-gray-900">
-                                        <Link to={`/${i18n.language}/blog/${post.slug}`}>
-                                                <span className="absolute inset-0" />
-                                                Burak Ceylan
-                                            </Link>
-                                        </p>
-                                        <p className="text-gray-600">Developer</p>
+                                <div className='flex flex-1 flex-col justify-between bg-white p-6'>
+                                    <div className='flex-1'>
+                                    <h1 className='text-xl font-semibold text-[#222222]'>{post.title}</h1>
+                                    <p className='mt-3 text-base text-[#222222]'> {post.excerpt.slice(0,120  )}...</p>
+                                    </div>
+                                    <div className='mt-6 flex items-center'>
+                                    <div className='flex-shrink-0 bg-gray-100 rounded-[20px] text-xs px-2 py-1 text-[#222222] font-bold'>
+                                    {post.created_at.slice(0,10)}
+                                    </div>
                                     </div>
                                 </div>
-                            </div>
-                        </article>
+                           </div>
+                        </Link>
                     ))}
-                </div>
             </div>
         </div>
+        </div >
     );
 }

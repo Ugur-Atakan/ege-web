@@ -1,10 +1,7 @@
-import React, { useState, Fragment, useEffect } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
-import { CheckIcon } from '@heroicons/react/24/outline'
+import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import bigstar from '../images/big-star.webp'
-import blurstar from '../images/blur-star.png'
 import smallstar from '../images/small-star.png'
 import darkstar from '../images/dark-star.png'
 import {

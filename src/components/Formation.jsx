@@ -10,10 +10,12 @@ import packageData from '../assets/packageData.json'
 import arrowblack from '../images/arrow-black.png'
 import arrowblue from '../images/arrow-blue.png'
 import noinclude from '../images/no-include.png'
+import { useTranslation } from 'react-i18next'
 
 const API_ROOT = window.ob.config.apiRoot;
 
 export default function Formation() {
+  const {t, i18n} = useTranslation();
   let [companyState, setCompanyState] = useState("");
   let [companyType, setCompanyType] = useState("");
   companyState = localStorage.getItem('companyState');
@@ -94,16 +96,16 @@ export default function Formation() {
       <div className="mx-auto p-6 lg:px-8">
         <Link className='flex items-center gap-2' to={`/${i18n.language}/company-name`}>
           <ArrowLeftIcon className='text-[#1649FF] h-[18px] w-[18px]' />
-          <span className='text-[#1649FF] text-lg font-semibold'>Back</span>
+          <span className='text-[#1649FF] text-lg font-semibold'>{t('formation_back_button')}</span>
         </Link>
       </div>
       <div className='mx-auto max-w-5xl p-4'>
         <div className='text-left md:text-center'>
-          <h1 className='font-semibold text-[26px] md:text-[40px] leading-[44px] text-[#222222]'>Choose your package</h1>
+          <h1 className='font-semibold text-[26px] md:text-[40px] leading-[44px] text-[#222222]'>{t('formation_title')}</h1>
         </div>
         <div className={packagePrices.length < 3 ? 'grid md:grid-cols-2 gap-5 py-12' : 'grid md:grid-cols-3 gap-5 py-12'}>
           {packagePrices.map((prices, index) => (
-            <div className={index === 0 && 'flex flex-col gap-5 border border-[#9EE248] p-12 rounded-[20px] h-[35rem] overflow-hidden cursor-pointer' || index === 1 && 'flex flex-col gap-5 bg-[#1649FF] p-12 rounded-[20px] h-[35rem] overflow-hidden cursor-pointer' || index === 2 && 'flex flex-col gap-5 border bg-[#222222] p-12 rounded-[20px] h-[35rem] overflow-hidden cursor-pointer'}
+            <div className={index === 0 && 'flex flex-col gap-5 border border-[#9EE248] p-12 rounded-[20px] h-[35rem] overflow-hidden cursor-pointer hover:bg-[#9EE248]' || index === 1 && 'flex flex-col gap-5 bg-[#1649FF] p-12 rounded-[20px] h-[35rem] overflow-hidden cursor-pointer' || index === 2 && 'flex flex-col gap-5 border bg-[#222222] p-12 rounded-[20px] h-[35rem] overflow-hidden cursor-pointer'}
               onClick={() => {
                 if (index === 0) {
                   localStorage.setItem('selectedPackage', JSON.stringify([prices]));
@@ -129,7 +131,7 @@ export default function Formation() {
       </div>
       <div className='mx-auto max-w-xs'>
         <div className='w-full flex flex-col items-center justify-center'>
-          <p className='cursor-pointer md:py-6 font-semibold  text-[22px] leading-[26px] text-[#1649FF]'>What’s included per package</p>
+          <p className='cursor-pointer md:py-6 font-semibold  text-[22px] leading-[26px] text-[#1649FF]'>{t('formation_card_footer')}</p>
         </div>
       </div>
       <div className='mx-auto max-w-5xl p-4'>
@@ -144,8 +146,8 @@ export default function Formation() {
                         scope="col"
                         className="w-2/5 sticky top-0 z-10 border-b border-gray-300 bg-white py-3.5 pr-3 text-left text-[26px] md:text-4xl font-semibold text-[#222222] leading-6 md:leading-[44px] backdrop-blur backdrop-filter"
                       >
-                        Compare Packages
-                        <span className='text-base leading-4 md:leading-normal pt-2 md:pt-0 md:text-lg block font-semibold'>What’s included per package</span>
+                        {t('formation_detail_title')}
+                        <span className='text-base leading-4 md:leading-normal pt-2 md:pt-0 md:text-lg block font-semibold'>{t('formation_detail_description')}</span>
                       </th>
                       {packagePrices.map((price, index) => (
                         <th

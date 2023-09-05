@@ -9,7 +9,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 export default function IncorporateBusiness() {
-    const {i18n} = useTranslation();
+    const {t,i18n} = useTranslation();
     const [videoSource, setVideoSource] = useState(videoasian);
 
     const handleTurkey = () => {
@@ -51,22 +51,22 @@ export default function IncorporateBusiness() {
                 </div>
                 <div className="block lg:flex items-start justify-between pt-12 pb-24 px-6 lg:px-12">
                     <div className="w-full lg:w-[60%]">
-                        <h1 className='font-bold  text-[32px] lg:text-[64px] text-black leading-[38px] lg:leading-[64px] mb-6 lg:mb-24'>Incorporate business from anywhere</h1>
+                        <h1 className='font-bold  text-[32px] lg:text-[64px] text-black leading-[38px] lg:leading-[64px] mb-6 lg:mb-24'>{t('video_title')}</h1>
                         <Link
                             to={`/${i18n.language}/company-type`}
                             className="hidden lg:inline rounded-2xl py-[14px] px-6 font-semibold text-lg text-[#222222] bg-[#9EE248]"
                         >
-                            Open a business
+                          {t('video_button')}
                         </Link>
                     </div>
                     <div className="w-full lg:w-[40%] mt-4">
                         <div>
-                            <p className="font-semibold text-lg leading-[24px]">You can incorporate a US business from almost anywhere on Earth. We’ll get you set up with a US business address.</p>
+                            <p className="font-semibold text-lg leading-[24px]">{t('video_description')}</p>
                             <Link
                                  to={`/${i18n.language}/company-type`}
                                 className="inline-block text-center lg:hidden mt-8 rounded-2xl py-[14px] px-6 font-semibold text-lg text-[#222222] bg-[#9EE248]"
                             >
-                                Open a business
+                              {t('video_button')}
                             </Link>
                         </div>
                     </div>
