@@ -1,43 +1,42 @@
+'use client';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
-import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 
 export default function Footer() {
-  const API_ROOT = window.ob.config.apiRoot;
-  const { t, i18n } = useTranslation();
+  const API_ROOT = 'api_root'
+
   const navigation = {
     solutions: [
       {
-        name: t('footer_col1_submenu1'),
-        href: `/${i18n.language}/company-type`,
+        name: 'footer_col1_submenu1',
+        href: `/`,
       },
       {
-        name: t('footer_col1_submenu2'),
-        href: `/${i18n.language}/contact`,
+        name: 'footer_col1_submenu2',
+        href: `/`,
       },
       {
-        name: t('footer_col1_submenu3'),
-        href: `/${i18n.language}/contact`,
+        name: 'footer_col1_submenu3',
+        href: `/`,
       },
       {
-        name: t('footer_col1_submenu4'),
-        href: `/${i18n.language}/contact`,
+        name: 'footer_col1_submenu4',
+        href: `/`,
       },
     ],
     support: [
-      { name: t('footer_col2_submenu1'), href: `/${i18n.language}/contact`, },
-      { name: t('footer_col2_submenu2'), href: `/${i18n.language}/contact`, }
+      { name: 'footer_col2_submenu1', href: `/`, },
+      { name: 'footer_col2_submenu2', href: `/`, }
     ],
     company: [
-      { name: t('footer_col3_submenu1'), href: `/${i18n.language}/contact`, },
-      { name: t('footer_col3_submenu2'), href: `/${i18n.language}/blog`, },
-      { name: t('footer_col3_submenu3'), href: `/${i18n.language}/contact`, }
+      { name: 'footer_col3_submenu1', href: `/`, },
+      { name: 'footer_col3_submenu2', href: `/`, },
+      { name: 'footer_col3_submenu3', href: `/`, }
     ],
     legal: [
-      { name: t('footer_col4_submenu1'), href: `/${i18n.language}/contact` },
-      { name: t('footer_col4_submenu2'), href: `/${i18n.language}/contact` }
+      { name: 'footer_col4_submenu1', href: `/` },
+      { name: 'footer_col4_submenu2', href: `/` }
     ],
     social: [
       {
@@ -64,30 +63,32 @@ export default function Footer() {
   const notify = () => {
     toast("Successfully subscribed");
   }
-  const submitHandler = (e) => {
-    e.preventDefault();
 
-    let email = e.target.email.value;
-    let payload = {
-      "email": email,
+    const submitHandler = (e) => {
+        e.preventDefault();
+
+        let email = e.target.email.value;
+        let payload = {
+        "email": email,
+        }
+        console.log(payload)
+        axios.post(API_ROOT + '/api/newsletter', payload, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
+        },
+        body: JSON.stringify(payload),
+        })
+        .then(function (response) {
+            var jsonData = JSON.parse(JSON.stringify(response.data));
+            console.log(jsonData)
+            notify();
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
     }
-    console.log(payload)
-    axios.post(API_ROOT + '/api/newsletter', payload, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
-      },
-      body: JSON.stringify(payload),
-    })
-      .then(function (response) {
-        var jsonData = JSON.parse(JSON.stringify(response.data));
-        console.log(jsonData)
-        notify();
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
+
   return (
     <footer className="bg-white border-t" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
@@ -98,7 +99,7 @@ export default function Footer() {
           <div className="grid grid-cols-2 gap-8 xl:col-span-2">
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="font-semibold text-lg leading-[24px] text-black">{t('footer_col1_title')}</h3>
+                <h3 className="font-semibold text-lg leading-[24px] text-black">{'footer_col1_title'}</h3>
                 <ul role="list" className="mt-4 space-y-4">
                   {navigation.solutions.map((item) => (
                     <li key={item.name}>
@@ -110,7 +111,7 @@ export default function Footer() {
                 </ul>
               </div>
               <div className="mt-12 md:mt-0">
-                <h3 className="font-semibold text-lg leading-[24px] text-black">{t('footer_col2_title')}</h3>
+                <h3 className="font-semibold text-lg leading-[24px] text-black">{'footer_col2_title'}</h3>
                 <ul role="list" className="mt-4 space-y-4">
                   {navigation.support.map((item) => (
                     <li key={item.name}>
@@ -124,7 +125,7 @@ export default function Footer() {
             </div>
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="font-semibold text-lg leading-[24px] text-black">{t('footer_col3_title')}</h3>
+                <h3 className="font-semibold text-lg leading-[24px] text-black">{'footer_col3_title'}</h3>
                 <ul role="list" className="mt-4 space-y-4">
                   {navigation.company.map((item) => (
                     <li key={item.name}>
@@ -152,9 +153,9 @@ export default function Footer() {
                   id="email"
                   autoComplete="email"
                   required
-                  placeholder={t('footer_col5_input_placeholder')}
+                  placeholder={'footer_col5_input_placeholder'}
                   className="block w-full p-6 pl-6 text-lg text-[#8A8A8A] rounded-[20px] bg-[#ECEFF1] focus:outline-none border-none focus:border-none focus:ring-0" />
-                <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-[#1649FF] py-4 px-7 rounded-2xl">{t('footer_col5_button')}</button>
+                <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-[#1649FF] py-4 px-7 rounded-2xl">{'footer_col5_button'}</button>
               </div>
             </form>
           </div>
@@ -169,7 +170,7 @@ export default function Footer() {
             ))}
           </div>
           <p className="mt-8 text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A] md:order-1 md:mt-0">
-            {t('footer_bottom_left')}
+            {'footer_bottom_left'}
           </p>
         </div>
       </div>

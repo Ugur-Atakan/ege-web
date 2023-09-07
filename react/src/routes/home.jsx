@@ -11,6 +11,7 @@ import HowToGetStarted from '../components/HowToGetStarted';
 import Compare from '../components/Compare';
 import SupportYourBusiness from '../components/PrimaryFeatures';
 
+
 export function Home() {
     return (
         <>
