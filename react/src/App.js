@@ -53,31 +53,10 @@ const App = () => {
 
   return (
     <Router>
-      <ExitIndent/>
         <Routes>
           <Route path="/" element={<Navigate to={`/${i18n.language}`} />} />
           <Route  path="/:lang" element={<Home />} />
           <Route exact path="/:lang/home" element={<Home />} />
-          <Route exact path="/:lang/post-incorp" element={<PostIncorporation />} />
-          <Route exact path="/:lang/compliance-reminder" element={<ComplianceReminder />} />
-          <Route exact path="/:lang/registered-agent" element={<RegisteredAgent />} />
-          <Route exact path="/:lang/office-address" element={<OfficeAddress />} />
-          <Route exact path="/:lang/our-packages" element={<OurPackages />} />
-          <Route exact path="/:lang/virtual-phone-number" element={<VirtualPhoneNumber />} />
-          <Route exact path="/:lang/dedicated-receptionist" element={<DedicatedReceptionist />} />
-          <Route exact path="/:lang/form-your-company" element={<FormYourCompany />} />
-          <Route exact path="/:lang/virtual-mailbox" element={<VirtualMailbox />} />
-          <Route exact path="/:lang/foreign-qualification" element={<ForeignQualification />} />
-          <Route exatc path="/:lang/certificate-of-good-standing" element={<CertificateOfGoodStanding />} />
-          <Route exatc path="/:lang/certified-copy-request" element={<CertifiedCopyRequest />} />
-          <Route exatc path="/:lang/ein" element={<Ein />} />
-          <Route exatc path="/:lang/entity-type-conversion" element={<EntityTypeConversion />} />
-          <Route exact path="/:lang/renewal-and-revival" element={<RenevalRevival />} />
-          <Route exact path="/:lang/dissolution-and-cancellation" element={<DissoluitonAndCancellation />} />
-          <Route exact path="/:lang/certificate-of-amendment" element={<CertificateOfAmendment />} />
-          <Route exact path="/:lang/doing-business-as" element={<DoingBusinessAs />} />
-          <Route exact path="/:lang/apostille" element={<Apostille />} />
-          <Route exact path="/:lang/us-bank-account-opening-support" element={<AccountOpeningSupport />} />
           <Route exact path="/:lang/company-type" element={<Company />} />
           <Route exact path="/:lang/contact" element={<Contact />} />
           <Route
@@ -91,17 +70,10 @@ const App = () => {
           <Route exact path="/:lang/formation" element={<Formation />} />
           <Route exact path="/:lang/review" element={<Review />} />
           <Route exact path="/:lang/state" element={<PricingFormMyCompany />} />
-          <Route exact path="/:lang/pricing/post-incorporation-documents" element={<PricingPostIncorporationDocuments />} />
-          <Route exact path="/:lang/pricing/apostille-and-notarization-services" element={<PricingApostilleAndNotorizationServices />} />
-          <Route exact path="/:lang/pricing/virtual-mailbox" element={<PricingVirtualMailbox />} />
           <Route path="/post-order" element={<PostOrder/>} />
           <Route exact path="*" element={<Notfound />} />
           <Route exact path="/:lang/notfound" element={<Notfound />} />
-          <Route exact path="/:lang/all-products" element={<AllProducts />} />
           <Route exact path="/:lang/start-my-business" element={<StartCompany />} />
-          <Route path="/:lang/products/:productlink/contact" element={<ProductSpecificContactUs />} />
-          <Route path="/:lang/copy-landing-page" element={<Copylandingpage />} />
-          <Route path="/:lang/free-tax-consultation" element={<Freetaxconsultation />}/>
           <Route path="/:lang/blog/:slug" element={<BlogDetail />}/>
         </Routes>
     </Router>

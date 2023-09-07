@@ -1,4 +1,4 @@
-import { Container } from './common/Container'
+import { Container } from '../common/Container'
 import Image from 'next/image';
 import exaironlogo from '../../images/logos/exairon-logo.png'
 import malliqlogo from '../../images/logos/malliq-logo.png'
