@@ -56,16 +56,15 @@ export default function StartOnbarding() {
     secondSetNo(false);
   }
 
-const handleCompanyType = () => {
-  if(firstYes || secondYes) {
-    localStorage.setItem('companyType', 'Corporation');
-    localStorage.setItem('companyState', 'Delaware');
-  }else{
-    localStorage.setItem('companyType', 'LLC');
-    localStorage.setItem('companyState', 'Wyoming');
+  const handleCompanyType = () => {
+    if(firstYes || secondYes) {
+      localStorage.setItem('companyType', 'Corporation');
+      localStorage.setItem('companyState', 'Delaware');
+    }else{
+      localStorage.setItem('companyType', 'LLC');
+      localStorage.setItem('companyState', 'Wyoming');
+    }
   }
-}
-
 
   return (
     <div className='company-type py-12'>
