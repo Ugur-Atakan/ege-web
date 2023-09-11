@@ -1,0 +1,223 @@
+'use client';
+
+import { ArrowLeftIcon } from '@heroicons/react/24/outline'
+import React, { useEffect, useState } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import bishopwhite from '../../../../images/bishop-white.png'
+import quencolor from '../../../../images/queen-color.png'
+import kingblack from '../../../../images/king-black.png'
+import axios from 'axios'
+import packageData from '../../../../assets/packageData.json'
+import arrowblack from '../../../../images/arrow-black.png'
+import arrowblue from '../../../../images/arrow-blue.png'
+import noinclude from '../../../../images/no-include.png'
+import { useTranslation } from '../../../i18n/client';
+
+const API_ROOT = 'API_ROOT';
+
+export default function Content({ lang }) {
+  const { t } = useTranslation(lang);
+
+  let [companyState, setCompanyState] = useState("");
+  let [companyType, setCompanyType] = useState("");
+
+  companyState = localStorage.getItem('companyState');
+  companyType = localStorage.getItem('companyType');
+  let companyName = localStorage.getItem('companyName');
+  let [packagePrices, setPackagePrices] = useState([]);
+  let [states, setStates] = useState([]);
+  let [companyTypes, setCompanyTypes] = useState([]);
+
+  useEffect(() => {
+    const updatePricing = () => {
+      let foundState = states.find((s) => s.state === companyState);
+      let foundType = companyTypes.find((t) => t.entityType === companyType);
+      if (companyType && companyState && foundState && foundType) {
+        let langs = i18n.language === "en" ? "en" : "tr"
+        let payload = {
+          stateId: foundState.id,
+          entityTypeId: foundType.id,
+          lang: langs,
+        }
+
+        axios.post(API_ROOT + '/api/fe/prices', payload, {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
+          }
+        })
+          .then(function (response) {
+            var jsonData = response.data;
+            setPackagePrices(jsonData);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+    }
+    if (companyState !== "" && companyType !== "" && companyName !=='') {
+      updatePricing();
+    } else {
+      window.location.href = `/${lang}/company-name`;
+    }
+  }, [companyType, companyState, states]);
+
+  useEffect(() => {
+        // Get the states from backend API via axios
+        axios.get(API_ROOT + '/api/fe/states', {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
+            }
+        })
+        .then(function (response) {
+            var jsonData = response.data;
+            setStates(jsonData)
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+        // Get the entity types from backend API via axios
+        axios.get(API_ROOT + '/api/settings/entityType', {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
+            }
+        })
+        .then(function (response) {
+            var jsonData = response.data;
+            setCompanyTypes(jsonData)
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    }, []);
+
+  return (
+    <div className='bg-white'>
+      <div className="mx-auto p-6 lg:px-8">
+        <Link href={`/${lang}/company-name`} className='flex items-center gap-2' >
+          <ArrowLeftIcon className='text-[#1649FF] h-[18px] w-[18px]' />
+          <span className='text-[#1649FF] text-lg font-semibold'>{t('formation_back_button')}</span>
+        </Link>
+      </div>
+      <div className='mx-auto max-w-5xl p-4'>
+        <div className='text-left md:text-center'>
+          <h1 className='font-semibold text-[26px] md:text-[40px] leading-[44px] text-[#222222]'>{t('formation_title')}</h1>
+        </div>
+        <div className={packagePrices.length < 3 ? 'grid md:grid-cols-2 gap-5 py-12' : 'grid md:grid-cols-3 gap-5 py-12'}>
+          {packagePrices.map((prices, index) => (
+            <div className={index === 0 && 'flex flex-col gap-5 border border-[#9EE248] p-12 rounded-[20px] h-[35rem] overflow-hidden cursor-pointer hover:bg-[#9EE248]' || index === 1 && 'flex flex-col gap-5 bg-[#1649FF] p-12 rounded-[20px] h-[35rem] overflow-hidden cursor-pointer' || index === 2 && 'flex flex-col gap-5 border bg-[#222222] p-12 rounded-[20px] h-[35rem] overflow-hidden cursor-pointer'}
+              onClick={() => {
+                if (index === 0) {
+                  localStorage.setItem('selectedPackage', JSON.stringify([prices]));
+                  window.location.href = `/${lang}/review`;
+                }
+                if (index === 1) {
+                  localStorage.setItem('selectedPackage', JSON.stringify([prices]));
+                  window.location.href = `/${lang}/review`;
+                }
+                if (index === 2) {
+                  localStorage.setItem('selectedPackage', JSON.stringify([prices]));
+                  window.location.href = `/${lang}/review`;
+                }
+              }}
+            >
+              <h2 className={index === 0 ? 'font-semibold text-[40px] leading-[44px] text-[#222222]' : 'font-semibold text-[40px] leading-[44px] text-white'}>{prices.orderPackage.replace('Registate', '')}</h2>
+              <p className={index === 0 ? 'text-lg font-semibold leading-6 text-[#222222]' : 'text-lg font-semibold leading-6 text-white'}>{prices.description + ' ' + prices.description2}</p>
+              <p className={index === 0 ? 'font-semibold text-[28px] leading-8 text-[#222222]' : 'font-semibold text-[28px] leading-8 text-white'}>{'$' + (prices.orderPackagePrice / 100).toFixed(0)}</p>
+              <Image src={index === 0 && bishopwhite || index === 1 && quencolor || index === 2 && kingblack} className='' alt='llc package' />
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className='mx-auto max-w-xs'>
+        <div className='w-full flex flex-col items-center justify-center'>
+          <p className='cursor-pointer md:py-6 font-semibold  text-[22px] leading-[26px] text-[#1649FF]'>{t('formation_card_footer')}</p>
+        </div>
+      </div>
+      <div className='mx-auto max-w-5xl p-4'>
+        <div className="px-6 lg:px-8 overflow-x-scroll overflow-y-hidden">
+          <div className="mt-8 flow-root">
+            <div className="-mx-4 -my-2 sm:-mx-6 lg:-mx-8">
+              <div className="inline-block min-w-full py-2 align-middle">
+                <table className="min-w-full border-separate border-spacing-0">
+                  <thead>
+                    <tr>
+                      <th
+                        scope="col"
+                        className="w-2/5 sticky top-0 z-10 border-b border-gray-300 bg-white py-3.5 pr-3 text-left text-[26px] md:text-4xl font-semibold text-[#222222] leading-6 md:leading-[44px] backdrop-blur backdrop-filter"
+                      >
+                        {t('formation_detail_title')}
+                        <span className='text-base leading-4 md:leading-normal pt-2 md:pt-0 md:text-lg block font-semibold'>{t('formation_detail_description')}</span>
+                      </th>
+                      {packagePrices.map((price, index) => (
+                        <th
+                          scope="col"
+                          className={index === 2
+                            ? "w-1/5 sticky top-0 z-10 border-b border-gray-300 bg-white px-3 py-3.5 text-center whitespace-nowrap md:whitespace-normal text-2xl font-semibold text-[#1649FF] backdrop-blur backdrop-filter sm:table-cell"
+                            : "w-1/5 sticky top-0 z-10 border-b border-gray-300 bg-white whitespace-nowrap md:whitespace-normal px-3 py-3.5 text-center text-2xl font-semibold text-[#222222] backdrop-blur backdrop-filter sm:table-cell"}
+                        >
+                          {price.orderPackage.replace('Registate','')}
+                          <span className='text-lg md:text-[16px] block font-semibold'>{'$' + (price.orderPackagePrice / 100).toFixed(0)}</span>
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {packageData.packages.map((packageItem, packageIndex) => (
+                      <>
+                        {Object.keys(packageItem).map((packageTitle, titleIndex) => (
+                          <React.Fragment key={titleIndex}>
+                            {packageTitle === 'details' && packageItem[packageTitle].map((detailItem, detailIndex) => (
+                              <>
+                                <tr>
+                                  <td
+                                    colSpan="2"
+                                    className="text-2xl font-semibold leading-8 text-[#222222] pb-8 pt-16"
+                                  >
+                                    {detailItem.title}
+                                  </td>
+                                </tr>
+                                {detailItem.details.map((detail, index) => (
+                                  <tr key={index}>
+                                    <td className='font-semibold text-lg text-left leading-6 text-[#222222] py-4'>
+                                      {detail.title}
+                                    </td>
+                                    <td className='font-semibold text-lg text-center leading-6 text-[#222222] py-4'>
+                                      <div className='flex items-center justify-center'>
+                                        <Image src={detail.starter ? arrowblack : noinclude} className='h-6 w-6' alt='tick' />
+                                      </div>
+                                    </td>
+                                    <td className='font-semibold text-lg text-center leading-6 text-[#222222] py-4'>
+                                      <div className='flex items-center justify-center'>
+                                        <Image src={detail.startup ? arrowblack : noinclude} className='h-6 w-6' alt='tick' />
+                                      </div>
+                                    </td>
+                                    {((companyType === 'Corporation') && (companyState==='Delaware' || companyState==='New York' || companyState==='California')) && (
+                                      <td className='font-semibold text-lg text-center leading-6 text-[#222222] py-4'>
+                                        <div className='flex items-center justify-center'>
+                                          <Image src={detail.scaleup ? arrowblue : noinclude} className='h-6 w-6' alt='tick' />
+                                        </div>
+                                      </td>
+                                    )}
+                                  </tr>
+                                ))}
+                              </>
+                            ))}
+                          </React.Fragment>
+                        ))}
+                      </>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
