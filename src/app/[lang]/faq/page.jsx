@@ -1,13 +1,13 @@
-import Navbar from '../../common/Navbar'
-import Footer from '../../common/Footer'
+import Navbar from '../components/common/Navbar'
+import Footer from '../components/common/Footer'
 import Content from './components/Content'
 
 export default function Faqs({ params: { lang }}) {
   return (
     <main>
-        <Navbar/>
+        <Navbar lang={lang} />
         <Content lang={lang} />
-        <Footer/>
+        <Footer />
     </main>
   )
 }

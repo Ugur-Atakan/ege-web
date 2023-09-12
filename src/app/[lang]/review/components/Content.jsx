@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { ArrowLeftIcon } from '@heroicons/react/24/outline';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import tick from '../../../images/tick.png'
+import tick from '../../../../images/tick.png'
 
 const states = [
     { id: 1, name: 'Alabama' },

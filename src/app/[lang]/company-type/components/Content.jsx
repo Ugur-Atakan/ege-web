@@ -4,30 +4,30 @@ import { ArrowLeftIcon } from '@heroicons/react/24/outline'
 import React, { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import umbrella from '../../../images/umbrella.png'
-import puzzle from '../../../images/puzzle.png'
-import search from '../../../images/search.png'
-import searchwhite from '../../../images/search-white.png'
-import { useTranslation } from '../../i18n/client'
+import umbrella from '../../../../images/umbrella.png'
+import puzzle from '../../../../images/puzzle.png'
+import search from '../../../../images/search.png'
+import searchwhite from '../../../../images/search-white.png'
+import { useTranslation } from '../../../i18n/client'
 
-export default function Choose() {
-    const { t } = useTranslation();
+export default function Content({ lang }) {
+    const { t } = useTranslation(lang);
 
     const [companyType, setCompanyType] = useState('');
     localStorage.setItem('companyType', companyType);
 
     const handleSelectLlc = () => {
         setCompanyType('LLC');
-        window.location.href = `/state`;
+        window.location.href = `/${lang}/state`;
     }
 
     const handleSelectCcorp = () => {
         setCompanyType('Corporation');
-        window.location.href = `/state`;
+        window.location.href = `/${lang}/state`;
     }
 
     const takeQuizForm = () => {
-        window.location.href = `/start-my-business`
+        window.location.href = `/${lang}/start-my-business`
     }
 
     return (
@@ -58,7 +58,7 @@ export default function Choose() {
                                 <p className='text-[#222222] text-[16px] md:text-[1.125rem] font-semibold leading-[22px] md:leading-[1.5rem] pt-4'>{t('company_type_package2_description')}</p>
                             </div>
                         </div>
-                        <a  className='block w-full bg-white border-4 border-solid border-[#1649FF] rounded-[2rem] p-8 not-sure relative' to={`/start-my-business/`}>
+                        <a  className='block w-full bg-white border-4 border-solid border-[#1649FF] rounded-[2rem] p-8 not-sure relative' to={`/${lang}/start-my-business/`}>
                             <Image src={search} className='relative -top-20 -right-8 md:w-64 md:h-64 md:static rotate-360 md:rotate-45' alt='llc' />
                             <div className='-mt-48 md:mt-0'>
                                 <h2 className='text-[#222222] text-[20px] md:text-[1.75rem] font-semibold leading-[2rem]'>{t('company_type_package3_name')}</h2>

@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import axios from 'axios'
 
 export default function Footer({ lang }) {
-  const { t } = useTranslation();
+  const { t } = useTranslation(lang);
   const API_ROOT = 'api_root'
 
   const navigation = {
@@ -144,10 +144,10 @@ export default function Footer({ lang }) {
             <p className="mt-4 font-semibold text-lg leading-[24px] text-black">
             The latest news, articles, and<br></br> resources, sent to your inbox weekly.
             </p>
-            <form onSubmit={submitHandler} className="mt-4">
-              <label htmlFor="email-address" class="mb-2 text-sm font-medium sr-only"> Email address</label>
-              <div class="relative">
-                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+            <form  className="mt-4">
+              <label htmlFor="email-address" className="mb-2 text-sm font-medium sr-only"> Email address</label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 </div>
                 <input
                   type="email"
@@ -157,7 +157,7 @@ export default function Footer({ lang }) {
                   required
                   placeholder={t('footer_col5_input_placeholder')}
                   className="block w-full p-6 pl-6 text-lg text-[#8A8A8A] rounded-[20px] bg-[#ECEFF1] focus:outline-none border-none focus:border-none focus:ring-0" />
-                <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-[#1649FF] py-4 px-7 rounded-2xl">{t('footer_col5_button')}</button>
+                <button type="submit" className="text-white absolute right-2.5 bottom-2.5 bg-[#1649FF] py-4 px-7 rounded-2xl">{t('footer_col5_button')}</button>
               </div>
             </form>
           </div>
@@ -176,21 +176,21 @@ export default function Footer({ lang }) {
           </p>
         </div>
       </div>
-      <ToastContainer
-        position="bottom-left"
-        autoClose={5000}
-        hideProgressBar={true}
-        newestOnTop={false}
-        closeOnClick
-        toastClassName={() =>
-          "bg-green-600 text-white items-center flex p-4 shadow-lg rounded-lg"
-        }
-        closeButton={() => "x"}
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
+        <ToastContainer
+          position="bottom-left"
+          autoClose={5000}
+          hideProgressBar={true}
+          newestOnTop={false}
+          closeOnClick
+          toastClassName={() =>
+            "bg-green-600 text-white items-center flex p-4 shadow-lg rounded-lg"
+          }
+          closeButton={() => "x"}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
     </footer>
   )
 }

@@ -286,7 +286,7 @@ body {
 }
 
 .delaware::before {
-  content: 'Recommended for Delaware';
+  content: 'Recommended for Corporation';
   position: absolute;
   top: -1rem;
   right: 1rem;
@@ -307,5 +307,405 @@ body {
   to {
     transform: translate(5rem, 3%);
     right: 0;
+   
   }
+}
+
+.peru {
+  animation: bounce-blur 8s ease-in-out infinite;
+}
+
+@keyframes bounce-blur {
+  0% {
+    transform: translateY(0);
+  
+  }
+  50%{
+    transform: translateY(-7px);
+    filter: blur(1.5px);
+  }
+  100% {
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.canada {
+  animation: bounce-blur2 8s ease-in-out infinite;
+}
+
+@keyframes bounce-blur2 {
+  0% {
+    transform: translateY(-10px);
+    filter: blur(1.5px);
+  }
+  50%{
+    transform: translateY(10px);
+    filter: blur(0);
+  }
+  100% {
+    transform: translateY(-10px);
+    filter: blur(1.5px);
+  }
+}
+
+.usa {
+  animation: bounce-blur3 8s ease-in-out infinite;
+}
+
+@keyframes bounce-blur3 {
+  0% {
+    transform: translateY(10px);
+    filter: blur(1.5px);
+  }
+  50%{
+    transform: translateY(-5px);
+    filter: blur(0);
+  }
+  100% {
+    transform: translateY(10px);
+    filter: blur(1.5px);
+  }
+}
+
+.mexico {
+  animation: bounce-blur4 8s ease-in-out infinite;
+}
+
+@keyframes bounce-blur4 {
+  0% {
+    transform: translateY(-10px);
+    filter: blur(0px);
+  }
+  50%{
+    transform: translateY(10px);
+    filter: blur(1.5px);
+  }
+  100% {
+    transform: translateY(-10px);
+    filter: blur(0px);
+  }
+}
+
+.argentina {
+  animation: bounce-blur5 8s ease-in-out infinite;
+}
+
+@keyframes bounce-blur5 {
+  0% {
+    transform: translateY(0);
+  
+  }
+  50%{
+    transform: translateY(-10px);
+    filter: blur(1.5px);
+  }
+  100% {
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.brazil {
+  animation: bounce-blur6 8s ease-in-out infinite;
+}
+
+@keyframes bounce-blur6 {
+  0% {
+    transform: translateY(-10px);
+    filter: blur(1.5px);
+  }
+  50%{
+    transform: translateY(7px);
+    filter: blur(0);
+  }
+  100% {
+    transform: translateY(-10px);
+    filter: blur(1.5px);
+  }
+}
+
+.iceland {
+  animation: bounce-blur7 8s ease-in-out infinite;
+}
+
+@keyframes bounce-blur7 {
+  0% {
+    filter: blur(0);
+  }
+  50%{
+    filter: blur(1.5px);
+  }
+  100% {
+    filter: blur(0);
+  }
+}
+
+.portugal {
+  animation: bounce-blur8 8s ease-in-out infinite;
+}
+
+@keyframes bounce-blur8 {
+  0% {
+    transform: translateY(0);
+  
+  }
+  50%{
+    transform: translateY(-10px);
+    filter: blur(1.5px);
+  }
+  100% {
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.spain {
+  animation: bounce-blur9 8s ease-in-out infinite;
+}
+
+@keyframes bounce-blur9 {
+  0% {
+    transform: translateY(0);
+    filter: blur(1.5px);
+  }
+  50%{
+    transform: translateY(7px);
+    filter: blur(0);
+  }
+  100% {
+    transform: translateY(0);
+    filter: blur(1.5px);
+  }
+}
+
+.france {
+  animation: bounce-blur10 8s ease-in-out infinite;
+}
+
+@keyframes bounce-blur10 {
+  0% {
+    transform: translateY(0);
+    filter: blur(0);
+  }
+  50%{
+    filter: blur(1.5px);
+    transform: translateY(3px);
+  }
+  100% {
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+.italy {
+  animation: bounce-blur11 8s ease-in-out infinite;
+}
+
+@keyframes bounce-blur11 {
+  0% {
+    transform: translateY(5px);
+    filter: blur(1.5px);
+  }
+  50%{
+    transform: translateY(0px);
+    filter: blur(0);
+  }
+  100% {
+    transform: translateY(5px);
+    filter: blur(1.5px);
+  }
+}
+
+.croatia {
+  animation: bounce-blur12 8s ease-in-out infinite;
+}
+
+@keyframes bounce-blur12 {
+  0% {
+    transform: translateY(-5px);
+    filter: blur(0);
+  }
+  50%{
+    filter: blur(1.5px);
+    transform: translateY(2px);
+  }
+  100% {
+    filter: blur(0);
+    transform: translateY(-5px);
+  }
+}
+
+.greece {
+  animation: bounce-blur13 8s ease-in-out infinite;
+}
+
+@keyframes bounce-blur13 {
+  0% {
+    transform: translateY(0);
+    filter: blur(1.5px);
+  }
+  50%{
+    transform: translateY(-5px);
+    filter: blur(0);
+  }
+  100% {
+    transform: translateY(0);
+    filter: blur(1.5px);
+  }
+}
+
+.turkey {
+  animation: bounce-blur14 8s ease-in-out infinite;
+}
+
+@keyframes bounce-blur14 {
+  0% {
+    transform: translateY(-10px);
+    filter: blur(1.5px);
+  }
+  50%{
+    transform: translateY(7px);
+    filter: blur(0);
+  }
+  100% {
+    transform: translateY(-10px);
+    filter: blur(1.5px);
+  }
+}
+
+.georgia {
+  animation: bounce-blur15 8s ease-in-out infinite;
+}
+
+@keyframes bounce-blur15 {
+  0% {
+    transform: translateY(0);
+  
+  }
+  50%{
+    transform: translateY(-10px);
+    filter: blur(1.5px);
+  }
+  100% {
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.india {
+  animation: bounce-blur16 8s ease-in-out infinite;
+}
+
+@keyframes bounce-blur16 {
+  0% {
+    transform: translateY(0);
+  
+  }
+  50%{
+    transform: translateY(-5px);
+    filter: blur(1.5px);
+  }
+  100% {
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.thailand {
+  animation: bounce-blur17 8s ease-in-out infinite;
+}
+
+@keyframes bounce-blur17 {
+  0% {
+    transform: translateY(0px);
+    filter: blur(1.5px);
+  }
+  50%{
+    transform: translateY(5px);
+    filter: blur(0);
+  }
+  100% {
+    transform: translateY(0px);
+    filter: blur(1.5px);
+  }
+}
+
+
+.malaysia {
+  animation: bounce-blur18 8s ease-in-out infinite;
+}
+
+@keyframes bounce-blur18 {
+  0% {
+    transform: translateY(10px);
+    filter: blur(1.5px);
+  }
+  50%{
+    transform: translateY(-5px);
+    filter: blur(0);
+  }
+  100% {
+    transform: translateY(10px);
+    filter: blur(1.5px);
+  }
+}
+
+.australia {
+  animation: bounce-blur19 8s ease-in-out infinite;
+}
+
+@keyframes bounce-blur19 {
+  0% {
+    transform: translateY(10px);
+  
+  }
+  50%{
+    transform: translateY(-5px);
+    filter: blur(1.5px);
+  }
+  100% {
+    transform: translateY(10px);
+    filter: blur(0);
+  }
+}
+
+.japan {
+  animation: bounce-blur20 8s ease-in-out infinite;
+}
+
+@keyframes bounce-blur20 {
+  0% {
+    transform: translateY(0px);
+    filter: blur(1.5px);
+  }
+  50%{
+    transform: translateY(5px);
+    filter: blur(0);
+  }
+  100% {
+    transform: translateY(0px);
+    filter: blur(1.5px);
+  }
+}
+
+
+.hiw-section {
+  background-image: url('../images/hiw.webp');
+  background-size: cover;
+}
+
+.hiw-section7{
+  background-image: url('../images/hiw-bg.webp');
+  background-size: cover;
+}
+
+.hiw-delaware{
+  background-image: url('../images/Delaware.webp');
+  background-size: cover;
+}
+
+.hiw-wyoming{
+  background-image: url('../images/Wyoming.webp');
+  background-size: cover;
 }

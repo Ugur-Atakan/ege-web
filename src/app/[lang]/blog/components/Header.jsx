@@ -4,15 +4,17 @@ import { Transition, Menu, Dialog } from '@headlessui/react'
 import Link from 'next/link'
 import Image from 'next/image'
 import React, { Fragment, useEffect, useState } from 'react'
-import whitelogo from '../../../images/logos/registate-white-logo.png'
-import bluelogo from '../../../images/logo-blue.webp'
+import whitelogo from '../../../../images/logos/registate-white-logo.png'
+import bluelogo from '../../../../images/logo-blue.webp'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { useTranslation } from '../../../i18n/client'
 
-export default function Header() {
+export default function Header({ lang }) {
+    const { t } = useTranslation();
+
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [isSticky, setIsSticky] = useState(false);
-
-    const [currentLang, setCurrentLang] = useState('i18n.language');
+    const [currentLang, setCurrentLang] = useState(lang);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -49,7 +51,7 @@ export default function Header() {
                     </Link>
                 </div>
                 <div className="flex gap-x-3 lg:hidden">
-                    <Link href={`/company-type`} className='bg-[#1649FF] rounded-[28px] py-3 px-4 text-[16px] leading-[22px] text-white'>
+                    <Link href={`/${lang}/company-type`} className='bg-[#1649FF] rounded-[28px] py-3 px-4 text-[16px] leading-[22px] text-white'>
                        Open a business
                     </Link>
                     <button
@@ -62,17 +64,17 @@ export default function Header() {
                     </button>
                 </div>
                 <div className="hidden lg:hidden lg:gap-x-12">
-                    <Link href={`/company-type`} className="text-sm font-semibold leading-6 text-white">
-                        {'menu1_title'}
+                    <Link href={`/${lang}/company-type`} className="text-sm font-semibold leading-6 text-white">
+                        {t('menu1_title')}
                     </Link>
                     <Link href='#' className="text-sm font-semibold leading-6 text-white">
-                        {'menu2_title'}
+                        {t('menu2_title')}
                     </Link>
                     <Link href='#' className="text-sm font-semibold leading-6 text-white">
-                        {'menu3_title'}
+                        {t('menu3_title')}
                     </Link>
-                    <Link href={`/blog`} className="text-sm font-semibold leading-6 text-white">
-                        {'menu4_title'}
+                    <Link href={`/${lang}/blog`} className="text-sm font-semibold leading-6 text-white">
+                        {t('menu4_title')}
                     </Link>
                 </div>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -81,7 +83,7 @@ export default function Header() {
                             <Menu as="div" className="relative inline-block text-left">
                                 <div>
                                     <Menu.Button className={`uppercase text-[14px]  font-semibold leading-5 !text-black`}>
-                                        {/* {i18n.language} */} {'en'}
+                                        {lang}
                                     </Menu.Button>
                                 </div>
                                 <Transition
@@ -98,12 +100,12 @@ export default function Header() {
                                         <Menu.Item>
                                             {({ active }) => (
                                                 <div className='block'>
-                                                    <div className={i18n.language === 'en' ? 'block cursor-pointer bg-slate-100 rounded-md' : 'block cursor-pointer hover:bg-slate-200'} onClick={() => changeLanguage("en")}>
+                                                    <div className={lang === 'en' ? 'block cursor-pointer bg-slate-100 rounded-md' : 'block cursor-pointer hover:bg-slate-200'} onClick={() => changeLanguage("en")}>
                                                         <div className='flex items-center justify-center gap-2 p-3'>
                                                             <button className='text-gray-700'>English</button>
                                                         </div>
                                                     </div>
-                                                    <div className={i18n.language === 'tr' ? 'block cursor-pointer bg-slate-100 rounded-md' : 'block cursor-pointer hover:bg-slate-200'} onClick={() => changeLanguage("tr")}>
+                                                    <div className={lang === 'tr' ? 'block cursor-pointer bg-slate-100 rounded-md' : 'block cursor-pointer hover:bg-slate-200'} onClick={() => changeLanguage("tr")}>
                                                         <div className='flex items-center justify-center gap-2 p-3'>
                                                             <button className='text-gray-700'>Turkish</button>
                                                         </div>
@@ -116,11 +118,11 @@ export default function Header() {
                             </Menu>
                         </div>
                         <Link
-                            href={`/company-type`}
+                            href={`/${lang}/company-type`}
                             id="header-fmc"
                             className='py-2 px-4 rounded-xl  font-semibold text-[14px] leading-5 !bg-blue-600 !text-white'
                         >
-                            {'menu_top_right_handcorner_button'}
+                            {t('menu_top_right_handcorner_button')}
                         </Link>
                     </div>
                 </div>
@@ -149,26 +151,26 @@ export default function Header() {
                     <div className="mt-6 flow-root">
                         <div className="-my-6 divide-y divide-gray-500/25">
                             <div className="space-y-2 py-6">
-                                <Link href={`/state`} className="text-sm font-semibold leading-6 text-white">
-                                    {'menu1_title'}
+                                <Link href={`/${lang}/state`} className="text-sm font-semibold leading-6 text-white">
+                                    {t('menu1_title')}
                                 </Link>
                                 <Link href='#' className="text-sm font-semibold leading-6 text-white">
-                                    {'menu2_title'}
+                                    {t('menu2_title')}
                                 </Link>
                                 <Link href='#' className="text-sm font-semibold leading-6 text-white">
-                                    {'menu3_title'}
+                                    {t('menu3_title')}
                                 </Link>
-                                <Link href={`/blog`} className="text-sm font-semibold leading-6 text-white">
-                                    {'menu4_title'}
+                                <Link href={`/${lang}/blog`} className="text-sm font-semibold leading-6 text-white">
+                                    {t('menu4_title')}
                                 </Link>
                             </div>
                             <div className="py-6">
                                 <Link
-                                    href={`/company-type`}
+                                    href={`/${lang}/company-type`}
                                     id="header-fmc"
                                     className={'bg-white py-2 px-4 rounded-xl text-[#132F8E] font-semibold text-[14px] leading-5'}
                                 >
-                                    {'menu_top_right_handcorner_button'}
+                                    {t('menu_top_right_handcorner_button')}
                                 </Link>
                             </div>
                         </div>

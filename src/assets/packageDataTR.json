@@ -1,0 +1,329 @@
+{
+    "packages": [
+        {
+            "C-corp": [
+                {
+                    "title": "İşletme Kuruluşu ve Uyum",
+                    "details": [
+                        {
+                            "title": "Hızlandırılmış İşletme Kaydı - RER(Registate Expedited Registration)",
+                            "starter": true,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "1 Yıllık İş Adresi ve Kayıtlı Temsilci Hizmeti",
+                            "starter": true,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "1 Yıllık Ücretsiz Uyumluluk Hatırlatıcısı",
+                            "starter": true,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "EIN Başvuru Ücreti Dahil",
+                            "starter": true,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Ücretsiz Şirket Adı Kontrolü",
+                            "starter": true,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Kuruluş Belgeleri",
+                            "starter": true,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Kurucu Beyannamesi",
+                            "starter": true,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Kuruluş İçin Eyalete Dosyalama Ücreti Dahil",
+                            "starter": true,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Franchise Vergisi ve Yıllık Rapor Dosyalama Ücretlerinin Ödenmesine Destek",
+                            "starter": false,
+                            "startup": true,
+                            "scaleup": true
+                        }
+                    ]
+                },
+                {
+                    "title": "Belge Yönetimi ve Teslimat",
+                    "details": [
+                        {
+                            "title": "Registate Online Kontrol Paneli Erişimi",
+                            "starter": true,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Belgelerin Dijital Kopyalarına Erişim",
+                            "starter": true,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Özelleştirilebilir Kurul Toplantı Tutanakları                            ",
+                            "starter": true,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Devlet Belgelerinin Elektronik Teslimatı",
+                            "starter": true,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "1 Yıllık Sanal Posta Kutusu Ücreti Dahil",
+                            "starter": false,
+                            "startup": true,
+                            "scaleup": true
+                        }
+                    ]
+                },
+                {
+                    "title": "Legal and Administrative Support",
+                    "details": [
+                        {
+                            "title": "Çoklu Dil Destekli Müşteri Desteği (Telefon ve E-posta)",
+                            "starter": true,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Özelleştirilebilir Banka Yetkilendirme Kararı                            ",
+                            "starter": true,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Kapsamlı Şirket İç Yönetmelik Şablonu",
+                            "starter": true,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Hissedarlara Hisse Senedi İhracı",
+                            "starter": false,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Hisse Alım Sözleşmeleri",
+                            "starter": false,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Hisse Senetleri",
+                            "starter": false,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Hisse Hak Kazanma (Vesting) Planları - Teknoloji Kurucularına Önerilir",
+                            "starter": false,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Pay Defteri",
+                            "starter": false,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Kurucular İçin 83b IRS Formları",
+                            "starter": false,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "İlk Kurul ve Hissedar Kararları",
+                            "starter": false,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Gizlilik ve Fikri Sınai Hakların Devri Sözleşmesi",
+                            "starter": false,
+                            "startup": false,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Teknoloji Devri Sözleşmesi",
+                            "starter": false,
+                            "startup": false,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Karşılıklı Gizlilik Anlaşması Şablonları",
+                            "starter": false,
+                            "startup": false,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "ESOP Rezervasyon Belgesi Şablonları",
+                            "starter": false,
+                            "startup": false,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Hisse Opsiyon Sözleşmesi Şablonları",
+                            "starter": false,
+                            "startup": false,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Çalışanlar ve Danışmanlar İçin Hisse Opsiyon Programları Şablonu",
+                            "starter": false,
+                            "startup": false,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "SAFE Sözleşme Belgeleri",
+                            "starter": false,
+                            "startup": false,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "Convertible Note Belgeleri",
+                            "starter": false,
+                            "startup": false,
+                            "scaleup": true
+                        }
+                    ]
+                }
+            ]   
+        },
+        {
+            "LLC": [
+                {
+                    "title": "İşletme Kuruluşu ve Uygunluk",
+                    "features": [
+                        {
+                            "title": "Hızlandırılmış İşletme Kaydı - RER(Registate Expedited Registration)",
+                            "gold":true,
+                            "premium":true
+                        },
+                        {
+                            "title": "İş Adresi ile 1 Yıllık Kayıtlı Temsilci Hizmeti",
+                            "gold":true,
+                            "premium":true
+                        },
+                        {
+                            "title": "EIN Başvuru Ücreti Dahil",
+                            "gold":true,
+                            "premium":true
+                        },
+                        {
+                            "title": "Ücretsiz Şirket Adı Kontrolü",
+                            "gold":true,
+                            "premium":true
+                        },
+                        {
+                            "title": "Kuruluş Belgeleri",
+                            "gold":true,
+                            "premium":true
+                        },
+                        {
+                            "title": "Şirket Kuruluş Devlet Bildirim Ücreti Dahil",
+                            "gold":true,
+                            "premium":true
+                        },
+                        {
+                            "title": "İşletme Sözleşmesi",
+                            "gold":true,
+                            "premium":true
+                        },
+                        {
+                            "title": "Franchise Vergisi ve Yıllık Rapor Dosyalama Ücretlerinin Ödenmesine Destek",
+                            "gold":true,
+                            "premium":true
+                        }
+                    ]
+                },
+                {
+                    "title": "Belge Yönetimi ve Teslimat",
+                    "features": [
+                        {
+                            "title": "Registate Online Kontrol Paneli Erişimi",
+                            "gold":true,
+                            "premium":true
+                        },
+                        {
+                            "title": "Belgelerin Dijital Kopyalarına Erişim",
+                            "gold":true,
+                            "premium":true
+                        },
+                        {
+                            "title": "Özelleştirilebilir Kurul Toplantı Tutanakları",
+                            "gold":true,
+                            "premium":true
+                        },
+                        {
+                            "title": "Devlet Belgelerinin Elektronik Teslimatı",
+                            "gold":true,
+                            "premium":true
+                        },
+                        {
+                            "title": "1 Yıllık Sanal Posta Kutusu Ücreti Dahil",
+                            "gold":true,
+                            "premium":true
+                        },
+                        {
+                            "title": "1 Yıllık Ücretsiz Uyumluluk Takvimi",
+                            "gold":true,
+                            "premium":true
+                        }
+                    ]
+                },
+                {
+                    "title": "Yasal ve İdari Destek",
+                    "features": [
+                        {
+                            "title": "Çoklu Dil Destekli Müşteri Hizmet (Telefon ve E-posta)",
+                            "gold":true,
+                            "premium":true
+                        },
+                        {
+                            "title": "Özelleştirilebilir Banka Yetkilendirme Kararı",
+                            "gold":true,
+                            "premium":true
+                        },
+                        {
+                            "title": "LLC Hissedarlık Sözleşmesi",
+                            "gold":true,
+                            "premium":true
+                        },
+                        {
+                            "title": "LLC Hisse Satış Sözleşmesi",
+                            "gold":true,
+                            "premium":true
+                        },
+                        {
+                            "title": "İş Sözleşmesi Şablonları",
+                            "gold":true,
+                            "premium":true
+                        }
+                    ]
+                }
+            ]   
+        }
+    ]
+}

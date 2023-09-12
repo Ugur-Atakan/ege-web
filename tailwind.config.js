@@ -8,6 +8,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      rotate: {
+        '140': '140deg',
+      },
     },
   },
   plugins: [

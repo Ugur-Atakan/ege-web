@@ -1,14 +1,14 @@
 import React from 'react'
 import Header from './components/Header'
 import Posts from './components/Posts'
-import Footer from '../../common/Footer'
+import Footer from '../components/common/Footer'
 
-export default function Blog() {
+export default function Blog({ params: { lang } }) {
   return (
     <main>
-      <Header/>
+      <Header lang={lang} />
       <Posts />
-      <Footer/>
+      <Footer lang={lang} />
     </main>
   )
 }

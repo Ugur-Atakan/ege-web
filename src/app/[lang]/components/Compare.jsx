@@ -136,7 +136,7 @@ export default function Compare({ lang }) {
                     >
                         {packagesName.map((pac, index) => (
                             <option
-                                key={pac.index}
+                                key={index}
                                 value={pac}
                             >
                                 {`Compare with ${pac}`}

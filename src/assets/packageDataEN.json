@@ -1,18 +1,30 @@
 {
     "packages": [
         {
-            "details": [
+            "C-corp": [
                 {
                     "title": "Business Formation and Compliance",
                     "details": [
                         {
-                            "title": "1 Year Registered Agent Fee",
+                            "title": "Expedited Business Registration - RER(Registate Expedited Registration)",
                             "starter": true,
                             "startup": true,
                             "scaleup": true
                         },
                         {
-                            "title": "EIN Application Fee",
+                            "title": "1-Year Registered Agent Service with Business Address",
+                            "starter": true,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "1 Year Free Compliance Reminder",
+                            "starter": true,
+                            "startup": true,
+                            "scaleup": true
+                        },
+                        {
+                            "title": "EIN Application Fee Included",
                             "starter": true,
                             "startup": true,
                             "scaleup": true
@@ -36,13 +48,13 @@
                             "scaleup": true
                         },
                         {
-                            "title": "Company Formation State Filing Fees",
+                            "title": "Company Formation State Filing Fee Included",
                             "starter": true,
                             "startup": true,
                             "scaleup": true
                         },
                         {
-                            "title": "Assisting payment of franchise tax and annual report filing fees",
+                            "title": "Franchise Tax and Annual Report Filing Assistance",
                             "starter": false,
                             "startup": true,
                             "scaleup": true
@@ -65,7 +77,7 @@
                             "scaleup": true
                         },
                         {
-                            "title": "Customizable Corporate Meeting Minutes",
+                            "title": "Corporate Meeting Minutes Templates",
                             "starter": true,
                             "startup": true,
                             "scaleup": true
@@ -77,19 +89,7 @@
                             "scaleup": true
                         },
                         {
-                            "title": "1 Year Business Address Fee",
-                            "starter": true,
-                            "startup": true,
-                            "scaleup": true
-                        },
-                        {
-                            "title": "1 Year Virtual Mailbox Fee",
-                            "starter": false,
-                            "startup": true,
-                            "scaleup": true
-                        },
-                        {
-                            "title": "1 Year Free Compliance Calendar",
+                            "title": "1 Year Virtual Mailbox Fee Included",
                             "starter": false,
                             "startup": true,
                             "scaleup": true
@@ -100,19 +100,19 @@
                     "title": "Legal and Administrative Support",
                     "details": [
                         {
-                            "title": "Lifetime Customer Support (Phone & Email)",
+                            "title": "Bilingual Lifetime Customer Support (Phone & Email)",
                             "starter": true,
                             "startup": true,
                             "scaleup": true
                         },
                         {
-                            "title": "Customizable Corporate Banking Resolution",
+                            "title": "Banking Resolution Template",
                             "starter": true,
                             "startup": true,
                             "scaleup": true
                         },
                         {
-                            "title": "Customizable Corporation Bylaws",
+                            "title": "Comprehensive Corporation Bylaws Template",
                             "starter": true,
                             "startup": true,
                             "scaleup": true
@@ -206,6 +206,120 @@
                             "starter": false,
                             "startup": false,
                             "scaleup": true
+                        }
+                    ]
+                }
+            ]   
+        },
+        {
+            "LLC": [
+                {
+                    "title": "Business Formation and Compliance",
+                    "features": [
+                        {
+                            "title": "Expedited Business Registration - RER(Registate Expedited Registration)",
+                            "gold":true,
+                            "premium":true
+                        },
+                        {
+                            "title": "1-Year Registered Agent Service with Business Address",
+                            "gold":true,
+                            "premium":true
+                        },
+                        {
+                            "title": "EIN Application Fee Included",
+                            "gold":true,
+                            "premium":true
+                        },
+                        {
+                            "title": "Free Company Name Check",
+                            "gold":true,
+                            "premium":true
+                        },
+                        {
+                            "title": "Certificate of Formation",
+                            "gold":true,
+                            "premium":true
+                        },
+                        {
+                            "title": "Company Formation State Filing Fee Included",
+                            "gold":true,
+                            "premium":true
+                        },
+                        {
+                            "title": "Operating Agreement",
+                            "gold":true,
+                            "premium":true
+                        },
+                        {
+                            "title": "Franchise Tax and Annual Report Filing Assistance",
+                            "gold":true,
+                            "premium":true
+                        }
+                    ]
+                },
+                {
+                    "title": "Document Management and Delivery",
+                    "features": [
+                        {
+                            "title": "Access to Registate Online Dashboard",
+                            "gold":true,
+                            "premium":true
+                        },
+                        {
+                            "title": "Access to Digital Copies of the Documents",
+                            "gold":true,
+                            "premium":true
+                        },
+                        {
+                            "title": "Member Meeting Minutes Templates",
+                            "gold":true,
+                            "premium":true
+                        },
+                        {
+                            "title": "Electronic Delivery of State Documents",
+                            "gold":true,
+                            "premium":true
+                        },
+                        {
+                            "title": "1 Year Virtual Mailbox Fee Included",
+                            "gold":true,
+                            "premium":true
+                        },
+                        {
+                            "title": "1 Year Free Compliance Calendar",
+                            "gold":true,
+                            "premium":true
+                        }
+                    ]
+                },
+                {
+                    "title": "Legal and Administrative Support",
+                    "features": [
+                        {
+                            "title": "Bilingual Lifetime Customer Support (Phone & Email)",
+                            "gold":true,
+                            "premium":true
+                        },
+                        {
+                            "title": "Customizable Banking Resolution Template",
+                            "gold":true,
+                            "premium":true
+                        },
+                        {
+                            "title": "LLC Membership Certificate",
+                            "gold":true,
+                            "premium":true
+                        },
+                        {
+                            "title": "LLC Interest Purchase Agreement",
+                            "gold":true,
+                            "premium":true
+                        },
+                        {
+                            "title": "Business Contract Templates",
+                            "gold":true,
+                            "premium":true
                         }
                     ]
                 }

@@ -1,11 +1,11 @@
-import Navbar from '../../common/Navbar'
-import Choose from './Choose'
+import Navbar from '../components/common/Navbar'
+import Content from './components/Content'
 
-export default function CompanyType() {
+export default function CompanyType({ params: { lang } }) {
     return (
         <section>
-            <Navbar />
-            <Choose />
+            <Navbar lang={lang} />
+            <Content lang={lang} />
         </section>
     )
 }

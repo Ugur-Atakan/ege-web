@@ -1,93 +1,39 @@
-"use client";
-
-import Image from 'next/image'
+'use client';
 import Link from 'next/link'
-import { React, Fragment, useState, useEffect } from 'react'
+import { useState, useEffect, Fragment } from 'react'
+import Image from 'next/image'
 import { Transition, Menu, Dialog } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import { ArrowRightIcon } from '@heroicons/react/24/outline'
-import { PopupButton } from "react-calendly";
-import whitelogo from '../../../images/logos/registate-white-logo.png'
-import bluelogo from '../../../images/logo-blue.webp'
-import circle from '../../../images/hero-circle.png'
-import variant1 from '../../../images/variant1.png'
-import variant2 from '../../../images/variant2.png'
-import rocket from '../../../images/rocket.png'
-import { useTranslation } from '../../i18n/client'
-
-export function CalendlyText() {
-  const { t } = useTranslation();
-
-  return (
-    <div className='cursor-pointer flex items-center gap-2'>
-      <p className='font-semibold text-xs leading-4 text-white'>{t('topbar_first_part')} {' '}<span className='text-[#9EE248] mr-1'>{t('topbar_middle_part')}</span>{t('topbar_last_part')}</p>
-      <ArrowRightIcon className='h-3 text-white' />
-    </div>
-  )
-}
+// import { Bars3Icon, XMarkIcon } from '@heroicons/creact/24/outline'
+import { useTranslation } from '../../../i18n/client'
+import whitelogo from '../../../../images/logos/registate-white-logo.png'
+import bluelogo from '../../../../images/logo-blue.webp'
 
 export default function Hero ({ lang }) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isSticky, setIsSticky] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [isSticky, setIsSticky] = useState(false);
+    const { t } = useTranslation(lang);
 
-  const { t } = useTranslation(lang);
-  const [currentLang, setCurrentLang] = useState(lang);
+    
+    useEffect(() => {
+      const handleScroll = () => {
+          if (window.scrollY > 50) {
+          setIsSticky(true);
+          } else {
+          setIsSticky(false);
+          }
+      };
 
-  // useEffect(() => {
-  //   const lang = location.pathname.split("/")[1];
-  //   if (lang && currentLang !== lang && (lang === "en" || lang === "tr")) {
-  //     setCurrentLang(lang);
-  //     i18n.changeLanguage(lang);
-  //   } else if (!lang) {
-  //     setCurrentLang(i18n.language);
-  //     navigate(`/${i18n.language}${location.pathname}`, { replace: true });
-  //   } else if (lang !== "en" && lang !== "tr") {
-  //     navigate(`/${i18n.language}/notfound/`, { replace: true });
-  //   }
-  // }, [i18n, navigate, location.pathname, currentLang]);
+      window.addEventListener('scroll', handleScroll);
 
-  // const changeLanguage = (lang) => {
-  //   if (lang === "en" || lang === "tr") {
-  //     setCurrentLang(lang);
-  //     i18n.changeLanguage(lang);
-  //     const newPathname = location.pathname.replace(`/${currentLang}`, `/${lang}`);
-  //     navigate(newPathname, { replace: true });
-  //   } else {
-  //     navigate(`/${i18n.language}/notfound/`, { replace: true });
-  //   }
-  // };
+      return () => {
+          window.removeEventListener('scroll', handleScroll);
+      };
+    }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsSticky(true);
-      } else {
-        setIsSticky(false);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-  
-  return (
-    <div className="hero-section">
-      <header className={`absolute inset-x-0 top-0 z-50 ${isSticky ? 'lg:!fixed !bg-[#ECEFF1]' : ''}`}>
-        <nav className={`hidden mx-auto max-w-7xl p-6 lg:px-2 ${isSticky ? '!lg:hidden' : 'lg:block'}`}>
-          <div className='flex items-center justify-center -mt-4 pb-2 border-[#ECEFF1] border-b-[1px] border-opacity-10'>
-            <div className='flex items-center gap-2'>
-              {/* <PopupButton
-                url="https://calendly.com/registate/intro"
-                text={<CalendlyText />}
-                rootElement={document.body}
-                className="font-semibold text-xs leading-4 text-white cursor-pointer outline-none border-none"
-              >
-              </PopupButton> */}
-            </div>
-          </div>
-        </nav>
-        <nav className={`mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-2 lg:p-0 ${isSticky && 'border-b border-[#C8C8C8] lg:p-4 lg:py-4'}`} aria-label="Global">
+
+    return (
+        <header className={`absolute inset-x-0 top-0 z-50 ${isSticky ? 'lg:!fixed !bg-[#ECEFF1]' : ''}`}>
+        <nav className={`mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-2 lg:p-0 lg:py-4 ${isSticky && 'border-b border-[#C8C8C8] lg:p-4 lg:py-4'}`} aria-label="Global">
           <div className="flex lg:flex-1">
             <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Registate</span>
@@ -104,7 +50,7 @@ export default function Hero ({ lang }) {
             // onClick={() => setMobileMenuOpen(true)}
             >
               <span className="sr-only">Open main menu</span>
-              <Bars3Icon className="h-8 w-8" aria-hidden="true" />
+              {/* <Bars3Icon className="h-8 w-8" aria-hidden="true" /> */}
             </button>
           </div>
           <div className="hidden lg:hidden lg:gap-x-12">
@@ -139,7 +85,9 @@ export default function Hero ({ lang }) {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
+
                     <Menu.Items className="absolute -right-16 z-10 mt-2 w-36 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+
                       <Menu.Item>
                         {({ active }) => (
                           <div className='block'>
@@ -163,9 +111,9 @@ export default function Hero ({ lang }) {
               <Link
                 href={`/${lang}/company-type`}
                 id="header-fmc"
-                className={`bg-white py-2 px-4 rounded-xl text-[#132F8E] font-semibold text-[14px] leading-5 ${isSticky && '!bg-blue-600 !text-white'}`}
+                className={`bg-white py-2 px-4 rounded-xl text-[#132F8E] font-semibold text-[14px] leading-5' ${isSticky && '!bg-blue-600 !text-white'}`}
               >
-                  {t('menu_top_right_handcorner_button')} 
+                {t('menu_top_right_handcorner_button')}
               </Link>
             </div>
           </div>
@@ -188,7 +136,7 @@ export default function Hero ({ lang }) {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <span className="sr-only">Close menu</span>
-                <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                {/* <XMarkIcon className="h-6 w-6" aria-hidden="true" /> */}
               </button>
             </div>
             <div className="mt-6 flow-root">
@@ -221,46 +169,5 @@ export default function Hero ({ lang }) {
           </Dialog.Panel>
         </Dialog>
       </header>
-
-      <div className="relative isolate overflow-hidden pt-14 hero-section">
-        <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-64 relative z-[3]">
-          <div className="text-left lg:text-center px-6 lg:px-0 lg:-mt-24">
-            <h1 className="text-4xl leading-[38px] font-bold tracking-tight text-white sm:text-7xl">
-              {t('hero_text_white')} <span className='text-[#9EE248]'> {t('hero_text_green')} </span>
-            </h1>
-            <div className='flex items-center justify-center' >
-              <div className='max-w-md'>
-                <p className="mt-6 font-semibold text-[16px] lg: leading-[22px] text-lg text-white">
-                  {t('hero_description')}
-                </p>
-              </div>
-            </div>
-            <div className="mt-10 flex items-center lg:justify-center gap-x-2">
-              <Link
-                href={`/`}
-                className="rounded-2xl  py-3 lg:py-[14px] leading-[22px] px-6 font-semibold text-[15px] lg:text-lg text-[#222222] bg-[#9EE248]"
-              >
-                {t('hero_green_button')}
-              </Link>
-              <Link href="#" className="rounded-2xl py-3 lg:py-[14px] leading-[22px] px-6 font-semibold text-[15px] lg:text-lg text-white border bg-transparent">
-                {t('hero_transparent_button')}
-              </Link>
-            </div>
-          </div>
-        </div>
-        <div className='absolute top-8 -right-[45rem] lg:top-36 lg:right-0 z-0 rocket-animation'>
-          <Image src={rocket} className='rocket' alt='rocket' />
-        </div>
-        <div className='absolute bottom-4 lg:bottom-16 z-[2]'>
-          <Image src={variant1} className='variant1' alt='variant 1' />
-        </div>
-        <div className='absolute bottom-4 lg:bottom-14'>
-          <Image src={variant2} className='variant2' alt='variant 2' />
-        </div>
-        <div className='absolute bottom-0'>
-          <Image src={circle} className='circle' alt='circle' />
-        </div>
-      </div>
-    </div>
-  )
+    )
 }

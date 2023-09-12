@@ -1,13 +1,13 @@
-import Navbar from '../../common/Navbar'
-import Footer from '../../common/Footer'
+import Navbar from '../component/common/Navbar'
+import Footer from '../component/common/Footer'
 import Content from './components/Content'
 
-export default function PrivacyPolicy() {
+export default function PrivacyPolicy({ params: { lang } }) {
   return (
     <main>
-        <Navbar/>
-        <Content/>
-        <Footer/>
+        <Navbar lang={lang} />
+        <Content />
+        <Footer lang={lang} />
     </main>
   )
 }

@@ -1,11 +1,10 @@
-import Navbar from '../../common/Navbar'
+import Navbar from '../components/common/Navbar'
 import Content from "./components/Content";
 
 export default function formation({ params: { lang } }) {
-
     return (
         <>
-            <Navbar />
+            <Navbar lang={lang} />
             <Content lang={lang} />
         </>
     )

@@ -12,7 +12,7 @@ function classNames(...classes) {
 }
 
 export default function Faqs({ lang }) {
-  const { t } = useTranslation();
+  const { t } = useTranslation(lang);
   const faqs = [
     {
       id: 1,
@@ -108,12 +108,12 @@ export default function Faqs({ lang }) {
         </div>
         <div className='mx-auto max-w-lg px-4 lg:px-0'>
           <div className='py-6'>
-            <label for="businessName" class="mb-2 text-sm font-medium sr-only">Search</label>
-            <div class="relative mb-4">
-              <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+            <label htmlFor="businessName" className="mb-2 text-sm font-medium sr-only">Search</label>
+            <div className="relative mb-4">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               </div>
-              <input type="text" id="businessName" class="block w-full p-6 pl-6 text-lg text-[#8A8A8A] rounded-[20px] bg-[#1B1B1B] focus:outline-none border-none focus:border-none focus:ring-0" placeholder={t('pricing_header2_footer_input_text')} required />
-              <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-[#1649FF] py-4 px-7 rounded-2xl">{t('pricing_header2_footer_input_button')}</button>
+              <input type="text" id="businessName" className="block w-full p-6 pl-6 text-lg text-[#8A8A8A] rounded-[20px] bg-[#1B1B1B] focus:outline-none border-none focus:border-none focus:ring-0" placeholder={t('pricing_header2_footer_input_text')} required />
+              <button type="submit" className="text-white absolute right-2.5 bottom-2.5 bg-[#1649FF] py-4 px-7 rounded-2xl">{t('pricing_header2_footer_input_button')}</button>
             </div>
             <Link className='text-center' href={`/${lang}/start-my-business`}>
               <p className='text-[#8A8A8A] block lg:flex items-center justify-center gap-1'>{t('pricing_header2_footer_text_gray')} <span className='flex justify-center items-center gap-1 text-[#9EE248] cursor-pointer'>{t('pricing_header2_footer_text_green')} <ArrowRightIcon className='w-4 h-4' /> </span></p>

@@ -62,9 +62,10 @@ export default function SupportBusiness({ lang }) {
   ]
 
   const [showAllPackages, setShowAllPackages] = useState(false);
-  const packagesName = ['Stay Compliant', 'Taxes & Accounting', 'Grow Your Business'];
+  const packagesName = [t('after_formation_tab1'), t('after_formation_tab2'), t('after_formation_tab3')];
 
   const [selectedPackage, setSelectedPackage] = useState(0);
+
   const settings = {
     dots: false,
     infinite: true,
@@ -107,7 +108,7 @@ export default function SupportBusiness({ lang }) {
   return (
     <div className="bg-[#1649FF] overflow-hidden">
       <div className="mx-auto max-w-5xl p-8 lg:px-12 lg:pt-24 pb-12">
-        <h1 className="font-bold text-[32px] leading-[38px] lg:text-[64px] lg:leading-[64px] text-white text-left lg:text-center">Support your business needs <h1 className="text-[#9EE248]">after formation</h1></h1>
+        <h1 className="font-bold text-[32px] leading-[38px] lg:text-[64px] lg:leading-[64px] text-white text-left lg:text-center">{t('after_formation_title_white')}</h1><h1 className="text-[#9EE248]">{t('after_formation_title_green')}</h1>
       </div>
       <div className="flex items-center justify-center gap-0.5 pb-12">
         {packagesName.map((pac, index) => {
@@ -121,7 +122,7 @@ export default function SupportBusiness({ lang }) {
       <div className={t('after-formation hidden lg:block relative')} style={{ marginLeft: '15rem', width: 'calc(100% - 20px)' }}>
         <Slider {...settings} className='relative'>
           {selectedPackages.map((pac, index) => (           
-              <div  className="p-8 shadow-lg bg-white rounded-[32px] h-[35rem]">
+              <div key={index} className="p-8 shadow-lg bg-white rounded-[32px] h-[35rem]">
                 <div className="flex items-center justify-center pb-4">
                   <Image src={pac.img} className='h-56' alt='' />
                 </div>
@@ -140,7 +141,7 @@ export default function SupportBusiness({ lang }) {
         <div className="flex flex-col gap-3 py-12">
           {selectedPackages.slice(0, showAllPackages ? selectedPackages.length : 3).map((pac, index) => {
             return (
-              <div className="overflow-hidden shadow-lg bg-white rounded-[32px] relative">
+              <div key={index} className="overflow-hidden shadow-lg bg-white rounded-[32px] relative">
                 <div className="flex items-center justify-center">
                   <Image className="h-64" src={pac.img} alt="Products" />
                 </div>

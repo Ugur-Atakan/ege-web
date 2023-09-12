@@ -5,7 +5,7 @@ import ContactForm from "./components/ContactForm"
 import ContactInfo from './components/ContactInfo'
 import BookCall from './components/BookCall'
 import FAQs from './components/FAQs'
-import Footer from "../../common/Footer"
+import Footer from '../components/common/Footer'
 
 export default function Contact({ params: { lang } }) {
   return (
@@ -15,7 +15,7 @@ export default function Contact({ params: { lang } }) {
         <ContactInfo/>
         <BookCall/>
         <FAQs lang={lang} />
-        <Footer/> 
+        <Footer lang={lang} /> 
     </main>
   )
 }

@@ -14,17 +14,16 @@ import Faqs from './components/Faqs';
 import Footer from './components/Footer';
 
 import { useTranslation } from '../i18n/client'
-import { Switcher } from './switcher/index'
+import { Switcher } from './components/switcher/index'
 
 export default function Home({ params: { lang } }) {
   const { t } =  useTranslation(lang)
 
   return(
     <>
-
       {/* For testing do not use this code */}
       {/* <h1>{t('topbar_first_part')}</h1>
-      <Link href={`/${lang}/second-page`}>
+      <Link href={`/${lang}/blog`} className='bg-white rounded-[28px] py-3 px-4 text-[16px] leading-[22px] font-semibold text-[#1649FF]'>
         second page
       </Link>
       <Switcher lng={lang} /> */}
@@ -36,7 +35,7 @@ export default function Home({ params: { lang } }) {
       <IncorporateBusiness lang={lang} />
       <SupportBusiness lang={lang} />
       <Features lang={lang} />
-      <TestimonialLogos lang={lang} />
+      <TestimonialLogos />
       <Faqs lang={lang} />
       <Footer lang={lang} /> 
     </>

@@ -1,12 +1,11 @@
 'use client';
-import { useEffect } from 'react'
-import Navbar from '../../common/Navbar'
+import Navbar from '../components/common/Navbar'
 import Pricing from './components/Pricing'
 
 export default function State ({ params: { lang } }) {
   return (
     <main>
-        <Navbar />
+        <Navbar lang={lang} />
         <Pricing lang={lang} />
     </main>
   )

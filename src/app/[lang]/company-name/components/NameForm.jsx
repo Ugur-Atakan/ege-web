@@ -4,6 +4,7 @@ import { ArrowLeftIcon } from "@heroicons/react/24/outline"
 import { useTranslation } from "../../../i18n/client"
 import { useEffect, useState } from "react"
 import Link from "next/link"
+import i18next from "i18next";
 
 export default function NameForm({ lang }) {
   const { t } = useTranslation(lang);

@@ -1,10 +1,10 @@
-import Navbar from '../../common/Navbar'
+import Navbar from '../components/common/Navbar'
 import Content from './components/Content'
 
-export default function Review() {
+export default function Review({ params: { lang } }) {
   return (
     <>
-        <Navbar />
+        <Navbar lang={lang} />
         <Content/>
     </>
   )
