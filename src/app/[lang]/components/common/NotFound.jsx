@@ -21,12 +21,12 @@ export default function NotFound() {
             </div>
           </div>
           <div>
-            <Image src="https://i.ibb.co/G9DC8S0/404-2.png" width={1200} height={800} />
+            <Image src="https://i.ibb.co/G9DC8S0/404-2.png" width={1200} height={800} alt='ibb-png' />
           </div>
         </div>
       </div>
       <div>
-        <Image src="https://i.ibb.co/ck1SGFJ/Group.png" width={1200} height={800} />
+        <Image src="https://i.ibb.co/ck1SGFJ/Group.png" width={1200} height={800} alt='ibb-png' />
       </div>
     </div>
   )

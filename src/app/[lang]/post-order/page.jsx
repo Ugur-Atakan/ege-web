@@ -3,9 +3,9 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import bigstar from '../../images/big-star.webp'
-import smallstar from '../../images/small-star.png'
-import darkstar from '../../images/dark-star.png'
+import bigstar from '../../../images/big-star.webp'
+import smallstar from '../../../images/small-star.png'
+import darkstar from '../../../images/dark-star.png'
 import axios from "axios";
 
 export default function PostOrder() {
@@ -92,7 +92,7 @@ export default function PostOrder() {
           return
         })
     }
-  }, []);
+  }, [paymentReceived]);
 
   return (
     <main className="mt-16 sm:mt-24">

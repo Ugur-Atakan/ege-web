@@ -32,7 +32,7 @@ export default function Content({ lang }) {
             </div>
         </div>
         <div className='mx-auto max-w-[500px] px-4 pt-24'>
-            <h1 className='text-center font-semibold text-[40px] leading-[44px] text-[#222222]'>We'll help you choose the right company type</h1>
+            <h1 className='text-center font-semibold text-[40px] leading-[44px] text-[#222222]'>We{"'"}ll help you choose the right company type</h1>
         </div>
         <div className='mx-auto max-w-[1120px] px-4 py-12'>
             <div className='flex items-center justify-center gap-6'>
@@ -236,7 +236,7 @@ export default function Content({ lang }) {
         </div>
         <div className='hiw-section7'>
             <div className='mx-auto max-w-[851px] px-6 lg:px-0 py-24'>
-                <h1 className='text-center font-bold text-[64px] leading-[64px] text-[#ECEFF1]'>Here's the magic you'll get from us in just 1 day</h1>
+                <h1 className='text-center font-bold text-[64px] leading-[64px] text-[#ECEFF1]'>Here{"'"}s the magic you{"'"}ll get from us in just 1 day</h1>
             </div>
             <div className='mx-auto max-w-[938px] px-4 py-12'>
                 <div className='flex items-start justify-between px-12'>

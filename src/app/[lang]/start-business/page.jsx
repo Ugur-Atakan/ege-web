@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import Image from 'next/image'
 import Link from "next/link"
 import { ArrowUturnDownIcon } from "@heroicons/react/20/solid"
@@ -8,7 +8,7 @@ import { XMarkIcon } from "@heroicons/react/24/outline"
 import tickicon from '../../../images/tick.png'
 import { useTranslation } from '../../i18n/client'
 
-export default function StartBusiness({ params: lang }) {
+export default function StartBusiness({ params: { lang } }) {
     const [page, setPage] = useState(1);
     const { t } = useTranslation(lang);
 
@@ -56,16 +56,16 @@ export default function StartBusiness({ params: lang }) {
       secondSetNo(false);
     }
   
-    const handleCompanyType = () => {
-      if(firstYes || secondYes) {
-        localStorage.setItem('companyType', 'Corporation');
-        localStorage.setItem('companyState', 'Delaware');
-      }else{
-        localStorage.setItem('companyType', 'LLC');
-        localStorage.setItem('companyState', 'Wyoming');
-      }
-    }
-  
+    // const handleStorageHandling = useCallback(() => {
+    //   if(firstYes || secondYes) {
+    //     localStorage.setItem('companyType', 'Corporation');
+    //     localStorage.setItem('companyState', 'Delaware');
+    //   }else{
+    //     localStorage.setItem('companyType', 'LLC');
+    //     localStorage.setItem('companyState', 'Wyoming');
+    //   }
+    // }, [firstYes, secondYes])
+
     return (
       <div className='company-type py-12'>
         {page === 1 && (
@@ -317,7 +317,8 @@ export default function StartBusiness({ params: lang }) {
                   </ul>}
               </div>
               <div className="py-6">
-                <Link href={`/${lang}/company-name`} onClick={handleCompanyType} >
+                {/*!ADD THE ONCLICK HERE */}
+                <Link href={`/${lang}/company-name`}  > 
                   <button className="py-6 px-6 text-center bg-[#1649FF] rounded-[1.25rem] border border-blue-600 text-white text-[1.375rem] leading-[1.625rem] w-full font-semibold">
                     <h4>{t('help_me_choose_widget_answer1_button')}</h4>
                   </button>

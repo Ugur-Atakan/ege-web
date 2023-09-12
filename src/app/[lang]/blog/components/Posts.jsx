@@ -31,7 +31,7 @@ export default function Posts() {
                 <div className="mx-auto max-w-2xl text-center">
                     <h2 className="text-3xl font-bold tracking-tight text-[#222222] sm:text-6xl">From the blog</h2>
                     <p className="mt-4 text-xl leading-8 text-[#222222]">
-                        Read the latest posts from our blog. All articles are written by our team of experts, so you know you're getting the best advice.
+                        Read the latest posts from our blog. All articles are written by our team of experts, so you know you{"'"}re getting the best advice.
                     </p>
                 </div>
                 <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">

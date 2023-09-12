@@ -14,20 +14,20 @@ export default function Content({ lang }) {
     const { t } = useTranslation(lang);
 
     const [companyType, setCompanyType] = useState('');
-    localStorage.setItem('companyType', companyType);
+    //window.localStorage.setItem('companyType', companyType);
 
     const handleSelectLlc = () => {
         setCompanyType('LLC');
-        window.location.href = `/${lang}/state`;
+        //window.location.href = `/${lang}/state`;
     }
 
     const handleSelectCcorp = () => {
         setCompanyType('Corporation');
-        window.location.href = `/${lang}/state`;
+        //window.location.href = `/${lang}/state`;
     }
 
     const takeQuizForm = () => {
-        window.location.href = `/${lang}/start-my-business`
+        //window.location.href = `/${lang}/start-my-business`
     }
 
     return (

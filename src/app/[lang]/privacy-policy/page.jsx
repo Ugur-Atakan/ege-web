@@ -1,5 +1,5 @@
-import Navbar from '../component/common/Navbar'
-import Footer from '../component/common/Footer'
+import Navbar from '../components/common/Navbar'
+import Footer from '../components/common/Footer'
 import Content from './components/Content'
 
 export default function PrivacyPolicy({ params: { lang } }) {

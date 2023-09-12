@@ -14,9 +14,9 @@ export default function NameForm({ lang }) {
 
   const [llcOptions, setLlcOptions] = useState([t('companyname_llc_option1'),t('companyname_llc_option2'),t('companyname_llc_option3')]);
   const [ccorpOptions, setCcorpOptions] = useState([t('companyname_ccorp_option1'),t('companyname_ccorp_option2'),t('companyname_ccorp_option3'),t('companyname_ccorp_option4'),t('companyname_ccorp_option5')]);
-  let companyType = localStorage.getItem('companyType');
-  let companyState = localStorage.getItem('companyState');
-  localStorage.setItem('companyName', companyName);
+  let companyType = '';//window.localStorage.getItem('companyType');
+  let companyState = '';//window.localStorage.getItem('companyState');
+  //window.localStorage.setItem('companyName', companyName);
 
   const handleAbbreviationChange = (name) => {
     setAbbreviation(name);
@@ -28,9 +28,9 @@ export default function NameForm({ lang }) {
 
   useEffect(()=> {
     if (!(companyType && companyState)) {
-      window.location.href = `/${lang}/state`;
+      //window.location.href = `/${lang}/state`;
     }
-  },[companyType, companyState])
+  },[companyType, companyState, lang])
 
   return (
     <div className='bg-white'>

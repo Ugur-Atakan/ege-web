@@ -311,10 +311,10 @@ const countries = [
 const API_ROOT = 'API_ROOT';
 
 export default function Content() {
-    let companyType = localStorage.getItem('companyType');
-    let companyState = localStorage.getItem('companyState');
-    let companyName = localStorage.getItem('companyName');
-    const storedPackage = localStorage.getItem('selectedPackage');
+    let companyType = '';//window.localStorage.getItem('companyType');
+    let companyState = '';//window.localStorage.getItem('companyState');
+    let companyName = '';//window.localStorage.getItem('companyName');
+    const storedPackage = '';//window.localStorage.getItem('selectedPackage');
 
     const selectedPackage = storedPackage ? JSON.parse(storedPackage) : null;
     const selectedPackageId = selectedPackage && selectedPackage.length > 0 ? selectedPackage[0].id : null;
@@ -386,7 +386,7 @@ export default function Content() {
             .then(function (response) {
                 var jsonData = JSON.parse(JSON.stringify(response.data));
                 if (jsonData.Status) {
-                    localStorage.setItem('onboardingId', jsonData.data.id);
+                    // window.localStorage.setItem('onboardingId', jsonData.data.id);
                 }
 
             })
@@ -403,7 +403,7 @@ export default function Content() {
         let companyContactEmail = email;
         let companyContactPhone = phone;
         let companyContactAddress = street + ", " + city + ", " + zip + ", " + country;
-        let onboardingId = localStorage.getItem('onboardingId');
+        let onboardingId = 1;//window.localStorage.getItem('onboardingId');
         let couponCode = couponcode;
         let langs = i18n.language === "en" ? "en" : "tr";
 
@@ -432,7 +432,7 @@ export default function Content() {
                     let stripeUrl = jsonData.data.stripeUrl;
                     console.log(stripeUrl)
                     localStorage.setItem('stripeUrl', stripeUrl);
-                    window.location.href = stripeUrl;
+                    location.href = stripeUrl;
                 }
             })
             .catch(function (error) {
@@ -448,7 +448,7 @@ export default function Content() {
 
     useEffect(() => {
         if (!(companyType && companyState && companyName && storedPackage)) {
-            window.location.href = `/formation`;
+            // window.location.href = `/formation`;
         }
     }, [companyType, companyState, companyName, storedPackage])
 
@@ -674,7 +674,7 @@ export default function Content() {
                                     </div>
                                     <div className='block py-6'>
                                         {price.features.map((feature, index) => (
-                                            <div className='flex items-center gap-4 py-2'>
+                                            <div key={index} className='flex items-center gap-4 py-2'>
                                                 <Image src={tick} className='w-5 h-5' alt='list' />
                                                 <p className='font-semibold text-lg leading-6 text-[#222222]'>{feature}</p>
                                             </div>
@@ -714,10 +714,10 @@ export default function Content() {
                         </div>
                         <div className='flex items-center justify-between py-4'>
                             <div>
-                                <h1 className='font-semibold text-lg leading-6 text-[#222222]'>Today's Total</h1>
+                                <h1 className='font-semibold text-lg leading-6 text-[#222222]'>Today{"'"}s Total</h1>
                             </div>
                             {selectedPackage && selectedPackage.map((price, index) => (
-                                <div><h1 className='font-semibold text-lg leading-6 text-[#222222]'>{'$' + (price.orderPackagePrice / 100).toFixed(0)}</h1></div>
+                                <div key={index}><h1 className='font-semibold text-lg leading-6 text-[#222222]'>{'$' + (price.orderPackagePrice / 100).toFixed(0)}</h1></div>
                             ))}
                         </div>
                         <div className='flex items-center justify-center py-4'>

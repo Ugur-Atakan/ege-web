@@ -14,10 +14,14 @@ export default function Pricing({ lang }) {
   const [companyState, setCompanyState] = useState('');
   const [otherStates, setOtherStates] = useState([]);
   const [selectedLLC, setSelectedLLC] = useState(false);
-  let companyType = localStorage.getItem('companyType');
-  localStorage.setItem('companyState', companyState);
-
+  
+  let companyType = null; 
+  let companyStateLocalStorage = null;
   useEffect(() => {
+    companyType = localStorage.getItem('companyType');
+    localStorage.setItem('companyState', companyState);
+    companyStateLocalStorage = localStorage.getItem('companyState');
+
     const updateState = () => {
     axios.get(API_ROOT + '/api/fe/states', {
       headers: {
@@ -41,9 +45,9 @@ export default function Pricing({ lang }) {
           setSelectedLLC(true);
         }
       } else {
-        window.location.href = `/${lang}/company-type`;
+        // window.location.href = `/${lang}/company-type`;
       }
-  },[]);
+  },[companyType, lang]);
 
   const handleCompanyStateChange = (name) => {
     setCompanyState(name);
@@ -70,7 +74,7 @@ export default function Pricing({ lang }) {
                   <div className="w-full text-[22px] font-semibold leading-[26px] text-[#222222]">{t('state_option1_title')}</div>
                   <div className="w-[75%] pt-3 font-semibold text-lg leading-[24px] text-[#222222]">{t('state_option1_text')}</div>
                 </div>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"   className={`w-24 md:w-12 mt-4 ml-3 peer" ${localStorage.getItem('companyState') ==='Wyoming' && 'bg-blue-600 rounded-full border-2 border-white'}`}>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"   className={`w-24 md:w-12 mt-4 ml-3 peer" ${companyStateLocalStorage ==='Wyoming' && 'bg-blue-600 rounded-full border-2 border-white'}`}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
 
@@ -83,7 +87,7 @@ export default function Pricing({ lang }) {
                   <div className="w-full text-[20px] md:text-[22px] font-semibold leading-[26px] text-[#222222]">{t('state_option2_title')}</div>
                   <div className="w-[75%] pt-3 font-semibold text-[16px] md:text-lg leading-[24px] text-[#222222]">{t('state_option2_text')}</div>
                 </div>
-                <svg className={`w-24 md:w-12 mt-4 ml-3 peer" ${localStorage.getItem('companyState') ==='Delaware' && 'bg-blue-600 rounded-full border-2 border-white'}`} aria-hidden="true" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg className={`w-24 md:w-12 mt-4 ml-3 peer" ${companyStateLocalStorage ==='Delaware' && 'bg-blue-600 rounded-full border-2 border-white'}`} aria-hidden="true" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <circle cx="16" cy="16" r="13.5" stroke="currentColor" />
                 </svg>
               </label>

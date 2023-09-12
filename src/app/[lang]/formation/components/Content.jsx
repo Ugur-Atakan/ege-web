@@ -22,9 +22,9 @@ export default function Content({ lang }) {
 
   let [companyState, setCompanyState] = useState("");
   let [companyType, setCompanyType] = useState("");
-  companyState = localStorage.getItem('companyState');
-  companyType = localStorage.getItem('companyType');
-  let companyName = localStorage.getItem('companyName');
+  companyState = '';//window.localStorage.getItem('companyState');
+  companyType = '';//window.localStorage.getItem('companyType');
+  let companyName = ''; //window.localStorage.getItem('companyName');
   let [packagePrices, setPackagePrices] = useState([]);
   let [states, setStates] = useState([]);
   let [companyTypes, setCompanyTypes] = useState([]);
@@ -73,9 +73,9 @@ export default function Content({ lang }) {
     if (companyState !== "" && companyType !== "" && companyName !== '') {
       updatePricing();
     } else {
-      window.location.href = `/${lang}/company-name`;
+      // location.href = `/${lang}/company-name`;
     }
-  }, [companyType, companyState, states]);
+  }, [companyName, companyTypes, lang, companyType, companyState, states]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -154,6 +154,7 @@ export default function Content({ lang }) {
         <div className={packagePrices.length < 3 ? 'grid md:grid-cols-2 gap-5 py-12' : 'grid md:grid-cols-3 gap-5 py-12'}>
           {packagePrices.map((prices, index) => (
             <div
+              key={index}
               className={`flex flex-col gap-5 p-12 rounded-[20px] h-[35rem] overflow-hidden cursor-pointer ${index === selectedPackageIndex ? '!border-[3px] border-[#9EE248]' : ''
                 } ${index === 0
                   ? 'border border-[#9EE248] hover:bg-[#9EE248]'
@@ -175,12 +176,12 @@ export default function Content({ lang }) {
       <div className='mx-auto max-w-xs'>
         <div
           className='w-full flex flex-col items-center justify-center font-semibold bg-[#1649FF] text-white rounded-[20px] p-5 cursor-pointer'
-          onClick={() => {
-            if (selectedPackage) {
-              localStorage.setItem('selectedPackage', JSON.stringify([selectedPackage]));
-              window.location.href = `/${lang}/review`;
-            }
-          }}
+          // onClick={() => {
+          //   if (selectedPackage) {
+          //     window.localStorage.setItem('selectedPackage', JSON.stringify([selectedPackage]));
+          //     window.location.href = `/${lang}/review`;
+          //   }
+          // }}
         >
           {t('formation_continue')}
         </div>
@@ -205,6 +206,7 @@ export default function Content({ lang }) {
                       </th>
                       {packagePrices.map((price, index) => (
                         <th
+                          key={index}
                           scope="col"
                           className={index === packagePrices.length - 1
                             ? "w-1/5 sticky top-0 z-10 border-b border-gray-300 bg-white px-3 py-3.5 text-center whitespace-nowrap md:whitespace-normal text-2xl font-semibold text-[#1649FF] backdrop-blur backdrop-filter sm:table-cell"
@@ -295,26 +297,26 @@ export default function Content({ lang }) {
                         </td>
                         <td>
                           <div
-                            onClick={() => {
-                              if (packagePrices.length > 0) {
-                                setSelectedPackage(packagePrices[0]);
-                                localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[0]]));
-                                window.location.href = `/${lang}/review`;
-                              }
-                            }}
+                            // onClick={() => {
+                            //   if (packagePrices.length > 0) {
+                            //     setSelectedPackage(packagePrices[0]);
+                            //     window.localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[0]]));
+                            //     window.location.href = `/${lang}/review`;
+                            //   }
+                            // }}
                             className='flex items-center justify-center bg-[#9EE248] text-[#222222] font-semibold rounded-2xl p-2.5 m-5 cursor-pointer'>
                             Start with Gold
                           </div>
                         </td>
                         <td>
                           <div
-                            onClick={() => {
-                              if (packagePrices.length > 0) {
-                                setSelectedPackage(packagePrices[1]);
-                                localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[1]]));
-                                window.location.href = `/${lang}/review`;
-                              }
-                            }}
+                            // onClick={() => {
+                            //   if (packagePrices.length > 0) {
+                            //     setSelectedPackage(packagePrices[1]);
+                            //     window.localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[1]]));
+                            //     window.location.href = `/${lang}/review`;
+                            //   }
+                            // }}
                             className='flex items-center justify-center bg-[#1649FF] text-white font-semibold rounded-2xl p-2.5 m-5 cursor-pointer'>
                             Start with Premium
                           </div>
@@ -328,39 +330,39 @@ export default function Content({ lang }) {
                         </td>
                         <td>
                           <div
-                            onClick={() => {
-                              if (packagePrices.length > 0) {
-                                setSelectedPackage(packagePrices[0]);
-                                localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[0]]));
-                                window.location.href = `/${lang}/review`;
-                              }
-                            }}
+                            // onClick={() => {
+                            //   if (packagePrices.length > 0) {
+                            //     setSelectedPackage(packagePrices[0]);
+                            //     window.localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[0]]));
+                            //     window.location.href = `/${lang}/review`;
+                            //   }
+                            // }}
                             className='flex items-center justify-center bg-[#9EE248] text-[#222222] font-semibold rounded-2xl p-2.5 m-5 cursor-pointer'>
                             Starter
                           </div>
                         </td>
                         <td>
                           <div
-                            onClick={() => {
-                              if (packagePrices.length > 0) {
-                                setSelectedPackage(packagePrices[1]);
-                                localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[1]]));
-                                window.location.href = `/${lang}/review`;
-                              }
-                            }}
+                            // onClick={() => {
+                            //   if (packagePrices.length > 0) {
+                            //     setSelectedPackage(packagePrices[1]);
+                            //     window.localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[1]]));
+                            //     window.location.href = `/${lang}/review`;
+                            //   }
+                            // }}
                             className='flex items-center justify-center bg-[#1649FF] text-white font-semibold rounded-2xl p-2.5 m-5 cursor-pointer'>
                             Start Up
                           </div>
                         </td>
                         {packagePrices.length >= 3 && <td>
                           <div
-                            onClick={() => {
-                              if (packagePrices.length > 0) {
-                                setSelectedPackage(packagePrices[2]);
-                                localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[2]]));
-                                window.location.href = `/${lang}/review`;
-                              }
-                            }}
+                            // onClick={() => {
+                            //   if (packagePrices.length > 0) {
+                            //     setSelectedPackage(packagePrices[2]);
+                            //     window.localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[2]]));
+                            //     window.location.href = `/${lang}/review`;
+                            //   }
+                            // }}
                             className='flex items-center justify-center bg-[#222222] text-white font-semibold rounded-2xl p-2.5 m-5 cursor-pointer'>
                             Scale Up
                           </div>
