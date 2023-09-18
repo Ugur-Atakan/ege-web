@@ -1,7 +1,7 @@
 'use client';
 
 import { ArrowLeftIcon } from '@heroicons/react/24/outline'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import umbrella from '../../../../images/umbrella.png'
@@ -12,22 +12,30 @@ import { useTranslation } from '../../../i18n/client'
 
 export default function Content({ lang }) {
     const { t } = useTranslation(lang);
-
     const [companyType, setCompanyType] = useState('');
-    //window.localStorage.setItem('companyType', companyType);
+
+    useEffect(() => {
+        window.localStorage.setItem('companyType', companyType);
+    }, [companyType])
 
     const handleSelectLlc = () => {
         setCompanyType('LLC');
-        //window.location.href = `/${lang}/state`;
+        if (typeof window !== 'undefined' && window.location)
+            window.location.href = `/${lang}/state`;
     }
 
     const handleSelectCcorp = () => {
         setCompanyType('Corporation');
-        //window.location.href = `/${lang}/state`;
+        if (typeof window !== 'undefined' && window.localStorage)
+            window.localStorage.setItem('companyType', companyType);
+
+        if (typeof window !== 'undefined' && window.location)
+            window.location.href = `/${lang}/state`;
     }
 
     const takeQuizForm = () => {
-        //window.location.href = `/${lang}/start-my-business`
+        if (typeof window !== 'undefined' && window.location)
+            window.location.href = `/${lang}/start-my-business`
     }
 
     return (
@@ -312,7 +320,7 @@ export default function Content({ lang }) {
                                 </div>
                             </div>
                             <div>
-                                <Link href={t(`/start-my-business`)} className='rounded-[1.25rem] bg-white py-6 px-[4.25rem] text-black text-[1.375rem] font-semibold leading-[1.625rem]'>
+                                <Link href={t(`/${lang}/start-business`)} className='rounded-[1.25rem] bg-white py-6 px-[4.25rem] text-black text-[1.375rem] font-semibold leading-[1.625rem]'>
                                    {t('company_type_banner_button')}
                                 </Link>
                             </div>
@@ -323,7 +331,7 @@ export default function Content({ lang }) {
                             <h2 className='text-[20px] text-white font-semibold leading-[22px]'>  {t('company_type_banner_text')}</h2>
                             <p className='text-white  text-[16px] font-semibold leading-[22px] pr-12 pt-4'>  {t('company_type_banner_description')}</p>
                            <div onClick={takeQuizForm} className='my-6 w-full rounded-[1.25rem] bg-white py-3 text-black text-lg font-semibold leading-[22px] text-center'>
-                            {t('company_type_banner_button')}
+                                {t('company_type_banner_button')}
                            </div>
                            <Image src={searchwhite} className='w-full h-full' alt='search icon' />
                         </div>

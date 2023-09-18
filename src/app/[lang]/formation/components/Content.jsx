@@ -22,9 +22,7 @@ export default function Content({ lang }) {
 
   let [companyState, setCompanyState] = useState("");
   let [companyType, setCompanyType] = useState("");
-  companyState = '';//window.localStorage.getItem('companyState');
-  companyType = '';//window.localStorage.getItem('companyType');
-  let companyName = ''; //window.localStorage.getItem('companyName');
+
   let [packagePrices, setPackagePrices] = useState([]);
   let [states, setStates] = useState([]);
   let [companyTypes, setCompanyTypes] = useState([]);
@@ -37,45 +35,68 @@ export default function Content({ lang }) {
   const selectedPackagesCorporation = lang === 'en' ? selectedCompanyTypesEN['C-corp']: selectedCompanyTypesTR['C-corp'];
   const [isLoading, setIsLoading] = useState(true);
 
-
   const handlePackageSelection = (selectedPrice, selectedIndex) => {
     setSelectedPackage(selectedPrice);
     setSelectedPackageIndex(selectedIndex);
   }
 
-  useEffect(() => {
-    const updatePricing = () => {
-      let foundState = states.find((s) => s.state === companyState);
-      let foundType = companyTypes.find((t) => t.entityType === companyType);
-      if (companyType && companyState && foundState && foundType) {
-        let langs = lang === "en" ? "en" : "tr"
-        let payload = {
-          stateId: foundState.id,
-          entityTypeId: foundType.id,
-          lang: langs,
-        }
+  const handleClicks = (index) => {
+    if (packagePrices.length > 0) {
+        setSelectedPackage(packagePrices[index]);
 
-        axios.post(API_ROOT + '/api/fe/prices', payload, {
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
-          }
-        })
-          .then(function (response) {
-            var jsonData = response.data;
-            setPackagePrices(jsonData);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-      }
+        if (typeof window !== 'undefined' && window.localStorage && window.location) {
+          window.localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[index]]));
+          window.location.href = `/${lang}/review`;
+        }
     }
+  };
+
+
+  let companyName = ''; //window.localStorage.getItem('companyName');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      setCompanyState(window.localStorage.getItem('companyState'));
+      setCompanyType(window.localStorage.getItem('companyType'));
+      companyName = window.localStorage.getItem('companyName');
+    }
+
     if (companyState !== "" && companyType !== "" && companyName !== '') {
       updatePricing();
     } else {
-      // location.href = `/${lang}/company-name`;
+        if (typeof window !== 'undefined' && window.location)
+          window.location.href = `/${lang}/company-name`;
     }
-  }, [companyName, companyTypes, lang, companyType, companyState, states]);
+  }, []);
+
+  // useEffect(() => {
+  //   const updatePricing = () => {
+  //     let foundState = states.find((s) => s.state === companyState);
+  //     let foundType = companyTypes.find((t) => t.entityType === companyType);
+  //     if (companyType && companyState && foundState && foundType) {
+  //       let langs = lang === "en" ? "en" : "tr"
+  //       let payload = {
+  //         stateId: foundState.id,
+  //         entityTypeId: foundType.id,
+  //         lang: langs,
+  //       }
+
+  //       axios.post(API_ROOT + '/api/fe/prices', payload, {
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //           'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
+  //         }
+  //       })
+  //         .then(function (response) {
+  //           var jsonData = response.data;
+  //           setPackagePrices(jsonData);
+  //         })
+  //         .catch(function (error) {
+  //           console.log(error);
+  //         });
+  //     }
+  //   }
+  // }, [companyName, companyTypes, lang, companyType, companyState, states]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -176,12 +197,13 @@ export default function Content({ lang }) {
       <div className='mx-auto max-w-xs'>
         <div
           className='w-full flex flex-col items-center justify-center font-semibold bg-[#1649FF] text-white rounded-[20px] p-5 cursor-pointer'
-          // onClick={() => {
-          //   if (selectedPackage) {
-          //     window.localStorage.setItem('selectedPackage', JSON.stringify([selectedPackage]));
-          //     window.location.href = `/${lang}/review`;
-          //   }
-          // }}
+          onClick={() => {
+            if (selectedPackage) {
+              if (typeof window !== 'undefined' && window.localStorage && window.location)
+                window.localStorage.setItem('selectedPackage', JSON.stringify([selectedPackage]));
+                window.location.href = `/${lang}/review`;
+            }
+          }}
         >
           {t('formation_continue')}
         </div>
@@ -297,26 +319,14 @@ export default function Content({ lang }) {
                         </td>
                         <td>
                           <div
-                            // onClick={() => {
-                            //   if (packagePrices.length > 0) {
-                            //     setSelectedPackage(packagePrices[0]);
-                            //     window.localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[0]]));
-                            //     window.location.href = `/${lang}/review`;
-                            //   }
-                            // }}
+                            onClick={() => handleClicks(0)}
                             className='flex items-center justify-center bg-[#9EE248] text-[#222222] font-semibold rounded-2xl p-2.5 m-5 cursor-pointer'>
                             Start with Gold
                           </div>
                         </td>
                         <td>
                           <div
-                            // onClick={() => {
-                            //   if (packagePrices.length > 0) {
-                            //     setSelectedPackage(packagePrices[1]);
-                            //     window.localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[1]]));
-                            //     window.location.href = `/${lang}/review`;
-                            //   }
-                            // }}
+                            onClick={() => handleClicks(1)}
                             className='flex items-center justify-center bg-[#1649FF] text-white font-semibold rounded-2xl p-2.5 m-5 cursor-pointer'>
                             Start with Premium
                           </div>
@@ -330,39 +340,21 @@ export default function Content({ lang }) {
                         </td>
                         <td>
                           <div
-                            // onClick={() => {
-                            //   if (packagePrices.length > 0) {
-                            //     setSelectedPackage(packagePrices[0]);
-                            //     window.localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[0]]));
-                            //     window.location.href = `/${lang}/review`;
-                            //   }
-                            // }}
+                            onClick={() => handleClicks(0)}
                             className='flex items-center justify-center bg-[#9EE248] text-[#222222] font-semibold rounded-2xl p-2.5 m-5 cursor-pointer'>
                             Starter
                           </div>
                         </td>
                         <td>
                           <div
-                            // onClick={() => {
-                            //   if (packagePrices.length > 0) {
-                            //     setSelectedPackage(packagePrices[1]);
-                            //     window.localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[1]]));
-                            //     window.location.href = `/${lang}/review`;
-                            //   }
-                            // }}
+                            onClick={() => handleClicks(1)}
                             className='flex items-center justify-center bg-[#1649FF] text-white font-semibold rounded-2xl p-2.5 m-5 cursor-pointer'>
                             Start Up
                           </div>
                         </td>
                         {packagePrices.length >= 3 && <td>
                           <div
-                            // onClick={() => {
-                            //   if (packagePrices.length > 0) {
-                            //     setSelectedPackage(packagePrices[2]);
-                            //     window.localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[2]]));
-                            //     window.location.href = `/${lang}/review`;
-                            //   }
-                            // }}
+                            onClick={() => handleClicks(2)}
                             className='flex items-center justify-center bg-[#222222] text-white font-semibold rounded-2xl p-2.5 m-5 cursor-pointer'>
                             Scale Up
                           </div>
@@ -370,8 +362,7 @@ export default function Content({ lang }) {
                       </tr>
                     </tbody>
                   )
-
-                  }
+                }
                 </table>
               </div>
             </div>

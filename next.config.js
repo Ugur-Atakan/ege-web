@@ -12,5 +12,9 @@ module.exports = withVideos({
               pathname: '**',
           },
       ],
+    },
+    // For env variables only on the client side. 
+    env: {
+        API_KEY: 'http://127.0.0.1:5000/api',
     }
 });

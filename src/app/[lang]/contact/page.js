@@ -13,7 +13,7 @@ export default function Contact({ params: { lang } }) {
         <Header lang={lang} />
         <ContactForm />
         <ContactInfo/>
-        <BookCall/>
+        <BookCall lang={lang} />
         <FAQs lang={lang} />
         <Footer lang={lang} /> 
     </main>

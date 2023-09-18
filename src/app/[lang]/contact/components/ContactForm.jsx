@@ -74,8 +74,8 @@ export default function ContactForm({ lang }) {
             <Image src={megaphone} alt='contact us' />
           </div>
           <div className='w-full lg:w-2/3'>
-            <h1 className='font-semibold text-[26px] lg:text-[40px] leading-[32px] lg:leading-[44px] text-[#222222]'>Questions about plans, pricing, or availability? </h1>
-            <p className='font-semibold text-[16px] lg:text-lg leading-[22px] lg:leading-6 text-[#222222] py-4'>One of our services experts will reach out to you based on your communication preferences.</p>
+            <h1 className='font-semibold text-[26px] lg:text-[40px] leading-[32px] lg:leading-[44px] text-[#222222]'>{t('contact_form_title')}</h1>
+            <p className='font-semibold text-[16px] lg:text-lg leading-[22px] lg:leading-6 text-[#222222] py-4'>{t('contact_form_desc')}</p>
             <form id='contactform' onSubmit={submitHandler} className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
               <div>
                 <label htmlFor="firstName" className="block leading-6 text-[16px] sm:text-sm pb-2.5 sm:py-0 text-[#222222] font-semibold">
@@ -99,7 +99,7 @@ export default function ContactForm({ lang }) {
                 <div className="mt-1">
                   <input
                     type="text"
-                    name="lastN ame"
+                    name="lastName"
                     id="lastName"
                     autoComplete="family-name"
                     className="block w-full text-sm font-semibold rounded-[20px] border-[#C8C8C8] py-3 px-4 text-[#222222] shadow-sm focus:border-blue-600"
@@ -108,7 +108,7 @@ export default function ContactForm({ lang }) {
               </div>
               <div>
                 <label htmlFor="email" className="block leading-6 text-[16px] sm:text-sm pb-2.5 sm:py-0 text-[#222222] font-semibold">
-                  {t('contact_us_header3_blank_3')}
+                  {t('contact_form_input_email')}
                 </label>
                 <div className="mt-1">
                   <input
@@ -123,10 +123,10 @@ export default function ContactForm({ lang }) {
               <div>
                 <div className="flex justify-between">
                   <label htmlFor="phone" className="block leading-6 text-[16px] sm:text-sm pb-2.5 sm:py-0 text-[#222222] font-semibold">
-                    {t('contact_us_header3_blank_4')}
+                    {t('contact_form_input_phone')}
                   </label>
                   <span id="phone-optional" className="text-[16px] pb-2.5 sm:py-0 sm:text-[11px] sm:mt-1 text-gray-400">
-                    {t('contact_us_header3_blank_4_1')}
+                    {t('contact_form_input_optional')}
                   </span>
                 </div>
                 <div className="mt-1">
@@ -142,7 +142,7 @@ export default function ContactForm({ lang }) {
               </div>
               <div className="sm:col-span-2">
                 <label htmlFor="subject" className="block leading-6 text-[16px] sm:text-sm pb-2.5 sm:py-0 text-[#222222] font-semibold">
-                  {t('contact_us_header3_blank_5')}
+                  {t('contact_form_input_help')}
                 </label>
                 <div className="mt-1">
                   <select
@@ -166,7 +166,7 @@ export default function ContactForm({ lang }) {
               <div className="sm:col-span-2">
                 <div className="flex justify-between">
                   <label htmlFor="message" className="block text-[16px] sm:text-sm pb-2.5 sm:py-0 font-medium focus:border-blue-600">
-                    {t('contact_us_header3_blank_6')}
+                    {t('contact_form_input_message')}
                   </label>
                 </div>
                 <div className="mt-1">
@@ -187,12 +187,12 @@ export default function ContactForm({ lang }) {
                   type="submit"
                   className="mt-2 font-semibold inline-flex w-full items-center justify-center rounded-[20px] border border-transparent bg-[#1649FF] text-white py-4"
                 >
-                  {t('contact_us_header3_button')}
+                  {t('contact_form_submit_button')}
                 </button>
               </div>
             </form>
             <div className='flex flex-col lg:flex-row items-center gap-1 lg:gap-2 py-5 lg:py-3'>
-              <p className='text-[#8A8A8A] font-semibold text-[16px] sm:text-sm leading-6'>or contact us directly by</p> <span className='text-[#1649FF] lg:pl-0 font-semibold text-[16px] sm:text-sm leading-6'>info@registate.com</span>
+              <p className='text-[#8A8A8A] font-semibold text-[16px] sm:text-sm leading-6'>{t('contact_form_footer_white_text')} </p> <span className='text-[#1649FF] lg:pl-0 font-semibold text-[16px] sm:text-sm leading-6'>{t('contact_form_footer_blue_text')}</span>
             </div>
           </div>
         </div>

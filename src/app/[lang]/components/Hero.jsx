@@ -95,7 +95,7 @@ export default function Hero ({ lang }) {
             </Link>
           </div>
           <div className="flex gap-x-3 lg:hidden">
-            <Link href={`/${lang}/company-type`} className='bg-white rounded-[28px] py-3 px-4 text-[16px] leading-[22px] font-semibold text-[#1649FF]'>
+            <Link href={`/${lang}/company-type`} className='bg-white rounded-[28px] py-2 px-4 text-[16px] leading-[22px] font-semibold text-[#1649FF]'>
               {t('menu_top_right_handcorner_button')}
             </Link>
             <button
@@ -237,12 +237,12 @@ export default function Hero ({ lang }) {
             </div>
             <div className="mt-10 flex items-center lg:justify-center gap-x-2">
               <Link
-                href={`/`}
+                href={`/${lang}/company-type`}
                 className="rounded-2xl  py-3 lg:py-[14px] leading-[22px] px-6 font-semibold text-[15px] lg:text-lg text-[#222222] bg-[#9EE248]"
               >
                 {t('hero_green_button')}
               </Link>
-              <Link href="#" className="rounded-2xl py-3 lg:py-[14px] leading-[22px] px-6 font-semibold text-[15px] lg:text-lg text-white border bg-transparent">
+              <Link href={`/${lang}/how-it-works`} className="rounded-2xl py-3 lg:py-[14px] leading-[22px] px-6 font-semibold text-[15px] lg:text-lg text-white border bg-transparent">
                 {t('hero_transparent_button')}
               </Link>
             </div>

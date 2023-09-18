@@ -1,48 +1,17 @@
 'use client';
 
-import { React, Fragment, useState, useEffect } from 'react'
+import { React , useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Popover, Transition, Menu, Dialog } from '@headlessui/react'
-import {
-  Bars3Icon,
-  BookmarkSquareIcon,
-  BriefcaseIcon,
-  BuildingOfficeIcon,
-  GlobeAltIcon,
-  PhoneIcon,
-  ShieldCheckIcon,
-  XMarkIcon,
-  EnvelopeOpenIcon,
-  UserIcon,
-  DocumentDuplicateIcon,
-  InboxStackIcon,
-  ClipboardDocumentIcon,
-  QuestionMarkCircleIcon,
-  BuildingLibraryIcon,
-  CalendarIcon,
-  ClipboardDocumentListIcon,
-  RectangleStackIcon,
-  RocketLaunchIcon,
-  PresentationChartBarIcon,
-  CubeIcon,
-  ArchiveBoxIcon,
-  DocumentTextIcon,
-  PencilSquareIcon,
-  FolderMinusIcon,
-  ArrowPathIcon,
-  ChatBubbleLeftRightIcon,
-  ArrowRightIcon,
-} from '@heroicons/react/24/outline'
+import { Dialog } from '@headlessui/react'
+import {  Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import logo from '../../../../images/logo-blue.webp'
 import chaticon from '../../../../images/chat.png'
 import { useTranslation } from '../../../i18n/client'
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
+import NavLink from './NavLink'
 
 export default function Navbar({ lang }) {
+  lang = lang || 'en';
   const { t } = useTranslation(lang);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -70,32 +39,6 @@ export default function Navbar({ lang }) {
 //     }
 //   };
 
-  const menu1 = [
-    {
-      name: t('mobile_menu_title_4'),
-      description: t('mobile_menu_title_4_desc'),
-      href: `/${lang}/state`,
-      icon: BuildingOfficeIcon,
-    },
-    {
-      name: t('menu2_1_link_2_title'),
-      description: t('menu2_1_link_2_subtitle'),
-      href: `/${lang}/registered-agent`,
-      icon: UserIcon,
-    },
-    {
-      name: t('menu2_1_link_3_title'),
-      description: t('menu2_1_link_3_subtitle'),
-      href: `/${lang}/virtual-mailbox`,
-      icon: EnvelopeOpenIcon,
-    },
-    {
-      name: t('menu2_1_link_4_title'),
-      description: t('menu2_1_link_4_subtitle'),
-      href: `/${lang}/apostille`,
-      icon: DocumentDuplicateIcon,
-    }
-  ]
 
   return (
     <div className='hidden md:block'>
@@ -118,21 +61,21 @@ export default function Navbar({ lang }) {
             </button>
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
-            <Link href={`/${lang}/company-type`}  className={({ isActive }) => 'text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]' + (isActive ? ' border-b-2 border-[#1649FF] !text-[#1649FF] -mb-8' :'')}>
+            <NavLink href={`/${lang}/company-type`} className="text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]">
               {t('header_1')}
-            </Link>
-            <Link href={`/${lang}//state`} className={({ isActive }) => 'text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]' + (isActive ? ' border-b-2 border-[#1649FF] !text-[#1649FF] -mb-8' :'')}>
+            </NavLink>
+            <NavLink href={`/${lang}/state`} className="text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]" >
               {t('header_2')}
-            </Link>
-            <Link href={`/${lang}//company-name`} className={({ isActive }) => 'text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]' + (isActive ? ' border-b-2 border-[#1649FF] !text-[#1649FF] -mb-8' :'')}>
+            </NavLink>
+            <NavLink href={`/${lang}/company-name`} className="text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]" >
               {t('header_3')}
-            </Link>
-            <Link href={`/${lang}/formation`} className={({ isActive }) => 'text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]' + (isActive ? ' border-b-2 border-[#1649FF] !text-[#1649FF] -mb-8' :'')}>
+            </NavLink>
+            <NavLink href={`/${lang}/formation`} className="text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]" >
               {t('header_4')}
-            </Link>
-            <Link href={`/${lang}/review`} className={({ isActive }) => 'text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]' + (isActive ? ' border-b-2 border-[#1649FF] !text-[#1649FF] -mb-8' :'')}>
+            </NavLink>
+            <NavLink href={`/${lang}/review`} className="text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]" >
               {t('header_5')}
-            </Link>
+            </NavLink>
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <div className='hidden lg:flex items-center gap-4'>
@@ -147,7 +90,7 @@ export default function Navbar({ lang }) {
             </div>
           </div>
         </nav>
-    <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
+        <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
           <div className="fixed inset-0 z-10" />
           <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
             <div className="flex items-center justify-between">

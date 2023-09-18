@@ -86,7 +86,7 @@ export default function Header({ lang }) {
                             <Menu as="div" className="relative inline-block text-left">
                                 <div>
                                     <Menu.Button className={`uppercase text-[14px]  font-semibold leading-5 !text-black`}>
-                                        {/* {i18n.language} */} Language
+                                        {lang}
                                     </Menu.Button>
                                 </div>
                                 <Transition

@@ -4,7 +4,6 @@ import { ArrowLeftIcon } from "@heroicons/react/24/outline"
 import { useTranslation } from "../../../i18n/client"
 import { useEffect, useState } from "react"
 import Link from "next/link"
-import i18next from "i18next";
 
 export default function NameForm({ lang }) {
   const { t } = useTranslation(lang);
@@ -14,9 +13,6 @@ export default function NameForm({ lang }) {
 
   const [llcOptions, setLlcOptions] = useState([t('companyname_llc_option1'),t('companyname_llc_option2'),t('companyname_llc_option3')]);
   const [ccorpOptions, setCcorpOptions] = useState([t('companyname_ccorp_option1'),t('companyname_ccorp_option2'),t('companyname_ccorp_option3'),t('companyname_ccorp_option4'),t('companyname_ccorp_option5')]);
-  let companyType = '';//window.localStorage.getItem('companyType');
-  let companyState = '';//window.localStorage.getItem('companyState');
-  //window.localStorage.setItem('companyName', companyName);
 
   const handleAbbreviationChange = (name) => {
     setAbbreviation(name);
@@ -24,11 +20,21 @@ export default function NameForm({ lang }) {
 
   const onchangeCompanyName = (e) => {
     setCompanyName(e.target.value);
+    if (typeof window !== 'undefined' && window.localStorage)
+      window.localStorage.setItem('companyName', e.target.value);
   }
 
+  let companyType = '';
+  let companyState = '';
+  
   useEffect(()=> {
+    companyType = window.localStorage.getItem('companyType');
+    companyState = window.localStorage.getItem('companyState');
+    window.localStorage.setItem('companyName', companyName);
+
     if (!(companyType && companyState)) {
-      //window.location.href = `/${lang}/state`;
+      if (typeof window !== 'undefined' && window.location)
+        window.location.href = `/${lang}/state`;
     }
   },[companyType, companyState, lang])
 
@@ -65,14 +71,14 @@ export default function NameForm({ lang }) {
               >
                 {companyType==='LLC' ? llcOptions.map((abb, index) => (
                   <option
-                    key={abb.index}
+                    key={index}
                     value={abb}
                   >
                     {abb}
                   </option>
                 )): ccorpOptions.map((abb, index) => (
                   <option
-                    key={abb.index}
+                    key={index}
                     value={abb}
                   >
                     {abb}

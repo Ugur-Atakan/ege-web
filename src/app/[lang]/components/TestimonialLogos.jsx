@@ -18,20 +18,20 @@ export default function TestimonialLogos() {
                     <div className="mx-auto max-w-7xl py-12 border-t border-opacity-[0.20]">
                         <div className="grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5">
                             <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
-                                <Image className="h-12 grayscale" src={exaironlogo} alt="Tuple"></Image>
+                                <Image className="h-12 w-48 grayscale" src={exaironlogo} alt="Tuple"></Image>
                             </div>
                             <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
-                                <Image className="h-12 grayscale" src={malliqlogo} alt="Mirage"></Image>
+                                <Image className="h-12 w-48 grayscale" src={malliqlogo} alt="Mirage"></Image>
                             </div>
                             <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
-                                <Image className="h-12 grayscale" src={cameralyzelogo} alt="cameralyze"></Image>
+                                <Image className="h-12 w-48 grayscale" src={cameralyzelogo} alt="cameralyze"></Image>
                             </div>
                             <div className="col-span-1 flex justify-center md:col-span-3 lg:col-span-1">
-                                <Image className="h-12 grayscale" src={opsbeaconlogo} alt="opsbeacon"></Image>
+                                <Image className="h-12 w-48 grayscale" src={opsbeaconlogo} alt="opsbeacon"></Image>
                                 <span className="inline-block mt-2 -ml-1"><span className="text-[#808080] font-medium text-xl ">Ops</span><span className="text-[#808080] font-medium text-xl ">Beacon</span></span>
                             </div>
                             <div className="col-span-2 flex justify-center md:col-span-3 lg:col-span-1">
-                                <Image className="h-12 grayscale" src={finedinelogo} alt="finedine"></Image>
+                                <Image className="h-12 w-48 grayscale" src={finedinelogo} alt="finedine"></Image>
                             </div>
                         </div>
                     </div>

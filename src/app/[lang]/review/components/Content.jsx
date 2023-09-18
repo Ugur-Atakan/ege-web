@@ -447,6 +447,10 @@ export default function Content() {
     };
 
     useEffect(() => {
+
+    }), [];
+
+    useEffect(() => {
         if (!(companyType && companyState && companyName && storedPackage)) {
             // window.location.href = `/formation`;
         }

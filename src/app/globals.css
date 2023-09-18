@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @import "slick-carousel/slick/slick.css";
 @import "slick-carousel/slick/slick-theme.css";
 
@@ -701,7 +702,7 @@ body {
 }
 
 .hiw-delaware{
-  background-image: url('../images/Delaware.webp');
+  background-image: url('../images/delaware.webp');
   background-size: cover;
 }
 
