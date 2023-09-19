@@ -1,17 +1,15 @@
-'use client';
-
-import React, { useCallback, useEffect, useState } from "react"
+import { ArrowUturnDownIcon } from '@heroicons/react/20/solid';
+import { useState } from 'react';
+import { XMarkIcon } from '@heroicons/react/24/outline';
+import tickicon from '../../../../images/tick.png'
 import Image from 'next/image'
-import Link from "next/link"
-import { ArrowUturnDownIcon } from "@heroicons/react/20/solid"
-import { XMarkIcon } from "@heroicons/react/24/outline"
-import tickicon from '../../../images/tick.png'
-import { useTranslation } from '../../i18n/client'
+import Link from 'next/link'
+import { useTranslation } from '../../../i18n/client'
 
-export default function StartBusiness({ params: { lang } }) {
-    const [page, setPage] = useState(1);
+export default function Content({ lang }) {
     const { t } = useTranslation(lang);
 
+    const [page, setPage] = useState(1);
     //questions answers
     const [firstYes, firstSetYes] = useState(false);
     const [firstNo, firstSetNo] = useState(false);
@@ -25,7 +23,7 @@ export default function StartBusiness({ params: { lang } }) {
       firstSetNo(false);
       firstSetNotSure(false);
     }
-  
+
     const firstNoAnswer = () => {
       firstSetNo(true);
       firstSetNotSure(false);
@@ -56,35 +54,35 @@ export default function StartBusiness({ params: { lang } }) {
       secondSetNo(false);
     }
   
-    // const handleStorageHandling = useCallback(() => {
-    //   if(firstYes || secondYes) {
-    //     localStorage.setItem('companyType', 'Corporation');
-    //     localStorage.setItem('companyState', 'Delaware');
-    //   }else{
-    //     localStorage.setItem('companyType', 'LLC');
-    //     localStorage.setItem('companyState', 'Wyoming');
-    //   }
-    // }, [firstYes, secondYes])
-
+  const handleCompanyType = () => {
+    if(firstYes || secondYes) {
+      localStorage.setItem('companyType', 'Corporation');
+      localStorage.setItem('companyState', 'Delaware');
+    }else{
+      localStorage.setItem('companyType', 'LLC');
+      localStorage.setItem('companyState', 'Wyoming');
+    }
+  }
+  
+  
     return (
       <div className='company-type py-12'>
         {page === 1 && (
           <div className="mx-auto max-w-7xl bg-white lg:shadow-xl rounded-2xl open-animation">
             <div className="flex justify-between items-center py-4 px-12">
-              <div
+              <Link
                 className="ml-4 text-[#1649FF] font-semibold mt-4 flex items-center gap-2 cursor-pointer w-fit"
-                onClick={() => navigate(-1)}
+                href={`/${lang}`}
               >
                 <ArrowUturnDownIcon className="w-4  rotate-90" />
                 <button>{t('help_me_choose_widget_question1_button_back')}</button>
-              </div>
-              <div
+              </Link>
+              <Link
                 className="ml-4 mt-4 flex items-center gap-2 cursor-pointer w-fit"
-                onClick={() => navigate(-1)}
+                href={`/${lang}`}
               >
                 <XMarkIcon className="w-6 text-black rotate-90" />
-  
-              </div>
+              </Link>
             </div>
             <div className="max-w-3xl mx-auto py-10">
               <div className="text-center">
@@ -133,13 +131,12 @@ export default function StartBusiness({ params: { lang } }) {
                 <ArrowUturnDownIcon className="w-4 rotate-90" />
                 <button>{t('help_me_choose_widget_question1_button_back')}</button>
               </div>
-              <div
+              <Link
                 className="ml-4 mt-4 flex items-center gap-2 cursor-pointer w-fit"
-                onClick={() => navigate(-1)}
+                href={`/${lang}`}
               >
                 <XMarkIcon className="w-6 text-black rotate-90" />
-  
-              </div>
+              </Link>
             </div>
             <div className="max-w-3xl mx-auto py-10">
               <div className="text-center">
@@ -188,16 +185,15 @@ export default function StartBusiness({ params: { lang } }) {
                 <ArrowUturnDownIcon className="w-4 rotate-90" />
                 <button>{t('help_me_choose_widget_question1_button_back')}</button>
               </div>
-              <div
+              <Link
                 className="ml-4 mt-4 flex items-center gap-2 cursor-pointer w-fit"
-                onClick={() => navigate(-1)}
+                href={`/${lang}`}
               >
                 <XMarkIcon className="w-6 text-black rotate-90" />
-  
-              </div>
+              </Link>
             </div>
             <div className="max-w-3xl mx-auto py-10">
-              {'en' === 'en'
+              {lang === 'en'
                 ? <div className="block">
                   <div className="flex justify-center">
                     <h1 className="text-[2.5rem] font-semibold leading-[2.75rem] text-[#222222]">
@@ -209,7 +205,7 @@ export default function StartBusiness({ params: { lang } }) {
                       <h1 className="text-blue-600 text-[2.5rem] font-semibold leading-[2.75rem]">{firstYes || secondYes ? 'Corporation' : 'LLC'}</h1>
                     </div>
                     <div className="block">
-                      <h1 className="text-[#222222] text-[2.5rem] font-semibold leading-[2.75rem]"> {'help_me_choose_widget_answer1_subtitle'}</h1>
+                      <h1 className="text-[#222222] text-[2.5rem] font-semibold leading-[2.75rem]"> {t('help_me_choose_widget_answer1_subtitle')}</h1>
                     </div>
                     <div className="block">
                       <h1 className="text-blue-600 text-[2.5rem] font-semibold leading-[2.75rem]">{firstYes || secondYes ? 'Delaware' : 'Wyoming'}</h1>
@@ -227,7 +223,7 @@ export default function StartBusiness({ params: { lang } }) {
                       <h1 className="text-blue-600 text-[2.5rem] font-semibold leading-[2.75rem]">{firstYes || secondYes ? 'Delaware' : 'Wyoming'}</h1>
                     </div>
                     <div className="block ">
-                      <h1 className="text-[#222222] text-[2.5rem] font-semibold leading-[2.75rem]">{'help_me_choose_widget_answer1_subtitle'}</h1>
+                      <h1 className="text-[#222222] text-[2.5rem] font-semibold leading-[2.75rem]">{t('help_me_choose_widget_answer1_subtitle')}</h1>
                     </div>
                     <div className="block">
                       <h1 className="text-blue-600 text-[2.5rem] font-semibold leading-[2.75rem]">{firstYes || secondYes ? 'Anonim Şirket' : 'LLC'}</h1>
@@ -283,7 +279,7 @@ export default function StartBusiness({ params: { lang } }) {
                         <Image src={tickicon} className='w-6 h-6' alt='tick icon' />
                       </div>
                       <div className="w-full">
-                        <p className="text-lg font-semibold leading-6 text-[#222222]"> {'help_me_choose_widget_answer2_text1'}</p>
+                        <p className="text-lg font-semibold leading-6 text-[#222222]"> {t('help_me_choose_widget_answer2_text1')}</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-4 py-2">
@@ -301,7 +297,7 @@ export default function StartBusiness({ params: { lang } }) {
                         <Image src={tickicon} className='w-6 h-6' alt='tick icon' />
                       </div>
                       <div className="w-full">
-                        <p className="text-lg font-semibold leading-6 text-[#222222]"> {'help_me_choose_widget_answer2_text3'}</p>
+                        <p className="text-lg font-semibold leading-6 text-[#222222]"> {t('help_me_choose_widget_answer2_text3')}</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-4 py-2">
@@ -317,8 +313,7 @@ export default function StartBusiness({ params: { lang } }) {
                   </ul>}
               </div>
               <div className="py-6">
-                {/*!ADD THE ONCLICK HERE */}
-                <Link href={`/${lang}/company-name`}  > 
+                <Link onClick={handleCompanyType} href={`/${lang}/company-name`}>
                   <button className="py-6 px-6 text-center bg-[#1649FF] rounded-[1.25rem] border border-blue-600 text-white text-[1.375rem] leading-[1.625rem] w-full font-semibold">
                     <h4>{t('help_me_choose_widget_answer1_button')}</h4>
                   </button>
@@ -336,4 +331,5 @@ export default function StartBusiness({ params: { lang } }) {
         )}
       </div>
     );
-}
+  }
+  

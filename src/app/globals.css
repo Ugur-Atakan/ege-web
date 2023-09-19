@@ -150,11 +150,13 @@ body {
     padding: 30px;
     background-color: #1649FF;
   }
-  .rocket-animation{
+
+  .rocket-animation {
     transform: translate(5rem, 3%);
     animation-duration: 6s;
     animation-name: rocket;
   }
+
 }
 
 .after-formation .slick-next {
@@ -308,7 +310,7 @@ body {
   to {
     transform: translate(5rem, 3%);
     right: 0;
-   
+
   }
 }
 
@@ -319,12 +321,14 @@ body {
 @keyframes bounce-blur {
   0% {
     transform: translateY(0);
-  
+
   }
-  50%{
+
+  50% {
     transform: translateY(-7px);
     filter: blur(1.5px);
   }
+
   100% {
     transform: translateY(0);
     filter: blur(0);
@@ -340,10 +344,12 @@ body {
     transform: translateY(-10px);
     filter: blur(1.5px);
   }
-  50%{
+
+  50% {
     transform: translateY(10px);
     filter: blur(0);
   }
+
   100% {
     transform: translateY(-10px);
     filter: blur(1.5px);
@@ -359,10 +365,12 @@ body {
     transform: translateY(10px);
     filter: blur(1.5px);
   }
-  50%{
+
+  50% {
     transform: translateY(-5px);
     filter: blur(0);
   }
+
   100% {
     transform: translateY(10px);
     filter: blur(1.5px);
@@ -378,10 +386,12 @@ body {
     transform: translateY(-10px);
     filter: blur(0px);
   }
-  50%{
+
+  50% {
     transform: translateY(10px);
     filter: blur(1.5px);
   }
+
   100% {
     transform: translateY(-10px);
     filter: blur(0px);
@@ -395,12 +405,14 @@ body {
 @keyframes bounce-blur5 {
   0% {
     transform: translateY(0);
-  
+
   }
-  50%{
+
+  50% {
     transform: translateY(-10px);
     filter: blur(1.5px);
   }
+
   100% {
     transform: translateY(0);
     filter: blur(0);
@@ -416,10 +428,12 @@ body {
     transform: translateY(-10px);
     filter: blur(1.5px);
   }
-  50%{
+
+  50% {
     transform: translateY(7px);
     filter: blur(0);
   }
+
   100% {
     transform: translateY(-10px);
     filter: blur(1.5px);
@@ -434,9 +448,11 @@ body {
   0% {
     filter: blur(0);
   }
-  50%{
+
+  50% {
     filter: blur(1.5px);
   }
+
   100% {
     filter: blur(0);
   }
@@ -449,12 +465,14 @@ body {
 @keyframes bounce-blur8 {
   0% {
     transform: translateY(0);
-  
+
   }
-  50%{
+
+  50% {
     transform: translateY(-10px);
     filter: blur(1.5px);
   }
+
   100% {
     transform: translateY(0);
     filter: blur(0);
@@ -470,10 +488,12 @@ body {
     transform: translateY(0);
     filter: blur(1.5px);
   }
-  50%{
+
+  50% {
     transform: translateY(7px);
     filter: blur(0);
   }
+
   100% {
     transform: translateY(0);
     filter: blur(1.5px);
@@ -489,10 +509,12 @@ body {
     transform: translateY(0);
     filter: blur(0);
   }
-  50%{
+
+  50% {
     filter: blur(1.5px);
     transform: translateY(3px);
   }
+
   100% {
     filter: blur(0);
     transform: translateY(0);
@@ -508,10 +530,12 @@ body {
     transform: translateY(5px);
     filter: blur(1.5px);
   }
-  50%{
+
+  50% {
     transform: translateY(0px);
     filter: blur(0);
   }
+
   100% {
     transform: translateY(5px);
     filter: blur(1.5px);
@@ -527,10 +551,12 @@ body {
     transform: translateY(-5px);
     filter: blur(0);
   }
-  50%{
+
+  50% {
     filter: blur(1.5px);
     transform: translateY(2px);
   }
+
   100% {
     filter: blur(0);
     transform: translateY(-5px);
@@ -546,10 +572,12 @@ body {
     transform: translateY(0);
     filter: blur(1.5px);
   }
-  50%{
+
+  50% {
     transform: translateY(-5px);
     filter: blur(0);
   }
+
   100% {
     transform: translateY(0);
     filter: blur(1.5px);
@@ -565,10 +593,12 @@ body {
     transform: translateY(-10px);
     filter: blur(1.5px);
   }
-  50%{
+
+  50% {
     transform: translateY(7px);
     filter: blur(0);
   }
+
   100% {
     transform: translateY(-10px);
     filter: blur(1.5px);
@@ -582,12 +612,14 @@ body {
 @keyframes bounce-blur15 {
   0% {
     transform: translateY(0);
-  
+
   }
-  50%{
+
+  50% {
     transform: translateY(-10px);
     filter: blur(1.5px);
   }
+
   100% {
     transform: translateY(0);
     filter: blur(0);
@@ -601,12 +633,14 @@ body {
 @keyframes bounce-blur16 {
   0% {
     transform: translateY(0);
-  
+
   }
-  50%{
+
+  50% {
     transform: translateY(-5px);
     filter: blur(1.5px);
   }
+
   100% {
     transform: translateY(0);
     filter: blur(0);
@@ -622,10 +656,12 @@ body {
     transform: translateY(0px);
     filter: blur(1.5px);
   }
-  50%{
+
+  50% {
     transform: translateY(5px);
     filter: blur(0);
   }
+
   100% {
     transform: translateY(0px);
     filter: blur(1.5px);
@@ -642,10 +678,12 @@ body {
     transform: translateY(10px);
     filter: blur(1.5px);
   }
-  50%{
+
+  50% {
     transform: translateY(-5px);
     filter: blur(0);
   }
+
   100% {
     transform: translateY(10px);
     filter: blur(1.5px);
@@ -659,12 +697,14 @@ body {
 @keyframes bounce-blur19 {
   0% {
     transform: translateY(10px);
-  
+
   }
-  50%{
+
+  50% {
     transform: translateY(-5px);
     filter: blur(1.5px);
   }
+
   100% {
     transform: translateY(10px);
     filter: blur(0);
@@ -680,33 +720,48 @@ body {
     transform: translateY(0px);
     filter: blur(1.5px);
   }
-  50%{
+
+  50% {
     transform: translateY(5px);
     filter: blur(0);
   }
+
   100% {
     transform: translateY(0px);
     filter: blur(1.5px);
   }
 }
 
-
-.hiw-section {
-  background-image: url('../images/hiw.webp');
-  background-size: cover;
-}
-
-.hiw-section7{
+.hiw-section7 {
   background-image: url('../images/hiw-bg.webp');
   background-size: cover;
 }
 
-.hiw-delaware{
+.hiw-delaware {
   background-image: url('../images/delaware.webp');
   background-size: cover;
 }
 
-.hiw-wyoming{
+.hiw-wyoming {
   background-image: url('../images/Wyoming.webp');
   background-size: cover;
+}
+
+.rectangle {
+  background-image: url('../images/rectangle.webp');
+  background-size: cover;
+}
+
+.circle {
+  clip-path: ellipse(58% 100% at 50% 135%);
+}
+
+@media only screen and (max-width: 1024px) {
+  .circle {
+    clip-path: ellipse(65% 58% at 50% 135%);
+  }
+}
+
+#root {
+  overflow: hidden;
 }

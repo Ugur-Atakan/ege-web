@@ -1,37 +1,34 @@
-"use client";
+'use client';
 
-import Image from 'next/image'
-import Link from 'next/link'
 import { React, Fragment, useState, useEffect } from 'react'
 import { Transition, Menu, Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import { ArrowRightIcon } from '@heroicons/react/24/outline'
-import { PopupButton } from "react-calendly";
+import Link from 'next/link'
+import Image from 'next/image'
 import whitelogo from '../../../images/logos/registate-white-logo.png'
 import bluelogo from '../../../images/logo-blue.webp'
-import circle from '../../../images/hero-circle.png'
-import variant1 from '../../../images/variant1.png'
-import variant2 from '../../../images/variant2.png'
-import rocket from '../../../images/rocket.png'
+import { ArrowRightIcon } from '@heroicons/react/24/outline'
+import { PopupButton } from "react-calendly";
+import circle from '../../../images/hero-circle.png';
+import rocket from '../../../images/rocket.png';
 import { useTranslation } from '../../i18n/client'
 
-export function CalendlyText() {
+export function CalendlyText({ lang }) {
   const { t } = useTranslation();
-
   return (
     <div className='cursor-pointer flex items-center gap-2'>
-      <p className='font-semibold text-xs leading-4 text-white'>{t('topbar_first_part')} {' '}<span className='text-[#9EE248] mr-1'>{t('topbar_middle_part')}</span>{t('topbar_last_part')}</p>
+      <p className='font-semibold text-xs leading-4 text-white'>{t('topbar_first_part')}<span className='text-[#9EE248] mr-1'>{t('topbar_middle_part')}</span>{t('topbar_last_part')}</p>
       <ArrowRightIcon className='h-3 text-white' />
     </div>
   )
 }
 
-export default function Hero ({ lang }) {
+export default function Hero({ lang }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isSticky, setIsSticky] = useState(false);
-
   const { t } = useTranslation(lang);
   const [currentLang, setCurrentLang] = useState(lang);
+  const [isSticky, setIsSticky] = useState(false);
+
 
   // useEffect(() => {
   //   const lang = location.pathname.split("/")[1];
@@ -39,11 +36,12 @@ export default function Hero ({ lang }) {
   //     setCurrentLang(lang);
   //     i18n.changeLanguage(lang);
   //   } else if (!lang) {
-  //     setCurrentLang(i18n.language);
-  //     navigate(`/${i18n.language}${location.pathname}`, { replace: true });
+  //     setCurrentLang(lang);
+  //     navigate(`/${lang}${location.pathname}`, { replace: true });
   //   } else if (lang !== "en" && lang !== "tr") {
-  //     navigate(`/${i18n.language}/notfound/`, { replace: true });
+  //     navigate(`/${lang}/notfound/`, { replace: true });
   //   }
+  //   localStorage.clear();
   // }, [i18n, navigate, location.pathname, currentLang]);
 
   // const changeLanguage = (lang) => {
@@ -53,7 +51,7 @@ export default function Hero ({ lang }) {
   //     const newPathname = location.pathname.replace(`/${currentLang}`, `/${lang}`);
   //     navigate(newPathname, { replace: true });
   //   } else {
-  //     navigate(`/${i18n.language}/notfound/`, { replace: true });
+  //     navigate(`/${lang}/notfound/`, { replace: true });
   //   }
   // };
 
@@ -65,12 +63,15 @@ export default function Hero ({ lang }) {
         setIsSticky(false);
       }
     };
+
     window.addEventListener('scroll', handleScroll);
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-  
+
+
   return (
     <div className="hero-section">
       <header className={`absolute inset-x-0 top-0 z-50 ${isSticky ? 'lg:!fixed !bg-[#ECEFF1]' : ''}`}>
@@ -79,8 +80,8 @@ export default function Hero ({ lang }) {
             <div className='flex items-center gap-2'>
               {/* <PopupButton
                 url="https://calendly.com/registate/intro"
-                text={<CalendlyText />}
-                rootElement={document.body}
+                rootElement={document.getElementById("root")}
+                text={<CalendlyText lang={lang} />}
                 className="font-semibold text-xs leading-4 text-white cursor-pointer outline-none border-none"
               >
               </PopupButton> */}
@@ -139,6 +140,7 @@ export default function Hero ({ lang }) {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
+
                     <Menu.Items className="absolute -right-16 z-10 mt-2 w-36 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
@@ -163,9 +165,9 @@ export default function Hero ({ lang }) {
               <Link
                 href={`/${lang}/company-type`}
                 id="header-fmc"
-                className={`bg-white py-2 px-4 rounded-xl text-[#132F8E] font-semibold text-[14px] leading-5 ${isSticky && '!bg-blue-600 !text-white'}`}
+                className={`bg-white py-2 px-4 rounded-xl text-[#132F8E] font-semibold text-[14px] leading-5' ${isSticky && '!bg-blue-600 !text-white'}`}
               >
-                  {t('menu_top_right_handcorner_button')} 
+                {t('menu_top_right_handcorner_button')}
               </Link>
             </div>
           </div>
@@ -226,7 +228,7 @@ export default function Hero ({ lang }) {
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-64 relative z-[3]">
           <div className="text-left lg:text-center px-6 lg:px-0 lg:-mt-24">
             <h1 className="text-4xl leading-[38px] font-bold tracking-tight text-white sm:text-7xl">
-              {t('hero_text_white')} <span className='text-[#9EE248]'> {t('hero_text_green')} </span>
+              {t('hero_text_white')} <span className='text-[#9EE248]'> {t('hero_text_green')}</span>
             </h1>
             <div className='flex items-center justify-center' >
               <div className='max-w-md'>
@@ -242,7 +244,9 @@ export default function Hero ({ lang }) {
               >
                 {t('hero_green_button')}
               </Link>
-              <Link href={`/${lang}/how-it-works`} className="rounded-2xl py-3 lg:py-[14px] leading-[22px] px-6 font-semibold text-[15px] lg:text-lg text-white border bg-transparent">
+              <Link
+                href={`/${lang}/how-it-works`}
+                className="rounded-2xl py-3 lg:py-[14px] leading-[22px] px-6 font-semibold text-[15px] lg:text-lg text-white border bg-transparent">
                 {t('hero_transparent_button')}
               </Link>
             </div>
@@ -251,14 +255,73 @@ export default function Hero ({ lang }) {
         <div className='absolute top-8 -right-[45rem] lg:top-36 lg:right-0 z-0 rocket-animation'>
           <Image src={rocket} className='rocket' alt='rocket' />
         </div>
-        <div className='absolute bottom-4 lg:bottom-16 z-[2]'>
-          <Image src={variant1} className='variant1' alt='variant 1' />
+        <div className='absolute bottom-0 w-full'>
+          <div className='w-full text-white text-[14px] leading-[28px] font-medium'>
+            <div className='flex flex-row justify-between h-20 lg:h-48 px-4 gap-3'>
+              <div className='flex flex-col justify-end h-[70%]'>
+                <div className='peru' >Peru</div>
+              </div>
+              <div className='flex flex-col justify-center h-[25%]'>
+                <div className='canada'>Canada</div>
+              </div>
+              <div className='flex flex-col justify-end h-[30%]'>
+                <div className='usa'>USA</div>
+              </div>
+              <div className='hidden lg:flex flex-col justify-end h-[40%]'>
+                <div className='mexico'>Mexico</div>
+              </div>
+              <div className='hidden lg:flex flex-col justify-end h-[55%]'>
+                <div className='argentina'>Argentina</div>
+              </div>
+              <div className='hidden lg:flex flex-col justify-center h-[45%]'>
+                <div className='brazil'>Brazil</div>
+              </div>
+              <div className='hidden lg:flex flex-col justify-start h-[5%]'>
+                <div className='iceland'>Iceland</div>
+              </div>
+              <div className='flex flex-col justify-end h-[45%]'>
+                <div className='portugal'>Portugal</div>
+              </div>
+              <div className='hidden lg:flex flex-col justify-center h-[35%]'>
+                <div className='spain'>Spain</div>
+              </div>
+              <div className='flex flex-col justify-center h-[20%]'>
+                <div className='france'>France</div>
+              </div>
+              <div className='flex flex-col justify-center h-[45%]'>
+                <div className='italy'>Italy</div>
+              </div>
+              <div className='hidden lg:flex flex-col justify-start h-[5%]'>
+                <div className='croatia'>Croatia</div>
+              </div>
+              <div className='hidden lg:flex flex-col justify-end h-[40%]'>
+                <div className='greece'>Greece</div>
+              </div>
+              <div className='flex flex-col justify-center h-[35%]'>
+                <div className='turkey'>Turkey</div>
+              </div>
+              <div className='hidden lg:flex flex-col justify-end h-[40%]'>
+                <div className='georgia'>Georgia</div>
+              </div>
+              <div className='hidden lg:flex flex-col justify-end h-[50%]'>
+                <div className='india'>Indıa</div>
+              </div>
+              <div className='hidden lg:flex flex-col justify-center h-[35%]'>
+                <div className='thailand'>Thailand</div>
+              </div>
+              <div className='hidden lg:flex flex-col justify-center h-[55%]'>
+                <div className='malaysia'>Malaysia</div>
+              </div>
+              <div className='hidden lg:flex flex-col justify-end h-[60%]'>
+                <div className='australia'>Australia</div>
+              </div>
+              <div className='hidden lg:flex flex-col justify-center h-[65%]'>
+                <div className='japan'>Japan</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className='absolute bottom-4 lg:bottom-14'>
-          <Image src={variant2} className='variant2' alt='variant 2' />
-        </div>
-        <div className='absolute bottom-0'>
-          <Image src={circle} className='circle' alt='circle' />
+        <div className='absolute bottom-0 w-full h-[140px] bg-[#ECEFF1] circle'>
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
 'use client';
+
 import { ToastContainer, toast } from 'react-toastify'
 import { useTranslation } from '../../i18n/client'
 import 'react-toastify/dist/ReactToastify.css'

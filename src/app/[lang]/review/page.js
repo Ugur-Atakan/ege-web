@@ -5,7 +5,7 @@ export default function Review({ params: { lang } }) {
   return (
     <>
         <Navbar lang={lang} />
-        <Content/>
+        <Content lang={lang} />
     </>
   )
 }

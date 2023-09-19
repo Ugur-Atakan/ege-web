@@ -18,7 +18,7 @@ import { useTranslation } from '../../../i18n/client'
 const API_ROOT = 'API_ROOT';
 
 export default function Content({ lang }) {
-  const { t } = useTranslation();
+  const { t } = useTranslation(lang);
 
   let [companyState, setCompanyState] = useState("");
   let [companyType, setCompanyType] = useState("");
@@ -33,7 +33,7 @@ export default function Content({ lang }) {
   const selectedCompanyTypesTR = packageDataTR.packages.find((item) => item[selectedCompanyType]);
   const selectedPackagesLLC = lang === 'en' ? selectedCompanyTypesEN['LLC']: selectedCompanyTypesTR['LLC'];
   const selectedPackagesCorporation = lang === 'en' ? selectedCompanyTypesEN['C-corp']: selectedCompanyTypesTR['C-corp'];
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handlePackageSelection = (selectedPrice, selectedIndex) => {
     setSelectedPackage(selectedPrice);
@@ -53,16 +53,18 @@ export default function Content({ lang }) {
 
 
   let companyName = ''; //window.localStorage.getItem('companyName');
-
+  let companyStateVar = '';
+  let companyTypeVar = '';
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      setCompanyState(window.localStorage.getItem('companyState'));
-      setCompanyType(window.localStorage.getItem('companyType'));
-      companyName = window.localStorage.getItem('companyName');
-    }
+    setCompanyState(window.localStorage.getItem('companyState'));
+    setCompanyType(window.localStorage.getItem('companyType'));
+    companyName = window.localStorage.getItem('companyName');
+    companyStateVar = window.localStorage.getItem('companyState');
+    companyTypeVar = window.localStorage.getItem('companyType');
 
-    if (companyState !== "" && companyType !== "" && companyName !== '') {
-      updatePricing();
+
+    if (companyStateVar !== "" && companyTypeVar !== "" && companyName !== '') {
+      // updatePricing();
     } else {
         if (typeof window !== 'undefined' && window.location)
           window.location.href = `/${lang}/company-name`;
@@ -98,59 +100,59 @@ export default function Content({ lang }) {
   //   }
   // }, [companyName, companyTypes, lang, companyType, companyState, states]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(API_ROOT + '/api/fe/states', {
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6',
-          },
-        });
-        const jsonData = response.data;
-        setStates(jsonData);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get(API_ROOT + '/api/fe/states', {
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //           'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6',
+  //         },
+  //       });
+  //       const jsonData = response.data;
+  //       setStates(jsonData);
 
-        const entityTypeResponse = await axios.get(API_ROOT + '/api/settings/entityType', {
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6',
-          },
-        });
-        const entityTypeData = entityTypeResponse.data;
-        setCompanyTypes(entityTypeData);
+  //       const entityTypeResponse = await axios.get(API_ROOT + '/api/settings/entityType', {
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //           'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6',
+  //         },
+  //       });
+  //       const entityTypeData = entityTypeResponse.data;
+  //       setCompanyTypes(entityTypeData);
 
-        if (companyState && companyType && companyName && jsonData.length > 0 && entityTypeData.length > 0) {
-          let foundState = jsonData.find((s) => s.state === companyState);
-          let foundType = entityTypeData.find((t) => t.entityType === companyType);
+  //       if (companyState && companyType && companyName && jsonData.length > 0 && entityTypeData.length > 0) {
+  //         let foundState = jsonData.find((s) => s.state === companyState);
+  //         let foundType = entityTypeData.find((t) => t.entityType === companyType);
 
-          if (foundState && foundType) {
-            let langs = lang === 'en' ? 'en' : 'tr';
-            let payload = {
-              stateId: foundState.id,
-              entityTypeId: foundType.id,
-              lang: langs,
-            };
+  //         if (foundState && foundType) {
+  //           let langs = lang === 'en' ? 'en' : 'tr';
+  //           let payload = {
+  //             stateId: foundState.id,
+  //             entityTypeId: foundType.id,
+  //             lang: langs,
+  //           };
 
-            const response = await axios.post(API_ROOT + '/api/fe/prices', payload, {
-              headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6',
-              },
-            });
+  //           const response = await axios.post(API_ROOT + '/api/fe/prices', payload, {
+  //             headers: {
+  //               'Content-Type': 'application/json',
+  //               'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6',
+  //             },
+  //           });
 
-            const jsonData = response.data;
-            setPackagePrices(jsonData);
-          }
-        }
-        setIsLoading(false);
-      } catch (error) {
-        console.log(error);
-        setIsLoading(false);
-      }
-    };
+  //           const jsonData = response.data;
+  //           setPackagePrices(jsonData);
+  //         }
+  //       }
+  //       setIsLoading(false);
+  //     } catch (error) {
+  //       console.log(error);
+  //       setIsLoading(false);
+  //     }
+  //   };
 
-    fetchData();
-  }, [companyState, companyType, companyName, lang]);
+  //   fetchData();
+  // }, [companyState, companyType, companyName, lang]);
 
   if (isLoading) {
     return (
@@ -279,7 +281,7 @@ export default function Content({ lang }) {
                               {packageItem.title}
                             </td>
                           </tr>
-                          {packageItem.details.map((features, detailIndex) => (
+                          {packageItem.details && packageItem.details.map((features, detailIndex) => (
                             <tr key={detailIndex}>
                               <td className="font-semibold text-lg text-left leading-6 text-[#222222] lg:pr-12 py-4">
                                 {features.title}

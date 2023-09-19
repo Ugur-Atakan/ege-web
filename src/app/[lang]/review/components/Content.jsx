@@ -1,11 +1,11 @@
 'use client';
 
-import Link from 'next/link'
-import Image from 'next/image'
-import { ArrowLeftIcon } from '@heroicons/react/24/outline';
+import { ArrowLeftIcon } from '@heroicons/react/24/outline'
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
 import tick from '../../../../images/tick.png'
+import { useTranslation } from '../../../i18n/client'
 
 const states = [
     { id: 1, name: 'Alabama' },
@@ -310,15 +310,9 @@ const countries = [
 
 const API_ROOT = 'API_ROOT';
 
-export default function Content() {
-    let companyType = '';//window.localStorage.getItem('companyType');
-    let companyState = '';//window.localStorage.getItem('companyState');
-    let companyName = '';//window.localStorage.getItem('companyName');
-    const storedPackage = '';//window.localStorage.getItem('selectedPackage');
+export default function ReviewOrder({ lang }) {
+    const { t } = useTranslation(lang );
 
-    const selectedPackage = storedPackage ? JSON.parse(storedPackage) : null;
-    const selectedPackageId = selectedPackage && selectedPackage.length > 0 ? selectedPackage[0].id : null;
-    
     const [displayForm, setDisplayForm] = useState(false);
     const [name, setName] = useState('');
     const [lastname, setLastName] = useState('');
@@ -386,7 +380,7 @@ export default function Content() {
             .then(function (response) {
                 var jsonData = JSON.parse(JSON.stringify(response.data));
                 if (jsonData.Status) {
-                    // window.localStorage.setItem('onboardingId', jsonData.data.id);
+                    localStorage.setItem('onboardingId', jsonData.data.id);
                 }
 
             })
@@ -403,9 +397,9 @@ export default function Content() {
         let companyContactEmail = email;
         let companyContactPhone = phone;
         let companyContactAddress = street + ", " + city + ", " + zip + ", " + country;
-        let onboardingId = 1;//window.localStorage.getItem('onboardingId');
+        let onboardingId = localStorage.getItem('onboardingId');
         let couponCode = couponcode;
-        let langs = i18n.language === "en" ? "en" : "tr";
+        let langs = lang === "en" ? "en" : "tr";
 
         let payload = {
             "companyContactName": companyContactName,
@@ -426,13 +420,15 @@ export default function Content() {
             }
         })
             .then(function (response) {
+                //Parse the returned json data
                 var jsonData = JSON.parse(JSON.stringify(response.data));
                 console.log(jsonData)
+                // If the status is true, then redirect to the payment page
                 if (jsonData.Status) {
                     let stripeUrl = jsonData.data.stripeUrl;
                     console.log(stripeUrl)
                     localStorage.setItem('stripeUrl', stripeUrl);
-                    location.href = stripeUrl;
+                    window.location.href = stripeUrl;
                 }
             })
             .catch(function (error) {
@@ -446,290 +442,302 @@ export default function Content() {
         formSubmitHandler(e);
     };
 
+    let companyType = ''
+    let companyState = ''
+    let companyName = ''
+    let storedPackage = ''
+    let selectedPackage = ''
     useEffect(() => {
+        companyType = window.localStorage.getItem('companyType');
+        companyState = window.localStorage.getItem('companyState');
+        companyName = window.localStorage.getItem('companyName');
+        storedPackage = window.localStorage.getItem('selectedPackage');
 
-    }), [];
-
-    useEffect(() => {
-        if (!(companyType && companyState && companyName && storedPackage)) {
-            // window.location.href = `/formation`;
+        selectedPackage = storedPackage ? JSON.parse(storedPackage) : null;
+        const selectedPackageId = selectedPackage && selectedPackage.length > 0 ? selectedPackage[0].id : null;
+        
+        //! Add stored package here.
+        if (!(companyType && companyState && companyName)) {
+            window.location.href = `/${lang}/formation`;
         }
-    }, [companyType, companyState, companyName, storedPackage])
+    }, [companyType, companyState, companyName, storedPackage]);
+
+
 
     return (
-        <div className='block md:flex items-start gap-12'>
-             <div className="block md:hidden py-6 px-4">
-                            <Link className='flex items-center gap-2' href={`/formation`}>
-                                <ArrowLeftIcon className='text-[#1649FF] h-[18px] w-[18px]' />
-                                <span className='text-[#1649FF] text-lg font-semibold'>Back</span>
-                            </Link>
-                        </div>
-            <div className='w-full md:w-[45%]'>
-                {displayForm
-                    ?
-                    <div className='py-8 px-4 md:pl-10 md:py-8'>
-                        <h1 className='font-semibold text-[40px] leading-[44px] text-[#222222]'>Review your information</h1>
-                        <div className='bg-white border rounded-[32px] p-6 my-6'>
-                            <h2 className='font-semibold text-[24px] leading-[44px] text-[#222222]'>Company Details</h2>
-                            <p className='font-normal text-[16px] leading-6 text-[#222222]'>Make sure your name matches your government issued I.D.</p>
-                            <div className='py-4'>
-                                <div className='flex item-center gap-4 md:gap-4 pb-4'>
-                                    <div className="w-1/2">
-                                        <label htmlFor="firstname" className="block font-semibold text-[14px] leading-6 text-[#222222]">
-                                            {'provide_contact_information_form_input1_placeholder'}
-                                        </label>
-                                        <input
-                                            type="text"
-                                            name="firstname"
-                                            id="firstname"
-                                            autoComplete="given-name"
-                                            required
-                                            onChange={onNameChange}
-                                            className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
-                                        />
-                                    </div>
-
-                                    <div className="w-1/2">
-                                        <label htmlFor="lastname" className="block font-semibold text-[14px] leading-6 text-[#222222]">
-                                            {'provide_contact_information_form_input2_placeholder'}
-                                        </label>
-                                        <input
-                                            type="text"
-                                            name="lastname"
-                                            id="lastname"
-                                            autoComplete="family-name"
-                                            required
-                                            onChange={onlastNameChange}
-                                            className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
-                                        />
-                                    </div>
-                                </div>
-                                <div className='flex item-center gap-4 md:gap-4 pb-4'>
-                                    <div className="w-full">
-                                        <label htmlFor="emailaddress" className="block font-semibold text-[14px] leading-6 text-[#222222]">
-                                            {'provide_contact_information_form_input3_placeholder'}
-                                        </label>
-                                        <input
-                                            type="text"
-                                            name="emailaddress"
-                                            id="emailaddress"
-                                            autoComplete="email"
-                                            required
-                                            onChange={onEmailChange}
-                                            className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
-                                        />
-                                    </div>
-                                </div>
-                                <div className='flex item-center gap-4 md:gap-4 pb-4'>
-                                    <div className="w-full">
-                                        <label htmlFor="phonenumber" className="block font-semibold text-[14px] leading-6 text-[#222222]">
-                                            {'provide_contact_information_form_input4_placeholder'}
-                                        </label>
-                                        <div className="relative mt-1 rounded-md shadow-sm">
+            <div className='block md:flex items-start gap-12 bg-[#ECEFF1]'>
+                <div className="block md:hidden py-6 px-4">
+                    <Link href={`/${lang}/formation`} className='flex items-center gap-2' >
+                        <ArrowLeftIcon className='text-[#1649FF] h-[18px] w-[18px]' />
+                        <span className='text-[#1649FF] text-lg font-semibold'>{t("formation_back_button")}</span>
+                    </Link>
+                </div>
+                <div className='w-full md:w-[45%]'>
+                    {displayForm
+                        ?
+                        <div className='py-8 px-4 md:pl-10 md:py-8'>
+                            <h1 className='font-semibold text-[40px] leading-[44px] text-[#222222]'>{t("review_information")}</h1>
+                            <div className='bg-white border rounded-[32px] p-6 my-6'>
+                                <h2 className='font-semibold text-[24px] leading-[44px] text-[#222222]'>{t("review_company_details_title")}</h2>
+                                <p className='font-normal text-[16px] leading-6 text-[#222222]'>{t("review_company_details_description")}</p>
+                                <div className='py-4'>
+                                    <div className='flex item-center gap-4 md:gap-4 pb-4'>
+                                        <div className="w-1/2">
+                                            <label htmlFor="firstname" className="block font-semibold text-[14px] leading-6 text-[#222222]">
+                                                {t("review_information_input1")}
+                                            </label>
                                             <input
                                                 type="text"
-                                                name="phonenumber"
-                                                id="phonenumber"
-                                                autoComplete="tel"
+                                                name="firstname"
+                                                id="firstname"
+                                                autoComplete="given-name"
                                                 required
-                                                onChange={onPhoneChange}
+                                                onChange={onNameChange}
                                                 className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
-                                                placeholder="+1 (123) 111-22-33"
+                                            />
+                                        </div>
+
+                                        <div className="w-1/2">
+                                            <label htmlFor="lastname" className="block font-semibold text-[14px] leading-6 text-[#222222]">
+                                                {t("review_information_input2")}
+                                            </label>
+                                            <input
+                                                type="text"
+                                                name="lastname"
+                                                id="lastname"
+                                                autoComplete="family-name"
+                                                required
+                                                onChange={onlastNameChange}
+                                                className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
                                             />
                                         </div>
                                     </div>
-                                </div>
-                                <div className='flex items-center justify-center gap-4 pb-4'>
-                                    <div className="w-full md:w-1/2">
-                                        <label htmlFor="country" className="block font-semibold text-[14px] leading-6 text-[#222222]">
-                                            {'provide_contact_information_form_input6_placeholder'}
-                                        </label>
-                                        <select
-                                            id="country"
-                                            name="country"
-                                            autoComplete="country-name"
-                                            className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
-                                            onChange={onCountryChange}
-                                        >
-                                            <option>Select Country</option>
-                                            {countries.map((country) => (
-                                                <option
-                                                    key={country.name}
-                                                    value={country.name}
-                                                    id={country.id}
-                                                    selected={country.value}
-                                                >
-                                                    {country.name}
-                                                </option>
-                                            ))}
-                                        </select>
+                                    <div className='flex item-center gap-4 md:gap-4 pb-4'>
+                                        <div className="w-full">
+                                            <label htmlFor="emailaddress" className="block font-semibold text-[14px] leading-6 text-[#222222]">
+                                                {t("review_information_input3")}
+                                            </label>
+                                            <input
+                                                type="text"
+                                                name="emailaddress"
+                                                id="emailaddress"
+                                                autoComplete="email"
+                                                required
+                                                onChange={onEmailChange}
+                                                className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
+                                            />
+                                        </div>
                                     </div>
-                                    <div className="w-full md:w-1/2">
-                                        <label htmlFor="region" className="block font-semibold text-[14px] leading-6 text-[#222222]">
-                                            {'provide_contact_information_form_input7_placeholder'}
-                                        </label>
-                                        <select
-                                            name="region"
-                                            id="region"
-                                            autoComplete="address-level1"
-                                            className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
-                                        >
-
-                                            <option value=""> {country === 'United States' ? 'Select State' : 'No State'}</option>
-                                            {country === 'United States' &&
-                                                states.map((state) => (
-                                                    <option
-                                                        key={state.name}
-                                                        value={state.name}
-                                                    >
-                                                        {state.name}
-                                                    </option>
-                                                ))
-                                            }
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className='flex items-center justify-center gap-4 pb-4'>
-                                    <div className="w-full md:w-2/4" >
-                                        <label htmlFor="postalcode" className="block font-semibold text-[14px] leading-6 text-[#222222]">
-                                            {'provide_contact_information_form_input9_placeholder'}
-                                        </label>
-                                        <input
-                                            type="text"
-                                            name="postalcode"
-                                            id="postalcode"
-                                            autoComplete="postalcode"
-                                            required
-                                            onChange={onZipChange}
-                                            className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
-                                        />
-                                    </div>
-                                    <div className="w-full md:w-2/4">
-                                        <label htmlFor="city" className="block font-semibold text-[14px] leading-6 text-[#222222]">
-                                            {'provide_contact_information_form_input8_placeholder'}
-                                        </label>
-                                        <input
-                                            type="text"
-                                            name="city"
-                                            id="city"
-                                            required
-                                            onChange={onCityChange}
-                                            autoComplete="address-level2"
-                                            className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="w-full">
-                                    <label htmlFor="streetaddress" className="block font-semibold text-[14px] leading-6 text-[#222222]">
-                                        {'provide_contact_information_form_input5_placeholder'}
-                                    </label>
-                                    <input
-                                        type="text"
-                                        name="streetaddress"
-                                        id="streetaddress"
-                                        onChange={onStreetChange}
-                                        required
-                                        autoComplete="street-address"
-                                        className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    :
-                    <div className='py-8 px-4 md:pl-10 md:py-8'>
-                        <h1 className='font-semibold text-[26px] md:text-[40px] leading-[44px] text-[#222222]'>Order Review</h1>
-                        <div className='bg-white border rounded-[32px] p-6 my-6'>
-                            <h2 className='font-semibold text-[24px] leading-[44px] text-[#222222]'>Company Details</h2>
-                            <div className='flex items-center justify-between py-2'>
-                                <div className='flex items-center gap-4'>
-                                    <p className='font-semibold text-sm leading-6 text-[#8A8A8A]'>Entity type</p>
-                                    <span className='font-semibold text-sm leading-6 text-[#222222]'>{companyType}</span>
-                                </div>
-                                <Link className='font-semibold text-sm leading-6 text-[#1649FF]' href={`/company-type`} >
-                                    Edit
-                                </Link>
-                            </div>
-                            <div className='flex items-center justify-between py-2'>
-                                <div className='flex items-center gap-4'>
-                                    <p className='font-semibold text-sm leading-6 text-[#8A8A8A]'>Company Name</p>
-                                    <span className='font-semibold text-sm leading-6 text-[#222222]'>{companyName}</span>
-                                </div>
-                                <Link className='font-semibold text-sm leading-6 text-[#1649FF]' href={`/company-name`}>
-                                    Edit
-                                </Link>
-                            </div>
-                            <div className='flex items-center justify-between py-2'>
-                                <div className='flex items-center gap-4 '>
-                                    <p className='font-semibold text-sm leading-6 text-[#8A8A8A]'>Filing Juristiction</p>
-                                    <span className='font-semibold text-sm leading-6 text-[#222222]'>{companyState}</span>
-                                </div>
-                                <Link className='font-semibold text-sm leading-6 text-[#1649FF]' href={`/state`}>
-                                    Edit
-                                </Link>
-                            </div>
-                        </div>
-                        <div className='bg-white border rounded-[32px] p-6 my-6'>
-                            {selectedPackage && selectedPackage.map((price, index) => (
-                                <>
-                                    <div className='flex items-center justify-between'>
-                                        <h2 className='font-semibold text-[24px] leading-[44px] text-[#222222]'>{price.orderPackage}</h2>
-                                        <h2 className='font-semibold text-[24px] leading-[44px] text-[#222222]'>{'$' + (price.orderPackagePrice / 100).toFixed(0)}</h2>
-                                    </div>
-                                    <div className='block py-6'>
-                                        {price.features.map((feature, index) => (
-                                            <div key={index} className='flex items-center gap-4 py-2'>
-                                                <Image src={tick} className='w-5 h-5' alt='list' />
-                                                <p className='font-semibold text-lg leading-6 text-[#222222]'>{feature}</p>
+                                    <div className='flex item-center gap-4 md:gap-4 pb-4'>
+                                        <div className="w-full">
+                                            <label htmlFor="phonenumber" className="block font-semibold text-[14px] leading-6 text-[#222222]">
+                                                {t("review_information_input4")}
+                                            </label>
+                                            <div className="relative mt-1 rounded-md shadow-sm">
+                                                <input
+                                                    type="text"
+                                                    name="phonenumber"
+                                                    id="phonenumber"
+                                                    autoComplete="tel"
+                                                    required
+                                                    onChange={onPhoneChange}
+                                                    className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
+                                                    placeholder="+1 (123) 111-22-33"
+                                                />
                                             </div>
-                                        ))}
+                                        </div>
                                     </div>
-                                </>
-                            ))
-                            }
-                        </div>
-                    </div>
-                }
-            </div>
-            <div className='w-full py-0 px-4 md:px-0 -mt-6 md:mt-0 mb-12 md:mb-0 md:w-[55%]'>
-                <div className='bg-white rounded-[32px] md:rounded-none p-6 relative'>
-                    <div className='flex items-center justify-between'>
-                        <h2 className='font-semibold text-lg leading-[44px] text-[#222222]'>Order Summary</h2>
-                        <h2 className='font-semibold text-lg leading-[44px] text-[#1649FF]'>USD</h2>
-                    </div>
-                    <div className='pt-6 py-4 border-b border-[#C8C8C8]'>
-                        <h4 className='font-semibold text-[15px] leading-6 text-[#545454]'>1 item(s)</h4>
-                    </div>
-                    <div className='flex items-center justify-between py-4'>
-                        {selectedPackage && selectedPackage.map((price, index) => (
-                            <>
-                                <div>
-                                    <h1 className='font-semibold text-[16px] leading-6 text-[#222222]'>One time payment</h1>
-                                    <p className='font-semibold text-[16px] leading-6 text-[#222222]'>{price.orderPackage}</p>
+                                    <div className='flex items-center justify-center gap-4 pb-4'>
+                                        <div className="w-full md:w-1/2">
+                                            <label htmlFor="country" className="block font-semibold text-[14px] leading-6 text-[#222222]">
+                                                {t("review_information_input5")}
+                                            </label>
+                                            <select
+                                                id="country"
+                                                name="country"
+                                                autoComplete="country-name"
+                                                className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
+                                                onChange={onCountryChange}
+                                            >
+                                                <option>{t("review_information_input5_placeholder")}</option>
+                                                {countries.map((country) => (
+                                                    <option
+                                                        key={country.name}
+                                                        value={country.name}
+                                                        id={country.id}
+                                                        selected={country.value}
+                                                    >
+                                                        {country.name}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        </div>
+                                        <div className="w-full md:w-1/2">
+                                            <label htmlFor="region" className="block font-semibold text-[14px] leading-6 text-[#222222]">
+                                                {t("review_information_input6")}
+                                            </label>
+                                            <select
+                                                name="region"
+                                                id="region"
+                                                autoComplete="address-level1"
+                                                className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
+                                            >
+
+                                                <option value=""> {country === 'United States' ? 'Select State' : 'No State'}</option>
+                                                {country === 'United States' &&
+                                                    states.map((state) => (
+                                                        <option
+                                                            key={state.name}
+                                                            value={state.name}
+                                                        >
+                                                            {state.name}
+                                                        </option>
+                                                    ))
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div className='flex items-center justify-center gap-4 pb-4'>
+                                        <div className="w-full md:w-2/4" >
+                                            <label htmlFor="postalcode" className="block font-semibold text-[14px] leading-6 text-[#222222]">
+                                                {t("review_information_input7")}
+                                            </label>
+                                            <input
+                                                type="text"
+                                                name="postalcode"
+                                                id="postalcode"
+                                                autoComplete="postalcode"
+                                                required
+                                                onChange={onZipChange}
+                                                className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
+                                            />
+                                        </div>
+                                        <div className="w-full md:w-2/4">
+                                            <label htmlFor="city" className="block font-semibold text-[14px] leading-6 text-[#222222]">
+                                                {t("review_information_input8")}
+                                            </label>
+                                            <input
+                                                type="text"
+                                                name="city"
+                                                id="city"
+                                                required
+                                                onChange={onCityChange}
+                                                autoComplete="address-level2"
+                                                className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="w-full">
+                                        <label htmlFor="streetaddress" className="block font-semibold text-[14px] leading-6 text-[#222222]">
+                                            {t("review_information_input9")}
+                                        </label>
+                                        <input
+                                            type="text"
+                                            name="streetaddress"
+                                            id="streetaddress"
+                                            onChange={onStreetChange}
+                                            required
+                                            autoComplete="street-address"
+                                            className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
+                                        />
+                                    </div>
                                 </div>
-                                <div><h1 className='font-semibold text-[16px] leading-6 text-[#222222]'>{'$' + (price.orderPackagePrice / 100).toFixed(0)}</h1></div>
-                            </>
-                        ))}
-                    </div>
-                    <div className='md:mt-96'>
-                        <div className='flex flex-col gap-6'>
-                            <button className='font-semibold  text-left text-[16px] leading-6 text-[#1649FF]' onClick={() => setCouponCode(true)}>Add Coupon Code</button>
-                            {couponcode && <input type='text' name="couponCode" id="couponCode" className="-mt-2 mb-4 md:mb-0 md:mt-1 block w-full md:w-1/2 rounded-[20px] border-[#C8C8C8] py-2 shadow-sm" onChange={couponcode} />}
+                            </div>
+                        </div>
+                        :
+                        <div className='py-8 px-4 md:pl-10 md:py-8'>
+                            <h1 className='font-semibold text-[26px] md:text-[40px] leading-[44px] text-[#222222]'>{t('review_title')}</h1>
+                            <div className='bg-white border rounded-[32px] p-6 my-6'>
+                                <h2 className='font-semibold text-[24px] leading-[44px] text-[#222222]'>{t("review_company_details_title")}</h2>
+                                <div className='flex items-center justify-between py-2'>
+                                    <div className='flex items-center gap-4'>
+                                        <p className='font-semibold text-sm leading-6 text-[#8A8A8A]'>{t("review_company_details_entity_type")}</p>
+                                        <span className='font-semibold text-sm leading-6 text-[#222222]'>{companyType}</span>
+                                    </div>
+                                    <Link href={`/${lang}/company-type`} className='font-semibold text-sm leading-6 text-[#1649FF]'  >
+                                        {t("review_edit_button")}
+                                    </Link>
+                                </div>
+                                <div className='flex items-center justify-between py-2'>
+                                    <div className='flex items-center gap-4'>
+                                        <p className='font-semibold text-sm leading-6 text-[#8A8A8A]'>{t("review_company_details_company_name")}</p>
+                                        <span className='font-semibold text-sm leading-6 text-[#222222]'>{companyName}</span>
+                                    </div>
+                                    <Link href={`/${lang}/company-name`} className='font-semibold text-sm leading-6 text-[#1649FF]' >
+                                        {t("review_edit_button")}
+                                    </Link>
+                                </div>
+                                <div className='flex items-center justify-between py-2'>
+                                    <div className='flex items-center gap-4 '>
+                                        <p className='font-semibold text-sm leading-6 text-[#8A8A8A]'>{t("review_company_details_filing_juristiction")}</p>
+                                        <span className='font-semibold text-sm leading-6 text-[#222222]'>{companyState}</span>
+                                    </div>
+                                    <Link href={`/${lang}/state`} className='font-semibold text-sm leading-6 text-[#1649FF]' >
+                                        {t("review_edit_button")}
+                                    </Link>
+                                </div>
+                            </div>
+                            <div className='bg-white border rounded-[32px] p-6 my-6'>
+                                {selectedPackage && selectedPackage.map((price, index) => (
+                                    <>
+                                        <div className='flex items-center justify-between'>
+                                            <h2 className='font-semibold text-[24px] leading-[44px] text-[#222222]'>{price.orderPackage}</h2>
+                                            <h2 className='font-semibold text-[24px] leading-[44px] text-[#222222]'>{'$' + (price.orderPackagePrice / 100).toFixed(0)}</h2>
+                                        </div>
+                                        <div className='block py-6'>
+                                            {price.features.map((feature, index) => (
+                                                <div className='flex items-center gap-4 py-2'>
+                                                    <img src={tick} className='w-5 h-5' alt='list' />
+                                                    <p className='font-semibold text-lg leading-6 text-[#222222]'>{feature}</p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </>
+                                ))
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div className='w-full py-0 px-4 md:px-0 -mt-6 md:mt-0 mb-12 md:mb-0 md:w-[55%]'>
+                    <div className='bg-white rounded-[32px] md:rounded-none p-6 relative'>
+                        <div className='flex items-center justify-between'>
+                            <h2 className='font-semibold text-lg leading-[44px] text-[#222222]'>{t("review_order_summary")}</h2>
+                            <h2 className='font-semibold text-lg leading-[44px] text-[#1649FF]'>USD</h2>
+                        </div>
+                        <div className='pt-6 py-4 border-b border-[#C8C8C8]'>
+                            <h4 className='font-semibold text-[15px] leading-6 text-[#545454]'>{t("review_preview")}</h4>
                         </div>
                         <div className='flex items-center justify-between py-4'>
-                            <div>
-                                <h1 className='font-semibold text-lg leading-6 text-[#222222]'>Today{"'"}s Total</h1>
-                            </div>
                             {selectedPackage && selectedPackage.map((price, index) => (
-                                <div key={index}><h1 className='font-semibold text-lg leading-6 text-[#222222]'>{'$' + (price.orderPackagePrice / 100).toFixed(0)}</h1></div>
+                                <>
+                                    <div>
+                                        <h1 className='font-semibold text-[16px] leading-6 text-[#222222]'>{t("review_payment_type")}</h1>
+                                        <p className='font-semibold text-[16px] leading-6 text-[#222222]'>{price.orderPackage}</p>
+                                    </div>
+                                    <div><h1 className='font-semibold text-[16px] leading-6 text-[#222222]'>{'$' + (price.orderPackagePrice / 100).toFixed(0)}</h1></div>
+                                </>
                             ))}
                         </div>
-                        <div className='flex items-center justify-center py-4'>
-                            <Link href='#' onClick={displayForm ? handleSubmit : displayHandleForm} className='bg-[#1649FF] w-full text-center text-white font-semibold text-lg py-2 rounded-[20px]'>Continue</Link>
+                        <div className='md:mt-96'>
+                            <div className='flex flex-col gap-6'>
+                                <button className='font-semibold  text-left text-[16px] leading-6 text-[#1649FF]' onClick={() => setCouponCode(true)}>{t("review_coupon_code")}</button>
+                                {couponcode && <input type='text' name="couponCode" id="couponCode" className="-mt-2 mb-4 md:mb-0 md:mt-1 block w-full md:w-1/2 rounded-[20px] border-[#C8C8C8] py-2 shadow-sm" onChange={couponcode} />}
+                            </div>
+                            <div className='flex items-center justify-between py-4'>
+                                <div>
+                                    <h1 className='font-semibold text-lg leading-6 text-[#222222]'>{t("review_total")}</h1>
+                                </div>
+                                {selectedPackage && selectedPackage.map((price, index) => (
+                                    <div><h1 className='font-semibold text-lg leading-6 text-[#222222]'>{'$' + (price.orderPackagePrice / 100).toFixed(0)}</h1></div>
+                                ))}
+                            </div>
+                            <div className='flex items-center justify-center py-4'>
+                                <Link href="#" onClick={displayForm ? handleSubmit : displayHandleForm} className='bg-[#1649FF] w-full text-center text-white font-semibold text-lg py-2 rounded-[20px]'>{t("review_continue")}</Link>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     )
 }

@@ -4,7 +4,7 @@
             "C-corp": [
                 {
                     "title": "Business Formation and Compliance",
-                    "details": [
+                    "features": [
                         {
                             "title": "Expedited Business Registration - RER(Registate Expedited Registration)",
                             "starter": true,
@@ -63,7 +63,7 @@
                 },
                 {
                     "title": "Document Management and Delivery",
-                    "details": [
+                    "features": [
                         {
                             "title": "Access to Registate Online Dashboard",
                             "starter": true,
@@ -98,7 +98,7 @@
                 },
                 {
                     "title": "Legal and Administrative Support",
-                    "details": [
+                    "features": [
                         {
                             "title": "Bilingual Lifetime Customer Support (Phone & Email)",
                             "starter": true,
@@ -218,7 +218,7 @@
                     "features": [
                         {
                             "title": "Expedited Business Registration - RER(Registate Expedited Registration)",
-                            "gold":true,
+                            "gold":false,
                             "premium":true
                         },
                         {
