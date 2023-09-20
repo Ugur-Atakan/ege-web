@@ -1,35 +1,34 @@
+/* eslint-disable */
 'use client';
 
-import { ArrowLeftIcon } from '@heroicons/react/24/outline'
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import axios from 'axios'
+
+import { ArrowLeftIcon } from '@heroicons/react/24/outline'
 import bishopwhite from '../../../../images/bishop-white.png'
 import quencolor from '../../../../images/queen-color.png'
 import kingblack from '../../../../images/king-black.png'
-import axios from 'axios'
+
 import packageDataEN from '../../../../assets/packageDataEN.json'
 import packageDataTR from '../../../../assets/packageDataTR.json'
-import arrowblack from '../../../../images/arrow-black.png'
-import arrowblue from '../../../../images/arrow-blue.png'
-import noinclude from '../../../../images/no-include.png'
-import { useTranslation } from '../../../i18n/client'
 
+import { useTranslation } from '../../../i18n/client'
 
 export default function Formation({ lang }) {
   const { t } = useTranslation(lang);
 
   let [packagePrices, setPackagePrices] = useState([]);
-  let [states, setStates] = useState([]);
-  let [companyTypes, setCompanyTypes] = useState([]);
   let [selectedPackage, setSelectedPackage] = useState(null);
   const [selectedPackageIndex, setSelectedPackageIndex] = useState(-1);
-  const companyTypePlaceHolder = window.localStorage.getItem('companyType');
+  const companyTypePlaceHolder = typeof window !== 'undefined' ? window.localStorage.getItem('companyType') : null;
+
   const selectedCompanyType = companyTypePlaceHolder === 'LLC' ? 'LLC' : 'C-corp';
   const selectedCompanyTypesEN = packageDataEN.packages.find((item) => item[selectedCompanyType]);
   const selectedCompanyTypesTR = packageDataTR.packages.find((item) => item[selectedCompanyType]);
-  const selectedPackagesLLC = lang === 'en' ? selectedCompanyTypesEN['LLC']: selectedCompanyTypesTR['LLC'];
-  const selectedPackagesCorporation = lang === 'en' ? selectedCompanyTypesEN['C-corp']: selectedCompanyTypesTR['C-corp'];
+  const selectedPackageVar = lang === 'en' ? selectedCompanyTypesEN : selectedCompanyTypesTR;
+  
   const [isLoading, setIsLoading] = useState(true);
 
   const handlePackageSelection = (selectedPrice, selectedIndex) => {
@@ -50,24 +49,22 @@ export default function Formation({ lang }) {
       try {
         const res = await axios.get(`/${lang}/state/api/`);
         const statesJSON = res.data;
-        setStates(statesJSON);
-        
+
         const entityRes = await axios.get('/api/entityType');
         const entityTypeJSON = entityRes.data;
-        setCompanyTypes(entityTypeJSON);
 
-        if (companyState && companyType && companyName && jsonData.length > 0 && entityTypeJSON.length > 0) {
+        if (companyState && companyType && companyName && statesJSON.length > 0 && entityTypeJSON.length > 0) {
           let foundState = statesJSON.find((s) => s.state === companyState);
           let foundType = entityTypeJSON.find((t) => t.entityType === companyType);
 
           if (foundState && foundType) {
-            const response = await axios.post('/api/fe/prices', {
-              stateID: foundState.id,
-              entityTypeID: foundType.id,
-            });
+            const response = await axios.get('/api/prices', {
+              params: {
+                stateID: foundState.id,
+                entityTypeID: foundType.id,
+            }});
 
             const JSONData = response.data;
-            console.log(JSONData)
             setPackagePrices(JSONData);
           }
         }
@@ -97,13 +94,16 @@ export default function Formation({ lang }) {
           <span className='text-[#1649FF] text-lg font-semibold'>{t('formation_back_button')}</span>
         </Link>
       </div>
+     
       <div className='mx-auto max-w-5xl p-4'>
         <div className='text-left md:text-center'>
           <h1 className='font-semibold text-[26px] md:text-[40px] leading-[44px] text-[#222222]'>{t('formation_title')}</h1>
         </div>
+
         <div className={packagePrices.length < 3 ? 'grid md:grid-cols-2 gap-5 py-12' : 'grid md:grid-cols-3 gap-5 py-12'}>
           {packagePrices.map((prices, index) => (
             <div
+              key={index}
               className={`flex flex-col gap-5 p-12 rounded-[20px] h-[35rem] overflow-hidden cursor-pointer ${index === selectedPackageIndex ? '!border-[3px] border-[#9EE248]' : ''
                 } ${index === 0
                   ? 'border border-[#9EE248] hover:bg-[#9EE248]'
@@ -115,7 +115,7 @@ export default function Formation({ lang }) {
               onClick={() => handlePackageSelection(prices, index)}
             >
               <h2 className={index === 0 ? 'font-semibold text-[40px] leading-[44px] text-[#222222]' : 'font-semibold text-[40px] leading-[44px] text-white'}>{prices.orderPackage.replace('Registate', '')}</h2>
-              <p className={index === 0 ? 'text-lg font-semibold leading-6 text-[#222222]' : 'text-lg font-semibold leading-6 text-white'}>{prices.description + ' ' + prices.description2}</p>
+              <p className={index === 0 ? 'text-lg font-semibold leading-6 text-[#222222]' : 'text-lg font-semibold leading-6 text-white'}>{prices.state.state + ' ' + prices.entityType.entityType}</p>
               <p className={index === 0 ? 'font-semibold text-[28px] leading-8 text-[#222222]' : 'font-semibold text-[28px] leading-8 text-white'}>{'$' + (prices.orderPackagePrice / 100).toFixed(0)}</p>
               <Image src={index === 0 && bishopwhite || index === 1 && quencolor || index === 2 && kingblack} className='' alt='llc package' />
             </div>
@@ -127,8 +127,9 @@ export default function Formation({ lang }) {
           className='w-full flex flex-col items-center justify-center font-semibold bg-[#1649FF] text-white rounded-[20px] p-5 cursor-pointer'
           onClick={() => {
             if (selectedPackage) {
-              localStorage.setItem('selectedPackage', JSON.stringify([selectedPackage]));
-              window.location.href = `/${lang}/review`;
+              if (typeof window !== 'undefined' && window.localStorage && window.location)
+                window.localStorage.setItem('selectedPackage', JSON.stringify([selectedPackage]));
+                window.location.href = `/${lang}/review`;
             }
           }}
         >
@@ -155,6 +156,7 @@ export default function Formation({ lang }) {
                       </th>
                       {packagePrices.map((price, index) => (
                         <th
+                          key={index}
                           scope="col"
                           className={index === packagePrices.length - 1
                             ? "w-1/5 sticky top-0 z-10 border-b border-gray-300 bg-white px-3 py-3.5 text-center whitespace-nowrap md:whitespace-normal text-2xl font-semibold text-[#1649FF] backdrop-blur backdrop-filter sm:table-cell"
@@ -166,9 +168,10 @@ export default function Formation({ lang }) {
                       ))}
                     </tr>
                   </thead>
-                  <tbody>
+                    {/* Error in this table */}
+                    <tbody>
                     {companyType === 'LLC' ? (
-                      selectedPackagesLLC.map((packageItem, packageIndex) => (
+                      selectedPackageVar['LLC'].map((packageItem, packageIndex) => (
                         <React.Fragment key={packageIndex}>
                           <tr>
                             <td
@@ -198,7 +201,7 @@ export default function Formation({ lang }) {
                         </React.Fragment>
                       ))
                     ) : (
-                      selectedPackagesCorporation.map((packageItem, packageIndex) => (
+                      selectedPackageVar['C-corp'] && selectedPackageVar['C-corp'].map((packageItem, packageIndex) => (
                         <React.Fragment key={packageIndex}>
                           <tr>
                             <td colSpan="2" className="text-2xl font-semibold leading-8 text-[#222222] pb-8 pt-16">
@@ -208,36 +211,37 @@ export default function Formation({ lang }) {
                           {packageItem.details && packageItem.details.map((features, detailIndex) => (
                             <tr key={detailIndex}>
                               <td className="font-semibold text-lg text-left leading-6 text-[#222222] lg:pr-12 py-4">
-                                {features.title}
-                              </td>
-                              <td className='font-semibold text-lg text-center leading-6 text-[#222222] py-4 lg:border-l-[1px] lg:border-[#C8C8C8]'>
-                                <div className='flex items-center justify-center'>
-                                  <Image src={features.starter ? arrowblack : noinclude} className='h-6 w-6' alt='tick' />
-                                </div>
-                              </td>
-                              <td className='font-semibold text-lg text-center leading-6 text-[#222222] py-4 lg:border-l-[1px] lg:border-[#C8C8C8]'>
-                                <div className='flex items-center justify-center'>
-                                  {packagePrices.length < 3 ? (
-                                    <Image src={features.startup ? arrowblue : noinclude} className='h-6 w-6' alt='tick' />
-                                  ) : (
-                                    <Image src={features.startup ? arrowblack : noinclude} className='h-6 w-6' alt='tick' />
-                                  )}
-                                </div>
-                              </td>
-                              {packagePrices.length >= 3 &&
-                                <td className='font-semibold text-lg text-center leading-6 !text-[#1649FF] py-4 lg:border-l-[1px] lg:border-[#C8C8C8]'>
+                                  {features.title}
+                                </td>
+                                <td className='font-semibold text-lg text-center leading-6 text-[#222222] py-4 lg:border-l-[1px] lg:border-[#C8C8C8]'>
                                   <div className='flex items-center justify-center'>
-                                    <Image src={features.scaleup ? arrowblue : noinclude} className='h-6 w-6' alt='tick' />
+                                    <Image src={features.starter ? arrowblack : noinclude} className='h-6 w-6' alt='tick' />
                                   </div>
                                 </td>
-                              }
-                            </tr>
-                          ))}
+                                <td className='font-semibold text-lg text-center leading-6 text-[#222222] py-4 lg:border-l-[1px] lg:border-[#C8C8C8]'>
+                                  <div className='flex items-center justify-center'>
+                                    {packagePrices.length < 3 ? (
+                                      <Image src={features.startup ? arrowblue : noinclude} className='h-6 w-6' alt='tick' />
+                                    ) : (
+                                      <Image src={features.startup ? arrowblack : noinclude} className='h-6 w-6' alt='tick' />
+                                    )}
+                                  </div>
+                                </td>
+                                {packagePrices.length >= 3 &&
+                                  <td className='font-semibold text-lg text-center leading-6 !text-[#1649FF] py-4 lg:border-l-[1px] lg:border-[#C8C8C8]'>
+                                    <div className='flex items-center justify-center'>
+                                      <Image src={features.scaleup ? arrowblue : noinclude} className='h-6 w-6' alt='tick' />
+                                    </div>
+                                  </td>
+                                }
+                              </tr>
+                            ))}
                         </React.Fragment>
                       ))
                     )}
-
                   </tbody>
+
+
                   {companyType === 'LLC' ? (
                     <tbody>
                       <tr>
@@ -248,8 +252,9 @@ export default function Formation({ lang }) {
                             onClick={() => {
                               if (packagePrices.length > 0) {
                                 setSelectedPackage(packagePrices[0]);
-                                localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[0]]));
-                                window.location.href = `/${lang}/review`;
+                                if (typeof window !== 'undefined' && window.localStorage && window.location)
+                                  window.localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[0]]));
+                                  window.location.href = `/${lang}/review`;
                               }
                             }}
                             className='flex items-center justify-center bg-[#9EE248] text-[#222222] font-semibold rounded-2xl p-2.5 m-5 cursor-pointer'>
@@ -261,8 +266,9 @@ export default function Formation({ lang }) {
                             onClick={() => {
                               if (packagePrices.length > 0) {
                                 setSelectedPackage(packagePrices[1]);
-                                localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[1]]));
-                                window.location.href = `/${lang}/review`;
+                                if (typeof window !== 'undefined' && window.localStorage && window.location)
+                                  window.localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[1]]));
+                                  window.location.href = `/${lang}/review`;
                               }
                             }}
                             className='flex items-center justify-center bg-[#1649FF] text-white font-semibold rounded-2xl p-2.5 m-5 cursor-pointer'>
@@ -281,8 +287,9 @@ export default function Formation({ lang }) {
                             onClick={() => {
                               if (packagePrices.length > 0) {
                                 setSelectedPackage(packagePrices[0]);
-                                localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[0]]));
-                                window.location.href = `/${lang}/review`;
+                                if (typeof window !== 'undefined' && window.localStorage && window.location)
+                                  window.localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[0]]));
+                                  window.location.href = `/${lang}/review`;
                               }
                             }}
                             className='flex items-center justify-center bg-[#9EE248] text-[#222222] font-semibold rounded-2xl p-2.5 m-5 cursor-pointer'>
@@ -294,8 +301,9 @@ export default function Formation({ lang }) {
                             onClick={() => {
                               if (packagePrices.length > 0) {
                                 setSelectedPackage(packagePrices[1]);
-                                localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[1]]));
-                                window.location.href = `/${lang}/review`;
+                                if (typeof window !== 'undefined' && window.localStorage && window.location)
+                                  window.localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[1]]));
+                                  window.location.href = `/${lang}/review`;
                               }
                             }}
                             className='flex items-center justify-center bg-[#1649FF] text-white font-semibold rounded-2xl p-2.5 m-5 cursor-pointer'>
@@ -307,8 +315,9 @@ export default function Formation({ lang }) {
                             onClick={() => {
                               if (packagePrices.length > 0) {
                                 setSelectedPackage(packagePrices[2]);
-                                localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[2]]));
-                                window.location.href = `/${lang}/review`;
+                                if (typeof window !== 'undefined' && window.localStorage && window.location)
+                                  window.localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[2]]));
+                                  window.location.href = `/${lang}/review`;
                               }
                             }}
                             className='flex items-center justify-center bg-[#222222] text-white font-semibold rounded-2xl p-2.5 m-5 cursor-pointer'>
@@ -324,7 +333,7 @@ export default function Formation({ lang }) {
             </div>
           </div>
         </div>
-      </div>
+      </div> 
     </div >
   )
 }

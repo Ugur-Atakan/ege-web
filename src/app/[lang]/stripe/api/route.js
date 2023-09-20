@@ -7,22 +7,25 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
 
 export async function POST(req) {
   const { data } = await req.json();
-  // const { amount } = data;
+  console.log(data)
+  const selectedPackage = data.payload.selectedPackage
+  console.log(selectedPackage[0].orderPackage)
 
   try {
     // const paymentIntent = await stripe.paymentIntents.create({
     //   amount: Number(amount) * 100,
     //   currency: "USD",
     // });
+
     const session = await stripe.checkout.sessions.create({
       line_items: [
         {
           price_data: {
             currency: 'USD',
             product_data: {
-              name: 'T-shirt',
+              name: selectedPackage[0].orderPackage,
             },
-            unit_amount: 2000,
+            unit_amount: selectedPackage[0].orderPackagePrice,
           },
           quantity: 1,
         },
@@ -32,7 +35,6 @@ export async function POST(req) {
       cancel_url: 'http://localhost:3000/en/test',
     });
 
-   
     return new NextResponse(session.url, { status: 200 });
   } catch (error) {
     return new NextResponse(error, {
