@@ -1,4 +1,4 @@
-import Content from './components';
+import Content from './components/Content';
 
 export default function Page({ params: { lang } }) {
     return (

@@ -9,8 +9,11 @@ import Navbar from '../components/common/Navbar'
 //     )
 // }
 
-export default function Test() {
+export default function Page() {
     return (
-        <Navbar />
+        <>
+            <Navbar />
+            Success Page
+        </>
     )
 }

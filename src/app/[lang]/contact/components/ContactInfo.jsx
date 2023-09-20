@@ -1,10 +1,12 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import phone from '../../../../images/phone.png';
-import email from '../../../../images/email.png';
-import cursor from '../../../../images/navigator.png';
+import Image from 'next/image'
+import phone from '../../../../images/phone.png'
+import email from '../../../../images/email.png'
+import cursor from '../../../../images/navigator.png'
+import { useTranslation } from '../../../i18n/client'
 
-export default function ContactInfo() {
+export default function ContactInfo({ lang }) {
+    const { t } = useTranslation(lang);
+
     return (
         <div className="bg-white">
             <div className="mx-auto max-w-5xl px-6 py-12">

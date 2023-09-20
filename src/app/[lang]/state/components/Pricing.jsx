@@ -1,3 +1,4 @@
+/* eslint-disable */
 'use client';
 
 import Link from 'next/link';
@@ -5,8 +6,6 @@ import { ArrowLeftIcon } from '@heroicons/react/24/outline';
 import { useEffect, useState } from 'react';
 import { useTranslation } from '../../../i18n/client';
 import axios from 'axios';
-
-const API_ROOT = 'API_ROUTE';
 
 export default function Pricing({ lang }) {
   const { t } = useTranslation(lang);
@@ -24,18 +23,13 @@ export default function Pricing({ lang }) {
     let companyType = localStorage.getItem('companyType');
 
     const updateState = () => {
-      axios.get(API_ROOT + '/api/fe/states', {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
-        }
-      })
-        .then(function (response) {
+      axios.get(`/${lang}/state/api/`)
+      .then((response) => {
           var jsonData = response.data;
           const filteredStates = jsonData.filter(item => item.state !== 'Delaware' && item.state !== 'Wyoming');
           setOtherStates(filteredStates);
         })
-        .catch(function (error) {
+        .catch((error) => {
           console.log(error);
         });
     }

@@ -1,9 +1,11 @@
+/* eslint-disable */
 'use client';
 
 import { ArrowLeftIcon } from '@heroicons/react/24/outline'
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import tick from '../../../../images/tick.png'
 import { useTranslation } from '../../../i18n/client'
 
@@ -308,8 +310,6 @@ const countries = [
     { id: 245, name: 'Zimbabwe' }
 ]
 
-const API_ROOT = 'API_ROOT';
-
 export default function ReviewOrder({ lang }) {
     const { t } = useTranslation(lang );
 
@@ -359,40 +359,9 @@ export default function ReviewOrder({ lang }) {
         setDisplayForm(true);
     }
 
-    function formSubmitOnboardingId(e) {
-        e.preventDefault();
-        let new_company_name = companyName;
-
-        let userEmail = email
-
-        let payload = {
-            companyName: new_company_name,
-            userEmail: userEmail,
-            companyType: companyType,
-            companyState: companyState
-        }
-        axios.post(API_ROOT + '/api/onboard', payload, {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
-            }
-        })
-            .then(function (response) {
-                var jsonData = JSON.parse(JSON.stringify(response.data));
-                if (jsonData.Status) {
-                    localStorage.setItem('onboardingId', jsonData.data.id);
-                }
-
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-    }
-
     const formSubmitHandler = (e) => {
         e.preventDefault();
-        console.log('CompanyContactInfoForm submitted,', e)
-
+      
         let companyContactName = name + " " + lastname;
         let companyContactEmail = email;
         let companyContactPhone = phone;
@@ -407,38 +376,34 @@ export default function ReviewOrder({ lang }) {
             "companyContactPhone": companyContactPhone,
             "companyContactAddress": companyContactAddress,
             "onBoardId": onboardingId,
-            "packageType": selectedPackageId,
+            "packageType": 1, //"selectedPackageId",
             "couponCode": couponCode,
             "lang": langs
         }
 
         //Complete Onboarding Order with backend
-        axios.post(API_ROOT + '/api/onboard-order', payload, {
+        axios.post(`/${lang}/stripe/api`, payload, {
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
+                'Content-Type': 'application/json'
             }
         })
-            .then(function (response) {
-                //Parse the returned json data
-                var jsonData = JSON.parse(JSON.stringify(response.data));
-                console.log(jsonData)
-                // If the status is true, then redirect to the payment page
-                if (jsonData.Status) {
-                    let stripeUrl = jsonData.data.stripeUrl;
-                    console.log(stripeUrl)
-                    localStorage.setItem('stripeUrl', stripeUrl);
-                    window.location.href = stripeUrl;
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        .then(function (response) {
+            let stripeURL = JSON.parse(JSON.stringify(response.data));
+            
+            if (stripeURL) {
+                window.localStorage.setItem('stripeUrl', stripeURL);
+                if (typeof window !== 'undefined' && window.location)
+                    window.location.href = stripeURL;
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await formSubmitOnboardingId(e);
+        // await formSubmitOnboardingId(e);
         formSubmitHandler(e);
     };
 
@@ -447,12 +412,13 @@ export default function ReviewOrder({ lang }) {
     let companyName = ''
     let storedPackage = ''
     let selectedPackage = ''
+
     useEffect(() => {
         companyType = window.localStorage.getItem('companyType');
         companyState = window.localStorage.getItem('companyState');
         companyName = window.localStorage.getItem('companyName');
         storedPackage = window.localStorage.getItem('selectedPackage');
-
+    
         selectedPackage = storedPackage ? JSON.parse(storedPackage) : null;
         const selectedPackageId = selectedPackage && selectedPackage.length > 0 ? selectedPackage[0].id : null;
         
@@ -461,8 +427,6 @@ export default function ReviewOrder({ lang }) {
             window.location.href = `/${lang}/formation`;
         }
     }, [companyType, companyState, companyName, storedPackage]);
-
-
 
     return (
             <div className='block md:flex items-start gap-12 bg-[#ECEFF1]'>
@@ -686,8 +650,8 @@ export default function ReviewOrder({ lang }) {
                                         </div>
                                         <div className='block py-6'>
                                             {price.features.map((feature, index) => (
-                                                <div className='flex items-center gap-4 py-2'>
-                                                    <img src={tick} className='w-5 h-5' alt='list' />
+                                                <div key={index} className='flex items-center gap-4 py-2'>
+                                                    <Image src={tick} className='w-5 h-5' alt='list' />
                                                     <p className='font-semibold text-lg leading-6 text-[#222222]'>{feature}</p>
                                                 </div>
                                             ))}

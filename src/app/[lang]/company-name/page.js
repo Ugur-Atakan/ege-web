@@ -1,11 +1,11 @@
 import Navbar from '../components/common/Navbar'
-import NameForm from './components/NameForm'
+import Content from './components/Content'
 
 export default function CompanyName ({ params: { lang } }) {
   return (
     <main>
         <Navbar lang={lang} />
-        <NameForm lang={lang} />
+        <Content lang={lang} />
     </main>
   )
 }

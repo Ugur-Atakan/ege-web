@@ -1,17 +1,19 @@
+'use client';
+
 import { ArrowLeftIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import Image from 'next/image'
 import book from '../../../../images/book.png'
 import tick from '../../../../images/tick.png'
-import { useTranslation } from '../../../i18n/client';
+import { useTranslation } from '../../../i18n/client'
 
-export default function BookkeepingEssentails({ lang }) {
-  const { t } = useTranslation();
+export default function Content({ lang }) {
+  const { t } = useTranslation(lang);
   
   return (
     <>
       <div className="mx-auto p-6 lg:px-8">
-        <Link className='flex items-center gap-2' to={`/${lang}/company-name`}>
+        <Link href={`/${lang}/company-name`} className='flex items-center gap-2' >
           <ArrowLeftIcon className='text-[#1649FF] h-[18px] w-[18px]' />
           <span className='text-[#1649FF] text-lg font-semibold'>{t('formation_back_button')}</span>
         </Link>
@@ -25,7 +27,7 @@ export default function BookkeepingEssentails({ lang }) {
         </div>
         <div className='w-[35%]'>
           <h2 className='font-semibold text-[40px] leading-[44px] text-[#222222]'>Add Registate Bookkeeping Essentails</h2>
-          <p className='font-semibold text-[18px] leading-6 text-[#222222] py-4'>Use bookkeeping to analyze your business's financial performance, identifying areas for growth.</p>
+          <p className='font-semibold text-[18px] leading-6 text-[#222222] py-4'>Use bookkeeping to analyze your business{"'"}s financial performance, identifying areas for growth.</p>
           <ul className="grid w-full gap-6 md:grid-cols-1 py-6">
             <li className='order-1'>
               <input type="radio" id="hosting-small" name="hosting" value="hosting-small" className="hidden peer" required />
@@ -50,7 +52,7 @@ export default function BookkeepingEssentails({ lang }) {
                 </svg>
               </label>
             </li>
-            <Link className='order-4 w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer'>
+            <Link href={"#"} className='order-4 w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer'>
               <button>
                Continue
               </button>
@@ -63,7 +65,7 @@ export default function BookkeepingEssentails({ lang }) {
                     <h3 className='font-bold text-[18px] leading-6 text-[#222222]'>Organization</h3>
                   </div>
                   <div className='block pl-12'>
-                    <p className='text-[#222222] font-normal text-lg leading-6'>Keep your finances organized, providing a clear view of your business's financial health.</p>
+                    <p className='text-[#222222] font-normal text-lg leading-6'>Keep your finances organized, providing a clear view of your business{"'"}s financial health.</p>
                   </div>
                 </li>
                 <li>

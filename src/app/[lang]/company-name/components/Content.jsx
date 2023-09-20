@@ -1,11 +1,12 @@
+/* eslint-disable */
 'use client';
 
-import { ArrowLeftIcon } from "@heroicons/react/24/outline"
-import { useTranslation } from "../../../i18n/client"
-import { useEffect, useState } from "react"
-import Link from "next/link"
+import { ArrowLeftIcon } from '@heroicons/react/24/outline'
+import { useTranslation } from '../../../i18n/client'
+import { useEffect, useState } from 'react'
+import Link from 'next/link'
 
-export default function NameForm({ lang }) {
+export default function Content({ lang }) {
   const { t } = useTranslation(lang);
 
   const [companyName, setCompanyName] = useState('');

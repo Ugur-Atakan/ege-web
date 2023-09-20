@@ -15,144 +15,71 @@ import arrowblue from '../../../../images/arrow-blue.png'
 import noinclude from '../../../../images/no-include.png'
 import { useTranslation } from '../../../i18n/client'
 
-const API_ROOT = 'API_ROOT';
 
-export default function Content({ lang }) {
+export default function Formation({ lang }) {
   const { t } = useTranslation(lang);
-
-  let [companyState, setCompanyState] = useState("");
-  let [companyType, setCompanyType] = useState("");
 
   let [packagePrices, setPackagePrices] = useState([]);
   let [states, setStates] = useState([]);
   let [companyTypes, setCompanyTypes] = useState([]);
   let [selectedPackage, setSelectedPackage] = useState(null);
   const [selectedPackageIndex, setSelectedPackageIndex] = useState(-1);
-  const selectedCompanyType = companyType === 'LLC' ? 'LLC' : 'C-corp';
+  const companyTypePlaceHolder = window.localStorage.getItem('companyType');
+  const selectedCompanyType = companyTypePlaceHolder === 'LLC' ? 'LLC' : 'C-corp';
   const selectedCompanyTypesEN = packageDataEN.packages.find((item) => item[selectedCompanyType]);
   const selectedCompanyTypesTR = packageDataTR.packages.find((item) => item[selectedCompanyType]);
   const selectedPackagesLLC = lang === 'en' ? selectedCompanyTypesEN['LLC']: selectedCompanyTypesTR['LLC'];
   const selectedPackagesCorporation = lang === 'en' ? selectedCompanyTypesEN['C-corp']: selectedCompanyTypesTR['C-corp'];
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handlePackageSelection = (selectedPrice, selectedIndex) => {
     setSelectedPackage(selectedPrice);
     setSelectedPackageIndex(selectedIndex);
   }
 
-  const handleClicks = (index) => {
-    if (packagePrices.length > 0) {
-        setSelectedPackage(packagePrices[index]);
+  let companyState = ''
+  let companyType = ''
+  let companyName = ''
 
-        if (typeof window !== 'undefined' && window.localStorage && window.location) {
-          window.localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[index]]));
-          window.location.href = `/${lang}/review`;
-        }
-    }
-  };
-
-
-  let companyName = ''; //window.localStorage.getItem('companyName');
-  let companyStateVar = '';
-  let companyTypeVar = '';
   useEffect(() => {
-    setCompanyState(window.localStorage.getItem('companyState'));
-    setCompanyType(window.localStorage.getItem('companyType'));
+    companyState = window.localStorage.getItem('companyState');
+    companyType = window.localStorage.getItem('companyType');
     companyName = window.localStorage.getItem('companyName');
-    companyStateVar = window.localStorage.getItem('companyState');
-    companyTypeVar = window.localStorage.getItem('companyType');
 
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(`/${lang}/state/api/`);
+        const statesJSON = res.data;
+        setStates(statesJSON);
+        
+        const entityRes = await axios.get('/api/entityType');
+        const entityTypeJSON = entityRes.data;
+        setCompanyTypes(entityTypeJSON);
 
-    if (companyStateVar !== "" && companyTypeVar !== "" && companyName !== '') {
-      // updatePricing();
-    } else {
-        if (typeof window !== 'undefined' && window.location)
-          window.location.href = `/${lang}/company-name`;
-    }
-  }, []);
+        if (companyState && companyType && companyName && jsonData.length > 0 && entityTypeJSON.length > 0) {
+          let foundState = statesJSON.find((s) => s.state === companyState);
+          let foundType = entityTypeJSON.find((t) => t.entityType === companyType);
 
-  // useEffect(() => {
-  //   const updatePricing = () => {
-  //     let foundState = states.find((s) => s.state === companyState);
-  //     let foundType = companyTypes.find((t) => t.entityType === companyType);
-  //     if (companyType && companyState && foundState && foundType) {
-  //       let langs = lang === "en" ? "en" : "tr"
-  //       let payload = {
-  //         stateId: foundState.id,
-  //         entityTypeId: foundType.id,
-  //         lang: langs,
-  //       }
+          if (foundState && foundType) {
+            const response = await axios.post('/api/fe/prices', {
+              stateID: foundState.id,
+              entityTypeID: foundType.id,
+            });
 
-  //       axios.post(API_ROOT + '/api/fe/prices', payload, {
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //           'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
-  //         }
-  //       })
-  //         .then(function (response) {
-  //           var jsonData = response.data;
-  //           setPackagePrices(jsonData);
-  //         })
-  //         .catch(function (error) {
-  //           console.log(error);
-  //         });
-  //     }
-  //   }
-  // }, [companyName, companyTypes, lang, companyType, companyState, states]);
+            const JSONData = response.data;
+            console.log(JSONData)
+            setPackagePrices(JSONData);
+          }
+        }
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+        setIsLoading(false);
+      }
+    };
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get(API_ROOT + '/api/fe/states', {
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //           'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6',
-  //         },
-  //       });
-  //       const jsonData = response.data;
-  //       setStates(jsonData);
-
-  //       const entityTypeResponse = await axios.get(API_ROOT + '/api/settings/entityType', {
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //           'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6',
-  //         },
-  //       });
-  //       const entityTypeData = entityTypeResponse.data;
-  //       setCompanyTypes(entityTypeData);
-
-  //       if (companyState && companyType && companyName && jsonData.length > 0 && entityTypeData.length > 0) {
-  //         let foundState = jsonData.find((s) => s.state === companyState);
-  //         let foundType = entityTypeData.find((t) => t.entityType === companyType);
-
-  //         if (foundState && foundType) {
-  //           let langs = lang === 'en' ? 'en' : 'tr';
-  //           let payload = {
-  //             stateId: foundState.id,
-  //             entityTypeId: foundType.id,
-  //             lang: langs,
-  //           };
-
-  //           const response = await axios.post(API_ROOT + '/api/fe/prices', payload, {
-  //             headers: {
-  //               'Content-Type': 'application/json',
-  //               'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6',
-  //             },
-  //           });
-
-  //           const jsonData = response.data;
-  //           setPackagePrices(jsonData);
-  //         }
-  //       }
-  //       setIsLoading(false);
-  //     } catch (error) {
-  //       console.log(error);
-  //       setIsLoading(false);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, [companyState, companyType, companyName, lang]);
+    fetchData();
+  }, [companyState, companyType, companyName, lang]);
 
   if (isLoading) {
     return (
@@ -165,7 +92,7 @@ export default function Content({ lang }) {
   return (
     <div className='bg-white'>
       <div className="mx-auto p-6 lg:px-8">
-        <Link href={`/${lang}/company-name`} className='flex items-center gap-2'>
+        <Link className='flex items-center gap-2' href={`/${lang}/company-name`}>
           <ArrowLeftIcon className='text-[#1649FF] h-[18px] w-[18px]' />
           <span className='text-[#1649FF] text-lg font-semibold'>{t('formation_back_button')}</span>
         </Link>
@@ -177,7 +104,6 @@ export default function Content({ lang }) {
         <div className={packagePrices.length < 3 ? 'grid md:grid-cols-2 gap-5 py-12' : 'grid md:grid-cols-3 gap-5 py-12'}>
           {packagePrices.map((prices, index) => (
             <div
-              key={index}
               className={`flex flex-col gap-5 p-12 rounded-[20px] h-[35rem] overflow-hidden cursor-pointer ${index === selectedPackageIndex ? '!border-[3px] border-[#9EE248]' : ''
                 } ${index === 0
                   ? 'border border-[#9EE248] hover:bg-[#9EE248]'
@@ -201,9 +127,8 @@ export default function Content({ lang }) {
           className='w-full flex flex-col items-center justify-center font-semibold bg-[#1649FF] text-white rounded-[20px] p-5 cursor-pointer'
           onClick={() => {
             if (selectedPackage) {
-              if (typeof window !== 'undefined' && window.localStorage && window.location)
-                window.localStorage.setItem('selectedPackage', JSON.stringify([selectedPackage]));
-                window.location.href = `/${lang}/review`;
+              localStorage.setItem('selectedPackage', JSON.stringify([selectedPackage]));
+              window.location.href = `/${lang}/review`;
             }
           }}
         >
@@ -230,7 +155,6 @@ export default function Content({ lang }) {
                       </th>
                       {packagePrices.map((price, index) => (
                         <th
-                          key={index}
                           scope="col"
                           className={index === packagePrices.length - 1
                             ? "w-1/5 sticky top-0 z-10 border-b border-gray-300 bg-white px-3 py-3.5 text-center whitespace-nowrap md:whitespace-normal text-2xl font-semibold text-[#1649FF] backdrop-blur backdrop-filter sm:table-cell"
@@ -321,14 +245,26 @@ export default function Content({ lang }) {
                         </td>
                         <td>
                           <div
-                            onClick={() => handleClicks(0)}
+                            onClick={() => {
+                              if (packagePrices.length > 0) {
+                                setSelectedPackage(packagePrices[0]);
+                                localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[0]]));
+                                window.location.href = `/${lang}/review`;
+                              }
+                            }}
                             className='flex items-center justify-center bg-[#9EE248] text-[#222222] font-semibold rounded-2xl p-2.5 m-5 cursor-pointer'>
                             Start with Gold
                           </div>
                         </td>
                         <td>
                           <div
-                            onClick={() => handleClicks(1)}
+                            onClick={() => {
+                              if (packagePrices.length > 0) {
+                                setSelectedPackage(packagePrices[1]);
+                                localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[1]]));
+                                window.location.href = `/${lang}/review`;
+                              }
+                            }}
                             className='flex items-center justify-center bg-[#1649FF] text-white font-semibold rounded-2xl p-2.5 m-5 cursor-pointer'>
                             Start with Premium
                           </div>
@@ -342,21 +278,39 @@ export default function Content({ lang }) {
                         </td>
                         <td>
                           <div
-                            onClick={() => handleClicks(0)}
+                            onClick={() => {
+                              if (packagePrices.length > 0) {
+                                setSelectedPackage(packagePrices[0]);
+                                localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[0]]));
+                                window.location.href = `/${lang}/review`;
+                              }
+                            }}
                             className='flex items-center justify-center bg-[#9EE248] text-[#222222] font-semibold rounded-2xl p-2.5 m-5 cursor-pointer'>
                             Starter
                           </div>
                         </td>
                         <td>
                           <div
-                            onClick={() => handleClicks(1)}
+                            onClick={() => {
+                              if (packagePrices.length > 0) {
+                                setSelectedPackage(packagePrices[1]);
+                                localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[1]]));
+                                window.location.href = `/${lang}/review`;
+                              }
+                            }}
                             className='flex items-center justify-center bg-[#1649FF] text-white font-semibold rounded-2xl p-2.5 m-5 cursor-pointer'>
                             Start Up
                           </div>
                         </td>
                         {packagePrices.length >= 3 && <td>
                           <div
-                            onClick={() => handleClicks(2)}
+                            onClick={() => {
+                              if (packagePrices.length > 0) {
+                                setSelectedPackage(packagePrices[2]);
+                                localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[2]]));
+                                window.location.href = `/${lang}/review`;
+                              }
+                            }}
                             className='flex items-center justify-center bg-[#222222] text-white font-semibold rounded-2xl p-2.5 m-5 cursor-pointer'>
                             Scale Up
                           </div>
@@ -364,7 +318,7 @@ export default function Content({ lang }) {
                       </tr>
                     </tbody>
                   )
-                }
+                  }
                 </table>
               </div>
             </div>
