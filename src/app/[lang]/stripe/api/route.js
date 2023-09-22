@@ -5,10 +5,8 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export async function POST(req) {
   const { data } = await req.json();
-  console.log(data)
   const selectedPackage = data.payload.selectedPackage
-  console.log(selectedPackage[0].orderPackage)
-
+  
   try {
     // const paymentIntent = await stripe.paymentIntents.create({
     //   amount: Number(amount) * 100,
@@ -29,7 +27,9 @@ export async function POST(req) {
         },
       ],
       mode: 'payment',
-      success_url: 'http://localhost:3000/en/test',
+      //TODO: query params for success and cancel, check the query param on the success || cancel
+      //TODO: and do.
+      success_url: 'http://localhost:3000/en/test', 
       cancel_url: 'http://localhost:3000/en/test',
     });
 
