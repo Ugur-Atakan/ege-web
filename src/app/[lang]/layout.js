@@ -2,6 +2,8 @@ import '../globals.css'
 import { Inter } from 'next/font/google'
 import { languages } from '../i18n/settings'
 
+//! Place the chat component here. 
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
