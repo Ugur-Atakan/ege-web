@@ -1,24 +1,7 @@
-import '../globals.css'
-import { languages } from '../i18n/settings'
-import { dir } from 'i18next'
 
-export const metadata = {
-  title: 'Registate',
-  description: '',
-}
-
-export function generateStaticParams() {
-  return languages.map((lang) => ({ lang }))
-}
-
-export default function RootLayout({
-  children,
-  params: {
-    lang
-  }
-}) {
+export default function RootLayout({ children }) {
   return (
-    <html lang={lang} dir={dir(lang)} className='h-full text-base antialiased' >
+    <html lang="en" className="h-full bg-slate-800 text-base antialiased" >
       <head >
       <script
             type="text/javascript"

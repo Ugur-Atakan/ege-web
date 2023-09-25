@@ -8,13 +8,12 @@ import Image from 'next/image'
 import whitelogo from '../../../images/logos/registate-white-logo.png'
 import bluelogo from '../../../images/logo-blue.webp'
 import { ArrowRightIcon } from '@heroicons/react/24/outline'
-import { PopupButton } from "react-calendly";
-import circle from '../../../images/hero-circle.png';
+import { PopupButton } from 'react-calendly';
 import rocket from '../../../images/rocket.png';
 import { useTranslation } from '../../i18n/client'
 
 export function CalendlyText({ lang }) {
-  const { t } = useTranslation();
+  const { t } = useTranslation(lang);
   return (
     <div className='cursor-pointer flex items-center gap-2'>
       <p className='font-semibold text-xs leading-4 text-white'>{t('topbar_first_part')}<span className='text-[#9EE248] mr-1'>{t('topbar_middle_part')}</span>{t('topbar_last_part')}</p>
@@ -78,13 +77,13 @@ export default function Hero({ lang }) {
         <nav className={`hidden mx-auto max-w-7xl p-6 lg:px-2 ${isSticky ? '!lg:hidden' : 'lg:block'}`}>
           <div className='flex items-center justify-center -mt-4 pb-2 border-[#ECEFF1] border-b-[1px] border-opacity-10'>
             <div className='flex items-center gap-2'>
-              {/* <PopupButton
+              <PopupButton
                 url="https://calendly.com/registate/intro"
-                rootElement={document.getElementById("root")}
+                rootElement={document.body}
                 text={<CalendlyText lang={lang} />}
                 className="font-semibold text-xs leading-4 text-white cursor-pointer outline-none border-none"
               >
-              </PopupButton> */}
+              </PopupButton>
             </div>
           </div>
         </nav>

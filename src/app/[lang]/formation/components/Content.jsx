@@ -10,6 +10,9 @@ import { ArrowLeftIcon } from '@heroicons/react/24/outline'
 import bishopwhite from '../../../../images/bishop-white.png'
 import quencolor from '../../../../images/queen-color.png'
 import kingblack from '../../../../images/king-black.png'
+import noinclude from '../../../../images/no-include.png'
+import arrowblack from '../../../../images/arrow-black.png'
+import arrowblue from '../../../../images/arrow-blue.png'
 
 import packageDataEN from '../../../../assets/packageDataEN.json'
 import packageDataTR from '../../../../assets/packageDataTR.json'
@@ -44,6 +47,8 @@ export default function Formation({ lang }) {
     companyState = window.localStorage.getItem('companyState');
     companyType = window.localStorage.getItem('companyType');
     companyName = window.localStorage.getItem('companyName');
+  
+    console.log(selectedPackageVar)
 
     const fetchData = async () => {
       try {
@@ -170,7 +175,7 @@ export default function Formation({ lang }) {
                   </thead>
                     {/* Error in this table */}
                     <tbody>
-                    {companyType === 'LLC' ? (
+                    {selectedCompanyType === 'LLC' ? (
                       selectedPackageVar['LLC'].map((packageItem, packageIndex) => (
                         <React.Fragment key={packageIndex}>
                           <tr>
@@ -241,8 +246,7 @@ export default function Formation({ lang }) {
                     )}
                   </tbody>
 
-
-                  {companyType === 'LLC' ? (
+                  {selectedCompanyType === 'LLC' ? (
                     <tbody>
                       <tr>
                         <td>
