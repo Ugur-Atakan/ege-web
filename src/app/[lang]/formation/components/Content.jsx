@@ -47,8 +47,6 @@ export default function Formation({ lang }) {
     companyState = window.localStorage.getItem('companyState');
     companyType = window.localStorage.getItem('companyType');
     companyName = window.localStorage.getItem('companyName');
-  
-    console.log(selectedPackageVar)
 
     const fetchData = async () => {
       try {
@@ -174,7 +172,8 @@ export default function Formation({ lang }) {
                     </tr>
                   </thead>
                     {/* Error in this table */}
-                    <tbody>
+                    <tbody>         
+                    {console.log(selectedPackageVar['C-corp'])}
                     {selectedCompanyType === 'LLC' ? (
                       selectedPackageVar['LLC'].map((packageItem, packageIndex) => (
                         <React.Fragment key={packageIndex}>
@@ -206,14 +205,14 @@ export default function Formation({ lang }) {
                         </React.Fragment>
                       ))
                     ) : (
-                      selectedPackageVar['C-corp'] && selectedPackageVar['C-corp'].map((packageItem, packageIndex) => (
+                      selectedPackageVar['C-corp'].map((packageItem, packageIndex) => (
                         <React.Fragment key={packageIndex}>
                           <tr>
                             <td colSpan="2" className="text-2xl font-semibold leading-8 text-[#222222] pb-8 pt-16">
                               {packageItem.title}
                             </td>
                           </tr>
-                          {packageItem.details && packageItem.details.map((features, detailIndex) => (
+                          {packageItem.features.map((features, detailIndex) => (
                             <tr key={detailIndex}>
                               <td className="font-semibold text-lg text-left leading-6 text-[#222222] lg:pr-12 py-4">
                                   {features.title}

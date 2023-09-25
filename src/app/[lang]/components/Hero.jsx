@@ -70,7 +70,7 @@ export default function Hero({ lang }) {
     };
   }, []);
 
-
+  const rootEl = process.browser ? document.body : null;
   return (
     <div className="hero-section">
       <header className={`absolute inset-x-0 top-0 z-50 ${isSticky ? 'lg:!fixed !bg-[#ECEFF1]' : ''}`}>
@@ -79,7 +79,7 @@ export default function Hero({ lang }) {
             <div className='flex items-center gap-2'>
               <PopupButton
                 url="https://calendly.com/registate/intro"
-                rootElement={document.body}
+                rootElement={rootEl}
                 text={<CalendlyText lang={lang} />}
                 className="font-semibold text-xs leading-4 text-white cursor-pointer outline-none border-none"
               >

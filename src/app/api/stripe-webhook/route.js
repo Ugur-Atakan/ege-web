@@ -25,14 +25,10 @@ export async function POST (req, res)  {
     
     if (event.type === 'checkout.session.completed') {
         const session = event.data.object;
-        // console.log(session)// 
-        console.log(session.customer_details.name , session.customer_details.email)
         const accountId = await createCustomer(session.customer_details.name, session.customer_details.email);
-        // await createCustomerRequest(accountId, 'description', 'summary', 'companyName', 'companyState', 'companyType');
-        // // Note: Fill in actual data above as per your needs.
-
+        await createCustomerRequest(accountId, 'description', 'summary', 'companyName', 'companyState', 'companyType');
+        
         // DB CALLS HERE
-        console.log(accountId)
         return new NextResponse(session.url, { status: 200 });
     } else {
         return new NextResponse('No action taken', { status: 400 });
