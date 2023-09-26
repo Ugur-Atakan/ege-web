@@ -1,8 +1,7 @@
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import axios from 'axios';
-import { useTranslation } from '../../i18n/client';
-import Link from 'next/link';
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import axios from 'axios'
+import { useTranslation } from '../../i18n/client'
 
 export default function Footer({ lang }) {
   const { t } = useTranslation(lang);

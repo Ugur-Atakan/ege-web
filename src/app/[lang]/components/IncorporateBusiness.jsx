@@ -1,15 +1,16 @@
-'use client';
+'use client'
 
-import { useState } from "react";
-import Link from 'next/link';
-import Image from 'next/image';
+import { useState } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
 import videoasian from '../../../videos/video-asian.mp4'
 import videoeurope from '../../../videos/video-europe.mp4'
 import videoturkey from '../../../videos/video-turkey.mp4'
 import thaiflag from '../../../images/thailand-flag.png'
 import turkeyflag from '../../../images/turkey-flag.png'
 import italiaflag from '../../../images/italia-flag.png'
-import { useTranslation } from '../../i18n/client';
+
+import { useTranslation } from '../../i18n/client'
 
 export default function IncorporateBusiness({ lang }) {
     const { t } = useTranslation(lang);

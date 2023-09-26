@@ -1,25 +1,25 @@
 'use client';
 
-import { useState } from "react";
-import { useTranslation } from "../../i18n/client";
-import Image from 'next/image';
-import Slider from "react-slick";
-import calendar from '../../../images/calendar.png';
-import hat from '../../../images/hat.png';
-import folder from '../../../images/folder.png';
-import protectionicon from '../../../images/protection-icon.png';
-import tic from '../../../images/tick-dynamic.png';
-import at from '../../../images/at-dynamic.png';
-import navigator from '../../../images/navigator.png';
-import mail from '../../../images/mail-dynamic.png';
-import phone from '../../../images/phone-missing-dynamic.png';
-import travel from '../../../images/travel-dynamic.png';
-import axe from '../../../images/axe-dynamic.png';
-import wallet from '../../../images/wallet-dynamic.png';
-import filetext from '../../../images/file-text-dynamic.png';
-import sheild from '../../../images/sheild-dynamic.png';
-import dollar from '../../../images/dollar-dynamic.png';
-import locker from '../../../images/locker-dynamic.png';
+import { useState } from 'react'
+import Image from 'next/image'
+import Slider from 'react-slick'
+import calendar from '../../../images/calendar.png'
+import hat from '../../../images/hat.png'
+import folder from '../../../images/folder.png'
+import protectionicon from '../../../images/protection-icon.png'
+import tic from '../../../images/tick-dynamic.png'
+import at from '../../../images/at-dynamic.png'
+import navigator from '../../../images/navigator.png'
+import mail from '../../../images/mail-dynamic.png'
+import phone from '../../../images/phone-missing-dynamic.png'
+import travel from '../../../images/travel-dynamic.png'
+import axe from '../../../images/axe-dynamic.png'
+import wallet from '../../../images/wallet-dynamic.png'
+import filetext from '../../../images/file-text-dynamic.png'
+import sheild from '../../../images/sheild-dynamic.png'
+import dollar from '../../../images/dollar-dynamic.png'
+import locker from '../../../images/locker-dynamic.png'
+import { useTranslation } from '../../i18n/client'
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -112,7 +112,7 @@ export default function SupportBusiness({ lang }) {
       <div className="flex items-center justify-center gap-0.5 pb-12">
         {packagesName.map((pac, index) => {
           return (
-            <div key={index} onClick={() => setSelectedPackage(index)} className={`cursor-pointer rounded-[12px] text-white text-[16px] leading-[22px] px-[6px] py-2 font-semibold text-center ${selectedPackage === index ? 'bg-white text-blue-700' : 'bg-[#1649FF] text-white'}`}>
+            <div key={index} onClick={() => setSelectedPackage(index)} className={`cursor-pointer rounded-[12px] text-blue-600 text-[16px] leading-[22px] px-[6px] py-2 font-semibold text-center ${selectedPackage === index ? 'bg-white text-blue-600' : 'bg-[#1649FF] text-white'}`}>
                 {pac}
             </div>
           )

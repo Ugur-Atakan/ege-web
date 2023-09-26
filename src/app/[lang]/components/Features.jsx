@@ -1,7 +1,7 @@
-'use client';
+'use client'
 
-import Slider from "react-slick";
-import { useTranslation } from '../../i18n/client';
+import Slider from "react-slick"
+import { useTranslation } from '../../i18n/client'
 
 export default function Features({ lang }) {
   const { t } = useTranslation(lang);

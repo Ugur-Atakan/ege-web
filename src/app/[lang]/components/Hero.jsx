@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import { React, Fragment, useState, useEffect } from 'react'
 import { Transition, Menu, Dialog } from '@headlessui/react'
@@ -8,8 +8,9 @@ import Image from 'next/image'
 import whitelogo from '../../../images/logos/registate-white-logo.png'
 import bluelogo from '../../../images/logo-blue.webp'
 import { ArrowRightIcon } from '@heroicons/react/24/outline'
-import { PopupButton } from 'react-calendly';
-import rocket from '../../../images/rocket.png';
+import { PopupButton } from 'react-calendly'
+import rocket from '../../../images/rocket.png'
+
 import { useTranslation } from '../../i18n/client'
 import i18next from 'i18next'
 

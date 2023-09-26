@@ -1,6 +1,6 @@
-import { ArrowSmallDownIcon } from "@heroicons/react/24/outline";
-import { useTranslation } from "../../i18n/client";
-import Link from 'next/link';
+import { ArrowSmallDownIcon } from "@heroicons/react/24/outline"
+import { useTranslation } from "../../i18n/client"
+import Link from 'next/link'
 
 export default function GetStarted({ lang }) {
     const { t } = useTranslation(lang);

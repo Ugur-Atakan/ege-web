@@ -26,9 +26,13 @@ export async function POST (req, res)  {
     if (event.type === 'checkout.session.completed') {
         const session = event.data.object;
 
-        const accountId = await createCustomer(session.customer_details.name, session.customer_details.email);
-        const customerReq = await createCustomerRequest(accountId, 'Please start my company', 'summary', session.metadata.companyName, session.metadata.companyState, session.metadata.companyType);
-        const invite = await resendInvitation(session.customer_details.email);
+        console.log(session)
+        const summary = `Start my Company - ${session.metadata.companyName}`
+        const description = `Please start my company - ${session.metadata.companyName}`
+        //const accountId = await createCustomer(session.customer_details.name, session.customer_details.email);
+        //const customerReq = await createCustomerRequest(accountId, description, summary, session.metadata.companyName, session.metadata.companyState, session.metadata.companyType);
+        
+        // const invite = await resendInvitation(session.customer_details.email);
 
         // console.log(customerReq)
         // console.log(invite)

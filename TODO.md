@@ -1,11 +1,8 @@
-[x] Fix title on formation page.
-[x] Language switcher.
-[x] Make the whole components button.
-[x] After formation bug on main page.
-[x] Bug on button not being shown.
-[x] Package details on review page.
-[x] Start my buisness giving 404.
-[x] Company type card on formation page.
-[x] Make the video thingy
-[x] Redirect url should be dynamic after payment.
-[x] use process.env 
+[x] One stop shop needs to have a spcae
+[x] package one package two package three
+[x] states not coming on review page
+[x] fix summary in jira request
+[] add the other fields to jira request
+[x] fix the images on how it works
+[] fix the component step4 causing mutliple rerenders.
+[] fix the styling in the component on main page. 

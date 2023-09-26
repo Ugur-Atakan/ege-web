@@ -1,12 +1,12 @@
-'use client';
+'use client'
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { useState } from 'react';
-import { InformationCircleIcon } from '@heroicons/react/24/outline';
-import bluecheckicon from '../../../images/bluecheck.png';
-import blackcheckicon from '../../../images/blackcheck.png';
-import { useTranslation } from '../../i18n/client';
+import Image from 'next/image'
+import Link from 'next/link'
+import { useState } from 'react'
+import { InformationCircleIcon } from '@heroicons/react/24/outline'
+import bluecheckicon from '../../../images/bluecheck.png'
+import blackcheckicon from '../../../images/blackcheck.png'
+import { useTranslation } from '../../i18n/client'
 
 export default function Compare({ lang }) {
     const { t } = useTranslation(lang);
@@ -37,7 +37,7 @@ export default function Compare({ lang }) {
             </div>
             <div className="mx-auto max-w-md px-6 py-0 lg:px-12">
                 <div className="text-left lg:text-center">
-                    <h1 className="font-bold text-lg text-[#222222]">{t('starter_packages_description_first')}<span className="text-[#1649FF] mr-1 font-bold ">{t('starter_packages_description_middle')}</span>{t('starter_packages_description_last')}</h1>
+                    <h1 className="font-bold text-lg text-[#222222]">{t('starter_packages_description_first')}<span className="text-[#1649FF] mr-1 font-bold ">{' ' + t('starter_packages_description_middle')}</span>{t('starter_packages_description_last')}</h1>
                 </div>
             </div>
             <div className="mx-auto max-w-7xl p-6 lg:px-12">

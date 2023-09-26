@@ -1,8 +1,8 @@
-import Image from 'next/image';
-import dataicon from '../../../images/data.png';
-import feathericon from '../../../images/feather.png';
-import bagicon from '../../../images/bag.png';
-import { useTranslation } from '../../i18n/client';
+import Image from 'next/image'
+import dataicon from '../../../images/data.png'
+import feathericon from '../../../images/feather.png'
+import bagicon from '../../../images/bag.png'
+import { useTranslation } from '../../i18n/client'
 
 export default function Compliance({ lang }) {
   const { t } = useTranslation(lang);

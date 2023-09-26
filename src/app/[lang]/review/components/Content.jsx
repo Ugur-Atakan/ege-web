@@ -32,10 +32,9 @@ export default function Content({ lang }) {
     const [storedPackage, setStoredPackage] = useState(typeof window !== 'undefined' ? window.localStorage.getItem('selectedPackage') : null);
     let selectedPackage = storedPackage ? JSON.parse(storedPackage) : null;
 
-
     const formSubmitHandler = (e) => {
         e.preventDefault();
-      
+
         const companyContactName = name + " " + lastname;
         const companyContactEmail = email;
         const companyContactPhone = phone;
@@ -53,7 +52,6 @@ export default function Content({ lang }) {
             "selectedPackage": selectedPackage,
         }
 
-        console.log(payload);
         axios.post(`/${lang}/stripe/api`, { data: { payload }})
         .then((response) => {
             let stripeURL = JSON.parse(JSON.stringify(response.data));
@@ -204,21 +202,20 @@ export default function Content({ lang }) {
                                         <label htmlFor="region" className="block font-semibold text-[14px] leading-6 text-[#222222]">
                                             {t("review_information_input6")}
                                         </label>
+
                                         <select
                                             name="region"
-                                            id="region"
                                             autoComplete="address-level1"
-                                            className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
+                                            className="mt-1 block w-full  rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
                                         >
-
                                             <option value=""> {country === 'United States' ? 'Select State' : 'No State'}</option>
                                             {country === 'United States' &&
                                                 states.map((state, index) => (
                                                     <option
                                                         key={index}
-                                                        value={state.name}
+                                                        value={state.state}  
                                                     >
-                                                        {state.name}
+                                                        {state.state}
                                                     </option>
                                                 ))
                                             }

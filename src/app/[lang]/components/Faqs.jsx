@@ -1,11 +1,12 @@
-'use client';
+'use client'
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useTranslation } from '../../i18n/client'
 import { Disclosure } from '@headlessui/react'
 import { ArrowRightIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
 import navigatoricon from '../../../images/navigator.png'
+
+import { useTranslation } from '../../i18n/client'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
