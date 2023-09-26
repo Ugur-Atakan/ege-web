@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import axios from 'axios'
+import { getRandomPackages } from '../utils/util'
 
 import { ArrowLeftIcon } from '@heroicons/react/24/outline'
 import bishopwhite from '../../../../images/bishop-white.png'
@@ -32,12 +33,28 @@ export default function Formation({ lang }) {
   const selectedCompanyTypesTR = packageDataTR.packages.find((item) => item[selectedCompanyType]);
   const selectedPackageVar = lang === 'en' ? selectedCompanyTypesEN : selectedCompanyTypesTR;
   
+  const titles = selectedPackageVar[selectedCompanyType].map((item) => item.title);
   const [isLoading, setIsLoading] = useState(true);
 
   const handlePackageSelection = (selectedPrice, selectedIndex) => {
     setSelectedPackage(selectedPrice);
     setSelectedPackageIndex(selectedIndex);
   }
+
+  const continueWithSelectedPackage = (index) => {
+    if (packagePrices.length > 0) {
+      setSelectedPackage(packagePrices[index]);
+
+      const packages = getRandomPackages(packagePrices[index], selectedCompanyType , selectedPackageVar);
+      
+      if (selectedPackage) {
+        if (typeof window !== 'undefined' && window.localStorage && window.location)
+          window.localStorage.setItem('selectedPackage', JSON.stringify([{...packagePrices[index], features: packages}]));
+          window.location.href = `/${lang}/review`;
+      }
+    }
+  }
+  
 
   let companyState = ''
   let companyType = ''
@@ -102,7 +119,7 @@ export default function Formation({ lang }) {
         <div className='text-left md:text-center'>
           <h1 className='font-semibold text-[26px] md:text-[40px] leading-[44px] text-[#222222]'>{t('formation_title')}</h1>
         </div>
-
+        
         <div className={packagePrices.length < 3 ? 'grid md:grid-cols-2 gap-5 py-12' : 'grid md:grid-cols-3 gap-5 py-12'}>
           {packagePrices.map((prices, index) => (
             <div
@@ -118,7 +135,9 @@ export default function Formation({ lang }) {
               onClick={() => handlePackageSelection(prices, index)}
             >
               <h2 className={index === 0 ? 'font-semibold text-[40px] leading-[44px] text-[#222222]' : 'font-semibold text-[40px] leading-[44px] text-white'}>{prices.orderPackage.replace('Registate', '')}</h2>
-              <p className={index === 0 ? 'text-lg font-semibold leading-6 text-[#222222]' : 'text-lg font-semibold leading-6 text-white'}>{prices.state.state + ' ' + prices.entityType.entityType}</p>
+              <p className={index === 0 ? 'text-lg font-semibold leading-6 text-[#222222]' : 'text-lg font-semibold leading-6 text-white'}>
+                {titles[index]}
+              </p>  
               <p className={index === 0 ? 'font-semibold text-[28px] leading-8 text-[#222222]' : 'font-semibold text-[28px] leading-8 text-white'}>{'$' + (prices.orderPackagePrice / 100).toFixed(0)}</p>
               <Image src={index === 0 && bishopwhite || index === 1 && quencolor || index === 2 && kingblack} className='' alt='llc package' />
             </div>
@@ -129,9 +148,11 @@ export default function Formation({ lang }) {
         <div
           className='w-full flex flex-col items-center justify-center font-semibold bg-[#1649FF] text-white rounded-[20px] p-5 cursor-pointer'
           onClick={() => {
+            const packages = getRandomPackages(selectedPackage,selectedCompanyType,selectedPackageVar);
+            
             if (selectedPackage) {
               if (typeof window !== 'undefined' && window.localStorage && window.location)
-                window.localStorage.setItem('selectedPackage', JSON.stringify([selectedPackage]));
+                window.localStorage.setItem('selectedPackage', JSON.stringify([{...selectedPackage, features: packages}]));
                 window.location.href = `/${lang}/review`;
             }
           }}
@@ -171,9 +192,7 @@ export default function Formation({ lang }) {
                       ))}
                     </tr>
                   </thead>
-                    {/* Error in this table */}
                     <tbody>         
-                    {console.log(selectedPackageVar['C-corp'])}
                     {selectedCompanyType === 'LLC' ? (
                       selectedPackageVar['LLC'].map((packageItem, packageIndex) => (
                         <React.Fragment key={packageIndex}>
@@ -252,28 +271,14 @@ export default function Formation({ lang }) {
                         </td>
                         <td>
                           <div
-                            onClick={() => {
-                              if (packagePrices.length > 0) {
-                                setSelectedPackage(packagePrices[0]);
-                                if (typeof window !== 'undefined' && window.localStorage && window.location)
-                                  window.localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[0]]));
-                                  window.location.href = `/${lang}/review`;
-                              }
-                            }}
+                            onClick={() => {continueWithSelectedPackage(0)}} 
                             className='flex items-center justify-center bg-[#9EE248] text-[#222222] font-semibold rounded-2xl p-2.5 m-5 cursor-pointer'>
                             Start with Gold
                           </div>
                         </td>
                         <td>
                           <div
-                            onClick={() => {
-                              if (packagePrices.length > 0) {
-                                setSelectedPackage(packagePrices[1]);
-                                if (typeof window !== 'undefined' && window.localStorage && window.location)
-                                  window.localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[1]]));
-                                  window.location.href = `/${lang}/review`;
-                              }
-                            }}
+                            onClick={() => {continueWithSelectedPackage(1)}}
                             className='flex items-center justify-center bg-[#1649FF] text-white font-semibold rounded-2xl p-2.5 m-5 cursor-pointer'>
                             Start with Premium
                           </div>
@@ -287,42 +292,21 @@ export default function Formation({ lang }) {
                         </td>
                         <td>
                           <div
-                            onClick={() => {
-                              if (packagePrices.length > 0) {
-                                setSelectedPackage(packagePrices[0]);
-                                if (typeof window !== 'undefined' && window.localStorage && window.location)
-                                  window.localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[0]]));
-                                  window.location.href = `/${lang}/review`;
-                              }
-                            }}
+                            onClick={() => {continueWithSelectedPackage(0)}}
                             className='flex items-center justify-center bg-[#9EE248] text-[#222222] font-semibold rounded-2xl p-2.5 m-5 cursor-pointer'>
                             Starter
                           </div>
                         </td>
                         <td>
                           <div
-                            onClick={() => {
-                              if (packagePrices.length > 0) {
-                                setSelectedPackage(packagePrices[1]);
-                                if (typeof window !== 'undefined' && window.localStorage && window.location)
-                                  window.localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[1]]));
-                                  window.location.href = `/${lang}/review`;
-                              }
-                            }}
+                            onClick={() => {continueWithSelectedPackage(1)}}
                             className='flex items-center justify-center bg-[#1649FF] text-white font-semibold rounded-2xl p-2.5 m-5 cursor-pointer'>
                             Start Up
                           </div>
                         </td>
                         {packagePrices.length >= 3 && <td>
                           <div
-                            onClick={() => {
-                              if (packagePrices.length > 0) {
-                                setSelectedPackage(packagePrices[2]);
-                                if (typeof window !== 'undefined' && window.localStorage && window.location)
-                                  window.localStorage.setItem('selectedPackage', JSON.stringify([packagePrices[2]]));
-                                  window.location.href = `/${lang}/review`;
-                              }
-                            }}
+                            onClick={() => {continueWithSelectedPackage(2)}}
                             className='flex items-center justify-center bg-[#222222] text-white font-semibold rounded-2xl p-2.5 m-5 cursor-pointer'>
                             Scale Up
                           </div>

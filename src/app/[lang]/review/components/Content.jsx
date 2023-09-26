@@ -26,6 +26,13 @@ export default function Content({ lang }) {
     const [countries, setCountries] = useState([]);
     const [states, setStates] = useState([]);
 
+    const [companyType, setCompanyType] = useState(typeof window !== 'undefined' ? window.localStorage.getItem('companyType') : null);
+    const [companyState, setCompanyState] = useState(typeof window !== 'undefined' ? window.localStorage.getItem('companyState') : null);
+    const [companyName, setCompanyName] = useState(typeof window !== 'undefined' ? window.localStorage.getItem('companyName') : null);
+    const [storedPackage, setStoredPackage] = useState(typeof window !== 'undefined' ? window.localStorage.getItem('selectedPackage') : null);
+    let selectedPackage = storedPackage ? JSON.parse(storedPackage) : null;
+
+
     const formSubmitHandler = (e) => {
         e.preventDefault();
       
@@ -36,6 +43,9 @@ export default function Content({ lang }) {
         const selectedPackage = typeof window !== 'undefined' ? JSON.parse(window.localStorage.getItem('selectedPackage')) : null;
 
         let payload = {
+            "companyName": companyName,
+            "companyType": companyType,
+            "companyState": companyState,
             "companyContactName": companyContactName,
             "companyContactEmail": companyContactEmail,
             "companyContactPhone": companyContactPhone,
@@ -43,6 +53,7 @@ export default function Content({ lang }) {
             "selectedPackage": selectedPackage,
         }
 
+        console.log(payload);
         axios.post(`/${lang}/stripe/api`, { data: { payload }})
         .then((response) => {
             let stripeURL = JSON.parse(JSON.stringify(response.data));
@@ -75,36 +86,12 @@ export default function Content({ lang }) {
         fetchData();
     }, []);
 
-    
-    const [companyType, setCompanyType] = useState(typeof window !== 'undefined' ? window.localStorage.getItem('companyType') : null);
-    const [companyState, setCompanyState] = useState(typeof window !== 'undefined' ? window.localStorage.getItem('companyState') : null);
-    const [companyName, setCompanyName] = useState(typeof window !== 'undefined' ? window.localStorage.getItem('companyName') : null);
-    const [storedPackage, setStoredPackage] = useState(typeof window !== 'undefined' ? window.localStorage.getItem('selectedPackage') : null);
-
-    // let companyType = ''
-    // let companyState = ''
-    // let companyName = ''
-    // let storedPackage = ''
-    let selectedPackage = storedPackage ? JSON.parse(storedPackage) : null;
-
     useEffect(() => {
-        // companyType = window.localStorage.getItem('companyType');
-        // companyState = window.localStorage.getItem('companyState');
-        // companyName = window.localStorage.getItem('companyName');
-        // storedPackage = window.localStorage.getItem('selectedPackage');
-
-        console.log(selectedPackage)
-        // selectedPackage.map((price, index) => (
-        //     console.log(price.state.id)
-        // ))
-
-
-        //! Add stored package here.
         if (!(companyType && companyState && companyName)) {
             if (typeof window !== 'undefined' && window.location)
                 window.location.href = `/${lang}/formation`;
         }
-    }, [companyType, companyState, companyName, storedPackage]);
+    }, [companyType, companyState, companyName]);
 
     return (
         <div className='block md:flex items-start gap-12 bg-[#ECEFF1]'>

@@ -66,13 +66,13 @@ export default function Content({ lang }) {
                                 <p className='text-[#222222] text-[16px] md:text-[1.125rem] font-semibold leading-[22px] md:leading-[1.5rem] pt-4'>{t('company_type_package2_description')}</p>
                             </div>
                         </div>
-                        <a  className='block w-full bg-white border-4 border-solid border-[#1649FF] rounded-[2rem] p-8 not-sure relative' to={`/${lang}/start-my-business/`}>
+                        <Link href={`/${lang}/start-my-business/`} className='block w-full bg-white border-4 border-solid border-[#1649FF] rounded-[2rem] p-8 not-sure relative'>
                             <Image src={search} className='relative -top-20 -right-8 md:w-64 md:h-64 md:static rotate-360 md:rotate-45' alt='llc' />
                             <div className='-mt-48 md:mt-0'>
                                 <h2 className='text-[#222222] text-[20px] md:text-[1.75rem] font-semibold leading-[2rem]'>{t('company_type_package3_name')}</h2>
                                 <p className='text-[#222222] text-[16px] md:text-[1.125rem] font-semibold leading-[22px] md:leading-[1.5rem] pt-4'>{t('company_type_package3_description')}</p>
                             </div>
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -320,7 +320,7 @@ export default function Content({ lang }) {
                                 </div>
                             </div>
                             <div>
-                                <Link href={t(`/${lang}/start-business`)} className='rounded-[1.25rem] bg-white py-6 px-[4.25rem] text-black text-[1.375rem] font-semibold leading-[1.625rem]'>
+                                <Link href={t(`/${lang}/start-my-business`)} className='rounded-[1.25rem] bg-white py-6 px-[4.25rem] text-black text-[1.375rem] font-semibold leading-[1.625rem]'>
                                    {t('company_type_banner_button')}
                                 </Link>
                             </div>
@@ -330,7 +330,7 @@ export default function Content({ lang }) {
                         <div className='bg-[#1649FF] rounded-[1.5rem] py-12 px-8 my-12'>
                             <h2 className='text-[20px] text-white font-semibold leading-[22px]'>  {t('company_type_banner_text')}</h2>
                             <p className='text-white  text-[16px] font-semibold leading-[22px] pr-12 pt-4'>  {t('company_type_banner_description')}</p>
-                           <div onClick={takeQuizForm} className='my-6 w-full rounded-[1.25rem] bg-white py-3 text-black text-lg font-semibold leading-[22px] text-center'>
+                           <div onClick={takeQuizForm} className='my-6 w-full rounded-[1.25rem] bg-whit py-3 text-black text-lg font-semibold leading-[22px] text-center'>
                                 {t('company_type_banner_button')}
                            </div>
                            <Image src={searchwhite} className='w-full h-full' alt='search icon' />

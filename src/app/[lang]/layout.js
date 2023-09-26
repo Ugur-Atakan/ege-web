@@ -1,6 +1,7 @@
 import '../globals.css'
 import { languages } from '../i18n/settings'
 import { dir } from 'i18next'
+import Script from 'next/script'
 
 export const metadata = {
   title: 'Registate',
@@ -20,9 +21,10 @@ export default function RootLayout({
   return (
     <html lang={lang} dir={dir(lang)} className='h-full text-base antialiased' >
       <head >
-      <script
+      <Script
             type="text/javascript"
             async
+            id={"gtm-script"}
             dangerouslySetInnerHTML={{
               __html: `
                 (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -32,11 +34,12 @@ export default function RootLayout({
                 })(window,document,'script','dataLayer','GTM-W3QDMCGC')`,
             }}
           >
-        </script>
+        </Script>
       </head>
 
       <body>
         <noscript
+          id={"gtm-body"}
           dangerouslySetInnerHTML={{
             __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W3QDMCGC"
                     height="0" width="0" style="display:none;visibility:hidden"></iframe>`,

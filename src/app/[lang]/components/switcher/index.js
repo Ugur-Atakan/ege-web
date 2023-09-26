@@ -9,9 +9,9 @@ import { useTranslation } from '../../../i18n/client'
 export const Switcher =  ({ lng }) => {
   const { t } =  useTranslation(lng)
   return (
-    <footer style={{ marginTop: 50 }}>
+    <div style={{ marginTop: 50 }}>
       <Trans i18nKey="languageSwitcher" t={t}>
-        Switch from <strong>{{lng}}</strong> to:{' '}
+        Switch from <strong>{lng}</strong> to:{' '}
       </Trans>
       {languages.filter((l) => lng !== l).map((l, index) => {
         return (
@@ -23,6 +23,6 @@ export const Switcher =  ({ lng }) => {
           </span>
         )
       })}
-    </footer>
+    </div>
   )
 }

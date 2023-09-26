@@ -13,7 +13,6 @@ import { useTranslation } from '../../i18n/client';
 
 export default function IncorporateBusiness({ lang }) {
     const { t } = useTranslation(lang);
-
     const [videoSource, setVideoSource] = useState(videoasian);
 
     const handleTurkey = () => {

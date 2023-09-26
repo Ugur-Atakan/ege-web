@@ -11,6 +11,7 @@ import { ArrowRightIcon } from '@heroicons/react/24/outline'
 import { PopupButton } from 'react-calendly';
 import rocket from '../../../images/rocket.png';
 import { useTranslation } from '../../i18n/client'
+import i18next from 'i18next'
 
 export function CalendlyText({ lang }) {
   const { t } = useTranslation(lang);
@@ -23,36 +24,23 @@ export function CalendlyText({ lang }) {
 }
 
 export default function Hero({ lang }) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { t } = useTranslation(lang);
-  const [currentLang, setCurrentLang] = useState(lang);
+
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
 
+  const changeLanguage = (lang) => {
+    if (lang === "en" || lang === "tr") {
+      i18next.changeLanguage(lang);
 
-  // useEffect(() => {
-  //   const lang = location.pathname.split("/")[1];
-  //   if (lang && currentLang !== lang && (lang === "en" || lang === "tr")) {
-  //     setCurrentLang(lang);
-  //     i18n.changeLanguage(lang);
-  //   } else if (!lang) {
-  //     setCurrentLang(lang);
-  //     navigate(`/${lang}${location.pathname}`, { replace: true });
-  //   } else if (lang !== "en" && lang !== "tr") {
-  //     navigate(`/${lang}/notfound/`, { replace: true });
-  //   }
-  //   localStorage.clear();
-  // }, [i18n, navigate, location.pathname, currentLang]);
-
-  // const changeLanguage = (lang) => {
-  //   if (lang === "en" || lang === "tr") {
-  //     setCurrentLang(lang);
-  //     i18n.changeLanguage(lang);
-  //     const newPathname = location.pathname.replace(`/${currentLang}`, `/${lang}`);
-  //     navigate(newPathname, { replace: true });
-  //   } else {
-  //     navigate(`/${lang}/notfound/`, { replace: true });
-  //   }
-  // };
+      if (typeof window !== 'undefined' && window.location) {
+        window.localStorage.setItem('i18nextLng', lang);
+        window.location.href = `/${lang}`;
+      }
+    } else {
+      navigate(`/${lang}/notfound/`, { replace: true });
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -71,6 +59,7 @@ export default function Hero({ lang }) {
   }, []);
 
   const rootEl = process.browser ? document.body : null;
+
   return (
     <div className="hero-section">
       <header className={`absolute inset-x-0 top-0 z-50 ${isSticky ? 'lg:!fixed !bg-[#ECEFF1]' : ''}`}>
@@ -101,7 +90,7 @@ export default function Hero({ lang }) {
             <button
               type="button"
               className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-400"
-            // onClick={() => setMobileMenuOpen(true)}
+              // onClick={() => setMobileMenuOpen(true)}
             >
               <span className="sr-only">Open main menu</span>
               <Bars3Icon className="h-8 w-8" aria-hidden="true" />

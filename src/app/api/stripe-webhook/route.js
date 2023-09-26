@@ -1,14 +1,14 @@
 import { NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { headers } from 'next/headers'
-import { createCustomer, createCustomerRequest } from '../../utils/jira'
+import { createCustomer, createCustomerRequest, resendInvitation } from '../../utils/jira'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export async function POST (req, res)  {
     const headersList = headers();
     const sig = headersList.get('stripe-signature');
-
+    
     const body = await req.text();
     
     let event;
@@ -25,9 +25,13 @@ export async function POST (req, res)  {
     
     if (event.type === 'checkout.session.completed') {
         const session = event.data.object;
+
         const accountId = await createCustomer(session.customer_details.name, session.customer_details.email);
-        await createCustomerRequest(accountId, 'description', 'summary', 'companyName', 'companyState', 'companyType');
-        
+        const customerReq = await createCustomerRequest(accountId, 'Please start my company', 'summary', session.metadata.companyName, session.metadata.companyState, session.metadata.companyType);
+        const invite = await resendInvitation(session.customer_details.email);
+
+        // console.log(customerReq)
+        // console.log(invite)
         // DB CALLS HERE
         return new NextResponse(session.url, { status: 200 });
     } else {

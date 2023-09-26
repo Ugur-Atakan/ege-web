@@ -1,14 +1,11 @@
-'use client';
-
-import { ToastContainer, toast } from 'react-toastify'
-import { useTranslation } from '../../i18n/client'
-import 'react-toastify/dist/ReactToastify.css'
-import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
+import { useTranslation } from '../../i18n/client';
+import Link from 'next/link';
 
 export default function Footer({ lang }) {
   const { t } = useTranslation(lang);
-  const API_ROOT = 'api_root'
-
   const navigation = {
     solutions: [
       {
@@ -66,32 +63,30 @@ export default function Footer({ lang }) {
   const notify = () => {
     toast("Successfully subscribed");
   }
+  const submitHandler = (e) => {
+    e.preventDefault();
 
-    const submitHandler = (e) => {
-        e.preventDefault();
-
-        let email = e.target.email.value;
-        let payload = {
-        "email": email,
-        }
-        console.log(payload)
-        axios.post(API_ROOT + '/api/newsletter', payload, {
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
-        },
-        body: JSON.stringify(payload),
-        })
-        .then(function (response) {
-            var jsonData = JSON.parse(JSON.stringify(response.data));
-            console.log(jsonData)
-            notify();
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+    let email = e.target.email.value;
+    let payload = {
+      "email": email,
     }
-
+    
+    axios.post('/api/newsletter', payload, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
+      },
+      body: JSON.stringify(payload),
+    })
+      .then(function (response) {
+        var jsonData = JSON.parse(JSON.stringify(response.data));
+        console.log(jsonData)
+        notify();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
   return (
     <footer className="bg-white border-t" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
@@ -143,9 +138,9 @@ export default function Footer({ lang }) {
           </div>
           <div className="mt-8 xl:mt-0">
             <p className="mt-4 font-semibold text-lg leading-[24px] text-black">
-            The latest news, articles, and<br></br> resources, sent to your inbox weekly.
+            {t('footer_col5_desc')}
             </p>
-            <form  className="mt-4">
+            <form onSubmit={submitHandler} className="mt-4">
               <label htmlFor="email-address" className="mb-2 text-sm font-medium sr-only"> Email address</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -177,21 +172,21 @@ export default function Footer({ lang }) {
           </p>
         </div>
       </div>
-        <ToastContainer
-          position="bottom-left"
-          autoClose={5000}
-          hideProgressBar={true}
-          newestOnTop={false}
-          closeOnClick
-          toastClassName={() =>
-            "bg-green-600 text-white items-center flex p-4 shadow-lg rounded-lg"
-          }
-          closeButton={() => "x"}
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
+      <ToastContainer
+        position="bottom-left"
+        autoClose={5000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        toastClassName={() =>
+          "bg-[#1649FF] text-white items-center flex p-4 shadow-lg rounded-lg"
+        }
+        closeButton={() => "x"}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </footer>
   )
 }

@@ -34,37 +34,36 @@ function SampleNextArrow(props) {
 
 export default function SupportBusiness({ lang }) {
   const { t } = useTranslation(lang);
+  const [selectedPackage, setSelectedPackage] = useState(0);
+  const [showAllPackages, setShowAllPackages] = useState(false);
 
   const stayCompliantPackage = [
-    { name: t('after_formation_package1_title'), description: t('after_formation_package1_description'), button: t('after_formation_package1_button'), href: `/`, img: hat },
-    { name: t('after_formation_package2_title'), description: t('after_formation_package2_description'), button: t('after_formation_package2_button'), href: `/`, img: folder },
-    { name: t('after_formation_package3_title'), description: t('after_formation_package3_description'), button: t('after_formation_package3_button'), href: `/`, img: calendar },
-    { name: t('after_formation_package4_title'), description: t('after_formation_package4_description'), button: t('after_formation_package4_button'), href: `/`, img: tic },
-    { name: t('after_formation_package5_title'), description: t('after_formation_package5_description'), button: t('after_formation_package5_button'), href: `/`, img: at },
-    { name: t('after_formation_package6_title'), description: t('after_formation_package6_description'), button: t('after_formation_package6_button'), href: `/`, img: navigator },
-    { name: t('after_formation_package7_title'), description: t('after_formation_package7_description'), button: t('after_formation_package7_button'), href: `/`, img: mail },
-    { name: t('after_formation_package8_title'), description: t('after_formation_package8_description'), button: t('after_formation_package8_button'), href: `/`, img: phone },
-    { name: t('after_formation_package9_title'), description: t('after_formation_package9_description'), button: t('after_formation_package9_button'), href: `/`, img: travel },
-    { name: t('after_formation_package10_title'), description: t('after_formation_package10_description'), button: t('after_formation_package10_button'), href: `/`, img: folder },
-    { name: t('after_formation_package11_title'), description: t('after_formation_package11_description'), button: t('after_formation_package11_button'), href: `/`, img: axe },
-    { name: t('after_formation_package12_title'), description: t('after_formation_package12_description'), button: t('after_formation_package12_button'), href: `/`, img: folder },
-    { name: t('after_formation_package13_title'), description: t('after_formation_package13_description'), button: t('after_formation_package13_button'), href: `/`, img: wallet },
-    { name: t('after_formation_package14_title'), description: t('after_formation_package14_description'), button: t('after_formation_package14_button'), href: `/`, img: filetext }
+    { name: t('after_formation_package1_title'), description: t('after_formation_package1_description'), button: t('after_formation_package1_button'), href: `/${lang}`, img: hat },
+    { name: t('after_formation_package2_title'), description: t('after_formation_package2_description'), button: t('after_formation_package2_button'), href: `/${lang}`, img: folder },
+    { name: t('after_formation_package3_title'), description: t('after_formation_package3_description'), button: t('after_formation_package3_button'), href: `/${lang}`, img: calendar },
+    { name: t('after_formation_package4_title'), description: t('after_formation_package4_description'), button: t('after_formation_package4_button'), href: `/${lang}`, img: tic },
+    { name: t('after_formation_package5_title'), description: t('after_formation_package5_description'), button: t('after_formation_package5_button'), href: `/${lang}`, img: at },
+    { name: t('after_formation_package6_title'), description: t('after_formation_package6_description'), button: t('after_formation_package6_button'), href: `/${lang}`, img: navigator },
+    { name: t('after_formation_package7_title'), description: t('after_formation_package7_description'), button: t('after_formation_package7_button'), href: `/${lang}`, img: mail },
+    { name: t('after_formation_package8_title'), description: t('after_formation_package8_description'), button: t('after_formation_package8_button'), href: `/${lang}`, img: phone },
+    { name: t('after_formation_package9_title'), description: t('after_formation_package9_description'), button: t('after_formation_package9_button'), href: `/${lang}`, img: travel },
+    { name: t('after_formation_package10_title'), description: t('after_formation_package10_description'), button: t('after_formation_package10_button'), href: `/${lang}`, img: folder },
+    { name: t('after_formation_package11_title'), description: t('after_formation_package11_description'), button: t('after_formation_package11_button'), href: `/${lang}`, img: axe },
+    { name: t('after_formation_package12_title'), description: t('after_formation_package12_description'), button: t('after_formation_package12_button'), href: `/${lang}`, img: folder },
+    { name: t('after_formation_package13_title'), description: t('after_formation_package13_description'), button: t('after_formation_package13_button'), href: `/${lang}`, img: wallet },
+    { name: t('after_formation_package14_title'), description: t('after_formation_package14_description'), button: t('after_formation_package14_button'), href: `/${lang}`, img: filetext }
   ]
   const taxesPackage = [
-    { name: t('after_formation_package15_title'), description: t('after_formation_package15_description'), button: t('after_formation_package15_button'), href: `/`, img: sheild },
-    { name: t('after_formation_package16_title'), description: t('after_formation_package16_description'), button: t('after_formation_package16_button'), href: `/`, img: dollar },
-    { name: t('after_formation_package17_title'), description: t('after_formation_package17_description'), button: t('after_formation_package17_button'), href: `/`, img: locker }
+    { name: t('after_formation_package15_title'), description: t('after_formation_package15_description'), button: t('after_formation_package15_button'), href: `/${lang}`, img: sheild },
+    { name: t('after_formation_package16_title'), description: t('after_formation_package16_description'), button: t('after_formation_package16_button'), href: `/${lang}`, img: dollar },
+    { name: t('after_formation_package17_title'), description: t('after_formation_package17_description'), button: t('after_formation_package17_button'), href: `/${lang}`, img: locker }
   ]
 
   const growYourBusinessPackage = [
-    { name: t('after_formation_package18_title'), description: t('after_formation_package18_description'), button: t('after_formation_package18_button'), href: `/`, img: folder }
+    { name: t('after_formation_package18_title'), description: t('after_formation_package18_description'), button: t('after_formation_package18_button'), href: `/${lang}`, img: folder }
   ]
 
-  const [showAllPackages, setShowAllPackages] = useState(false);
   const packagesName = [t('after_formation_tab1'), t('after_formation_tab2'), t('after_formation_tab3')];
-
-  const [selectedPackage, setSelectedPackage] = useState(0);
 
   const settings = {
     dots: false,
@@ -108,13 +107,13 @@ export default function SupportBusiness({ lang }) {
   return (
     <div className="bg-[#1649FF] overflow-hidden">
       <div className="mx-auto max-w-5xl p-8 lg:px-12 lg:pt-24 pb-12">
-        <h1 className="font-bold text-[32px] leading-[38px] lg:text-[64px] lg:leading-[64px] text-white text-left lg:text-center">{t('after_formation_title_white')}</h1><h1 className="text-[#9EE248]">{t('after_formation_title_green')}</h1>
+        <h1 className="font-bold text-[32px] leading-[38px] lg:text-[64px] lg:leading-[64px] text-white text-left lg:text-center">{t('after_formation_title_white')}</h1><h1 className="font-bold text-[32px] leading-[38px] lg:text-[64px] lg:leading-[64px] text-[#9EE248] text-left lg:text-center">{t('after_formation_title_green')}</h1>
       </div>
       <div className="flex items-center justify-center gap-0.5 pb-12">
         {packagesName.map((pac, index) => {
           return (
-            <div key={index} onClick={() => setSelectedPackage(index)} className={`cursor-pointer rounded-[12px] text-white text-[16px] leading-[22px] px-[6px] py-2 font-semibold text-center ${selectedPackage === index ? 'bg-white text-[#1649FF]' : 'bg-[#1649FF] text-white'}`}>
-              {pac}
+            <div key={index} onClick={() => setSelectedPackage(index)} className={`cursor-pointer rounded-[12px] text-white text-[16px] leading-[22px] px-[6px] py-2 font-semibold text-center ${selectedPackage === index ? 'bg-white text-blue-700' : 'bg-[#1649FF] text-white'}`}>
+                {pac}
             </div>
           )
         })}
@@ -124,7 +123,7 @@ export default function SupportBusiness({ lang }) {
           {selectedPackages.map((pac, index) => (           
               <div key={index} className="p-8 shadow-lg bg-white rounded-[32px] h-[35rem]">
                 <div className="flex items-center justify-center pb-4">
-                  <Image src={pac.img} className='h-56' alt='' />
+                  <Image src={pac.img} className='h-56 w-64' alt='' />
                 </div>
                 <div className="font-semibold text-[32px] leading-[38px] lg:leading-[44px] text-[#222222]">
                   {pac.name}

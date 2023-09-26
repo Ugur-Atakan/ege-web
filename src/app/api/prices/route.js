@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 import prices from '../../../assets/data/prices.json'
 
 export async function GET(request) {
