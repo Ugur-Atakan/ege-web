@@ -27,13 +27,27 @@ export default function RootLayout({
             id={"gtm-script"}
             dangerouslySetInnerHTML={{
               __html: `
-                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                })(window,document,'script','dataLayer','GTM-W3QDMCGC')`,
+              (function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                  'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+                }); var f = d.getElementsByTagName(s)[0],
+                  j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+              })(window, document, 'script', 'dataLayer', 'GTM-KG532G4')`,
             }}
           >
+        </Script>
+
+        <Script 
+          type="text/javascript"
+          id={"exairon-messenger-script"}
+          async
+          dangerouslySetInnerHTML={{
+            __html: `
+            (function () { let e = document.createElement("script"), t = document.head || document.getElementsByTagName("head")[0]; (e.id = "exairon-messenger"), (e.src = "https://registate.services.exairon.com/assets/widget/index.js"), (e.async = !0), (e.onload = () => { window.WebChat.default({ customData: { language: "en" }, socketPath: "/socket/", channelId: "6297b63f74cf82000cc544ca", withRules: true, hideWhenNotConnected: false, displayType: "livechat" }, null); }), t.insertBefore(e, t.firstChild); })()
+            `,
+          }}>
         </Script>
       </head>
 

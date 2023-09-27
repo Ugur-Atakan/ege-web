@@ -118,20 +118,20 @@ export default function SupportBusiness({ lang }) {
           )
         })}
       </div>
-      <div className={t('after-formation hidden lg:block relative')} style={{ marginLeft: '15rem', width: 'calc(100% - 20px)' }}>
+      <div className={t('after-formation hidden lg:block relative')} >
         <Slider {...settings} className='relative'>
           {selectedPackages.map((pac, index) => (           
-              <div key={index} className="p-8 shadow-lg bg-white rounded-[32px] h-[35rem]">
-                <div className="flex items-center justify-center pb-4">
+            <div key={index} className="p-8 shadow-lg bg-white rounded-[32px] h-[35rem]">
+                <div className="media-query-image flex items-center justify-center pb-4">
                   <Image src={pac.img} className='h-56 w-64' alt='' />
                 </div>
-                <div className="font-semibold text-[32px] leading-[38px] lg:leading-[44px] text-[#222222]">
+                <div className="media-query-heading font-semibold text-[32px] leading-[38px] lg:leading-[44px] text-[#222222]">
                   {pac.name}
                 </div>
-                <div className="font-semibold text-[16px] lg:text-lg leading-[22px] text-[#222222] pt-4 flex-1">
+                <div className="media-query-description">
                   {pac.description}
                 </div>
-                <button className="absolute bottom-4 py-1 text-[19px] leading-[26px] font-semibold text-[#1649FF]">{pac.button}</button>
+                <button className="media-query-button absolute bottom-4 py-1 text-[19px] leading-[26px] font-semibold text-[#1649FF]">{pac.button}</button>
               </div> 
           ))}
         </Slider>

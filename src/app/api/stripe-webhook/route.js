@@ -26,16 +26,27 @@ export async function POST (req, res)  {
     if (event.type === 'checkout.session.completed') {
         const session = event.data.object;
 
-        console.log(session)
         const summary = `Start my Company - ${session.metadata.companyName}`
         const description = `Please start my company - ${session.metadata.companyName}`
-        //const accountId = await createCustomer(session.customer_details.name, session.customer_details.email);
-        //const customerReq = await createCustomerRequest(accountId, description, summary, session.metadata.companyName, session.metadata.companyState, session.metadata.companyType);
-        
-        // const invite = await resendInvitation(session.customer_details.email);
+        const email = session.customer_details.email
+        const address = session.metadata.address
+        const zipCode = parseInt(session.metadata.zipCode)
+        const city = session.metadata.city
+        const country = session.metadata.country
+
+        const accountId = await createCustomer(session.customer_details.name, session.customer_details.email);
+        const customerReq = await createCustomerRequest(
+            accountId, description, summary, session.metadata.companyName,
+            session.metadata.companyState, session.metadata.companyType, 
+            email, address, zipCode, city, country
+        );
 
         // console.log(customerReq)
+
+        // const invite = await resendInvitation(session.customer_details.email);
+        // console.log(customerReq)
         // console.log(invite)
+
         // DB CALLS HERE
         return new NextResponse(session.url, { status: 200 });
     } else {

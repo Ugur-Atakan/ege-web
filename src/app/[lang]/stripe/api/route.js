@@ -14,6 +14,11 @@ export async function POST(req) {
   const companyName = data.payload.companyName
   const companyState = data.payload.companyState
   const companyType = data.payload.companyType
+  const customerEmail = data.payload.companyContactEmail
+  const address = data.payload.companyContactAddress
+  const zipCode = data.payload.companyZipCode
+  const city = data.payload.companyCity
+  const country = data.payload.companyCountry
 
   try {
     const session = await stripe.checkout.sessions.create({
@@ -32,7 +37,16 @@ export async function POST(req) {
       mode: 'payment',
       success_url: process.env.SUCCESS_STRIPE_URL,
       cancel_url: process.env.FAIL_STRIPE_URL,
-      metadata: { companyName, companyState, companyType }
+      metadata: { 
+        companyName,
+        companyState,
+        companyType,
+        customerEmail,
+        address,
+        zipCode,
+        city,
+        country
+      }
     });
 
     return new NextResponse(session.url, { status: 200 });

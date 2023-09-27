@@ -765,3 +765,75 @@ body {
 #root {
   overflow: hidden;
 }
+
+
+/* MEDIA QUERIES FOR Support Buisness Page */
+/* 
+.media-query { 
+  margin-left: 15px;
+  width: 'calc(100% - 20px)'
+}
+
+.media-query-heading {
+  font-weight: bold;
+} */
+
+
+@media (min-width: 64rem) {
+  .after-formation {
+    display: block;
+    position: relative;
+    margin-left: 15rem;
+    width: calc(100% - 20px);
+  }
+}
+
+.relative {
+  position: relative;
+}
+
+.media-query {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.media-query-image {
+  flex-shrink: 0;
+}
+
+.media-query-heading {
+  font-weight: bold;
+  font-size: 2rem;
+  line-height: 2.375rem;
+  color: #222222;
+  margin-bottom: 1.2rem;
+}
+
+.media-query-description {
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 1.375rem;
+  color: #222222;
+  flex: 1;
+}
+
+.media-query-button {
+  position: absolute;
+  bottom: 1rem;
+  padding: 1rem;
+  font-size: 1.1875rem;
+  line-height: 1.625rem;
+  font-weight: bold;
+  color: #1649ff;
+}
+
+@media only screen and (min-width: 1125px)  and (max-width: 1366px) { 
+  .after-formation {
+    display: block;
+    position: relative;
+    margin-left: 15rem;
+    width: calc(160% - 20px);
+  }
+}

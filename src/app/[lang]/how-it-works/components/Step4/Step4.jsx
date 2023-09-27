@@ -4,17 +4,19 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import 'react-toastify/dist/ReactToastify.css'
 
-import packageDataEN from '../../../../assets/packageDataEN.json'
-import packageDataTR from '../../../../assets/packageDataTR.json'
+import packageDataEN from '../../../../../assets/packageDataEN.json'
+import packageDataTR from '../../../../../assets/packageDataTR.json'
 
-import { useTranslation } from '../../../i18n/client'
+import { useTranslation } from '../../../../i18n/client'
 
 import { tick, tickblue, bishop, queen, bishopcolor, 
          kingblack, arrowblack, arrowblue, noinclude,
-} from '../../../../images'
+} from '../../../../../images'
+
+import Step4Header from './Step4Header'
 
 export default function Step4({ lang }) {
-  const { t } = useTranslation();
+  const { t } = useTranslation(lang);
 
   const [isChecked, setIsChecked] = useState(false);
   const selectedCompanyType = isChecked === false ? 'LLC' : 'C-corp';
@@ -33,20 +35,11 @@ export default function Step4({ lang }) {
   return (
     <>
       <div className={`pt-12 pb-0 lg:py-12 lg:pt-24 lg:pb-0 px-6 bg-[#ECEFF1] ${showAllDifferences && '!pb-12'}`}>
-        <div className='mx-auto max-w-[571px]'>
-          <h1 className='text-left lg:text-center font-semibold text-[26px] leading-[32px] lg:text-[40px] lg:leading-[44px] text-[#1649FF]'>
-            {t('how_it_works_step_4')}
-            <span className='text-[#222222]'>{t('how_it_works_package_title')}</span>
-          </h1>
-          <div className='flex items-center justify-start lg:justify-center pb-6 lg:pb-0 pt-12 gap-4'>
-            <span className='font-semibold text-[28px] leading-8 text-[#222222]'>LLC</span>
-            <label className="relative inline-flex items-center cursor-pointer">
-              <input type="checkbox" value={isChecked} onChange={toggleChecked} className="sr-only peer" />
-              <div className="w-20 h-10 bg-[#1649FF] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full  after:content-[''] after:absolute after:top-[4px] after:left-[8px] after:bg-white  after:rounded-full after:h-8 after:w-8 after:transition-all peer-checked:bg-[#222222]"></div>
-            </label>
-            <span className='font-semibold text-[28px] leading-8 text-[#222222]'>Corp</span>
-          </div>
-        </div>
+        <Step4Header
+          isChecked={isChecked}
+          toggleChecked={toggleChecked}
+          t={t}
+        />
         <div className='mx-auto max-w-[1120px] py-0 lg:py-12 lg:px-4 lg:pb-0'>
           {isChecked ?
             <div className='flex-col lg:flex-row flex items-stretch justify-center gap-4'>

@@ -49,6 +49,9 @@ export default function Content({ lang }) {
             "companyContactEmail": companyContactEmail,
             "companyContactPhone": companyContactPhone,
             "companyContactAddress": companyContactAddress,
+            "companyZipCode": zip,
+            "companyCity": city,
+            "companyCountry": country,
             "selectedPackage": selectedPackage,
         }
 
