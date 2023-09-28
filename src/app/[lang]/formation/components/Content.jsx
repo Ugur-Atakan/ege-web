@@ -5,22 +5,18 @@ import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import axios from 'axios'
-import { getRandomPackages } from '../utils/util'
 
 import { ArrowLeftIcon } from '@heroicons/react/24/outline'
-import bishopwhite from '../../../../images/bishop-white.png'
-import quencolor from '../../../../images/queen-color.png'
-import kingblack from '../../../../images/king-black.png'
-import noinclude from '../../../../images/no-include.png'
-import arrowblack from '../../../../images/arrow-black.png'
-import arrowblue from '../../../../images/arrow-blue.png'
+import { bishopwhite, quencolor, kingblack, noinclude, arrowblack, arrowblue } from '../../../../images'
 
 import packageDataEN from '../../../../assets/packageDataEN.json'
 import packageDataTR from '../../../../assets/packageDataTR.json'
 
+import { lookUpTable } from '../../../utils/stateLookUp'
+import { getRandomPackages } from '../utils/util'
 import { useTranslation } from '../../../i18n/client'
 
-export default function Formation({ lang }) {
+export default function Content({ lang }) {
   const { t } = useTranslation(lang);
 
   let [packagePrices, setPackagePrices] = useState([]);

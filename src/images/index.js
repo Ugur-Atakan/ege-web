@@ -17,6 +17,8 @@ import arrowblack from './arrow-black.png'
 import arrowblue from './arrow-blue.png'
 import noinclude from './no-include.png'
 import star from './star-block.png'
+import bishopwhite from './bishop-white.png'
+import quencolor from './queen-color.png'
 
 export { 
     whitelogo, 
@@ -37,5 +39,7 @@ export {
     arrowblack, 
     arrowblue, 
     noinclude,
-    star
+    star,
+    bishopwhite,
+    quencolor
 }

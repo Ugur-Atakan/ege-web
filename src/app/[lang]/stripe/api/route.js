@@ -46,7 +46,9 @@ export async function POST(req) {
         zipCode,
         city,
         country
-      }
+      },
+      customer_creation: 'always',
+      customer_email: customerEmail
     });
 
     return new NextResponse(session.url, { status: 200 });

@@ -24,8 +24,9 @@ export async function POST (req, res)  {
     }
     
     if (event.type === 'checkout.session.completed') {
-        const session = event.data.object;
+        console.log('Checkout session completed')
 
+        const session = event.data.object;
         const summary = `Start my Company - ${session.metadata.companyName}`
         const description = `Please start my company - ${session.metadata.companyName}`
         const email = session.customer_details.email
@@ -40,7 +41,8 @@ export async function POST (req, res)  {
             session.metadata.companyState, session.metadata.companyType, 
             email, address, zipCode, city, country
         );
-
+        console.log(`Jira User with ${accountId} created`)
+        console.log(customerReq)
         // console.log(customerReq)
 
         // const invite = await resendInvitation(session.customer_details.email);
