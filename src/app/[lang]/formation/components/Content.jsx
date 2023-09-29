@@ -7,12 +7,11 @@ import Image from 'next/image'
 import axios from 'axios'
 
 import { ArrowLeftIcon } from '@heroicons/react/24/outline'
-import { bishopwhite, quencolor, kingblack, noinclude, arrowblack, arrowblue } from '../../../../images'
+import { bishopwhite, queencolor, kingblack, noinclude, arrowblack, arrowblue } from '../../../../images'
 
 import packageDataEN from '../../../../assets/packageDataEN.json'
 import packageDataTR from '../../../../assets/packageDataTR.json'
 
-import { lookUpTable } from '../../../utils/stateLookUp'
 import { getRandomPackages } from '../utils/util'
 import { useTranslation } from '../../../i18n/client'
 
@@ -135,7 +134,7 @@ export default function Content({ lang }) {
                 {titles[index]}
               </p>  
               <p className={index === 0 ? 'font-semibold text-[28px] leading-8 text-[#222222]' : 'font-semibold text-[28px] leading-8 text-white'}>{'$' + (prices.orderPackagePrice / 100).toFixed(0)}</p>
-              <Image src={index === 0 && bishopwhite || index === 1 && quencolor || index === 2 && kingblack} className='' alt='llc package' />
+              <Image src={index === 0 && bishopwhite || index === 1 && queencolor || index === 2 && kingblack} className='' alt='llc package' />
             </div>
           ))}
         </div>

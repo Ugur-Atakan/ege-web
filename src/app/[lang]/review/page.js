@@ -1,3 +1,5 @@
+'use client'
+
 import Navbar from '../components/common/Navbar'
 import Content from './components/Content'
 
