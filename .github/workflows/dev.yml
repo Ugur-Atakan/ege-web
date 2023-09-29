@@ -2,7 +2,7 @@ name: REGISTATE DEV
 
 on:
   push:
-    branches: [ dev ]
+    branches: [ dev, next-js ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -17,10 +17,30 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.S3_UPLOADER_AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_UPLOADER_AWS_SECRET_KEY }}
       CLOUDFRONT_ID: ${{ vars.CLOUDFRONT_DEV }}
-      
+      STRIPE_PUBLISHABLE_KEY: ${{ secrets.STRIPE_PUBLISHABLE_KEY_DEV }}
+      STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY_DEV }}
+      STRIPE_WEBHOOK_SECRET_KEY: ${{ secrets.STRIPE_WEBHOOK_SECRET_KEY_DEV }}
+      JIRA_REQUEST_TYPE_ID: ${{ vars.JIRA_REQUEST_TYPE_ID_DEV }}
+      JIRA_SERVICE_DESK_ID: ${{ vars.JIRA_SERVICE_DESK_ID_DEV }}
+      JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN_DEV }}
+      JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL_DEV }}
+      JIRA_BASE_URL: ${{ vars.JIRA_BASE_URL_DEV }}
+      SUCCESS_STRIPE_URL: ${{ vars.SUCCESS_STRIPE_URL_DEV }}
+      FAIL_STRIPE_URL: ${{ vars.FAIL_STRIPE_URL_DEV }}
+      ENVIRONMENT_FILE: ${{ vars.ENVIRONMENT_FILE_DEV }}
+      S3_APP_BUCKET: ${{ vars.S3_APP_BUCKET }}
+      ASG_NAME: ${{ vars.ASG_NAME_DEV }}
+
     steps:
-      - uses: actions/checkout@v3
-      - name: build
+      # only run this if branch is dev
+      - if: github.ref == 'refs/heads/dev'
+        name: checkout
+        uses: actions/checkout@v2
+      - name: install node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '16.x'
+      - name: install dependencies
         run: |
           rm -rf build node_modules
           npm install --force
@@ -35,4 +55,25 @@ jobs:
           EOF
           /usr/local/bin/aws --region eu-central-1 s3 sync . $S3_LOCATION
           /usr/local/bin/aws --region eu-central-1 cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths "/*"
- 
+      # only run this if branch is next-js
+      - if: github.ref == 'refs/heads/next-js'
+        name: create environment file and upload to S3 app bucket
+        run: |
+          tee $ENVIRONMENT_FILE << EOF
+          STRIPE_PUBLISHABLE_KEY=${STRIPE_PUBLISHABLE_KEY}
+          STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
+          STRIPE_WEBHOOK_SECRET_KEY=${STRIPE_WEBHOOK_SECRET_KEY}
+          JIRA_REQUEST_TYPE_ID=${JIRA_REQUEST_TYPE_ID}
+          JIRA_SERVICE_DESK_ID=${JIRA_SERVICE_DESK_ID}
+          JIRA_API_TOKEN=${JIRA_API_TOKEN}
+          JIRA_USER_EMAIL=${JIRA_USER_EMAIL}
+          JIRA_BASE_URL=${JIRA_BASE_URL}
+          SUCCESS_STRIPE_URL=${SUCCESS_STRIPE_URL}
+          FAIL_STRIPE_URL=${FAIL_STRIPE_URL}
+          EOF
+
+          /usr/local/bin/aws --region eu-central-1 s3 cp $ENVIRONMENT_FILE s3://$S3_APP_BUCKET/$ENVIRONMENT_FILE
+      - if: github.ref == 'refs/heads/next-js'
+        name: trigger instance refresh in auto-scaling group
+        run: |
+          aws --region eu-central-1 autoscaling start-instance-refresh --auto-scaling-group-name $ASG_NAME
