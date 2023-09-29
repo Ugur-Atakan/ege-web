@@ -55,13 +55,14 @@ jobs:
       JIRA_REQUEST_TYPE_ID: ${{ vars.JIRA_REQUEST_TYPE_ID_DEV }}
       JIRA_SERVICE_DESK_ID: ${{ vars.JIRA_SERVICE_DESK_ID_DEV }}
       JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN_DEV }}
-      JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL_DEV }}
+      JIRA_USER_EMAIL: ${{ vars.JIRA_USER_EMAIL_DEV }}
       JIRA_BASE_URL: ${{ vars.JIRA_BASE_URL_DEV }}
       SUCCESS_STRIPE_URL: ${{ vars.SUCCESS_STRIPE_URL_DEV }}
       FAIL_STRIPE_URL: ${{ vars.FAIL_STRIPE_URL_DEV }}
       ENVIRONMENT_FILE: ${{ vars.ENVIRONMENT_FILE_DEV }}
       S3_APP_BUCKET: ${{ vars.S3_APP_BUCKET }}
       ASG_NAME: ${{ vars.ASG_NAME_DEV }}
+      RS_BRANCH_NAME_WEB: ${{ vars.RS_BRANCH_NAME_WEB_DEV }}
 
     steps:
       - name: create environment file and upload to S3 app bucket
@@ -77,6 +78,7 @@ jobs:
           JIRA_BASE_URL=${JIRA_BASE_URL}
           SUCCESS_STRIPE_URL=${SUCCESS_STRIPE_URL}
           FAIL_STRIPE_URL=${FAIL_STRIPE_URL}
+          RS_BRANCH_NAME_WEB=${RS_BRANCH_NAME_WEB}
           EOF
 
           /usr/local/bin/aws --region us-east-1 s3 cp $ENVIRONMENT_FILE s3://$S3_APP_BUCKET/$ENVIRONMENT_FILE
