@@ -1,10 +1,10 @@
 /* eslint-disable */
 'use client';
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import { useTranslation } from '../../../i18n/client'
+import { useTranslation } from '../../../i18n/client';
 
 import BackButton from './BackButton';
 import FillinForm from './FillinForm';
@@ -27,17 +27,19 @@ export default function Content({ lang }) {
     const [countries, setCountries] = useState([]);
     const [states, setStates] = useState([]);
     const [couponcode, setCouponCode] = useState('');
-  
-    const [renderCount , setRenderCount ] = useState(0);
+
+    const [renderCount, setRenderCount] = useState(0);
     const [companyName, setCompanyName] = useState('');
     const [companyState, setCompanyState] = useState('');
-    const [companyType, setCompanyType] = useState(''); 
+    const [companyType, setCompanyType] = useState('');
     const [selectedPackage, setSelectedPackage] = useState('');
 
     useEffect(() => {
-        if (typeof window !== 'undefined' && window.localStorage){
+        if (typeof window !== 'undefined' && window.localStorage) {
             let storedPackage = window.localStorage.getItem('selectedPackage');
-            setSelectedPackage(storedPackage ? JSON.parse(storedPackage) : null);
+            setSelectedPackage(
+                storedPackage ? JSON.parse(storedPackage) : null
+            );
             setCompanyName(window.localStorage.getItem('companyName'));
             setCompanyState(window.localStorage.getItem('companyState'));
             setCompanyType(window.localStorage.getItem('companyType'));
@@ -51,51 +53,55 @@ export default function Content({ lang }) {
         setRenderCount(renderCount + 1);
     }, []);
 
-
     const formSubmitHandler = (e) => {
         e.preventDefault();
-        const companyContactName = name + " " + lastname;
+        const companyContactName = name + ' ' + lastname;
         const companyContactEmail = email;
         const companyContactPhone = phone;
-        const companyContactAddress = street + ", " + city + ", " + zip + ", " + country;
-        const packageDetails = typeof window !== 'undefined' ? JSON.parse(window.localStorage.getItem('selectedPackage')) : null;
+        const companyContactAddress =
+            street + ', ' + city + ', ' + zip + ', ' + country;
+        const packageDetails =
+            typeof window !== 'undefined'
+                ? JSON.parse(window.localStorage.getItem('selectedPackage'))
+                : null;
 
         let payload = {
-            "companyName": companyName,
-            "companyType": companyType,
-            "companyState": companyState,
-            "companyContactName": companyContactName,
-            "companyContactEmail": companyContactEmail,
-            "companyContactPhone": companyContactPhone,
-            "companyContactAddress": companyContactAddress,
-            "companyZipCode": zip,
-            "companyCity": city,
-            "companyCountry": country,
-            "selectedPackage": packageDetails,
-        }
+            companyName: companyName,
+            companyType: companyType,
+            companyState: companyState,
+            companyContactName: companyContactName,
+            companyContactEmail: companyContactEmail,
+            companyContactPhone: companyContactPhone,
+            companyContactAddress: companyContactAddress,
+            companyZipCode: zip,
+            companyCity: city,
+            companyCountry: country,
+            selectedPackage: packageDetails
+        };
 
-        axios.post(`/${lang}/stripe/api`, { data: { payload }})
-        .then((response) => {
-            let stripeURL = JSON.parse(JSON.stringify(response.data));
-            
-            if (stripeURL) {
-                if (typeof window!== 'undefined' && window.localStorage)
-                    window.localStorage.setItem('stripeUrl', stripeURL);
-                if (typeof window !== 'undefined' && window.location)
-                    window.location.href = stripeURL;
-            }
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-    }
+        axios
+            .post(`/${lang}/stripe/api`, { data: { payload } })
+            .then((response) => {
+                let stripeURL = response.data;
+
+                if (stripeURL) {
+                    if (typeof window !== 'undefined' && window.localStorage)
+                        window.localStorage.setItem('stripeUrl', stripeURL);
+                    if (typeof window !== 'undefined' && window.location)
+                        window.location.href = stripeURL;
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         formSubmitHandler(e);
     };
 
-    // API Call useEffect 
+    // API Call useEffect
     useEffect(() => {
         const fetchData = async () => {
             const countriesRes = await axios.get('/api/countries');
@@ -103,40 +109,46 @@ export default function Content({ lang }) {
 
             const statesRes = await axios.get(`/${lang}/state/api`);
             setStates(statesRes.data);
-        }
+        };
         fetchData();
     }, []);
 
-
     return (
-        <div className='block md:flex items-start gap-12 bg-[#ECEFF1]'>
+        <div className="block md:flex items-start gap-12 bg-[#ECEFF1]">
             <BackButton lang={lang} />
-            <div className='w-full md:w-[45%]'>
-                { displayForm ?
-                        <FillinForm 
-                            lang={lang} 
-                            setCity={setCity}
-                            setCountry={setCountry}
-                            setLastName={setLastName}
-                            setName={setName}
-                            setEmail={setEmail}
-                            setStreet={setStreet}
-                            setZip={setZip}
-                            setPhone={setPhone}
-                            countries={countries}
-                            states={states}
-                            country={country}
+            <div className="w-full md:w-[45%]">
+                {displayForm ? (
+                    <FillinForm
+                        lang={lang}
+                        setCity={setCity}
+                        setCountry={setCountry}
+                        setLastName={setLastName}
+                        setName={setName}
+                        setEmail={setEmail}
+                        setStreet={setStreet}
+                        setZip={setZip}
+                        setPhone={setPhone}
+                        countries={countries}
+                        states={states}
+                        country={country}
+                    />
+                ) : (
+                    <div className="py-8 px-4 md:pl-10 md:py-8">
+                        <h1 className="font-semibold text-[26px] md:text-[40px] leading-[44px] text-[#222222]">
+                            {t('review_title')}
+                        </h1>
+                        <CompanyDetails
+                            lang={lang}
+                            companyType={companyType}
+                            companyName={companyName}
+                            companyState={companyState}
                         />
-                    :
-                        <div className='py-8 px-4 md:pl-10 md:py-8'>
-                            <h1 className='font-semibold text-[26px] md:text-[40px] leading-[44px] text-[#222222]'>{t('review_title')}</h1>
-                            <CompanyDetails lang={lang} companyType={companyType} companyName={companyName} companyState={companyState} />
-                            <Features selectedPackage={selectedPackage} />
-                        </div>
-                }
+                        <Features selectedPackage={selectedPackage} />
+                    </div>
+                )}
             </div>
 
-            <div className='w-full py-0 px-4 md:px-0 -mt-6 md:mt-0 mb-12 md:mb-0 md:w-[55%]'>
+            <div className="w-full py-0 px-4 md:px-0 -mt-6 md:mt-0 mb-12 md:mb-0 md:w-[55%]">
                 <OrderReview
                     lang={lang}
                     selectedPackage={selectedPackage}
@@ -148,5 +160,5 @@ export default function Content({ lang }) {
                 />
             </div>
         </div>
-    )
+    );
 }

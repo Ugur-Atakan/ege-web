@@ -1,16 +1,20 @@
-import { NextResponse } from 'next/server'
-import Stripe from 'stripe'
-import { headers } from 'next/headers'
-import { createCustomer, createCustomerRequest, resendInvitation } from '../../utils/jira'
+import { NextResponse } from 'next/server';
+import Stripe from 'stripe';
+import { headers } from 'next/headers';
+import {
+    createCustomer,
+    createCustomerRequest,
+    resendInvitation
+} from '../../utils/jira';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-export async function POST (req, res)  {
+export async function POST(req, res) {
     const headersList = headers();
     const sig = headersList.get('stripe-signature');
-    
+
     const body = await req.text();
-    
+
     let event;
 
     try {
@@ -20,32 +24,44 @@ export async function POST (req, res)  {
             process.env.STRIPE_WEBHOOK_SECRET_KEY
         );
     } catch (err) {
-        return new NextResponse(`Webhook Error: ${err.message}`, { status: 400 });
+        return new NextResponse(`Webhook Error: ${err.message}`, {
+            status: 400
+        });
     }
-    
+
     if (event.type === 'checkout.session.completed') {
-        console.log('Checkout session completed')
+        console.log('Checkout session completed');
 
         const session = event.data.object;
-        const summary = `Start my Company - ${session.metadata.companyName}`
-        const description = `Please start my company - ${session.metadata.companyName}`
-        const email = session.customer_details.email
-        const address = session.metadata.address
-        const zipCode = parseInt(session.metadata.zipCode)
-        const city = session.metadata.city
-        const country = session.metadata.country
+        const summary = `Start my Company - ${session.metadata.companyName}`;
+        const description = `Please start my company - ${session.metadata.companyName}`;
+        const email = session.customer_details.email;
+        const address = session.metadata.address;
+        const zipCode = parseInt(session.metadata.zipCode);
+        const city = session.metadata.city;
+        const country = session.metadata.country;
 
-        const accountId = await createCustomer(session.customer_details.name, session.customer_details.email);
-        const customerReq = await createCustomerRequest(
-            accountId, description, summary, session.metadata.companyName,
-            session.metadata.companyState, session.metadata.companyType, 
-            email, address, zipCode, city, country
+        const accountId = await createCustomer(
+            session.customer_details.name,
+            session.customer_details.email
         );
-        console.log(`Jira User with ${accountId} created`)
-        console.log(customerReq)
-        // console.log(customerReq)
+        const customerReq = await createCustomerRequest(
+            accountId,
+            description,
+            summary,
+            session.metadata.companyName,
+            session.metadata.companyState,
+            session.metadata.companyType,
+            email,
+            address,
+            zipCode,
+            city,
+            country
+        );
+        console.log(`Jira User with ${accountId} created`);
+        console.log(customerReq);
 
-        // const invite = await resendInvitation(session.customer_details.email);
+        const invite = await resendInvitation(session.customer_details.email);
         // console.log(customerReq)
         // console.log(invite)
 
@@ -54,4 +70,4 @@ export async function POST (req, res)  {
     } else {
         return new NextResponse('No action taken', { status: 400 });
     }
-};
+}
