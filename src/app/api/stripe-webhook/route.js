@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { headers } from 'next/headers';
+import logger from '../../lib/logger'
 import {
     createCustomer,
     createCustomerRequest,
@@ -24,6 +25,7 @@ export async function POST(req, res) {
             process.env.STRIPE_WEBHOOK_SECRET_KEY
         );
     } catch (err) {
+        logger.error({ message : `Stripe webhook Error: ${err.message}` })
         return new NextResponse(`Webhook Error: ${err.message}`, {
             status: 400
         });
@@ -68,6 +70,7 @@ export async function POST(req, res) {
         // DB CALLS HERE
         return new NextResponse(session.url, { status: 200 });
     } else {
+        logger.error({ message : `No action taken on webhook - FileName: stripe-webhook-route.js` })
         return new NextResponse('No action taken', { status: 400 });
     }
 }

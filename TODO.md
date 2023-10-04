@@ -1,3 +1,1 @@
-[] stripe user
-[] jira ticket not being created
-[]
+[] Logging in main folders.
