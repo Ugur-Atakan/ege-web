@@ -11,7 +11,15 @@ import bluelogo from '../../../../images/logo-blue.webp'
 import { useTranslation } from '../../../i18n/client'
 import i18next from 'i18next'
 
-export default function Navbar ({ lang }) {
+/**
+ * Navbar Component 
+ * @type {function} 
+ * @param {object} lang - Language object from useTranslation hook
+ * @type {client}
+ * @returns {JSX.Element} 
+*/
+
+const Navbar = ({ lang }) => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [isSticky, setIsSticky] = useState(false);
     const { t } = useTranslation(lang);
@@ -184,3 +192,5 @@ export default function Navbar ({ lang }) {
       </header>
     )
 }
+
+export default Navbar

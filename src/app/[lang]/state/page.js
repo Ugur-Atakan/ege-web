@@ -1,8 +1,15 @@
-'use client';
 import Navbar from '../components/common/Navbar'
 import Pricing from './components/Pricing'
 
-export default function State ({ params: { lang } }) {
+/**
+ * Page route for pricing page
+ * @type {function}
+ * @param {object} lang - Language object from useTranslation hook
+ * @type {server}
+ * @returns {JSX.Element}
+*/
+
+const Page = ({ params: { lang } }) => {
   return (
     <main>
         <Navbar lang={lang} />
@@ -10,3 +17,5 @@ export default function State ({ params: { lang } }) {
     </main>
   )
 }
+
+export default Page

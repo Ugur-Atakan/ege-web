@@ -1,5 +1,13 @@
+/**
+ * Home page route
+ * @type {function} 
+ * @description Terms of Service Content Component
+ * @param {object} lang - Language object from useTranslation hook
+ * @type {server}
+ * @returns {JSX.Element} 
+*/
 
-export default function TermsOfServiceContent() {
+const TermsOfServiceContent = () => {
     return (
         <div className="mx-auto max-w-7xl px-8 py-12">
             <h1 className="text-3xl text-black font-bold text-center sm:text-4xl py-16">Terms Of Service</h1>
@@ -86,3 +94,5 @@ BY USING REGISTATE’S SERVICES OR ACCESSING THIS WEBSITE, YOU ACKNOWLEDGE THAT 
         </div>
     )
 }
+
+export default TermsOfServiceContent

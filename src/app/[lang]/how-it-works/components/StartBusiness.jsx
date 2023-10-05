@@ -1,11 +1,21 @@
+'use client'
+
 import Link from 'next/link'
 import { useState } from 'react'
 import Image from 'next/image'
-import { useTranslation } from '../../../i18n/client'
 import { start } from '../../../../images'
 import { ArrowRightIcon } from '@heroicons/react/24/outline'
+import { useTranslation } from '../../../i18n/client'
 
-export default function StartBusiness({ lang }) {
+/**
+ * StartBuisness Component for how it works page
+ * @type {function} 
+ * @param {object} lang - Language object from useTranslation hook
+ * @type {client}
+ * @returns {JSX.Element} 
+*/
+
+const StartBusiness = ({ lang }) => {
     const [businessName, setBusinessName] = useState('');
 
     const { t } = useTranslation(lang)
@@ -54,3 +64,5 @@ export default function StartBusiness({ lang }) {
       </div>
     )
 }
+
+export default StartBusiness

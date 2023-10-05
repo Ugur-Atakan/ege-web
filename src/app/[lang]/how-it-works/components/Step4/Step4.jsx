@@ -15,7 +15,15 @@ import { tick, tickblue, bishop, queen, bishopcolor,
 
 import Step4Header from './Step4Header'
 
-export default function Step4({ lang }) {
+/**
+ * Step4 component
+ * @type {function} 
+ * @param {object} lang - Language object from useTranslation hook
+ * @type {client}
+ * @returns {JSX.Element} 
+*/
+
+const Step4 = ({ lang }) => {
   const { t } = useTranslation(lang);
 
   const [isChecked, setIsChecked] = useState(false);
@@ -440,3 +448,5 @@ export default function Step4({ lang }) {
     </>
   )
 }
+
+export default Step4

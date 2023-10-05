@@ -1,17 +1,25 @@
-'use client';
+'use client'
 
 import { Disclosure } from '@headlessui/react'
-import { ArrowRightIcon, ChevronDownIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
+import { ArrowRightIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
 import  Link  from 'next/link'
 import Image from 'next/image'
 import navigatoricon from '../../../../images/navigator.png'
 import { useTranslation } from '../../../i18n/client';
 
-function classNames(...classes) {
+const classNames = (...classes) => {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Content({ lang }) {
+/**
+ * Content component
+ * @type {function}
+ * @param {object} lang - Language object from useTranslation hook
+ * @type {client}
+ * @returns {JSX.Element} Rendered content for the page
+*/
+
+const Content = ({ lang }) => {
   const { t } = useTranslation();
 
   const faqs = [
@@ -124,3 +132,5 @@ export default function Content({ lang }) {
     </section>
   )
 }
+
+export default Content

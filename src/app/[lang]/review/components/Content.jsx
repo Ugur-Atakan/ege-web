@@ -12,7 +12,15 @@ import CompanyDetails from './CompanyDetails';
 import Features from './Features';
 import OrderReview from './OrderReview';
 
-export default function Content({ lang }) {
+/**
+ * Main content component
+ * @type {function} 
+ * @param {object} lang - Language object from useTranslation hook
+ * @type {client}
+ * @returns {JSX.Element} 
+*/
+
+const Content = ({ lang }) => {
     const { t } = useTranslation(lang);
 
     const [displayForm, setDisplayForm] = useState(false);
@@ -162,3 +170,5 @@ export default function Content({ lang }) {
         </div>
     );
 }
+
+export default Content

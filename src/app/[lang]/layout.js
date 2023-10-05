@@ -12,12 +12,12 @@ export function generateStaticParams() {
   return languages.map((lang) => ({ lang }))
 }
 
-export default function RootLayout({
+const RootLayout = ({
   children,
   params: {
     lang
   }
-}) {
+}) => {
   return (
     <html lang={lang} dir={dir(lang)} className='h-full text-base antialiased' >
       <head >
@@ -64,3 +64,5 @@ export default function RootLayout({
     </html>
   )
 }
+
+export default RootLayout

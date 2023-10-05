@@ -1,9 +1,19 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
-import { useTranslation } from '../../../i18n/client'
 import { hero, arrow } from '../../../../images'
+import { useTranslation } from '../../../i18n/client'
 
-export default function Hero({ lang }) {
+/**
+ * Hero Component for how it works page
+ * @type {function} 
+ * @param {object} lang - Language object from useTranslation hook
+ * @type {client}
+ * @returns {JSX.Element} 
+*/
+
+const Hero = ({ lang }) => {
     const { t } = useTranslation(lang)
 
     return (
@@ -41,3 +51,5 @@ export default function Hero({ lang }) {
       </div>
     )
 }
+
+export default Hero

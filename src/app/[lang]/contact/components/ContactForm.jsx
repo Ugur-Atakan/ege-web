@@ -1,13 +1,22 @@
-'use client';
-import Image from 'next/image';
-import axios from 'axios';
-import { useState } from 'react';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import megaphone from '../../../../images/megaphone.png';
-import { useTranslation } from '../../../i18n/client';
+'use client'
 
-export default function ContactForm({ lang }) {
+import Image from 'next/image'
+import axios from 'axios'
+import { useState } from 'react'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import megaphone from '../../../../images/megaphone.png'
+import { useTranslation } from '../../../i18n/client'
+
+/**
+ * ContactForm component
+ * @type {function} 
+ * @param {object} lang - Language object from useTranslation hook
+ * @type {client}
+ * @returns {JSX.Element} Rendered ContactForm component
+*/
+
+const ContactForm = ({ lang }) => {
   const { t } = useTranslation(lang);
   
   const [subjects, setSubjects] = useState(['Help / Support Question']);
@@ -200,3 +209,5 @@ export default function ContactForm({ lang }) {
     </div>
   )
 }
+
+export default ContactForm

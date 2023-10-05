@@ -4,6 +4,14 @@ import React from 'react'
 import tick from '../../../../images/tick.png'
 import Image from 'next/image'
 
+/**
+ * Features components 
+ * @type {function} 
+ * @param {object} selectedPackage - Selected package object
+ * @type {client}
+ * @returns {JSX.Element} 
+*/
+
 const Features = ({selectedPackage}) => {
     return (
         <div className='bg-white border rounded-[32px] p-6 my-6'>

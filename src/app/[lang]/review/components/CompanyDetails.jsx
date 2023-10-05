@@ -1,5 +1,18 @@
+'use client'
+
 import Link from 'next/link'
 import { useTranslation } from '../../../i18n/client'
+
+/**
+ * Page route for privacy policy page
+ * @type {function} 
+ * @param {object} lang - Language object from useTranslation hook
+ * @param {string} companyType - Company type
+ * @param {string} companyName - Company name
+ * @param {state} companyState - Company state
+ * @type {client}
+ * @returns {JSX.Element} 
+*/
 
 const CompanyDetails = ({ lang, companyType, companyName, companyState }) => {
     const { t } = useTranslation(lang);

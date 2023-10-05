@@ -1,9 +1,19 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
-import { useTranslation } from '../../../i18n/client'
 import { tick } from '../../../../images'
+import { useTranslation } from '../../../i18n/client'
 
-export default function Step5({ lang }) {
+/**
+ * Step5 Component
+ * @type {function} 
+ * @param {object} lang - Language object from useTranslation hook
+ * @type {client}
+ * @returns {JSX.Element} 
+*/
+
+const Step5 = ({ lang }) => {
     const { t } = useTranslation(lang)
 
     return (
@@ -72,3 +82,5 @@ export default function Step5({ lang }) {
       </div>
     )
 }
+
+export default Step5

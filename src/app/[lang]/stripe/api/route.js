@@ -3,9 +3,34 @@ import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
+/**
+ * @GET /stripe/api
+ * @type {route}
+ * @type {API}
+ * @description - Returns static String
+*/
+
 export async function GET() {
   return new NextResponse("Nothing to see here", { status: 200 });
 }
+
+/**
+ * @POST /api/states
+ * @type {route}
+ * @type {API}
+ * @description - Opens a Stripe checkout session
+ * @param {object} req - Request object
+ * @param {object} selectedPackage - Selected package object
+ * @param {string} companyName - Company name
+ * @param {string} companyState - Company state
+ * @param {string} companyType - Company type
+ * @param {string} customerEmail - Customer email
+ * @param {string} address - Company address
+ * @param {string} zipCode - Company zip code
+ * @param {string} city - Company city
+ * @param {string} country - Company country
+ * @returns {String} - Returns Stripe checkout session URL
+*/
 
 export async function POST(req) {
   const { data } = await req.json();

@@ -6,7 +6,15 @@ import { useTranslation } from '../../../i18n/client'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
-export default function Content({ lang }) {
+/**
+ * Content component for the page
+ * @type {function} Content React component
+ * @param {object} lang - Language object from useTranslation hook
+ * @type {client}
+ * @returns {JSX.Element} Rendered content for the page
+*/
+
+const Content = ({ lang }) => {
   const { t } = useTranslation(lang);
 
   const [companyName, setCompanyName] = useState('');
@@ -98,3 +106,5 @@ export default function Content({ lang }) {
   </div>
   )
 }
+
+export default Content

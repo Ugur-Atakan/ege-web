@@ -1,12 +1,22 @@
-import { ArrowUturnDownIcon } from '@heroicons/react/20/solid';
-import { useState } from 'react';
-import { XMarkIcon } from '@heroicons/react/24/outline';
+'use client'
+
+import { ArrowUturnDownIcon } from '@heroicons/react/20/solid'
+import { useState } from 'react'
+import { XMarkIcon } from '@heroicons/react/24/outline'
 import tickicon from '../../../../images/tick.png'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useTranslation } from '../../../i18n/client'
 
-export default function Content({ lang }) {
+/**
+ * Content for start my business page
+ * @type {function} 
+ * @param {object} lang - Language object from useTranslation hook
+ * @type {clien}
+ * @returns {JSX.Element} 
+*/
+
+const Content = ({ lang }) => {
     const { t } = useTranslation(lang);
 
     const [page, setPage] = useState(1);
@@ -330,6 +340,7 @@ export default function Content({ lang }) {
           </div>
         )}
       </div>
-    );
-  }
+  );
+}
   
+export default Content

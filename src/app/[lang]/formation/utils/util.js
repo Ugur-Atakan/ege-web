@@ -1,13 +1,12 @@
 // File location: formation/utils/util.js
 
-// This function returns 12 randoms from the selected pakages after matching them to 
-// the selected company type and selected package type.
-
-/*params:
-    selectedPackage: object - the selected package
-    selectedCompanyType: string - the selected company type
-    selectedPackageVar: object - all the features of the packages from another json file
+/**
+ * @param {object} selectedPackage - the selected package
+ * @param {string} selectedCompanyType - the selected company type
+ * @param {object} selectedPackageVar - all the features of the packages from another json file
+ * @returns {array} - 12 random features from the selected package
 */
+
 export const getRandomPackages = (selectedPackage, selectedCompanyType, selectedPackageVar) => {
     let packageName = selectedPackage.orderPackage.toLowerCase().replace(' ', '');
     packageName = packageName.includes('registatellc') ? packageName.replace('registatellc ', '') : packageName;

@@ -19,6 +19,8 @@ import noinclude from './no-include.png'
 import star from './star-block.png'
 import bishopwhite from './bishop-white.png'
 import queencolor from './queen-color.png'
+import search from './search.png'
+import searchwhite from './search-white.png'
 
 export { 
     whitelogo, 
@@ -41,5 +43,7 @@ export {
     noinclude,
     star,
     bishopwhite,
-    queencolor
+    queencolor,
+    search,
+    searchwhite
 }

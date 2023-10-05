@@ -1,8 +1,17 @@
-// BackButtonComponent.js
+'use client'
+
 import React from 'react';
 import Link from 'next/link';
 import { ArrowLeftIcon } from '@heroicons/react/24/outline';
 import { useTranslation } from '../../../i18n/client';
+
+/**
+ * Button component
+ * @type {function} 
+ * @param {object} lang - Language object from useTranslation hook
+ * @type {client}
+ * @returns {JSX.Element} 
+*/
 
 const BackButton = ({ lang }) => {
   const { t } = useTranslation(lang);

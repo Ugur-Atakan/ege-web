@@ -6,7 +6,15 @@ import {
   GetStarted, Hero, IncorporateBusiness, SupportBusiness, TestimonialLogos 
 } from './components/index'
 
-export default function Home({ params: { lang } }) {
+/**
+ * Home page route
+ * @type {function} 
+ * @param {object} lang - Language object from useTranslation hook
+ * @type {client}
+ * @returns {JSX.Element} 
+*/
+
+const Page = ({ params: { lang } }) => {
   return(
     <React.Fragment>
       <Hero lang={lang} />
@@ -22,3 +30,5 @@ export default function Home({ params: { lang } }) {
     </React.Fragment>
   )
 }
+
+export default Page

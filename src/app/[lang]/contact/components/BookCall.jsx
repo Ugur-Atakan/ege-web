@@ -1,10 +1,20 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import calendar from '../../../../images/calendar-dynamic.png';
-import { useTranslation } from '../../../i18n/client';
+'use client'
 
-export default function BookCall({ lang }) {
-    const { t } = useTranslation(lang);
+import Link from 'next/link'
+import Image from 'next/image'
+import calendar from '../../../../images/calendar-dynamic.png'
+import { useTranslation } from '../../../i18n/client'
+
+/**
+ * BookCall component
+ * @type {function} BookCall component
+ * @param {object} lang - Language object from useTranslation hook
+ * @type {server}
+ * @returns {JSX.Element} Rendered content for the page
+*/
+
+const BookCall = ({ lang }) => {
+    const { t } =  useTranslation(lang);
 
     return (
         <div className="bg-white">
@@ -41,3 +51,5 @@ export default function BookCall({ lang }) {
         </div>
     )
 }
+
+export default BookCall

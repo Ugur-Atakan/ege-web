@@ -1,13 +1,22 @@
 /* eslint-disable */
-'use client';
+'use client'
 
-import Link from 'next/link';
-import { ArrowLeftIcon } from '@heroicons/react/24/outline';
-import { useEffect, useState } from 'react';
-import { useTranslation } from '../../../i18n/client';
-import axios from 'axios';
+import Link from 'next/link'
+import { ArrowLeftIcon } from '@heroicons/react/24/outline'
+import { useEffect, useState } from 'react'
+import { useTranslation } from '../../../i18n/client'
+import axios from 'axios'
 
-export default function Pricing({ lang }) {
+/**
+ * Pricing component for state page
+ * @type {function}
+ * @param {object} lang - Language object from useTranslation hook
+ * @type {server}
+ * @returns {JSX.Element}
+*/
+
+
+const Pricing = ({ lang }) => {
   const { t } = useTranslation(lang);
 
   const [companyState, setCompanyState] = useState('');
@@ -120,3 +129,5 @@ export default function Pricing({ lang }) {
     </div>
   )
 }
+
+export default Pricing

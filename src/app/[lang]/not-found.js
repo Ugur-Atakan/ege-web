@@ -1,13 +1,16 @@
-import Footer from './components/common/Footer';
-import Navbar from './components/common/Navbar';
-import NotFound from './components/common/NotFound';
+import React from 'react';
+import Footer from './components/common/Footer'
+import Navbar from './components/common/Navbar'
+import NotFound from './components/common/NotFound'
 
-export default function Notfound() {
+const Notfound = () => {
   return (
-    <>
-        <Navbar />
-        <NotFound />
-        <Footer />
-    </>
-  )
-}
+    <main>
+      <Navbar />
+      <NotFound />
+      <Footer />
+    </main>
+  );
+};
+
+export default NotFound

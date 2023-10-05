@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import { Transition, Menu, Dialog } from '@headlessui/react'
 import Link from 'next/link'
@@ -9,7 +9,15 @@ import bluelogo from '../../../../images/logo-blue.webp'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useTranslation } from '../../../i18n/client';
 
-export default function Header({ lang }) {
+/**
+ * Header
+ * @type {function} 
+ * @param {object} lang - Language object from useTranslation hook
+ * @type {client}
+ * @returns {JSX.Element} Rendered components for the page
+*/
+
+const Header = ({ lang }) => {
     const { t } = useTranslation();
     
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -183,3 +191,5 @@ export default function Header({ lang }) {
         </header>
     )
 }
+
+export default Header

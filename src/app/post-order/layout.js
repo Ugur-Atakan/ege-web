@@ -5,10 +5,12 @@ export const metadata = {
   description: '',
 }
 
-export default function RootLayout({ children }) {
+const RootLayout = ({ children }) => {
   return (
     <html>
       <body>{children}</body>
     </html>
   )
 }
+
+export default RootLayout

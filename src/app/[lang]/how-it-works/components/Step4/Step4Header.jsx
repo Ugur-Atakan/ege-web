@@ -1,8 +1,6 @@
-// Step4Header.js
+import React from 'react'
 
-import React from 'react';
-
-export default function Step4Header({ isChecked, toggleChecked, t }) {
+const Step4Header = ({ isChecked, toggleChecked, t }) => {
   return (
     <div className='mx-auto max-w-[571px]'>
       <h1 className='text-left lg:text-center font-semibold text-[26px] leading-[32px] lg:text-[40px] lg:leading-[44px] text-[#1649FF]'>
@@ -20,3 +18,5 @@ export default function Step4Header({ isChecked, toggleChecked, t }) {
     </div>
   );
 }
+
+export default Step4Header

@@ -1,5 +1,12 @@
 import prices from '../../../assets/data/prices.json'
 
+/**
+ * @type {GET route}
+ * @param {URLSearchParams} stateID - State ID
+ * @param {URLSearchParams} entityID - Entity Type ID
+ * @returns {object} price
+ */
+
 export async function GET(request) {
     const stateID = request.nextUrl.searchParams.get('stateID')
     const entityID = request.nextUrl.searchParams.get('entityTypeID')

@@ -9,7 +9,14 @@ import bluelogo from '../../../../images/logo-blue.webp'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useTranslation } from '../../../i18n/client'
 
-export default function Header({ lang }) {
+/**
+ * Header component for the blog page
+ * @param {object} lang language object from i18n
+ * @type {client} React client side component
+ * @returns {JSX.Element} Header component
+ */
+
+const Header = ({ lang }) => {
     const { t } = useTranslation();
 
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -180,3 +187,5 @@ export default function Header({ lang }) {
         </header>
     )
 }
+
+export default Header

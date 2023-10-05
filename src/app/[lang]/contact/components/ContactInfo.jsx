@@ -1,10 +1,20 @@
+'use client'
+
 import Image from 'next/image'
 import phone from '../../../../images/phone.png'
 import email from '../../../../images/email.png'
 import cursor from '../../../../images/navigator.png'
 import { useTranslation } from '../../../i18n/client'
 
-export default function ContactInfo({ lang }) {
+/**
+ * ContactInfo component
+ * @type {function} 
+ * @param {object} lang - Language object from useTranslation hook
+ * @type {server}
+ * @returns {JSX.Element} Rendered components for the page
+*/
+
+const ContactInfo = ({ lang }) => {
     const { t } = useTranslation(lang);
 
     return (
@@ -41,3 +51,5 @@ export default function ContactInfo({ lang }) {
         </div>
     )
 }
+
+export default ContactInfo

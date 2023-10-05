@@ -2,6 +2,12 @@ import { NextResponse } from 'next/server'
 import acceptLanguage from 'accept-language'
 import { fallbackLng, languages } from './app/i18n/settings'
 
+/**
+ * @type {middleware}
+ * @description This middleware contains the setup for i18n-next package.
+ * more info can be found here: https://dev.to/adrai/i18n-with-nextjs-13-and-app-directory-18dm
+ */
+
 acceptLanguage.languages(languages)
 
 export const config = {

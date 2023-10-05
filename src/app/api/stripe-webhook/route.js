@@ -10,7 +10,15 @@ import {
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-export async function POST(req, res) {
+/**
+ * @description Stripe webhook configured from stripe dashboard makes a post call to this
+ * route. This route is responsible for creating a customer in Jira and sending an invitation
+ * to the customer. It also creates a customer request in Jira.
+ * @param {Headers} stripe-signature - Stripe Signature
+ * @returns {string} url - Redirect URL (Either success of failure)
+ */
+
+export async function POST(req) {
     const headersList = headers();
     const sig = headersList.get('stripe-signature');
 
@@ -64,8 +72,7 @@ export async function POST(req, res) {
         console.log(customerReq);
 
         const invite = await resendInvitation(session.customer_details.email);
-        // console.log(customerReq)
-        // console.log(invite)
+
 
         // DB CALLS HERE
         return new NextResponse(session.url, { status: 200 });

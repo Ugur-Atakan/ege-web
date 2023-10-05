@@ -2,7 +2,15 @@ import Navbar from '../components/common/Navbar'
 import Footer from '../components/common/Footer'
 import Content from './components/Content'
 
-export default function TermsOfService() {
+/**
+ * Home page route
+ * @type {function} 
+ * @param {object} lang - Language object from useTranslation hook
+ * @type {server}
+ * @returns {JSX.Element} 
+*/
+
+const Page = () => {
   return (
     <main>
       <Navbar/>
@@ -11,3 +19,5 @@ export default function TermsOfService() {
     </main>
   )
 }
+
+export default Page

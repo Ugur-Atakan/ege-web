@@ -1,5 +1,5 @@
 /* eslint-disable */
-'use client';
+'use client'
 
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
@@ -15,7 +15,15 @@ import packageDataTR from '../../../../assets/packageDataTR.json'
 import { getRandomPackages } from '../utils/util'
 import { useTranslation } from '../../../i18n/client'
 
-export default function Content({ lang }) {
+/**
+ * Formation Content component
+ * @type {function} 
+ * @param {object} lang - Language object from useTranslation hook
+ * @type {client}
+ * @returns {JSX.Element} 
+*/
+
+const Content = ({ lang }) => {
   const { t } = useTranslation(lang);
 
   let [packagePrices, setPackagePrices] = useState([]);
@@ -319,3 +327,5 @@ export default function Content({ lang }) {
     </div >
   )
 }
+
+export default Content

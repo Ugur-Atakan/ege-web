@@ -1,12 +1,23 @@
+'use client'
+
 import Image from 'next/image'
 import { useTranslation } from '../../../i18n/client'
 import { ArrowRightIcon } from '@heroicons/react/24/outline'
 import { star } from '../../../../images'
 
-export default function Step2({ lang }) {
-    const { t } = useTranslation(lang)
+/**
+ * Step2 Component
+ * @type {function} 
+ * @param {object} lang - Language object from useTranslation hook
+ * @type {client}
+ * @returns {JSX.Element} 
+*/
+
+const Step2 = ({ lang }) => {
+    const { t } =  useTranslation(lang)
+
     return(
-        <div className='bg-[#ECEFF1] py-16 lg:py-24 px-4 lg:px-0 overflow-hidden'>
+      <div className='bg-[#ECEFF1] py-16 lg:py-24 px-4 lg:px-0 overflow-hidden'>
         <div className='mx-auto max-w-[1120px]'>
           <div className='mx-auto max-w-[473px]'>
             <div className='text-left lg:text-center pb-12'>
@@ -61,3 +72,5 @@ export default function Step2({ lang }) {
       </div>
     )
 }
+
+export default Step2

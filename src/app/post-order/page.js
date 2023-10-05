@@ -8,7 +8,15 @@ import smallstar from '../../images/small-star.png'
 import darkstar from '../../images/dark-star.png'
 import { useSearchParams } from 'next/navigation'
 
-export default function PostOrder() {
+/**
+ * Home page route
+ * @type {Component} 
+ * @type {client}
+ * @description This is the page component for the post-order page
+ * @returns {JSX.Element} 
+*/
+
+const Page = () => {
   const params = useSearchParams()
   const success = params.get('success')
   const trueOrFalse = success === 'true'
@@ -75,3 +83,5 @@ export default function PostOrder() {
     </main>
   )
 }
+
+export default Page

@@ -1,17 +1,25 @@
 'use client';
 
+import React from 'react'
 import { ArrowLeftIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import Image from 'next/image'
-import book from '../../../../images/book.png'
-import tick from '../../../../images/tick.png'
+import { book, tick } from '../../../../images'
 import { useTranslation } from '../../../i18n/client'
 
-export default function Content({ lang }) {
+/**
+ * Content component for the page
+ * @type {function} Content React component
+ * @param {object} lang - Language object from useTranslation hook
+ * @type {client} React client side component
+ * @returns {JSX.Element} Rendered content for the page
+ */
+
+const Content = ({ lang }) => {
   const { t } = useTranslation(lang);
   
   return (
-    <>
+    <React.Fragment>
       <div className="mx-auto p-6 lg:px-8">
         <Link href={`/${lang}/company-name`} className='flex items-center gap-2' >
           <ArrowLeftIcon className='text-[#1649FF] h-[18px] w-[18px]' />
@@ -98,6 +106,8 @@ export default function Content({ lang }) {
               </ul>
         </div>
       </div>
-    </>
+    </React.Fragment>
   )
 }
+
+export default Content

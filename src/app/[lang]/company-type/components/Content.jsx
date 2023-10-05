@@ -1,14 +1,19 @@
 'use client';
 
 import { ArrowLeftIcon } from '@heroicons/react/24/outline'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import umbrella from '../../../../images/umbrella.png'
-import puzzle from '../../../../images/puzzle.png'
-import search from '../../../../images/search.png'
-import searchwhite from '../../../../images/search-white.png'
+import { umbrella, puzzle, search, searchwhite } from '../../../../images'
 import { useTranslation } from '../../../i18n/client'
+
+/**
+ * Content component for the page
+ * @type {function} Content React component
+ * @param {object} lang - Language object from useTranslation hook
+ * @type {client}
+ * @returns {JSX.Element} Rendered content for the page
+*/
 
 export default function Content({ lang }) {
     const { t } = useTranslation(lang);

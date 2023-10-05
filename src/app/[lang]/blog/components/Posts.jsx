@@ -1,11 +1,17 @@
 'use client';
 
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import axios from 'axios'
 
-export default function Posts() {
+/**
+ * Posts component for the blog page
+ * @type {function} React client side component
+ * @returns {JSX.Element} Rendered posts for the page
+ */
+
+const Posts = () => {
     const [entry, setEntry] = useState(null);
 
     useEffect(() => {
@@ -66,3 +72,5 @@ export default function Posts() {
      </div >
     );
 }
+
+export default Posts

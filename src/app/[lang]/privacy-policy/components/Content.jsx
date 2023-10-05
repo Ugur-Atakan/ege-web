@@ -1,3 +1,10 @@
+/**
+ * Privacy page content
+ * @type {function} 
+ * @param {object} lang - Language object from useTranslation hook
+ * @type {server}
+ * @returns {JSX.Element} 
+*/
 
 export default function Content() {
     return (
