@@ -1,8 +1,8 @@
 import countries from '../../../assets/data/countries.json'
 
 /**
- * @type {GET route}
- * @returns {JSON countries}
+ * @typedef {object} countriesRoute
+ * @returns {Response}
  */
 
 export async function GET() {

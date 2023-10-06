@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: [lang]/how-it-works/components/Step2.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: [lang]/how-it-works/components/Step2.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>'use client'
+
+import Image from 'next/image'
+import { useTranslation } from '../../../i18n/client'
+import { ArrowRightIcon } from '@heroicons/react/24/outline'
+import { star } from '../../../../images'
+
+/**
+ * Step2 Component
+ * @type {function} 
+ * @param {object} lang - Language object from useTranslation hook
+ * @type {client}
+ * @returns {JSX.Element} 
+*/
+
+const Step2 = ({ lang }) => {
+    const { t } =  useTranslation(lang)
+
+    return(
+      &lt;div className='bg-[#ECEFF1] py-16 lg:py-24 px-4 lg:px-0 overflow-hidden'>
+        &lt;div className='mx-auto max-w-[1120px]'>
+          &lt;div className='mx-auto max-w-[473px]'>
+            &lt;div className='text-left lg:text-center pb-12'>
+              &lt;h2 className='font-semibold text-[26px] lg:text-[40px] leading-[32px] lg:leading-[44px] text-[#1649FF]'>
+                {t("how_it_works_step_2")}
+                &lt;span className='text-[#222222]'>{t("how_it_works_help_company_state_title")}&lt;/span>
+              &lt;/h2>
+            &lt;/div>
+          &lt;/div>
+          &lt;div className='flex-col lg:flex-row flex items-center gap-8 pb-12'>
+            &lt;div className='w-[360px] h-[30rem] lg:w-[549px] lg:h-[669px] rounded-[32px] hiw-delaware relative lg:overflow-hidden'>
+              &lt;div className='absolute top-[45%] lg:top-[60%] -right-4'>
+                &lt;div className='bg-[#9EE248] text-[#222222] py-4 px-6 text-[16px] rounded-2xl rotate-12 font-semibold'>{t('how_it_works_help_company_state_card1_button_on')}&lt;/div>
+              &lt;/div>
+              &lt;div className='w-full pr-12 lg:pr-0 bottom-8 left-4 lg:left-8 absolute'>
+                &lt;div className='flex items-center gap-4'>
+                  &lt;h3 className='font-bold text-[32px] lg:text-[64px] leading-[38px] lg:leading-[64px] text-white'>{t("how_it_works_help_company_state_card1_title")}&lt;/h3>
+                  &lt;ArrowRightIcon className='mt-2 h-12 text-white' />
+                &lt;/div>
+                &lt;div className='py-2'>
+                  &lt;p className='font-semibold text-white text-[16px] lg:text-[18px] leading-6'>{t('how_it_works_help_company_state_card1_desc')}&lt;/p>
+                &lt;/div>
+              &lt;/div>
+            &lt;/div>
+            &lt;div className='w-[360px] h-[30rem] lg:w-[549px] lg:h-[669px] rounded-[32px] hiw-wyoming relative'>
+              &lt;div className='absolute top-[45%] lg:top-2/3 -right-8'>
+                &lt;div className='bg-[#1649FF] text-white py-4 px-6 rounded-2xl -rotate-12 font-semibold'>{t('how_it_works_help_company_state_card2_button_on')}&lt;/div>
+              &lt;/div>
+              &lt;div className='bottom-8 left-4 lg:left-8 absolute'>
+                &lt;div className='flex items-center gap-4'>
+                  &lt;h3 className='font-bold text-[32px] lg:text-[64px] leading-[38px] lg:leading-[64px] text-white'>{t("how_it_works_help_company_state_card2_title")}&lt;/h3>
+                  &lt;ArrowRightIcon className='mt-2 h-12 text-white' />
+                &lt;/div>
+                &lt;div className='py-2 pr-2'>
+                  &lt;p className='font-semibold text-white text-[16px] lg:text-[18px] leading-6'>{t('how_it_works_help_company_state_card2_desc')}&lt;/p>
+                &lt;/div>
+              &lt;/div>
+            &lt;/div>
+          &lt;/div>
+          &lt;div className='bg-white rounded-[32px]'>
+            &lt;div className='flex-col-reverse lg:flex-row flex items-end justify-between relative overflow-hidden'>
+              &lt;div className='flex flex-col gap-4 pt-4 pb-8 px-6 lg:p-12'>
+                &lt;h4 className='font-bold text-[32px] lg:text-[64px] leading-[38px] lg:leading-[64px] text-[#222222]'>{t('how_it_works_all_states_title')}&lt;/h4>
+                &lt;p className='w-full lg:w-[65%] font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-[#222222]'>{t('how_it_works_all_states_desc')}&lt;/p>
+              &lt;/div>
+              &lt;div className='relative -top-8 lg:top-auto lg:-bottom-16 lg:right-12 all-states'>
+                &lt;Image src={star} alt='all states' />
+              &lt;/div>
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+    )
+}
+
+export default Step2</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#BackButton">BackButton</a></li><li><a href="global.html#BookCall">BookCall</a></li><li><a href="global.html#CompanyDetails">CompanyDetails</a></li><li><a href="global.html#CompanyType">CompanyType</a></li><li><a href="global.html#ContactForm">ContactForm</a></li><li><a href="global.html#ContactInfo">ContactInfo</a></li><li><a href="global.html#Content">Content</a></li><li><a href="global.html#Features">Features</a></li><li><a href="global.html#GET">GET</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Hero">Hero</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#POST">POST</a></li><li><a href="global.html#Page">Page</a></li><li><a href="global.html#Posts">Posts</a></li><li><a href="global.html#Pricing">Pricing</a></li><li><a href="global.html#StartBusiness">StartBusiness</a></li><li><a href="global.html#Step1">Step1</a></li><li><a href="global.html#Step2">Step2</a></li><li><a href="global.html#Step3">Step3</a></li><li><a href="global.html#Step4">Step4</a></li><li><a href="global.html#Step5">Step5</a></li><li><a href="global.html#TermsOfServiceContent">TermsOfServiceContent</a></li><li><a href="global.html#getDictionary">getDictionary</a></li><li><a href="global.html#getRandomPackages">getRandomPackages</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Fri Oct 06 2023 11:00:37 GMT+0300 (GMT+03:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

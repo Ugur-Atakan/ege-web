@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: post-order/page.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: post-order/page.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>'use client';
+
+import React, { useState, useEffect } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import bigstar from '../../images/big-star.webp'
+import smallstar from '../../images/small-star.png'
+import darkstar from '../../images/dark-star.png'
+import { useSearchParams } from 'next/navigation'
+
+/**
+ * Home page route
+ * @type {Component} 
+ * @type {client}
+ * @description This is the page component for the post-order page
+ * @returns {JSX.Element} 
+*/
+
+const Page = () => {
+  const params = useSearchParams()
+  const success = params.get('success')
+  const trueOrFalse = success === 'true'
+
+  return (
+  &lt;main className="mt-16 sm:mt-24">
+    &lt;div className="mx-auto max-w-7xl bg-white py-24 px-4 sm:px-6 lg:px-8">
+      {trueOrFalse ? (
+        &lt;div className="md:min-h-screen block md:flex items-center justify-center bg-cover bg-center bg-image relative">
+          &lt;Image src={bigstar} className="h-64 md:h-auto" alt="big-star" />
+              &lt;div className="md:absolute text-center top-1/2 left-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2 max-w-xl px-4 md:px-0">
+                &lt;h1 className="text-black md:text-white text-xl md:text-6xl leading-16 md:leading-64 text-center font-bold md:mb-6">
+                  Congratulations, your company is almost a reality!
+                &lt;/h1>
+                &lt;p className="text-black md:text-white text-lg md:text-2xl leading-7 md:leading-10 text-center font-semibold mb-8 md:mb-16 md:px-20">
+                  We confirmed your payment and we{"'"}ll get in touch as soon as possible.
+                &lt;/p>
+                &lt;Link
+                  href="/"
+                  className="rounded-[20px] bg-[#1649FF] md:bg-white text-white md:text-[#222222] font-semibold text-lg md:text-2xl leading-7 md:leading-10 py-3 md:py-6 px-6 md:px-12"
+                >
+                  Go to the main page
+                &lt;/Link>
+              &lt;/div>
+              &lt;div className="hidden md:block absolute right-48 top-48 transform -translate-y-1/2 animate-bounce">
+                &lt;Image src={smallstar} alt="small-star" className="h-36 w-36" />
+              &lt;/div>
+              &lt;div className="hidden md:block absolute left-[28rem] top-48 transform -translate-y-1/2 animate-bounce">
+                &lt;Image src={darkstar} alt="dark-star" className="h-12 w-12" />
+              &lt;/div>
+              &lt;div className="hidden md:block absolute left-[28rem] bottom-[38%] transform -translate-y-1/2 animate-bounce">
+                &lt;Image src={darkstar} alt="dark-star" className="h-12 w-12" />
+              &lt;/div>
+            &lt;/div>
+          ) : (
+            &lt;div className="md:min-h-screen block md:flex items-center justify-center bg-cover bg-center bg-image relative">
+              &lt;Image src={bigstar} className="h-64  md:h-auto" alt="" />
+              &lt;div className="md:absolute text-center top-1/2 left-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2 max-w-xl px-4 md:px-0">
+                &lt;h1 className="text-black md:text-white text-xl md:text-6xl leading-16 md:leading-64 text-center font-bold md:mb-6">
+                  Payment has not been cleared
+                &lt;/h1>
+                &lt;p className="text-black md:text-white text-lg md:text-2xl leading-7 md:leading-10 text-center font-semibold mb-8 md:mb-16 md:px-20">
+                  Please go back and try again
+                &lt;/p>
+                &lt;Link
+                  href="/"
+                  className="rounded-[20px] bg-[#1649FF] md:bg-white text-white md:text-[#222222] font-semibold text-lg md:text-2xl leading-7 md:leading-10 py-3 md:py-6 px-6 md:px-12"
+                >
+                  Go to the home page
+                &lt;/Link>
+              &lt;/div>
+              &lt;div className="hidden md:block absolute right-48 top-48 transform -translate-y-1/2 animate-bounce">
+                &lt;Image src={smallstar} alt="small-star" className="h-36 w-36" />
+              &lt;/div>
+              &lt;div className="hidden md:block absolute left-[28rem] top-48 transform -translate-y-1/2 animate-bounce">
+                &lt;Image src={darkstar} alt="dark-star" className="h-12 w-12" />
+              &lt;/div>
+              &lt;div className="hidden md:block absolute left-[28rem] bottom-[38%] transform -translate-y-1/2 animate-bounce">
+                &lt;Image src={darkstar} alt="dark-star" className="h-12 w-12" />
+              &lt;/div>
+            &lt;/div>
+          )}
+        &lt;/div>
+    &lt;/main>
+  )
+}
+
+export default Page
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#BackButton">BackButton</a></li><li><a href="global.html#BookCall">BookCall</a></li><li><a href="global.html#CompanyDetails">CompanyDetails</a></li><li><a href="global.html#CompanyType">CompanyType</a></li><li><a href="global.html#ContactForm">ContactForm</a></li><li><a href="global.html#ContactInfo">ContactInfo</a></li><li><a href="global.html#Content">Content</a></li><li><a href="global.html#Features">Features</a></li><li><a href="global.html#GET">GET</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Hero">Hero</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#POST">POST</a></li><li><a href="global.html#Page">Page</a></li><li><a href="global.html#Posts">Posts</a></li><li><a href="global.html#Pricing">Pricing</a></li><li><a href="global.html#StartBusiness">StartBusiness</a></li><li><a href="global.html#Step1">Step1</a></li><li><a href="global.html#Step2">Step2</a></li><li><a href="global.html#Step3">Step3</a></li><li><a href="global.html#Step4">Step4</a></li><li><a href="global.html#Step5">Step5</a></li><li><a href="global.html#TermsOfServiceContent">TermsOfServiceContent</a></li><li><a href="global.html#getDictionary">getDictionary</a></li><li><a href="global.html#getRandomPackages">getRandomPackages</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Fri Oct 06 2023 11:00:37 GMT+0300 (GMT+03:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

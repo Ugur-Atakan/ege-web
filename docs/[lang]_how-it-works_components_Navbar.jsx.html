@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: [lang]/how-it-works/components/Navbar.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: [lang]/how-it-works/components/Navbar.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>'use client'
+
+import Link from 'next/link'
+import { useState, useEffect, Fragment } from 'react'
+import Image from 'next/image'
+import { Transition, Menu, Dialog } from '@headlessui/react'
+
+import whitelogo from '../../../../images/logos/registate-white-logo.png'
+import bluelogo from '../../../../images/logo-blue.webp'
+
+import { useTranslation } from '../../../i18n/client'
+import i18next from 'i18next'
+
+/**
+ * Navbar Component 
+ * @type {function} 
+ * @param {object} lang - Language object from useTranslation hook
+ * @type {client}
+ * @returns {JSX.Element} 
+*/
+
+const Navbar = ({ lang }) => {
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [isSticky, setIsSticky] = useState(false);
+    const { t } = useTranslation(lang);
+
+    const changeLanguage = (lang) => {
+      if (lang === "en" || lang === "tr") {
+        i18next.changeLanguage(lang);
+
+        if (typeof window !== 'undefined' &amp;&amp; window.location) {
+          window.localStorage.setItem('i18nextLng', lang);
+          window.location.href = `/${lang}`;
+        }
+      } else {
+        navigate(`/${lang}/notfound/`, { replace: true });
+      }
+    };
+
+    useEffect(() => {
+      const handleScroll = () => {
+          if (window.scrollY > 50) {
+          setIsSticky(true);
+          } else {
+          setIsSticky(false);
+          }
+      };
+
+      window.addEventListener('scroll', handleScroll);
+      return () => {
+          window.removeEventListener('scroll', handleScroll);
+      };
+    }, []);
+
+
+    return (
+        &lt;header className={`absolute inset-x-0 top-0 z-50 ${isSticky ? 'lg:!fixed !bg-[#ECEFF1]' : ''}`}>
+        &lt;nav className={`mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-2 lg:p-0 lg:py-4 ${isSticky &amp;&amp; 'border-b border-[#C8C8C8] lg:p-4 lg:py-4'}`} aria-label="Global">
+          &lt;div className="flex lg:flex-1">
+            &lt;Link href="/" className="-m-1.5 p-1.5">
+              &lt;span className="sr-only">Registate&lt;/span>
+              &lt;Image className="w-[116px] h-[34px]" src={isSticky ? bluelogo : whitelogo} alt="" />
+            &lt;/Link>
+          &lt;/div>
+          &lt;div className="flex gap-x-3 lg:hidden">
+            &lt;Link href={`/${lang}/company-type`} className='bg-white rounded-[28px] py-3 px-4 text-[16px] leading-[22px] font-semibold text-[#1649FF]'>
+              {t('menu_top_right_handcorner_button')}
+            &lt;/Link>
+            &lt;button
+              type="button"
+              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-400"
+            // onClick={() => setMobileMenuOpen(true)}
+            >
+              &lt;span className="sr-only">Open main menu&lt;/span>
+              {/* &lt;Bars3Icon className="h-8 w-8" aria-hidden="true" /> */}
+            &lt;/button>
+          &lt;/div>
+          &lt;div className="hidden lg:hidden lg:gap-x-12">
+            &lt;Link href={`/${lang}/company-type`} className="text-sm font-semibold leading-6 text-white">
+              {t('menu1_title')}
+            &lt;/Link>
+            &lt;Link href='#.' className="text-sm font-semibold leading-6 text-white">
+              {t('menu2_title')}
+            &lt;/Link>
+            &lt;Link href='#.' className="text-sm font-semibold leading-6 text-white">
+              {t('menu3_title')}
+            &lt;/Link>
+            &lt;Link href={`/${lang}/blog`} className="text-sm font-semibold leading-6 text-white">
+              {t('menu4_title')}
+            &lt;/Link>
+          &lt;/div>
+          &lt;div className="hidden lg:flex lg:flex-1 lg:justify-end">
+            &lt;div className='hidden lg:flex items-center gap-4'>
+              &lt;div>
+                &lt;Menu as="div" className="relative inline-block text-left">
+                  &lt;div>
+                    &lt;Menu.Button className={`uppercase text-[14px]  font-semibold leading-5 text-white ${isSticky &amp;&amp; '!text-black'}`}>
+                      {lang}
+                    &lt;/Menu.Button>
+                  &lt;/div>
+                  &lt;Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                  >
+
+                    &lt;Menu.Items className="absolute -right-16 z-10 mt-2 w-36 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      &lt;Menu.Item>
+                        {({ active }) => (
+                          &lt;div className='block'>
+                            &lt;div className={lang === 'en' ? 'block cursor-pointer bg-slate-100 rounded-md' : 'block cursor-pointer hover:bg-slate-200'} onClick={() => changeLanguage("en")}>
+                              &lt;div className='flex items-center justify-center gap-2 p-3'>
+                                &lt;button className='text-gray-700'>English&lt;/button>
+                              &lt;/div>
+                            &lt;/div>
+                            &lt;div className={lang === 'tr' ? 'block cursor-pointer bg-slate-100 rounded-md' : 'block cursor-pointer hover:bg-slate-200'} onClick={() => changeLanguage("tr")}>
+                              &lt;div className='flex items-center justify-center gap-2 p-3'>
+                                &lt;button className='text-gray-700'>Turkish&lt;/button>
+                              &lt;/div>
+                            &lt;/div>
+                          &lt;/div>
+                        )}
+                      &lt;/Menu.Item>
+                    &lt;/Menu.Items>
+                  &lt;/Transition>
+                &lt;/Menu>
+              &lt;/div>
+              &lt;Link
+                href={`/${lang}/company-type`}
+                id="header-fmc"
+                className={`bg-white py-2 px-4 rounded-xl text-[#132F8E] font-semibold text-[14px] leading-5' ${isSticky &amp;&amp; '!bg-blue-600 !text-white'}`}
+              >
+                {t('menu_top_right_handcorner_button')}
+              &lt;/Link>
+            &lt;/div>
+          &lt;/div>
+        &lt;/nav>
+        &lt;Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
+          &lt;div className="fixed inset-0 z-10" />
+          &lt;Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
+            &lt;div className="flex items-center justify-between">
+              &lt;Link href={`/${lang}`} className="-m-1.5 p-1.5">
+                &lt;span className="sr-only">Registate&lt;/span>
+                &lt;Image
+                  className="h-8 w-auto bg-cover"
+                  src={whitelogo}
+                  alt="registate hero section"
+                />
+              &lt;/Link>
+              &lt;button
+                type="button"
+                className="-m-2.5 rounded-md p-2.5 text-gray-400"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                &lt;span className="sr-only">Close menu&lt;/span>
+                {/* &lt;XMarkIcon className="h-6 w-6" aria-hidden="true" /> */}
+              &lt;/button>
+            &lt;/div>
+            &lt;div className="mt-6 flow-root">
+              &lt;div className="-my-6 divide-y divide-gray-500/25">
+                &lt;div className="space-y-2 py-6">
+                  &lt;Link href={`/${lang}/state`} className="text-sm font-semibold leading-6 text-white">
+                    {t('menu1_title')}
+                  &lt;/Link>
+                  &lt;Link href='#.' className="text-sm font-semibold leading-6 text-white">
+                    {t('menu2_title')}
+                  &lt;/Link>
+                  &lt;Link href='#.' className="text-sm font-semibold leading-6 text-white">
+                    {t('menu3_title')}
+                  &lt;/Link>
+                  &lt;Link href={`/${lang}/blog`} className="text-sm font-semibold leading-6 text-white">
+                    {t('menu4_title')}
+                  &lt;/Link>
+                &lt;/div>
+                &lt;div className="py-6">
+                  &lt;Link
+                    href={`/${lang}/company-type`}
+                    id="header-fmc"
+                    className={'bg-white py-2 px-4 rounded-xl text-[#132F8E] font-semibold text-[14px] leading-5'}
+                  >
+                    {t('menu_top_right_handcorner_button')}
+                  &lt;/Link>
+                &lt;/div>
+              &lt;/div>
+            &lt;/div>
+          &lt;/Dialog.Panel>
+        &lt;/Dialog>
+      &lt;/header>
+    )
+}
+
+export default Navbar</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#BackButton">BackButton</a></li><li><a href="global.html#BookCall">BookCall</a></li><li><a href="global.html#CompanyDetails">CompanyDetails</a></li><li><a href="global.html#CompanyType">CompanyType</a></li><li><a href="global.html#ContactForm">ContactForm</a></li><li><a href="global.html#ContactInfo">ContactInfo</a></li><li><a href="global.html#Content">Content</a></li><li><a href="global.html#Features">Features</a></li><li><a href="global.html#GET">GET</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Hero">Hero</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#POST">POST</a></li><li><a href="global.html#Page">Page</a></li><li><a href="global.html#Posts">Posts</a></li><li><a href="global.html#Pricing">Pricing</a></li><li><a href="global.html#StartBusiness">StartBusiness</a></li><li><a href="global.html#Step1">Step1</a></li><li><a href="global.html#Step2">Step2</a></li><li><a href="global.html#Step3">Step3</a></li><li><a href="global.html#Step4">Step4</a></li><li><a href="global.html#Step5">Step5</a></li><li><a href="global.html#TermsOfServiceContent">TermsOfServiceContent</a></li><li><a href="global.html#getDictionary">getDictionary</a></li><li><a href="global.html#getRandomPackages">getRandomPackages</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Fri Oct 06 2023 11:00:37 GMT+0300 (GMT+03:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
