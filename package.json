@@ -10,6 +10,7 @@
     "docs": "jsdoc -c jsdoc.conf.json"
   },
   "dependencies": {
+    "iron-session": "github:renchris/iron-session#v8-as-dependency",
     "@formatjs/intl-localematcher": "^0.4.2",
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
