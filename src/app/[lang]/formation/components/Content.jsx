@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import axios from 'axios'
+import { readCookie, submitCookie } from '../../../lib/session/clientActions'
 
 import { ArrowLeftIcon } from '@heroicons/react/24/outline'
 import { bishopwhite, queencolor, kingblack, noinclude, arrowblack, arrowblue } from '../../../../images'
@@ -39,6 +40,8 @@ const Content = ({ lang }) => {
   const titles = selectedPackageVar[selectedCompanyType].map((item) => item.title);
   const [isLoading, setIsLoading] = useState(true);
 
+  const [cookie, setCookie] = useState({});
+
   const handlePackageSelection = (selectedPrice, selectedIndex) => {
     setSelectedPackage(selectedPrice);
     setSelectedPackageIndex(selectedIndex);
@@ -57,7 +60,15 @@ const Content = ({ lang }) => {
       }
     }
   }
-  
+
+  useEffect(()=> {
+    const fetchCookie = async () => {
+      const awaitCookie = await readCookie();
+      console.log(awaitCookie)
+      setCookie(awaitCookie);
+    }
+    fetchCookie();
+  },[])
 
   let companyState = ''
   let companyType = ''

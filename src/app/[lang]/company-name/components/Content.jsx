@@ -3,8 +3,11 @@
 
 import { ArrowLeftIcon } from '@heroicons/react/24/outline'
 import { useTranslation } from '../../../i18n/client'
+import { readCookie, submitCookie } from '../../../lib/session/clientActions'
 import { useEffect, useState } from 'react'
+
 import Link from 'next/link'
+import { redirect } from '../../../lib/util'
 
 /**
  * Content component for the page
@@ -16,26 +19,45 @@ import Link from 'next/link'
 
 const Content = ({ lang }) => {
   const { t } = useTranslation(lang);
+  const [cookie, setCookie] = useState({});
 
   const [companyName, setCompanyName] = useState('');
   const [abbreviation, setAbbreviation] = useState('');
 
-  const [llcOptions, setLlcOptions] = useState([t('companyname_llc_option1'),t('companyname_llc_option2'),t('companyname_llc_option3')]);
-  const [ccorpOptions, setCcorpOptions] = useState([t('companyname_ccorp_option1'),t('companyname_ccorp_option2'),t('companyname_ccorp_option3'),t('companyname_ccorp_option4'),t('companyname_ccorp_option5')]);
+  const llcOptions = [t('companyname_llc_option1'),t('companyname_llc_option2'),t('companyname_llc_option3')];
+  const ccorpOptions = [t('companyname_ccorp_option1'),t('companyname_ccorp_option2'),t('companyname_ccorp_option3'),t('companyname_ccorp_option4'),t('companyname_ccorp_option5')];
 
   const handleAbbreviationChange = (name) => {
     setAbbreviation(name);
   }
 
-  const onchangeCompanyName = (e) => {
+  const onChangeCompanyName = (e) => {
     setCompanyName(e.target.value);
     if (typeof window !== 'undefined' && window.localStorage)
       window.localStorage.setItem('companyName', e.target.value);
   }
 
+  const handleNameCompletion = (e) => {
+    const sendCookie = async () => {
+      const cookieArr = {...cookie, companyName: companyName + ' ' + abbreviation};
+      await submitCookie(cookieArr);
+      redirect(`/formation`, lang);
+    }
+
+    sendCookie();
+  }
+
+  useEffect(()=> {
+    const fetchCookie = async () => {
+      const awaitCookie = await readCookie();
+      setCookie(awaitCookie);
+    }
+    fetchCookie();
+  },[])
+
   let companyType = '';
   let companyState = '';
-  
+
   useEffect(()=> {
     companyType = window.localStorage.getItem('companyType');
     companyState = window.localStorage.getItem('companyState');
@@ -66,7 +88,7 @@ const Content = ({ lang }) => {
            <input
             className="border border-[#C8C8C8] rounded-[20px] w-full p-4 my-2"
             type='text'
-            onChange={onchangeCompanyName}
+            onChange={onChangeCompanyName}
            />
           </li>
           <li>
@@ -95,11 +117,9 @@ const Content = ({ lang }) => {
                 ))}
               </select>
           </li>
-          <Link href={`/${lang}/formation`} className='w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer'>
-            <button >
+            <button onClick={handleNameCompletion} className='w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer'>
               {t('companyname_button')}
             </button>
-          </Link>
         </ul>
       </div>
     </div>

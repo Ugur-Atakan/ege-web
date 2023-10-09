@@ -1,7 +1,7 @@
 'use client'
 
-export const submitCookieToStorageRouteHandler = async (cookie) => {
-  await fetch('/api/set', {
+export const submitCookie = async (cookie) => {
+  await fetch('/api/session', {
     method: 'POST',
     body: JSON.stringify({
       cookie,
@@ -12,8 +12,8 @@ export const submitCookieToStorageRouteHandler = async (cookie) => {
   })
 }
 
-export const readCookieFromStorageRouteHandler = async () => {
-  const responseWithCookieFromStorage = await fetch('http://localhost:3000/api/get', {
+export const readCookie = async () => {
+  const responseWithCookieFromStorage = await fetch('/api/session', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

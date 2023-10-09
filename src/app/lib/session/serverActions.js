@@ -1,4 +1,4 @@
-'use server' // remove and set serverActions to false in next.config.js to disable server actions
+'use server'
 
 import { getServerActionSession } from './session'
 

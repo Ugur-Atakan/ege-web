@@ -1,10 +1,9 @@
 import { getIronSession, getServerActionIronSession } from 'iron-session'
-  
 import { cookies } from 'next/headers';
 
 export const sessionOptions = {
-    password: '2291cff1e7f253020407813e9a41fa5425cf6a174aa1d3020b3d661cb846d648',
-    cookieName: 'session-cookie',
+    password: 'change-this-this-is-not-a-secure-password',
+    cookieName: 'sessionCookie',
     cookieOptions: {
         secure: process.env.NODE_ENV === 'production'
     }

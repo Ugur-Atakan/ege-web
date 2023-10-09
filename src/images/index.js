@@ -21,6 +21,7 @@ import bishopwhite from './bishop-white.png'
 import queencolor from './queen-color.png'
 import search from './search.png'
 import searchwhite from './search-white.png'
+import book from './book.png'
 
 export { 
     whitelogo, 
@@ -45,5 +46,6 @@ export {
     bishopwhite,
     queencolor,
     search,
-    searchwhite
+    searchwhite,
+    book
 }

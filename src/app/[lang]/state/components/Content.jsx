@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { ArrowLeftIcon } from '@heroicons/react/24/outline'
 import { useEffect, useState } from 'react'
 import { useTranslation } from '../../../i18n/client'
+import { readCookie, submitCookie } from '../../../lib/session/clientActions'
+
 import axios from 'axios'
 
 /**
@@ -16,16 +18,31 @@ import axios from 'axios'
 */
 
 
-const Pricing = ({ lang }) => {
+const Content = ({ lang }) => {
   const { t } = useTranslation(lang);
 
   const [companyState, setCompanyState] = useState('');
   const [otherStates, setOtherStates] = useState([]);
   const [selectedLLC, setSelectedLLC] = useState(false);
 
+  const [cookieState, setCookieState] = useState({});
+
+  useEffect(() => {
+    const fetchCookie = async () => {
+      const awaitCookie = await readCookie();
+      setCookieState(awaitCookie);
+    }
+    fetchCookie();
+  }, []);
+
   useEffect(() => { 
     setCompanyState(companyState);
-    localStorage.setItem('companyState', companyState);
+    const cookie = {...cookieState, companyState: companyState};
+    const sendCookie = async () => {
+      await submitCookie(cookie);
+      window.localStorage.setItem('companyState', companyState);
+    }
+    sendCookie();
   }), [companyState];
 
   useEffect(() => {
@@ -130,4 +147,4 @@ const Pricing = ({ lang }) => {
   )
 }
 
-export default Pricing
+export default Content

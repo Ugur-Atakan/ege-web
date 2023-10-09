@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useTranslation } from '../../../i18n/client'
-import { submitCookieToStorageServerAction } from '../../../lib/session/serverActions'
+import { submitCookie } from '../../../lib/session/clientActions'
 import { redirect } from '../../../lib/util'
 
 import Header from './Header'
@@ -23,8 +23,13 @@ const Content = ({ lang }) => {
     const [companyType, setCompanyType] = useState('');
 
     useEffect(() => {
-        window.localStorage.setItem('companyType', companyType);
-    }, [companyType])
+        const sendCookie = async () => {
+            await submitCookie({ 'companyType': companyType });
+            window.localStorage.setItem('companyType', companyType);
+        }
+        sendCookie();
+    }, [companyType]);
+    
 
     const handleSelectLlc = () => {
         setCompanyType('LLC');

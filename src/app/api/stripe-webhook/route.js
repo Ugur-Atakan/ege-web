@@ -6,7 +6,7 @@ import {
     createCustomer,
     createCustomerRequest,
     resendInvitation
-} from '../../utils/jira';
+} from '../../lib/jira';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 

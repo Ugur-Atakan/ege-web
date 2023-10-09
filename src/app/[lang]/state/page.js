@@ -1,5 +1,5 @@
 import Navbar from '../components/common/Navbar'
-import Pricing from './components/Pricing'
+import Content from './components/Content'
 
 /**
  * Page route for pricing page
@@ -13,7 +13,7 @@ const Page = ({ params: { lang } }) => {
   return (
     <main>
         <Navbar lang={lang} />
-        <Pricing lang={lang} />
+        <Content lang={lang} />
     </main>
   )
 }
