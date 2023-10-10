@@ -1,9 +1,5 @@
-'use client';
-
-import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import axios from 'axios'
 
 /**
  * Posts component for the blog page
@@ -11,26 +7,7 @@ import axios from 'axios'
  * @returns {JSX.Element} Rendered posts for the page
  */
 
-const Posts = () => {
-    const [entry, setEntry] = useState(null);
-
-    useEffect(() => {
-        const apiKey = "ee68e8bb6af2d0038b4d1daa49";
-        const apiUrl = "https://blog.opsbeacon.com/ghost/api/content/posts";
-
-        axios.get(apiUrl, {
-            params: {
-                key: apiKey
-            }
-        })
-            .then(response => {
-                setEntry(response.data);
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
-    }, []);
-
+const Posts = ({ entry }) => {
     return (
         <div className="bg-white py-24 sm:py-16">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">

@@ -7,7 +7,6 @@ import { useTranslation } from '../../../i18n/client'
 
 export default function Footer({ lang }) {
   const { t } = useTranslation(lang);
-  const API_ROOT = 'root';
 
   const navigation = {
     solutions: [
@@ -75,20 +74,20 @@ export default function Footer({ lang }) {
         "email": email,
     }
 
-    axios.post(API_ROOT + '/api/newsletter', JSON.stringify(payload), {
-        headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
-        }
-    })
-    .then(function (response) {
-        var jsonData = JSON.parse(JSON.stringify(response.data));
-        console.log(jsonData);
-        notify();
-    })
-    .catch(function (error) {
-        console.log(error);
-    });
+    // axios.post(API_ROOT + '/api/newsletter', JSON.stringify(payload), {
+    //     headers: {
+    //     'Content-Type': 'application/json',
+    //     'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
+    //     }
+    // })
+    // .then(function (response) {
+    //     var jsonData = JSON.parse(JSON.stringify(response.data));
+    //     console.log(jsonData);
+    //     notify();
+    // })
+    // .catch(function (error) {
+    //     console.log(error);
+    // });
   }
 
   return (
@@ -176,7 +175,7 @@ export default function Footer({ lang }) {
           </p>
         </div>
       </div>
-      <ToastContainer
+      {/* <ToastContainer
         position="bottom-left"
         autoClose={5000}
         hideProgressBar={true}
@@ -190,7 +189,7 @@ export default function Footer({ lang }) {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-      />
+      /> */}
     </footer>
   )
 }

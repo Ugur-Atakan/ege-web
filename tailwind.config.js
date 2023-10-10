@@ -11,6 +11,9 @@ module.exports = {
       rotate: {
         '140': '140deg',
       },
+      colors: {
+        'main-pg-blue': '#1649FF'
+      },
       animation: {
         "infinite-slider": "infiniteSlider 50s linear infinite",
       },

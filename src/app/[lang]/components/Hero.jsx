@@ -213,6 +213,7 @@ export default function Hero({ lang }) {
         </Dialog>
       </header>
 
+      {/* Mid section */}
       <div className="relative isolate overflow-hidden pt-14 hero-section">
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-64 relative z-[3]">
           <div className="text-left lg:text-center px-6 lg:px-0 lg:-mt-24">
@@ -293,7 +294,7 @@ export default function Hero({ lang }) {
                 <div className='georgia'>Georgia</div>
               </div>
               <div className='hidden lg:flex flex-col justify-end h-[50%]'>
-                <div className='india'>Indıa</div>
+                <div className='india'>India</div>
               </div>
               <div className='hidden lg:flex flex-col justify-center h-[35%]'>
                 <div className='thailand'>Thailand</div>
