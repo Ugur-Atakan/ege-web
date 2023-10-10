@@ -7,7 +7,7 @@ const Navbar = () => {
         <nav className="flex justify-center pt-6">
             <div className="w-[1328px] h-10 relative">
                 <div className="w-[116px] h-[34px] pb-px left-0 top-[3px] absolute justify-center items-center inline-flex">
-                    <Image className="w-[116px] h-[33px]" src={whitelogo} />
+                    <Image className="w-[116px] h-[33px]" src={whitelogo} alt="white-logo" />
                 </div>
                 <div className="left-[487px] top-[10px] absolute justify-start items-start gap-5 inline-flex">
                     <div className="text-white text-sm font-semibold leading-tight">Pricing</div>

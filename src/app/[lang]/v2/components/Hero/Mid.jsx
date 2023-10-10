@@ -29,7 +29,7 @@ const Mid = ({ lang }) => {
             <div className="flex flex-row">
                 <Image src={three} alt="three"  />
                 <div className="text-white text-[18px] lg:text-lg pl-4 font-semibold pt-10">
-                    Need something notarized <br />for outside the US? We've <br />got you covered
+                    Need something notarized <br />for outside the US? We{"'"}ve <br />got you covered
                 </div>
             </div>
         </div>
