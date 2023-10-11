@@ -5,11 +5,11 @@ import Last from './Last'
 
 const Hero = ({ lang }) => {
     return (
-        <div>
+        <div className="bg-main-pg-blue">
             <Navbar />
             <Top lang={lang} />
-            <Mid lang={lang} />
-            <Last />
+            <Mid lang={lang} />    
+            {/* <Last /> */}
         </div>
     );
 }

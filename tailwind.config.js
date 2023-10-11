@@ -12,10 +12,10 @@ module.exports = {
         '140': '140deg',
       },
       colors: {
-        'main-pg-blue': '#1649FF'
+        'main-pg-blue': '#0C3FF5'
       },
       animation: {
-        "infinite-slider": "infiniteSlider 50s linear infinite",
+        "infinite-slider": "infiniteSlider 50s linear infinite"
       },
       keyframes: {
         infiniteSlider: {

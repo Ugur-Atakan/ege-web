@@ -3,8 +3,12 @@ import { bigChain } from 'src/images/main-page'
 
 const Last = () => {
     return (
-        <div className="overflow-hidden">
-            <Image src={bigChain} alt="bigChain" width={1000}  />
+        <div className='absolute top-[100%] overflow-hidden' style={{ zIndex: 1 }} >
+            <Image  
+                className='scale-[1.75]'
+                src={bigChain}
+                alt='big-chain'
+            />
         </div>
     );
 }
