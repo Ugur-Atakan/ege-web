@@ -2,7 +2,6 @@ import React from 'react'
 import Header from './components/Header'
 import Posts from './components/Posts'
 import Footer from '../components/common/Footer'
-import axios from 'axios'
 
 /**
  * Page component for the blog page
@@ -12,19 +11,13 @@ import axios from 'axios'
  * @returns {JSX.Element} Rendered content for the page
  */
 
-const getPosts = async () => {  
-  const queryParams = new URLSearchParams({
-    key: process.env.NEXT_PUBLIC_BLOG_API_KEY,
-    include: 'authors,tags'
-  })
-  
+const getPosts = async () => {    
   const res = await fetch(process.env.GET_ALL_BLOG_POSTS, {
         method: 'GET',
         next: {
           revalidate: 300 // Revalidate from data source every 5 minutes
         }
     })
-
     
     return res.json()
 }
