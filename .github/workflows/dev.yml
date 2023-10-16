@@ -63,7 +63,9 @@ jobs:
       S3_APP_BUCKET: ${{ vars.S3_APP_BUCKET }}
       ASG_NAME: ${{ vars.ASG_NAME_DEV }}
       RS_BRANCH_NAME_WEB: ${{ vars.RS_BRANCH_NAME_WEB_DEV }}
-
+      NEXT_PUBLIC_BLOG_URL: ${{ vars.NEXT_PUBLIC_BLOG_URL }}
+      BLOG_API_KEY: ${{ secrets.BLOG_API_KEY }}
+      GET_ALL_BLOG_POSTS: ${{ vars.GET_ALL_BLOG_POSTS_DEV }}
     steps:
       - name: create environment file and upload to S3 app bucket
         run: |
@@ -79,6 +81,9 @@ jobs:
           SUCCESS_STRIPE_URL=${SUCCESS_STRIPE_URL}
           FAIL_STRIPE_URL=${FAIL_STRIPE_URL}
           RS_BRANCH_NAME_WEB=${RS_BRANCH_NAME_WEB}
+          NEXT_PUBLIC_BLOG_URL=${NEXT_PUBLIC_BLOG_URL}
+          BLOG_API_KEY=${BLOG_API_KEY}
+          GET_ALL_BLOG_POSTS=${GET_ALL_BLOG_POSTS}
           EOF
 
           /usr/local/bin/aws --region us-east-1 s3 cp $ENVIRONMENT_FILE s3://$S3_APP_BUCKET/$ENVIRONMENT_FILE
