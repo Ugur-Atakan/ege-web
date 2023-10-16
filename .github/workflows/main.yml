@@ -1,37 +1,105 @@
-name: registate PROD
+name: REGISTATE
 
 on:
   push:
-    branches: [ main ]
+    branches: [main, dev]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-  
+
 jobs:
-  build-rs-web:
+  build-rs-web-dev:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/dev'
     env:
-      S3_LOCATION: ${{ vars.S3_LOCATION_PROD }}
-      API_ROOT: ${{ vars.API_ROOT_PROD }}
-      APP_ROOT: ${{ vars.APP_ROOT_PROD }}
       AWS_ACCESS_KEY_ID: ${{ secrets.S3_UPLOADER_AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_UPLOADER_AWS_SECRET_KEY }}
-      CLOUDFRONT_ID: ${{ vars.CLOUDFRONT_PROD }}
-      
+      STRIPE_PUBLISHABLE_KEY: ${{ secrets.STRIPE_PUBLISHABLE_KEY_DEV }}
+      STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY_DEV }}
+      STRIPE_WEBHOOK_SECRET_KEY: ${{ secrets.STRIPE_WEBHOOK_SECRET_KEY_DEV }}
+      JIRA_REQUEST_TYPE_ID: ${{ vars.JIRA_REQUEST_TYPE_ID_DEV }}
+      JIRA_SERVICE_DESK_ID: ${{ vars.JIRA_SERVICE_DESK_ID_DEV }}
+      JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN_DEV }}
+      JIRA_USER_EMAIL: ${{ vars.JIRA_USER_EMAIL_DEV }}
+      JIRA_BASE_URL: ${{ vars.JIRA_BASE_URL_DEV }}
+      SUCCESS_STRIPE_URL: ${{ vars.SUCCESS_STRIPE_URL_DEV }}
+      FAIL_STRIPE_URL: ${{ vars.FAIL_STRIPE_URL_DEV }}
+      ENVIRONMENT_FILE: ${{ vars.ENVIRONMENT_FILE_DEV }}
+      S3_APP_BUCKET: ${{ vars.S3_APP_BUCKET }}
+      ASG_NAME: ${{ vars.ASG_NAME_DEV }}
+      RS_BRANCH_NAME_WEB: ${{ vars.RS_BRANCH_NAME_WEB_DEV }}
+      NEXT_PUBLIC_BLOG_URL: ${{ vars.NEXT_PUBLIC_BLOG_URL }}
+      BLOG_API_KEY: ${{ secrets.BLOG_API_KEY }}
+      GET_ALL_BLOG_POSTS: ${{ vars.GET_ALL_BLOG_POSTS_DEV }}
     steps:
-      - uses: actions/checkout@v3
-      - name: build
+      - name: create environment file and upload to S3 app bucket
         run: |
-          rm -rf build node_modules
-          npm install --force
-          CI=false npm run build
-          cd build
-          cat > config.js << EOF
-          window.ob = {};
-          window.ob.config = { 
-              apiRoot: "${API_ROOT}",
-              appRoot: "${APP_ROOT}"
-          };
+          tee $ENVIRONMENT_FILE << EOF
+          STRIPE_PUBLISHABLE_KEY=${STRIPE_PUBLISHABLE_KEY}
+          STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
+          STRIPE_WEBHOOK_SECRET_KEY=${STRIPE_WEBHOOK_SECRET_KEY}
+          JIRA_REQUEST_TYPE_ID=${JIRA_REQUEST_TYPE_ID}
+          JIRA_SERVICE_DESK_ID=${JIRA_SERVICE_DESK_ID}
+          JIRA_API_TOKEN=${JIRA_API_TOKEN}
+          JIRA_USER_EMAIL=${JIRA_USER_EMAIL}
+          JIRA_BASE_URL=${JIRA_BASE_URL}
+          SUCCESS_STRIPE_URL=${SUCCESS_STRIPE_URL}
+          FAIL_STRIPE_URL=${FAIL_STRIPE_URL}
+          RS_BRANCH_NAME_WEB=${RS_BRANCH_NAME_WEB}
+          NEXT_PUBLIC_BLOG_URL=${NEXT_PUBLIC_BLOG_URL}
+          BLOG_API_KEY=${BLOG_API_KEY}
+          GET_ALL_BLOG_POSTS=${GET_ALL_BLOG_POSTS}
           EOF
-          /usr/local/bin/aws --region eu-central-1 s3 sync . $S3_LOCATION
-          /usr/local/bin/aws --region eu-central-1 cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths "/*"
+
+          /usr/local/bin/aws --region us-east-1 s3 cp $ENVIRONMENT_FILE s3://$S3_APP_BUCKET/$ENVIRONMENT_FILE
+      - name: trigger instance refresh in auto-scaling group
+        run: |
+          aws --region us-east-1 autoscaling start-instance-refresh --auto-scaling-group-name $ASG_NAME
+
+  build-rs-web-prod:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.S3_UPLOADER_AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_UPLOADER_AWS_SECRET_KEY }}
+      STRIPE_PUBLISHABLE_KEY: ${{ secrets.STRIPE_PUBLISHABLE_KEY_PROD }}
+      STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY_PROD }}
+      STRIPE_WEBHOOK_SECRET_KEY: ${{ secrets.STRIPE_WEBHOOK_SECRET_KEY_PROD }}
+      JIRA_REQUEST_TYPE_ID: ${{ vars.JIRA_REQUEST_TYPE_ID_PROD }}
+      JIRA_SERVICE_DESK_ID: ${{ vars.JIRA_SERVICE_DESK_ID_PROD }}
+      JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN_PROD }}
+      JIRA_USER_EMAIL: ${{ vars.JIRA_USER_EMAIL_PROD }}
+      JIRA_BASE_URL: ${{ vars.JIRA_BASE_URL_PROD }}
+      SUCCESS_STRIPE_URL: ${{ vars.SUCCESS_STRIPE_URL_PROD }}
+      FAIL_STRIPE_URL: ${{ vars.FAIL_STRIPE_URL_PROD }}
+      ENVIRONMENT_FILE: ${{ vars.ENVIRONMENT_FILE_PROD }}
+      S3_APP_BUCKET: ${{ vars.S3_APP_BUCKET }}
+      ASG_NAME: ${{ vars.ASG_NAME_PROD }}
+      RS_BRANCH_NAME_WEB: ${{ vars.RS_BRANCH_NAME_WEB_PROD }}
+      NEXT_PUBLIC_BLOG_URL: ${{ vars.NEXT_PUBLIC_BLOG_URL }}
+      BLOG_API_KEY: ${{ secrets.BLOG_API_KEY }}
+      GET_ALL_BLOG_POSTS: ${{ vars.GET_ALL_BLOG_POSTS_PROD }}
+    steps:
+      - name: create environment file and upload to S3 app bucket
+        run: |
+          tee $ENVIRONMENT_FILE << EOF
+          STRIPE_PUBLISHABLE_KEY=${STRIPE_PUBLISHABLE_KEY}
+          STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
+          STRIPE_WEBHOOK_SECRET_KEY=${STRIPE_WEBHOOK_SECRET_KEY}
+          JIRA_REQUEST_TYPE_ID=${JIRA_REQUEST_TYPE_ID}
+          JIRA_SERVICE_DESK_ID=${JIRA_SERVICE_DESK_ID}
+          JIRA_API_TOKEN=${JIRA_API_TOKEN}
+          JIRA_USER_EMAIL=${JIRA_USER_EMAIL}
+          JIRA_BASE_URL=${JIRA_BASE_URL}
+          SUCCESS_STRIPE_URL=${SUCCESS_STRIPE_URL}
+          FAIL_STRIPE_URL=${FAIL_STRIPE_URL}
+          RS_BRANCH_NAME_WEB=${RS_BRANCH_NAME_WEB}
+          NEXT_PUBLIC_BLOG_URL=${NEXT_PUBLIC_BLOG_URL}
+          BLOG_API_KEY=${BLOG_API_KEY}
+          GET_ALL_BLOG_POSTS=${GET_ALL_BLOG_POSTS}
+          EOF
+
+          /usr/local/bin/aws --region us-east-1 s3 cp $ENVIRONMENT_FILE s3://$S3_APP_BUCKET/$ENVIRONMENT_FILE
+      - name: trigger instance refresh in auto-scaling group
+        run: |
+          aws --region us-east-1 autoscaling start-instance-refresh --auto-scaling-group-name $ASG_NAME
