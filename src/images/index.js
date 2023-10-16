@@ -20,6 +20,23 @@ import star from './star-block.png'
 import bishopwhite from './bishop-white.png'
 import queencolor from './queen-color.png'
 import search from './search.png'
+import calender from './calendar.png'
+import hat from './hat.png'
+import folder from './folder.png'
+import protectionicon from './protection-icon.png'
+import tic from './tick-dynamic.png'
+import at from './at-dynamic.png'
+import navigator from './navigator.png'
+import mail from './mail-dynamic.png'
+import phone from './phone-missing-dynamic.png'
+import travel from './travel-dynamic.png'
+import axe from './axe-dynamic.png'
+import wallet from './wallet-dynamic.png'
+import filetext from './file-text-dynamic.png'
+import sheild from './sheild-dynamic.png'
+import dollar from './dollar-dynamic.png'
+import locker from './locker-dynamic.png'
+
 import searchwhite from './search-white.png'
 import book from './book.png'
 
@@ -47,5 +64,21 @@ export {
     queencolor,
     search,
     searchwhite,
-    book
+    book,
+    calender,
+    hat,
+    folder,
+    protectionicon,
+    tic,
+    at,
+    navigator,
+    mail,
+    phone,
+    travel,
+    axe,
+    wallet,
+    filetext,
+    sheild,
+    dollar,
+    locker
 }

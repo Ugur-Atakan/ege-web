@@ -2,7 +2,7 @@ import React from 'react'
 
 const Left = () => {
     return (
-      <div className='flex flex-col h-full'>
+      <div className='flex flex-col h-full p-10'>
         <div className='py-10'>
           <div className="px-3 py-[7px] rounded-xl border-2 border-lime-400 justify-center items-center gap-2 inline-flex">
             <div className="text-lime-400 text-lg font-medium leading-normal">Starting a business</div>
@@ -18,7 +18,6 @@ const Left = () => {
           </div>
         </div>
       </div>
-
     );
 };
 

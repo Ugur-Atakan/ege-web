@@ -31,13 +31,13 @@ const Navbar = ({ lang }) => {
     }, []);
 
     return (
-      <nav className={`inset-x-0 top-0 lg:z-10 ${isSticky ? 'lg:!fixed' : '!relative'} `}>
+      <nav className={`inset-x-0 top-0 lg:z-10 ${isSticky ? 'bg-[#ECEFF1] lg:!fixed' : '!relative'} `}>
         <div className='mx-[56px] flex  items-center justify-between p-6 lg:px-2 border-b border-[#C8C8C8] lg:p-4' aria-label="Global">
             <div className="flex lg:flex-1">
                 <Link href="/" className="-m-1.5 p-1.5">
                     <span className="sr-only">Registate</span>
-                    <Image className="w-[116px] h-[34px]" src= {bluelogo} alt="" />
-                </Link>
+                    <Image className="w-[116px] h-[34px]" src= {bluelogo} alt="bluelogo" />
+                </Link> 
             </div>
 
             <div className='flex justify-between items-center space-x-4'>

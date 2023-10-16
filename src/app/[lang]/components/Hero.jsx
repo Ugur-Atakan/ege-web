@@ -245,6 +245,7 @@ export default function Hero({ lang }) {
         <div className='absolute top-8 -right-[45rem] lg:top-36 lg:right-0 z-0 rocket-animation'>
           <Image src={rocket} className='rocket' alt='rocket' />
         </div>
+        
         <div className='absolute bottom-0 w-full'>
           <div className='w-full text-white text-[14px] leading-[28px] font-medium'>
             <div className='flex flex-row justify-between h-20 lg:h-48 px-4 gap-3'>

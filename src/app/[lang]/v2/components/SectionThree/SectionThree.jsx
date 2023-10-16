@@ -1,6 +1,6 @@
 import React from 'react'
 import Left from './Left'
-// import Right from './Right';
+import Right from './Right'
 
 const SectionThree = () => {
     return (
@@ -8,8 +8,8 @@ const SectionThree = () => {
             <div className='flex-1'>
                 <Left />
             </div>
-            <div className='flex-1'>
-                {/* <Right /> */}
+            <div className='flex-1 '>
+                <Right />
             </div>
         </div>
     );

@@ -2,6 +2,7 @@ import React from 'react'
 import Header from './components/Header'
 import Posts from './components/Posts'
 import Footer from '../components/common/Footer'
+import axios from 'axios'
 
 /**
  * Page component for the blog page
@@ -17,13 +18,14 @@ const getPosts = async () => {
     include: 'authors,tags'
   })
   
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BLOG_URL}${queryParams}`, {
+  const res = await fetch(process.env.GET_ALL_BLOG_POSTS, {
         method: 'GET',
         next: {
           revalidate: 300 // Revalidate from data source every 5 minutes
         }
     })
 
+    
     return res.json()
 }
 

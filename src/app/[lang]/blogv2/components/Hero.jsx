@@ -1,6 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const Hero = () => {
+const Hero = ({ selectedTag, setSelectedTag }) => {
+    const [activeButton, setActiveButton] = useState('All');
+
+    const tags = [
+        'All',
+        'Franchise Tax',
+        'Business Tips',
+        'Registered Agent',
+        'LLC',
+        'Incorporations'
+    ]
+
+    const handleTagClick = (tag) => {
+        if (selectedTag === tag) {
+            setSelectedTag(null)
+            setActiveButton('All');
+        } else {
+            setSelectedTag(tag)
+            setActiveButton(tag);
+        }
+    }
+
     return (
         <div>
             <div className="w-[432px] h-40 flex-col justify-center items-start gap-6 inline-flex">
@@ -8,25 +29,16 @@ const Hero = () => {
                 <div className="self-stretch text-neutral-800 text-lg font-semibold  leading-normal">Read the latest posts from our blog. All articles are written by our team of experts, so you know you{"'"}re getting the best advice.</div>
             </div>
 
-            <div className="flex items-center justify-center space-x-2.5 py-10">
-                <div className="px-3 py-1 bg-blue-600 rounded-lg">
-                    <div className="text-white text-lg font-semibold leading-normal">All</div>
-                </div>
-                <div className="px-3 py-1 rounded-lg border border-black">
-                    <div className="text-neutral-800 text-lg font-semibold leading-normal">Franchise Tax</div>
-                </div>
-                <div className="px-3 py-1 rounded-lg border border-black">
-                    <div className="text-neutral-800 text-lg font-semibold leading-normal">Business Tips</div>
-                </div>
-                <div className="px-3 py-1 rounded-lg border border-black">
-                    <div className="text-neutral-800 text-lg font-semibold leading-normal">Registered Agent</div>
-                </div>
-                <div className="px-3 py-1 rounded-lg border border-black">
-                    <div className="text-neutral-800 text-lg font-semibold leading-normal">LLC</div>
-                </div>
-                <div className="px-3 py-1 rounded-lg border border-black">
-                    <div className="text-neutral-800 text-lg font-semibold leading-normal">Incorporations</div>
-                </div>
+            <div className="flex items-center space-x-2.5 py-10">
+                {tags.map(tag => (
+                    <div 
+                        key={tag} 
+                        className={`px-3 cursor-pointer py-1 border border-black rounded-lg ${activeButton === tag ? 'bg-blue-600' : ''}`}
+                        onClick={() => handleTagClick(tag)}
+                    >
+                        <div className={` text-lg font-semibold leading-normal ${activeButton === tag ? 'text-white' : 'text-neutral-800'}`}>{tag}</div>
+                    </div>
+                ))}
             </div>
         </div>
     )
