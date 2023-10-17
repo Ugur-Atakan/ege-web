@@ -52,10 +52,10 @@ const Header = ({ lang }) => {
         <header className={`inset-x-0 top-0 lg:z-50 ${isSticky ? 'lg:!fixed' : '!relative'} !bg-[#ECEFF1]`}>
             <nav className='mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-2 border-b border-[#C8C8C8] lg:p-4' aria-label="Global">
                 <div className="flex lg:flex-1">
-                    <Link href="/" className="-m-1.5 p-1.5">
+                    <a href="/" className="-m-1.5 p-1.5">
                         <span className="sr-only">Registate</span>
                         <Image className="w-[116px] h-[34px]" src= {bluelogo} alt="" />
-                    </Link>
+                    </a>
                 </div>
                 <div className="flex gap-x-3 lg:hidden">
                     <Link href={`/${lang}/company-type`} className='bg-[#1649FF] rounded-[28px] py-3 px-4 text-[16px] leading-[22px] text-white'>
@@ -74,10 +74,10 @@ const Header = ({ lang }) => {
                     <Link href={`/${lang}/company-type`} className="text-sm font-semibold leading-6 text-white">
                         {t('menu1_title')}
                     </Link>
-                    <Link href='#' className="text-sm font-semibold leading-6 text-white">
+                    <Link href={`/${lang}`} className="text-sm font-semibold leading-6 text-white">
                         {t('menu2_title')}
                     </Link>
-                    <Link href='#' className="text-sm font-semibold leading-6 text-white">
+                    <Link href={`/${lang}`} className="text-sm font-semibold leading-6 text-white">
                         {t('menu3_title')}
                     </Link>
                     <Link href={`/${lang}/blog`} className="text-sm font-semibold leading-6 text-white">
@@ -138,7 +138,7 @@ const Header = ({ lang }) => {
                 <div className="fixed inset-0 z-10" />
                 <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
                     <div className="flex items-center justify-between">
-                        <Link href="#" className="-m-1.5 p-1.5">
+                        <Link href={`/${lang}`} className="-m-1.5 p-1.5">
                             <span className="sr-only">Registate</span>
                             <Image
                                 className="h-8 w-auto bg-cover"
@@ -161,10 +161,10 @@ const Header = ({ lang }) => {
                                 <Link href={`/${lang}/state`} className="text-sm font-semibold leading-6 text-white">
                                     {t('menu1_title')}
                                 </Link>
-                                <Link href='#' className="text-sm font-semibold leading-6 text-white">
+                                <Link href={`/${lang}`} className="text-sm font-semibold leading-6 text-white">
                                     {t('menu2_title')}
                                 </Link>
-                                <Link href='#' className="text-sm font-semibold leading-6 text-white">
+                                <Link href={`/${lang}`} className="text-sm font-semibold leading-6 text-white">
                                     {t('menu3_title')}
                                 </Link>
                                 <Link href={`/${lang}/blog`} className="text-sm font-semibold leading-6 text-white">

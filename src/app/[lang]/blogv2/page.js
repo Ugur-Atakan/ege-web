@@ -6,14 +6,16 @@ import Hero from './components/Hero'
 import Articles from './Articles'
 import { ArticleClass } from './classes/Article' 
 
+import axios from 'axios'
+
 const Page = ({ params: { lang } }) => {
     const [selectedTag, setSelectedTag] = useState('All')
     const [articles, setArticles] = useState(null)
 
     useEffect(() => {
         const getArticles = async () => {
-            const res = await fetch('/api/blog/get-all')
-            const articles = await res.json()
+            const res = await axios.get('/api/blog/get-all-posts')
+            const articles = res.data
 
             // create article class instances
             const articlesClass = articles.posts.map(article => {
