@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useTranslation } from '../../../i18n/client'
 import { submitCookie } from '../../../lib/session/clientActions'
-import { redirect } from '../../../lib/util'
+import { redirect } from '../../../lib/utils'
 
 import Header from './Header'
 import Cards from './Cards/Cards'

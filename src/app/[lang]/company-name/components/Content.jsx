@@ -7,7 +7,7 @@ import { readCookie, submitCookie } from '../../../lib/session/clientActions'
 import { useEffect, useState } from 'react'
 
 import Link from 'next/link'
-import { redirect } from '../../../lib/util'
+import { redirect } from '../../../lib/utils'
 
 /**
  * Content component for the page

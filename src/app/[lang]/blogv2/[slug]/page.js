@@ -1,12 +1,12 @@
 import React from 'react'
-import Navbar from '../blogv2/components/Navbar'
+import Navbar from '../components/Navbar'
 import BackButton from './components/Backbutton'
 import Header from './components/article/Header'
 import Body from './components/article/Body/Body'
 import Right from './components/article/Body/Right'
 
-const Page = ({ params: { lang } }) => {
 
+const Page = ({ params: { lang, slug } }) => {
     return (
         <div>
             <Navbar lang={lang} />
