@@ -20,14 +20,19 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "strictNullChecks": true
   },
   "include": [
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "src/app/[locale]/layout.jsx", "src/app/post-order/layout.js", "src/app/[lang]/start-my-business/components/Content.jsx", "src/app/test/layout.jsx"  ],
+    "**/*.tsx",
+    "src/app/[locale]/layout.jsx",
+    "src/app/post-order/layout.js",
+    "src/app/[lang]/start-my-business/components/Content.jsx",
+    "src/app/test/layout.jsx"
+  ],
   "exclude": [
     "node_modules"
   ]

@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import Image from 'next/image'
 
 /**
@@ -7,7 +6,7 @@ import Image from 'next/image'
  * @returns {JSX.Element} Rendered posts for the page
  */
 
-const Posts = ({ entry }) => {
+const Posts = ({ lang, entry }) => {
     return (
         <div className="bg-white py-24 sm:py-16">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -19,7 +18,7 @@ const Posts = ({ entry }) => {
                 </div>
                 <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
                     {entry?.posts.map((post) => (
-                        <Link href={`/blog/${post.slug}`} key={post.id} className="flex flex-col items-start justify-between shadow-lg">
+                        <a href={`/${lang}/blogv2/${post.slug}`} key={post.id} className="flex flex-col items-start justify-between shadow-lg">
                            <div className='flex flex-col overflow-hidden rounded-lg shadow-lg'>
                                 <div className='flex-shrink-0'>
                                 <Image
@@ -42,7 +41,7 @@ const Posts = ({ entry }) => {
                                     </div>
                                 </div>
                            </div>
-                        </Link>
+                        </a>
                     ))}
             </div>
         </div>
