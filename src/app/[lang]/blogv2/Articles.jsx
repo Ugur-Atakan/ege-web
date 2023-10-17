@@ -5,19 +5,19 @@ import MainArticle from './components/articles/MainArticle'
 import CardGrid from './components/articles/CardGrid'
 import Pagination from './components/Pagination'
 
-const Articles = ({ lang }) => {
+const Articles = ({ articles, lang }) => {
     const [count, setCount] = useState(1)
 
     return (
         <div>
-            <MainArticle />
-            <CardGrid />
-            <Pagination
+            <MainArticle article={articles[0]} />
+            <CardGrid articles={articles} lang={lang} />
+            {/* <Pagination
                 currentPage={count}
                 setCurrentPage={setCount}
                 totalPages={100}
                 lang={lang}
-            />
+            /> */}
         </div>
     );
 };
