@@ -8,9 +8,14 @@ import Right from './components/article/Body/Right'
 import axios from 'axios'
 
 const getArticle = async (slug) => {
-    const res = await axios.get(`${process.env.GET_SINGLE_BLOG_POST}${slug}`)
-    const article = res.data // res.json() for fetch
-    return article
+    try {
+        const res = await axios.get(`https://blog.registate.com/ghost/api/content/posts?key=${process.env.BLOG_API_KEY}&include=authors,tags&filter=slug: ${slug}`)
+        const article = res.data // res.json() for fetch
+        return article
+    }
+    catch {
+        console.log('Error getting getArticle')
+    }
 }
 
 const Page = async ({ params: { lang, slug } }) => {
