@@ -20,7 +20,7 @@ import star from './star-block.png'
 import bishopwhite from './bishop-white.png'
 import queencolor from './queen-color.png'
 import search from './search.png'
-import calender from './calendar.png'
+import calendar from './calendar.png'
 import hat from './hat.png'
 import folder from './folder.png'
 import protectionicon from './protection-icon.png'
@@ -65,7 +65,7 @@ export {
     search,
     searchwhite,
     book,
-    calender,
+    calendar,
     hat,
     folder,
     protectionicon,
