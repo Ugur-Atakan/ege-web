@@ -218,7 +218,7 @@ export default function Hero({ lang }) {
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-64 relative z-[3]">
           <div className="text-left lg:text-center px-6 lg:px-0 lg:-mt-24">
             <h1 className="text-4xl leading-[38px] font-bold tracking-tight text-white sm:text-7xl">
-              {t('hero_text_white')} <span className='text-[#9EE248]'> {t('hero_text_green')}</span>
+              {t('hero_text_white1')} <span className='text-[#9EE248]'> {t('hero_text_green')}</span> {t('hero_text_white2')}
             </h1>
             <div className='flex items-center justify-center' >
               <div className='max-w-md'>

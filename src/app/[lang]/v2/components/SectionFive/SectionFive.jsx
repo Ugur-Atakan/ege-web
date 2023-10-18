@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Slider from 'react-slick'
-import { calender, hat, folder, protectionicon, tic, at, navigator, mail, phone, travel, axe, wallet, filetext, sheild, dollar, locker } from 'src/images'
+import { calendar, hat, folder, protectionicon, tic, at, navigator, mail, phone, travel, axe, wallet, filetext, sheild, dollar, locker } from 'src/images'
 import { useTranslation } from '../../../../i18n/client'
 import { NextArrow } from './Arrows'
 
@@ -15,7 +15,7 @@ export default function SupportBusiness({ lang }) {
   const stayCompliantPackage = [
     { name: t('after_formation_package1_title'), description: t('after_formation_package1_description'), button: t('after_formation_package1_button'), href: `/${lang}`, img: hat },
     { name: t('after_formation_package2_title'), description: t('after_formation_package2_description'), button: t('after_formation_package2_button'), href: `/${lang}`, img: folder },
-    { name: t('after_formation_package3_title'), description: t('after_formation_package3_description'), button: t('after_formation_package3_button'), href: `/${lang}`, img: calender },
+    { name: t('after_formation_package3_title'), description: t('after_formation_package3_description'), button: t('after_formation_package3_button'), href: `/${lang}`, img: calendar },
     { name: t('after_formation_package4_title'), description: t('after_formation_package4_description'), button: t('after_formation_package4_button'), href: `/${lang}`, img: tic },
     { name: t('after_formation_package5_title'), description: t('after_formation_package5_description'), button: t('after_formation_package5_button'), href: `/${lang}`, img: at },
     { name: t('after_formation_package6_title'), description: t('after_formation_package6_description'), button: t('after_formation_package6_button'), href: `/${lang}`, img: navigator },
