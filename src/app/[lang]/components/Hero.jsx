@@ -59,6 +59,11 @@ export default function Hero({ lang }) {
     };
   }, []);
 
+  const setMobileResponsive = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+    
+  }
+
   const rootEl = process.browser ? document.body : null;
 
   return (
@@ -79,36 +84,37 @@ export default function Hero({ lang }) {
         </nav>
         <nav className={`mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-2 lg:p-0 ${isSticky && 'border-b border-[#C8C8C8] lg:p-4 lg:py-4'}`} aria-label="Global">
           <div className="flex lg:flex-1">
-            <Link href="/" className="-m-1.5 p-1.5">
-              <span className="sr-only">Registate</span>
-              <Image className="w-[116px] h-[34px]" src={isSticky ? bluelogo : whitelogo} alt="" />
-            </Link>
+            {!mobileMenuOpen &&
+              <Link href="/" className="-m-1.5 p-1.5">
+                <span className="sr-only">Registate</span>
+                <Image className="w-[116px] h-[34px]" src={isSticky ? bluelogo : whitelogo} alt="" />
+              </Link>
+            }
           </div>
           <div className="flex gap-x-3 lg:hidden">
-            <Link href={`/${lang}/company-type`} className='bg-white rounded-[28px] py-2 px-4 text-[16px] leading-[22px] font-semibold text-[#1649FF]'>
-              {t('menu_top_right_handcorner_button')}
-            </Link>
+            {!mobileMenuOpen && (
+              <Link href={`/${lang}/company-type`}  className='bg-white rounded-[28px] py-2 px-4 text-[16px] leading-[22px] font-semibold text-[#1649FF]'>
+                {t('menu_top_right_handcorner_button')}
+              </Link>
+            )}
             <button
               type="button"
               className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-400"
-              // onClick={() => setMobileMenuOpen(true)}
+              onClick={setMobileResponsive}
             >
               <span className="sr-only">Open main menu</span>
-              <Bars3Icon className="h-8 w-8" aria-hidden="true" />
+              {!mobileMenuOpen && <Bars3Icon className="h-8 w-8" aria-hidden="true" />}
             </button>
           </div>
           <div className="hidden lg:hidden lg:gap-x-12">
-            <Link href={`/${lang}/company-type`} className="text-sm font-semibold leading-6 text-white">
+            <Link href={`/${lang}/company-type`} className="px-2 text-sm font-semibold leading-6 text-white">
               {t('menu1_title')}
             </Link>
-            <Link href='#.' className="text-sm font-semibold leading-6 text-white">
+            <Link href={`/${lang}/how-it-works`} className="px-2 text-sm font-semibold leading-6 text-white">
               {t('menu2_title')}
             </Link>
-            <Link href='#.' className="text-sm font-semibold leading-6 text-white">
+            <Link href={`/${lang}/blog`} className="px-2 text-sm font-semibold leading-6 text-white">
               {t('menu3_title')}
-            </Link>
-            <Link href={`/${lang}/blog`} className="text-sm font-semibold leading-6 text-white">
-              {t('menu4_title')}
             </Link>
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -176,7 +182,7 @@ export default function Hero({ lang }) {
               <button
                 type="button"
                 className="-m-2.5 rounded-md p-2.5 text-gray-400"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={setMobileResponsive}
               >
                 <span className="sr-only">Close menu</span>
                 <XMarkIcon className="h-6 w-6" aria-hidden="true" />
@@ -185,17 +191,14 @@ export default function Hero({ lang }) {
             <div className="mt-6 flow-root">
               <div className="-my-6 divide-y divide-gray-500/25">
                 <div className="space-y-2 py-6">
-                  <Link href={`/${lang}/state`} className="text-sm font-semibold leading-6 text-white">
+                  <Link href={`/${lang}/company-type`} className="text-sm font-semibold leading-6 text-white">
                     {t('menu1_title')}
                   </Link>
-                  <Link href='#.' className="text-sm font-semibold leading-6 text-white">
+                  <Link href={`/${lang}/how-it-works`} className="text-sm font-semibold leading-6 text-white">
                     {t('menu2_title')}
                   </Link>
-                  <Link href='#.' className="text-sm font-semibold leading-6 text-white">
-                    {t('menu3_title')}
-                  </Link>
                   <Link href={`/${lang}/blog`} className="text-sm font-semibold leading-6 text-white">
-                    {t('menu4_title')}
+                    {t('menu3_title')}
                   </Link>
                 </div>
                 <div className="py-6">

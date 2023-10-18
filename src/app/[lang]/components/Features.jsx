@@ -3,6 +3,12 @@
 import Slider from "react-slick"
 import { useTranslation } from '../../i18n/client'
 
+import tolga from '../../../videos/tolga-game.mp4'
+import melis from '../../../videos/melis-wellbees.mp4'
+import batu from '../../../videos/batu-malliq.mp4'
+
+import { Player } from 'video-react';
+
 export default function Features({ lang }) {
   const { t } = useTranslation(lang);
   
@@ -10,20 +16,17 @@ export default function Features({ lang }) {
     {
         name: t('founders1_name'),
         title: t('founders2_title'),
-        source:
-            'https://www.youtube.com/embed/QiqVTtFDjYY?showparams=0',
+        source: melis
     },
     {
         name: t('founders2_name'),
         title: t('founders2_title'),
-        source:
-            'https://www.youtube.com/embed/_zj-Bh5SjK0?showparams=0',
+        source: batu
     },
     {
         name: t('founders3_name'),
         title: t('founders3_title'),
-        source:
-            'https://www.youtube.com/embed/ggWsTwawg4o?showparams=0',
+        source: tolga 
     }
   ]
 
@@ -66,14 +69,9 @@ export default function Features({ lang }) {
             <Slider {...settings}>
               {videos.map((video, index) => (
                 <div key={index}>
-                    <iframe
-                      width="300"
-                      className='rounded-lg'
-                      height="350"
-                      src={video.source}
-                      title="YouTube video player"
-                      alt="people vid"
-                    ></iframe>
+                   <Player>
+                    <source src={video.source} />
+                  </Player>
                   <h1 className="font-semibold text-[22px] leading-[26px] text-[#222222] pt-4">{video.name}</h1>
                   <p className="font-semibold text-lg leading-6 text-[#222222]">{video.title}</p>
                 </div>
