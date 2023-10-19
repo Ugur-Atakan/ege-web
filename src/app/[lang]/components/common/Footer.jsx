@@ -1,12 +1,10 @@
-'use client';
+'use client'
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import axios from 'axios';
+import 'react-toastify/dist/ReactToastify.css'
 import { useTranslation } from '../../../i18n/client'
 
-export default function Footer({ lang }) {
-  const { t } = useTranslation(lang);
+const Footer = ({ lang }) => {
+  const { t } = useTranslation();
 
   const navigation = {
     solutions: [
@@ -62,34 +60,6 @@ export default function Footer({ lang }) {
     ],
   }
 
-  const notify = () => {
-    toast("Successfully subscribed");
-  }
-
-  const submitHandler = (e) => {
-    e.preventDefault();
-
-    let email = e.target.email.value;
-    let payload = {
-        "email": email,
-    }
-
-    // axios.post(API_ROOT + '/api/newsletter', JSON.stringify(payload), {
-    //     headers: {
-    //     'Content-Type': 'application/json',
-    //     'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
-    //     }
-    // })
-    // .then(function (response) {
-    //     var jsonData = JSON.parse(JSON.stringify(response.data));
-    //     console.log(jsonData);
-    //     notify();
-    // })
-    // .catch(function (error) {
-    //     console.log(error);
-    // });
-  }
-
   return (
     <footer className="bg-white border-t" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
@@ -102,8 +72,8 @@ export default function Footer({ lang }) {
               <div>
                 <h3 className="font-semibold text-lg leading-[24px] text-black">{t('footer_col1_title')}</h3>
                 <ul role="list" className="mt-4 space-y-4">
-                  {navigation.solutions.map((item) => (
-                    <li key={item.name}>
+                  {navigation.solutions.map((item, index) => (
+                    <li key={index}>
                       <a href={item.href} className="font-semibold text-lg leading-[24px] text-[#545454]">
                         {item.name}
                       </a>
@@ -114,8 +84,8 @@ export default function Footer({ lang }) {
               <div className="mt-12 md:mt-0">
                 <h3 className="font-semibold text-lg leading-[24px] text-black">{t('footer_col2_title')}</h3>
                 <ul role="list" className="mt-4 space-y-4">
-                  {navigation.support.map((item) => (
-                    <li key={item.name}>
+                  {navigation.support.map((item, index) => (
+                    <li key={index}>
                       <a href={item.href} className="font-semibold text-lg leading-[24px] text-[#545454]">
                         {item.name}
                       </a>
@@ -128,8 +98,8 @@ export default function Footer({ lang }) {
               <div>
                 <h3 className="font-semibold text-lg leading-[24px] text-black">{t('footer_col3_title')}</h3>
                 <ul role="list" className="mt-4 space-y-4">
-                  {navigation.company.map((item) => (
-                    <li key={item.name}>
+                  {navigation.company.map((item, index) => (
+                    <li key={index}>
                       <a href={item.href} className="font-semibold text-lg leading-[24px] text-[#545454]">
                         {item.name}
                       </a>
@@ -143,7 +113,7 @@ export default function Footer({ lang }) {
             <p className="mt-4 font-semibold text-lg leading-[24px] text-black">
               {t('footer_col5_desc')}
             </p>
-            <form onSubmit={submitHandler} className="mt-4">
+            <form className="mt-4">
               <label htmlFor="email-address" className="mb-2 text-sm font-medium sr-only"> Email address</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -163,8 +133,8 @@ export default function Footer({ lang }) {
         </div>
         <div className="mt-8 border-t border-black border-opacity-[0.2] pt-8 md:flex md:items-center md:justify-between">
           <div className="flex space-x-6 md:order-2">
-            {navigation.social.map((item) => (
-              <a key={item.name} href={item.href} className="text-gray-400 hover:text-gray-500">
+            {navigation.social.map((item, index) => (
+              <a key={index} href={item.href} className="text-gray-400 hover:text-gray-500">
                 <span className="sr-only">{item.name}</span>
                 <item.icon className="h-6 w-6" aria-hidden="true" />
               </a>
@@ -175,21 +145,8 @@ export default function Footer({ lang }) {
           </p>
         </div>
       </div>
-      {/* <ToastContainer
-        position="bottom-left"
-        autoClose={5000}
-        hideProgressBar={true}
-        newestOnTop={false}
-        closeOnClick
-        toastClassName={() =>
-          "bg-green-600 text-white items-center flex p-4 shadow-lg rounded-lg"
-        }
-        closeButton={() => "x"}
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      /> */}
     </footer>
   )
 }
+
+export default Footer

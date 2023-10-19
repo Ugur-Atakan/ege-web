@@ -1,4 +1,4 @@
-import Header from './components/Header'
+import Navbar from '../blog/components/Navbar'
 import ContactForm from "./components/ContactForm"
 import ContactInfo from './components/ContactInfo'
 import BookCall from './components/BookCall'
@@ -16,7 +16,7 @@ import Footer from '../components/common/Footer'
 const Page = ({ params: { lang } }) => {
   return (
     <main>
-        <Header lang={lang} />
+        <Navbar lang={lang} />
         <ContactForm />
         <ContactInfo/>
         <BookCall lang={lang} />

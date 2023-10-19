@@ -3,13 +3,13 @@
 import { React, useState, useEffect } from 'react'
 import Image from 'next/image'
 import rocket from '../../../../images/rocket.png'
-import Header from './Header'
+import Navbar from './Navbar'
 import Mid from './Mid'
 import Bottom from './Bottom'
 
 import { useTranslation } from '../../../i18n/client'
 
-export default function Hero({ lang }) {
+const Hero = ({ lang }) => {
   const { t } = useTranslation(lang);
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -31,19 +31,14 @@ export default function Hero({ lang }) {
     };
   }, []);
 
-  const setMobileResponsive = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-  }
-
   return (
     <div className="hero-section">
-      <Header
+      <Navbar
         isSticky={isSticky}
         t={t}
         lang={lang}
         mobileMenuOpen={mobileMenuOpen}
         setMobileMenuOpen={setMobileMenuOpen}
-        setMobileResponsive={setMobileResponsive}
       />
 
       <div className="relative isolate overflow-hidden pt-14 hero-section">
@@ -56,3 +51,5 @@ export default function Hero({ lang }) {
     </div>
   )
 }
+
+export default Hero

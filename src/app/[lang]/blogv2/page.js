@@ -32,7 +32,7 @@ const Page = ({ params: { lang } }) => {
                     article.excerpt
                 )
             })
-            
+
             setArticles(articlesClass)
         }
         getArticles()
@@ -49,4 +49,4 @@ const Page = ({ params: { lang } }) => {
     );
 }
 
-export default Page;
+export default Page

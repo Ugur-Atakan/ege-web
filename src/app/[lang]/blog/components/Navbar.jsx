@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import { Transition, Menu, Dialog } from '@headlessui/react'
 import Link from 'next/link'
@@ -8,54 +8,61 @@ import whitelogo from '../../../../images/logos/registate-white-logo.png'
 import bluelogo from '../../../../images/logo-blue.webp'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useTranslation } from '../../../i18n/client'
+import LanguageChange from '../../components/Hero/LanguageChange'
+import i18next from 'i18next'
 
 /**
  * Header component for the blog page
  * @param {object} lang language object from i18n
  * @type {client} React client side component
- * @returns {JSX.Element} Header component
+ * @returns {JSX.Element} Navbar component
  */
 
-const Header = ({ lang }) => {
+const Navbar = ({ lang }) => {
     const { t } = useTranslation();
 
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [isSticky, setIsSticky] = useState(false);
-    const [currentLang, setCurrentLang] = useState(lang);
 
     useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > 50) {
-                setIsSticky(true);
-            } else {
-                setIsSticky(false);
-            }
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
+      const handleScroll = () => {
+        if (window.scrollY > 50) {
+          setIsSticky(true);
+        } else {
+          setIsSticky(false);
+        }
+      };
+  
+      window.addEventListener('scroll', handleScroll);
+  
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
     }, []);
 
-    // const changeLanguage = (lang) => {
-    //     if (lang === "en" || lang === "tr") {
-    //         setCurrentLang(lang);
-    //         i18n.changeLanguage(lang);
-    //         const newPathname = location.pathname.replace(`/${currentLang}`, `/${lang}`);
-    //         navigate(newPathname, { replace: true });
-    //     } else {
-    //         navigate(`/notfound/`, { replace: true });
-    //     }
-    // };
+    const changeLanguage = (lang) => {
+        if (lang === "en" || lang === "tr") {
+          i18next.changeLanguage(lang);
+    
+          if (typeof window !== 'undefined' && window.location) {
+            window.localStorage.setItem('i18nextLng', lang);
+            window.location.href = `/${lang}`;
+          }
+        } else {
+          navigate(`/${lang}/notfound/`, { replace: true });
+        }
+    };
 
     return (
-        <header className={`inset-x-0 top-0 lg:z-50 ${isSticky ? 'lg:!fixed' : '!relative'} !bg-[#ECEFF1]`}>
+        <header className={`absolute inset-x-0 top-0 lg:z-50 ${isSticky ? 'lg:!fixed' : ''} !bg-[#ECEFF1]`}>
             <nav className='mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-2 border-b border-[#C8C8C8] lg:p-4' aria-label="Global">
                 <div className="flex lg:flex-1">
-                    <a href="/" className="-m-1.5 p-1.5">
-                        <span className="sr-only">Registate</span>
-                        <Image className="w-[116px] h-[34px]" src= {bluelogo} alt="" />
-                    </a>
+                    {!mobileMenuOpen &&
+                        <a href="/" className="-m-1.5 p-1.5">
+                            <span className="sr-only">Registate</span>
+                            <Image className="w-[116px] h-[34px]" src= {bluelogo} alt="" />
+                        </a>
+                    }
                 </div>
                 <div className="flex gap-x-3 lg:hidden">
                     <Link href={`/${lang}/company-type`} className='bg-[#1649FF] rounded-[28px] py-3 px-4 text-[16px] leading-[22px] text-white'>
@@ -64,7 +71,7 @@ const Header = ({ lang }) => {
                     <button
                         type="button"
                         className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-[#222222]"
-                        // onClick={() => setMobileMenuOpen(true)}
+                        onClick={() => setMobileMenuOpen(true)}
                     >
                         <span className="sr-only">Open main menu</span>
                         <Bars3Icon className="h-8 w-8" aria-hidden="true" />
@@ -134,58 +141,47 @@ const Header = ({ lang }) => {
                     </div>
                 </div>
             </nav>
+
             <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
                 <div className="fixed inset-0 z-10" />
-                <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
-                    <div className="flex items-center justify-between">
-                        <Link href={`/${lang}`} className="-m-1.5 p-1.5">
-                            <span className="sr-only">Registate</span>
-                            <Image
-                                className="h-8 w-auto bg-cover"
-                                src={whitelogo}
-                                alt="registate hero section"
-                            />
-                        </Link>
-                        <button
-                            type="button"
-                            className="-m-2.5 rounded-md p-2.5 text-gray-400"
-                            onClick={() => setMobileMenuOpen(false)}
-                        >
-                            <span className="sr-only">Close menu</span>
-                            <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-                        </button>
-                    </div>
-                    <div className="mt-6 flow-root">
-                        <div className="-my-6 divide-y divide-gray-500/25">
-                            <div className="space-y-2 py-6">
-                                <Link href={`/${lang}/state`} className="text-sm font-semibold leading-6 text-white">
-                                    {t('menu1_title')}
-                                </Link>
-                                <Link href={`/${lang}`} className="text-sm font-semibold leading-6 text-white">
-                                    {t('menu2_title')}
-                                </Link>
-                                <Link href={`/${lang}`} className="text-sm font-semibold leading-6 text-white">
-                                    {t('menu3_title')}
-                                </Link>
-                                <Link href={`/${lang}/blog`} className="text-sm font-semibold leading-6 text-white">
-                                    {t('menu4_title')}
-                                </Link>
-                            </div>
-                            <div className="py-6">
-                                <Link
-                                    href={`/${lang}/company-type`}
-                                    id="header-fmc"
-                                    className={'bg-white py-2 px-4 rounded-xl text-[#132F8E] font-semibold text-[14px] leading-5'}
-                                >
-                                    {t('menu_top_right_handcorner_button')}
-                                </Link>
+                    <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
+                        <div className="flex items-center justify-between">
+                            <Link href="/" className="-m-1.5 p-1.5">
+                                <span className="sr-only">Registate</span>
+                                <Image
+                                    className="h-8 w-auto bg-cover"
+                                    src={whitelogo}
+                                    alt="registate-logo"
+                                />
+                            </Link>
+                            <button
+                                type="button"
+                                className="-m-2.5 rounded-md p-2.5 text-gray-400"
+                                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                            >
+                                <span className="sr-only">Close menu</span>
+                                <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                            </button>
+                        </div>
+                        <div className="flex flex-col space-y-5 py-6">
+                            <Link href={`/${lang}/company-type`} className="text-3xl font-extrabold leading-6 text-white">
+                                {t('menu1_title')}
+                            </Link>
+                            <Link href={`/${lang}/how-it-works`} className="text-2xl leading-6 text-white">
+                                {t('menu2_title')}
+                            </Link>
+                            <Link href={`/${lang}/blog`} className="text-2xl leading-6 text-white">
+                                {t('menu3_title')}
+                            </Link>
+
+                            <div className="text-white">
+                                <LanguageChange lang={lang} isSticky={isSticky} changeLanguage={changeLanguage} />
                             </div>
                         </div>
-                    </div>
                 </Dialog.Panel>
             </Dialog>
         </header>
     )
 }
 
-export default Header
+export default Navbar

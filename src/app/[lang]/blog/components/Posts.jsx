@@ -8,7 +8,7 @@ import Image from 'next/image'
 
 const Posts = ({ lang, entry }) => {
     return (
-        <div className="bg-white py-24 sm:py-16">
+        <div className="my-24 sm:py-16">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="mx-auto max-w-2xl text-center">
                     <h2 className="text-3xl font-bold tracking-tight text-[#222222] sm:text-6xl">From the blog</h2>

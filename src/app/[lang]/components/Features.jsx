@@ -7,9 +7,9 @@ import tolga from '../../../videos/tolga-game.mp4'
 import melis from '../../../videos/melis-wellbees.mp4'
 import batu from '../../../videos/batu-malliq.mp4'
 
-import { Player } from 'video-react';
+import { Player } from 'video-react'
 
-export default function Features({ lang }) {
+const Features = ({ lang }) => {
   const { t } = useTranslation(lang);
   
   const videos = [
@@ -83,3 +83,5 @@ export default function Features({ lang }) {
     </div>
   )
 }
+
+export default Features

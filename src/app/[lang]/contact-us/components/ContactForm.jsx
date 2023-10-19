@@ -26,7 +26,6 @@ const ContactForm = ({ lang }) => {
     setSelectedSubjectname(name);
   }
 
-  const API_ROOT = 'api';
   const notify = () => {
     toast("Form submitted successfully");
   }

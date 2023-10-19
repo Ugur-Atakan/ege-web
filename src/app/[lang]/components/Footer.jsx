@@ -1,10 +1,10 @@
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import axios from 'axios'
 import { useTranslation } from '../../i18n/client'
 
 export default function Footer({ lang }) {
   const { t } = useTranslation(lang);
+
   const navigation = {
     solutions: [
       {
@@ -59,33 +59,6 @@ export default function Footer({ lang }) {
     ],
   }
 
-  const notify = () => {
-    toast("Successfully subscribed");
-  }
-  const submitHandler = (e) => {
-    e.preventDefault();
-
-    let email = e.target.email.value;
-    let payload = {
-      "email": email,
-    }
-    
-    axios.post('/api/newsletter', payload, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
-      },
-      body: JSON.stringify(payload),
-    })
-      .then(function (response) {
-        var jsonData = JSON.parse(JSON.stringify(response.data));
-        console.log(jsonData)
-        notify();
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
   return (
     <footer className="bg-white border-t" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
@@ -139,7 +112,7 @@ export default function Footer({ lang }) {
             <p className="mt-4 font-semibold text-lg leading-[24px] text-black">
             {t('footer_col5_desc')}
             </p>
-            <form onSubmit={submitHandler} className="mt-4">
+            <form className="mt-4">
               <label htmlFor="email-address" className="mb-2 text-sm font-medium sr-only"> Email address</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">

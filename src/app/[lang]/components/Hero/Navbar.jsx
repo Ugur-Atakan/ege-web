@@ -8,7 +8,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import LanguageChange from './LanguageChange'
 import i18next from 'i18next'
 
-const Header = ({ isSticky, t, lang, mobileMenuOpen, setMobileResponsive , setMobileMenuOpen }) => {
+const Navbar = ({ isSticky, t, lang, mobileMenuOpen , setMobileMenuOpen }) => {
     const changeLanguage = (lang) => {
         if (lang === "en" || lang === "tr") {
           i18next.changeLanguage(lang);
@@ -29,22 +29,22 @@ const Header = ({ isSticky, t, lang, mobileMenuOpen, setMobileResponsive , setMo
             <nav className={`mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-2 lg:p-0 ${isSticky && 'border-b border-[#C8C8C8] lg:p-4 lg:py-4'}`} aria-label="Global">
                 <div className="flex lg:flex-1">
                     {!mobileMenuOpen &&
-                    <Link href="/" className="-m-1.5 p-1.5">
-                        <span className="sr-only">Registate</span>
-                        <Image className="w-[116px] h-[34px]" src={isSticky ? bluelogo : whitelogo} alt="" />
-                    </Link>
+                        <Link href="/" className="-m-1.5 p-1.5">
+                            <span className="sr-only">Registate</span>
+                            <Image className="w-[116px] h-[34px]" src={isSticky ? bluelogo : whitelogo} alt="" />
+                        </Link>
                     }
                 </div>
                 <div className="flex gap-x-3 lg:hidden">
                     {!mobileMenuOpen && (
-                    <Link href={`/${lang}/company-type`}  className='bg-white rounded-[28px] py-2 px-4 text-[16px] leading-[22px] font-semibold text-[#1649FF]'>
-                        {t('menu_top_right_handcorner_button')}
-                    </Link>
+                        <Link href={`/${lang}/company-type`}  className='bg-white rounded-[28px] py-2 px-4 text-[16px] leading-[22px] font-semibold text-[#1649FF]'>
+                            {t('menu_top_right_handcorner_button')}
+                        </Link>
                     )}
                     <button
                         type="button"
                         className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-400"
-                        onClick={setMobileResponsive}
+                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                     >
                         {!mobileMenuOpen && <Bars3Icon className="h-8 w-8" aria-hidden="true" />}
                     </button>
@@ -52,13 +52,13 @@ const Header = ({ isSticky, t, lang, mobileMenuOpen, setMobileResponsive , setMo
             
                 {/* Mid navbar component */}
                 <div className="hidden lg:flex lg:gap-x-12">
-                    <Link href={`/${lang}/company-type`} className="px-2 text-sm font-semibold leading-6 text-white">
+                    <Link href={`/${lang}/company-type`} className={`px-2 text-sm font-semibold leading-6 ${isSticky ? 'text-black' : 'text-white'}`}>
                         {t('menu1_title')}
                     </Link>
-                    <Link href={`/${lang}/how-it-works`} className="px-2 text-sm font-semibold leading-6 text-white">
+                    <Link href={`/${lang}/how-it-works`} className={`px-2 text-sm font-semibold leading-6 ${isSticky ? 'text-black' : 'text-white'}`}>
                         {t('menu2_title')}
                     </Link>
-                    <Link href={`/${lang}/blog`} className="px-2 text-sm font-semibold leading-6 text-white">
+                    <Link href={`/${lang}/blog`} className={`px-2 text-sm font-semibold leading-6 ${isSticky ? 'text-black' : 'text-white'}`}>
                         {t('menu3_title')}
                     </Link>
                 </div>
@@ -95,7 +95,7 @@ const Header = ({ isSticky, t, lang, mobileMenuOpen, setMobileResponsive , setMo
                             <button
                             type="button"
                             className="-m-2.5 rounded-md p-2.5 text-gray-400"
-                            onClick={setMobileResponsive}
+                            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                             >
                                 <span className="sr-only">Close menu</span>
                                 <XMarkIcon className="h-6 w-6" aria-hidden="true" />
@@ -122,4 +122,4 @@ const Header = ({ isSticky, t, lang, mobileMenuOpen, setMobileResponsive , setMo
     );
 }
 
-export default Header
+export default Navbar
