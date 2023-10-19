@@ -2,7 +2,7 @@ import Navbar from '../blog/components/Navbar'
 import ContactForm from "./components/ContactForm"
 import ContactInfo from './components/ContactInfo'
 import BookCall from './components/BookCall'
-import FAQs from './components/FAQs'
+import Faqs from './components/Faqs'
 import Footer from '../components/common/Footer'
 
 /**
@@ -17,11 +17,13 @@ const Page = ({ params: { lang } }) => {
   return (
     <main>
         <Navbar lang={lang} />
-        <ContactForm />
-        <ContactInfo/>
-        <BookCall lang={lang} />
-        <FAQs lang={lang} />
-        <Footer lang={lang} /> 
+        <div className='my-14'>
+          <ContactForm />
+          <ContactInfo/>
+          <BookCall lang={lang} />
+          <Faqs lang={lang} />
+          <Footer lang={lang} /> 
+        </div>
     </main>
   )
 }

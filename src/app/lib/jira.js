@@ -6,20 +6,43 @@ const AUTH_STRING = `Basic ${Buffer.from(JIRA_EMAIL + ':' + JIRA_API_TOKEN).toSt
 
 // Create a new JIRA Service Desk customer
 async function createCustomer(displayName, email) {
-    const response = await fetch(`${JIRA_BASE_URL}/rest/servicedeskapi/customer`, {
-        method: 'POST',
-        headers: {
-            'Authorization': AUTH_STRING,
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            displayName,
-            email,
-        }),
-    });
+    try {
+        const response = await fetch(`${JIRA_BASE_URL}/rest/servicedeskapi/customer`, {
+            method: 'POST',
+            headers: {
+                'Authorization': AUTH_STRING,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                displayName,
+                email,
+            }),
+        });
 
-    const data = await response.json();
-    return data.accountId;
+        const data = await response.json();
+        console.log('Customer created')
+        return data.accountId;
+    }
+    catch {
+        console.log('Error creating customer, trying to find existing customer')
+        const response = await fetch(`${JIRA_BASE_URL}/rest/servicedeskapi/customer`, {
+            method: 'GET',
+            headers: {
+                'Authorization': AUTH_STRING,
+                'Content-Type': 'application/json',
+            }
+        });
+
+        const data = await response.json();
+
+        for (let i = 0; i < data.values.length; i++) {
+            if (data.values[i].emailAddress === email) {
+                return data.values[i].accountId;
+            }
+        }
+
+        return null;
+    }
 }
 
 async function createCustomerRequest(
@@ -61,6 +84,33 @@ async function createCustomerRequest(
     return data;
 }
 
+// Create createContactUsRequest
+async function createContactUsRequest(
+    accountId, description, displayName
+){
+    const summary = `Contact Us Form - ${displayName}`;
+
+    const response = await fetch(`${JIRA_BASE_URL}/rest/servicedeskapi/request`, {
+        method: 'POST',
+        headers: {
+            'Authorization': AUTH_STRING,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            requestTypeId: 2, 
+            serviceDeskId: process.env.JIRA_SERVICE_DESK_ID,
+            raiseOnBehalfOf: accountId,
+            requestFieldValues: {
+                description,
+                summary
+            },
+        }),
+    });
+
+    const data = await response.json();
+    return data;
+}
+
 // Resend invitation
 async function resendInvitation(email) {
     const response = await fetch(`${JIRA_BASE_URL}/rest/servicedesk/1/pages/people/customers/pagination/REQ/invite/resend`, {
@@ -82,4 +132,4 @@ async function resendInvitation(email) {
     }
 }
 
-export { createCustomer, createCustomerRequest, resendInvitation };
+export { createCustomer, createCustomerRequest, createContactUsRequest, resendInvitation };

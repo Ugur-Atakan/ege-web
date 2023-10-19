@@ -19,12 +19,7 @@ import { useTranslation } from '../../../i18n/client'
 const ContactForm = ({ lang }) => {
   const { t } = useTranslation(lang);
   
-  const [subjects, setSubjects] = useState(['Help / Support Question']);
-  const [selectedSubject, setSelectedSubject] = useState('');
-
-  const handleSubjectChange = (name) => {
-    setSelectedSubjectname(name);
-  }
+  const [subjects, setSubjects] = useState(['Help / Support Question', 'Complaint']);
 
   const notify = () => {
     toast("Form submitted successfully");
@@ -42,36 +37,27 @@ const ContactForm = ({ lang }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+
     let firstName = e.target.firstName.value;
     let lastName = e.target.lastName.value;
+    let fullName = firstName + ' ' + lastName;
     let email = e.target.email.value;
-    let phone = e.target.phone.value;
-    let subject = e.target.subject.value;
     let message = e.target.message.value;
 
-    let payload = {
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      phone: phone,
-      subject: subject,
-      message: message
-    }
-    console.log(payload)
-    axios.post(API_ROOT + '/api/contact', payload, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
-      }
-    })
-      .then(function (response) {
-        var jsonData = JSON.parse(JSON.stringify(response.data));
-        console.log(jsonData)
-        notify();
+
+    const createJIRAReq = async () => {
+      console.log(fullName)
+      const res = await axios.post('/api/jira/create-customer-req', {
+        fullName,
+        email,
+        message,
       })
-      .catch(function (error) {
-        console.log(error);
-      });
+      .then((res) => {
+        // notify();
+      })
+    }
+
+    createJIRAReq();
   }
   
   return (
@@ -87,7 +73,7 @@ const ContactForm = ({ lang }) => {
             <form id='contactform' onSubmit={submitHandler} className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
               <div>
                 <label htmlFor="firstName" className="block leading-6 text-[16px] sm:text-sm pb-2.5 sm:py-0 text-[#222222] font-semibold">
-                  {t('contact_us_header3_blank_1')}
+                  {t('contact_us_header3_blank_1')} <span className="text-red-500">*</span>
                 </label>
                 <div className="mt-1">
                   <input
@@ -101,9 +87,15 @@ const ContactForm = ({ lang }) => {
                 </div>
               </div>
               <div>
-                <label htmlFor="lastName" className="block leading-6 text-[16px] sm:text-sm pb-2.5 sm:py-0 text-[#222222] font-semibold">
-                  {t('contact_us_header3_blank_2')}
-                </label>
+                <div className="flex justify-between">
+                  <label htmlFor="lastName" className="block leading-6 text-[16px] sm:text-sm pb-2.5 sm:py-0 text-[#222222] font-semibold">
+                    {t('contact_us_header3_blank_2')} 
+                  </label>
+                  
+                  <span id="phone-optional" className="text-[16px] pb-2.5 sm:py-0 sm:text-[11px] sm:mt-1 text-gray-400">
+                      {t('contact_form_input_optional')}
+                  </span>
+                </div>
                 <div className="mt-1">
                   <input
                     type="text"
@@ -116,7 +108,7 @@ const ContactForm = ({ lang }) => {
               </div>
               <div>
                 <label htmlFor="email" className="block leading-6 text-[16px] sm:text-sm pb-2.5 sm:py-0 text-[#222222] font-semibold">
-                  {t('contact_form_input_email')}
+                  {t('contact_form_input_email')} <span className="text-red-500">*</span>
                 </label>
                 <div className="mt-1">
                   <input
@@ -124,6 +116,7 @@ const ContactForm = ({ lang }) => {
                     name="email"
                     type="email"
                     autoComplete="email"
+                    required
                     className="block w-full text-sm font-semibold rounded-[20px] border-[#C8C8C8] py-3 px-4 text-[#222222] shadow-sm focus:border-blue-600"
                   />
                 </div>
@@ -139,8 +132,10 @@ const ContactForm = ({ lang }) => {
                 </div>
                 <div className="mt-1">
                   <input
-                    type="text"
+                    type="tel"
                     name="phone"
+                    maxLength="12" 
+                    title="Ten digits code"
                     id="phone"
                     autoComplete="tel"
                     className="block w-full text-sm font-semibold rounded-[20px] border-[#C8C8C8] py-3 px-4 text-[#222222] shadow-sm focus:border-blue-600"
@@ -156,13 +151,13 @@ const ContactForm = ({ lang }) => {
                   <select
                     id="subject"
                     name="subject"
-                    value={subjects}
+                    value={'Help / Support Question'}
+                    readOnly
                     className="font-semibold border-[#C8C8C8] text-[#222222] text-[16px] sm:text-sm w-full my-2 rounded-[20px] p-4 "
-                    onChange={(e) => handleSubjectChange(e.target.value)}
                   >
                     {subjects.map((sub, index) => (
                       <option
-                        key={sub.index}
+                        key={index}
                         value={sub}
                       >
                         {sub}
@@ -183,7 +178,7 @@ const ContactForm = ({ lang }) => {
                     name="message"
                     rows={4}
                     value={message}
-                    maxlength="500"
+                    maxLength="500"
                     onChange={messageonChange}
                     className="block text-sm font-semibold w-full rounded-[20px] border-[#C8C8C8] py-3 px-4 text-[#222222] shadow-sm focus:border-blue-600"
                     aria-describedby="message-max"

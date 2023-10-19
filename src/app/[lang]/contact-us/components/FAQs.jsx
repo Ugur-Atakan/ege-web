@@ -16,8 +16,8 @@ function classNames(...classes) {
  * @returns {JSX.Element} Rendered components for the page
 */
 
-export default function FaqsWhite({ lang }) {
-    const { t } = useTranslation(lang);
+const Faqs = ({ lang }) => {
+    const { t } = useTranslation();
 
     const faqs = [
         {
@@ -76,8 +76,8 @@ export default function FaqsWhite({ lang }) {
                 </div>
                 <div className="mx-auto max-w-5xl">
                     <dl className="mt-12 space-y-6 divide-y divide-[#222222] divide-opacity-[0.2]">
-                        {faqs.map((faq) => (
-                            <Disclosure as="div" key={faq.question} className="pt-6">
+                        {faqs.map((faq, index) => (
+                            <Disclosure as="div" key={index} className="pt-6">
                                 {({ open }) => (
                                     <>
                                         <dt className="text-[20px] leading-[22px] lg:text-lg">
@@ -106,3 +106,5 @@ export default function FaqsWhite({ lang }) {
         </section>
     )
 }
+
+export default Faqs

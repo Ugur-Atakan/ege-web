@@ -377,7 +377,7 @@
     "contact_form_input_help":"What is your enquiry about?",
     "contact_form_input_message":"Message",
     "contact_form_input_optional":"Optional",
-    "contact_form_submit_button":"Continue",
+    "contact_form_submit_button":"Submit",
     "contact_form_footer_white_text":"or contact us directly by",
     "contact_form_footer_blue_text":"info@registate.com",
     "contact_information_title":"Contact Information",
@@ -393,5 +393,5 @@
     "menu2_title": "How it works ",
     "menu3_title": "Blog ",
     "contact_us_header3_blank_1": "First name",
-    "contact_us_header3_blank_2": "Second name"
+    "contact_us_header3_blank_2": "Last name"
 }

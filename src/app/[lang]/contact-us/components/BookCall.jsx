@@ -14,7 +14,7 @@ import { useTranslation } from '../../../i18n/client'
 */
 
 const BookCall = ({ lang }) => {
-    const { t } =  useTranslation(lang);
+    const { t } =  useTranslation();
 
     return (
         <div className="bg-white">

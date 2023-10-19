@@ -23,7 +23,6 @@ export async function POST(req) {
     const sig = headersList.get('stripe-signature');
 
     const body = await req.text();
-
     let event;
 
     try {
