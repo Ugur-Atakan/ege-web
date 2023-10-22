@@ -14,6 +14,7 @@ function classNames(...classes) {
 
 export default function Faqs({ lang }) {
   const { t } = useTranslation(lang);
+
   const faqs = [
     {
       id: 1,
@@ -66,7 +67,7 @@ export default function Faqs({ lang }) {
       <div className="bg-black py-24">
         <div className="mx-auto max-w-7xl py-12 px-4 sm:py-24 sm:px-6 lg:px-8">
           <div className='mx-auto max-w-[330px]'>
-            <h2 className="text-center font-semibold text-[26px] leading-[32px] lg:text-[40px] lg:leading-[44px] text-white">
+            <h2 className="text-center font-medium text-[26px] leading-[32px] lg:text-[40px] lg:leading-[44px] text-white">
               {t('pricing_header2_title')}
             </h2>
           </div>
@@ -78,7 +79,7 @@ export default function Faqs({ lang }) {
                     <>
                       <dt className="text-[20px] leading-[22px] lg:text-lg">
                         <Disclosure.Button className="flex w-full items-start justify-between text-left text-gray-400">
-                          <span className="font-semibold text-[20px] leading-[22px] lg:text-[28px] lg:leading-[32px] text-white">{faq.question}</span>
+                          <span className="font-medium text-[20px] leading-[22px] lg:text-[28px] lg:leading-[32px] text-white">{faq.question}</span>
                           <span className="ml-6 flex h-7 items-center">
                             <ChevronDownIcon
                               className={classNames(open ? '-rotate-180' : 'rotate-0', 'h-6 w-6 transform')}

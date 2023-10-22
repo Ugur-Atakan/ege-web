@@ -35,7 +35,7 @@ export default function GetStarted({ lang }) {
             </div>
             <div className="mx-auto max-w-4xl p-6 lg:px-8">
                 <div className="text-left lg:text-center text-lg text-[#545454] font-semibold block lg:flex items-center justify-start lg:justify-center gap-2">
-                    {t('get_started_footer_first_text')} <span className="flex items-center gap-1 text-[#1649FF]">{t('get_started_footer_first_text')}<ArrowSmallDownIcon className="w-5 h-5" /></span>
+                    {t('get_started_footer_first_text')} <span className="flex items-center gap-1 text-[#1649FF]">{t('get_started_footer_last_text')}<ArrowSmallDownIcon className="w-5 h-5" /></span>
                 </div>
             </div>
         </div>

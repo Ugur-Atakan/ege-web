@@ -69,7 +69,7 @@ export default function Footer({ lang }) {
           <div className="grid grid-cols-2 gap-8 xl:col-span-2">
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="font-semibold text-lg leading-[24px] text-black">{t('footer_col1_title')}</h3>
+                <h3 className="font-semibold py-3 text-lg leading-[24px] text-black">{t('footer_col1_title')}</h3>
                 <ul role="list" className="mt-4 space-y-4">
                   {navigation.solutions.map((item) => (
                     <li key={item.name}>
@@ -81,7 +81,7 @@ export default function Footer({ lang }) {
                 </ul>
               </div>
               <div className="mt-12 md:mt-0">
-                <h3 className="font-semibold text-lg leading-[24px] text-black">{t('footer_col2_title')}</h3>
+                <h3 className="font-semibold py-3 text-lg leading-[24px] text-black">{t('footer_col2_title')}</h3>
                 <ul role="list" className="mt-4 space-y-4">
                   {navigation.support.map((item) => (
                     <li key={item.name}>
@@ -95,7 +95,7 @@ export default function Footer({ lang }) {
             </div>
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="font-semibold text-lg leading-[24px] text-black">{t('footer_col3_title')}</h3>
+                <h3 className="font-semibold text-lg py-2 leading-[24px] text-black">{t('footer_col3_title')}</h3>
                 <ul role="list" className="mt-4 space-y-4">
                   {navigation.company.map((item) => (
                     <li key={item.name}>
@@ -109,8 +109,8 @@ export default function Footer({ lang }) {
             </div>
           </div>
           <div className="mt-8 xl:mt-0">
-            <p className="mt-4 font-semibold text-lg leading-[24px] text-black">
-            {t('footer_col5_desc')}
+            <p className="mt-4 pb-3 font-semibold text-lg leading-[24px] text-black">
+              {t('footer_col5_desc')}
             </p>
             <form className="mt-4">
               <label htmlFor="email-address" className="mb-2 text-sm font-medium sr-only"> Email address</label>
@@ -130,7 +130,8 @@ export default function Footer({ lang }) {
             </form>
           </div>
         </div>
-        <div className="mt-8 border-t border-black border-opacity-[0.2] pt-8 md:flex md:items-center md:justify-between">
+
+        <div className="mt-24 border-t border-black border-opacity-[0.2] pt-8 md:flex md:items-center md:justify-between">
           <div className="flex space-x-6 md:order-2">
             {navigation.social.map((item) => (
               <a key={item.name} href={item.href} className="text-gray-400 hover:text-gray-500">

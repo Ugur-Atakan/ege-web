@@ -52,13 +52,13 @@ const Navbar = ({ isSticky, t, lang, mobileMenuOpen , setMobileMenuOpen }) => {
             
                 {/* Mid navbar component */}
                 <div className="hidden lg:flex lg:gap-x-12">
-                    <Link href={`/${lang}/company-type`} className={`px-2 text-sm font-semibold leading-6 ${isSticky ? 'text-black' : 'text-white'}`}>
+                    <Link href={`/${lang}/company-type`} className={`px-2 text-sm font-medium leading-6 ${isSticky ? 'text-black' : 'text-white'}`}>
                         {t('menu1_title')}
                     </Link>
-                    <Link href={`/${lang}/how-it-works`} className={`px-2 text-sm font-semibold leading-6 ${isSticky ? 'text-black' : 'text-white'}`}>
+                    <Link href={`/${lang}/how-it-works`} className={`px-2 text-sm font-medium leading-6 ${isSticky ? 'text-black' : 'text-white'}`}>
                         {t('menu2_title')}
                     </Link>
-                    <Link href={`/${lang}/blog`} className={`px-2 text-sm font-semibold leading-6 ${isSticky ? 'text-black' : 'text-white'}`}>
+                    <Link href={`/${lang}/blog`} className={`px-2 text-sm font-medium leading-6 ${isSticky ? 'text-black' : 'text-white'}`}>
                         {t('menu3_title')}
                     </Link>
                 </div>
@@ -71,7 +71,7 @@ const Navbar = ({ isSticky, t, lang, mobileMenuOpen , setMobileMenuOpen }) => {
                         <Link
                             href={`/${lang}/company-type`}
                             id="header-fmc"
-                            className={`bg-white py-2 px-4 rounded-xl text-[#132F8E] font-semibold text-[14px] leading-5' ${isSticky && '!bg-blue-600 !text-white'}`}
+                            className={`bg-white py-2 px-4 rounded-full text-[#1649FF] font-semibold text-[14px] leading-5' ${isSticky && '!bg-blue-600 !text-white'}`}
                         >
                             {t('menu_top_right_handcorner_button')}
                         </Link>

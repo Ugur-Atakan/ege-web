@@ -4,7 +4,7 @@ import { Transition, Menu } from '@headlessui/react'
 const LanguageChange = ({ lang, isSticky, changeLanguage }) => {
     return (
         <Menu as="div" className="relative inline-block text-left">
-            <Menu.Button className={`uppercase text-[14px]  font-semibold leading-5 text-white ${isSticky && '!text-black'}`}>
+            <Menu.Button className={`uppercase text-[14px]  font-medium leading-5 text-white ${isSticky && '!text-black'}`}>
                 {lang}
             </Menu.Button>
             <Transition
