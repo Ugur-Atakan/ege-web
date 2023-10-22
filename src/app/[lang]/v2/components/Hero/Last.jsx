@@ -1,13 +1,13 @@
 import Image from 'next/image'
-import { bigChain } from 'src/images/main-page'
+import { singleChain } from 'src/images/main-page'
 
 const Last = () => {
     return (
-        <div className='absolute top-[100%] overflow-hidden' style={{ zIndex: 1 }} >
+        <div className='absolute top-[85%] -mt-15 overflow-hidden' style={{ zIndex: 1 }} >
             <Image  
-                className='scale-[1.75]'
-                src={bigChain}
-                alt='big-chain'
+                className='scale-[1.25]'
+                src={singleChain}
+                alt='single-chain'
             />
         </div>
     );

@@ -9,7 +9,7 @@ const Hero = ({ lang }) => {
             <Navbar />
             <Top lang={lang} />
             <Mid lang={lang} />    
-            {/* <Last /> */}
+            <Last />
         </div>
     );
 }
