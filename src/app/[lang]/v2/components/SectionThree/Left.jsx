@@ -15,11 +15,11 @@ const Left = () => {
             </div>
 
             <div className='overflow-hidden'>
-                {/* <Image className='' src={creditCards} alt='credit cards'  /> */}
+                <Image className='pt-14 pr-10 scale-[1.55]' src={creditCards} alt='credit cards'  />
             </div>
-            {/* <div className="w-[245px] px-6 py-4 bg-red-800 rounded-2xl justify-center items-center gap-2 inline-flex">
+            <div className="w-[245px] px-6 py-4 bg-blue-800 rounded-2xl justify-center items-center gap-2 inline-flex">
                 <div className="text-center text-blue-600 text-lg font-semibold font-['Inter'] leading-normal">Open my bank account</div>
-            </div> */}
+            </div>
         </div>
     );
 };

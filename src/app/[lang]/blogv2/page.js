@@ -22,9 +22,9 @@ const Page = ({ params: { lang } }) => {
                 return new ArticleClass(
                     article.title, 
                     article.feature_image, 
-                    article.primary_tag.name, 
-                    article.primary_author.name, 
-                    article.primary_author.profile_image, 
+                    article.primary_tag?.name, 
+                    article.primary_author?.name, 
+                    article.primary_author?.profile_image, 
                     article.reading_time, 
                     article.published_at, 
                     article.slug, 

@@ -5,6 +5,7 @@ import Header from './components/article/Header'
 import Body from './components/article/Body/Body'
 import Right from './components/article/Body/Right'
 
+
 import axios from 'axios'
 
 const getArticle = async (slug) => {

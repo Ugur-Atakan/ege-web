@@ -276,6 +276,7 @@ body {
 .company-type {
   background-image: url('../images/choose-bg.png');
   background-size: cover;
+  min-height: 100vh;
 }
 
 .wyoming::before {

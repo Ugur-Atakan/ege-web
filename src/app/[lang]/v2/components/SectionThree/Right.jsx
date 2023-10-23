@@ -15,7 +15,7 @@ const Right = () => {
             </div>
 
             <div className=''>
-                {/* <Image className='' src={Legacy} alt='credit cards' /> */}
+                <Image className='' src={Legacy} alt='credit cards' />
             </div>
         </div>
     )
