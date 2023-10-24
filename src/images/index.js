@@ -46,6 +46,7 @@ import tickIcon from './tick-icon.svg'
 import melisImg from './melis-abacioglu.png'
 import batuSatImg from './batu-sat.png'
 import tolgaOzturk from './tolga-ozturk.png'
+import faqBackground from './faq-background.png'
 
 export { 
     whitelogo, 
@@ -93,5 +94,6 @@ export {
     playButton,
     melisImg,
     batuSatImg,
-    tolgaOzturk
+    tolgaOzturk,
+    faqBackground
 }

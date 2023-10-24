@@ -73,6 +73,11 @@ body {
   background-size: cover;
 }
 
+.faq-background { 
+  background-image: url('../images/faq-background.png');
+  background-size: cover;
+}
+
 .how-to-get-started:hover .text-on {
   color: rgba(255, 255, 255, 0.49);
 }
@@ -755,11 +760,15 @@ body {
 }
 
 .circle {
+  clip-path: ellipse(58% 100% at 50% 135%);
+}
+
+.circle-inverse {
   /* background-image: url('../images/main-page/apostille-bg-earth.png');
   background-size: cover;
   z-index: -1;
   clip-path: ellipse(100% 155% at 50% 135%); */
-  clip-path: ellipse(58% 100% at 50% 135%);
+  clip-path: ellipse(58% 75% at 50% 0%);
 }
 
 @media only screen and (max-width: 1024px) {

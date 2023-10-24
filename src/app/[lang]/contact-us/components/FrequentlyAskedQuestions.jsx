@@ -16,7 +16,7 @@ function classNames(...classes) {
  * @returns {JSX.Element} Rendered components for the page
 */
 
-const FAQS = ({ lang }) => {
+const FrequentlyAskedQuestions = ({ lang }) => {
     const { t } = useTranslation();
 
     const faqs = [
@@ -107,4 +107,4 @@ const FAQS = ({ lang }) => {
     )
 }
 
-export default FAQS
+export default FrequentlyAskedQuestions

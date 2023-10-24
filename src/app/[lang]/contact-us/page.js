@@ -2,7 +2,7 @@ import Navbar from '../blog/components/Navbar'
 import ContactForm from "./components/ContactForm"
 import ContactInfo from './components/ContactInfo'
 import BookCall from './components/BookCall'
-import FAQS from './components/FAQS'
+import FrequentlyAskedQuestions from './components/FrequentlyAskedQuestions'
 import Footer from '../components/common/Footer'
 
 /**
@@ -21,7 +21,7 @@ const Page = ({ params: { lang } }) => {
           <ContactForm />
           <ContactInfo/>
           <BookCall lang={lang} />
-          <FAQS lang={lang} />
+          <FrequentlyAskedQuestions lang={lang} />
           <Footer lang={lang} /> 
         </div>
     </main>

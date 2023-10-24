@@ -23,6 +23,8 @@ const Content = ({ lang }) => {
 
     const [companyName, setCompanyName] = useState('');
     const [abbreviation, setAbbreviation] = useState(null);
+
+    const [loaded, setLoaded] = useState(false);
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
 
@@ -35,12 +37,14 @@ const Content = ({ lang }) => {
 
     const checkName = async () => {
       setLoading(true)
+      setLoaded(true)
       const res = await axios.post('/api/namecheck?name=' + companyName)
 
       if (res.data == 'Available') {
         setSuccess(true)
       }
       else {
+        setAbbreviation(null)
         setSuccess(false)
       }
 
@@ -70,11 +74,13 @@ const Content = ({ lang }) => {
                     onChange={(e) => setCompanyName(e.target.value)}
                   />
                   <div className="absolute right-0 top-0 bottom-0 flex items-center pr-3">
-                    {loading ? (
-                        <Spinner />
-                      ) : (
-                        success ? <Tick /> : <Cross />
-                    )}
+                    {loaded ? (
+                        loading ? (
+                          <Spinner />
+                        ) : (
+                          success ? <Tick /> : <Cross />
+                        )
+                      ) : null}
                   </div>
                 </div>
               </div>
@@ -112,7 +118,10 @@ const Content = ({ lang }) => {
                 </p>
               </div>
 
-              <button className="my-8 py-3 px-44 bg-blue-500 hover:bg-blue-700 text-white font-bold  rounded-lg">
+              <button 
+                className={`my-8 py-3 px-44 bg-blue-500 hover:bg-blue-700 text-white font-bold  rounded-lg ${success ? '' : 'opacity-50 cursor-not-allowed'}`}
+                disabled={!success}
+              >
                   Create my company
               </button>
             </div>
