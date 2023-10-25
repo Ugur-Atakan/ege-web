@@ -97,20 +97,20 @@ const Content = ({ lang }) => {
                   onChange={handleAbbreviationChange}
                 >
                   <option value="" disabled>Select an abbreviation</option>
-                    { options.map((abb, index) => (
+                    { 
+                      options.map((abb, index) => (
                         <option
                             key={index}
                             value={abb}
                         >
                             {abb}
                         </option>
-                  ))}
+                    ))}
                 </select>
               </div>
             </div>
             
             <div className="max-w-lg mx-auto bg-white rounded-lg ">
-
               <div className='flex flex-col text-center shadow-lg p-3 rounded-md px-10 border border-[#C8C8C8] font-semibold'>
                 <h1 className="font-medium text-md text-gray-800 mb-4">Your Company name will be:</h1>
                 <p className="text-gray-700 text-2xl">
@@ -126,6 +126,9 @@ const Content = ({ lang }) => {
               </button>
             </div>
 
+            <div className="max-w-lg mx-auto text-sm text-gray-500 py-5">
+                <sup className="mr-1">[*]</sup>Company name checker only works for Delaware based companies.
+            </div>
           </div>
       </div>
   );

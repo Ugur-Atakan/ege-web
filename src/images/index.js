@@ -47,6 +47,7 @@ import melisImg from './melis-abacioglu.png'
 import batuSatImg from './batu-sat.png'
 import tolgaOzturk from './tolga-ozturk.png'
 import faqBackground from './faq-background.png'
+import searchIcon from './search.svg'
 
 export { 
     whitelogo, 
@@ -95,5 +96,6 @@ export {
     melisImg,
     batuSatImg,
     tolgaOzturk,
-    faqBackground
+    faqBackground,
+    searchIcon
 }

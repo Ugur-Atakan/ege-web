@@ -1,0 +1,73 @@
+import React, { useState } from 'react'
+import Popular from './Popular'
+import Authors from './Authors'
+import AttorneyCard from '../articles/AttorneyCard'
+
+const RightColumn = ({ selectedTag, setSelectedTag }) => {
+    const [activeButton, setActiveButton] = useState('All');
+
+    const tags = [
+        'All',
+        'Franchise Tax',
+        'Business Tips',
+        'Registered Agent',
+        'LLC',
+        'Incorporations'
+    ]
+
+    const authors = [
+        {
+            id: 1,
+            name: 'John Doe',
+            bio: 'Expert',
+            avatar: 'https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg',
+        },
+        {
+            id: 2,
+            name: 'Jane Doe',
+            bio: 'Expert',
+            avatar: 'https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg',
+        },
+        {
+            id: 3,
+            name: 'John Doe',
+            bio: 'Expert',
+            avatar: 'https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg'
+        }
+    ]   
+
+    const handleTagClick = (tag) => {
+        if (selectedTag === tag) {
+            setSelectedTag(null)
+            setActiveButton('All');
+        } else {
+            setSelectedTag(tag)
+            setActiveButton(tag);
+        }
+    }
+
+    return (
+        <div className='mx-10'>
+            <div className='my-10'>
+                <h1 className="text-2xl font-semibold leading-normal mb-5">Tags</h1>
+                <div className="flex flex-wrap">
+                    {tags.map(tag => (
+                        <div 
+                            key={tag} 
+                            className={`mr-2 my-2 px-3 cursor-pointer py-1 border border-black rounded-lg ${activeButton === tag ? 'bg-blue-600' : ''}`}
+                            onClick={() => handleTagClick(tag)}
+                        >
+                            <div className={` text-lg font-semibold leading-normal ${activeButton === tag ? 'text-white' : 'text-neutral-800'}`}>{tag}</div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <Popular />
+            <Authors authors={authors} />
+            <AttorneyCard />
+        </div>
+    );
+}
+
+export default RightColumn

@@ -5,16 +5,35 @@ import { createCustomer, createContactUsRequest } from '../../../lib/jira'
  * @returns {object} Response object with status code and message
  */
 
-export async function POST(request) {
-    const requestBody = await request.json()
-    const { fullName, email, message } = requestBody
-    console.log(email)
+// Uses createCustomer and createContactUsRequest from lib/jira.js
 
-    const customerId = await createCustomer(displayName, email)
-    const req = await createContactUsRequest(customerId, message, fullName)
-    // console.log(req)
-    
-    return new Response('Request created', {
-        status: 200
-    });
+export async function POST(request) {
+    try{ 
+        const requestBody = await request.json()
+        const { fullName, email, message } = requestBody
+
+        const customerId = await createCustomer(fullName, email)
+        if (customerId === null) {
+            return new Response('Error creating customer in Jira', {
+                status: 500
+            });
+        }
+        
+        const req = await createContactUsRequest(customerId, message, fullName)
+        if (req === null) {
+            return new Response('Error creating Contact Us request', {
+                status: 500
+            });
+        }
+        
+        return new Response('Request created', {
+            status: 200
+        });
+    }
+    catch { 
+        return new Response('Error creating request', {
+            status: 500
+        });
+    }
+
 }

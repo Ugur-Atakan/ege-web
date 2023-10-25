@@ -1,7 +1,8 @@
 import axios from 'axios'
+
 /**
  * @type {GET route}
- * @returns {object} price
+ * @returns {object} 
  */
 
 export async function POST(request) {
@@ -13,26 +14,33 @@ export async function POST(request) {
         });
     }
 
-    const res = await axios.post('https://www.delawareinc.com/include/company_name_lookup/company_lookup_section.cfm', 
-        'name=' + encodeURIComponent(name), 
-        {
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        }
-    );
+    try {
+        const res = await axios.post('https://www.delawareinc.com/include/company_name_lookup/company_lookup_section.cfm', 
+            'name=' + encodeURIComponent(name), 
+            {
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            }
+        )
 
-    if (res.data.includes('No companies with that name could be found.')) {
-        return new Response('Available', {
+        if (res.data.includes('No companies with that name could be found.')) {
+            return new Response('Available', {
+                status: 200,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+        }
+
+        return new Response('Not Available', {
             status: 200,
             headers: {
                 'Content-Type': 'application/json'
             }
+        })
+    }
+    catch {
+        return new Response('Error checking name', {
+            status: 500
         });
     }
-
-    return new Response('Not Available', {
-        status: 200,
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
 }

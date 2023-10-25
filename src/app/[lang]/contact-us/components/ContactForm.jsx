@@ -1,11 +1,12 @@
 'use client'
 
+import React, { useState } from 'react'  
 import Image from 'next/image'
 import axios from 'axios'
-import { useState } from 'react'
-import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import megaphone from '../../../../images/megaphone.png'
+
 import { useTranslation } from '../../../i18n/client'
 
 /**
@@ -21,9 +22,6 @@ const ContactForm = ({ lang }) => {
   
   const [subjects, setSubjects] = useState(['Help / Support Question', 'Complaint']);
 
-  const notify = () => {
-    toast("Form submitted successfully");
-  }
 
   const [message, setMessage] = useState('');
 
@@ -44,17 +42,37 @@ const ContactForm = ({ lang }) => {
     let email = e.target.email.value;
     let message = e.target.message.value;
 
-
     const createJIRAReq = async () => {
-      console.log(fullName)
-      const res = await axios.post('/api/jira/create-customer-req', {
-        fullName,
-        email,
-        message,
-      })
-      .then((res) => {
-        // notify();
-      })
+      try {
+        await axios.post('/api/jira/create-customer-req', {
+          fullName,
+          email,
+          message,
+        })
+
+        toast.success('Request sent!', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      }
+      catch(err) {
+            toast.error('Customer request failed', {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: true,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            });
+      }
     }
 
     createJIRAReq();
@@ -62,6 +80,18 @@ const ContactForm = ({ lang }) => {
   
   return (
     <div className='bg-white'>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <div className='max-w-7xl px-6 py-12'>
         <div className='lg:flex items-start'>
           <div className='hidden lg:block w-full -mt-24'>

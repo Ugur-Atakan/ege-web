@@ -38,7 +38,7 @@ const Page = async ({ params: { lang, slug } }) => {
 
                 <div className='flex mt-[56px]'>
                     <div className='flex-2/3'>
-                        <Body excerpt={article.excerpt} html={article.html} />
+                        <Body html={article.html} />
                     </div>
                     <div className='flex-1/3'>
                         <Right />

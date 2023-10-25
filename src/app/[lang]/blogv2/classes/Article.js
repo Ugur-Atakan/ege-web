@@ -16,3 +16,23 @@ export class ArticleClass {
         this.excerpt = excerpt || 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
     } 
 }
+
+export const createArticleClasses =  (articles) => {
+    // create article class instances
+    const articlesClasses = articles.posts.map(article => {
+        return new ArticleClass(
+            article.title, 
+            article.feature_image, 
+            article.primary_tag?.name, 
+            article.primary_author?.name, 
+            article.primary_author?.profile_image, 
+            article.reading_time, 
+            article.published_at, 
+            article.slug, 
+            article.html, 
+            article.excerpt
+        )
+    })
+
+    return articlesClasses
+}

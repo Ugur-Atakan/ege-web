@@ -166,6 +166,10 @@ const Content = ({ lang }) => {
                 {t('companyname_button')}
             </button>
         </ul>
+
+        <div className="max-w-lg mx-auto text-sm text-gray-500 py-5">
+          <sup className="mr-1">[*]</sup>Company name checker only works for Delaware based companies.
+        </div>
       </div>
     </div>
   </div>

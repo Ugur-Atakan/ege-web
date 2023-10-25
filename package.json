@@ -53,6 +53,7 @@
     "winston-daily-rotate-file": "^4.7.1"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.10",
     "@types/node": "20.5.9",
     "@types/react": "18.2.21"
   }
