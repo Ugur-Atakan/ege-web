@@ -1,7 +1,4 @@
-'use client'
-
-import React, { useState } from 'react'
-import SearchBar from './SearchBar'
+import React from 'react'
 
 const Hero = () => {
     return (
@@ -10,8 +7,6 @@ const Hero = () => {
                 <div className="text-black text-[64px] font-bold leading-[64px]">Blog</div>
                 <div className="self-stretch text-neutral-800 text-lg font-semibold  leading-normal">Read the latest posts from our blog. All articles are written by our team of experts, so you know you{"'"}re getting the best advice.</div>
             </div>
-
-            <SearchBar />
         </div>
     )
 }

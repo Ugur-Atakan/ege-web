@@ -1,19 +1,17 @@
-import React, { useState } from 'react'
+'use client'
+
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import Popular from './Popular'
 import Authors from './Authors'
 import AttorneyCard from '../articles/AttorneyCard'
+import { redirect } from '../../../../lib/utils'
 
-const RightColumn = ({ selectedTag, setSelectedTag }) => {
-    const [activeButton, setActiveButton] = useState('All');
+import { useSearchParams } from 'next/navigation'
 
-    const tags = [
-        'All',
-        'Franchise Tax',
-        'Business Tips',
-        'Registered Agent',
-        'LLC',
-        'Incorporations'
-    ]
+const RightColumn = ({ selectedTag, setSelectedTag, lang, tags }) => {
+    const searchParams = useSearchParams();
+    const [activeButton, setActiveButton] = useState(searchParams.get('tag'));
 
     const authors = [
         {
@@ -43,6 +41,7 @@ const RightColumn = ({ selectedTag, setSelectedTag }) => {
         } else {
             setSelectedTag(tag)
             setActiveButton(tag);
+            redirect(`/blogv2/search?tag=${tag}`, lang);
         }
     }
 
@@ -51,7 +50,7 @@ const RightColumn = ({ selectedTag, setSelectedTag }) => {
             <div className='my-10'>
                 <h1 className="text-2xl font-semibold leading-normal mb-5">Tags</h1>
                 <div className="flex flex-wrap">
-                    {tags.map(tag => (
+                    {tags && tags.map(tag => (
                         <div 
                             key={tag} 
                             className={`mr-2 my-2 px-3 cursor-pointer py-1 border border-black rounded-lg ${activeButton === tag ? 'bg-blue-600' : ''}`}
