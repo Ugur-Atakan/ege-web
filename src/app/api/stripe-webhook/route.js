@@ -23,7 +23,6 @@ export async function POST(req) {
     const sig = headersList.get('stripe-signature');
 
     const body = await req.text();
-
     let event;
 
     try {
@@ -34,7 +33,7 @@ export async function POST(req) {
         );
     } catch (err) {
         logger.error({ message : `Stripe webhook Error: ${err.message}` })
-        return new NextResponse(`Webhook Error: ${err.message}`, {
+        return new Response(`Webhook Error: ${err.message}`, {
             status: 400
         });
     }
@@ -55,6 +54,14 @@ export async function POST(req) {
             session.customer_details.name,
             session.customer_details.email
         );
+
+        if (accountId === null) {
+            logger.error({ message : `Error creating customer in Jira - FileName: stripe-webhook-route.js` })
+            return new Response('Error creating customer in Jira', {
+                status: 500
+            });
+        }
+
         const customerReq = await createCustomerRequest(
             accountId,
             description,
@@ -72,12 +79,10 @@ export async function POST(req) {
         console.log(customerReq);
 
         const invite = await resendInvitation(session.customer_details.email);
-
-
         // DB CALLS HERE
-        return new NextResponse(session.url, { status: 200 });
+        return new Response(session.url, { status: 200 });
     } else {
         logger.error({ message : `No action taken on webhook - FileName: stripe-webhook-route.js` })
-        return new NextResponse('No action taken', { status: 400 });
+        return new Response('No action taken', { status: 400 });
     }
 }

@@ -5,6 +5,7 @@
 @import "slick-carousel/slick/slick.css";
 @import "slick-carousel/slick/slick-theme.css";
 
+
 .open-animation {
   animation: openanimation 1s;
 }
@@ -69,6 +70,11 @@ body {
 
 .hero-section {
   background-image: url('../images/hero-background.jpg');
+  background-size: cover;
+}
+
+.faq-background { 
+  background-image: url('../images/faq-background.webp');
   background-size: cover;
 }
 
@@ -205,7 +211,7 @@ body {
   overflow: visible !important;
   clip-path: inset(-100vw -100vw -100vw 0);
   margin: 0 75px 0 0;
-}
+} 
 
 .founders .slick-slide {
   padding: 0 10px 0 0;
@@ -275,6 +281,7 @@ body {
 .company-type {
   background-image: url('../images/choose-bg.png');
   background-size: cover;
+  min-height: 100vh;
 }
 
 .wyoming::before {
@@ -753,11 +760,15 @@ body {
 }
 
 .circle {
+  clip-path: ellipse(58% 100% at 50% 135%);
+}
+
+.circle-inverse {
   /* background-image: url('../images/main-page/apostille-bg-earth.png');
   background-size: cover;
   z-index: -1;
   clip-path: ellipse(100% 155% at 50% 135%); */
-  clip-path: ellipse(58% 100% at 50% 135%);
+  clip-path: ellipse(58% 75% at 50% 0%);
 }
 
 @media only screen and (max-width: 1024px) {

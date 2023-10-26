@@ -1,52 +1,34 @@
-'use client'
 
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import Articles from './Articles'
+import Body from './Body'
 import { ArticleClass } from './classes/Article' 
 
 import axios from 'axios'
 
-const Page = ({ params: { lang } }) => {
-    const [selectedTag, setSelectedTag] = useState('All')
-    const [articles, setArticles] = useState(null)
+const getArticles = async () => {   
+    try {
+      const res = await axios.get(`https://blog.registate.com/ghost/api/content/posts?key=${process.env.BLOG_API_KEY}&include=authors,tags`);
+      return res.data;
+    }
+    catch {
+      console.log('Error getting getPosts')
+    }
+}
 
-    useEffect(() => {
-        const getArticles = async () => {
-            const res = await axios.get('/api/blog/get-all-posts')
-            const articles = res.data
-
-            // create article class instances
-            const articlesClass = articles.posts.map(article => {
-                return new ArticleClass(
-                    article.title, 
-                    article.feature_image, 
-                    article.primary_tag.name, 
-                    article.primary_author.name, 
-                    article.primary_author.profile_image, 
-                    article.reading_time, 
-                    article.published_at, 
-                    article.slug, 
-                    article.html, 
-                    article.excerpt
-                )
-            })
-            
-            setArticles(articlesClass)
-        }
-        getArticles()
-    }, [])
+const Page = async ({ params: { lang } }) => {
+    const articlesData = getArticles();
+    const [articles] = await Promise.all([articlesData]);
 
     return (
         <div>
             <Navbar lang={lang} />
             <div className='mx-[56px] my-[56px] flex flex-col'>
-                <Hero selectedTag={selectedTag} setSelectedTag={setSelectedTag} />
-                {articles && <Articles articles={articles} lang={lang} />}
+                {articles && <Body articleJSON={articles} lang={lang} />}``
             </div>
         </div>
     );
 }
 
-export default Page;
+export default Page

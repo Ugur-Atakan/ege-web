@@ -36,9 +36,19 @@ import filetext from './file-text-dynamic.png'
 import sheild from './sheild-dynamic.png'
 import dollar from './dollar-dynamic.png'
 import locker from './locker-dynamic.png'
-
 import searchwhite from './search-white.png'
 import book from './book.png'
+import playButton from './play-button.svg'
+
+// Newly added
+import palace from './palace.svg'
+import tickIcon from './tick-icon.svg'
+import melisImg from './melis-abacioglu.png'
+import batuSatImg from './batu-sat.png'
+import tolgaOzturk from './tolga-ozturk.png'
+import faqBackground from './faq-background.png'
+import searchIcon from './search.svg'
+import faqBackgroundWebP from './faq-background.webp'
 
 export { 
     whitelogo, 
@@ -80,5 +90,14 @@ export {
     filetext,
     sheild,
     dollar,
-    locker
+    locker,
+    palace,
+    tickIcon,
+    playButton,
+    melisImg,
+    batuSatImg,
+    tolgaOzturk,
+    faqBackground,
+    searchIcon,
+    faqBackgroundWebP
 }

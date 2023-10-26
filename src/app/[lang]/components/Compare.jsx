@@ -73,6 +73,7 @@ export default function Compare({ lang }) {
                                             <tr key={index}>
                                                 <td
                                                     className="whitespace-nowrap py-4 pl-4 pr-3 sm:pl-0"
+                                                    headers={'packages'}
                                                 >
                                                     <div className="flex items-center gap-2 w-[285px]">
                                                         <div className="w-6 h-6">
@@ -89,23 +90,36 @@ export default function Compare({ lang }) {
                                                 <td
                                                     className={`whitespace-nowrap px-3 py-4 text-[18px] lg:text-[22px] font-semibold text-[#1649FF] bg-white w-[180px]
                                                      ${index === packages.length - 1 ? "last-row" : ""}`}
+                                                    headers={person.registate}
                                                 ><div className="flex items-center justify-center"><div className={index === packages.length - 1 ? 'width-auto' : 'w-[25px] text-center'}>{person.registate}</div></div></td>
-                                                <td className="whitespace-nowrap px-3 py-4 text-[18px] lg:text-[22px] font-semibold w-[180px] text-[#1649FF]">
+                                                <td 
+                                                    className="whitespace-nowrap px-3 py-4 text-[18px] lg:text-[22px] font-semibold w-[180px] text-[#1649FF]"
+                                                    headers={person.doola}
+                                                >
                                                     <div className="flex items-center justify-center">
                                                         <div className={index === packages.length - 1 ? 'width-auto' : 'w-[25px] text-center'}>{person.doola}</div>
                                                     </div>
                                                 </td>
-                                                <td className="whitespace-nowrap px-3 py-4 text-[18px] lg:text-[22px] font-semibold w-[180px] text-[#1649FF]">
+                                                <td 
+                                                    className="whitespace-nowrap px-3 py-4 text-[18px] lg:text-[22px] font-semibold w-[180px] text-[#1649FF]"
+                                                    headers={person.zenbusiness}
+                                                >
                                                     <div className="flex items-center justify-center">
                                                         <div className={index === packages.length - 1 ? 'width-auto' : 'w-[25px] text-center'}>{person.zenbusiness}</div>
                                                     </div>
                                                 </td>
-                                                <td className="whitespace-nowrap px-3 py-4 text-[18px] lg:text-[22px] font-semibold w-[180px] text-[#1649FF]">
+                                                <td 
+                                                    className="whitespace-nowrap px-3 py-4 text-[18px] lg:text-[22px] font-semibold w-[180px] text-[#1649FF]"
+                                                    headers={person.legalzoom}
+                                                >
                                                     <div className="flex items-center justify-center">
                                                         <div className={index === packages.length - 1 ? 'width-auto' : 'w-[25px] text-center'}>{person.legalzoom}</div>
                                                     </div>
                                                 </td>
-                                                <td className="whitespace-nowrap px-3 py-4 text-[18px] lg:text-[22px] font-semibold w-[180px] text-[#1649FF]">
+                                                <td
+                                                   className="whitespace-nowrap px-3 py-4 text-[18px] lg:text-[22px] font-semibold w-[180px] text-[#1649FF]"
+                                                   headers={person.firstbase}
+                                                >
                                                     <div className="flex items-center justify-center">
                                                         <div className={index === packages.length - 1 ? 'width-auto' : 'w-[25px] text-center'}>{person.firstbase}</div>
                                                     </div>
@@ -148,7 +162,7 @@ export default function Compare({ lang }) {
                     <div className="mt-8 flow-root">
                         <div className="-mx-4 -my-2 sm:-mx-6 lg:-mx-8  overflow-y-scroll">
                             <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-                                <table className="min-w-full">
+                                <table className="min-w-full" aria-label="Package Comparison">
                                     <thead>
                                         <tr>
                                             <th scope="col" className=" py-3.5 pl-4 pr-3 text-center text-sm font-semibold sm:pl-0">
@@ -167,6 +181,7 @@ export default function Compare({ lang }) {
                                             <tr key={index}>
                                                 <td
                                                     className="whitespace-nowrap py-4 pl-4 pr-3 sm:pl-0"
+                                                    headers={pac.name}
                                                 >
                                                     <div className="flex items-center gap-2 ">
                                                         <span className="text-[#222222] text-[16px] leading-[22px] lg:text-lg font-semibold whitespace-normal">{pac.name}</span>
@@ -175,8 +190,12 @@ export default function Compare({ lang }) {
                                                 <td
                                                     className={`whitespace-nowrap px-3 py-4 text-[18px] lg:text-[22px] font-semibold text-[#1649FF] w-[180px]
                                                      ${index === packages.length - 1 ? "last-row" : ""}`}
+                                                    headers={pac.registate}
                                                 ><div className="flex items-center justify-center"><div className={index === packages.length - 1 ? 'width-auto' : 'w-[25px] text-center'}>{pac.registate}</div></div></td>
-                                                <td className="whitespace-nowrap px-3 py-4 text-[18px] lg:text-[22px] font-semibold w-[180px] text-[#1649FF]">
+                                                <td 
+                                                    className="whitespace-nowrap px-3 py-4 text-[18px] lg:text-[22px] font-semibold w-[180px] text-[#1649FF]"
+                                                    headers= {selectedPackageName ? pac[selectedPackageName.toLowerCase()] : pac.doola}
+                                                >
                                                     <div className="flex items-center justify-center">
                                                         <div className={index === packages.length - 1 ? 'width-auto' : 'w-[25px] text-center'}> {selectedPackageName ? pac[selectedPackageName.toLowerCase()] : pac.doola}</div>
                                                     </div>

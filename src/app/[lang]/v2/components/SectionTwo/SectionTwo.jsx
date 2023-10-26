@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 const SectionTwo = () => {
     return (
-        <div className="flex bg-black overflow-hidden">
+        <div className="mt-96 flex bg-black overflow-hidden">
             <div className="flex-1">
                 <Left />
             </div>

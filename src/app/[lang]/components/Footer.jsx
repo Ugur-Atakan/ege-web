@@ -1,10 +1,10 @@
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import axios from 'axios'
 import { useTranslation } from '../../i18n/client'
 
 export default function Footer({ lang }) {
   const { t } = useTranslation(lang);
+
   const navigation = {
     solutions: [
       {
@@ -59,35 +59,8 @@ export default function Footer({ lang }) {
     ],
   }
 
-  const notify = () => {
-    toast("Successfully subscribed");
-  }
-  const submitHandler = (e) => {
-    e.preventDefault();
-
-    let email = e.target.email.value;
-    let payload = {
-      "email": email,
-    }
-    
-    axios.post('/api/newsletter', payload, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer D27F1E98-A574-4BC6-9090-033A85C4A0F6'
-      },
-      body: JSON.stringify(payload),
-    })
-      .then(function (response) {
-        var jsonData = JSON.parse(JSON.stringify(response.data));
-        console.log(jsonData)
-        notify();
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
   return (
-    <footer className="bg-white border-t" aria-labelledby="footer-heading">
+    <footer className="bg-white" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
@@ -96,7 +69,7 @@ export default function Footer({ lang }) {
           <div className="grid grid-cols-2 gap-8 xl:col-span-2">
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="font-semibold text-lg leading-[24px] text-black">{t('footer_col1_title')}</h3>
+                <h3 className="font-semibold py-3 text-lg leading-[24px] text-black">{t('footer_col1_title')}</h3>
                 <ul role="list" className="mt-4 space-y-4">
                   {navigation.solutions.map((item) => (
                     <li key={item.name}>
@@ -108,7 +81,7 @@ export default function Footer({ lang }) {
                 </ul>
               </div>
               <div className="mt-12 md:mt-0">
-                <h3 className="font-semibold text-lg leading-[24px] text-black">{t('footer_col2_title')}</h3>
+                <h3 className="font-semibold py-3 text-lg leading-[24px] text-black">{t('footer_col2_title')}</h3>
                 <ul role="list" className="mt-4 space-y-4">
                   {navigation.support.map((item) => (
                     <li key={item.name}>
@@ -122,7 +95,7 @@ export default function Footer({ lang }) {
             </div>
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="font-semibold text-lg leading-[24px] text-black">{t('footer_col3_title')}</h3>
+                <h3 className="font-semibold text-lg py-2 leading-[24px] text-black">{t('footer_col3_title')}</h3>
                 <ul role="list" className="mt-4 space-y-4">
                   {navigation.company.map((item) => (
                     <li key={item.name}>
@@ -136,10 +109,10 @@ export default function Footer({ lang }) {
             </div>
           </div>
           <div className="mt-8 xl:mt-0">
-            <p className="mt-4 font-semibold text-lg leading-[24px] text-black">
-            {t('footer_col5_desc')}
+            <p className="mt-4 pb-3 font-semibold text-lg leading-[24px] text-black">
+              {t('footer_col5_desc')}
             </p>
-            <form onSubmit={submitHandler} className="mt-4">
+            <form className="mt-4">
               <label htmlFor="email-address" className="mb-2 text-sm font-medium sr-only"> Email address</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -157,7 +130,8 @@ export default function Footer({ lang }) {
             </form>
           </div>
         </div>
-        <div className="mt-8 border-t border-black border-opacity-[0.2] pt-8 md:flex md:items-center md:justify-between">
+
+        <div className="mt-24 border-t border-black border-opacity-[0.2] pt-8 md:flex md:items-center md:justify-between">
           <div className="flex space-x-6 md:order-2">
             {navigation.social.map((item) => (
               <a key={item.name} href={item.href} className="text-gray-400 hover:text-gray-500">

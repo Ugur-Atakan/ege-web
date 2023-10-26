@@ -5,7 +5,7 @@ import Script from 'next/script'
 
 export const metadata = {
   title: 'Registate',
-  description: '',
+  description: 'Start a business in the USA in 24 hours from anywhere in the world.',
 }
 
 export function generateStaticParams() {

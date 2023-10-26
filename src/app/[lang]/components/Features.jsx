@@ -1,29 +1,33 @@
-'use client'
-
-import Slider from "react-slick"
+import React, { useState } from 'react'
 import { useTranslation } from '../../i18n/client'
+import Image from 'next/image'
+import Slider from 'react-slick'
+import tolga from '../../../videos/tolga-game.mp4'
+import melis from '../../../videos/melis-wellbees.mp4'
+import batu from '../../../videos/batu-malliq.mp4'
+import { melisImg, batuSatImg, tolgaOzturk, playButton } from '../../../images'
 
-export default function Features({ lang }) {
+const Features = ({ lang }) => {
   const { t } = useTranslation(lang);
-  
+
   const videos = [
     {
         name: t('founders1_name'),
         title: t('founders2_title'),
-        source:
-            'https://www.youtube.com/embed/QiqVTtFDjYY?showparams=0',
+        img: melisImg,
+        source: melis
     },
     {
         name: t('founders2_name'),
         title: t('founders2_title'),
-        source:
-            'https://www.youtube.com/embed/_zj-Bh5SjK0?showparams=0',
+        img: batuSatImg,
+        source: batu
     },
     {
         name: t('founders3_name'),
         title: t('founders3_title'),
-        source:
-            'https://www.youtube.com/embed/ggWsTwawg4o?showparams=0',
+        img: tolgaOzturk,
+        source: tolga 
     }
   ]
 
@@ -54,7 +58,30 @@ export default function Features({ lang }) {
       },
     ],
   };
-  
+
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+
+  const handleVideoLoad = () => {
+    setIsVideoLoaded(true);
+  };
+
+  const handleToggleVideo = (index) => {
+    const videoElement = document.getElementById(`video-${index}`);
+    if (isVideoPlaying) {
+      videoElement.pause();
+    } else {
+      videoElement.play();
+    }
+    setIsVideoPlaying(!isVideoPlaying);
+  };
+
+  const handleStopVideo = (index) => {
+    const videoElement = document.getElementById(`video-${index}`);
+    videoElement.pause();
+    setIsVideoPlaying(false);
+  };
+
   return (
     <div className="bg-white relative overflow-hidden">
       <div className="p-6 py-12 lg:px-36 lg:py-36">
@@ -62,26 +89,57 @@ export default function Features({ lang }) {
           <div className="w-2/3 lg:w-1/4">
             <h1 className="font-semibold text-[20px] lg:text-[28px] leading-[22px] lg:leading-[32px] text-[#222222]">{t('founders_title')}</h1>
           </div>
-          <div className="w-full lg:w-3/4 founders relative lg:-right-[18rem] py-6 lg:py-0 founders-section">
-            <Slider {...settings}>
-              {videos.map((video, index) => (
-                <div key={index}>
-                    <iframe
-                      width="300"
-                      className='rounded-lg'
-                      height="350"
-                      src={video.source}
-                      title="YouTube video player"
-                      alt="people vid"
-                    ></iframe>
-                  <h1 className="font-semibold text-[22px] leading-[26px] text-[#222222] pt-4">{video.name}</h1>
-                  <p className="font-semibold text-lg leading-6 text-[#222222]">{video.title}</p>
+        <div className="w-full lg:w-3/4 founders relative lg:-right-[18rem] py-6 lg:py-0 founders-section">
+        <Slider {...settings}>
+        {videos.map((video, index) => (
+          <div key={index} className="relative group">
+            <div className="relative w-[336px] h-[457px]">
+              {!isVideoPlaying ? (
+                <div className="relative">
+                  <Image
+                    src={video.img} 
+                    alt="video-img"
+                    className={`object-cover w-full h-full rounded-lg ${isVideoLoaded ? 'hidden' : 'block'}`}
+                    style={{ zIndex: 10 }}
+                    onClick={() => handleToggleVideo(index)}
+                  />
+                  <div
+                    className="absolute inset-0 flex items-center justify-center cursor-pointer"
+                    onClick={() => handleToggleVideo(index)}
+                  >
+                    <Image src={playButton} alt="play" className="w-16 h-16" />
+                  </div>
                 </div>
-              ))}
-            </Slider>
+              ): null}
+              <video
+                id={`video-${index}`}
+                src={video.source}
+                controls={false}
+                autoPlay={false}
+                loop={true}
+                muted={false}
+                className={`w-full h-full rounded-lg ${isVideoPlaying ? 'block' : 'hidden'}`}
+                onLoadedData={handleVideoLoad}
+              />
+              {isVideoPlaying && (
+                <div
+                  className="absolute inset-0 flex items-center justify-center cursor-pointer"
+                  onClick={() => handleStopVideo(index)}
+                >
+                  <Image src={playButton} alt="play" className="w-16 h-16" />
+                </div>
+              )}
+            </div>
+            <h1 className="font-semibold text-[22px] leading-[26px] text-[#222222] pt-4">{video.name}</h1>
+            <p className="font-semibold text-lg leading-6 text-[#222222]">{video.title}</p>
           </div>
-        </div>
+        ))}
+        </Slider>
+      </div>
+      </div>
       </div>
     </div>
   )
 }
+
+export default Features;

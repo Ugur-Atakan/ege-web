@@ -5,6 +5,8 @@ import { ArrowLeftIcon } from '@heroicons/react/24/outline'
 import { useTranslation } from '../../../i18n/client'
 import { readCookie, submitCookie } from '../../../lib/session/clientActions'
 import { useEffect, useState } from 'react'
+import { Spinner, Tick, Cross } from './utils'
+import axios from 'axios'
 
 import Link from 'next/link'
 import { redirect } from '../../../lib/utils'
@@ -24,11 +26,32 @@ const Content = ({ lang }) => {
   const [companyName, setCompanyName] = useState('');
   const [abbreviation, setAbbreviation] = useState('');
 
+  const [loaded, setLoaded] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+
   const llcOptions = [t('companyname_llc_option1'),t('companyname_llc_option2'),t('companyname_llc_option3')];
   const ccorpOptions = [t('companyname_ccorp_option1'),t('companyname_ccorp_option2'),t('companyname_ccorp_option3'),t('companyname_ccorp_option4'),t('companyname_ccorp_option5')];
 
   const handleAbbreviationChange = (name) => {
     setAbbreviation(name);
+    checkName();
+  }
+
+  const checkName = async () => {
+    setLoading(true)
+    setLoaded(true)
+    const res = await axios.post('/api/namecheck?name=' + companyName)
+
+    if (res.data == 'Available') {
+      setSuccess(true)
+    }
+    else {
+      setAbbreviation(null)
+      setSuccess(false)
+    }
+
+    setLoading(false)
   }
 
   const onChangeCompanyName = (e) => {
@@ -84,22 +107,41 @@ const Content = ({ lang }) => {
       <div className='mx-auto max-w-xl py-6 md:py-12'>
         <ul className="grid w-full gap-6 md:grid-cols-1">
           <li>
-            <label className="font-semibold text-lg leading-6 text-[#222222]">{t('companyname_input1_label')}</label>
-           <input
-            className="border border-[#C8C8C8] rounded-[20px] w-full p-4 my-2"
-            type='text'
-            onChange={onChangeCompanyName}
-           />
+            <div className="max-w-lg mx-auto">
+                <div className="py-2">
+                  <label className="font-semibold text-lg leading-6 text-[#222222]">
+                    {t('companyname_input1_label')}
+                  </label>
+                  <div className="relative">
+                    <input
+                      className="flex-1 border border-[#C8C8C8] rounded-[16px] w-full p-4 my-2 pr-10"
+                      type='text'
+                      value={companyName}
+                      onChange={onChangeCompanyName}
+                    />
+                    <div className="absolute right-0 top-0 bottom-0 flex items-center pr-3">
+                      {loaded ? (
+                          loading ? (
+                            <Spinner />
+                          ) : (
+                            success ? <Tick /> : <Cross />
+                          )
+                        ) : null}
+                    </div>
+                  </div>
+                </div>
+              </div>
           </li>
           <li>
-          <label className="font-semibold text-lg leading-6 text-[#222222]">{t('companyname_input2_label')}</label>
-          <select
+            <label className="font-semibold text-lg leading-6 text-[#222222]">{t('companyname_input2_label')}</label>
+            <select
                 id="abbreviation"
                 name="abbreviation"
                 value={abbreviation}
                 className="font-semibold border-[#C8C8C8] text-[#8A8A8A] w-full my-2 rounded-[20px] p-4 focus:border-[4px]"
                 onChange={(e) => handleAbbreviationChange(e.target.value)}
-              >
+            >
+                <option value="" disabled>Select an abbreviation</option>
                 {companyType==='LLC' ? llcOptions.map((abb, index) => (
                   <option
                     key={index}
@@ -115,12 +157,19 @@ const Content = ({ lang }) => {
                     {abb}
                   </option>
                 ))}
-              </select>
+            </select>
           </li>
-            <button onClick={handleNameCompletion} className='w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer'>
-              {t('companyname_button')}
+            <button 
+              disabled={!success}
+              onClick={handleNameCompletion} 
+              className={`w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer ${success ? '' : 'opacity-50 cursor-not-allowed'}`}>
+                {t('companyname_button')}
             </button>
         </ul>
+
+        <div className="max-w-lg mx-auto text-sm text-gray-500 py-5">
+          <sup className="mr-1">[*]</sup>Company name checker only works for Delaware based companies.
+        </div>
       </div>
     </div>
   </div>

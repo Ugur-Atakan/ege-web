@@ -1,5 +1,4 @@
-import Header from './components/Header'
-import Navbar from '../v2/components/Hero/Navbar'
+import Navbar from './components/Navbar'
 import Posts from './components/Posts'
 import Footer from '../components/common/Footer'
 
@@ -29,7 +28,7 @@ const Page = async ({ params: { lang } }) => {
 
   return (
     <main>
-      <Header lang={lang} /> 
+      <Navbar lang={lang} /> 
       <Posts lang={lang} entry={posts} />
       <Footer lang={lang} /> 
     </main>
