@@ -139,7 +139,7 @@ export default function SupportBusiness({ lang }) {
                   </p>
                 </div>
                 <div className="px-6 pt-6 pb-4 ">
-                  <a to={pac.href} className="inline-block py-1 text-[22px] leading-[26px] font-semibold text-[#1649FF] mr-2 mb-2">{pac.button}</a>
+                  <a href={pac.href} className="inline-block py-1 text-[22px] leading-[26px] font-semibold text-[#1649FF] mr-2 mb-2">{pac.button}</a>
                 </div>
               </div>
             )

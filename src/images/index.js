@@ -48,6 +48,7 @@ import batuSatImg from './batu-sat.png'
 import tolgaOzturk from './tolga-ozturk.png'
 import faqBackground from './faq-background.png'
 import searchIcon from './search.svg'
+import faqBackgroundWebP from './faq-background.webp'
 
 export { 
     whitelogo, 
@@ -97,5 +98,6 @@ export {
     batuSatImg,
     tolgaOzturk,
     faqBackground,
-    searchIcon
+    searchIcon,
+    faqBackgroundWebP
 }
