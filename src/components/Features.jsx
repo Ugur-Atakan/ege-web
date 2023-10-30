@@ -1,11 +1,13 @@
+'use client'
+
 import React, { useState } from 'react'
-import { useTranslation } from '../../i18n/client'
 import Image from 'next/image'
 import Slider from 'react-slick'
-import tolga from '../../../videos/tolga-game.mp4'
-import melis from '../../../videos/melis-wellbees.mp4'
-import batu from '../../../videos/batu-malliq.mp4'
-import { melisImg, batuSatImg, tolgaOzturk, playButton } from '../../../images'
+import tolga from '@/assets/videos/tolga-game.mp4'
+import melis from '@/assets/videos/melis-wellbees.mp4'
+import batu from '@/assets/videos/batu-malliq.mp4'
+import { melisImg, batuSatImg, tolgaOzturk, playButton } from '@/assets/images'
+import { useTranslation } from '@/i18n/client'
 
 const Features = ({ lang }) => {
   const { t } = useTranslation(lang);

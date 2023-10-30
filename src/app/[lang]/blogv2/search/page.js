@@ -1,10 +1,9 @@
 import React from 'react'
-import axios from 'axios'
 import Navbar from '../components/Navbar/Navbar'
 import Hero from '../components/Hero'
 import SearchBar from '../components/SearchBar'
-import Body from '../Body'
-import Footer from '../../components/common/Footer'
+import Body from '../components/Body'
+import Footer from '@/components/common/Footer'
 
 import { getTags, getAuthors, getByTag, getAlikeArticles } from '../api/index'
 

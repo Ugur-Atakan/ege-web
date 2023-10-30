@@ -1,9 +1,9 @@
 'use client'
 
 import Image from 'next/image'
-import { useTranslation } from '../../../i18n/client'
+import { useTranslation } from '@/i18n/client'
 import { ArrowRightIcon } from '@heroicons/react/24/outline'
-import { star } from '../../../../images'
+import { star } from '@/assets/images'
 
 /**
  * Step2 Component

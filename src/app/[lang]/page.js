@@ -1,10 +1,8 @@
-'use client';
-
 import React from 'react'
 import { 
   Compare, Compliance, Features, Footer, Faqs,
   GetStarted, Hero, IncorporateBusiness, SupportBusiness, TestimonialLogos 
-} from './components/index'
+} from '@/components/index'
 
 /**
  * Home page route

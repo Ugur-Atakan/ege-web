@@ -3,8 +3,8 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { umbrella, puzzle } from '../../../../images'
-import { useTranslation } from '../../../i18n/client'
+import { umbrella, puzzle } from '@/assets/images'
+import { useTranslation } from '@/i18n/client'
 
 /**
  * Step1 Component

@@ -1,12 +1,12 @@
 'use client'
 
 import Image from 'next/image'
-import navigatoricon from '../../../../images/navigator.png'
+import navigatoricon from '@/assets/images/navigator.png'
 import FooterComponent from './FooterComponent'
 import FaqsList from './FaqsList'
 import Bottom from './Bottom'
 
-import { useTranslation } from '../../../i18n/client'
+import { useTranslation } from '@/i18n/client'
 
 const Faqs = ({ lang }) => {
   const { t } = useTranslation(lang);

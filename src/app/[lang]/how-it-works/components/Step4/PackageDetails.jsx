@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import {tick, tickblue, bishop, queen, bishopcolor, kingblack} from '../../../../../images' 
+import {tick, tickblue, bishop, queen, bishopcolor, kingblack} from '@/assets/images' 
 export default function PackageDetails({
   lang,
   selectedCompanyType,

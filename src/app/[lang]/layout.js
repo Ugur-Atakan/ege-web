@@ -1,5 +1,5 @@
 import '../globals.css'
-import { languages } from '../i18n/settings'
+import { languages } from '@/i18n/settings'
 import { dir } from 'i18next'
 import Script from 'next/script'
 

@@ -2,8 +2,8 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { tick, taq1, taq2 } from '../../../../images'
-import { useTranslation } from '../../../i18n/client'
+import { tick, taq1, taq2 } from '@/assets/images'
+import { useTranslation } from '@/i18n/client'
 
 /**
  * Step3 Component

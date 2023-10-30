@@ -1,5 +1,5 @@
 import React from 'react'
-import { searchwhite } from 'src/images/index'
+import { searchwhite } from '@/assets/images/index'
 import Image from 'next/image'
 import Link from 'next/link'
 

@@ -4,7 +4,7 @@ import BackButton from './components/Backbutton'
 import Header from './components/article/Header'
 import Body from './components/article/Body/Body'
 import Right from './components/article/Body/Right'
-import Footer from '../../components/common/Footer'
+import Footer from '@/components/common/Footer'
 
 import { getArticle } from '../api'
 
@@ -12,7 +12,7 @@ const Page = async ({ params: { lang, slug } }) => {
     const res = getArticle(slug)
     const promise = await Promise.all([res]);
     const article = promise[0].posts[0];
-    const tag = article?.tags[0].name;
+    const tag = article?.tags[0]?.name || 'All';
 
     return (
         <div>

@@ -2,8 +2,8 @@ import React from 'react'
 import Navbar from './components/Navbar/Navbar'
 import Hero from './components/Hero'
 import SearchBar from './components/SearchBar'
-import Body from './Body'
-import Footer from '../components/common/Footer'
+import Body from './components/Body'
+import Footer from '@/components/common/Footer'
 import { getArticles, getTags, getAuthors } from './api/index'
 
 const Page = async ({ params: { lang } }) => {

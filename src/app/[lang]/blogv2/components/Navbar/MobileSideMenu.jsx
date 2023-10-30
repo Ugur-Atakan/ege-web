@@ -1,12 +1,12 @@
 'use client'
 
-import React, { useState } from 'react'
+import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Dialog } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
-import whitelogo from '../../../../../images/logos/registate-white-logo.png'
-import LanguageChange from '../../../components/Hero/LanguageChange'
+import whitelogo from '@/assets/images/logos/registate-white-logo.png'
+import LanguageChange from '@/components/Hero/LanguageChange'
 
 const MobileSideMenu = ({ lang, t, isSticky, changeLanguage, mobileMenuOpen, setMobileMenuOpen }) => {
     return (

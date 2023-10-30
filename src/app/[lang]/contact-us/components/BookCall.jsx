@@ -2,8 +2,8 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import calendar from '../../../../images/calendar-dynamic.png'
-import { useTranslation } from '../../../i18n/client'
+import calendar from '@/assets/images/calendar-dynamic.png'
+import { useTranslation } from '@/i18n/client'
 
 /**
  * BookCall component

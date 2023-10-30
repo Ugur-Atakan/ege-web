@@ -3,7 +3,7 @@ import ContactForm from "./components/ContactForm"
 import ContactInfo from './components/ContactInfo'
 import BookCall from './components/BookCall'
 import FrequentlyAskedQuestions from './components/FrequentlyAskedQuestions'
-import Footer from '../components/common/Footer'
+import Footer from '@/components/common/Footer'
 
 /**
  * Contact Page component

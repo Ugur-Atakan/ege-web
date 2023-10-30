@@ -1,7 +1,7 @@
 import React from 'react'
 import { ArrowRightIcon } from '@heroicons/react/24/outline'
 import { PopupButton } from 'react-calendly'
-import { useTranslation } from '../../../i18n/client'
+import { useTranslation } from '../../i18n/client'
 
 export function CalendlyText({ lang }) {
     const { t } = useTranslation(lang);

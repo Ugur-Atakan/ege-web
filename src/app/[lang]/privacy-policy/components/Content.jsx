@@ -1,3 +1,5 @@
+import React from 'react'
+
 /**
  * Privacy page content
  * @type {function} 

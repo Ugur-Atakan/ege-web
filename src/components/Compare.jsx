@@ -4,9 +4,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 import { InformationCircleIcon } from '@heroicons/react/24/outline'
-import bluecheckicon from '../../../images/bluecheck.png'
-import blackcheckicon from '../../../images/blackcheck.png'
-import { useTranslation } from '../../i18n/client'
+import bluecheckicon from '@/assets/images/bluecheck.png'
+import blackcheckicon from '@/assets/images/blackcheck.png'
+import { useTranslation } from '@/i18n/client'
 
 export default function Compare({ lang }) {
     const { t } = useTranslation(lang);

@@ -76,6 +76,15 @@ const getAlikeArticles = async (query) => {
     }
 }
 
+const getAuthorPosts = async (author) => {
+    try {
+        const res = await axios.get(`https://blog.registate.com/ghost/api/content/posts?key=${process.env.BLOG_API_KEY}&include=authors,tags&filter=author:${author}`);
+        return res.data;
+    }
+    catch(err) {
+        console.log('Error getting getAuthorPosts: ', err)
+    }
+}
 
 export { 
     getArticles,
@@ -83,5 +92,6 @@ export {
     getByTag,
     getTags,
     getAuthors,
-    getAlikeArticles
+    getAlikeArticles,
+    getAuthorPosts
 }

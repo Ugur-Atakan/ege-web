@@ -5,9 +5,9 @@ import Image from 'next/image'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import megaphone from '../../../../images/megaphone.png'
+import megaphone from '@/assets/images/megaphone.png'
 
-import { useTranslation } from '../../../i18n/client'
+import { useTranslation } from '@/i18n/client'
 
 /**
  * ContactForm component

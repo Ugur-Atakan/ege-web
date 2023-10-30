@@ -1,13 +1,13 @@
-'use client';
+'use client'
 
 import { React , useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Dialog } from '@headlessui/react'
-import {  Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import logo from '../../../../images/logo-blue.webp'
-import chaticon from '../../../../images/chat.png'
-import { useTranslation } from '../../../i18n/client'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import logo from '@/assets/images/logo-blue.webp'
+import chaticon from '@/assets/images/chat.png'
+import { useTranslation } from '@/i18n/client'
 import NavLink from './NavLink'
 
 export default function Navbar({ lang }) {

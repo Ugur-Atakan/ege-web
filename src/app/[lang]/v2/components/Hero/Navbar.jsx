@@ -1,5 +1,5 @@
 import React from 'react';
-import { whitelogo } from '../../../../../images'
+import { whitelogo } from '@/assets/images'
 import Image from 'next/image'
 import NavItem from './NavItem'
 

@@ -1,6 +1,6 @@
 import Navbar from './components/Navbar'
 import Posts from './components/Posts'
-import Footer from '../components/common/Footer'
+import Footer from '@/components/common/Footer'
 
 import axios from 'axios'
 

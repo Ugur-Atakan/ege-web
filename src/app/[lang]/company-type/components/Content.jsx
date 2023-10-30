@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useTranslation } from '../../../i18n/client'
+import { useTranslation } from '@/i18n/client'
 import { submitCookie } from '../../../lib/session/clientActions'
 import { redirect } from '../../../lib/utils'
 

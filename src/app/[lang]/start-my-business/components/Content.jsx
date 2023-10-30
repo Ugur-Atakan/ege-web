@@ -3,10 +3,10 @@
 import { ArrowUturnDownIcon } from '@heroicons/react/20/solid'
 import { useState } from 'react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
-import tickicon from '../../../../images/tick.png'
+import tickicon from '@/assets/images/tick.png'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useTranslation } from '../../../i18n/client'
+import { useTranslation } from '@/i18n/client'
 
 /**
  * Content for start my business page

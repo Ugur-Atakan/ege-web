@@ -1,10 +1,10 @@
 import { Container } from './common/Container'
 import Image from 'next/image';
-import exaironlogo from '../../../images/logos/exairon-logo.png'
-import malliqlogo from '../../../images/logos/malliq-logo.png'
-import cameralyzelogo from '../../../images/logos/cameralyze-logo.png'
-import opsbeaconlogo from '../../../images/logos/opsbeacon-logo.png'
-import finedinelogo from '../../../images/logos/finedine-logo.png'
+import exaironlogo from '@/assets/images/logos/exairon-logo.png'
+import malliqlogo from '@/assets/images/logos/malliq-logo.png'
+import cameralyzelogo from '@/assets/images/logos/cameralyze-logo.png'
+import opsbeaconlogo from '@/assets/images/logos/opsbeacon-logo.png'
+import finedinelogo from '@/assets/images/logos/finedine-logo.png'
 
 export default function TestimonialLogos() {
     return (

@@ -1,7 +1,7 @@
 import { Navbar, Hero, Step1, Step2, 
          Step3, Step4, Step5, StartBusiness 
 } from './components'
-import Footer from '../components/common/Footer'
+import Footer from '@/components/common/Footer'
 
 const Page = ({ params: { lang } }) => {
   return (

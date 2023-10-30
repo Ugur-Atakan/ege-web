@@ -1,5 +1,5 @@
 import React from 'react'
-import { useTranslation } from '../../../i18n/client'
+import { useTranslation } from '../../../../i18n/client'
 
 const OrderReview = ({ lang , selectedPackage , couponcode, setCouponCode , displayForm , setDisplayForm , handleSubmit}) => {
     const { t } = useTranslation(lang);

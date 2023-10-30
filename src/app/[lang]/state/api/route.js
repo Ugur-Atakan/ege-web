@@ -1,4 +1,4 @@
-import statesJSON from '../../../../assets/data/states.json'
+import statesJSON from '@/assets/json/states.json'
 
 /**
  * @GET /states/api

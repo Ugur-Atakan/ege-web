@@ -1,7 +1,7 @@
 'use client'
 
 import 'react-toastify/dist/ReactToastify.css'
-import { useTranslation } from '../../../i18n/client'
+import { useTranslation } from '../../i18n/client'
 
 const Footer = ({ lang }) => {
   const { t } = useTranslation();

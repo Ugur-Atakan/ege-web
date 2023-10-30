@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { calendar } from 'src/images'
+import { calendar } from '@/assets/images'
 
 const AttorneyCard = () => {
     return(

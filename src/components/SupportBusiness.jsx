@@ -6,8 +6,8 @@ import Link from 'next/link'
 import Slider from 'react-slick'
 import { calendar, hat, folder, protectionicon, tic, at, navigator,
   mail, phone, travel, axe, wallet, filetext, sheild, dollar, locker
-} from '../../../images';
-import { useTranslation } from '../../i18n/client'
+} from '@/assets/images';
+import { useTranslation } from '@/i18n/client'
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;

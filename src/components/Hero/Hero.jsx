@@ -2,12 +2,12 @@
 
 import { React, useState, useEffect } from 'react'
 import Image from 'next/image'
-import rocket from '../../../../images/rocket.png'
+import rocket from '@/assets/images/rocket.png'
 import Navbar from './Navbar'
 import Mid from './Mid'
 import Bottom from './Bottom'
 
-import { useTranslation } from '../../../i18n/client'
+import { useTranslation } from '@/i18n/client'
 
 const Hero = ({ lang }) => {
   const { t } = useTranslation(lang);

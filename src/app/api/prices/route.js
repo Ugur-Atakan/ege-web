@@ -1,4 +1,4 @@
-import prices from '../../../assets/data/prices.json'
+import prices from '@/assets/json/prices.json'
 
 /**
  * @type {GET route}

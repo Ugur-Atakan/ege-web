@@ -34,7 +34,7 @@ const RightColumn = ({ selectedTag, setSelectedTag, lang, tags, authors }) => {
             <Tags tags={tags} handleTagClick={handleTagClick} activeButton={activeButton} />
             
             <Popular />
-            <Authors authors={authors} />
+            <Authors authors={authors} lang={lang} />
             <AttorneyCard />
         </div>
     );

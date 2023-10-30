@@ -3,12 +3,12 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import LanguageChange from '../../../components/Hero/LanguageChange'
+import LanguageChange from '@/components/Hero/LanguageChange'
 import MobileSideMenu from './MobileSideMenu'
 
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import bluelogo from '../../../../../images/logo-blue.webp'
-import { useTranslation } from '../../../../i18n/client'
+import bluelogo from '@/assets/images/logo-blue.webp'
+import { useTranslation } from '@/i18n/client'
 
 const Navbar = ({ lang }) => {
     const { t } = useTranslation();
@@ -74,9 +74,9 @@ const Navbar = ({ lang }) => {
             </div>
 
             <div className='hidden lg:flex lg:justify-between lg:items-center space-x-4'>
-                <Link href={`${lang}`} className="text-neutral-800 text-sm font-semibold leading-tight">Get Started</Link>
-                <Link href={`${lang}`} className="text-neutral-800 text-sm font-semibold leading-tight">How it Works</Link>
-                <Link href={`${lang}`} className="text-neutral-800 text-sm font-semibold leading-tight">Blog</Link>
+                <Link href={`/${lang}/company-type`} className="text-neutral-800 text-sm font-semibold leading-tight">Get Started</Link>
+                <Link href={`/${lang}/how-it-works`} className="text-neutral-800 text-sm font-semibold leading-tight">How it Works</Link>
+                <Link href={`/${lang}/blogv2`} className="text-neutral-800 text-sm font-semibold leading-tight">Blog</Link>
             </div> 
         
   

@@ -4,11 +4,12 @@ import { Transition, Menu, Dialog } from '@headlessui/react'
 import Link from 'next/link'
 import Image from 'next/image'
 import React, { Fragment, useEffect, useState } from 'react'
-import whitelogo from '../../../../images/logos/registate-white-logo.png'
-import bluelogo from '../../../../images/logo-blue.webp'
+import whitelogo from '@/assets/images/logos/registate-white-logo.png'
+import bluelogo from '@/assets/images/logo-blue.webp'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import { useTranslation } from '../../../i18n/client'
-import LanguageChange from '../../components/Hero/LanguageChange'
+import { useTranslation } from '@/i18n/client'
+import LanguageChange from '@/components/Hero/LanguageChange'
+
 import i18next from 'i18next'
 
 /**

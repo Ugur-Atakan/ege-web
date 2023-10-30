@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import Image from 'next/image'
-import searchIcon from '../../../../images/search.svg'
+import searchIcon from '@/assets/images/search.svg'
 import { redirect } from '../../../lib/utils'
 
 const SearchBar = ({ lang }) => {
