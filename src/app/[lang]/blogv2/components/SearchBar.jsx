@@ -13,9 +13,9 @@ const SearchBar = ({ lang }) => {
     }
 
     return (
-        <div className='w-[882px] relative my-10'>
+        <div className='w-[450px] lg:w-[882px] relative my-10'>
             <input 
-                className='w-[882px] h-16 px-6 py-4 bg-white rounded-[20px] border border-stone-300 justify-start items-center gap-2'
+                className='w-[450px] lg:w-[882px] h-16 px-6 py-4 bg-white rounded-[20px] border border-stone-300 justify-start items-center gap-2'
                 type='text'
                 placeholder="Search our blog"  
                 onChange={(e) => setSearch(e.target.value)}

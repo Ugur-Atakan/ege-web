@@ -1,3 +1,6 @@
+'use client'
+
+import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Calendely from './Calendely'
@@ -8,7 +11,9 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import LanguageChange from './LanguageChange'
 import i18next from 'i18next'
 
-const Navbar = ({ isSticky, t, lang, mobileMenuOpen , setMobileMenuOpen }) => {
+const Navbar = ({ isSticky, t, lang }) => {
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
     const changeLanguage = (lang) => {
         if (lang === "en" || lang === "tr") {
           i18next.changeLanguage(lang);
@@ -65,7 +70,7 @@ const Navbar = ({ isSticky, t, lang, mobileMenuOpen , setMobileMenuOpen }) => {
 
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
                     <div className='hidden lg:flex items-center gap-4'>
-                        <LanguageChange lang={lang} isSticky={isSticky} changeLanguage={changeLanguage} />
+                        <LanguageChange lang={lang} isSticky={isSticky} changeLanguage={changeLanguage} renderWhite={true} />
                     
                         {/* Button left */}
                         <Link

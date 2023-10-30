@@ -1,14 +1,14 @@
 import React from 'react'
 import Image from 'next/image'
 
-const Right = () => {
+const Right = ({ author }) => {
     return (
         <div className='flex flex-col'>
             <div className="items-center gap-4 inline-flex">
-                <Image width={16} height={16} className="w-16 h-16 rounded-full" src="https://via.placeholder.com/64x64" alt="image-icon"/>
+                <Image width={16} height={16} className="w-16 h-16 rounded-full" src={author.profile_image || 'https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg' } alt="image-icon"/>
                 <div className="flex-col justify-start items-start">
-                    <div className="text-neutral-800 text-lg font-semibold leading-normal">Derick Quinanola</div>
-                    <div className="text-zinc-500 text-lg font-semibold leading-normal">Registered Agent</div>
+                    <div className="text-neutral-800 text-lg font-semibold leading-normal">{author.name}</div>
+                    <div className="text-zinc-500 text-lg font-semibold leading-normal">{author.meta_description}</div>
                 </div>
             </div>
 

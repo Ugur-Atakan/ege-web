@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import Link from 'next/link'
 import { useTranslation } from '../../../i18n/client'
 import BackButton from './buttons/BackButton'
 import EscapeButton from './buttons/EscapeButton'
@@ -32,12 +33,32 @@ const Content = ({ lang }) => {
     
     const handleAbbreviationChange = (e) => {
       setAbbreviation(e.target.value)
+
+      
+      if (typeof window !== 'undefined' && window.localStorage)
+      {
+        if (e.target.value.includes('LLC') || e.target.value.includes('L.L.C.')
+            || e.target.value.includes('Limited'))
+        {
+          window.localStorage.setItem('companyType', 'LLC'); 
+        }
+        else {
+          window.localStorage.setItem('companyType', 'Corporation');
+        }
+        window.localStorage.setItem('companyName', companyName);
+      }
+      
       checkName();
     }
 
     const checkName = async () => {
       setLoading(true)
       setLoaded(true)
+
+      if (typeof window !== 'undefined' && window.localStorage) {
+        window.localStorage.setItem('companyState', 'Delaware');
+      }
+  
       const res = await axios.post('/api/namecheck?name=' + companyName)
 
       if (res.data == 'Available') {
@@ -118,12 +139,13 @@ const Content = ({ lang }) => {
                 </p>
               </div>
 
-              <button 
+              <Link 
+                href={`/${lang}/formation`}
                 className={`my-8 py-3 px-44 bg-blue-500 hover:bg-blue-700 text-white font-bold  rounded-lg ${success ? '' : 'opacity-50 cursor-not-allowed'}`}
                 disabled={!success}
               >
                   Create my company
-              </button>
+              </Link>
             </div>
 
             <div className="max-w-lg mx-auto text-sm text-gray-500 py-5">

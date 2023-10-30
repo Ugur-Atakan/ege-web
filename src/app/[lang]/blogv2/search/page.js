@@ -1,45 +1,12 @@
 import React from 'react'
 import axios from 'axios'
-import Navbar from '../components/Navbar'
+import Navbar from '../components/Navbar/Navbar'
 import Hero from '../components/Hero'
 import SearchBar from '../components/SearchBar'
 import Body from '../Body'
+import Footer from '../../components/common/Footer'
 
-const getAlikeArticles = async (query) => {  
-    try {
-      const res = await axios.get(`https://blog.registate.com/ghost/api/content/posts?key=1090eec3cc0b57e0b77963a66b&include=authors,tags&filter=title:~${query}`);
-      return res.data;
-    }
-    catch(err) {
-      console.log('Error getting getPosts: ', err)
-    }
-}
-
-const getByTag = async (tag) => {  
-    try {
-      tag = tag.toLowerCase().replace(/\s/g, '-');
-      const res = await axios.get(`https://blog.registate.com/ghost/api/content/posts?key=${process.env.BLOG_API_KEY}&include=authors,tags&filter=tag:${tag}`);
-      return res.data;
-    }
-    catch(err) {
-      console.log('Error getting getPosts: ', err)
-    }
-}
-
-const getTags = async () => {
-    try {
-        const response = await axios.get(`https://blog.registate.com/ghost/api/content/tags?key=${process.env.BLOG_API_KEY}`)
-        const data = response.data;
-        const tags = data.tags;
-        const names = tags.map(tag => tag.name);
-        names.push('All');
-        names.sort((a, b) => a.localeCompare(b)); 
-        return names;
-    }
-    catch {
-        console.log('Error getting getTags')
-    }
-}
+import { getTags, getAuthors, getByTag, getAlikeArticles } from '../api/index'
 
 const Page = async ({ params, searchParams }) => {
     const { lang } = params;
@@ -59,6 +26,10 @@ const Page = async ({ params, searchParams }) => {
     const tagsData = getTags();
     const [tags] = await Promise.all([tagsData]);
 
+    const authorsData = getAuthors();
+    const [authors] = await Promise.all([authorsData]);
+
+
     return (
         <div>
             <Navbar lang={lang} />
@@ -70,8 +41,10 @@ const Page = async ({ params, searchParams }) => {
                         articleJSON={articles}
                         lang={lang}
                         tags={tags}
+                        authors={authors}
                     />
                 }
+                <Footer lang={lang} />
             </div>
         </div>
     )

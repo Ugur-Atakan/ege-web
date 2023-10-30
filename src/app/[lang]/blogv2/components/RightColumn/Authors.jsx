@@ -3,17 +3,17 @@ import Image from 'next/image'
 
 const Authors = ({ authors }) => {
     return (
-        <div> 
+        <div className='my-8'> 
             <h3 className='text-neutral-800 text-[28px] font-semibold leading-loose'>Authors</h3>
             
-            <ul className='flex flex-col'>
+            <ul className='flex flex-col space-y-4'>
                 {authors.map(author => (
                     <li key={author.id} className="flex items-center space-x-4"> 
                         <Image 
-                            width={102}
-                            height={102}
+                            width={80}
+                            height={80}
                             className="w-102 h-102 rounded-full" 
-                            src={author.avatar}
+                            src={author.profile_image || 'https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg' }
                             alt={author.name} 
                         />
                         <div>
