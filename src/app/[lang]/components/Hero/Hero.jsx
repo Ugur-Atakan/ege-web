@@ -12,7 +12,6 @@ import { useTranslation } from '../../../i18n/client'
 const Hero = ({ lang }) => {
   const { t } = useTranslation(lang);
 
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
@@ -37,8 +36,6 @@ const Hero = ({ lang }) => {
         isSticky={isSticky}
         t={t}
         lang={lang}
-        mobileMenuOpen={mobileMenuOpen}
-        setMobileMenuOpen={setMobileMenuOpen}
       />
 
       <div className="relative isolate overflow-hidden pt-14 hero-section">

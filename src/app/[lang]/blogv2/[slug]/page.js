@@ -1,28 +1,18 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
+import Navbar from '../components/Navbar/Navbar'
 import BackButton from './components/Backbutton'
 import Header from './components/article/Header'
 import Body from './components/article/Body/Body'
 import Right from './components/article/Body/Right'
+import Footer from '../../components/common/Footer'
 
-
-import axios from 'axios'
-
-const getArticle = async (slug) => {
-    try {
-        const res = await axios.get(`https://blog.registate.com/ghost/api/content/posts?key=${process.env.BLOG_API_KEY}&include=authors,tags&filter=slug: ${slug}`)
-        const article = res.data // res.json() for fetch
-        return article
-    }
-    catch {
-        console.log('Error getting getArticle')
-    }
-}
+import { getArticle } from '../api'
 
 const Page = async ({ params: { lang, slug } }) => {
     const res = getArticle(slug)
     const promise = await Promise.all([res]);
     const article = promise[0].posts[0];
+    const tag = article?.tags[0].name;
 
     return (
         <div>
@@ -31,20 +21,19 @@ const Page = async ({ params: { lang, slug } }) => {
 
             <div className='mx-[168px] my-[56px]'>
                 <Header 
+                    tag={tag}
                     title={article.title}
                     readingTime={article.reading_time}
                     featureImg={article.feature_image}
                 />
 
-                <div className='flex mt-[56px]'>
-                    <div className='flex-2/3'>
-                        <Body html={article.html} />
-                    </div>
-                    <div className='flex-1/3'>
-                        <Right />
-                    </div>
+                <div className='lg:flex mt-[56px]'>
+                    <Body html={article.html} />
+                    <Right author={article.primary_author} />
                 </div>
             </div>
+
+            <Footer lang={lang} />
         </div>
     );
 }

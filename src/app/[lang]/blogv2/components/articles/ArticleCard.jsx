@@ -3,13 +3,20 @@ import Image from 'next/image'
 import { redirect } from '../../../../lib/utils';
 
 const ArticleCard = ({ article, lang }) => {
+
     const goToArticle = () => {
         redirect(`/blogv2/${article.slug}`, lang)
     }
 
     return (
         <div className='flex cursor-pointer flex-col' onClick={goToArticle}>
-            <Image width={532} height={300} className="h-[300px] rounded-3xl" src={article.articleImage} alt='article-pic'/>
+            <Image 
+                width={532}
+                height={300}
+                className="w-full h-auto lg:w-[532px] lg:h-[300px] rounded-3xl"
+                src={article.articleImage}
+                alt='article-pic'
+            />
             
             <div className='py-3'>
                 <div className="items-center px-3 py-2 bg-blue-600 rounded-2xl justify-center gap-2 inline-flex">

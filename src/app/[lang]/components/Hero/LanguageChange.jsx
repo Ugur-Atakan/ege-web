@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react'
 import { Transition, Menu } from '@headlessui/react'
 
-const LanguageChange = ({ lang, isSticky, changeLanguage }) => {
+const LanguageChange = ({ lang, isSticky, changeLanguage, renderWhite }) => {
     return (
         <Menu as="div" className="relative inline-block text-left">
-            <Menu.Button className={`uppercase text-[14px]  font-medium leading-5 text-white ${isSticky && '!text-black'}`}>
+            <Menu.Button className={`uppercase text-[14px]  font-medium leading-5 ${renderWhite ? 'text-white': 'text-black'} ${isSticky && '!text-black'}`}>
                 {lang}
             </Menu.Button>
             <Transition
