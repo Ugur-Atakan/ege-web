@@ -1,15 +1,14 @@
 /* eslint-disable */
 'use client';
 
-import { ArrowLeftIcon } from '@heroicons/react/24/outline'
-import { useTranslation } from '../../../i18n/client'
-import { readCookie, submitCookie } from '../../../lib/session/clientActions'
-import { useEffect, useState } from 'react'
-import { Spinner, Tick, Cross } from './utils'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-
 import Link from 'next/link'
+import { Spinner, Tick, Cross } from './utils'
+import { readCookie, submitCookie } from '../../../lib/session/clientActions'
+import { ArrowLeftIcon } from '@heroicons/react/24/outline'
 import { redirect } from '../../../lib/utils'
+import { useTranslation } from '@/i18n/client'
 
 /**
  * Content component for the page

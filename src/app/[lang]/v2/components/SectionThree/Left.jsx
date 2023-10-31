@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { creditCards } from 'src/images/main-page'
+import { creditCards } from '@/assets/images/main-page'
 
 const Left = () => {
     return (

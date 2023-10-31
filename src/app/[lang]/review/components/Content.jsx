@@ -4,7 +4,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import { useTranslation } from '../../../i18n/client';
+import { useTranslation } from '../../../../i18n/client';
 
 import BackButton from './BackButton';
 import FillinForm from './FillinForm';

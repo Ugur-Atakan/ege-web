@@ -4,8 +4,8 @@ import { Disclosure } from '@headlessui/react'
 import { ArrowRightIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
 import  Link  from 'next/link'
 import Image from 'next/image'
-import navigatoricon from '../../../../images/navigator.png'
-import { useTranslation } from '../../../i18n/client';
+import navigatoricon from '@/assets/images/navigator.png'
+import { useTranslation } from '@/i18n/client';
 
 const classNames = (...classes) => {
   return classes.filter(Boolean).join(' ')

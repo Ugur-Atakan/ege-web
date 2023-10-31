@@ -1,5 +1,5 @@
 import CompanyTypeCard from "./CompanyTypeCard"
-import { umbrella, puzzle, search } from 'src/images/index'
+import { umbrella, puzzle, search } from '@/assets/images/index'
 import Link from 'next/link'
 import Image from 'next/image'
 

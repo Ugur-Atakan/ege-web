@@ -2,8 +2,8 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { hero, arrow } from '../../../../images'
-import { useTranslation } from '../../../i18n/client'
+import { hero, arrow } from '@/assets/images'
+import { useTranslation } from '@/i18n/client'
 
 /**
  * Hero Component for how it works page

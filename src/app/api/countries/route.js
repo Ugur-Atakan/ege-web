@@ -1,4 +1,4 @@
-import countries from '../../../assets/data/countries.json'
+import countries from '@/assets/json/countries.json'
 
 /**
  * @typedef {object} countriesRoute

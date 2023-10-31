@@ -1,11 +1,11 @@
-'use client';
+'use client'
 
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import bigstar from '../../images/big-star.webp'
-import smallstar from '../../images/small-star.png'
-import darkstar from '../../images/dark-star.png'
+import bigstar from '@/assets/images/big-star.webp'
+import smallstar from '@/assets/images/small-star.png'
+import darkstar from '@/assets/images/dark-star.png'
 import { useSearchParams } from 'next/navigation'
 
 /**

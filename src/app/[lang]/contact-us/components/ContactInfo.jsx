@@ -1,10 +1,10 @@
 'use client'
 
 import Image from 'next/image'
-import phone from '../../../../images/phone.png'
-import email from '../../../../images/email.png'
-import cursor from '../../../../images/navigator.png'
-import { useTranslation } from '../../../i18n/client'
+import phone from '@/assets/images/phone.png'
+import email from '@/assets/images/email.png'
+import cursor from '@/assets/images/navigator.png'
+import { useTranslation } from '@/i18n/client'
 
 /**
  * ContactInfo component

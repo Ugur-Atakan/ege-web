@@ -8,13 +8,13 @@ import axios from 'axios'
 import { readCookie, submitCookie } from '../../../lib/session/clientActions'
 
 import { ArrowLeftIcon } from '@heroicons/react/24/outline'
-import { bishopwhite, queencolor, kingblack, noinclude, arrowblack, arrowblue } from '../../../../images'
+import { bishopwhite, queencolor, kingblack, noinclude, arrowblack, arrowblue } from '@/assets/images'
 
-import packageDataEN from '../../../../assets/packageDataEN.json'
-import packageDataTR from '../../../../assets/packageDataTR.json'
+import packageDataEN from '@/assets/json/packageDataEN.json'
+import packageDataTR from '@/assets/json/packageDataTR.json'
 
 import { getRandomPackages } from '../utils/util'
-import { useTranslation } from '../../../i18n/client'
+import { useTranslation } from '@/i18n/client'
 
 /**
  * Formation Content component

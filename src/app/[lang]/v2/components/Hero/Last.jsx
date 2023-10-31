@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { singleChain } from 'src/images/main-page'
+import { singleChain } from '@/assets/images/main-page'
 
 const Last = () => {
     return (

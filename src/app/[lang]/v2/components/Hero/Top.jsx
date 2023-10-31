@@ -1,7 +1,6 @@
 'use client'
 
-import { useTranslation } from '../../../../i18n/client'
-
+import { useTranslation } from '@/i18n/client'
 
 const Top = ({ lang }) => {
     const { t } = useTranslation(lang);

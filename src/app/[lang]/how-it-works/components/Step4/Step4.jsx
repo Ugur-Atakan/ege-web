@@ -4,14 +4,14 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import 'react-toastify/dist/ReactToastify.css'
 
-import packageDataEN from '../../../../../assets/packageDataEN.json'
-import packageDataTR from '../../../../../assets/packageDataTR.json'
+import packageDataEN from '@/assets/json/packageDataEN.json'
+import packageDataTR from '@/assets/json/packageDataTR.json'
 
-import { useTranslation } from '../../../../i18n/client'
+import { useTranslation } from '@/i18n/client'
 
 import { tick, tickblue, bishop, queen, bishopcolor, 
          kingblack, arrowblack, arrowblue, noinclude,
-} from '../../../../../images'
+} from '@/assets/images'
 
 import Step4Header from './Step4Header'
 

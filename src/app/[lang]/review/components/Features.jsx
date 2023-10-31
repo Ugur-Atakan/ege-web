@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import tick from '../../../../images/tick.png'
+import tick from '@/assets/images/tick.png'
 import Image from 'next/image'
 
 /**

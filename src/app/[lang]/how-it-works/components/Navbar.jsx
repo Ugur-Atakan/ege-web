@@ -5,10 +5,10 @@ import { useState, useEffect, Fragment } from 'react'
 import Image from 'next/image'
 import { Transition, Menu, Dialog } from '@headlessui/react'
 
-import whitelogo from '../../../../images/logos/registate-white-logo.png'
-import bluelogo from '../../../../images/logo-blue.webp'
+import whitelogo from '@/assets/images/logos/registate-white-logo.png'
+import bluelogo from '@/assets/images/logo-blue.webp'
 
-import { useTranslation } from '../../../i18n/client'
+import { useTranslation } from '@/i18n/client'
 import i18next from 'i18next'
 
 /**

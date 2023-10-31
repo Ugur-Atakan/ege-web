@@ -1,7 +1,7 @@
 
 const dictionaries = {
-  en: () => import('../../dictionaries/en.json').then(module => module.default),
-  tr: () => import('../../dictionaries/tr.json').then(module => module.default)
+  en: () => import('../../i18n/locales/en.json').then(module => module.default),
+  tr: () => import('../../i18n/locales/tr.json').then(module => module.default)
 }
 
 /**

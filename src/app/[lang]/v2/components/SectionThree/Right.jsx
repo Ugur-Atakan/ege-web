@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { Legacy } from 'src/images/main-page'
+import { Legacy } from '@/assets/images/main-page'
 
 const Right = () => {
     return (

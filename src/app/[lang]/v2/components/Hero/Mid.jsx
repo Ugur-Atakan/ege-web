@@ -1,9 +1,9 @@
 'use client'
 
-import { useTranslation } from '../../../../i18n/client'
+import { useTranslation } from '@/i18n/client'
 import Link from 'next/link'
 import Image from 'next/image'
-import { one, three } from 'src/images/main-page'
+import { one, three } from '@/assets/images/main-page'
 
 const Mid = ({ lang }) => {
     const { t } = useTranslation(lang);

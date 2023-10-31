@@ -1,4 +1,4 @@
-import entityType from '../../../assets/data/entityType.json'
+import entityType from '@/assets/json/entityType.json'
 
 /**
  * @type {GET route}

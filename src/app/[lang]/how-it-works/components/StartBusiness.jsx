@@ -3,9 +3,9 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import Image from 'next/image'
-import { start } from '../../../../images'
+import { start } from '@/assets/images'
 import { ArrowRightIcon } from '@heroicons/react/24/outline'
-import { useTranslation } from '../../../i18n/client'
+import { useTranslation } from '@/i18n/client'
 
 /**
  * StartBuisness Component for how it works page

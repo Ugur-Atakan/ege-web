@@ -1,11 +1,11 @@
-'use client';
+'use client'
 
 import React from 'react'
 import { ArrowLeftIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import Image from 'next/image'
-import { book, tick } from '../../../../images'
-import { useTranslation } from '../../../i18n/client'
+import { book, tick } from '@/assets/images'
+import { useTranslation } from '@/i18n/client'
 
 /**
  * Content component for the page

@@ -3,9 +3,9 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Slider from 'react-slick'
-import { calendar, hat, folder, protectionicon, tic, at, navigator, mail, phone, travel, axe, wallet, filetext, sheild, dollar, locker } from 'src/images'
-import { useTranslation } from '../../../../i18n/client'
+import { calendar, hat, folder, protectionicon, tic, at, navigator, mail, phone, travel, axe, wallet, filetext, sheild, dollar, locker } from '@/assets/images'
 import { NextArrow } from './Arrows'
+import { useTranslation } from '@/i18n/client'
 
 export default function SupportBusiness({ lang }) {
   const { t } = useTranslation(lang);

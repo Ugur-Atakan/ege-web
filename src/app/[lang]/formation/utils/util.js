@@ -1,4 +1,4 @@
-// File location: formation/utils/util.js
+import React from 'react'
 
 /**
  * @param {object} selectedPackage - the selected package

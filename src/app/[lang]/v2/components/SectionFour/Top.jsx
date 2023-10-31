@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { anyCountry } from 'src/images/main-page'
+import { anyCountry } from '@/assets/images/main-page'
 
 const Top = () => {
     return (

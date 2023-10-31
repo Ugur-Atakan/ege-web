@@ -1,6 +1,6 @@
 import React from 'react'
 import Left from './Left'
-import { startingBusiness } from 'src/images/main-page'
+import { startingBusiness } from '@/assets/images/main-page'
 import Image from 'next/image'
 
 const SectionTwo = () => {
