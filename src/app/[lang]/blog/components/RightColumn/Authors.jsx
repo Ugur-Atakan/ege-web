@@ -6,7 +6,7 @@ const Authors = ({ authors, lang }) => {
     const router = useRouter()
 
     const handleAuthorClick = (slug) => {
-        router.push(`/${lang}/blogv2/author/${slug}`)
+        router.push(`/${lang}/blog/author/${slug}`)
     }
 
     return (

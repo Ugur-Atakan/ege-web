@@ -7,13 +7,13 @@ const Pagination = ({ currentPage, setCurrentPage, totalPages, lang }) => {
   const handleNext = () => {
     const newPageNumber = Math.min(currentPage + 1, totalPages)
     setCurrentPage(newPageNumber)
-    router.push(`/${lang}/blogv2?page=` + newPageNumber)
+    router.push(`/${lang}/blog?page=` + newPageNumber)
   }
 
   const handlePrevious = () => {
     const newPageNumber = Math.max(currentPage - 1,1)
     setCurrentPage(newPageNumber)
-    router.push(`/${lang}/blogv2?page=` + newPageNumber)
+    router.push(`/${lang}/blog?page=` + newPageNumber)
   }
 
   const renderPageNumbers = () => {

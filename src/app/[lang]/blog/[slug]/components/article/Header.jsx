@@ -4,7 +4,6 @@ import Image from 'next/image'
 const Header = ({ tag, title, readingTime, featureImg }) => {
     return (
         <div className='flex flex-col'>
-
             <div className='py-3'>
                 <div className="items-center px-3 py-2 bg-blue-600 rounded-2xl justify-center gap-2 inline-flex">
                     <p className="text-white text-lg font-semibold leading-normal">{tag}</p>

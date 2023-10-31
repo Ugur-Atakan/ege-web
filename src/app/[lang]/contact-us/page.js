@@ -1,4 +1,4 @@
-import Navbar from '../blog/components/Navbar'
+import Navbar from '../old-blog/components/Navbar'
 import ContactForm from "./components/ContactForm"
 import ContactInfo from './components/ContactInfo'
 import BookCall from './components/BookCall'

@@ -4,6 +4,7 @@ import BackButton from './components/Backbutton'
 import Header from './components/article/Header'
 import Body from './components/article/Body/Body'
 import Right from './components/article/Body/Right'
+import PDFSlider from '../components/PDFSlider/PDFSlider'
 import Footer from '@/components/common/Footer'
 
 import { getArticle } from '../api'
@@ -33,6 +34,7 @@ const Page = async ({ params: { lang, slug } }) => {
                 </div>
             </div>
 
+            <PDFSlider lang={lang} />
             <Footer lang={lang} />
         </div>
     );

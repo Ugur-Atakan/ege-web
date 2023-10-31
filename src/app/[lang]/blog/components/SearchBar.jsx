@@ -9,7 +9,7 @@ const SearchBar = ({ lang }) => {
     const [search, setSearch] = useState('')
 
     const handleClick = () => {
-        redirect(`/blogv2/search?search=${search}`, lang)
+        redirect(`/blog/search?search=${search}`, lang)
     }
 
     return (

@@ -1,38 +1,43 @@
-import Navbar from './components/Navbar'
-import Posts from './components/Posts'
+import React from 'react'
+import Navbar from './components/Navbar/Navbar'
+import Hero from './components/Hero'
+import SearchBar from './components/SearchBar'
+import Body from './components/Body'
+import PDFSlider from './components/PDFSlider/PDFSlider'
 import Footer from '@/components/common/Footer'
 
-import axios from 'axios'
-
-/**
- * Page component for the blog page
- * @type {function} Page route for the blog page
- * @param {object} lang - Language object from useTranslation hook
- * @type {server}
- * @returns {JSX.Element} Rendered content for the page
- */
-
-const getPosts = async () => {   
-  try {
-    const res = await axios.get(`https://blog.registate.com/ghost/api/content/posts?key=${process.env.BLOG_API_KEY}&include=authors,tags`);
-    return res.data;
-  }
-  catch {
-    console.log('Error getting getPosts')
-  }
-}
+import { getArticles, getTags, getAuthors } from './api/index'
 
 const Page = async ({ params: { lang } }) => {
-  const postsData = getPosts();
-  const [posts] = await Promise.all([postsData]);
+    const articlesData = getArticles();
+    const [articles] = await Promise.all([articlesData]);
 
-  return (
-    <main>
-      <Navbar lang={lang} /> 
-      <Posts lang={lang} entry={posts} />
-      <Footer lang={lang} /> 
-    </main>
-  )
+    const tagsData = getTags();
+    const [tags] = await Promise.all([tagsData]);
+
+    const authorsData = getAuthors();
+    const [authors] = await Promise.all([authorsData]);
+
+    return (
+        <div>
+            <Navbar lang={lang} />
+            <div className='mx-[56px] my-[56px] flex flex-col'>
+                <Hero />
+                <SearchBar lang={lang} />
+                {articles && 
+                    <Body
+                        articleJSON={articles}
+                        tags={tags}
+                        lang={lang}
+                        authors={authors}
+                    />
+                }
+            </div>
+
+            <PDFSlider lang={lang} />
+            <Footer lang={lang} />
+        </div>
+    );
 }
 
 export default Page

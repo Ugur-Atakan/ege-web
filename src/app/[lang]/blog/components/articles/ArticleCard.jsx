@@ -3,9 +3,8 @@ import Image from 'next/image'
 import { redirect } from '../../../../lib/utils';
 
 const ArticleCard = ({ article, lang }) => {
-
     const goToArticle = () => {
-        redirect(`/blogv2/${article.slug}`, lang)
+        redirect(`/blog/${article.slug}`, lang)
     }
 
     return (

@@ -7,7 +7,7 @@ const MainArticle = ({ lang, article }) => {
 
     return (
         <div 
-            onClick={() => router.push(`/${lang}/blogv2/${article.slug}`)}
+            onClick={() => router.push(`/${lang}/blog/${article.slug}`)}
             className='flex flex-col lg:flex-row p-10 my-10 rounded-2xl bg-[#ECEFF1]'
         >
             <div className='flex-1'>

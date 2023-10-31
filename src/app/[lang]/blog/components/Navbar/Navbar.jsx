@@ -76,7 +76,7 @@ const Navbar = ({ lang }) => {
             <div className='hidden lg:flex lg:justify-between lg:items-center space-x-4'>
                 <Link href={`/${lang}/company-type`} className="text-neutral-800 text-sm font-semibold leading-tight">Get Started</Link>
                 <Link href={`/${lang}/how-it-works`} className="text-neutral-800 text-sm font-semibold leading-tight">How it Works</Link>
-                <Link href={`/${lang}/blogv2`} className="text-neutral-800 text-sm font-semibold leading-tight">Blog</Link>
+                <Link href={`/${lang}/blog`} className="text-neutral-800 text-sm font-semibold leading-tight">Blog</Link>
             </div> 
         
   

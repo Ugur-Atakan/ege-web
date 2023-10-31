@@ -19,13 +19,13 @@ const RightColumn = ({ selectedTag, setSelectedTag, lang, tags, authors }) => {
         if (tag === 'All') {
             setSelectedTag(tag);
             setActiveButton(tag);
-            redirect(`/blogv2`, lang);
+            redirect(`/blog`, lang);
         }
 
         if (selectedTag != tag) {
             setSelectedTag(tag);
             setActiveButton(tag);
-            redirect(`/blogv2/search?tag=${tag}`, lang);
+            redirect(`/blog/search?tag=${tag}`, lang);
         }
     }
 

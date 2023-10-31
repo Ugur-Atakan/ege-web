@@ -1,5 +1,9 @@
 import React from 'react'
 import Image from 'next/image'
+import { FiFacebook } from 'react-icons/fi'
+import { RiTwitterXFill } from 'react-icons/ri'
+import { BsShare } from 'react-icons/bs'
+import { FaLinkedinIn } from 'react-icons/fa'
 
 const Right = ({ author }) => {
     return (
@@ -15,13 +19,11 @@ const Right = ({ author }) => {
             <div className="flex-col justify-start items-start mt-4 gap-5 inline-flex">
                 <div className="self-stretch text-neutral-800 text-[28px] font-semibold font-['Inter'] leading-loose">Share</div>
                 <div className="justify-start items-start gap-3 inline-flex">
-                    <div className="w-14 h-14 relative bg-gray-100 rounded-[44px]">
-                    <div className="h-[26px] left-[16px] top-[13px] absolute">
-                    </div>
-                    </div>
-                    <div className="w-14 h-14 relative bg-gray-100 rounded-[44px]" />
-                    <div className="w-14 h-14 relative bg-gray-100 rounded-[44px]" />
-                    <div className="w-14 h-14 relative bg-gray-100 rounded-[44px]" />
+                    <div className="flex justify-center">
+                        <div className="flex items-center justify-center w-16 h-16 relative bg-gray-100 rounded-full"><FaLinkedinIn className="text-xl" /></div>
+                        <div className="flex items-center justify-center w-16 h-16 relative bg-gray-100 rounded-full"><FiFacebook className="text-xl" /></div>
+                        <div className="flex items-center justify-center w-16 h-16 relative bg-gray-100 rounded-full"><BsShare className="text-xl" /></div>
+                    </div>               
                 </div>
             </div>
         </div>

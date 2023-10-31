@@ -178,6 +178,7 @@ body {
   background-image: url('../assets/images/line.png');
   background-position: center center;
   background-repeat: no-repeat;
+  background-color: #1649FF;
   opacity: 1;
   border: 1px solid white;
   border-radius: 100%;
