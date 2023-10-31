@@ -12,5 +12,8 @@ module.exports = withVideos({
               pathname: '**',
           },
       ],
+    },
+    experimental: {
+        serverActions: true
     }
 });
