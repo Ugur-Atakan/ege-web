@@ -8,16 +8,17 @@ const MainArticle = ({ lang, article }) => {
     return (
         <div 
             onClick={() => router.push(`/${lang}/blog/${article.slug}`)}
-            className='flex flex-col lg:flex-row p-10 my-10 rounded-2xl bg-[#ECEFF1]'
+            className='cursor-pointer flex flex-col lg:flex-row p-10 my-10 rounded-2xl bg-[#ECEFF1]'
         >
             <div className='flex-1'>
-                <Image
-                    width={1000}
-                    height={1000} 
-                    className="w-full h-auto rounded-[32px]" 
-                    src={article?.articleImage} 
-                    alt='main-blog'
-                />
+                <div className="w-full relative pt-[60%]">
+                    <Image
+                        src={article?.articleImage}
+                        alt="profile"
+                        fill
+                        className="w-full h-auto top-0 left-0 rounded-[32px]"
+                    />
+                </div>
             </div>
 
             <div className='flex-1 lg:ml-10 mt-4'>
@@ -27,7 +28,6 @@ const MainArticle = ({ lang, article }) => {
                     </div>
 
                     <div className='my-4  text-black text-[28px] font-semibold leading-[44px]'>{article?.title}</div>
-                    
                     <div className='mt-auto h-16 justify-start items-center gap-4 inline-flex'>
                         <Image width={16} height={16} className="w-16 h-16 rounded-full" src={article?.author?.authorImage} alt="auth-avatar" />
                         <div className='flex-col justify-start items-start gap-1.5 inline-flex'>

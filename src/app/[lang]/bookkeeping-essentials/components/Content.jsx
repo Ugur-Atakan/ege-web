@@ -5,7 +5,7 @@ import { ArrowLeftIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import Image from 'next/image'
 import { book, tick } from '@/assets/images'
-import { useTranslation } from '@/i18n/client'
+import { useTranslation } from '@/i18n/server'
 
 /**
  * Content component for the page
@@ -15,8 +15,8 @@ import { useTranslation } from '@/i18n/client'
  * @returns {JSX.Element} Rendered content for the page
  */
 
-const Content = ({ lang }) => {
-  const { t } = useTranslation(lang);
+const Content = async ({ lang }) => {
+  const { t } = await useTranslation(lang);
   
   return (
     <React.Fragment>

@@ -12,6 +12,8 @@ const Body = ({ articleJSON, lang, tags, authors }) => {
     const [selectedTag, setSelectedTag] = useState('All')
     const articles = createArticleClasses(articleJSON)
 
+    const firstThreeArticles = articles.slice(0, 3)
+
     return (
         <div>
             <div className='grid lg:grid-cols-3'>
@@ -22,6 +24,7 @@ const Body = ({ articleJSON, lang, tags, authors }) => {
                 <div className='lg:col-span-1'>
                     <Suspense fallback={<></>}>
                         <RightColumn
+                            popular={firstThreeArticles}
                             tags={tags}
                             selectedTag={selectedTag}
                             setSelectedTag={setSelectedTag}

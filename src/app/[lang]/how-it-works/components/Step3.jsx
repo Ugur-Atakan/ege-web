@@ -1,20 +1,18 @@
-'use client'
-
 import Link from 'next/link'
 import Image from 'next/image'
 import { tick, taq1, taq2 } from '@/assets/images'
-import { useTranslation } from '@/i18n/client'
+import { useTranslation } from '@/i18n/server'
 
 /**
  * Step3 Component
  * @type {function} 
  * @param {object} lang - Language object from useTranslation hook
- * @type {client}
+ * @type {server}
  * @returns {JSX.Element} 
 */
 
-const Step3 = ({ lang }) => {
-    const { t } = useTranslation(lang)
+const Step3 = async ({ lang }) => {
+    const { t } = await useTranslation(lang)
 
     return(
         <div className='mx-auto max-w-[1120px] px-4 lg:px-0 py-24 lg:py-48'>

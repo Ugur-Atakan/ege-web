@@ -20,9 +20,10 @@ import i18next from 'i18next'
 */
 
 const Navbar = ({ lang }) => {
+    const { t } = useTranslation(lang);
+
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [isSticky, setIsSticky] = useState(false);
-    const { t } = useTranslation(lang);
 
     const changeLanguage = (lang) => {
       if (lang === "en" || lang === "tr") {
@@ -30,7 +31,7 @@ const Navbar = ({ lang }) => {
 
         if (typeof window !== 'undefined' && window.location) {
           window.localStorage.setItem('i18nextLng', lang);
-          window.location.href = `/${lang}`;
+          window.location.href = `/${lang}/how-it-works`;
         }
       } else {
         navigate(`/${lang}/notfound/`, { replace: true });

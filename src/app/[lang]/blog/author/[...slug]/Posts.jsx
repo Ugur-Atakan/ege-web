@@ -1,7 +1,6 @@
 import Image from 'next/image'
 
 const Posts = ({ lang, entry }) => {
-    console.log(entry)
     return (
         <div className="sm:py-16">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">

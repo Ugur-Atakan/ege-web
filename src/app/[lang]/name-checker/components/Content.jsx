@@ -2,14 +2,14 @@
 
 import React, { useState } from 'react'
 import Link from 'next/link'
-import { useTranslation } from '@/i18n/client'
+import axios from 'axios'
 import BackButton from './buttons/BackButton'
 import EscapeButton from './buttons/EscapeButton'
 import Heading from './Heading'
 
 import { Spinner, Tick, Cross } from './utils'
 
-import axios from 'axios'
+import { useTranslation } from '@/i18n/client'
 
 /**
  * Content for start my business page
@@ -24,6 +24,7 @@ const Content = ({ lang }) => {
 
     const [companyName, setCompanyName] = useState('');
     const [abbreviation, setAbbreviation] = useState(null);
+    const [finalAbbreviation, setFinalAbbreviation] = useState(null);
 
     const [loaded, setLoaded] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -33,14 +34,14 @@ const Content = ({ lang }) => {
     
     const handleAbbreviationChange = (e) => {
       setAbbreviation(e.target.value)
+      setFinalAbbreviation(e.target.value)
 
-      
       if (typeof window !== 'undefined' && window.localStorage)
       {
         if (e.target.value.includes('LLC') || e.target.value.includes('L.L.C.')
             || e.target.value.includes('Limited'))
         {
-          window.localStorage.setItem('companyType', 'LLC'); 
+          window.localStorage.setItem('companyType', 'LLC');
         }
         else {
           window.localStorage.setItem('companyType', 'Corporation');
@@ -52,24 +53,26 @@ const Content = ({ lang }) => {
     }
 
     const checkName = async () => {
-      setLoading(true)
-      setLoaded(true)
-
       if (typeof window !== 'undefined' && window.localStorage) {
         window.localStorage.setItem('companyState', 'Delaware');
       }
+
+      if (companyName != '') {
+        setLoading(true)
+        setLoaded(true)
   
-      const res = await axios.post('/api/namecheck?name=' + companyName)
+        const res = await axios.post('/api/namecheck?name=' + companyName)
 
-      if (res.data == 'Available') {
-        setSuccess(true)
-      }
-      else {
+        if (res.data == 'Available') {
+          setSuccess(true)
+        }
+        else {        
+          setSuccess(false)
+        }
+
         setAbbreviation(null)
-        setSuccess(false)
+        setLoading(false)
       }
-
-      setLoading(false)
     }
 
     return (
@@ -131,11 +134,11 @@ const Content = ({ lang }) => {
               </div>
             </div>
             
-            <div className="max-w-lg mx-auto bg-white rounded-lg ">
+            <div className="flex flex-col max-w-lg mx-auto bg-white rounded-lg ">
               <div className='flex flex-col text-center shadow-lg p-3 rounded-md px-10 border border-[#C8C8C8] font-semibold'>
                 <h1 className="font-medium text-md text-gray-800 mb-4">Your Company name will be:</h1>
                 <p className="text-gray-700 text-2xl">
-                    {companyName} {abbreviation}
+                    {companyName} {finalAbbreviation}
                 </p>
               </div>
 

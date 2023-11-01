@@ -38,19 +38,22 @@ const Content = ({ lang }) => {
   }
 
   const checkName = async () => {
-    setLoading(true)
-    setLoaded(true)
-    const res = await axios.post('/api/namecheck?name=' + companyName)
+    if (companyName != '') {
+      setLoading(true)
+      setLoaded(true)
 
-    if (res.data == 'Available') {
-      setSuccess(true)
-    }
-    else {
+      const res = await axios.post('/api/namecheck?name=' + companyName)
+
+      if (res.data == 'Available') {
+        setSuccess(true)
+      }
+      else {
+        setSuccess(false)
+      }
+
       setAbbreviation(null)
-      setSuccess(false)
+      setLoading(false)
     }
-
-    setLoading(false)
   }
 
   const onChangeCompanyName = (e) => {
@@ -136,7 +139,7 @@ const Content = ({ lang }) => {
             <select
                 id="abbreviation"
                 name="abbreviation"
-                value={abbreviation}
+                value={abbreviation || ''}
                 className="font-semibold border-[#C8C8C8] text-[#8A8A8A] w-full my-2 rounded-[20px] p-4 focus:border-[4px]"
                 onChange={(e) => handleAbbreviationChange(e.target.value)}
             >

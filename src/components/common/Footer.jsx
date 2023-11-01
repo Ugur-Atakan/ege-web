@@ -1,10 +1,8 @@
-'use client'
-
 import 'react-toastify/dist/ReactToastify.css'
-import { useTranslation } from '../../i18n/client'
+import { useTranslation } from '@/i18n/server'
 
-const Footer = ({ lang }) => {
-  const { t } = useTranslation();
+const Footer = async ({ lang }) => {
+  const { t } = await useTranslation(lang);
 
   const navigation = {
     solutions: [
