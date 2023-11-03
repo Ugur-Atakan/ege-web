@@ -1,13 +1,15 @@
 import React from 'react'
-import Navbar from '../components/Navbar/Navbar'
 import BackButton from './components/Backbutton'
 import Header from './components/article/Header'
 import Body from './components/article/Body/Body'
 import Right from './components/article/Body/Right'
-import PDFSlider from '../components/PDFSlider/PDFSlider'
-import Footer from '@/components/common/Footer'
 
 import { getArticle } from '../api'
+
+export const metadata = {
+    title: 'Registate Blog',
+    description: 'Find the latest info about registate and how to register a company in USA.'
+}
 
 const Page = async ({ params: { lang, slug } }) => {
     const res = getArticle(slug)
@@ -17,7 +19,6 @@ const Page = async ({ params: { lang, slug } }) => {
 
     return (
         <div>
-            <Navbar lang={lang} />
             <BackButton lang={lang} />
 
             <div className='mx-[168px] my-[56px]'>
@@ -33,11 +34,8 @@ const Page = async ({ params: { lang, slug } }) => {
                     <Right author={article.primary_author} />
                 </div>
             </div>
-
-            <PDFSlider lang={lang} />
-            <Footer lang={lang} />
         </div>
     );
 }
 
-export default Page;
+export default Page

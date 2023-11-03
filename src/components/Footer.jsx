@@ -15,29 +15,29 @@ export default function Footer({ lang }) {
       },
       {
         name: t('footer_col1_submenu2'),
-        href: `/${lang}/contact`,
+        href: `/${lang}/contact-us`,
       },
       {
         name: t('footer_col1_submenu3'),
-        href: `/${lang}/contact`,
+        href: `/${lang}/contact-us`,
       },
       {
         name: t('footer_col1_submenu4'),
-        href: `/${lang}/contact`,
+        href: `/${lang}/contact-us`,
       },
     ],
     support: [
-      { name: t('footer_col2_submenu1'), href: `/${lang}/contact`, },
-      { name: t('footer_col2_submenu2'), href: `/${lang}/contact`, }
+      { name: t('footer_col2_submenu1'), href: `/${lang}/contact-us`, },
+      { name: t('footer_col2_submenu2'), href: `/${lang}/contact-us`, }
     ],
     company: [
-      { name: t('footer_col3_submenu1'), href: `/${lang}/contact`, },
+      { name: t('footer_col3_submenu1'), href: `/${lang}/contact-us`, },
       { name: t('footer_col3_submenu2'), href: `/${lang}/blog`, },
-      { name: t('footer_col3_submenu3'), href: `/${lang}/contact`, }
+      { name: t('footer_col3_submenu3'), href: `/${lang}/contact-us`, }
     ],
     legal: [
-      { name: t('footer_col4_submenu1'), href: `/${lang}/contact` },
-      { name: t('footer_col4_submenu2'), href: `/${lang}/contact` }
+      { name: t('footer_col4_submenu1'), href: `/${lang}/contact-us` },
+      { name: t('footer_col4_submenu2'), href: `/${lang}/contact-us` }
     ],
     social: [
       {

@@ -2,17 +2,16 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import Link from 'next/link'
 import Image from 'next/image'
 import axios from 'axios'
-import { readCookie, submitCookie } from '../../../lib/session/clientActions'
+//import { readCookie, submitCookie } from '../../../lib/session/clientActions'
 
-import { ArrowLeftIcon } from '@heroicons/react/24/outline'
 import { bishopwhite, queencolor, kingblack, noinclude, arrowblack, arrowblue } from '@/assets/images'
-
+import Heading from './Heading'
 import packageDataEN from '@/assets/json/packageDataEN.json'
 import packageDataTR from '@/assets/json/packageDataTR.json'
 
+import BackButton from './Backbutton'
 import { getRandomPackages } from '../utils/util'
 import { useTranslation } from '@/i18n/client'
 
@@ -40,7 +39,7 @@ const Content = ({ lang }) => {
   const titles = selectedPackageVar[selectedCompanyType].map((item) => item.title);
   const [isLoading, setIsLoading] = useState(true);
 
-  const [cookie, setCookie] = useState({});
+  // const [cookie, setCookie] = useState({});
 
   const handlePackageSelection = (selectedPrice, selectedIndex) => {
     setSelectedPackage(selectedPrice);
@@ -61,24 +60,20 @@ const Content = ({ lang }) => {
     }
   }
 
-  useEffect(()=> {
-    const fetchCookie = async () => {
-      const awaitCookie = await readCookie();
-      console.log(awaitCookie)
-      setCookie(awaitCookie);
-    }
-    fetchCookie();
-  },[])
+  // useEffect(()=> {
+  //   const fetchCookie = async () => {
+  //     const awaitCookie = await readCookie();
+  //     console.log(awaitCookie)
+  //     setCookie(awaitCookie);
+  //   }
+  //   fetchCookie();
+  // },[])
 
-  let companyState = ''
-  let companyType = ''
-  let companyName = ''
+  let companyState = (typeof window !== 'undefined') ? localStorage.getItem('companyState') : '';
+  let companyType = (typeof window !== 'undefined') ? localStorage.getItem('companyType') : '';
+  let companyName = (typeof window !== 'undefined') ? localStorage.getItem('companyName') : '';
 
   useEffect(() => {
-    companyState = window.localStorage.getItem('companyState');
-    companyType = window.localStorage.getItem('companyType');
-    companyName = window.localStorage.getItem('companyName');
-
     const fetchData = async () => {
       try {
         const res = await axios.get(`/${lang}/state/api/`);
@@ -110,7 +105,7 @@ const Content = ({ lang }) => {
     };
 
     fetchData();
-  }, [companyState, companyType, companyName, lang]);
+  }, []);
 
   if (isLoading) {
     return (
@@ -122,18 +117,11 @@ const Content = ({ lang }) => {
 
   return (
     <div className='bg-white'>
-      <div className="mx-auto p-6 lg:px-8">
-        <Link className='flex items-center gap-2' href={`/${lang}/company-name`}>
-          <ArrowLeftIcon className='text-[#1649FF] h-[18px] w-[18px]' />
-          <span className='text-[#1649FF] text-lg font-semibold'>{t('formation_back_button')}</span>
-        </Link>
-      </div>
+      <BackButton t={t} lang={lang} />
      
       <div className='mx-auto max-w-5xl p-4'>
-        <div className='text-left md:text-center'>
-          <h1 className='font-semibold text-[26px] md:text-[40px] leading-[44px] text-[#222222]'>{t('formation_title')}</h1>
-        </div>
-        
+        <Heading title={t('formation_title')} />
+
         <div className={packagePrices.length < 3 ? 'grid md:grid-cols-2 gap-5 py-12' : 'grid md:grid-cols-3 gap-5 py-12'}>
           {packagePrices.map((prices, index) => (
             <div

@@ -4,3 +4,5 @@
 [] Stripe products
 [] Fix for the external script impacting performance
 [] Add prettier
+
+[] /onboarding/ route 

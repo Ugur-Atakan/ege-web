@@ -83,7 +83,7 @@ const Navbar = ({ lang }) => {
   
             <div className="hidden lg:flex lg:flex-1 lg:justify-end">
                 <div className='hidden lg:flex items-center gap-4'>
-                    <LanguageChange lang={lang} isSticky={isSticky} changeLanguage={changeLanguage} renderWhite={false}/>
+                    <LanguageChange lang={lang} isSticky={isSticky} changeLanguage={changeLanguage} renderWhite={false} />
                     
                     <Link
                         href={`/${lang}/company-type`}

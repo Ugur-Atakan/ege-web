@@ -30,7 +30,7 @@ const Content = ({ lang }) => {
   const [success, setSuccess] = useState(false);
 
   const llcOptions = [t('companyname_llc_option1'),t('companyname_llc_option2'),t('companyname_llc_option3')];
-  const ccorpOptions = [t('companyname_ccorp_option1'),t('companyname_ccorp_option2'),t('companyname_ccorp_option3'),t('companyname_ccorp_option4'),t('companyname_ccorp_option5')];
+  const ccorpOptions = [t('companyname_ccorp_option1'),t('companyname_ccorp_option2'),t('companyname_ccorp_option3'),t('companyname_ccorp_option4'),'Co'];
 
   const handleAbbreviationChange = (name) => {
     setAbbreviation(name);
@@ -43,7 +43,6 @@ const Content = ({ lang }) => {
       setLoaded(true)
 
       const res = await axios.post('/api/namecheck?name=' + companyName)
-
       if (res.data == 'Available') {
         setSuccess(true)
       }
@@ -62,37 +61,39 @@ const Content = ({ lang }) => {
       window.localStorage.setItem('companyName', e.target.value);
   }
 
+  // const handleNameCompletion = (e) => {
+  //   const sendCookie = async () => {
+  //     const cookieArr = {...cookie, companyName: companyName + ' ' + abbreviation};
+  //     await submitCookie(cookieArr);
+  //     redirect(`/formation`, lang);
+  //   }
+  //   sendCookie();
+  // }
+
   const handleNameCompletion = (e) => {
-    const sendCookie = async () => {
-      const cookieArr = {...cookie, companyName: companyName + ' ' + abbreviation};
-      await submitCookie(cookieArr);
-      redirect(`/formation`, lang);
-    }
-
-    sendCookie();
+    redirect(`/formation`, lang);
   }
+  
+  // useEffect(()=> {
+  //   const fetchCookie = async () => {
+  //     const awaitCookie = await readCookie();
+  //     setCookie(awaitCookie);
+  //   }
+  //   fetchCookie();
+  // },[])
+
+  let companyType = (typeof window !== 'undefined') ? window.localStorage.getItem('companyType') : '';
+  let companyState = (typeof window !== 'undefined') ? window.localStorage.getItem('companyState') : '';
 
   useEffect(()=> {
-    const fetchCookie = async () => {
-      const awaitCookie = await readCookie();
-      setCookie(awaitCookie);
-    }
-    fetchCookie();
-  },[])
-
-  let companyType = '';
-  let companyState = '';
-
-  useEffect(()=> {
-    companyType = window.localStorage.getItem('companyType');
-    companyState = window.localStorage.getItem('companyState');
-    window.localStorage.setItem('companyName', companyName);
-
-    if (!(companyType && companyState)) {
-      if (typeof window !== 'undefined' && window.location)
+    if (!(companyState)) {
         window.location.href = `/${lang}/state`;
     }
-  },[companyType, companyState, lang])
+    else if (!(companyType)) {
+        window.location.hre = `/${lang}/company-type`;
+    }
+  },[])
+
 
   return (
     <div className='bg-white'>
@@ -143,8 +144,8 @@ const Content = ({ lang }) => {
                 className="font-semibold border-[#C8C8C8] text-[#8A8A8A] w-full my-2 rounded-[20px] p-4 focus:border-[4px]"
                 onChange={(e) => handleAbbreviationChange(e.target.value)}
             >
-                <option value="" disabled>Select an abbreviation</option>
-                {companyType==='LLC' ? llcOptions.map((abb, index) => (
+                <option value="" disabled>Select a Designator</option>
+                {companyType ==='LLC' ? llcOptions.map((abb, index) => (
                   <option
                     key={index}
                     value={abb}
