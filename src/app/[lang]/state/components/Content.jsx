@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import { useTranslation } from '@/i18n/client'
 import BackButton from './BackButton'
 import Heading from './Heading'
-import SelectDropdown from './SelectDropdown'
+import DropDown from './DropDown'
 import dynamic from 'next/dynamic'
 import axios from 'axios'
 import { readCookie, submitCookie } from '../../../lib/session/clientActions'
@@ -114,7 +114,7 @@ const Content = ({ lang }) => {
               />
 
             <li className="order-3">
-              <SelectDropdown
+              <DropDown
                 id="companyState"
                 value={companyState}
                 placeholder={t('state_option3_text')}

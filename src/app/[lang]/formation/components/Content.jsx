@@ -11,7 +11,6 @@ import Heading from './Heading'
 import packageDataEN from '@/assets/json/packageDataEN.json'
 import packageDataTR from '@/assets/json/packageDataTR.json'
 
-import BackButton from './Backbutton'
 import { getRandomPackages } from '../utils/util'
 import { useTranslation } from '@/i18n/client'
 
@@ -117,7 +116,13 @@ const Content = ({ lang }) => {
 
   return (
     <div className='bg-white'>
-      <BackButton t={t} lang={lang} />
+      <div className="mx-auto p-6 lg:px-8">
+          <Link className='flex items-center gap-2' href={`/${lang}/company-name`}>
+            <ArrowLeftIcon className='text-[#1649FF] h-[18px] w-[18px]' />
+            <span className='text-[#1649FF] text-lg font-semibold'>{t('formation_back_button')}</span>
+          </Link>
+      </div>
+
      
       <div className='mx-auto max-w-5xl p-4'>
         <Heading title={t('formation_title')} />

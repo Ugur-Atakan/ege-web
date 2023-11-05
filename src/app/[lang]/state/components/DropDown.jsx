@@ -1,4 +1,6 @@
-const SelectDropdown = ({ id, value, placeholder, options, onChange }) => {
+import React from 'react'
+
+const DropDown = ({ id, value, placeholder, options, onChange }) => {
     return (
       <select
         id={id}
@@ -18,4 +20,4 @@ const SelectDropdown = ({ id, value, placeholder, options, onChange }) => {
     );
 };
 
-export default SelectDropdown;
+export default DropDown
