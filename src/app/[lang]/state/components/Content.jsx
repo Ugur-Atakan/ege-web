@@ -119,7 +119,7 @@ const Content = ({ lang }) => {
                 value={companyState}
                 placeholder={t('state_option3_text')}
                 options={otherStates}
-                onChange={(e) => setCompanyState(e.target.value)}
+                onChange={(e) => setStateInStorage(e.target.value)}
               />
             </li>
 
