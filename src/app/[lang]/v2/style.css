@@ -1,0 +1,11 @@
+.hero-chain {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 512px;
+    bottom: -230px;
+    position: absolute;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}

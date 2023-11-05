@@ -1,7 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React, { useState } from 'react'
 import Popular from './Popular'
 import Authors from './Authors'
 import AttorneyCard from '../articles/AttorneyCard'
@@ -11,7 +10,7 @@ import { redirect } from '../../../../lib/utils'
 
 import { useSearchParams } from 'next/navigation'
 
-const RightColumn = ({ selectedTag, setSelectedTag, lang, tags, authors }) => {
+const RightColumn = ({ selectedTag, setSelectedTag, lang, tags, authors, popular }) => {
     const searchParams = useSearchParams();
     const [activeButton, setActiveButton] = useState(searchParams.get('tag') || 'All');
 
@@ -32,8 +31,7 @@ const RightColumn = ({ selectedTag, setSelectedTag, lang, tags, authors }) => {
     return (
         <div className='mx-10'>
             <Tags tags={tags} handleTagClick={handleTagClick} activeButton={activeButton} />
-            
-            <Popular />
+            <Popular popular={popular} lang={lang} />
             <Authors authors={authors} lang={lang} />
             <AttorneyCard />
         </div>

@@ -9,9 +9,10 @@ import MobileSideMenu from './MobileSideMenu'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import bluelogo from '@/assets/images/logo-blue.webp'
 import { useTranslation } from '@/i18n/client'
+import i18next from 'i18next'
 
 const Navbar = ({ lang }) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation(lang);
 
     const [isSticky, setIsSticky] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -22,7 +23,7 @@ const Navbar = ({ lang }) => {
     
           if (typeof window !== 'undefined' && window.location) {
             window.localStorage.setItem('i18nextLng', lang);
-            window.location.href = `/${lang}`;
+            window.location.href = `/${lang}/blog`;
           }
         } else {
           navigate(`/${lang}/notfound/`, { replace: true });
@@ -48,7 +49,7 @@ const Navbar = ({ lang }) => {
         <div className='mx-[56px] flex  items-center justify-between p-6 lg:px-2 border-b border-[#C8C8C8] lg:p-4' aria-label="Global">
             <div className="flex lg:flex-1">
                 {!mobileMenuOpen &&
-                    <Link href="/" className="-m-1.5 p-1.5">
+                    <Link href={`/${lang}`} className="-m-1.5 p-1.5">
                         <span className="sr-only">Registate</span>
                         <Image className="w-[116px] h-[34px]" src= {bluelogo} alt="bluelogo" />
                     </Link>
@@ -82,7 +83,7 @@ const Navbar = ({ lang }) => {
   
             <div className="hidden lg:flex lg:flex-1 lg:justify-end">
                 <div className='hidden lg:flex items-center gap-4'>
-                    <LanguageChange lang={lang} isSticky={isSticky} changeLanguage={changeLanguage} renderWhite={false}/>
+                    <LanguageChange lang={lang} isSticky={isSticky} changeLanguage={changeLanguage} renderWhite={false} />
                     
                     <Link
                         href={`/${lang}/company-type`}

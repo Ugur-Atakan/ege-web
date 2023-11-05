@@ -1,20 +1,18 @@
-'use client'
-
 import Image from 'next/image'
 import Link from 'next/link'
 import { hero, arrow } from '@/assets/images'
-import { useTranslation } from '@/i18n/client'
+import { useTranslation } from '@/i18n/server'
 
 /**
  * Hero Component for how it works page
  * @type {function} 
  * @param {object} lang - Language object from useTranslation hook
- * @type {client}
+ * @type {server}
  * @returns {JSX.Element} 
 */
 
-const Hero = ({ lang }) => {
-    const { t } = useTranslation(lang)
+const Hero = async ({ lang }) => {
+    const { t } = await useTranslation(lang)
 
     return (
        <div className='relative'>

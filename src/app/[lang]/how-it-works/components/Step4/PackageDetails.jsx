@@ -2,19 +2,15 @@
 
 import React from 'react';
 import Image from 'next/image';
-import {tick, tickblue, bishop, queen, bishopcolor, kingblack} from '@/assets/images' 
-export default function PackageDetails({
-  lang,
+import { queen, bishopcolor, kingblack} from '@/assets/images' 
+
+const PackageDetails = ({
   selectedCompanyType,
-  selectedPackages,
   selectedPackagesNameCorp,
-  selectedPackagesNameLLC,
   handlePackageSelection,
   t,
   showAllDifferences
-}) {
-  const selectedPackagesName = lang === 'en' ? 'starter' : 'gold';
-
+}) => {
   return (
     <div className='lg:flex lg:justify-between'>
       <div className='flex justify-between gap-2 pb-8'>
@@ -67,3 +63,5 @@ export default function PackageDetails({
     </div>
   );
 }
+
+export default PackageDetails

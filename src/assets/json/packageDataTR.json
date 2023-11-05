@@ -4,7 +4,7 @@
             "C-corp": [
                 {
                     "title": "İşletme Kuruluşu ve Uyum",
-                    "details": [
+                    "features": [
                         {
                             "title": "Hızlandırılmış İşletme Kaydı - RER(Registate Expedited Registration)",
                             "starter": true,
@@ -63,7 +63,7 @@
                 },
                 {
                     "title": "Belge Yönetimi ve Teslimat",
-                    "details": [
+                    "features": [
                         {
                             "title": "Registate Online Kontrol Paneli Erişimi",
                             "starter": true,
@@ -98,7 +98,7 @@
                 },
                 {
                     "title": "Legal and Administrative Support",
-                    "details": [
+                    "features": [
                         {
                             "title": "Çoklu Dil Destekli Müşteri Desteği (Telefon ve E-posta)",
                             "starter": true,

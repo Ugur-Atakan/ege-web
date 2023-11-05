@@ -9,7 +9,7 @@ const CardGrid = ({ articles ,lang }) => {
     }
 
     return (
-        <div className="grid lg:grid-cols-2 gap-x-3">
+        <div className="grid lg:grid-cols-2 gap-x-14">
             {articlesConst}
         </div>
     );

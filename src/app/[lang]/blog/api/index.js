@@ -22,6 +22,17 @@ const getArticle = async (slug) => {
     }
 }
 
+const getArticlesTR = async () => {
+    try {
+        const response = await axios.get('https://blog.registate.com/ghost/api/content/posts?key=1090eec3cc0b57e0b77963a66b&filter=tag:TR&include=authors,tags')
+        const article = response.data;
+        return article;
+    }   
+    catch {
+        console.log('Error getting getArticlesTR')
+    }
+}
+
 const getTags = async () => {
     try {
         const response = await axios.get(`https://blog.registate.com/ghost/api/content/tags?key=${process.env.BLOG_API_KEY}`)
@@ -29,6 +40,16 @@ const getTags = async () => {
         const tags = data.tags;
         const names = tags.map(tag => tag.name);
         names.push('All');
+
+        const index = names.indexOf('TR');
+        if (index > -1) {
+            names.splice(index, 1);
+        }
+        const index2 = names.indexOf('EN');
+        if (index2 > -1) {
+            names.splice(index2, 1);
+        }
+
         names.sort((a, b) => a.localeCompare(b)); 
         return names;
     }
@@ -88,6 +109,7 @@ const getAuthorPosts = async (author) => {
 
 export { 
     getArticles,
+    getArticlesTR,
     getArticle,
     getByTag,
     getTags,

@@ -118,7 +118,7 @@ const Navbar = ({ isSticky, t, lang }) => {
                             </Link>
 
                             <div className="text-white">
-                                <LanguageChange lang={lang} isSticky={isSticky} changeLanguage={changeLanguage} />
+                                <LanguageChange lang={lang} isSticky={isSticky} changeLanguage={changeLanguage} renderWhite={true}/>
                             </div>
                         </div>
                 </Dialog.Panel>

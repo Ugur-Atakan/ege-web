@@ -1,10 +1,7 @@
 import React from 'react'
-import Navbar from '../components/Navbar/Navbar'
 import Hero from '../components/Hero'
 import SearchBar from '../components/SearchBar'
 import Body from '../components/Body'
-import Footer from '@/components/common/Footer'
-import PDFSlider from '../components/PDFSlider/PDFSlider'
 
 import { getTags, getAuthors, getByTag, getAlikeArticles } from '../api/index'
 
@@ -31,22 +28,17 @@ const Page = async ({ params, searchParams }) => {
 
 
     return (
-        <div>
-            <Navbar lang={lang} />
-            <div className='mx-[56px] my-[56px] flex flex-col'>
-                <Hero />
-                <SearchBar lang={lang} />
-                {articles &&
-                    <Body
-                        articleJSON={articles}
-                        lang={lang}
-                        tags={tags}
-                        authors={authors}
-                    />
-                }
-                <PDFSlider lang={lang} />
-                <Footer lang={lang} />
-            </div>
+        <div className='mx-[56px] my-[56px] flex flex-col'>
+            <Hero />
+            <SearchBar lang={lang} />
+            {articles &&
+                <Body
+                    articleJSON={articles}
+                    lang={lang}
+                    tags={tags}
+                    authors={authors}
+                />
+            }
         </div>
     )
 }

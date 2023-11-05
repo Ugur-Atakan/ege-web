@@ -1,11 +1,25 @@
+'use client'
+
 import React from 'react'
 import Image from 'next/image'
-import { FiFacebook } from 'react-icons/fi'
-import { RiTwitterXFill } from 'react-icons/ri'
-import { BsShare } from 'react-icons/bs'
-import { FaLinkedinIn } from 'react-icons/fa'
+import {
+    LinkedinShareButton,
+    LinkedinIcon,
+    FacebookShareButton,
+    FacebookIcon,
+    TwitterShareButton,
+    TwitterIcon,
+    WhatsappShareButton,
+    WhatsappIcon
+} from 'next-share'
 
 const Right = ({ author }) => {
+    const getCurrentUrl = () => {
+        if (typeof window !== 'undefined') {
+            return window.location.href
+        }
+    }
+
     return (
         <div className='flex flex-col'>
             <div className="items-center gap-4 inline-flex">
@@ -17,12 +31,36 @@ const Right = ({ author }) => {
             </div>
 
             <div className="flex-col justify-start items-start mt-4 gap-5 inline-flex">
-                <div className="self-stretch text-neutral-800 text-[28px] font-semibold font-['Inter'] leading-loose">Share</div>
-                <div className="justify-start items-start gap-3 inline-flex">
-                    <div className="flex justify-center">
-                        <div className="flex items-center justify-center w-16 h-16 relative bg-gray-100 rounded-full"><FaLinkedinIn className="text-xl" /></div>
-                        <div className="flex items-center justify-center w-16 h-16 relative bg-gray-100 rounded-full"><FiFacebook className="text-xl" /></div>
-                        <div className="flex items-center justify-center w-16 h-16 relative bg-gray-100 rounded-full"><BsShare className="text-xl" /></div>
+                <h1 className="self-stretch text-neutral-800 text-[28px] font-semibold font-['Inter'] leading-loose">Share</h1>
+                
+                <div className="justify-start items-start gap-4 inline-flex">
+                    <div className="flex justify-center space-x-3">
+                        <FacebookShareButton
+                            url={getCurrentUrl()}
+                            quote={'Check out this blog post!'}
+                            hashtag={'#registate'}
+                        >
+                            <FacebookIcon size={55} round />
+                        </FacebookShareButton>
+
+                        <LinkedinShareButton url={getCurrentUrl()} >
+                            <LinkedinIcon size={55} round />
+                        </LinkedinShareButton>
+
+                        <TwitterShareButton
+                            url={getCurrentUrl()}
+                            title={'Check out this blog post on Registate'}
+                        >
+                            <TwitterIcon size={55} round />
+                        </TwitterShareButton>
+
+                        <WhatsappShareButton
+                            url={getCurrentUrl()}
+                            title={'Check out this blog post on Registate'}
+                            separator=":: "
+                            >
+                            <WhatsappIcon size={55} round />
+                        </WhatsappShareButton>
                     </div>               
                 </div>
             </div>
