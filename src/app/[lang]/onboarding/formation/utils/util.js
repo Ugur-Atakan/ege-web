@@ -8,9 +8,7 @@ import React from 'react'
 */
 
 export const getRandomPackages = (selectedPackage, selectedCompanyType, selectedPackageVar) => {
-    let packageName = selectedPackage.orderPackage.toLowerCase().replace(' ', '');
-    packageName = packageName.includes('registatellc') ? packageName.replace('registatellc ', '') : packageName;
-    console.log(packageName)
+    const packageName = selectedPackage.type;
 
     const selectedPackageFeatures = selectedPackageVar[selectedCompanyType].map(
         (item) => (

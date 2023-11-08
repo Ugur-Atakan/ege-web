@@ -12,10 +12,7 @@ import Content from "./components/Content";
 
 const Page = ({ params: { lang } }) => {
     return (
-        <React.Fragment>
-            <Navbar lang={lang} />
-            <Content lang={lang} />
-        </React.Fragment>
+        <Content lang={lang} />
     )
 }
 

@@ -8,27 +8,45 @@ import prices from '@/assets/json/prices.json'
  */
 
 export async function GET(request) {
-    const stateID = request.nextUrl.searchParams.get('stateID')
-    const entityID = request.nextUrl.searchParams.get('entityTypeID')
+    const stateName = request.nextUrl.searchParams.get('state')
+    const companyType = request.nextUrl.searchParams.get('type');
 
-    if (!stateID || !entityID) {
-        return new Response('Missing stateID or entityTypeID', {
+    
+    if (!stateName) {
+        return new Response('Missing state name in request!', {
             status: 400
         });
     }
 
-    const price = prices.filter(price => (
-        price.state.id === parseInt(stateID) &&  // Assuming 'state.id' is a number
-        price.entityType.id === parseInt(entityID)  // Assuming 'entityType.id' is a number
+    if (!companyType) {
+        return new Response('Missing company type in request!', { 
+            status: 400
+        });
+    }
+
+    const statePrices = prices.filter(state => (
+        state.name ===  stateName 
     ));
 
-    if (!price) {
+    if (!statePrices.length) {
         return new Response('Price not found', {
             status: 404
         });
     }
 
-    return new Response(JSON.stringify(price), {
+    let filteredPrices = null;
+
+    if (companyType === 'LLC') {
+        filteredPrices = statePrices.map(state => state.prices.LLC);
+    } else if (companyType === 'Corporation') {
+        filteredPrices = statePrices.map(state => state.prices.Corp);
+    } else {
+        return new Response('Invalid company type!', { 
+            status: 400
+        });
+    }
+
+    return new Response(JSON.stringify(filteredPrices), {
         status: 200,
         headers: {
             'Content-Type': 'application/json'

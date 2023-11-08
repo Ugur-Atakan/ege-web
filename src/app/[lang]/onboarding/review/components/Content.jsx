@@ -1,16 +1,16 @@
 /* eslint-disable */
-'use client';
+'use client'
 
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 
-import { useTranslation } from '../../../../i18n/client';
+import { useTranslation } from '@/i18n/client'
 
-import BackButton from './BackButton';
-import FillinForm from './FillinForm';
-import CompanyDetails from './CompanyDetails';
-import Features from './Features';
-import OrderReview from './OrderReview';
+import BackButton from './BackButton'
+import FillinForm from './FillinForm'
+import CompanyDetails from './CompanyDetails'
+import Features from './Features'
+import OrderReview from './OrderReview'
 
 /**
  * Main content component
@@ -45,19 +45,24 @@ const Content = ({ lang }) => {
     useEffect(() => {
         if (typeof window !== 'undefined' && window.localStorage) {
             let storedPackage = window.localStorage.getItem('selectedPackage');
+
             setSelectedPackage(
                 storedPackage ? JSON.parse(storedPackage) : null
             );
+
             setCompanyName(window.localStorage.getItem('companyName'));
             setCompanyState(window.localStorage.getItem('companyState'));
             setCompanyType(window.localStorage.getItem('companyType'));
 
+            // Company Type is not set in the first render so it automatically redirects to formation page
+            // In order to prevent this, we check if the render count is 1 and if the company type, state and name are set
             if (renderCount == 1) {
                 if (!(companyType && companyState && companyName)) {
-                    window.location.href = `/${lang}/formation`;
+                    window.location.href = `/${lang}/onboarding/formation`;
                 }
             }
         }
+
         setRenderCount(renderCount + 1);
     }, []);
 
@@ -68,6 +73,7 @@ const Content = ({ lang }) => {
         const companyContactPhone = phone;
         const companyContactAddress =
             street + ', ' + city + ', ' + zip + ', ' + country;
+
         const packageDetails =
             typeof window !== 'undefined'
                 ? JSON.parse(window.localStorage.getItem('selectedPackage'))
@@ -85,7 +91,7 @@ const Content = ({ lang }) => {
             companyCity: city,
             companyCountry: country,
             selectedPackage: packageDetails
-        };
+        };  
 
         axios
             .post(`/${lang}/stripe/api`, { data: { payload } })
@@ -115,7 +121,7 @@ const Content = ({ lang }) => {
             const countriesRes = await axios.get('/api/countries');
             setCountries(countriesRes.data);
 
-            const statesRes = await axios.get(`/${lang}/state/api`);
+            const statesRes = await axios.get('/api/states');
             setStates(statesRes.data);
         };
         fetchData();

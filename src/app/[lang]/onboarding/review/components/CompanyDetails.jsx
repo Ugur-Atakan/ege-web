@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useTranslation } from '../../../../i18n/client'
+import { useTranslation } from '@/i18n/client'
 
 /**
  * Page route for privacy policy page
@@ -25,7 +25,7 @@ const CompanyDetails = ({ lang, companyType, companyName, companyState }) => {
                     <p className='font-semibold text-sm leading-6 text-[#8A8A8A]'>{t("review_company_details_entity_type")}</p>
                     <span className='font-semibold text-sm leading-6 text-[#222222]'>{companyType}</span>
                 </div>
-                <Link href={`/${lang}/company-type`} className='font-semibold text-sm leading-6 text-[#1649FF]'  >
+                <Link href={`/${lang}/onboarding`} className='font-semibold text-sm leading-6 text-[#1649FF]'  >
                     {t("review_edit_button")}
                 </Link>
             </div>

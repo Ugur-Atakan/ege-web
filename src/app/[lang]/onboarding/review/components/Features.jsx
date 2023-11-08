@@ -18,8 +18,8 @@ const Features = ({selectedPackage}) => {
             {selectedPackage && selectedPackage.map((price, index) => (
                 <div key={index}>
                     <div className='flex items-center justify-between'>
-                        <h2 className='font-semibold text-[24px] leading-[44px] text-[#222222]'>{price.orderPackage}</h2>
-                        <h2 className='font-semibold text-[24px] leading-[44px] text-[#222222]'>{'$' + (price.orderPackagePrice / 100).toFixed(0)}</h2>
+                        <h2 className='font-semibold capitalize text-[24px] leading-[44px] text-[#222222]'>{price.type}</h2>
+                        <h2 className='font-semibold text-[24px] leading-[44px] text-[#222222]'>{'$' + (price.price)}</h2>
                     </div>
                     <div className='block py-6'>
                         {price.features && price.features.map((feature, innerIndex) => (

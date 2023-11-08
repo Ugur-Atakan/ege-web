@@ -1,5 +1,5 @@
 import React from 'react'
-import { useTranslation } from '../../../../i18n/client'
+import { useTranslation } from '@/i18n/client'
 
 const OrderReview = ({ lang , selectedPackage , couponcode, setCouponCode , displayForm , setDisplayForm , handleSubmit}) => {
     const { t } = useTranslation(lang);
@@ -17,9 +17,9 @@ const OrderReview = ({ lang , selectedPackage , couponcode, setCouponCode , disp
                     <React.Fragment key={index}>
                         <div>
                             <h1 className='font-semibold text-[16px] leading-6 text-[#222222]'>{t("review_payment_type")}</h1>
-                            <p className='font-semibold text-[16px] leading-6 text-[#222222]'>{price.orderPackage}</p>
+                            <p className='font-semibold capitalize text-[16px] leading-6 text-[#222222]'>{price.type}</p>
                         </div>
-                        <div><h1 className='font-semibold text-[16px] leading-6 text-[#222222]'>{'$' + (price.orderPackagePrice / 100).toFixed(0)}</h1></div>
+                        <div><h1 className='font-semibold text-[16px] leading-6 text-[#222222]'>{'$' + (price.price)}</h1></div>
                     </React.Fragment>
                 ))}
             </div>

@@ -7,57 +7,57 @@
                     "features": [
                         {
                             "title": "Expedited Business Registration - RER(Registate Expedited Registration)",
-                            "starter": true,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": true,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "1-Year Registered Agent Service with Business Address",
-                            "starter": true,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": true,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "1 Year Free Compliance Reminder",
-                            "starter": true,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": true,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "EIN Application Fee Included",
-                            "starter": true,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": true,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Free Company Name Check",
-                            "starter": true,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": true,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Certificate of InCorporation",
-                            "starter": true,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": true,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Statement of Incorporator",
-                            "starter": true,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": true,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Company Formation State Filing Fee Included",
-                            "starter": true,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": true,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Franchise Tax and Annual Report Filing Assistance",
-                            "starter": false,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": true,
+                            "platinum": true
                         }
                     ]
                 },
@@ -66,33 +66,33 @@
                     "features": [
                         {
                             "title": "Access to Registate Online Dashboard",
-                            "starter": true,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": true,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Access to Digital Copies of the Documents",
-                            "starter": true,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": true,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Corporate Meeting Minutes Templates",
-                            "starter": true,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": true,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Electronic Delivery of State Documents",
-                            "starter": true,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": true,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "1 Year Virtual Mailbox Fee Included",
-                            "starter": false,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": true,
+                            "platinum": true
                         }
                     ]
                 },
@@ -101,111 +101,111 @@
                     "features": [
                         {
                             "title": "Bilingual Lifetime Customer Support (Phone & Email)",
-                            "starter": true,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": true,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Banking Resolution Template",
-                            "starter": true,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": true,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Comprehensive Corporation Bylaws Template",
-                            "starter": true,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": true,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Stock Issuance to Shareholders",
-                            "starter": false,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Stock Purchase Agreements",
-                            "starter": false,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Stock Certificates",
-                            "starter": false,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Vesting Schedules for — Recommended for Tech Founders",
-                            "starter": false,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Captable/Stock Ledger",
-                            "starter": false,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "83b IRS forms for Founders",
-                            "starter": false,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Initial Board and Stockholder Resolutions",
-                            "starter": false,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Confidential Information and Inventions Assignment Agreement Templates",
-                            "starter": false,
-                            "startup": false,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": false,
+                            "platinum": true
                         },
                         {
                             "title": "Technology Transfer Agreement Templates",
-                            "starter": false,
-                            "startup": false,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": false,
+                            "platinum": true
                         },
                         {
                             "title": "Mutual Non Disclosure Agreement Templates",
-                            "starter": false,
-                            "startup": false,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": false,
+                            "platinum": true
                         },
                         {
                             "title": "ESOP Reservation Document Templates",
-                            "starter": false,
-                            "startup": false,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": false,
+                            "platinum": true
                         },
                         {
                             "title": "Stock Option Grant Contract Templates",
-                            "starter": false,
-                            "startup": false,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": false,
+                            "platinum": true
                         },
                         {
                             "title": "Template for Option Plan for Employees/Consultants and Advisors",
-                            "starter": false,
-                            "startup": false,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": false,
+                            "platinum": true
                         },
                         {
                             "title": "SAFE Financing Documents Templates",
-                            "starter": false,
-                            "startup": false,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": false,
+                            "platinum": true
                         },
                         {
                             "title": "Convertible Note Financing Documents Templates",
-                            "starter": false,
-                            "startup": false,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": false,
+                            "platinum": true
                         }
                     ]
                 }
@@ -218,43 +218,43 @@
                     "features": [
                         {
                             "title": "Expedited Business Registration - RER(Registate Expedited Registration)",
-                            "gold":false,
-                            "premium":true
+                            "silver":false,
+                            "gold":true
                         },
                         {
                             "title": "1-Year Registered Agent Service with Business Address",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         },
                         {
                             "title": "EIN Application Fee Included",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         },
                         {
                             "title": "Free Company Name Check",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         },
                         {
                             "title": "Certificate of Formation",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         },
                         {
                             "title": "Company Formation State Filing Fee Included",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         },
                         {
                             "title": "Operating Agreement",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         },
                         {
                             "title": "Franchise Tax and Annual Report Filing Assistance",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         }
                     ]
                 },
@@ -263,33 +263,33 @@
                     "features": [
                         {
                             "title": "Access to Registate Online Dashboard",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         },
                         {
                             "title": "Access to Digital Copies of the Documents",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         },
                         {
                             "title": "Member Meeting Minutes Templates",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         },
                         {
                             "title": "Electronic Delivery of State Documents",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         },
                         {
                             "title": "1 Year Virtual Mailbox Fee Included",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         },
                         {
                             "title": "1 Year Free Compliance Calendar",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         }
                     ]
                 },
@@ -298,28 +298,28 @@
                     "features": [
                         {
                             "title": "Bilingual Lifetime Customer Support (Phone & Email)",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         },
                         {
                             "title": "Customizable Banking Resolution Template",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         },
                         {
                             "title": "LLC Membership Certificate",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         },
                         {
                             "title": "LLC Interest Purchase Agreement",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         },
                         {
                             "title": "Business Contract Templates",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         }
                     ]
                 }

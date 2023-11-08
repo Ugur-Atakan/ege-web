@@ -1,4 +1,4 @@
-import { useTranslation } from '../../../../i18n/client'
+import { useTranslation } from '@/i18n/client'
 
 const FillinForm = (params) => {
     const { lang, setCity ,setCountry, setLastName, setName, country

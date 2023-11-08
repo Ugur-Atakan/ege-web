@@ -133,7 +133,7 @@ export default function Compare({ lang }) {
                     </div>
                     <div className="flex items-center justify-center py-24">
                         <Link
-                            href={`/${lang}/company-type`}
+                            href={`/${lang}/onboarding`}
                             className="rounded-2xl py-[14px] px-6 font-semibold text-lg text-[#222222] bg-[#9EE248]"
                         >
                            {t('menu_top_right_handcorner_button')}
@@ -209,7 +209,7 @@ export default function Compare({ lang }) {
                     </div>
                     <div className="flex items-center justify-center pt-6 pb-16">
                         <Link
-                            href={`/${lang}/company-type`}
+                            href={`/${lang}/onboarding`}
                             className="rounded-2xl py-[14px] px-6 font-semibold text-lg text-[#222222] bg-[#9EE248] w-full text-center"
                         >
                             {t('menu_top_right_handcorner_button')}

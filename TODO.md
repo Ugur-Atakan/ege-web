@@ -1,10 +1,5 @@
 [] Logging in main folders
-[] New implementation of main page
 [] Session creation and replacing local storage with session
 [] Stripe products
-[] Fix for the external script impacting performance
+[] Google Tag Script
 [] Add prettier
-
-*****
-[]
-[] /onboarding/ route 

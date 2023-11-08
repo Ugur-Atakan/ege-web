@@ -20,6 +20,15 @@ const RootLayout = ({
 }) => {
   return (
     <html lang={lang} dir={dir(lang)} className='h-full text-base antialiased' >
+        {/* _|_
+        /@-@\ Copyright © OpsBeacon, Inc.
+        \ - /    All rights reserved. */}
+        <head dangerouslySetInnerHTML={{ __html: `
+          <!-- Copyright © Registate LLC -->
+          <!-- All rights reserved. -->
+          <!-- v1.1.0 -->
+        `
+      }}></head>
       <head >
       <Script
             type="text/javascript"

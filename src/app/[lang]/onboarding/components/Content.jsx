@@ -33,12 +33,12 @@ const Content = ({ lang }) => {
 
     const handleSelectLlc = () => {
         setCompanyType('LLC');
-        redirect('/state', lang);
+        redirect('/onboarding/state', lang);
     }
 
     const handleSelectCcorp = () => {
         setCompanyType('Corporation');
-        redirect('/state', lang);
+        redirect('/onboarding/state', lang);
     }
 
     const takeQuizForm = () => { redirect(`/${lang}/quiz`) }

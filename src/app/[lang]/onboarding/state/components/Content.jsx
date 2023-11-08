@@ -9,7 +9,8 @@ import Heading from './Heading'
 import DropDown from './DropDown'
 import dynamic from 'next/dynamic'
 import axios from 'axios'
-import { readCookie, submitCookie } from '../../../lib/session/clientActions'
+
+// import { readCookie, submitCookie } from '../../../lib/session/clientActions'
 
 const RadioListItem = dynamic(() => import('./RadioListItem'))
 
@@ -51,7 +52,7 @@ const Content = ({ lang }) => {
   if (!companyType)
   {
     if (typeof window !== 'undefined' && window.location) {
-      window.location.href = `/${lang}/company-type`;
+      window.location.href = `/${lang}/onboarding`;
     }
   } 
 
@@ -60,7 +61,7 @@ const Content = ({ lang }) => {
   //* API call to get the states
   useEffect(() => {
     const getState = async () => {
-      await axios.get(`/${lang}/state/api/`)
+      await axios.get('/api/states')
       .then((response) => {
           var jsonData = response.data;
           const filteredStates = jsonData.filter(item => item.state !== 'Delaware' && item.state !== 'Wyoming');
@@ -123,7 +124,7 @@ const Content = ({ lang }) => {
               />
             </li>
 
-            <Link href={`/${lang}/company-name/`} className="order-4 w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer">
+            <Link href={`/${lang}/onboarding/company-name/`} className="order-4 w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer">
               {t('state_button')}
             </Link>
           </ul>
