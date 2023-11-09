@@ -37,7 +37,7 @@ export default function Compare({ lang }) {
             </div>
             <div className="mx-auto max-w-md px-6 py-0 lg:px-12">
                 <div className="text-left lg:text-center">
-                    <h1 className="font-bold text-lg text-[#222222]">{t('starter_packages_description_first')}<span className="text-[#1649FF] mr-1 font-bold ">{' ' + t('starter_packages_description_middle')}</span>{t('starter_packages_description_last')}</h1>
+                    <h1 className="font-bold text-[18px] text-[#222222]">{t('starter_packages_description_first')}<span className="text-[#1649FF] mr-1 font-bold ">{' ' + t('starter_packages_description_middle')}</span>{t('starter_packages_description_last')}</h1>
                 </div>
             </div>
             <div className="mx-auto max-w-7xl p-6 lg:px-12">
@@ -79,7 +79,7 @@ export default function Compare({ lang }) {
                                                         <div className="w-6 h-6">
                                                             <InformationCircleIcon className="text-[#1649FF] w-6 h-6" />
                                                         </div>
-                                                        <span className="text-[#222222] text-lg font-semibold whitespace-normal">{person.name}</span>
+                                                        <span className="w-[249px]  text-[#222222] text-[18px] font-semibold whitespace-normal">{person.name}</span>
                                                     </div>
                                                     {person.description &&
                                                         <div className="ml-8 whitespace-normal mt-1 mr-12">

@@ -64,7 +64,7 @@ const Navbar = ({ lang }) => {
             </Link>
           </div>
           <div className="flex gap-x-3 lg:hidden">
-            <Link href={`/${lang}/company-type`} className='bg-white rounded-[28px] py-3 px-4 text-[16px] leading-[22px] font-semibold text-[#1649FF]'>
+            <Link href={`/${lang}/onboardin`} className='bg-white rounded-[28px] py-3 px-4 text-[16px] leading-[22px] font-semibold text-[#1649FF]'>
               {t('menu_top_right_handcorner_button')}
             </Link>
             <button
@@ -77,7 +77,7 @@ const Navbar = ({ lang }) => {
             </button>
           </div>
           <div className="hidden lg:hidden lg:gap-x-12">
-            <Link href={`/${lang}/company-type`} className="text-sm font-semibold leading-6 text-white">
+            <Link href={`/${lang}/onboarding`} className="text-sm font-semibold leading-6 text-white">
               {t('menu1_title')}
             </Link>
             <Link href='#.' className="text-sm font-semibold leading-6 text-white">
@@ -131,7 +131,7 @@ const Navbar = ({ lang }) => {
                 </Menu>
               </div>
               <Link
-                href={`/${lang}/company-type`}
+                href={`/${lang}/onboarding`}
                 id="header-fmc"
                 className={`bg-white py-2 px-4 rounded-xl text-[#132F8E] font-semibold text-[14px] leading-5' ${isSticky && '!bg-blue-600 !text-white'}`}
               >
@@ -179,7 +179,7 @@ const Navbar = ({ lang }) => {
                 </div>
                 <div className="py-6">
                   <Link
-                    href={`/${lang}/company-type`}
+                    href={`/${lang}/onboarding`}
                     id="header-fmc"
                     className={'bg-white py-2 px-4 rounded-xl text-[#132F8E] font-semibold text-[14px] leading-5'}
                   >

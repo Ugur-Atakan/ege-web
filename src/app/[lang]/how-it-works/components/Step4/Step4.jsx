@@ -52,7 +52,7 @@ const Step4 = ({ lang }) => {
             <div className='flex-col lg:flex-row flex items-stretch justify-center gap-4'>
               <div className='w-full bg-white rounded-[32px] p-6 relative overflow-hidden'>
                 <div className='flex flex-col gap-4'>
-                  <h1 className='font-bold text-[32px] lg:text-[64px] leading-[38px] lg:leading-[64px] text-[#222222]'>Starter</h1>
+                  <h1 className='font-bold text-[32px] lg:text-[64px] leading-[38px] lg:leading-[64px] text-[#222222]'>Silver</h1>
                   <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-[24px] text-[#222222] lg:w-2/3'>Expedited Filing (1-3 business days). Everything you need to perfectly start your company.</p>
                 </div>
                 <div className='py-8'>
@@ -87,12 +87,12 @@ const Step4 = ({ lang }) => {
               </div>
               <div className='w-full bg-[#1649FF] rounded-[32px] p-6 relative overflow-hidden'>
                 <div className='flex flex-col gap-4'>
-                  <h1 className='font-bold text-[32px] lg:text-[64px] leading-[38px] lg:leading-[64px] text-white'>Start Up</h1>
+                  <h1 className='font-bold text-[32px] lg:text-[64px] leading-[38px] lg:leading-[64px] text-white'>Gold</h1>
                   <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-[24px] text-white lg:w-2/3'>
                     Expedited Filing (1-3 business days). Everything you need to diligently operate and manage your company.</p>
                 </div>
                 <div className='py-8'>
-                  <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white pb-4'>Everything in Starter, plus:</p>
+                  <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white pb-4'>Everything in Silver, plus:</p>
                   <ul className='flex flex-col gap-3'>
                     <li className='flex items-center gap-3'>
                       <Image src={tickblue} className='h-8 w-8' alt='Compliance Reminder' />
@@ -120,11 +120,11 @@ const Step4 = ({ lang }) => {
               </div>
               <div className='w-full bg-[#222222] rounded-[32px] p-6 relative overflow-hidden'>
                 <div className='flex flex-col gap-4'>
-                  <h1 className='font-bold text-[32px] lg:text-[64px] leading-[38px] lg:leading-[64px] text-white'>Start Up</h1>
+                  <h1 className='font-bold text-[32px] lg:text-[64px] leading-[38px] lg:leading-[64px] text-white'>Platinum</h1>
                   <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-[24px] text-white lg:w-2/3'>Expedited Filing (1-3 business days). Everything you need to operate, manage and grow your company.</p>
                 </div>
                 <div className='py-8'>
-                  <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white pb-4'>Everything in Starter, plus:</p>
+                  <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white pb-4'>Everything in Silver, plus:</p>
                   <ul className='flex flex-col gap-3'>
                     <li className='flex items-center gap-3'>
                       <Image src={tickblue} className='h-8 w-8' alt='Compliance Reminder' />
@@ -155,7 +155,7 @@ const Step4 = ({ lang }) => {
             <div className='flex-col lg:flex-row flex items-stretch justify-center gap-6'>
               <div className='bg-white rounded-[32px] p-6 relative overflow-hidden'>
                 <div className='flex flex-col gap-4'>
-                  <h1 className='font-bold text-[32px] lg:text-[64px] leading-[38px] lg:leading-[64px] text-[#222222]'>Gold</h1>
+                  <h1 className='font-bold text-[32px] lg:text-[64px] leading-[38px] lg:leading-[64px] text-[#222222]'>Silver</h1>
                   <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-[24px] text-[#222222] lg:w-2/3'>I want my business set up with essential services and documents.</p>
                 </div>
                 <div className='py-8'>
@@ -190,11 +190,11 @@ const Step4 = ({ lang }) => {
               </div>
               <div className='bg-[#1649FF] rounded-[32px] p-6 relative overflow-hidden'>
                 <div className='flex flex-col gap-4'>
-                  <h1 className='font-bold text-[32px] lg:text-[64px] leading-[38px] lg:leading-[64px] text-white'>Premium</h1>
+                  <h1 className='font-bold text-[32px] lg:text-[64px] leading-[38px] lg:leading-[64px] text-white'>Gold</h1>
                   <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-[24px] text-white lg:w-2/3'>I want an expert to ensure my business runs smoothly even after creation.</p>
                 </div>
                 <div className='py-8'>
-                  <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white pb-4'>Everything in Gold, plus:</p>
+                  <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white pb-4'>Everything in Silver, plus:</p>
                   <ul className='flex flex-col gap-3'>
                     <li className='flex items-center gap-3'>
                       <Image src={tickblue} className='h-8 w-8' alt='Compliance Reminder' />
@@ -239,13 +239,13 @@ const Step4 = ({ lang }) => {
                           scope="col"
                           className="w-1/5 sticky top-0 z-10 border-b border-white whitespace-nowrap md:whitespace-normal px-3 py-3.5 text-center text-2xl font-semibold text-[#222222] backdrop-blur backdrop-filter sm:table-cell"
                         >
-                          Gold
+                          Silver
                         </th>
                         <th
                           scope="col"
                           className="w-1/5 sticky top-0 z-10 border-b border-white whitespace-nowrap md:whitespace-normal px-3 py-3.5 text-center text-2xl font-semibold text-[#1649FF] backdrop-blur backdrop-filter sm:table-cell"
                         >
-                          Premium
+                          Gold
                         </th>
                       </>
                     )
@@ -255,19 +255,19 @@ const Step4 = ({ lang }) => {
                             scope="col"
                             className="w-1/5 sticky top-0 z-10 border-b border-white whitespace-nowrap md:whitespace-normal px-3 py-3.5 text-center text-2xl font-semibold text-[#222222] backdrop-blur backdrop-filter sm:table-cell"
                           >
-                            Starter
+                            Silver
                           </th>
                           <th
                             scope="col"
                             className="w-1/5 sticky top-0 z-10 border-b border-white whitespace-nowrap md:whitespace-normal px-3 py-3.5 text-center text-2xl font-semibold text-[#222222] backdrop-blur backdrop-filter sm:table-cell"
                           >
-                            Start Up
+                            Gold
                           </th>
                           <th
                             scope="col"
                             className="w-1/5 sticky top-0 z-10 border-b border-white whitespace-nowrap md:whitespace-normal px-3 py-3.5 text-center text-2xl font-semibold text-[#1649FF] backdrop-blur backdrop-filter sm:table-cell"
                           >
-                            Scale Up
+                            Platinum
                           </th>
                         </>
                       )}
@@ -292,12 +292,12 @@ const Step4 = ({ lang }) => {
                             </td>
                             <td className='font-semibold text-lg text-center leading-6 text-[#222222] py-4 lg:border-l-[1px] lg:border-[#C8C8C8]'>
                               <div className='flex items-center justify-center'>
-                                <Image src={feature.gold ? arrowblack : noinclude} className='h-6 w-6' alt='tick' />
+                                <Image src={feature.silver ? arrowblack : noinclude} className='h-6 w-6' alt='tick' />
                               </div>
                             </td>
                             <td className='font-semibold text-lg text-center leading-6 text-[#222222] py-4 lg:border-l-[1px] lg:border-[#C8C8C8]'>
                               <div className='flex items-center justify-center'>
-                                <Image src={feature.premium ? arrowblue : noinclude} className='h-6 w-6' alt='tick' />
+                                <Image src={feature.gold ? arrowblue : noinclude} className='h-6 w-6' alt='tick' />
                               </div>
                             </td>
                           </tr>
@@ -319,17 +319,17 @@ const Step4 = ({ lang }) => {
                             </td>
                             <td className='font-semibold text-lg text-center leading-6 text-[#222222] py-4 lg:border-l-[1px] lg:border-[#C8C8C8]'>
                               <div className='flex items-center justify-center'>
-                                <Image src={features.starter ? arrowblack : noinclude} className='h-6 w-6' alt='tick' />
+                                <Image src={features.silver ? arrowblack : noinclude} className='h-6 w-6' alt='tick' />
                               </div>
                             </td>
                             <td className='font-semibold text-lg text-center leading-6 text-[#222222] py-4 lg:border-l-[1px] lg:border-[#C8C8C8]'>
                               <div className='flex items-center justify-center'>
-                                <Image src={features.startup ? arrowblack : noinclude} className='h-6 w-6' alt='tick' />
+                                <Image src={features.gold ? arrowblack : noinclude} className='h-6 w-6' alt='tick' />
                               </div>
                             </td>
                             <td className='font-semibold text-lg text-center leading-6 !text-[#1649FF] py-4 lg:border-l-[1px] lg:border-[#C8C8C8]'>
                               <div className='flex items-center justify-center'>
-                                <Image src={features.scaleup ? arrowblue : noinclude} className='h-6 w-6' alt='tick' />
+                                <Image src={features.platinum ? arrowblue : noinclude} className='h-6 w-6' alt='tick' />
                               </div>
                             </td>
                           </tr>
@@ -343,21 +343,21 @@ const Step4 = ({ lang }) => {
           </div>
           <div className={`block overflow-hidden lg:hidden ${showAllDifferences ? ' h-full' : ' h-[32rem]'}`}>
             <div className='text-center py-8'>
-              <h2 className='font-semibold text-[20px] leading-[22px] text-[#222222]'>Compare what’s included per package</h2>
+              <h2 className='font-semibold text-[20px] leading-[22px] text-[#222222]'>Compare what{"'"}s included per package</h2>
             </div>
             <div className='flex items-center justify-around border border-[#222222] rounded-2xl'>
               {isChecked === false ?
                 (
                   <>
-                    <div onClick={() => setSelectedPackagesNameLLC('gold')} className={`w-full text-center p-4 border-r border-[#222222] font-semibold text-[18px] leading-6 text-[#222222] rounded-tl-2xl rounded-bl-2xl ${selectedPackagesNameLLC === 'gold' && 'bg-[#1649FF] text-white'}`}>Gold</div>
-                    <div onClick={() => setSelectedPackagesNameLLC('premium')} className={`w-full text-center p-4 font-semibold text-[18px] leading-6 text-[#222222] rounded-tr-2xl rounded-br-2xl ${selectedPackagesNameLLC === 'premium' && 'bg-[#1649FF] text-white'}`}>Premium</div>
+                    <div onClick={() => setSelectedPackagesNameLLC('silver')} className={`w-full text-center p-4 border-r border-[#222222] font-semibold text-[18px] leading-6 text-[#222222] rounded-tl-2xl rounded-bl-2xl ${selectedPackagesNameLLC === 'silver' && 'bg-[#1649FF] text-white'}`}>Gold</div>
+                    <div onClick={() => setSelectedPackagesNameLLC('gold')} className={`w-full text-center p-4 font-semibold text-[18px] leading-6 text-[#222222] rounded-tr-2xl rounded-br-2xl ${selectedPackagesNameLLC === 'gold' && 'bg-[#1649FF] text-white'}`}>Premium</div>
                   </>
                 ) :
                 (
                   <>
-                    <div onClick={() => setSelectedPackagesNameCorp('starter')} className={`w-full text-center p-4 border-r border-[#222222] font-semibold text-[18px] leading-6 text-[#222222] rounded-tl-2xl rounded-bl-2xl ${selectedPackagesNameCorp === 'starter' && 'bg-[#1649FF] text-white'}`}>Starter</div>
-                    <div onClick={() => setSelectedPackagesNameCorp('startup')} className={`w-full text-center p-4 border-r border-[#222222] font-semibold text-[18px] leading-6 text-[#222222] ${selectedPackagesNameCorp === 'startup' && 'bg-[#1649FF] text-white'}`}>Start Up</div>
-                    <div onClick={() => setSelectedPackagesNameCorp('scaleup')} className={`w-full text-center p-4 border-r border-[#222222] font-semibold text-[18px] leading-6 text-[#222222] rounded-tr-2xl rounded-br-2xl ${selectedPackagesNameCorp === 'scaleup' && 'bg-[#1649FF] text-white'}`}>Premium</div>
+                    <div onClick={() => setSelectedPackagesNameCorp('silver')} className={`w-full text-center p-4 border-r border-[#222222] font-semibold text-[18px] leading-6 text-[#222222] rounded-tl-2xl rounded-bl-2xl ${selectedPackagesNameCorp === 'silver' && 'bg-[#1649FF] text-white'}`}>Silver</div>
+                    <div onClick={() => setSelectedPackagesNameCorp('gold')} className={`w-full text-center p-4 border-r border-[#222222] font-semibold text-[18px] leading-6 text-[#222222] ${selectedPackagesNameCorp === 'gold' && 'bg-[#1649FF] text-white'}`}>Gold</div>
+                    <div onClick={() => setSelectedPackagesNameCorp('platinum')} className={`w-full text-center p-4 border-r border-[#222222] font-semibold text-[18px] leading-6 text-[#222222] rounded-tr-2xl rounded-br-2xl ${selectedPackagesNameCorp === 'platinum' && 'bg-[#1649FF] text-white'}`}>Platinum</div>
                   </>
                 )
               }
@@ -373,7 +373,7 @@ const Step4 = ({ lang }) => {
                       </div>
                       {packageItem.features.map((features, detailIndex) => (
                         <div key={detailIndex}>
-                          {selectedPackagesNameLLC === 'gold' && features.gold &&
+                          {selectedPackagesNameLLC === 'silver' && features.silver &&
                             <div className="font-semibold text-lg text-left leading-6 text-[#222222] py-3">
                               <div className='flex items-center gap-4'>
                                 <Image src={arrowblack} className='h-6 w-6' alt='tick' />
@@ -381,7 +381,7 @@ const Step4 = ({ lang }) => {
                               </div>
                             </div>
                           }
-                          {selectedPackagesNameLLC === 'premium' && features.premium &&
+                          {selectedPackagesNameLLC === 'gold' && features.gold &&
                             <div className="font-semibold text-lg text-left leading-6 text-[#222222] py-3">
                               <div className='flex items-center gap-4'>
                                 <Image src={arrowblack} className='h-6 w-6' alt='tick' />
@@ -402,7 +402,7 @@ const Step4 = ({ lang }) => {
                         </div>
                         {packageItem.features.map((features, detailIndex) => (
                           <div key={detailIndex}>
-                            {selectedPackagesNameCorp === 'starter' && features.starter &&
+                            {selectedPackagesNameCorp === 'silver' && features.silver &&
                               <div className="font-semibold text-lg text-left leading-6 text-[#222222] py-3">
                                 <div className='flex items-center gap-4'>
                                   <Image src={arrowblack} className='h-6 w-6' alt='tick' />
@@ -410,7 +410,7 @@ const Step4 = ({ lang }) => {
                                 </div>
                               </div>
                             }
-                            {selectedPackagesNameCorp === 'startup' && features.startup &&
+                            {selectedPackagesNameCorp === 'gold' && features.gold &&
                               <div className="font-semibold text-lg text-left leading-6 text-[#222222] py-3">
                                 <div className='flex items-center gap-4'>
                                   <Image src={arrowblack} className='h-6 w-6' alt='tick' />
@@ -418,7 +418,7 @@ const Step4 = ({ lang }) => {
                                 </div>
                               </div>
                             }
-                             {selectedPackagesNameCorp === 'scaleup' && features.scaleup &&
+                             {selectedPackagesNameCorp === 'platinum' && features.platinum &&
                               <div className="font-semibold text-lg text-left leading-6 text-[#222222] py-3">
                                 <div className='flex items-center gap-4'>
                                   <Image src={arrowblack} className='h-6 w-6' alt='tick' />
