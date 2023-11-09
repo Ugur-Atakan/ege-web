@@ -52,9 +52,9 @@ export async function POST(req) {
           price_data: {
             currency: 'USD',
             product_data: {
-              name: selectedPackage[0].orderPackage
+              name: selectedPackage[0].type
             },
-            unit_amount: selectedPackage[0].orderPackagePrice,
+            unit_amount: selectedPackage[0].price * 100, // Stripe requires price in cents
           },
           quantity: 1,
         },

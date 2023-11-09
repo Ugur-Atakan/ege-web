@@ -7,57 +7,57 @@
                     "features": [
                         {
                             "title": "Hızlandırılmış İşletme Kaydı - RER(Registate Expedited Registration)",
-                            "starter": true,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": true,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "1 Yıllık İş Adresi ve Kayıtlı Temsilci Hizmeti",
-                            "starter": true,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": true,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "1 Yıllık Ücretsiz Uyumluluk Hatırlatıcısı",
-                            "starter": true,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": true,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "EIN Başvuru Ücreti Dahil",
-                            "starter": true,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": true,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Ücretsiz Şirket Adı Kontrolü",
-                            "starter": true,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": true,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Kuruluş Belgeleri",
-                            "starter": true,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": true,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Kurucu Beyannamesi",
-                            "starter": true,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": true,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Kuruluş İçin Eyalete Dosyalama Ücreti Dahil",
-                            "starter": true,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": true,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Franchise Vergisi ve Yıllık Rapor Dosyalama Ücretlerinin Ödenmesine Destek",
-                            "starter": false,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": true,
+                            "platinum": true
                         }
                     ]
                 },
@@ -66,33 +66,33 @@
                     "features": [
                         {
                             "title": "Registate Online Kontrol Paneli Erişimi",
-                            "starter": true,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": true,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Belgelerin Dijital Kopyalarına Erişim",
-                            "starter": true,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": true,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Özelleştirilebilir Kurul Toplantı Tutanakları                            ",
-                            "starter": true,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": true,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Devlet Belgelerinin Elektronik Teslimatı",
-                            "starter": true,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": true,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "1 Yıllık Sanal Posta Kutusu Ücreti Dahil",
-                            "starter": false,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": true,
+                            "platinum": true
                         }
                     ]
                 },
@@ -101,111 +101,111 @@
                     "features": [
                         {
                             "title": "Çoklu Dil Destekli Müşteri Desteği (Telefon ve E-posta)",
-                            "starter": true,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": true,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Özelleştirilebilir Banka Yetkilendirme Kararı                            ",
-                            "starter": true,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": true,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Kapsamlı Şirket İç Yönetmelik Şablonu",
-                            "starter": true,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": true,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Hissedarlara Hisse Senedi İhracı",
-                            "starter": false,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Hisse Alım Sözleşmeleri",
-                            "starter": false,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Hisse Senetleri",
-                            "starter": false,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Hisse Hak Kazanma (Vesting) Planları - Teknoloji Kurucularına Önerilir",
-                            "starter": false,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Pay Defteri",
-                            "starter": false,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Kurucular İçin 83b IRS Formları",
-                            "starter": false,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "İlk Kurul ve Hissedar Kararları",
-                            "starter": false,
-                            "startup": true,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": true,
+                            "platinum": true
                         },
                         {
                             "title": "Gizlilik ve Fikri Sınai Hakların Devri Sözleşmesi",
-                            "starter": false,
-                            "startup": false,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": false,
+                            "platinum": true
                         },
                         {
                             "title": "Teknoloji Devri Sözleşmesi",
-                            "starter": false,
-                            "startup": false,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": false,
+                            "platinum": true
                         },
                         {
                             "title": "Karşılıklı Gizlilik Anlaşması Şablonları",
-                            "starter": false,
-                            "startup": false,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": false,
+                            "platinum": true
                         },
                         {
                             "title": "ESOP Rezervasyon Belgesi Şablonları",
-                            "starter": false,
-                            "startup": false,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": false,
+                            "platinum": true
                         },
                         {
                             "title": "Hisse Opsiyon Sözleşmesi Şablonları",
-                            "starter": false,
-                            "startup": false,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": false,
+                            "platinum": true
                         },
                         {
                             "title": "Çalışanlar ve Danışmanlar İçin Hisse Opsiyon Programları Şablonu",
-                            "starter": false,
-                            "startup": false,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": false,
+                            "platinum": true
                         },
                         {
                             "title": "SAFE Sözleşme Belgeleri",
-                            "starter": false,
-                            "startup": false,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": false,
+                            "platinum": true
                         },
                         {
                             "title": "Convertible Note Belgeleri",
-                            "starter": false,
-                            "startup": false,
-                            "scaleup": true
+                            "silver": false,
+                            "gold": false,
+                            "platinum": true
                         }
                     ]
                 }
@@ -218,43 +218,43 @@
                     "features": [
                         {
                             "title": "Hızlandırılmış İşletme Kaydı - RER(Registate Expedited Registration)",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         },
                         {
                             "title": "İş Adresi ile 1 Yıllık Kayıtlı Temsilci Hizmeti",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         },
                         {
                             "title": "EIN Başvuru Ücreti Dahil",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         },
                         {
                             "title": "Ücretsiz Şirket Adı Kontrolü",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         },
                         {
                             "title": "Kuruluş Belgeleri",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         },
                         {
                             "title": "Şirket Kuruluş Devlet Bildirim Ücreti Dahil",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         },
                         {
                             "title": "İşletme Sözleşmesi",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         },
                         {
                             "title": "Franchise Vergisi ve Yıllık Rapor Dosyalama Ücretlerinin Ödenmesine Destek",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         }
                     ]
                 },
@@ -263,33 +263,33 @@
                     "features": [
                         {
                             "title": "Registate Online Kontrol Paneli Erişimi",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         },
                         {
                             "title": "Belgelerin Dijital Kopyalarına Erişim",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         },
                         {
                             "title": "Özelleştirilebilir Kurul Toplantı Tutanakları",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         },
                         {
                             "title": "Devlet Belgelerinin Elektronik Teslimatı",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         },
                         {
                             "title": "1 Yıllık Sanal Posta Kutusu Ücreti Dahil",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         },
                         {
                             "title": "1 Yıllık Ücretsiz Uyumluluk Takvimi",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         }
                     ]
                 },
@@ -298,28 +298,28 @@
                     "features": [
                         {
                             "title": "Çoklu Dil Destekli Müşteri Hizmet (Telefon ve E-posta)",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         },
                         {
                             "title": "Özelleştirilebilir Banka Yetkilendirme Kararı",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         },
                         {
                             "title": "LLC Hissedarlık Sözleşmesi",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         },
                         {
                             "title": "LLC Hisse Satış Sözleşmesi",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         },
                         {
                             "title": "İş Sözleşmesi Şablonları",
-                            "gold":true,
-                            "premium":true
+                            "silver":true,
+                            "gold":true
                         }
                     ]
                 }

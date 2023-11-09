@@ -42,7 +42,7 @@ const Navbar = ({ isSticky, t, lang }) => {
                 </div>
                 <div className="flex gap-x-3 lg:hidden">
                     {!mobileMenuOpen && (
-                        <Link href={`/${lang}/company-type`}  className='bg-white rounded-[28px] py-2 px-4 text-[16px] leading-[22px] font-semibold text-[#1649FF]'>
+                        <Link href={`/${lang}/onboarding`}  className='bg-white rounded-[28px] py-2 px-4 text-[16px] leading-[22px] font-semibold text-[#1649FF]'>
                             {t('menu_top_right_handcorner_button')}
                         </Link>
                     )}
@@ -57,7 +57,7 @@ const Navbar = ({ isSticky, t, lang }) => {
             
                 {/* Mid navbar component */}
                 <div className="hidden lg:flex lg:gap-x-12">
-                    <Link href={`/${lang}/company-type`} className={`px-2 text-sm font-medium leading-6 ${isSticky ? 'text-black' : 'text-white'}`}>
+                    <Link href={`/${lang}/onboarding`} className={`px-2 text-sm font-medium leading-6 ${isSticky ? 'text-black' : 'text-white'}`}>
                         {t('menu1_title')}
                     </Link>
                     <Link href={`/${lang}/how-it-works`} className={`px-2 text-sm font-medium leading-6 ${isSticky ? 'text-black' : 'text-white'}`}>
@@ -74,7 +74,7 @@ const Navbar = ({ isSticky, t, lang }) => {
                     
                         {/* Button left */}
                         <Link
-                            href={`/${lang}/company-type`}
+                            href={`/${lang}/onboarding`}
                             id="header-fmc"
                             className={`bg-white py-2 px-4 rounded-full text-[#1649FF] font-semibold text-[14px] leading-5' ${isSticky && '!bg-blue-600 !text-white'}`}
                         >
@@ -107,7 +107,7 @@ const Navbar = ({ isSticky, t, lang }) => {
                             </button>
                         </div>
                         <div className="flex flex-col space-y-5 py-6">
-                            <Link href={`/${lang}/company-type`} className="text-3xl font-extrabold leading-6 text-white">
+                            <Link href={`/${lang}/onboarding`} className="text-3xl font-extrabold leading-6 text-white">
                                 {t('menu1_title')}
                             </Link>
                             <Link href={`/${lang}/how-it-works`} className="text-2xl leading-6 text-white">

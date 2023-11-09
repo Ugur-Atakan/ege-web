@@ -9,17 +9,6 @@ import { calendar, hat, folder, protectionicon, tic, at, navigator,
 } from '@/assets/images';
 import { useTranslation } from '@/i18n/client'
 
-function SampleNextArrow(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "block", background: "#1649FF" }}
-      onClick={onClick}
-    />
-  );
-}
-
 export default function SupportBusiness({ lang }) {
   const { t } = useTranslation(lang);
   const [selectedPackage, setSelectedPackage] = useState(0);
@@ -78,8 +67,7 @@ export default function SupportBusiness({ lang }) {
           slidesToShow: 7,
         }
       },
-    ],
-    nextArrow: <SampleNextArrow />,
+    ]
   };
 
   const selectedPackages = (() => {
@@ -106,7 +94,8 @@ export default function SupportBusiness({ lang }) {
           )
         })}
       </div>
-      <div className={t('after-formation hidden lg:block relative')} >
+
+      <div className={'next-button hidden lg:block relative'}>
         <Slider {...settings} className='relative'>
           {selectedPackages.map((pac, index) => (           
             <div key={index} className="p-8 shadow-lg bg-white rounded-[32px] h-[35rem]">
@@ -151,6 +140,7 @@ export default function SupportBusiness({ lang }) {
           )}
         </div>
       </div>
+
       <div className="mx-auto max-w-5xl border-t mt-4 lg:mt-16 border-white border-opacity-[0.20] py-12 px-6 lg:px-0">
         <div className="grid grid-cols-1 md:grid-cols:2 lg:grid-cols-3 items-start gap-6 lg:gap-3">
           <div className="flex items-start gap-3 justify-start lg:justify-center">

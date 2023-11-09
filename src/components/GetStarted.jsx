@@ -27,7 +27,7 @@ export default function GetStarted({ lang }) {
                             <p className="text-lg text-[#070707] text-opacity-[60%] leading-6 mt-4 text-on pb-6">{t('get_started_card2_description')}</p>
                             <div className="btn-on text-[#1649FF] font-semibold absolute text-lg text-left bottom-5">{t('get_started_card2_button')}</div>
                         </Link>
-                        <Link href={`/${lang}/company-type`} className="bg-white rounded-[28px] p-8 relative hover:bg-[#1649FF] hover:text-white how-to-get-started">
+                        <Link href={`/${lang}/onboarding`} className="bg-white rounded-[28px] p-8 relative hover:bg-[#1649FF] hover:text-white how-to-get-started">
                             <h1 className="font-semibold text-[22px] leading-6">{t('get_started_card3_title')}</h1>
                             <p className="text-on pb-6 text-lg text-[#070707] leading-6 text-opacity-[60%] mt-4">{t('get_started_card3_description')}</p>
                             <div className="btn-on text-[#1649FF] font-semibold absolute text-lg text-left bottom-5">{t('get_started_card3_button')}</div>

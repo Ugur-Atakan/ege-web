@@ -29,7 +29,7 @@ const Step2 = ({ lang }) => {
           </div>
           <div className='flex-col lg:flex-row flex items-center gap-8 pb-12'>
             <div className='w-[360px] h-[30rem] lg:w-[549px] lg:h-[669px] rounded-[32px] hiw-delaware relative lg:overflow-hidden'>
-              <div className='absolute top-[45%] lg:top-[60%] -right-4'>
+              <div className='absolute top-[45%] lg:top-2/3 -right-4'>
                 <div className='bg-[#9EE248] text-[#222222] py-4 px-6 text-[16px] rounded-2xl rotate-12 font-semibold'>{t('how_it_works_help_company_state_card1_button_on')}</div>
               </div>
               <div className='w-full pr-12 lg:pr-0 bottom-8 left-4 lg:left-8 absolute'>
@@ -38,7 +38,7 @@ const Step2 = ({ lang }) => {
                   <ArrowRightIcon className='mt-2 h-12 text-white' />
                 </div>
                 <div className='py-2'>
-                  <p className='font-semibold text-white text-[16px] lg:text-[18px] leading-6'>{t('how_it_works_help_company_state_card1_desc')}</p>
+                  <p className='lg:w-[414px] sm:w-[314px] font-semibold text-white text-[16px] lg:text-[18px] leading-6'>{t('how_it_works_help_company_state_card1_desc')}</p>
                 </div>
               </div>
             </div>

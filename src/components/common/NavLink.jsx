@@ -11,7 +11,8 @@ import { usePathname } from 'next/navigation'
 const NavLink = ({ href, exact, children, ...props }) => {
   const pathname = usePathname()
   const active = 'border-b-2 border-[#1649FF] text-[#1649FF] -mb-8'
-  const isActive = exact ? pathname === href : pathname.startsWith(href)
+
+  const isActive = exact ? asPath === href : pathname.endsWith(href)
 
   if (isActive) {
     props.className += active

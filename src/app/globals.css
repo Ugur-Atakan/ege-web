@@ -162,15 +162,17 @@ body {
     animation-duration: 6s;
     animation-name: rocket;
   }
-
 }
 
-.after-formation .slick-next {
-  right: auto;
-  left: -7rem;
+/************
+* NEXT BUTTON
+************/
+
+.next-button .slick-prev:before {
+  display: none !important;
 }
 
-.after-formation .slick-next:before {
+.next-button .slick-next:before {
   content: "";
   display: inline-block;
   height: 30px;
@@ -185,17 +187,14 @@ body {
   padding: 30px;
 }
 
-.after-formation .slick-prev {
-  display: none !important;
+.next-button .slick-next {
+  right: auto;
+  left: -7rem;
 }
 
-.founders .slick-next:before {
-  content: "";
-}
-
-.slick-prev:before {
-  content: '';
-}
+/************
+* NEXT END
+************/
 
 .not-sure::before {
   content: 'Recommended';
@@ -208,76 +207,6 @@ body {
   border-radius: 1rem;
 }
 
-.founders-section .slick-list {
-  overflow: visible !important;
-  clip-path: inset(-100vw -100vw -100vw 0);
-  margin: 0 75px 0 0;
-} 
-
-.founders .slick-slide {
-  padding: 0 10px 0 0;
-}
-
-.founders .slick-arrow.slick-prev {
-  background-image: url('../assets/images/line.png');
-  background-position: center center;
-  background-repeat: no-repeat;
-  opacity: 1;
-  border: 1px solid #C8C8C8;
-  border-radius: 100%;
-  padding: 25px;
-  rotate: 180deg;
-  right: 0;
-  top: -6.5rem;
-  left: auto;
-  background-color: #1649FF;
-}
-
-.founders .slick-arrow.slick-next {
-  right: 4rem;
-  left: auto;
-  top: -3.2rem;
-  background-image: url('../assets/images/line.png');
-  background-position: center center;
-  background-repeat: no-repeat;
-  opacity: 1;
-  border: 1px solid #C8C8C8;
-  border-radius: 100%;
-  padding: 25px;
-  background-color: #1649FF;
-}
-
-.founders .slick-arrow.slick-next.slick-disabled {
-  right: 4rem;
-  left: auto;
-  top: -3.2rem;
-  display: inline-block;
-  height: 30px;
-  width: 30px;
-  background-image: url('../assets/images/reverse-line.svg');
-  background-position: center center;
-  background-repeat: no-repeat;
-  opacity: 1;
-  border: 1px solid #C8C8C8;
-  border-radius: 100%;
-  padding: 25px;
-  background-color: transparent;
-}
-
-.founders .slick-arrow.slick-prev.slick-disabled {
-  background-image: url('../assets/images/reverse-line.svg');
-  background-position: center center;
-  background-repeat: no-repeat;
-  opacity: 1;
-  border: 1px solid #C8C8C8;
-  border-radius: 100%;
-  padding: 25px;
-  rotate: 180deg;
-  left: auto;
-  top: -6.5rem;
-  right: 0;
-  background-color: transparent;
-}
 
 .company-type {
   background-image: url('../assets/images/choose-bg.png');
@@ -307,9 +236,6 @@ body {
   border-radius: 1rem;
 }
 
-
-
-
 @keyframes rocket {
   from {
     transform: translate(45rem, 20%);
@@ -318,7 +244,6 @@ body {
   to {
     transform: translate(5rem, 3%);
     right: 0;
-
   }
 }
 
@@ -329,7 +254,6 @@ body {
 @keyframes bounce-blur {
   0% {
     transform: translateY(0);
-
   }
 
   50% {
@@ -413,7 +337,6 @@ body {
 @keyframes bounce-blur5 {
   0% {
     transform: translateY(0);
-
   }
 
   50% {
@@ -473,7 +396,6 @@ body {
 @keyframes bounce-blur8 {
   0% {
     transform: translateY(0);
-
   }
 
   50% {
@@ -620,7 +542,6 @@ body {
 @keyframes bounce-blur15 {
   0% {
     transform: translateY(0);
-
   }
 
   50% {
@@ -748,6 +669,7 @@ body {
 .hiw-delaware {
   background-image: url('../assets/images/delaware.webp');
   background-size: cover;
+  background-position-y: -100px;
 }
 
 .hiw-wyoming {
@@ -785,9 +707,8 @@ body {
 
 /* MEDIA QUERIES FOR Support Buisness Page */
 
-
 @media (min-width: 64rem) {
-  .after-formation {
+  .next-button {
     display: block;
     position: relative;
     margin-left: 15rem;
@@ -837,10 +758,88 @@ body {
 }
 
 @media only screen and (min-width: 1125px)  and (max-width: 1366px) { 
-  .after-formation {
+  .next-button {
     display: block;
     position: relative;
     margin-left: 15rem;
     width: calc(160% - 20px);
   }
 }
+
+
+/**************************
+* NEXT + PREVIOUS BUTTON
+***************************/
+
+.nextprev-button .slick-prev:before {
+  content: "";
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  background-image: url('../assets/images/line.png');
+  transform: scaleX(-1); /* Flip the image horizontally */
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #1649FF;
+  opacity: 1;
+  border: 1px solid white;
+  border-radius: 100%;
+  padding: 30px;
+}
+
+.nextprev-button .slick-next:before {
+  content: "";
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  background-image: url('../assets/images/line.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #1649FF;
+  opacity: 1;
+  border: 1px solid white;
+  border-radius: 100%;
+  padding: 30px;
+}
+
+.nextprev-button .slick-active {
+  width: 20px;
+}
+
+.nextprev-button .slick-prev {
+  right: auto;
+  bottom: 10rem;
+  left: -30rem;
+  top:auto; 
+  bottom: 7rem;
+}
+
+.nextprev-button .slick-next {
+  right: auto;
+  left: -35rem;
+  top:auto; 
+  bottom: 7rem;
+}
+
+@media only screen and (min-width: 1125px)  and (max-width: 1366px) { 
+  .nextprev-button {
+    display: hidden;
+    position: relative;
+    margin-left: 15rem;
+    width: calc(160% - 20px);
+  }
+}
+
+@media (min-width: 64rem) {
+  .nextprev-button{
+    display: hidden;
+    position: relative;
+    margin-left: 15rem;
+    width: calc(100% - 20px);
+  }
+}
+
+/*********************
+* NEXT + PREVIOUS END
+**********************/
+

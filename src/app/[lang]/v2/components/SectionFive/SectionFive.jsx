@@ -4,7 +4,6 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Slider from 'react-slick'
 import { calendar, hat, folder, protectionicon, tic, at, navigator, mail, phone, travel, axe, wallet, filetext, sheild, dollar, locker } from '@/assets/images'
-import { NextArrow } from './Arrows'
 import { useTranslation } from '@/i18n/client'
 
 export default function SupportBusiness({ lang }) {
@@ -38,7 +37,6 @@ export default function SupportBusiness({ lang }) {
     { name: t('after_formation_package18_title'), description: t('after_formation_package18_description'), button: t('after_formation_package18_button'), href: `/${lang}`, img: folder }
   ]
 
-
   const settings = {
     dots: false,
     infinite: true,
@@ -64,9 +62,7 @@ export default function SupportBusiness({ lang }) {
           slidesToShow: 7,
         }
       },
-    ],
-    nextArrow: <NextArrow />,
-    prevArrow: <NextArrow />,
+    ]
   };
 
   const selectedPackages = (() => {
@@ -80,15 +76,13 @@ export default function SupportBusiness({ lang }) {
   })();
 
   return (
-    <div className="overflow-hidden">
-        {/* bg-[#ECEFF1] */}
-
-      <div className={t('after-formation hidden lg:block relative')} >
+    <div className=" bg-[#ECEFF1] overflow-hidden">
+      <div className={'w-full lg:block relative next-button'} >
         <Slider {...settings} className='relative'>
           {selectedPackages.map((pac, index) => (           
             <div key={index} className="p-8 shadow-lg bg-white rounded-[32px] h-[35rem]">
                 <div className="media-query-image flex items-center justify-center pb-4">
-                  <Image src={pac.img} className='h-56 w-64' alt='' />
+                  <Image src={pac.img} className='h-56 w-64' alt='card-image' />
                 </div>
                 <div className="media-query-heading font-semibold text-[32px] leading-[38px] lg:leading-[44px] text-[#222222]">
                   {pac.name}

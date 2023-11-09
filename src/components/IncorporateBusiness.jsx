@@ -59,7 +59,7 @@ export default function IncorporateBusiness({ lang }) {
                     <div className="w-full lg:w-[60%]">
                         <h1 className='font-bold  text-[32px] lg:text-[64px] text-black leading-[38px] lg:leading-[64px] mb-6 lg:mb-24'>{t('video_title')}</h1>
                         <Link
-                            href={`/${lang}/company-type`}
+                            href={`/${lang}/onboarding`}
                             className="hidden lg:inline rounded-2xl py-[14px] px-6 font-semibold text-lg text-[#222222] bg-[#9EE248]"
                         >
                           {t('video_button')}
@@ -69,7 +69,7 @@ export default function IncorporateBusiness({ lang }) {
                         <div>
                             <p className="font-semibold text-lg leading-[24px]">{t('video_description')}</p>
                             <Link
-                                href={`/${lang}/company-type`}
+                                href={`/${lang}/onboarding`}
                                 className="inline-block text-center lg:hidden mt-8 rounded-2xl py-[14px] px-6 font-semibold text-lg text-[#222222] bg-[#9EE248]"
                             >
                               {t('video_button')}

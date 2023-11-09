@@ -35,26 +35,26 @@ export default function Navbar({ lang }) {
             </button>
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
-            <NavLink href={`/${lang}/company-type`} className="text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]">
+            <NavLink href={`/${lang}/onboarding`} className="text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]">
               {t('header_1')}
             </NavLink>
-            <NavLink href={`/${lang}/state`} className="text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]" >
+            <NavLink href={`/${lang}/onboarding/state`} className="text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]" >
               {t('header_2')}
             </NavLink>
-            <NavLink href={`/${lang}/company-name`} className="text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]" >
+            <NavLink href={`/${lang}/onboarding/company-name`} className="text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]" >
               {t('header_3')}
             </NavLink>
-            <NavLink href={`/${lang}/formation`} className="text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]" >
+            <NavLink href={`/${lang}/onboarding/formation`} className="text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]" >
               {t('header_4')}
             </NavLink>
-            <NavLink href={`/${lang}/review`} className="text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]" >
+            <NavLink href={`/${lang}/onboarding/review`} className="text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]" >
               {t('header_5')}
             </NavLink>
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <div className='hidden lg:flex items-center gap-4'>
               <Link
-                href={`/${lang}/state`}
+                href={`/${lang}/onboarding/state`}
                 id="header-fmc"
                 className='bg-white flex items-center gap-2 py-2 px-4 text-[1.125rem] font-semibold leading-[1.5rem] text-[#1649FF]'
               >
@@ -88,7 +88,7 @@ export default function Navbar({ lang }) {
             <div className="mt-6 flow-root">
               <div className="-my-6 divide-y divide-gray-500/25">
                 <div className="space-y-2 py-6">
-                  <Link href={`/${lang}/state`} className="text-sm font-semibold leading-6 text-white">
+                  <Link href={`/${lang}/onboarding/state`} className="text-sm font-semibold leading-6 text-white">
                     {t('menu1_title')}
                   </Link>
                   <Link href='#.' className="text-sm font-semibold leading-6 text-white">
@@ -103,7 +103,7 @@ export default function Navbar({ lang }) {
                 </div>
                 <div className="py-6">
                   <Link
-                    href={`/${lang}/state`}
+                    href={`/${lang}/onboarding/state`}
                     id="header-fmc"
                     className='bg-white py-2 px-4 rounded-xl text-[#132F8E] font-semibold text-[14px] leading-5'
                   >

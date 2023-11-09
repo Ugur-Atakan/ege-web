@@ -37,8 +37,8 @@ const Features = ({ lang }) => {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow:2.75,
-    slidesToScroll: 0,
+    slidesToScroll: 2,
+    slidesToShow: 2,
     responsive:[
       {
         breakpoint: 768,
@@ -49,13 +49,13 @@ const Features = ({ lang }) => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 1,
         }
       },
       {
         breakpoint: 1366,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 1,
         }
       },
     ],
@@ -85,60 +85,58 @@ const Features = ({ lang }) => {
   };
 
   return (
-    <div className="bg-white relative overflow-hidden">
-      <div className="p-6 py-12 lg:px-36 lg:py-36">
-        <div className="block lg:flex items-start gap-4">
-          <div className="w-2/3 lg:w-1/4">
-            <h1 className="font-semibold text-[20px] lg:text-[28px] leading-[22px] lg:leading-[32px] text-[#222222]">{t('founders_title')}</h1>
-          </div>
-        <div className="w-full lg:w-3/4 founders relative lg:-right-[18rem] py-6 lg:py-0 founders-section">
-        <Slider {...settings}>
-        {videos.map((video, index) => (
-          <div key={index} className="relative group">
-            <div className="relative w-[336px] h-[457px]">
-              {!isVideoPlaying ? (
-                <div className="relative">
-                  <Image
-                    src={video.img} 
-                    alt="video-img"
-                    className={`object-cover w-full h-full rounded-lg ${isVideoLoaded ? 'hidden' : 'block'}`}
-                    style={{ zIndex: 10 }}
-                    onClick={() => handleToggleVideo(index)}
+    <div className="bg-white mx-auto px-[160px] py-[130px] overflow-hidden">
+      <div className="flex flex-row container ">
+        <div className="items-center">
+          <h1 className="w-[322px] text-neutral-800 text-[28px] font-semibold leading-loose">{t('founders_title')}</h1>
+        </div>
+  
+        <div className={'block relative nextprev-button'}>
+          <Slider {...settings} className='relative'>
+            {videos.map((video, index) => (
+              <div key={index} className="relative group">
+                <div className="relative w-[336px] h-[457px]">
+                  {!isVideoPlaying ? (
+                    <div className="relative">
+                      <Image
+                        src={video.img} 
+                        alt="video-img"
+                        className={`object-cover w-full h-full rounded-lg ${isVideoLoaded ? 'hidden' : 'block'}`}
+                        style={{ zIndex: 10 }}
+                        onClick={() => handleToggleVideo(index)}
+                      />
+                      <div
+                        className="absolute inset-0 flex items-center justify-center cursor-pointer"
+                        onClick={() => handleToggleVideo(index)}
+                      >
+                        <Image src={playButton} alt="play" className="w-16 h-16" />
+                      </div>
+                    </div>
+                  ): null}
+                  <video
+                    id={`video-${index}`}
+                    src={video.source}
+                    controls={false}
+                    autoPlay={false}
+                    loop={true}
+                    muted={false}
+                    className={`w-full h-full rounded-lg ${isVideoPlaying ? 'block' : 'hidden'}`}
+                    onLoadedData={handleVideoLoad}
                   />
-                  <div
-                    className="absolute inset-0 flex items-center justify-center cursor-pointer"
-                    onClick={() => handleToggleVideo(index)}
-                  >
-                    <Image src={playButton} alt="play" className="w-16 h-16" />
-                  </div>
+                  {isVideoPlaying && (
+                    <div
+                      className="absolute inset-0 flex items-center justify-center cursor-pointer"
+                      onClick={() => handleStopVideo(index)}
+                    >
+                    </div>
+                  )}
                 </div>
-              ): null}
-              <video
-                id={`video-${index}`}
-                src={video.source}
-                controls={false}
-                autoPlay={false}
-                loop={true}
-                muted={false}
-                className={`w-full h-full rounded-lg ${isVideoPlaying ? 'block' : 'hidden'}`}
-                onLoadedData={handleVideoLoad}
-              />
-              {isVideoPlaying && (
-                <div
-                  className="absolute inset-0 flex items-center justify-center cursor-pointer"
-                  onClick={() => handleStopVideo(index)}
-                >
-                  <Image src={playButton} alt="play" className="w-16 h-16" />
-                </div>
-              )}
-            </div>
-            <h1 className="font-semibold text-[22px] leading-[26px] text-[#222222] pt-4">{video.name}</h1>
-            <p className="font-semibold text-lg leading-6 text-[#222222]">{video.title}</p>
-          </div>
-        ))}
-        </Slider>
-      </div>
-      </div>
+                <h1 className="font-semibold text-[22px] leading-[26px] text-[#222222] pt-4">{video.name}</h1>
+                <p className="font-semibold text-lg leading-6 text-[#222222]">{video.title}</p>
+              </div>
+            ))}
+          </Slider>
+        </div>
       </div>
     </div>
   )

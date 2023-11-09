@@ -17,7 +17,7 @@ const Mid = ({ t, lang }) => {
             </div>
             <div className="mt-10 flex items-center lg:justify-center gap-x-2">
               <Link
-                href={`/${lang}/company-type`}
+                href={`/${lang}/onboarding`}
                 className="rounded-2xl py-3 lg:py-[12px] lg:px-[24px] leading-[22px] px-6 font-semibold text-[15px] lg:text-lg text-[#222222] bg-[#9EE248]"
               >
                 {t('hero_green_button')}

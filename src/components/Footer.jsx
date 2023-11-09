@@ -11,7 +11,7 @@ export default function Footer({ lang }) {
     solutions: [
       {
         name: t('footer_col1_submenu1'),
-        href: `/${lang}/company-type`,
+        href: `/${lang}/onboarding`,
       },
       {
         name: t('footer_col1_submenu2'),
