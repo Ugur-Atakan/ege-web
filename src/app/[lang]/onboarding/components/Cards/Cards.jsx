@@ -10,9 +10,21 @@ const Cards = ({ t, lang, handleSelectLlc, handleSelectCcorp  }) => {
             <div className='text-left md:text-center'>
                 <h1 className='text-[#222222] text-[26px] md:text-[2.5rem] font-semibold leading-[2.75rem]'>{t('company_type_title')}</h1>
             </div>
+
             <div className='flex flex-col md:flex-row gap-6 items-stretch justify-center md:gap-4 py-12' >
-                <CompanyTypeCard imageSrc={umbrella} title={t('company_type_package1_name')} description={t('company_type_package1_description')} onClick={handleSelectLlc} />
-                <CompanyTypeCard imageSrc={puzzle} title={t('company_type_package2_name')} description={t('company_type_package2_description')} onClick={handleSelectCcorp} />
+                <CompanyTypeCard 
+                    imageSrc={umbrella} 
+                    title={t('company_type_package1_name')} 
+                    description={t('company_type_package1_description')} 
+                    onClick={handleSelectLlc} 
+                />
+                <CompanyTypeCard 
+                    imageSrc={puzzle}
+                    title={t('company_type_package2_name')}
+                    description={t('company_type_package2_description')}
+                    onClick={handleSelectCcorp} 
+                />
+
                 <Link href={`/${lang}/start-my-business/`} className='block w-full bg-white border-4 border-solid border-[#1649FF] rounded-[2rem] p-8 not-sure relative'>
                     <Image src={search} className='relative -top-20 -right-8 md:w-64 md:h-64 md:static rotate-360 md:rotate-45' alt='llc' />
                     <div className='-mt-48 md:mt-0'>

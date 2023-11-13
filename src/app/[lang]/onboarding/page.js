@@ -1,5 +1,8 @@
-import Navbar from '@/components/common/Navbar'
+
+import React from 'react'
+import Header from './components/Header'
 import Content from './components/Content'
+import { useTranslation } from '@/i18n/server'
 
 /**
  * Page route for the company type page
@@ -9,9 +12,14 @@ import Content from './components/Content'
  * @returns {JSX.Element} Rendered content for the page
 */
 
-const Page = ({ params: { lang } }) => {
+const Page = async ({ params: { lang } }) => {
+  const { t } = await useTranslation(lang)
+
   return (
-    <Content lang={lang} />
+    <React.Fragment>
+        <Header heading={t('company_type_leftcorner_button')} lang={lang} />
+        <Content lang={lang} />
+    </React.Fragment>
   )
 }
 

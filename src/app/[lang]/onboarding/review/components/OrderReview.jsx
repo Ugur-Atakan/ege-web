@@ -33,7 +33,7 @@ const OrderReview = ({ lang , selectedPackage , couponcode, setCouponCode , disp
                         <h1 className='font-semibold text-lg leading-6 text-[#222222]'>{t("review_total")}</h1>
                     </div>
                     {selectedPackage && selectedPackage.map((price, index) => (
-                        <div key={index}><h1 className='font-semibold text-lg leading-6 text-[#222222]'>{'$' + (price.orderPackagePrice / 100).toFixed(0)}</h1></div>
+                        <div key={index}><h1 className='font-semibold text-lg leading-6 text-[#222222]'>{'$' + (price.price)}</h1></div>
                     ))}
                 </div>
                 <div className='flex items-center justify-center py-4'>

@@ -3,3 +3,9 @@
 [] Stripe products
 [] Google Tag Script
 [] Add prettier
+
+Friday: 
+
+[] Fixing funnel
+[] Fix video component
+[] Add subscription
