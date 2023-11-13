@@ -79,6 +79,8 @@ export const completelyClearLocalStorage = () => {
         window.localStorage.removeItem('companyType');
         window.localStorage.removeItem('companyState');
         window.localStorage.removeItem('companyStateCompleted');
+        window.localStorage.removeItem('companyNameCompleted');
+        window.localStorage.removeItem('companyFormationCompleted');
         window.localStorage.removeItem('companyName');
         window.localStorage.removeItem('selectedPackage');
     }

@@ -1,12 +1,11 @@
-import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { headers } from 'next/headers';
-import logger from '../../lib/logger'
+import logger from '@/app/lib/logger'
 import {
     createCustomer,
     createCustomerRequest,
     resendInvitation
-} from '../../lib/jira';
+} from '@/app/lib/jira';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -39,7 +38,7 @@ export async function POST(req) {
     }
 
     if (event.type === 'checkout.session.completed') {
-        console.log('Checkout session completed');
+        logger.info({ message: 'Checkout session started.' })
 
         const session = event.data.object;
         const summary = `Start my Company - ${session.metadata.companyName}`;
@@ -71,15 +70,20 @@ export async function POST(req) {
             session.metadata.companyType,
             email,
             address,
-            zipCode,
+            zipCode || 1234,
             city,
             country
         );
-        console.log(`Jira User with ${accountId} created`);
-        console.log(customerReq);
+
+        if (!customerReq) {
+            logger.error({ message : `Stripe webhook Error: ${err.message}` })
+        } else {
+            logger.info({ message : `Jira User with ${accountId} created` })
+        }
+        
 
         const invite = await resendInvitation(session.customer_details.email);
-        // DB CALLS HERE
+        // Future DB calls here.
         return new Response(session.url, { status: 200 });
     } else {
         logger.error({ message : `No action taken on webhook - FileName: stripe-webhook-route.js` })
