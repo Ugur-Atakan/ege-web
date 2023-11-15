@@ -76,7 +76,6 @@ async function createCustomerRequest(
         const addressFirstHalf = addressParts.slice(0, halfLength).join(' ');
         const addressSecondHalf = addressParts.slice(halfLength).join(' ');
 
-        console.log(process.env.JIRA_REQUEST_TYPE_ID, process.env.JIRA_SERVICE_DESK_ID, accountId, description, summary, companyName, companyState, companyType, email, addressFirstHalf, addressSecondHalf, city, zipCode, country)
         const response = await fetch(`${JIRA_BASE_URL}/rest/servicedeskapi/request`, {
             method: 'POST',
             headers: {

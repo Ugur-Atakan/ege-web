@@ -39,19 +39,25 @@ export async function POST(req) {
 
     if (event.type === 'checkout.session.completed') {
         logger.info({ message: 'Checkout session started.' })
-
+        
         const session = event.data.object;
         const summary = `Start my Company - ${session.metadata.companyName}`;
         const description = `Please start my company - ${session.metadata.companyName}`;
-        const email = session.customer_details.email;
+        const name = session.metadata.customerName;
+        const email = session.metadata.customerEmail;
         const address = session.metadata.address;
-        const zipCode = parseInt(session.metadata.zipCode);
+        const zipCode = parseInt(session.metadata.zipCode) || 1234;
         const city = session.metadata.city;
         const country = session.metadata.country;
 
+        if (!email || !name || !address || !zipCode || !city || !country) {
+            logger.error({ message : `Missing required fields for creating Jira customer - FileName: stripe-webhook-route.js` })
+            return new Response('Missing required fields', { status: 400 });
+        }
+
         const accountId = await createCustomer(
-            session.customer_details.name,
-            session.customer_details.email
+            name,
+            email
         );
 
         if (accountId === null) {
@@ -70,13 +76,16 @@ export async function POST(req) {
             session.metadata.companyType,
             email,
             address,
-            zipCode || 1234,
+            zipCode,
             city,
             country
         );
 
         if (!customerReq) {
             logger.error({ message : `Stripe webhook Error: ${err.message}` })
+            return new Response('Error creating customer req in Jira', {
+                status: 500
+            });
         } else {
             logger.info({ message : `Jira User with ${accountId} created` })
         }

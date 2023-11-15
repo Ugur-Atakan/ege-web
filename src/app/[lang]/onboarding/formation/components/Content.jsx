@@ -53,7 +53,7 @@ const Content = ({ lang }) => {
   const selectedCompanyTypesEN = packageDataEN.packages.find((item) => item[selectedCompanyType]);
   const selectedCompanyTypesTR = packageDataTR.packages.find((item) => item[selectedCompanyType]);
   const selectedPackageVar = lang === 'en' ? selectedCompanyTypesEN : selectedCompanyTypesTR;
-  
+
   const titles = selectedPackageVar[selectedCompanyType].map((item) => item.title);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -82,7 +82,7 @@ const Content = ({ lang }) => {
         if (typeof window !== 'undefined' && window.localStorage && window.location)
           window.localStorage.setItem('selectedPackage', JSON.stringify([{...packagePrices[index], features: packages}]));
           window.localStorage.setItem('companyFormationCompleted', true);
-          router.push(`/${lang}/onboarding/review`);
+          // router.push(`/${lang}/onboarding/review`);
       }
     }
   }

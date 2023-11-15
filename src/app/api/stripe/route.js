@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
+import logger from '@/app/lib/logger'
 import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 /**
- * @GET /stripe/api
+ * @GET /api/stripe
  * @type {route}
  * @type {API}
  * @description - Returns static String
@@ -35,15 +36,16 @@ export async function GET() {
 export async function POST(req) {
   const { data } = await req.json();
 
-  const selectedPackage = data.payload.selectedPackage
-  const companyName = data.payload.companyName
-  const companyState = data.payload.companyState
-  const companyType = data.payload.companyType
-  const customerEmail = data.payload.companyContactEmail
-  const address = data.payload.companyContactAddress
-  const zipCode = data.payload.companyZipCode
-  const city = data.payload.companyCity
-  const country = data.payload.companyCountry
+  const selectedPackage = data.payload.selectedPackage;
+  const companyName = data.payload.companyName;
+  const companyState = data.payload.companyState;
+  const companyType = data.payload.companyType;
+  const customerName = data.payload.customerName;
+  const customerEmail = data.payload.companyContactEmail;
+  const address = data.payload.companyContactAddress;
+  const zipCode = data.payload.companyZipCode;
+  const city = data.payload.companyCity;
+  const country = data.payload.companyCountry;
 
   try {
     const session = await stripe.checkout.sessions.create({
@@ -63,6 +65,7 @@ export async function POST(req) {
       success_url: process.env.SUCCESS_STRIPE_URL,
       cancel_url: process.env.FAIL_STRIPE_URL,
       metadata: { 
+        customerName,
         companyName,
         companyState,
         companyType,
@@ -76,8 +79,10 @@ export async function POST(req) {
       customer_email: customerEmail
     });
 
+    logger.info({ message: `Stripe checkout session created - ${session.url}` })
     return new NextResponse(session.url, { status: 200 });
   } catch (error) {
+    logger.error({ message: `Error in creating Stripe checkout session - ${error.message}` })
     return new NextResponse(error, {
       status: 400,
     });

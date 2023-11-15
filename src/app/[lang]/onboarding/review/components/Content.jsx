@@ -2,16 +2,23 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
-
+import { redirectToLastNullInternalFunnel, checkEqualPathName } from '@/app/lib/utils'
+import { usePathname, useRouter } from 'next/navigation'
+import dynamic from 'next/dynamic'
 import { useTranslation } from '@/i18n/client'
 
 import BackButton from './BackButton'
-import FillinForm from './FillinForm'
-import CompanyDetails from './CompanyDetails'
-import Features from './Features'
-import OrderReview from './OrderReview'
+import FillinForm from './form/FillinForm'
 
+import { checkFormElements } from './utils/util'
+import ErrorLogo from './utils/ErrorLogo'
+import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const CompanyDetails = dynamic(() => import('./CompanyDetails'))
+const Features = dynamic(() => import('./Features'))
+const OrderReview = dynamic(() => import('./OrderReview'))
 /**
  * Main content component
  * @type {function} 
@@ -22,7 +29,16 @@ import OrderReview from './OrderReview'
 
 const Content = ({ lang }) => {
     const { t } = useTranslation(lang);
-
+    const pathname = usePathname();
+    const router = useRouter();
+    
+    useEffect(() => {
+      const checkRedirection = redirectToLastNullInternalFunnel();
+      if (checkRedirection && !checkEqualPathName(pathname, checkRedirection)) {
+        router.push(`/${lang}/onboarding/${checkRedirection}`)
+      }
+    }, []); 
+    
     const [displayForm, setDisplayForm] = useState(false);
     const [name, setName] = useState('');
     const [lastname, setLastName] = useState('');
@@ -31,78 +47,66 @@ const Content = ({ lang }) => {
     const [city, setCity] = useState('');
     const [country, setCountry] = useState('');
     const [zip, setZip] = useState('');
+    const [countryCodes, setCountryCodes] = useState([]);
+    const [countryCode, setCountryCode] = useState('');
     const [phone, setPhone] = useState('');
     const [countries, setCountries] = useState([]);
     const [states, setStates] = useState([]);
     const [couponcode, setCouponCode] = useState('');
 
-    const [renderCount, setRenderCount] = useState(0);
-    const [companyName, setCompanyName] = useState('');
-    const [companyState, setCompanyState] = useState('');
-    const [companyType, setCompanyType] = useState('');
-    const [selectedPackage, setSelectedPackage] = useState('');
-
-    useEffect(() => {
-        if (typeof window !== 'undefined' && window.localStorage) {
-            let storedPackage = window.localStorage.getItem('selectedPackage');
-
-            setSelectedPackage(
-                storedPackage ? JSON.parse(storedPackage) : null
-            );
-
-            setCompanyName(window.localStorage.getItem('companyName'));
-            setCompanyState(window.localStorage.getItem('companyState'));
-            setCompanyType(window.localStorage.getItem('companyType'));
-
-            // Company Type is not set in the first render so it automatically redirects to formation page
-            // In order to prevent this, we check if the render count is 1 and if the company type, state and name are set
-            if (renderCount == 1) {
-                if (!(companyType && companyState && companyName)) {
-                    window.location.href = `/${lang}/onboarding/formation`;
-                }
-            }
-        }
-
-        setRenderCount(renderCount + 1);
-    }, []);
+    const companyName = (typeof window !== 'undefined' ? window.localStorage.getItem('companyName') : '');
+    const companyState = (typeof window !== 'undefined' ? window.localStorage.getItem('companyState') : '');
+    const companyType = (typeof window !== 'undefined' ? window.localStorage.getItem('companyType') : '');
+    const selectedPackage = (typeof window !== 'undefined' ? JSON.parse(window.localStorage.getItem('selectedPackage')) : null);
 
     const formSubmitHandler = (e) => {
         e.preventDefault();
-        const companyContactName = name + ' ' + lastname;
-        const companyContactEmail = email;
-        const companyContactPhone = phone;
-        const companyContactAddress =
-            street + ', ' + city + ', ' + zip + ', ' + country;
 
-        const packageDetails =
-            typeof window !== 'undefined'
-                ? JSON.parse(window.localStorage.getItem('selectedPackage'))
-                : null;
+        // Check if all fields are filled
+        const { isFormValid, missingFields } = checkFormElements(name, lastname, email, street, city, country, zip, phone);
+        
+        // If the form is not valid, show toast messages for each missing field
+        if (!isFormValid) {
+            missingFields.forEach(field => {
+                toast.error(`Please enter ${field}.`, {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    progressStyle: { background: '#1649FF' },
+                    icon: () => <ErrorLogo />
+                });
+            });
+            return;
+        }
 
         let payload = {
+            customerName: name + ' ' + lastname,
             companyName: companyName,
             companyType: companyType,
             companyState: companyState,
-            companyContactName: companyContactName,
-            companyContactEmail: companyContactEmail,
-            companyContactPhone: companyContactPhone,
-            companyContactAddress: companyContactAddress,
+            companyContactEmail: email,
+            companyContactAddress: street + ', ' + city + ', ' + zip + ', ' + country,
             companyZipCode: zip,
             companyCity: city,
             companyCountry: country,
-            selectedPackage: packageDetails
+            selectedPackage: typeof window !== 'undefined' ? JSON.parse(window.localStorage.getItem('selectedPackage')) : null
         };  
 
         axios
-            .post(`/${lang}/stripe/api`, { data: { payload } })
+            .post('/api/stripe', { data: { payload } })
             .then((response) => {
                 let stripeURL = response.data;
 
-                if (stripeURL) {
-                    if (typeof window !== 'undefined' && window.localStorage)
+                if (stripeURL) {    
+                    if (typeof window !== 'undefined' && window.localStorage && window.location) {
                         window.localStorage.setItem('stripeUrl', stripeURL);
-                    if (typeof window !== 'undefined' && window.location)
                         window.location.href = stripeURL;
+                    }
                 }
             })
             .catch(function (error) {
@@ -110,12 +114,7 @@ const Content = ({ lang }) => {
             });
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        formSubmitHandler(e);
-    };
-
-    // API Call useEffect
+    // API Calls for data
     useEffect(() => {
         const fetchData = async () => {
             const countriesRes = await axios.get('/api/countries');
@@ -123,6 +122,9 @@ const Content = ({ lang }) => {
 
             const statesRes = await axios.get('/api/states');
             setStates(statesRes.data);
+
+            const countyCodesRes = await axios.get('/api/country-codes');
+            setCountryCodes(countyCodesRes.data);
         };
         fetchData();
     }, []);
@@ -132,20 +134,38 @@ const Content = ({ lang }) => {
             <BackButton lang={lang} />
             <div className="w-full md:w-[45%]">
                 {displayForm ? (
-                    <FillinForm
-                        lang={lang}
-                        setCity={setCity}
-                        setCountry={setCountry}
-                        setLastName={setLastName}
-                        setName={setName}
-                        setEmail={setEmail}
-                        setStreet={setStreet}
-                        setZip={setZip}
-                        setPhone={setPhone}
-                        countries={countries}
-                        states={states}
-                        country={country}
-                    />
+                    <React.Fragment>
+                        <ToastContainer
+                            position="top-right"
+                            autoClose={5000}
+                            hideProgressBar={false}
+                            newestOnTop={false}
+                            closeOnClick
+                            rtl={false}
+                            pauseOnFocusLoss
+                            draggable
+                            pauseOnHover
+                            theme="light"
+                        />
+                        <FillinForm
+                            lang={lang}
+                            setCity={setCity}
+                            setCountry={setCountry}
+                            setLastName={setLastName}
+                            setName={setName}
+                            setEmail={setEmail}
+                            setStreet={setStreet}
+                            setCountryCode={setCountryCode}
+                            zip={zip}
+                            setZip={setZip}
+                            phone={phone}
+                            setPhone={setPhone}
+                            countryCodes={countryCodes}
+                            countries={countries}
+                            states={states}
+                            country={country}
+                        />
+                    </React.Fragment>
                 ) : (
                     <div className="py-8 px-4 md:pl-10 md:py-8">
                         <h1 className="font-semibold text-[26px] md:text-[40px] leading-[44px] text-[#222222]">
@@ -162,14 +182,14 @@ const Content = ({ lang }) => {
                 )}
             </div>
 
-            <div className="w-full py-0 px-4 md:px-0 -mt-6 md:mt-0 mb-12 md:mb-0 md:w-[55%]">
+            <div className="w-full pt-[6%] px-10 md:w-[55%]">
                 <OrderReview
                     lang={lang}
                     selectedPackage={selectedPackage}
                     couponcode={couponcode}
                     setCouponCode={setCouponCode}
                     displayForm={displayForm}
-                    handleSubmit={handleSubmit}
+                    handleSubmit={formSubmitHandler}
                     setDisplayForm={setDisplayForm}
                 />
             </div>

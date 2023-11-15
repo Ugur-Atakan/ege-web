@@ -3,8 +3,9 @@ import { useTranslation } from '@/i18n/client'
 
 const OrderReview = ({ lang , selectedPackage , couponcode, setCouponCode , displayForm , setDisplayForm , handleSubmit}) => {
     const { t } = useTranslation(lang);
+
     return (
-        <div className='bg-white rounded-[32px] md:rounded-none p-6 relative'>
+        <div className='bg-white rounded-[32px] md:rounded-[32px] p-6 relative'>
             <div className='flex items-center justify-between'>
                 <h2 className='font-semibold text-lg leading-[44px] text-[#222222]'>{t("review_order_summary")}</h2>
                 <h2 className='font-semibold text-lg leading-[44px] text-[#1649FF]'>USD</h2>
