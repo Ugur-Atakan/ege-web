@@ -1,12 +1,11 @@
-import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { headers } from 'next/headers';
-import logger from '../../lib/logger'
+import logger from '@/app/lib/logger'
 import {
     createCustomer,
     createCustomerRequest,
     resendInvitation
-} from '../../lib/jira';
+} from '@/app/lib/jira';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -39,20 +38,26 @@ export async function POST(req) {
     }
 
     if (event.type === 'checkout.session.completed') {
-        console.log('Checkout session completed');
-
+        logger.info({ message: 'Checkout session started.' })
+        
         const session = event.data.object;
         const summary = `Start my Company - ${session.metadata.companyName}`;
         const description = `Please start my company - ${session.metadata.companyName}`;
-        const email = session.customer_details.email;
+        const name = session.metadata.customerName;
+        const email = session.metadata.customerEmail;
         const address = session.metadata.address;
-        const zipCode = parseInt(session.metadata.zipCode);
+        const zipCode = parseInt(session.metadata.zipCode) || 1234;
         const city = session.metadata.city;
         const country = session.metadata.country;
 
+        if (!email || !name || !address || !zipCode || !city || !country) {
+            logger.error({ message : `Missing required fields for creating Jira customer - FileName: stripe-webhook-route.js` })
+            return new Response('Missing required fields', { status: 400 });
+        }
+
         const accountId = await createCustomer(
-            session.customer_details.name,
-            session.customer_details.email
+            name,
+            email
         );
 
         if (accountId === null) {
@@ -75,11 +80,19 @@ export async function POST(req) {
             city,
             country
         );
-        console.log(`Jira User with ${accountId} created`);
-        console.log(customerReq);
+
+        if (!customerReq) {
+            logger.error({ message : `Stripe webhook Error: ${err.message}` })
+            return new Response('Error creating customer req in Jira', {
+                status: 500
+            });
+        } else {
+            logger.info({ message : `Jira User with ${accountId} created` })
+        }
+        
 
         const invite = await resendInvitation(session.customer_details.email);
-        // DB CALLS HERE
+        // Future DB calls here.
         return new Response(session.url, { status: 200 });
     } else {
         logger.error({ message : `No action taken on webhook - FileName: stripe-webhook-route.js` })

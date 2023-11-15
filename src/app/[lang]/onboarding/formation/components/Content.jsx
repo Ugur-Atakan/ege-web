@@ -1,14 +1,15 @@
 /* eslint-disable */
 'use client'
 
-import Link from 'next/link'
-import { ArrowLeftIcon } from '@heroicons/react/24/outline'
 import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
 import Image from 'next/image'
+
+import { noinclude, arrowblack, arrowblue } from '@/assets/images'
+import { ArrowLeftIcon } from '@heroicons/react/24/outline'
 import axios from 'axios'
 //import { readCookie, submitCookie } from '../../../lib/session/clientActions'
 
-import { noinclude, arrowblack, arrowblue } from '@/assets/images'
 import Heading from './Heading'
 import Cards from './Cards'
 import CardsFooter from './CardsFooter'
@@ -16,8 +17,11 @@ import CardsFooter from './CardsFooter'
 import packageDataEN from '@/assets/json/packageDataEN.json'
 import packageDataTR from '@/assets/json/packageDataTR.json'
 
+import { usePathname, useRouter } from 'next/navigation'
+import { redirectToLastNullInternalFunnel, checkEqualPathName, clearPathnameLocalStorage } from '@/app/lib/utils'
 import { getRandomPackages } from '../utils/util'
 import { useTranslation } from '@/i18n/client'
+
 
 /**
  * Formation Content component
@@ -29,6 +33,17 @@ import { useTranslation } from '@/i18n/client'
 
 const Content = ({ lang }) => {
   const { t } = useTranslation(lang);
+  const pathname = usePathname();
+  const router = useRouter();
+
+  useEffect(() => {
+    clearPathnameLocalStorage('companyFormationCompleted');
+
+    const checkRedirection = redirectToLastNullInternalFunnel();
+    if (checkRedirection && !checkEqualPathName(pathname, checkRedirection)) {
+      router.push(`/${lang}/onboarding/${checkRedirection}`)
+    }
+  }, []);
 
   const [packagePrices, setPackagePrices] = useState([]);
   const [selectedPackage, setSelectedPackage] = useState(null);
@@ -38,7 +53,7 @@ const Content = ({ lang }) => {
   const selectedCompanyTypesEN = packageDataEN.packages.find((item) => item[selectedCompanyType]);
   const selectedCompanyTypesTR = packageDataTR.packages.find((item) => item[selectedCompanyType]);
   const selectedPackageVar = lang === 'en' ? selectedCompanyTypesEN : selectedCompanyTypesTR;
-  
+
   const titles = selectedPackageVar[selectedCompanyType].map((item) => item.title);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -66,15 +81,17 @@ const Content = ({ lang }) => {
       if (selectedPackage) {
         if (typeof window !== 'undefined' && window.localStorage && window.location)
           window.localStorage.setItem('selectedPackage', JSON.stringify([{...packagePrices[index], features: packages}]));
-          window.location.href = `/${lang}/onboarding/review`;
+          window.localStorage.setItem('companyFormationCompleted', true);
+          // router.push(`/${lang}/onboarding/review`);
       }
     }
   }
 
-  let companyState = (typeof window !== 'undefined') ? localStorage.getItem('companyState') : '';
-  let companyType = (typeof window !== 'undefined') ? localStorage.getItem('companyType') : '';
-
+  // Fetch Prices
   useEffect(() => {
+    const companyState = (typeof window !== 'undefined') ? localStorage.getItem('companyState') : '';
+    const companyType = (typeof window !== 'undefined') ? localStorage.getItem('companyType') : '';
+  
     const fetchPrices = async () => {
       try {
         const res = await axios.get('/api/prices', {

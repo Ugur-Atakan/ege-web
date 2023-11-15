@@ -5,7 +5,7 @@ const DropDown = ({ id, value, placeholder, options, onChange }) => {
       <select
         id={id}
         name={id}
-        value={value}
+        value={value || ''}
         placeholder={placeholder}
         className="font-semibold border-[#C8C8C8] text-[#8A8A8A] w-full rounded-[20px] p-5 focus:border-[4px]"
         onChange={onChange}

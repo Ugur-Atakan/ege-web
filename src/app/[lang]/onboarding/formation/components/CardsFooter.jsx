@@ -12,6 +12,7 @@ const CardsFooter = ({ selectedPackage, selectedCompanyType, selectedPackageVar,
                 if (selectedPackage) {
                     if (typeof window !== 'undefined' && window.localStorage && window.location) {
                         window.localStorage.setItem('selectedPackage', JSON.stringify([{...selectedPackage, features: packages}]));
+                        window.localStorage.setItem('companyFormationCompleted', true);
                         window.location.href = `/${lang}/onboarding/review`;
                     }
                 }

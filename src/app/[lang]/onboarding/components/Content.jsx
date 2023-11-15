@@ -1,14 +1,16 @@
+/* eslint-disable */
 'use client'
 
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTranslation } from '@/i18n/client'
-import { submitCookie } from '../../../lib/session/clientActions'
-import { redirect } from '../../../lib/utils'
+// import { submitCookie } from '../../../lib/session/clientActions'
+import { completelyClearLocalStorage, localStorageDataExists, redirectToLastNotNullFunnelLink } from '../../../lib/utils'
+import { usePathname, useRouter } from 'next/navigation'
 
-import Header from './Header'
 import Cards from './Cards/Cards'
 import Comparison from './Comparison/Comparison'
 import Footer from './Footer'
+import Modal from './Modal'
 
 /**
  * Content component for the page
@@ -20,32 +22,64 @@ import Footer from './Footer'
 
 const Content = ({ lang }) => {
     const { t } = useTranslation(lang);
-    const [companyType, setCompanyType] = useState('');
+    const pathname = usePathname();
+    const router = useRouter();
 
-    useEffect(() => {
-        const sendCookie = async () => {
-            await submitCookie({ 'companyType': companyType });
-            window.localStorage.setItem('companyType', companyType);
-        }
-        sendCookie();
-    }, [companyType]);
+    const [companyType, setCompanyType] = useState('');
+    const [showModal, setShowModal] = useState(false);
+    const [restartFunnel, setRestartFunnel] = useState(false);
+    const [resumeFunnel, setResumeFunnel] = useState(false);
     
+    useEffect(() => {
+        const checkLocalStorage = localStorageDataExists();
+    
+        if (checkLocalStorage) {
+            setShowModal(true);
+        }
+
+        if (resumeFunnel) {
+            const redirectionLink = redirectToLastNotNullFunnelLink();
+            router.push(`/${lang}/onboarding/${redirectionLink}`);
+        }
+
+        if (restartFunnel) {
+            setShowModal(false);
+            completelyClearLocalStorage();
+        }
+    }, [restartFunnel, resumeFunnel]);
+
+    // useEffect(() => {
+    //     const sendCookie = async () => {
+    //         await submitCookie({ 'companyType': companyType });
+    //         window.localStorage.setItem('companyType', companyType);
+    //     }
+    //     sendCookie();
+    // }, [companyType]);
 
     const handleSelectLlc = () => {
         setCompanyType('LLC');
-        redirect('/onboarding/state', lang);
+        if (typeof window !== 'undefined' && window.localStorage) {
+            window.localStorage.setItem('companyType', 'LLC');
+        }
+        router.push(`/${lang}/onboarding/state`);
     }
 
     const handleSelectCcorp = () => {
         setCompanyType('Corporation');
-        redirect('/onboarding/state', lang);
+        if (typeof window !== 'undefined' && window.localStorage) {
+            window.localStorage.setItem('companyType', 'Corporation');
+        }
+        router.push(`/${lang}/onboarding/state`);
     }
-
-    const takeQuizForm = () => { redirect(`/${lang}/quiz`) }
 
     return (
         <div className='relative'>
-            <Header t={t} lang={lang} />
+            {showModal && 
+                <Modal
+                    setRestartFunnel={setRestartFunnel}
+                    setResumeFunnel={setResumeFunnel}
+                />
+            }
             <Cards t={t} lang={lang} handleSelectLlc={handleSelectLlc} handleSelectCcorp={handleSelectCcorp} />
 
             <div className='bg-white'>
@@ -55,7 +89,7 @@ const Content = ({ lang }) => {
                     </div>
 
                    <Comparison t={t} handleSelectCcorp={handleSelectCcorp} handleSelectLlc={handleSelectLlc}/>
-                   <Footer t={t} takeQuizForm={takeQuizForm} lang={lang} />
+                   <Footer t={t} takeQuizForm={() => router.push(`/${lang}/quiz`)} lang={lang} />
                 </div>
             </div>
         </div>

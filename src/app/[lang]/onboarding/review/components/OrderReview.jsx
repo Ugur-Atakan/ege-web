@@ -3,8 +3,9 @@ import { useTranslation } from '@/i18n/client'
 
 const OrderReview = ({ lang , selectedPackage , couponcode, setCouponCode , displayForm , setDisplayForm , handleSubmit}) => {
     const { t } = useTranslation(lang);
+
     return (
-        <div className='bg-white rounded-[32px] md:rounded-none p-6 relative'>
+        <div className='bg-white rounded-[32px] md:rounded-[32px] p-6 relative'>
             <div className='flex items-center justify-between'>
                 <h2 className='font-semibold text-lg leading-[44px] text-[#222222]'>{t("review_order_summary")}</h2>
                 <h2 className='font-semibold text-lg leading-[44px] text-[#1649FF]'>USD</h2>
@@ -33,7 +34,7 @@ const OrderReview = ({ lang , selectedPackage , couponcode, setCouponCode , disp
                         <h1 className='font-semibold text-lg leading-6 text-[#222222]'>{t("review_total")}</h1>
                     </div>
                     {selectedPackage && selectedPackage.map((price, index) => (
-                        <div key={index}><h1 className='font-semibold text-lg leading-6 text-[#222222]'>{'$' + (price.orderPackagePrice / 100).toFixed(0)}</h1></div>
+                        <div key={index}><h1 className='font-semibold text-lg leading-6 text-[#222222]'>{'$' + (price.price)}</h1></div>
                     ))}
                 </div>
                 <div className='flex items-center justify-center py-4'>

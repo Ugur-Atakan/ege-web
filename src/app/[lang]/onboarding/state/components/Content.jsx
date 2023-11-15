@@ -2,8 +2,11 @@
 'use client'
 
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
+import { redirectToLastNullInternalFunnel, checkEqualPathName, clearPathnameLocalStorage } from '@/app/lib/utils'
 import { useTranslation } from '@/i18n/client'
+
 import BackButton from './BackButton'
 import Heading from './Heading'
 import DropDown from './DropDown'
@@ -24,6 +27,19 @@ const RadioListItem = dynamic(() => import('./RadioListItem'))
 
 const Content = ({ lang }) => {
   const { t } = useTranslation(lang);
+  const pathname = usePathname();
+  const router = useRouter();
+  
+  useEffect(() => {
+    clearPathnameLocalStorage('companyStateCompleted');
+
+    const checkRedirection = redirectToLastNullInternalFunnel();
+    if (checkRedirection && !checkEqualPathName(pathname, checkRedirection)) {
+      router.push(`/${lang}/onboarding/${checkRedirection}`)
+    }
+  }, []); 
+ 
+
   const [otherStates, setOtherStates] = useState([]);
 
   //* Session Logic commented out for now
@@ -49,13 +65,6 @@ const Content = ({ lang }) => {
   const companyType = (typeof window !== 'undefined') ? localStorage.getItem('companyType') : '';
   const [companyState, setCompanyState] = useState((typeof window !== 'undefined') ? localStorage.getItem('companyState') : '');
 
-  if (!companyType)
-  {
-    if (typeof window !== 'undefined' && window.location) {
-      window.location.href = `/${lang}/onboarding`;
-    }
-  } 
-
   const selectedLLC = companyType === 'Corporation' ? true : false;
 
   //* API call to get the states
@@ -77,9 +86,9 @@ const Content = ({ lang }) => {
 
   const setStateInStorage = (state) => {
     setCompanyState(state);
-
     if (typeof window !== 'undefined' && window.localStorage) {
       window.localStorage.setItem('companyState', state);
+      window.localStorage.setItem('companyStateCompleted', true);
     }
   }
 
@@ -124,8 +133,17 @@ const Content = ({ lang }) => {
               />
             </li>
 
-            <Link href={`/${lang}/onboarding/company-name/`} className="order-4 w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer">
-              {t('state_button')}
+            <Link 
+              onClick={() => {
+                if (typeof window !== 'undefined' && window.localStorage) {
+                  window.localStorage.setItem('companyStateCompleted', true);
+                }
+              }}
+              href={`/${lang}/onboarding/company-name/`} 
+              //className={`order-4 w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer ${companyState ? '' : 'opacity-50 cursor-not-allowed pointer-events-none'}`}
+              className={`order-4 w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer`}
+            >
+                {t('state_button')}
             </Link>
           </ul>
         </div>

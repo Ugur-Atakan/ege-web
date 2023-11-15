@@ -4,10 +4,12 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Link from 'next/link'
+import { usePathname, useRouter } from 'next/navigation'
+import { redirectToLastNullInternalFunnel, checkEqualPathName, clearPathnameLocalStorage } from '@/app/lib/utils'
+
 import { Spinner, Tick, Cross } from './utils'
 // import { readCookie, submitCookie } from '../../../lib/session/clientActions'
 import { ArrowLeftIcon } from '@heroicons/react/24/outline'
-import { redirect } from '@/app/lib/utils'
 import { useTranslation } from '@/i18n/client'
 
 /**
@@ -20,9 +22,19 @@ import { useTranslation } from '@/i18n/client'
 
 const Content = ({ lang }) => {
   const { t } = useTranslation(lang);
-  // const [cookie, setCookie] = useState({});
+  const pathname = usePathname();
+  const router = useRouter();
 
-  const [companyName, setCompanyName] = useState('');
+  useEffect(() => {
+    clearPathnameLocalStorage('companyNameCompleted');
+
+    const checkRedirection = redirectToLastNullInternalFunnel();
+    if (checkRedirection && !checkEqualPathName(pathname, checkRedirection)) {
+      router.push(`/${lang}/onboarding/${checkRedirection}`)
+    }
+  }, []);
+
+  const [companyName, setCompanyName] = useState((typeof window !== 'undefined') ? window.localStorage.getItem('companyName') : '');
   const [abbreviation, setAbbreviation] = useState('');
 
   const [loaded, setLoaded] = useState(false);
@@ -31,6 +43,7 @@ const Content = ({ lang }) => {
 
   const llcOptions = [t('companyname_llc_option1'),t('companyname_llc_option2'),t('companyname_llc_option3')];
   const ccorpOptions = [t('companyname_ccorp_option1'),t('companyname_ccorp_option2'),t('companyname_ccorp_option3'),t('companyname_ccorp_option4'),'Co'];
+  const companyType = (typeof window !== 'undefined') ? window.localStorage.getItem('companyType') : '';
 
   const handleAbbreviationChange = (name) => {
     setAbbreviation(name);
@@ -61,6 +74,15 @@ const Content = ({ lang }) => {
       window.localStorage.setItem('companyName', e.target.value);
   }
 
+  const finishNameCompletion = () => {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      window.localStorage.setItem('companyNameCompleted', true);
+    }
+
+    router.push(`/${lang}/onboarding/formation`)
+  }
+
+  // const [cookie, setCookie] = useState({});
   // const handleNameCompletion = (e) => {
   //   const sendCookie = async () => {
   //     const cookieArr = {...cookie, companyName: companyName + ' ' + abbreviation};
@@ -70,10 +92,6 @@ const Content = ({ lang }) => {
   //   sendCookie();
   // }
 
-  const handleNameCompletion = (e) => {
-    redirect(`/onboarding/formation`, lang);
-  }
-  
   // useEffect(()=> {
   //   const fetchCookie = async () => {
   //     const awaitCookie = await readCookie();
@@ -81,18 +99,6 @@ const Content = ({ lang }) => {
   //   }
   //   fetchCookie();
   // },[])
-
-  let companyType = (typeof window !== 'undefined') ? window.localStorage.getItem('companyType') : '';
-  let companyState = (typeof window !== 'undefined') ? window.localStorage.getItem('companyState') : '';
-
-  useEffect(()=> {
-    if (!(companyState)) {
-        window.location.href = `/${lang}/onboarding/state`;
-    }
-    else if (!(companyType)) {
-        window.location.hre = `/${lang}/onboarding`;
-    }
-  },[])
 
 
   return (
@@ -165,7 +171,7 @@ const Content = ({ lang }) => {
             </li>
               <button 
                 disabled={!success}
-                onClick={handleNameCompletion} 
+                onClick={finishNameCompletion} 
                 className={`w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer ${success ? '' : 'opacity-50 cursor-not-allowed'}`}>
                   {t('companyname_button')}
               </button>
