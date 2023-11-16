@@ -14,7 +14,7 @@ export default function Compliance({ lang }) {
       <div className="mx-auto max-w-7xl p-6 lg:px-12">
         <div className='items-start justify-between block lg:flex lg:gap-x-72 py-24'>
           <div className='w-full lg:w-[50%]'>
-            <h1 className='font-bold text-[32px] leading-[38px] lg:text-[64px] text-black lg:leading-[64px]'>{t('complience_title')}</h1>
+            <h2 className='font-bold text-[32px] leading-[38px] lg:text-[64px] text-black lg:leading-[64px]'>{t('complience_title')}</h2>
             <p className='font-semibold text-lg leading-[24px] pt-6'>{t('complience_description')}</p>
           </div>
           <div className='w-full lg:w-1/2 py-12 lg:py-0'>

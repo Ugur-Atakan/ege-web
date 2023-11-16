@@ -1,9 +1,12 @@
-import Navbar from '../old-blog/components/Navbar'
-import ContactForm from "./components/ContactForm"
-import ContactInfo from './components/ContactInfo'
-import BookCall from './components/BookCall'
-import FrequentlyAskedQuestions from './components/FrequentlyAskedQuestions'
-import Footer from '@/components/common/Footer'
+import React from 'react'
+import dynamic from 'next/dynamic'
+
+const Navbar = dynamic(() => import('../old-blog/components/Navbar'))
+const ContactForm = dynamic(() => import('./components/ContactForm'))
+const ContactInfo = dynamic(() => import('./components/ContactInfo'))
+const BookCall = dynamic(() => import('./components/BookCall'))
+const FrequentlyAskedQuestions = dynamic(() => import('./components/FrequentlyAskedQuestions'))
+const Footer = dynamic(() => import('@/components/common/Footer'))
 
 /**
  * Contact Page component
@@ -13,13 +16,13 @@ import Footer from '@/components/common/Footer'
  * @returns {JSX.Element} Rendered components for the page
 */
 
-const Page = ({ params: { lang } }) => {
+const Page = async ({ params: { lang } }) => {
   return (
     <main>
         <Navbar lang={lang} />
         <div className='my-14'>
-          <ContactForm />
-          <ContactInfo/>
+          <ContactForm lang={lang} />
+          <ContactInfo lang={lang} />
           <BookCall lang={lang} />
           <FrequentlyAskedQuestions lang={lang} />
           <Footer lang={lang} /> 

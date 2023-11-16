@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'  
+import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify';
@@ -19,15 +20,10 @@ import { useTranslation } from '@/i18n/client'
 
 const ContactForm = ({ lang }) => {
   const { t } = useTranslation(lang);
+  const router = useRouter();
   
   const [subjects, setSubjects] = useState(['Help / Support Question', 'Complaint']);
-
-
   const [message, setMessage] = useState('');
-
-  const messageonChange = (e) => {
-    setMessage(e.target.value)
-  }
 
   if (message?.length >= 500) {
     toast("Maximum number of characters 500");
@@ -36,11 +32,9 @@ const ContactForm = ({ lang }) => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    let firstName = e.target.firstName.value;
-    let lastName = e.target.lastName.value;
-    let fullName = firstName + ' ' + lastName;
-    let email = e.target.email.value;
-    let message = e.target.message.value;
+    const fullName = e.target.firstName.value + ' ' + e.target.lastName.value;
+    const email = e.target.email.value;
+    const message = e.target.message.value;
 
     const createJIRAReq = async () => {
       try {
@@ -49,7 +43,7 @@ const ContactForm = ({ lang }) => {
           email,
           message,
         })
-
+        
         toast.success('Request sent!', {
           position: "top-right",
           autoClose: 5000,
@@ -60,8 +54,13 @@ const ContactForm = ({ lang }) => {
           progress: undefined,
           theme: "light",
         });
+
+        // Wait for 1.5 seconds before redirecting to home page
+        setTimeout(() => {
+          router.push('/');
+        }, 1500);
       }
-      catch(err) {
+      catch (err) {
             toast.error('Customer request failed', {
               position: "top-right",
               autoClose: 5000,
@@ -209,7 +208,7 @@ const ContactForm = ({ lang }) => {
                     rows={4}
                     value={message}
                     maxLength="500"
-                    onChange={messageonChange}
+                    onChange={(e) => setMessage(e.target.value)}
                     className="block text-sm font-semibold w-full rounded-[20px] border-[#C8C8C8] py-3 px-4 text-[#222222] shadow-sm focus:border-blue-600"
                     aria-describedby="message-max"
                   />

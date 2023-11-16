@@ -32,12 +32,12 @@ export default function Compare({ lang }) {
         <div className="bg-[#ECEFF1]">
             <div className="mx-auto max-w-[966px] p-6 lg:px-12">
                 <div className="text-left lg:text-center pt-12 lg:pt-8">
-                    <h1 className="font-bold text-[32px] lg:text-[64px] text-[#222222] leading-[38px] lg:leading-[64px]">{t('starter_packages_title_black')} <span className="text-[#1649FF] font-bold ">{t('starter_packages_title_blue')}</span></h1>
+                    <h2 className="font-bold text-[32px] lg:text-[64px] text-[#222222] leading-[38px] lg:leading-[64px]">{t('starter_packages_title_black')} <span className="text-[#1649FF] font-bold ">{t('starter_packages_title_blue')}</span></h2>
                 </div>
             </div>
             <div className="mx-auto max-w-md px-6 py-0 lg:px-12">
                 <div className="text-left lg:text-center">
-                    <h1 className="font-bold text-[18px] text-[#222222]">{t('starter_packages_description_first')}<span className="text-[#1649FF] mr-1 font-bold ">{' ' + t('starter_packages_description_middle')}</span>{t('starter_packages_description_last')}</h1>
+                    <h3 className="font-bold text-[18px] text-[#222222]">{t('starter_packages_description_first')}<span className="text-[#1649FF] mr-1 font-bold ">{' ' + t('starter_packages_description_middle')}</span>{t('starter_packages_description_last')}</h3>
                 </div>
             </div>
             <div className="mx-auto max-w-7xl p-6 lg:px-12">

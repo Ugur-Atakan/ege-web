@@ -88,7 +88,7 @@ const Features = ({ lang }) => {
     <div className="bg-white mx-auto px-[160px] py-[130px] overflow-hidden">
       <div className="flex flex-row container ">
         <div className="items-center">
-          <h1 className="w-[322px] text-neutral-800 text-[28px] font-semibold leading-loose">{t('founders_title')}</h1>
+          <h2 className="w-[322px] text-neutral-800 text-[28px] font-semibold leading-loose">{t('founders_title')}</h2>
         </div>
   
         <div className={'block relative nextprev-button'}>
@@ -131,7 +131,7 @@ const Features = ({ lang }) => {
                     </div>
                   )}
                 </div>
-                <h1 className="font-semibold text-[22px] leading-[26px] text-[#222222] pt-4">{video.name}</h1>
+                <h3 className="font-semibold text-[22px] leading-[26px] text-[#222222] pt-4">{video.name}</h3>
                 <p className="font-semibold text-lg leading-6 text-[#222222]">{video.title}</p>
               </div>
             ))}

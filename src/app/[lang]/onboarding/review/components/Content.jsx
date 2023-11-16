@@ -104,7 +104,6 @@ const Content = ({ lang }) => {
 
                 if (stripeURL) {    
                     if (typeof window !== 'undefined' && window.localStorage && window.location) {
-                        window.localStorage.setItem('stripeUrl', stripeURL);
                         window.location.href = stripeURL;
                     }
                 }
@@ -124,6 +123,7 @@ const Content = ({ lang }) => {
             setStates(statesRes.data);
 
             const countyCodesRes = await axios.get('/api/country-codes');
+            console.log(countyCodesRes.data);
             setCountryCodes(countyCodesRes.data);
         };
         fetchData();

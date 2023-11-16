@@ -12,8 +12,8 @@ export default function SupportBusiness({ lang }) {
 
   const stayCompliantPackage = [
     { name: t('after_formation_package3_title'), description: t('after_formation_package1_description'), href: `/${lang}/contact-us`, img: hat },
-    { name: 'Initiate your Own Business With Our Starting Tips', href: `/${lang}/contact-us`, img: folder },
-    { name: 'Registered Agent', href: `/${lang}/contact-us`, img: calendar },
+    { name: t('after_formation_package3_title'), href: `/${lang}/contact-us`, img: folder },
+    { name: t('after_formation_package3_title'), href: `/${lang}/contact-us`, img: calendar },
     { name: t('after_formation_package4_title'), href: `/${lang}/contact-us`, img: tic },
     { name: t('after_formation_package5_title'), href: `/${lang}/contact-us`, img: at }
   ]
@@ -25,7 +25,7 @@ export default function SupportBusiness({ lang }) {
         <h1 className="font-bold text-[32px] leading-[38px] lg:text-[50px] lg:leading-[64px] text-black text-left lg:text-center">Give even more useful tips for your business with our files</h1>
       </div>
 
-      <div className='after-formation relative my-10' >
+      <div className='next-button relative my-10' >
         <Slider {...settings} className='relative'>
           {stayCompliantPackage.map((pac, index) => (           
               <Card

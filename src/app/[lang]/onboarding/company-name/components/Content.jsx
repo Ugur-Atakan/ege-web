@@ -45,37 +45,33 @@ const Content = ({ lang }) => {
   const ccorpOptions = [t('companyname_ccorp_option1'),t('companyname_ccorp_option2'),t('companyname_ccorp_option3'),t('companyname_ccorp_option4'),'Co'];
   const companyType = (typeof window !== 'undefined') ? window.localStorage.getItem('companyType') : '';
 
-  const handleAbbreviationChange = (name) => {
-    setAbbreviation(name);
-    checkName();
-  }
-
   const checkName = async () => {
     if (companyName != '') {
-      setLoading(true)
-      setLoaded(true)
-
-      const res = await axios.post('/api/namecheck?name=' + companyName)
-      if (res.data == 'Available') {
-        setSuccess(true)
+      try {
+        setLoading(true);
+        setLoaded(true);
+  
+        const res = await axios.post('/api/namecheck?name=' + encodeURIComponent(companyName));
+        if (res.data === 'Available') {
+          setSuccess(true);
+        } else {
+          setSuccess(false);
+        }
+      } catch (error) {
+        console.error('Error checking name:', error);
+      } finally {
+        setLoading(false);
       }
-      else {
-        setSuccess(false)
-      }
-
-      setAbbreviation(null)
-      setLoading(false)
     }
   }
 
   const onChangeCompanyName = (e) => {
     setCompanyName(e.target.value);
-    if (typeof window !== 'undefined' && window.localStorage)
-      window.localStorage.setItem('companyName', e.target.value);
   }
 
   const finishNameCompletion = () => {
     if (typeof window !== 'undefined' && window.localStorage) {
+      window.localStorage.setItem('companyName', companyName);
       window.localStorage.setItem('companyNameCompleted', true);
     }
 
@@ -128,6 +124,7 @@ const Content = ({ lang }) => {
                         type='text'
                         value={companyName}
                         onChange={onChangeCompanyName}
+                        onBlur={checkName}
                       />
                       <div className="absolute right-0 top-0 bottom-0 flex items-center pr-3">
                         {loaded ? (
@@ -149,7 +146,7 @@ const Content = ({ lang }) => {
                   name="abbreviation"
                   value={abbreviation || ''}
                   className="font-semibold border-[#C8C8C8] text-[#8A8A8A] w-full my-2 rounded-[20px] p-4 focus:border-[4px]"
-                  onChange={(e) => handleAbbreviationChange(e.target.value)}
+                  onChange={(e) =>    setAbbreviation(e.target.value)}
               >
                   <option value="" disabled>Select a Designator</option>
                   {companyType ==='LLC' ? llcOptions.map((abb, index) => (
@@ -178,7 +175,7 @@ const Content = ({ lang }) => {
           </ul>
 
           <div className="max-w-lg mx-auto text-sm text-gray-500 py-5">
-            <sup className="mr-1">[*]</sup>Company name checker only works for Delaware based companies.
+            <sup className="mr-1">[*]</sup>{t('name_checker_footnote')}
           </div>
         </div>
       </div>

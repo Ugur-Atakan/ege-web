@@ -17,7 +17,7 @@ function classNames(...classes) {
 */
 
 const FrequentlyAskedQuestions = ({ lang }) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation(lang);
 
     const faqs = [
         {

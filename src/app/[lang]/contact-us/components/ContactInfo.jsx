@@ -33,7 +33,7 @@ const ContactInfo = ({ lang }) => {
                     <div className="bg-[#ECEFF1] rounded-[32px] relative">
                         <div className='py-4 px-6'>
                             <Image src={email} className='h-64 w-64' alt='email' />
-                            <h2 className='text-[26px] font-semibold lg:text-[40px] leading-8 lg:leading-[44px] text-[#222222] pt-12'>{t("contact_information_card2_title")}</h2>
+                            <h3 className='text-[26px] font-semibold lg:text-[40px] leading-8 lg:leading-[44px] text-[#222222] pt-12'>{t("contact_information_card2_title")}</h3>
                             <p className='text-[16px] font-semibold leading-[22px] lg:leading-6 text-[#222222] pt-5 pb-16'>info@registate.com</p>
                             <a href='mailto:info@registate.com' className='text-[#1649FF] font-semibold text-[16px] lg:text-lg leading-[22px] absolute bottom-6'>{t("contact_information_card2_button")}</a>
                         </div>
@@ -41,7 +41,7 @@ const ContactInfo = ({ lang }) => {
                     <div className="bg-[#ECEFF1] rounded-[32px] relative">
                         <div className='py-4 px-6'>
                             <Image src={cursor} className='h-64 w-64' alt='location' />
-                            <h2 className='text-[26px] font-semibold lg:text-[40px] leading-8 lg:leading-[44px] text-[#222222] pt-12'>{t("contact_information_card3_title")}</h2>
+                            <h4 className='text-[26px] font-semibold lg:text-[40px] leading-8 lg:leading-[44px] text-[#222222] pt-12'>{t("contact_information_card3_title")}</h4>
                             <p className='text-[16px] font-semibold leading-[22px] lg:leading-6 text-[#222222] pt-5 pb-16'>1401 Pennsylvania Ave. Unit 105 Wilmington, DE 19806, ABD</p>
                             <a href='https://goo.gl/maps/Sz9zfv3nnSPgUKeDA' target={'_blank'} className='text-[#1649FF] font-semibold text-[16px] lg:text-lg leading-[22px] absolute bottom-6'>{t("contact_information_card3_button")}</a>
                         </div>

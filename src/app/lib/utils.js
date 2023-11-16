@@ -5,11 +5,6 @@ export const redirect = (url, lang) => {
         window.location.href = `/${lang}/${url}`;
 }
 
-// This function is used to redirect to a page using next/router
-export const redirectUsingNextRouter = (url, lang,router) => {
-    router.push(`/${lang}/${url}`);
-}
-
 export const localStorageDataExists = () => {
     const companyState = (typeof window !== 'undefined') ? localStorage.getItem('companyState') : '';
     const companyName = (typeof window !== 'undefined') ? localStorage.getItem('companyName') : '';

@@ -19,10 +19,10 @@ const Step5 = ({ lang }) => {
     return (
       <div className='hiw-section7'>
         <div className='mx-auto max-w-[851px] px-6 lg:px-0  py-12 lg:py-24'>
-          <h1 className='text-left lg:text-center font-bold text-[32px] lg:text-[64px] leading-[38px] lg:leading-[64px] text-[#1649FF]'>
+          <h4 className='text-left lg:text-center font-bold text-[32px] lg:text-[64px] leading-[38px] lg:leading-[64px] text-[#1649FF]'>
             {t('how_it_works_step_5')}
             <span className='text-[#ECEFF1]'>{t("how_it_works_just_1_day_title")}</span>
-          </h1>
+          </h4>
         </div>
         <div className='lg:mx-auto max-w-[938px] lg:px-4 mx-6 py-12 rectangle'>
           <div className='block lg:flex items-start justify-between gap-24 px-4 lg:px-12'>

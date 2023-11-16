@@ -76,7 +76,7 @@ const Faqs = ({ lang }) => {
                 <Image src={navigatoricon} className='w-128 h-128' alt='navigator icon' />
               </div>
               <div className='text-center px-12 lg:px-0'>
-                <h1 className='relative font-bold text-[32px] leading-[38px] lg:text-[64px] lg:leading-[64px] text-white'>{t('pricing_header2_footer_title')}</h1>
+                <h2 className='relative font-bold text-[32px] leading-[38px] lg:text-[64px] lg:leading-[64px] text-white'>{t('pricing_header2_footer_title')}</h2>
               </div>
               <FooterComponent lang={lang} t={t} />
             </div>
