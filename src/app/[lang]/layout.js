@@ -21,6 +21,8 @@ const RootLayout = ({
   return (
     <html lang={lang} dir={dir(lang)} className='h-full text-base antialiased' >
       <head >
+      <link rel="canonical" href="https://registate.com" />
+
       <Script
             type="text/javascript"
             async

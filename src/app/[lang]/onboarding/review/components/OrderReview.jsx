@@ -17,10 +17,10 @@ const OrderReview = ({ lang , selectedPackage , couponcode, setCouponCode , disp
                 {selectedPackage && selectedPackage.map((price, index) => (
                     <React.Fragment key={index}>
                         <div>
-                            <h1 className='font-semibold text-[16px] leading-6 text-[#222222]'>{t("review_payment_type")}</h1>
+                            <h2 className='font-semibold text-[16px] leading-6 text-[#222222]'>{t("review_payment_type")}</h2>
                             <p className='font-semibold capitalize text-[16px] leading-6 text-[#222222]'>{price.type}</p>
                         </div>
-                        <div><h1 className='font-semibold text-[16px] leading-6 text-[#222222]'>{'$' + (price.price)}</h1></div>
+                        <div><h3 className='font-semibold text-[16px] leading-6 text-[#222222]'>{'$' + (price.price)}</h3></div>
                     </React.Fragment>
                 ))}
             </div>
@@ -31,10 +31,10 @@ const OrderReview = ({ lang , selectedPackage , couponcode, setCouponCode , disp
                 </div>
                 <div className='flex items-center justify-between py-4'>
                     <div>
-                        <h1 className='font-semibold text-lg leading-6 text-[#222222]'>{t("review_total")}</h1>
+                        <h4 className='font-semibold text-lg leading-6 text-[#222222]'>{t("review_total")}</h4>
                     </div>
                     {selectedPackage && selectedPackage.map((price, index) => (
-                        <div key={index}><h1 className='font-semibold text-lg leading-6 text-[#222222]'>{'$' + (price.price)}</h1></div>
+                        <div key={index}><h5 className='font-semibold text-lg leading-6 text-[#222222]'>{'$' + (price.price)}</h5></div>
                     ))}
                 </div>
                 <div className='flex items-center justify-center py-4'>

@@ -6,7 +6,7 @@ import cameralyzelogo from '@/assets/images/logos/cameralyze-logo.png'
 import opsbeaconlogo from '@/assets/images/logos/opsbeacon-logo.png'
 import finedinelogo from '@/assets/images/logos/finedine-logo.png'
 
-export default function TestimonialLogos() {
+const TestimonialLogos = () => {
     return (
         <section
             id="testimonials"
@@ -40,3 +40,5 @@ export default function TestimonialLogos() {
         </section>
     )
 }
+
+export default TestimonialLogos

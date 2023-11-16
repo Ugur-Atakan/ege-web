@@ -22,6 +22,17 @@ export function middleware(req) {
   if (!lang) lang = acceptLanguage.get(req.headers.get('Accept-Language'))
   if (!lang) lang = fallbackLng
 
+  const pathSegments = req.nextUrl.pathname.split('/').filter(Boolean)
+  const firstSegment = pathSegments[0]
+
+
+  const allowedSegments = ['en', 'tr', 'post-order', '_next', 'api', 'favicon.ico', 'robots.txt', 'sitemap.xml'];
+
+  if (firstSegment && !allowedSegments.includes(firstSegment)) {
+    return NextResponse.redirect(new URL(`/${lang}`, req.url));
+  }
+
+
   if (req.nextUrl.pathname === '/') {
     return NextResponse.redirect(new URL(`/${lang}`, req.url))
   }

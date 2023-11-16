@@ -57,7 +57,7 @@ export default function IncorporateBusiness({ lang }) {
                 
                 <div className="block lg:flex items-start justify-between pt-12 pb-24 px-6 lg:px-12">
                     <div className="w-full lg:w-[60%]">
-                        <h1 className='font-bold  text-[32px] lg:text-[64px] text-black leading-[38px] lg:leading-[64px] mb-6 lg:mb-24'>{t('video_title')}</h1>
+                        <h3 className='font-bold  text-[32px] lg:text-[64px] text-black leading-[38px] lg:leading-[64px] mb-6 lg:mb-24'>{t('video_title')}</h3>
                         <Link
                             href={`/${lang}/onboarding`}
                             className="hidden lg:inline rounded-2xl py-[14px] px-6 font-semibold text-lg text-[#222222] bg-[#9EE248]"
@@ -78,12 +78,12 @@ export default function IncorporateBusiness({ lang }) {
                             <div className="flex flex-col pt-10 space-y-4">
                                 <div className='flex flex-row'> 
                                     <Image src={palace} className='w-6 h-6 mr-4' alt='tick icon' />
-                                    <div className="w-[293px] text-neutral-800 text-lg font-semibold font-['Inter'] leading-normal">Same day company setup </div>
+                                    <div className="w-[293px] text-neutral-800 text-lg font-semibold font-['Inter'] leading-normal">{t('starter_packages_list1')} </div>
                                 </div>
 
                                 <div className='flex flex-row'> 
                                     <Image src={tickIcon} className='w-6 h-6 mr-4' alt='tick icon' />
-                                    <div className="text-neutral-800 text-lg font-semibold font-['Inter'] leading-normal">60-Day money-back guarantee</div>
+                                    <div className="text-neutral-800 text-lg font-semibold font-['Inter'] leading-normal">{t('after_formation_footer3')}</div>
                                 </div>
                             </div>
                         </div>

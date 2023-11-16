@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { useTranslation } from '@/i18n/client'
 // import { submitCookie } from '../../../lib/session/clientActions'
 import { completelyClearLocalStorage, localStorageDataExists, redirectToLastNotNullFunnelLink } from '../../../lib/utils'
-import { usePathname, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 import Cards from './Cards/Cards'
 import Comparison from './Comparison/Comparison'
@@ -22,7 +22,6 @@ import Modal from './Modal'
 
 const Content = ({ lang }) => {
     const { t } = useTranslation(lang);
-    const pathname = usePathname();
     const router = useRouter();
 
     const [companyType, setCompanyType] = useState('');

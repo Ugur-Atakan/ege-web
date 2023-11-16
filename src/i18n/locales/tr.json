@@ -395,5 +395,7 @@
     "menu3_title": "Blogumuz",
     "contact_us_header3_blank_1": "Adı",
     "contact_us_header3_blank_2": "Soyadı",
-    "name_checker_title": "Şirket Adı Kontrol edin"
+    "name_checker_title": "Şirket Adı Kontrol edin",
+    "name_checker_footnote": "Şirket ismi yalnızca Delaware state şirketler için kontrol edilir.",
+    "take_survery_again": "Anketi tekrar doldurun"
 }

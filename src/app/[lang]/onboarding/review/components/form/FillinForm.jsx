@@ -2,18 +2,66 @@
 
 import { useTranslation } from '@/i18n/client'
 import { isNumber } from '../utils/util'
+import Image from 'next/image'
 import CompanyDetails from './CompanyDetails'
+import ReactSelect, { components } from 'react-select'
+
+
+const customStyles = {
+    control: (provided) => ({
+      ...provided,
+      borderRadius: '20px',
+      borderColor: '#C8C8C8',
+      // Adjust these as necessary
+      padding: '4px 8px',
+      minWidth: '200px', // Make sure this is enough to accommodate the placeholder text
+    }),
+    placeholder: (provided) => ({
+      ...provided,
+      whiteSpace: 'nowrap',
+      position: 'absolute',
+      top: '50%',
+      transform: 'translateY(-50%)',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      maxWidth: '90%', // Prevents the text from overflowing the width of the select box
+    }),
+    // ... other styles
+};
+
+const CustomOption = props => (
+    <components.Option {...props}>
+      <Image
+        src={props.data.flagURL}
+        width={20}
+        height={20}
+        style={{ width: '20px', height: '20px', marginRight: '10px', display: 'inline-block'}}
+        alt={props.data.iso}
+      />
+      {props.data.label}
+    </components.Option>
+);
 
 const FillinForm = (params) => {
     const { lang, zip, setCity ,setCountry, setLastName, setName, country, countryCodes,
             setEmail, setStreet, setZip, setPhone, countries, states, setCountryCode, phone
     } = params;
     
+    const options = countryCodes.map(country => ({
+        value: country.code,
+        label: `+${country.code}`,
+        flagURL: country.flagURL
+    }));
+    
+    const handleChange = selectedOption => {
+        setCountryCode(selectedOption.value);
+    };
+      
     const { t } = useTranslation(lang);
 
     return (
         <div className='py-8 px-4 md:pl-10 md:py-8'>
-            <h1 className='font-semibold text-[40px] leading-[44px] text-[#222222]'>{t("review_information")}</h1>
+            <h2 className='font-semibold text-[40px] leading-[44px] text-[#222222]'>{t("review_information")}</h2>
             
             <div className='bg-white border rounded-[32px] p-6 my-6'>
                 <h2 className='font-semibold text-[24px] leading-[44px] text-[#222222]'>Account Owner</h2>
@@ -76,23 +124,14 @@ const FillinForm = (params) => {
                             <label htmlFor="countryCode" className="block font-semibold text-[14px] leading-6 text-[#222222]">
                                 Country Code
                             </label>
-                            <select
-                                id="countryCode"
-                                name="country-code"
-                                autoComplete="country-code"
-                                className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
-                                onChange={(e) => setCountryCode(e.target.value)}
-                            >
-                            <option>Select country code</option>
-                                {countryCodes.map((code, index) => (
-                                    <option
-                                        key={index}
-                                        value={code}
-                                    >
-                                        {code}
-                                    </option>
-                                ))}
-                            </select>
+                            <ReactSelect
+                                options={options}
+                                styles={customStyles}
+                                placeholder="Select country code"
+                                onChange={handleChange}
+                                // isSearchable={false}
+                                components={{ Option: CustomOption }}
+                            />
                         </div>
                         
                         <div className="w-full md:w-2/3">
@@ -130,6 +169,7 @@ const FillinForm = (params) => {
                 setEmail={setEmail}
                 setStreet={setStreet}
                 setZip={setZip}
+                zip={zip}
                 setPhone={setPhone}
                 countries={countries}
                 states={states}

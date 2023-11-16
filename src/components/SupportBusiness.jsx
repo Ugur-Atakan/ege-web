@@ -9,7 +9,7 @@ import { calendar, hat, folder, protectionicon, tic, at, navigator,
 } from '@/assets/images';
 import { useTranslation } from '@/i18n/client'
 
-export default function SupportBusiness({ lang }) {
+const SupportBusiness = ({ lang }) => {
   const { t } = useTranslation(lang);
   const [selectedPackage, setSelectedPackage] = useState(0);
   const [showAllPackages, setShowAllPackages] = useState(false);
@@ -83,7 +83,7 @@ export default function SupportBusiness({ lang }) {
   return (
     <div className="bg-[#1649FF] overflow-hidden">
       <div className="mx-auto max-w-5xl p-8 lg:px-12 lg:pt-24 pb-12">
-        <h1 className="font-bold text-[32px] leading-[38px] lg:text-[64px] lg:leading-[64px] text-white text-left lg:text-center">{t('after_formation_title_white')}</h1><h1 className="font-bold text-[32px] leading-[38px] lg:text-[64px] lg:leading-[64px] text-[#9EE248] text-left lg:text-center">{t('after_formation_title_green')}</h1>
+        <h2 className="font-bold text-[32px] leading-[38px] lg:text-[64px] lg:leading-[64px] text-white text-left lg:text-center">{t('after_formation_title_white')}</h2><h3 className="font-bold text-[32px] leading-[38px] lg:text-[64px] lg:leading-[64px] text-[#9EE248] text-left lg:text-center">{t('after_formation_title_green')}</h3>
       </div>
       <div className="flex items-center justify-center gap-0.5 pb-12">
         {packagesName.map((pac, index) => {
@@ -160,3 +160,5 @@ export default function SupportBusiness({ lang }) {
     </div>
   )
 }
+
+export default SupportBusiness

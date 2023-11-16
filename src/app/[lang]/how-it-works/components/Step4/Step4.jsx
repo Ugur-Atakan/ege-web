@@ -52,7 +52,7 @@ const Step4 = ({ lang }) => {
             <div className='flex-col lg:flex-row flex items-stretch justify-center gap-4'>
               <div className='w-full bg-white rounded-[32px] p-6 relative overflow-hidden'>
                 <div className='flex flex-col gap-4'>
-                  <h1 className='font-bold text-[32px] lg:text-[64px] leading-[38px] lg:leading-[64px] text-[#222222]'>Silver</h1>
+                  <h3 className='font-bold text-[32px] lg:text-[64px] leading-[38px] lg:leading-[64px] text-[#222222]'>Silver</h3>
                   <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-[24px] text-[#222222] lg:w-2/3'>Expedited Filing (1-3 business days). Everything you need to perfectly start your company.</p>
                 </div>
                 <div className='py-8'>
@@ -87,7 +87,7 @@ const Step4 = ({ lang }) => {
               </div>
               <div className='w-full bg-[#1649FF] rounded-[32px] p-6 relative overflow-hidden'>
                 <div className='flex flex-col gap-4'>
-                  <h1 className='font-bold text-[32px] lg:text-[64px] leading-[38px] lg:leading-[64px] text-white'>Gold</h1>
+                  <h4 className='font-bold text-[32px] lg:text-[64px] leading-[38px] lg:leading-[64px] text-white'>Gold</h4>
                   <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-[24px] text-white lg:w-2/3'>
                     Expedited Filing (1-3 business days). Everything you need to diligently operate and manage your company.</p>
                 </div>
@@ -120,7 +120,7 @@ const Step4 = ({ lang }) => {
               </div>
               <div className='w-full bg-[#222222] rounded-[32px] p-6 relative overflow-hidden'>
                 <div className='flex flex-col gap-4'>
-                  <h1 className='font-bold text-[32px] lg:text-[64px] leading-[38px] lg:leading-[64px] text-white'>Platinum</h1>
+                  <h5 className='font-bold text-[32px] lg:text-[64px] leading-[38px] lg:leading-[64px] text-white'>Platinum</h5>
                   <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-[24px] text-white lg:w-2/3'>Expedited Filing (1-3 business days). Everything you need to operate, manage and grow your company.</p>
                 </div>
                 <div className='py-8'>
@@ -155,7 +155,7 @@ const Step4 = ({ lang }) => {
             <div className='flex-col lg:flex-row flex items-stretch justify-center gap-6'>
               <div className='bg-white rounded-[32px] p-6 relative overflow-hidden'>
                 <div className='flex flex-col gap-4'>
-                  <h1 className='font-bold text-[32px] lg:text-[64px] leading-[38px] lg:leading-[64px] text-[#222222]'>Silver</h1>
+                  <h6 className='font-bold text-[32px] lg:text-[64px] leading-[38px] lg:leading-[64px] text-[#222222]'>Silver</h6>
                   <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-[24px] text-[#222222] lg:w-2/3'>I want my business set up with essential services and documents.</p>
                 </div>
                 <div className='py-8'>
@@ -190,7 +190,7 @@ const Step4 = ({ lang }) => {
               </div>
               <div className='bg-[#1649FF] rounded-[32px] p-6 relative overflow-hidden'>
                 <div className='flex flex-col gap-4'>
-                  <h1 className='font-bold text-[32px] lg:text-[64px] leading-[38px] lg:leading-[64px] text-white'>Gold</h1>
+                  <h2 className='font-bold text-[32px] lg:text-[64px] leading-[38px] lg:leading-[64px] text-white'>Gold</h2>
                   <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-[24px] text-white lg:w-2/3'>I want an expert to ensure my business runs smoothly even after creation.</p>
                 </div>
                 <div className='py-8'>

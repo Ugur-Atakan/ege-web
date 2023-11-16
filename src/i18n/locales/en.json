@@ -256,7 +256,7 @@
     "companyname_back_button":"Back",
     "companyname_title":"What great idea do you have in mind?",
     "companyname_input1_label":"Company Name",
-    "companyname_input2_label":"Abbreviation",
+    "companyname_input2_label":"Designator",
     "companyname_llc_option1":"LLC",
     "companyname_llc_option2":"L.L.C",
     "companyname_llc_option3":"Limited Liability Company",
@@ -395,5 +395,7 @@
     "menu3_title": "Blog ",
     "contact_us_header3_blank_1": "First name",
     "contact_us_header3_blank_2": "Last name",
-    "name_checker_title": "Check your company name availability"
+    "name_checker_title": "Check your company name availability",
+    "name_checker_footnote": "Company name checker only works for Delaware based companies.",
+    "take_survery_again": "Take the survery again"
 }

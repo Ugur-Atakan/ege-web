@@ -14,7 +14,7 @@ import { useTranslation } from '@/i18n/client'
 */
 
 const BookCall = ({ lang }) => {
-    const { t } =  useTranslation();
+    const { t } =  useTranslation(lang);
 
     return (
         <div className="bg-white">
@@ -38,7 +38,7 @@ const BookCall = ({ lang }) => {
                     <div className='flex items-center flex-col px-6 pt-12'>
                         <div className='w-full'>
                             <div className='block'>
-                                <h2 className='text-[20px] font-semibold leading-[22px] text-white'>{t('contact_book_a_free_call_title')}</h2>
+                                <h3 className='text-[20px] font-semibold leading-[22px] text-white'>{t('contact_book_a_free_call_title')}</h3>
                                 <div className='my-6 py-5 w-full bg-white text-center cursor-pointer rounded-[20px]'>
                                 <Link href='#' className='text-lg leading-[26px] font-semibold py-4 text-[#222222]'>{t('contact_book_a_free_call_button')}</Link>
                                 </div>
