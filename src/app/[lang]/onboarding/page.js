@@ -1,6 +1,6 @@
 
 import React from 'react'
-import Header from './components/Header'
+import BackButton from './components/common/BackButton'
 import Content from './components/Content'
 import { useTranslation } from '@/i18n/server'
 
@@ -17,7 +17,7 @@ const Page = async ({ params: { lang } }) => {
 
   return (
     <React.Fragment>
-        <Header heading={t('company_type_leftcorner_button')} lang={lang} />
+        <BackButton buttonText={t('company_type_leftcorner_button')} linkHref={'/'} />
         <Content lang={lang} />
     </React.Fragment>
   )

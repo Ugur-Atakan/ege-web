@@ -11,7 +11,6 @@ import { useTranslation } from '@/i18n/client'
 
 const SupportBusiness = ({ lang }) => {
   const { t } = useTranslation(lang);
-  const [selectedPackage, setSelectedPackage] = useState(0);
   const [showAllPackages, setShowAllPackages] = useState(false);
 
   const stayCompliantPackage = [
@@ -30,17 +29,6 @@ const SupportBusiness = ({ lang }) => {
     { name: t('after_formation_package13_title'), description: t('after_formation_package13_description'), button: t('after_formation_package13_button'), href: `/${lang}/contact-us`, img: wallet },
     { name: t('after_formation_package14_title'), description: t('after_formation_package14_description'), button: t('after_formation_package14_button'), href: `/${lang}/contact-us`, img: filetext }
   ]
-  const taxesPackage = [
-    { name: t('after_formation_package15_title'), description: t('after_formation_package15_description'), button: t('after_formation_package15_button'), href: `/${lang}/contact-us`, img: sheild },
-    { name: t('after_formation_package16_title'), description: t('after_formation_package16_description'), button: t('after_formation_package16_button'), href: `/${lang}/contact-us`, img: dollar },
-    { name: t('after_formation_package17_title'), description: t('after_formation_package17_description'), button: t('after_formation_package17_button'), href: `/${lang}/contact-us`, img: locker }
-  ]
-
-  const growYourBusinessPackage = [
-    { name: t('after_formation_package18_title'), description: t('after_formation_package18_description'), button: t('after_formation_package18_button'), href: `/${lang}/contact-us`, img: folder }
-  ]
-
-  const packagesName = [t('after_formation_tab1'), t('after_formation_tab2'), t('after_formation_tab3')];
 
   const settings = {
     dots: false,
@@ -70,52 +58,34 @@ const SupportBusiness = ({ lang }) => {
     ]
   };
 
-  const selectedPackages = (() => {
-    if (selectedPackage === 0) {
-      return stayCompliantPackage;
-    } else if (selectedPackage === 1) {
-      return taxesPackage;
-    } else if (selectedPackage === 2) {
-      return growYourBusinessPackage;
-    }
-  })();
-
   return (
     <div className="bg-[#1649FF] overflow-hidden">
       <div className="mx-auto max-w-5xl p-8 lg:px-12 lg:pt-24 pb-12">
         <h2 className="font-bold text-[32px] leading-[38px] lg:text-[64px] lg:leading-[64px] text-white text-left lg:text-center">{t('after_formation_title_white')}</h2><h3 className="font-bold text-[32px] leading-[38px] lg:text-[64px] lg:leading-[64px] text-[#9EE248] text-left lg:text-center">{t('after_formation_title_green')}</h3>
       </div>
-      <div className="flex items-center justify-center gap-0.5 pb-12">
-        {packagesName.map((pac, index) => {
-          return (
-            <div key={index} onClick={() => setSelectedPackage(index)} className={`cursor-pointer rounded-[12px] text-blue-600 text-[16px] leading-[22px] px-[6px] py-2 font-semibold text-center ${selectedPackage === index ? 'bg-white text-blue-600' : 'bg-[#1649FF] text-white'}`}>
-                {pac}
-            </div>
-          )
-        })}
-      </div>
 
       <div className={'next-button hidden lg:block relative'}>
         <Slider {...settings} className='relative'>
-          {selectedPackages.map((pac, index) => (           
+          {stayCompliantPackage.map((pack, index) => (           
             <div key={index} className="p-8 shadow-lg bg-white rounded-[32px] h-[35rem]">
                 <div className="media-query-image flex items-center justify-center pb-4">
-                  <Image src={pac.img} className='h-56 w-64' alt='' />
+                  <Image src={pack.img} className='h-56 w-64' alt='' />
                 </div>
                 <div className="media-query-heading font-semibold text-[32px] leading-[38px] lg:leading-[44px] text-[#222222]">
-                  {pac.name}
+                  {pack.name}
                 </div>
                 <div className="media-query-description">
-                  {pac.description}
+                  {pack.description}
                 </div>
-                <Link href={pac.href} className="media-query-button absolute bottom-4 py-1 text-[19px] leading-[26px] font-semibold text-[#1649FF]">{pac.button}</Link>
+                <Link href={pack.href} className="media-query-button absolute bottom-4 py-1 text-[19px] leading-[26px] font-semibold text-[#1649FF]">{pack.button}</Link>
               </div> 
           ))}
         </Slider>
       </div>
+
       <div className="block px-8 lg:hidden">
         <div className="flex flex-col gap-3 py-12">
-          {selectedPackages.slice(0, showAllPackages ? selectedPackages.length : 3).map((pac, index) => {
+          {stayCompliantPackage.slice(0, showAllPackages ? stayCompliantPackage.length : 3).map((pac, index) => {
             return (
               <div key={index} className="overflow-hidden shadow-lg bg-white rounded-[32px] relative">
                 <div className="flex items-center justify-center">

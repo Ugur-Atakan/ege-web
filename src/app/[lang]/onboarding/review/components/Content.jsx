@@ -7,7 +7,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import dynamic from 'next/dynamic'
 import { useTranslation } from '@/i18n/client'
 
-import BackButton from './BackButton'
+import BackButton from '../../components/common/BackButton'
 import FillinForm from './form/FillinForm'
 
 import { checkFormElements } from './utils/util'
@@ -131,7 +131,8 @@ const Content = ({ lang }) => {
 
     return (
         <div className="block md:flex items-start gap-12 bg-[#ECEFF1]">
-            <BackButton lang={lang} />
+            {/* <BackButton buttonText={t('companyname_back_button')} linkHref={`/${lang}/onboarding/company-name`} /> */}
+
             <div className="w-full md:w-[45%]">
                 {displayForm ? (
                     <React.Fragment>

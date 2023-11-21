@@ -7,7 +7,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { redirectToLastNullInternalFunnel, checkEqualPathName, clearPathnameLocalStorage } from '@/app/lib/utils'
 import { useTranslation } from '@/i18n/client'
 
-import BackButton from './BackButton'
+import BackButton from '../../components/common/BackButton'
 import Heading from './Heading'
 import DropDown from './DropDown'
 import dynamic from 'next/dynamic'
@@ -94,14 +94,14 @@ const Content = ({ lang }) => {
 
   return (
     <div className='bg-white'>
-      <BackButton t={t} lang={lang} />
-      
+      <BackButton linkHref={`/${lang}/onboarding`} buttonText={t('companyname_back_button')} />
+     
       <div className='mx-auto max-w-2xl px-8 md:px-0'>
         <Heading t={t} />
         
         <div className='mx-auto max-w-xl py-12'>
           <ul className="grid w-full gap-6 md:grid-cols-1">
-                <RadioListItem
+              <RadioListItem
                 id="hosting-small"
                 state="Wyoming"
                 companyType={companyType}
@@ -139,7 +139,7 @@ const Content = ({ lang }) => {
                   window.localStorage.setItem('companyStateCompleted', true);
                 }
               }}
-              href={`/${lang}/onboarding/company-name/`} 
+              href={`/${lang}/onboarding/formation`} 
               //className={`order-4 w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer ${companyState ? '' : 'opacity-50 cursor-not-allowed pointer-events-none'}`}
               className={`order-4 w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer`}
             >

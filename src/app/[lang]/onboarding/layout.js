@@ -1,5 +1,5 @@
 import React from "react"
-import Navbar from '@/components/common/Navbar'
+import Navbar from './components/common/Navbar'
 
 const OnBoardingLayout = (params) => {
     return (

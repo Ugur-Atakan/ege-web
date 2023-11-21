@@ -25,10 +25,10 @@ export const redirectToLastNotNullFunnelLink = () => {
     const companyName = (typeof window !== 'undefined') ? localStorage.getItem('companyName') : null;
     const companyPackage = (typeof window !== 'undefined') ? localStorage.getItem('selectedPackage') : null;
    
-    if (companyPackage != null) {
-        return 'formation';
-    } else if (companyName != null) {
+    if (companyName != null) {
         return 'company-name';
+    } else if (companyPackage != null) {
+        return 'formation';
     } else if (companyState != null) {  
         return 'state';
     } 
@@ -45,10 +45,10 @@ export const redirectToLastNullInternalFunnel = () => {
         return '/';
     } else if (companyState == null) {
         return 'state';
+    }  else if (companyPackage == null) {
+        return 'formation';
     } else if (companyName == null) {
         return 'company-name';
-    } else if (companyPackage == null) {
-        return 'formation';
     } else {
         return null;
     }

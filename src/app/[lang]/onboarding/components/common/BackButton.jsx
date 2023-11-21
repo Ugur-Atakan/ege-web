@@ -2,15 +2,15 @@ import React from 'react'
 import Link from 'next/link'
 import { ArrowLeftIcon } from '@heroicons/react/24/outline'
 
-const BackButton = ({ t , lang }) => {
+const BackButton = ({ buttonText, linkHref }) => {
   return (
     <div className="mx-auto p-6 lg:px-8">
-        <Link className='flex items-center gap-2' href={`/${lang}/onboarding`}>
+        <Link className='flex items-center gap-2' href={linkHref}>
             <ArrowLeftIcon className='text-[#1649FF] h-[18px] w-[18px]' />
-            <span className='text-[#1649FF] text-lg font-semibold'>{t('companyname_back_button')}</span>
+            <span className='text-[#1649FF] text-lg font-semibold'>{buttonText}</span>
         </Link>
     </div>
   );
-};
+}
 
-export default BackButton;
+export default BackButton

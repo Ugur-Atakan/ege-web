@@ -1,7 +1,11 @@
+'use client'
 import React from 'react'
 import { getRandomPackages } from '../utils/util'
+import { useRouter } from 'next/navigation'
 
 const CardsFooter = ({ selectedPackage, selectedCompanyType, selectedPackageVar, lang, buttonText, bottomText }) => {
+  const router = useRouter();
+
   return (
     <div className='mx-auto max-w-xs'>
         <button
@@ -13,7 +17,7 @@ const CardsFooter = ({ selectedPackage, selectedCompanyType, selectedPackageVar,
                     if (typeof window !== 'undefined' && window.localStorage && window.location) {
                         window.localStorage.setItem('selectedPackage', JSON.stringify([{...selectedPackage, features: packages}]));
                         window.localStorage.setItem('companyFormationCompleted', true);
-                        window.location.href = `/${lang}/onboarding/review`;
+                        router.push(`/${lang}/onboarding/company-name`);
                     }
                 }
             }}
