@@ -2,67 +2,27 @@
 
 import { useTranslation } from '@/i18n/client'
 import { isNumber } from '../utils/util'
-import Image from 'next/image'
-import CompanyDetails from './CompanyDetails'
-import ReactSelect, { components } from 'react-select'
-
-
-const customStyles = {
-    control: (provided) => ({
-      ...provided,
-      borderRadius: '20px',
-      borderColor: '#C8C8C8',
-      // Adjust these as necessary
-      padding: '4px 8px',
-      minWidth: '200px', // Make sure this is enough to accommodate the placeholder text
-    }),
-    placeholder: (provided) => ({
-      ...provided,
-      whiteSpace: 'nowrap',
-      position: 'absolute',
-      top: '50%',
-      transform: 'translateY(-50%)',
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',
-      maxWidth: '90%', // Prevents the text from overflowing the width of the select box
-    }),
-    // ... other styles
-};
-
-const CustomOption = props => (
-    <components.Option {...props}>
-      <Image
-        src={props.data.flagURL}
-        width={20}
-        height={20}
-        style={{ width: '20px', height: '20px', marginRight: '10px', display: 'inline-block'}}
-        alt={props.data.iso}
-      />
-      {props.data.label}
-    </components.Option>
-);
+import { customStyles , CustomOption } from './selectFormStyles'
+import ReactSelect from 'react-select'
 
 const FillinForm = (params) => {
-    const { lang, zip, setCity ,setCountry, setLastName, setName, country, countryCodes,
-            setEmail, setStreet, setZip, setPhone, countries, states, setCountryCode, phone
-    } = params;
-    
+    const { lang, setLastName, setName, countryCodes, setEmail, setPhone, setCountryCode, phone } = params;
+    const { t } = useTranslation(lang);
+
     const options = countryCodes.map(country => ({
         value: country.code,
         label: `+${country.code}`,
         flagURL: country.flagURL
     }));
-    
+
     const handleChange = selectedOption => {
         setCountryCode(selectedOption.value);
     };
-      
-    const { t } = useTranslation(lang);
 
     return (
-        <div className='py-8 px-4 md:pl-10 md:py-8'>
+        <div>
             <h2 className='font-semibold text-[40px] leading-[44px] text-[#222222]'>{t("review_information")}</h2>
-            
+
             <div className='bg-white border rounded-[32px] p-6 my-6'>
                 <h2 className='font-semibold text-[24px] leading-[44px] text-[#222222]'>Account Owner</h2>
                 <p className='font-bold text-[16px] leading-6 text-[#222222]'>{t("review_company_details_description")}</p>
@@ -159,22 +119,6 @@ const FillinForm = (params) => {
                     </div>
                 </div>
             </div>
-
-            <CompanyDetails 
-                lang={lang}
-                setCity={setCity}
-                setCountry={setCountry}
-                setLastName={setLastName}
-                setName={setName}
-                setEmail={setEmail}
-                setStreet={setStreet}
-                setZip={setZip}
-                zip={zip}
-                setPhone={setPhone}
-                countries={countries}
-                states={states}
-                country={country}
-            />
         </div>
 )}
 

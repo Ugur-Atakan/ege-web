@@ -70,31 +70,11 @@ const Content = ({ lang }) => {
 
   const finishNameCompletion = () => {
     if (typeof window !== 'undefined' && window.localStorage) {
-      window.localStorage.setItem('companyName', companyName);
+      window.localStorage.setItem('companyName', companyName + ' ' + abbreviation);
       window.localStorage.setItem('companyNameCompleted', true);
     }
-
-    router.push(`/${lang}/onboarding/review`)
+    router.push(`/${lang}/onboarding/review`);
   }
-
-  // const [cookie, setCookie] = useState({});
-  // const handleNameCompletion = (e) => {
-  //   const sendCookie = async () => {
-  //     const cookieArr = {...cookie, companyName: companyName + ' ' + abbreviation};
-  //     await submitCookie(cookieArr);
-  //     redirect(`/formation`, lang);
-  //   }
-  //   sendCookie();
-  // }
-
-  // useEffect(()=> {
-  //   const fetchCookie = async () => {
-  //     const awaitCookie = await readCookie();
-  //     setCookie(awaitCookie);
-  //   }
-  //   fetchCookie();
-  // },[])
-
 
   return (
     <div className='bg-white'>
@@ -142,7 +122,7 @@ const Content = ({ lang }) => {
                   className="font-semibold border-[#C8C8C8] text-[#8A8A8A] w-full my-2 rounded-[20px] p-4 focus:border-[4px]"
                   onChange={(e) =>    setAbbreviation(e.target.value)}
               >
-                  <option value="" disabled>Select a Designator</option>
+                  <option disabled>Select a Designator</option>
                   {companyType ==='LLC' ? llcOptions.map((abb, index) => (
                     <option
                       key={index}
@@ -163,7 +143,8 @@ const Content = ({ lang }) => {
               <button 
                 disabled={!success}
                 onClick={finishNameCompletion} 
-                className={`w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer ${success ? '' : 'opacity-50 cursor-not-allowed'}`}>
+                className={`w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer ${success ? '' : 'opacity-50 cursor-not-allowed'}`}
+              >
                   {t('companyname_button')}
               </button>
           </ul>

@@ -7,6 +7,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import dynamic from 'next/dynamic'
 import { useTranslation } from '@/i18n/client'
 
+import FillInCompany from './form/FillInCompany'
 import BackButton from '../../components/common/BackButton'
 import FillinForm from './form/FillinForm'
 
@@ -19,6 +20,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const CompanyDetails = dynamic(() => import('./CompanyDetails'))
 const Features = dynamic(() => import('./Features'))
 const OrderReview = dynamic(() => import('./OrderReview'))
+
 /**
  * Main content component
  * @type {function} 
@@ -61,7 +63,7 @@ const Content = ({ lang }) => {
 
     const formSubmitHandler = (e) => {
         e.preventDefault();
-
+        
         // Check if all fields are filled
         const { isFormValid, missingFields } = checkFormElements(name, lastname, email, street, city, country, zip, phone);
         
@@ -123,7 +125,6 @@ const Content = ({ lang }) => {
             setStates(statesRes.data);
 
             const countyCodesRes = await axios.get('/api/country-codes');
-            console.log(countyCodesRes.data);
             setCountryCodes(countyCodesRes.data);
         };
         fetchData();
@@ -135,7 +136,7 @@ const Content = ({ lang }) => {
 
             <div className="w-full md:w-[45%]">
                 {displayForm ? (
-                    <React.Fragment>
+                    <div className='py-8 px-4 md:pl-10 md:py-8'>
                         <ToastContainer
                             position="top-right"
                             autoClose={5000}
@@ -148,6 +149,7 @@ const Content = ({ lang }) => {
                             pauseOnHover
                             theme="light"
                         />
+
                         <FillinForm
                             lang={lang}
                             setCity={setCity}
@@ -166,7 +168,23 @@ const Content = ({ lang }) => {
                             states={states}
                             country={country}
                         />
-                    </React.Fragment>
+                
+                        <FillInCompany 
+                            lang={lang}
+                            setCity={setCity}
+                            setCountry={setCountry}
+                            setLastName={setLastName}
+                            setName={setName}
+                            setEmail={setEmail}
+                            setStreet={setStreet}
+                            setZip={setZip}
+                            zip={zip}
+                            setPhone={setPhone}
+                            countries={countries}
+                            states={states}
+                            country={country}
+                        />
+                    </div>
                 ) : (
                     <div className="py-8 px-4 md:pl-10 md:py-8">
                         <h1 className="font-semibold text-[26px] md:text-[40px] leading-[44px] text-[#222222]">
