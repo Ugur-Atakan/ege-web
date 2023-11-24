@@ -4,21 +4,20 @@ import cover from './img/cover.png'
 
 const HowItWorks = () => {
   return (
-    <div className='py-20'>
-        <div className='flex justify-center items-center py-10'>
+    <div className='px-8 py-[130px]'>
+        <div className='flex justify-center items-center'>
             <h2 className="w-[550px] text-center text-neutral-800 text-[58px] font-bold leading-[58px]">
                 How it works in 3 steps
             </h2>
         </div>
 
-        <div className="flex flex-col lg:flex-row md:flex-row items-center mx-[215px]">
+        <div className="flex flex-col lg:flex-row md:flex-row items-center mx-[215px] py-10">
             <div className="flex justify-center items-center w-full lg:w-1/2 md:w-1/2 h-full">
                 <Image 
                     src={cover} 
                     alt="Person using phone" 
                     width={425} 
                     height={425} 
-                    objectFit="contain" // This will ensure the image maintains its aspect ratio without stretching
                 />
             </div>
 

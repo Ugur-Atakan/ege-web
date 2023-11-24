@@ -14,9 +14,9 @@ const SupportBusiness = ({ lang }) => {
   const [showAllPackages, setShowAllPackages] = useState(false);
 
   const stayCompliantPackage = [
-    { name: t('after_formation_package1_title'), description: t('after_formation_package1_description'), button: t('after_formation_package1_button'), href: `/${lang}/contact-us`, img: hat },
-    { name: t('after_formation_package2_title'), description: t('after_formation_package2_description'), button: t('after_formation_package2_button'), href: `/${lang}/contact-us`, img: folder },
-    { name: t('after_formation_package3_title'), description: t('after_formation_package3_description'), button: t('after_formation_package3_button'), href: `/${lang}/contact-us`, img: calendar },
+    { name: t('after_formation_package1_title'), description: t('after_formation_package1_description'), button: t('after_formation_package1_button'), href: `/${lang}/product/compliance-reminder`, img: hat },
+    { name: t('after_formation_package2_title'), description: t('after_formation_package2_description'), button: t('after_formation_package2_button'), href: `/${lang}/product/renewal-and-revival`, img: folder },
+    { name: t('after_formation_package3_title'), description: t('after_formation_package3_description'), button: t('after_formation_package3_button'), href: `/${lang}/product/certificate-of-good-standing`, img: calendar },
     { name: t('after_formation_package4_title'), description: t('after_formation_package4_description'), button: t('after_formation_package4_button'), href: `/${lang}/contact-us`, img: tic },
     { name: t('after_formation_package5_title'), description: t('after_formation_package5_description'), button: t('after_formation_package5_button'), href: `/${lang}/contact-us`, img: at },
     { name: t('after_formation_package6_title'), description: t('after_formation_package6_description'), button: t('after_formation_package6_button'), href: `/${lang}/contact-us`, img: navigator },

@@ -1,0 +1,212 @@
+[
+    {
+        "id": 1,
+        "name": "Compliance Reminder",
+        "description": "Navigate through legalities with ease - We're here to receive all your important business documents, keeping you stress-free and compliant!",
+        "slug": "compliance-reminder",
+        "state": "all",
+        "type": "upsell",
+        "pricing": {
+            "monthly": 8.99,
+            "annual": 89
+        },
+        "features": [
+            {
+                "id":1,
+                "title": "Avoid the risk of non-compliance",
+                "description": "Registered Agents are required by law and they're the ones who get all your corporation's legal papers."
+            },
+            {
+                "id":2,
+                "title": "Save money and hassle",
+                "description": "Compliance tasks can take a lot of time and work, and sometimes involve filling out long, tricky forms."
+            }, 
+            {
+                "id":3,
+                "title": "Spend your time on your business",
+                "description": "Skip the employee standby during business hours. We've got it!"
+            }
+        ],
+        "faq": [
+            {
+                "id": 1,
+                "question": "pricing_header2_Question_1",
+                "answers": [
+                "pricing_header2_Answer_1_1",
+                "pricing_header2_Answer_1_2",
+                "pricing_header2_Answer_1_3"
+                ]
+            },
+            {
+                "id": 2,
+                "question": "pricing_header2_Question_2",
+                "answers": [
+                "pricing_header2_Answer_2_1",
+                "pricing_header2_Answer_2_2",
+                "pricing_header2_Answer_2_3"
+                ]
+            },
+            {
+                "id": 3,
+                "question": "pricing_header2_Question_3",
+                "answers": [
+                "pricing_header2_Answer_3"
+                ]
+            },
+            {
+                "id": 4,
+                "question": "pricing_header2_Question_4",
+                "answers": [
+                "pricing_header2_Answer_4" 
+                ]
+            },
+            {
+                "id": 5,
+                "question": "pricing_header2_Question_5",
+                "answers": [
+                "pricing_header2_Answer_5_1",
+                "pricing_header2_Answer_5_2",
+                "pricing_header2_Answer_5_3"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Renewal and Revival",
+        "description": "Renewal and Revival!",
+        "slug": "renewal-and-revival",
+        "state": "all",
+        "type": "one-time",
+        "pricing": 175,
+        "features": [
+            {
+                "id":1,
+                "title": "Avoid the risk of non-compliance",
+                "description": "Registered Agents are required by law and they're the ones who get all your corporation's legal papers."
+            },
+            {
+                "id":2,
+                "title": "Save money and hassle",
+                "description": "Compliance tasks can take a lot of time and work, and sometimes involve filling out long, tricky forms."
+            }, 
+            {
+                "id":3,
+                "title": "Spend your time on your business",
+                "description": "Skip the employee standby during business hours. We've got it!"
+            }
+        ],
+        "faq": [
+            {
+                "id": 1,
+                "question": "pricing_header2_Question_1",
+                "answers": [
+                "pricing_header2_Answer_1_1",
+                "pricing_header2_Answer_1_2",
+                "pricing_header2_Answer_1_3"
+                ]
+            },
+            {
+                "id": 2,
+                "question": "pricing_header2_Question_2",
+                "answers": [
+                "pricing_header2_Answer_2_1",
+                "pricing_header2_Answer_2_2",
+                "pricing_header2_Answer_2_3"
+                ]
+            },
+            {
+                "id": 3,
+                "question": "pricing_header2_Question_3",
+                "answers": [
+                "pricing_header2_Answer_3"
+                ]
+            },
+            {
+                "id": 4,
+                "question": "pricing_header2_Question_4",
+                "answers": [
+                "pricing_header2_Answer_4" 
+                ]
+            },
+            {
+                "id": 5,
+                "question": "pricing_header2_Question_5",
+                "answers": [
+                "pricing_header2_Answer_5_1",
+                "pricing_header2_Answer_5_2",
+                "pricing_header2_Answer_5_3"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Certificate of Good Standing",
+        "description": "Get a certificate of good standing from us today!",
+        "slug": "certificate-of-good-standing",
+        "state": "all",
+        "type": "one-time",
+        "pricing": 175,
+        "features": [
+            {
+                "id":1,
+                "title": "Avoid the risk of non-compliance",
+                "description": "Registered Agents are required by law and they're the ones who get all your corporation's legal papers."
+            },
+            {
+                "id":2,
+                "title": "Save money and hassle",
+                "description": "Compliance tasks can take a lot of time and work, and sometimes involve filling out long, tricky forms."
+            }, 
+            {
+                "id":3,
+                "title": "Spend your time on your business",
+                "description": "Skip the employee standby during business hours. We've got it!"
+            }
+        ],
+        "faq": [
+            {
+                "id": 1,
+                "question": "pricing_header2_Question_1",
+                "answers": [
+                "pricing_header2_Answer_1_1",
+                "pricing_header2_Answer_1_2",
+                "pricing_header2_Answer_1_3"
+                ]
+            },
+            {
+                "id": 2,
+                "question": "pricing_header2_Question_2",
+                "answers": [
+                "pricing_header2_Answer_2_1",
+                "pricing_header2_Answer_2_2",
+                "pricing_header2_Answer_2_3"
+                ]
+            },
+            {
+                "id": 3,
+                "question": "pricing_header2_Question_3",
+                "answers": [
+                "pricing_header2_Answer_3"
+                ]
+            },
+            {
+                "id": 4,
+                "question": "pricing_header2_Question_4",
+                "answers": [
+                "pricing_header2_Answer_4" 
+                ]
+            },
+            {
+                "id": 5,
+                "question": "pricing_header2_Question_5",
+                "answers": [
+                "pricing_header2_Answer_5_1",
+                "pricing_header2_Answer_5_2",
+                "pricing_header2_Answer_5_3"
+                ]
+            }
+        ]
+    }
+]

@@ -7,7 +7,7 @@ import heroSvg from './heroSvg.svg'
 
 import { useTranslation } from '@/i18n/client'
 
-const Hero = ({ lang }) => {
+const Hero = ({ lang, name, description }) => {
   const { t } = useTranslation(lang);
 
   const [isSticky, setIsSticky] = useState(false);
@@ -43,8 +43,8 @@ const Hero = ({ lang }) => {
             </div>
             
             <div className="w-full md:w-1/2 p-10 space-y-10">
-              <h1 className="text-3xl font-bold text-[64px] leading-[64px]">Appoint a Registered Agent</h1>
-              <p className="mt-3 mb-5 opacity-50 text-lg font-medium leading-7">Navigate through legalities with ease - We{"'"}re here to receive all your important business documents, keeping you stress-free and compliant!</p>
+              <h1 className="text-3xl font-bold text-[64px] leading-[64px]">{name}</h1>
+              <p className="mt-3 mb-5 opacity-50 text-lg font-medium leading-7">{description}</p>
               <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl transition duration-300">
                 Get started now
               </button>
