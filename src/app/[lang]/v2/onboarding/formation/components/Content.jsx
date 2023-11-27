@@ -31,7 +31,9 @@ import { useTranslation } from '@/i18n/client'
  * @returns {JSX.Element} 
 */
 
-const Content = ({ lang }) => {
+const Content = ({ lang, silverProduct, goldProduct, platProduct }) => {
+  console.log(silverProduct, goldProduct, platProduct)
+
   const { t } = useTranslation(lang);
   const pathname = usePathname();
   const router = useRouter();

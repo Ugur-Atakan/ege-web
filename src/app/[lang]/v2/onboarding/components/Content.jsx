@@ -3,7 +3,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from '@/i18n/client'
-// import { submitCookie } from '../../../lib/session/clientActions'
+import { submitCookie } from '@/app/lib/session/clientActions'
 import { completelyClearLocalStorage, localStorageDataExists, redirectToLastNotNullFunnelLink } from '@/app/lib/utils'
 import { useRouter } from 'next/navigation'
 
@@ -47,13 +47,12 @@ const Content = ({ lang }) => {
         }
     }, [restartFunnel, resumeFunnel]);
 
-    // useEffect(() => {
-    //     const sendCookie = async () => {
-    //         await submitCookie({ 'companyType': companyType });
-    //         window.localStorage.setItem('companyType', companyType);
-    //     }
-    //     sendCookie();
-    // }, [companyType]);
+    useEffect(() => {
+        const sendCookie = async () => {
+            await submitCookie({ 'companyType': companyType });
+        }
+        sendCookie();
+    }, [companyType]);
 
     const handleSelectLlc = () => {
         setCompanyType('LLC');

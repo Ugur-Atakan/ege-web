@@ -2,6 +2,7 @@
 
 import { React, useState, useEffect } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import Navbar from './Navbar'
 import heroSvg from './heroSvg.svg'
 
@@ -44,10 +45,12 @@ const Hero = ({ lang, name, description }) => {
             
             <div className="w-full md:w-1/2 p-10 space-y-10">
               <h1 className="text-3xl font-bold text-[64px] leading-[64px]">{name}</h1>
-              <p className="mt-3 mb-5 opacity-50 text-lg font-medium leading-7">{description}</p>
-              <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl transition duration-300">
+              <p className="mt-3 mb-5 pb-10 opacity-50 text-lg font-medium leading-7">{description}</p>
+              <Link 
+                href={`/${lang}/v2/onboarding`}
+                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl transition duration-300">
                 Get started now
-              </button>
+              </Link>
               <div className="mt-2 font-semibold leading-7">
                 From $6.5/month*
               </div>

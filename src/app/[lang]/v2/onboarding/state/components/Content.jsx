@@ -6,14 +6,13 @@ import React, { useEffect, useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import { redirectToLastNullInternalFunnel, checkEqualPathName, clearPathnameLocalStorage } from '@/app/lib/utils'
 import { useTranslation } from '@/i18n/client'
+import { submitCookie } from '@/app/lib/session/clientActions'
 
 import BackButton from '../../components/common/BackButton'
 import Heading from './Heading'
 import DropDown from './DropDown'
 import dynamic from 'next/dynamic'
 import axios from 'axios'
-
-// import { readCookie, submitCookie } from '../../../lib/session/clientActions'
 
 const RadioListItem = dynamic(() => import('./RadioListItem'))
 
@@ -25,7 +24,7 @@ const RadioListItem = dynamic(() => import('./RadioListItem'))
  * @returns {JSX.Element}
 */
 
-const Content = ({ lang }) => {
+const Content = ({ lang, companyType }) => {
   const { t } = useTranslation(lang);
   const pathname = usePathname();
   const router = useRouter();
@@ -40,33 +39,21 @@ const Content = ({ lang }) => {
   }, []); 
  
 
-  const [otherStates, setOtherStates] = useState([]);
-
-  //* Session Logic commented out for now
-  // const [cookieState, setCookieState] = useState({});
-  // useEffect(() => {
-  //   const fetchCookie = async () => {
-  //     const awaitCookie = await readCookie();
-  //     setCookieState(awaitCookie);
-  //   }
-  //   fetchCookie();
-  // }, []);
-  // useEffect(() => { 
-  //   // setCompanyState(companyState);
-  //   // const cookie = {...cookieState, companyState: companyState};
-  //   // const sendCookie = async () => {
-  //   //   await submitCookie(cookie);
-  //   //   window.localStorage.setItem('companyState', companyState);
-  //   // }
-  //   // sendCookie();
-  // }), [companyState];
-
-  
-  const companyType = (typeof window !== 'undefined') ? localStorage.getItem('companyType') : '';
   const [companyState, setCompanyState] = useState((typeof window !== 'undefined') ? localStorage.getItem('companyState') : '');
-
+  const [otherStates, setOtherStates] = useState([]);
   const selectedLLC = companyType === 'Corporation' ? true : false;
 
+  useEffect(() => { 
+    setCompanyState(companyState);
+    const cookie = {...{companyType}, companyState: companyState};
+    const sendCookie = async () => {
+      await submitCookie(cookie);
+      window.localStorage.setItem('companyState', companyState);
+    }
+    sendCookie();
+  }), [companyState];
+
+ 
   //* API call to get the states
   useEffect(() => {
     const getState = async () => {

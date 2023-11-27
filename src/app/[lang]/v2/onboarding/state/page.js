@@ -1,5 +1,5 @@
 import Content from './components/Content'
-
+import { readCookieFromStorageServerAction } from '@/app/lib/session/serverActions'
 /**
  * Page route for pricing page
  * @type {function}
@@ -8,11 +8,11 @@ import Content from './components/Content'
  * @returns {JSX.Element}
 */
 
-const Page = ({ params: { lang } }) => {
+const Page = async ({ params: { lang } }) => {
+  const cookie = await readCookieFromStorageServerAction();
+
   return (
-    <main>
-        <Content lang={lang} />
-    </main>
+    <Content lang={lang} companyType={cookie.companyType} />
   )
 }
 
