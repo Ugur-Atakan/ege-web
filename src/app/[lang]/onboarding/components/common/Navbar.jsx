@@ -41,11 +41,11 @@ export default function Navbar({ lang }) {
             <NavLink href={`/${lang}/onboarding/state`} className="text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]" >
               {t('header_2')}
             </NavLink>
-            <NavLink href={`/${lang}/onboarding/company-name`} className="text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]" >
-              {t('header_3')}
-            </NavLink>
             <NavLink href={`/${lang}/onboarding/formation`} className="text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]" >
               {t('header_4')}
+            </NavLink>
+            <NavLink href={`/${lang}/onboarding/company-name`} className="text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]" >
+              {t('header_3')}
             </NavLink>
             <NavLink href={`/${lang}/onboarding/review`} className="text-[1.125rem] font-semibold leading-[1.5rem] text-[#8A8A8A]" >
               {t('header_5')}

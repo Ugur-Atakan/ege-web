@@ -2,11 +2,13 @@
 
 import React from 'react'
 import { useTranslation } from '@/i18n/client'
-import { isNumber } from '../utils/util'
 
-const CompanyDetails = (props) => {
+const FillInCompany = (props) => {
     const { lang, setCity ,setCountry, country,setStreet, zip, setZip, countries, states } = props;
     const { t } = useTranslation(lang);
+
+    // Converting to React Select options
+    const stateOptions = states.map(state => ({ value: state.state, label: state.state }));
 
     return ( 
         <div className='bg-white border rounded-[32px] p-6 my-6'>
@@ -116,4 +118,4 @@ const CompanyDetails = (props) => {
   );
 };
 
-export default CompanyDetails
+export default FillInCompany

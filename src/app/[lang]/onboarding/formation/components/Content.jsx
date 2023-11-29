@@ -2,11 +2,11 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import Link from 'next/link'
 import Image from 'next/image'
 
 import { noinclude, arrowblack, arrowblue } from '@/assets/images'
-import { ArrowLeftIcon } from '@heroicons/react/24/outline'
+import BackButton from '../../components/common/BackButton'
+
 import axios from 'axios'
 //import { readCookie, submitCookie } from '../../../lib/session/clientActions'
 
@@ -82,7 +82,7 @@ const Content = ({ lang }) => {
         if (typeof window !== 'undefined' && window.localStorage && window.location)
           window.localStorage.setItem('selectedPackage', JSON.stringify([{...packagePrices[index], features: packages}]));
           window.localStorage.setItem('companyFormationCompleted', true);
-          // router.push(`/${lang}/onboarding/review`);
+          router.push(`/${lang}/onboarding/company-name`);
       }
     }
   }
@@ -128,14 +128,8 @@ const Content = ({ lang }) => {
 
   return (
     <div className='bg-white'>
-      <div className="mx-auto p-6 lg:px-8">
-          <Link className='flex items-center gap-2' href={`/${lang}/onboarding/company-name`}>
-            <ArrowLeftIcon className='text-[#1649FF] h-[18px] w-[18px]' />
-            <span className='text-[#1649FF] text-lg font-semibold'>{t('formation_back_button')}</span>
-          </Link>
-      </div>
-
-
+      <BackButton linkHref={`/${lang}/onboarding/company-name`} buttonText={t('formation_back_button')} />
+ 
       <div className='mx-auto max-w-5xl p-4'>
         <Heading title={t('formation_title')} />
 

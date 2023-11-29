@@ -1,4 +1,4 @@
-import Navbar from '@/components/common/Navbar'
+import Navbar from '@/app/[lang]/onboarding/components/common/Navbar'
 import Content from './components/Content'
 
 /**

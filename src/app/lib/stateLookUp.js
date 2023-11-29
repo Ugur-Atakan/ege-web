@@ -46,9 +46,14 @@ const lookUpTable = {
     'Vermont': 'VT',
     'Virginia': 'VA',
     'Washington': 'WA',
+    'Washington DC': 'DC',
     'West Virginia': 'WV',
     'Wisconsin': 'WI',
     'Wyoming': 'WY'
 };
 
-export { lookUpTable }
+const getStateKey = (state) => {
+    return lookUpTable[state];
+}
+
+export { lookUpTable, getStateKey }

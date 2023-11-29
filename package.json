@@ -1,6 +1,6 @@
 {
   "name": "registate.com",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -46,6 +46,7 @@
     "react-dom": "^18.2.0",
     "react-i18next": "^13.2.2",
     "react-icons": "^4.11.0",
+    "react-intersection-observer": "^9.5.3",
     "react-select": "^5.8.0",
     "react-slick": "^0.29.0",
     "react-toastify": "^9.1.3",
