@@ -2,13 +2,14 @@
 'use client';
 
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
-import BackButton from '../../components/common/BackButton'
 import { usePathname, useRouter } from 'next/navigation'
+import { submitCookie } from '@/app/lib/session/clientActions'
+import axios from 'axios'
+
+import BackButton from '../../components/common/BackButton'
 import { redirectToLastNullInternalFunnel, checkEqualPathName, clearPathnameLocalStorage } from '@/app/lib/utils'
 
 import { Spinner, Tick, Cross } from './utils'
-// import { readCookie, submitCookie } from '../../../lib/session/clientActions'
 import { useTranslation } from '@/i18n/client'
 
 /**
@@ -19,7 +20,7 @@ import { useTranslation } from '@/i18n/client'
  * @returns {JSX.Element} Rendered content for the page
 */
 
-const Content = ({ lang }) => {
+const Content = ({ lang , cookie }) => {
   const { t } = useTranslation(lang);
   const pathname = usePathname();
   const router = useRouter();
@@ -69,6 +70,12 @@ const Content = ({ lang }) => {
   }
 
   const finishNameCompletion = () => {
+    const ckie = { ...cookie, 'companyName': companyName + ' ' + abbreviation};
+    const sendCookie = async () => {
+      await submitCookie(ckie);
+    };
+    sendCookie();
+
     if (typeof window !== 'undefined' && window.localStorage) {
       window.localStorage.setItem('companyName', companyName + ' ' + abbreviation);
       window.localStorage.setItem('companyNameCompleted', true);

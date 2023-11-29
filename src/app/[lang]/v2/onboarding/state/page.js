@@ -1,5 +1,6 @@
 import Content from './components/Content'
 import { readCookieFromStorageServerAction } from '@/app/lib/session/serverActions'
+
 /**
  * Page route for pricing page
  * @type {function}

@@ -16,32 +16,26 @@ const Page = async ({ params: { lang } }) => {
     let silverProduct, goldProduct, platProduct;
 
     if (cookie.companyType === 'LLC') {
-        const silverProductData = getLLCSilver();
-        silverProduct = await Promise.all([silverProductData]);
-
-        const goldProductData = getLLCGold();
-        goldProduct = await Promise.all([goldProductData]);
+        silverProduct = await getLLCSilver(cookie.companyState);
+        goldProduct = await getLLCGold();
     } else if (cookie.companyType === 'Corporation') {
-        const silverProductData = getCorpSilver();
-        silverProduct = await Promise.all([silverProductData]);
-
-        const goldProductData = getCorpGold();
-        goldProduct = await Promise.all([goldProductData]);
-
-        const platProductData = getCorpPlat();
-        platProduct = await Promise.all([platProductData]);
+      silverProduct = await getCorpSilver();
+        goldProduct = await getCorpGold();
+        platProduct = await getCorpPlat();
     }
 
     return (
         cookie.companyType === 'LLC' ? (
           <Content
             lang={lang}
+            cookie={cookie}
             silverProduct={silverProduct}
             goldProduct={goldProduct}
           />
         ) : (
           <Content
             lang={lang}
+            cookie={cookie}
             silverProduct={silverProduct}
             goldProduct={goldProduct}
             platProduct={platProduct}

@@ -10,7 +10,6 @@ const getArticles = async () => {
     }
 }
 
-
 const getArticle = async (slug) => {
     try {
         const res = await axios.get(`https://blog.registate.com/ghost/api/content/posts?key=${process.env.BLOG_API_KEY}&include=authors,tags&filter=slug: ${slug}`)

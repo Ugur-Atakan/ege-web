@@ -43,6 +43,7 @@ const Content = ({ lang, companyType }) => {
   const [otherStates, setOtherStates] = useState([]);
   const selectedLLC = companyType === 'Corporation' ? true : false;
 
+  //* Use Effect to set the cookie
   useEffect(() => { 
     setCompanyState(companyState);
     const cookie = {...{companyType}, companyState: companyState};

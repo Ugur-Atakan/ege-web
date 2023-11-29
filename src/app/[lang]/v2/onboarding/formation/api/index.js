@@ -1,13 +1,26 @@
 import axios from 'axios'
+import { getStateKey } from '@/app/lib/stateLookUp';
 
-const getLLCSilver = async () => {  
+const getLLCSilver = async (state) => {  
     try {
-      const res = await axios.get(`https://api.stripe.com/v1/prices/search?query=product:'prod_P0QsJHkXZg2yQB' AND lookup_key:'WY-llc-silver'`, {
+      const stateKey = getStateKey(state);
+      const stateInfo = await axios.get(`https://api.stripe.com/v1/prices/search?query=product:'prod_P0QsJHkXZg2yQB' AND lookup_key:'${stateKey}-llc-silver'`, {
         headers: {
             'Authorization': `Bearer ${process.env.STRIPE_SECRET_KEY}`
         }
       });
-      return res.data;
+
+      stateInfo.data.data[0].product = 'Silver';
+      
+      const productInfo = await axios.get(`https://api.stripe.com/v1/products/search?query=metadata['type']:'llc-silver'`,
+      {
+        headers: {
+            'Authorization': `Bearer ${process.env.STRIPE_SECRET_KEY}`
+        }
+      });
+      stateInfo.data.data[0].features = productInfo.data.data[0].features;
+      
+      return stateInfo.data;
     }
     catch(err) {
       console.log('Error getting getPosts', err)
@@ -21,6 +34,7 @@ const getLLCGold = async () => {
               'Authorization': `Bearer ${process.env.STRIPE_SECRET_KEY}`
           }
         });
+        res.data.data[0].product = 'Gold';
         return res.data;
     }
     catch(err) {
@@ -35,6 +49,7 @@ const getCorpSilver = async () => {
               'Authorization': `Bearer ${process.env.STRIPE_SECRET_KEY}`
           }
         });
+        res.data.data[0].product = 'Silver';
         return res.data;
     }
     catch(err) {
@@ -49,6 +64,7 @@ const getCorpGold = async () => {
               'Authorization': `Bearer ${process.env.STRIPE_SECRET_KEY}`
           }
         });
+        res.data.data[0].product = 'Gold';
         return res.data;
     }
     catch(err) {
@@ -63,6 +79,7 @@ const getCorpPlat = async () => {
               'Authorization': `Bearer ${process.env.STRIPE_SECRET_KEY}`
           }
         });
+        res.data.data[0].product = 'Platinum';
         return res.data;
     }
     catch(err) {
