@@ -1,6 +1,7 @@
 
 import mongoose from "mongoose";
 
+// superadmin, admin, user.
 const userSchema = new mongoose.Schema({
   firstName: {
     type: String,
@@ -18,6 +19,10 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true
+  },
+  level: {
+    type: String,
+    default: "user"
   },
   createdAt: {
     type: Date,

@@ -2,6 +2,7 @@ import { connectDB } from '@/app/lib/db/mongodb';
 import User from '@/app/lib/db/models/UserModel';
 import { compare } from 'bcryptjs';
 
+// Login route
 export async function POST(request) {
     const { email, password } = await request.json();
     await connectDB();

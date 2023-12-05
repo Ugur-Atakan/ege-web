@@ -1,26 +1,26 @@
 import { getIronSession, getServerActionIronSession } from 'iron-session'
 import { cookies } from 'next/headers';
 
-export const onboardingSessionOptions = {
+export const dashboardSessionOptions = {
     password: 'change-this-this-is-not-a-secure-password',
-    cookieName: 'registateOnboarding',
+    cookieName: 'registateDashboard',
     cookieOptions: {
         secure: process.env.NODE_ENV === 'production'
     }
 }
 
-const getOnboardingSession = async (req, res) => {
-    const session = getIronSession(req, res, onboardingSessionOptions)
+const getDashboardSession = async (req, res) => {
+    const session = getIronSession(req, res, dashboardSessionOptions)
     return session
 }
 
 const getServerActionSession = async () => {
-    const session = getServerActionIronSession(onboardingSessionOptions, cookies())
+    const session = getServerActionIronSession(dashboardSessionOptions, cookies())
     return session
 }
 
 export {
-    getOnboardingSession as getSession,
+    getDashboardSession as getSession,
     getServerActionSession
 }
   

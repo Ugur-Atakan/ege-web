@@ -1,4 +1,4 @@
-import { getSession } from '@/app/lib/session/session'
+import { getSession } from '@/app/lib/session/dashboardSession/session'
 
 export async function GET(request, response) {
   try {

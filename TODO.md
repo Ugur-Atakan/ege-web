@@ -69,3 +69,10 @@ Office-space:  ONLY FOR DELAWARE + 250/month (recurring fee).
    
    Upsell products on same page or different pages? (Talk with Cihan abi)
 
+
+## For verfication of user:
+1. to verify the user get the cookie from session api on backed and check for user prevlige
+   access. If the user has access then execute the specific code else return 404
+   that says not found. CHeck on the front end route for the user's access to a specific 
+   feature if he doesn't have access then redirect to 404 page.
+   

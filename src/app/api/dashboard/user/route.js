@@ -5,7 +5,7 @@ import { hash } from 'bcryptjs'
 const saltRounds = 10; // for bcryptjs
 
 export async function POST(request) {
-    const { firstName, lastName , email , password } = await request.json();
+    const { firstName, lastName , email , password, level } = await request.json();
     await connectDB();
 
     try {
@@ -21,7 +21,7 @@ export async function POST(request) {
         }
 
         const hashedPassword = await hash(password, saltRounds);
-        await User.create({ firstName, lastName, email, password: hashedPassword });
+        await User.create({ firstName, lastName, level, email, password: hashedPassword });
         return new Response('New user created', {
             status: 200,
             headers: {

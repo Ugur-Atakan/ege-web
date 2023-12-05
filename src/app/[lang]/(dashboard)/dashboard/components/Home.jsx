@@ -8,7 +8,7 @@ const Home = ({ lang }) => {
 
   return (
     <React.Fragment>
-      <h1>{t('after_formation_package1_button')}</h1>
+      <h1>Home Page</h1>
     </React.Fragment>
   )
 }
