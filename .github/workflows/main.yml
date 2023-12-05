@@ -31,6 +31,7 @@ jobs:
       NEXT_PUBLIC_BLOG_URL: ${{ vars.NEXT_PUBLIC_BLOG_URL }}
       BLOG_API_KEY: ${{ secrets.BLOG_API_KEY }}
       GET_ALL_BLOG_POSTS: ${{ vars.GET_ALL_BLOG_POSTS_DEV }}
+      MONGODB_URI: ${{ secrets.MONGODB_URI }}
     steps:
       - name: create environment file and upload to S3 app bucket
         run: |
@@ -49,6 +50,7 @@ jobs:
           NEXT_PUBLIC_BLOG_URL=${NEXT_PUBLIC_BLOG_URL}
           BLOG_API_KEY=${BLOG_API_KEY}
           GET_ALL_BLOG_POSTS=${GET_ALL_BLOG_POSTS}
+          MONGODB_URI=${MONGODB_URI}
           EOF
 
           /usr/local/bin/aws --region us-east-1 s3 cp $ENVIRONMENT_FILE s3://$S3_APP_BUCKET/$ENVIRONMENT_FILE
@@ -79,6 +81,7 @@ jobs:
       NEXT_PUBLIC_BLOG_URL: ${{ vars.NEXT_PUBLIC_BLOG_URL }}
       BLOG_API_KEY: ${{ secrets.BLOG_API_KEY }}
       GET_ALL_BLOG_POSTS: ${{ vars.GET_ALL_BLOG_POSTS_PROD }}
+      MONGODB_URI: ${{ secrets.MONGODB_URI }}
     steps:
       - name: create environment file and upload to S3 app bucket
         run: |
@@ -97,6 +100,7 @@ jobs:
           NEXT_PUBLIC_BLOG_URL=${NEXT_PUBLIC_BLOG_URL}
           BLOG_API_KEY=${BLOG_API_KEY}
           GET_ALL_BLOG_POSTS=${GET_ALL_BLOG_POSTS}
+          MONGODB_URI=${MONGODB_URI}
           EOF
 
           /usr/local/bin/aws --region us-east-1 s3 cp $ENVIRONMENT_FILE s3://$S3_APP_BUCKET/$ENVIRONMENT_FILE

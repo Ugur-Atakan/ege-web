@@ -1,6 +1,6 @@
 {
   "name": "registate.com",
-  "version": "1.1.6",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -21,6 +21,7 @@
     "accept-language": "^3.0.18",
     "autoprefixer": "10.4.15",
     "axios": "^1.5.0",
+    "bcryptjs": "^2.4.3",
     "buffer": "^6.0.3",
     "chokidar": "^3.5.3",
     "clsx": "^2.0.0",
@@ -36,6 +37,7 @@
     "iron-session": "github:renchris/iron-session#v8-as-dependency",
     "isomorphic-unfetch": "^4.0.2",
     "jsdoc": "^4.0.2",
+    "mongoose": "^8.0.2",
     "next": "13.5.6",
     "next-share": "^0.27.0",
     "next-videos": "^1.4.1",
