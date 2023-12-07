@@ -15,3 +15,8 @@ export const readCookieFromStorageServerAction = async () => {
     return null;
   }
 }
+
+export const removeCookieFromStorageServerAction = async () => {
+  const session = await getServerActionSession()
+  session.destroy()
+}

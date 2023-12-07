@@ -5,7 +5,7 @@ export const metadata = {
   description: 'Login to Registate dashboard',
 } 
 
-export default function RootLayout({ children }) {
+export default function LoginLayout({ children }) {
  return (
     <html lang="en">
       <body>{children}</body>

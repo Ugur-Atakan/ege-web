@@ -4,6 +4,7 @@ import { hash } from 'bcryptjs'
 
 const saltRounds = 10; // for bcryptjs
 
+//* Creating a user
 export async function POST(request) {
     const { firstName, lastName , email , password, level } = await request.json();
     await connectDB();
@@ -37,6 +38,7 @@ export async function POST(request) {
     }
 }   
 
+//* Get user info 
 export async function GET() {
     await connectDB();
     const users = await User.find({}).select('-password');
@@ -48,7 +50,7 @@ export async function GET() {
     })
 }
 
-// delete a single user
+//* DELETE a single user
 export async function DELETE(request){
     const { email } = await request.json();
     await connectDB();

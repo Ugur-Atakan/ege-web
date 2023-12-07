@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { submitCookie } from '@/app/lib/session/dashboardSession/clientActions'
@@ -129,9 +130,9 @@ const Login = ({ lang }) => {
   
             <p className="mt-10 text-center text-sm text-gray-500">
               Not a member?{' '}
-              <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+              <Link href={`/${lang}/signup`} className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
                 Sign up now
-              </a>
+              </Link>
             </p>
           </div>
         </div>
