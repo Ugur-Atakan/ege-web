@@ -12,7 +12,7 @@ export async function GET() {
 }
 // Login route
 export async function POST(request) {
-    const { firstName, lastName, email, confirmEmail, password , confirmPassword } = await request.json();
+    const { firstName, lastName, email, confirmEmail, password, confirmPassword } = await request.json();
     await connectDB();
 
     try {
@@ -37,7 +37,7 @@ export async function POST(request) {
         }
 
         const hashedPassword = await hash(password, 10);
-        await User.create({ firstName, lastName, email, password: hashedPassword, level: 'user' });
+        await User.create({ firstName, lastName, email, password: hashedPassword, level: 'user', type: 'local' });
         return new Response('New user created', {
             status: 200,
             headers: {

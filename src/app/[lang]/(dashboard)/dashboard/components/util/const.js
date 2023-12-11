@@ -17,7 +17,7 @@ export const getSidebarNav = (pathName, userAccessLevel) => {
 
     const newNavigation = navigation.filter(nav => {
         // Determine visibility based on userAccessLevel
-        const isVisible = userAccessLevel === 'superadmin' ? nav.adminVisibility !== false : nav.userVisibility !== false;
+        const isVisible = userAccessLevel === 'superadmin' ? nav.adminVisibility !== false : nav.userVisibility !== true;
 
         // Only include items that are visible to the user
         return isVisible;

@@ -1,10 +1,10 @@
 import React from 'react'
 import Home from './components/Home'
 
-const Page = async ({ params: { lang } }) => {
+const Page = async ({ params }) => {
   return(
     <React.Fragment>
-        <Home lang={lang} />
+        <Home  />
     </React.Fragment>
   )
 }

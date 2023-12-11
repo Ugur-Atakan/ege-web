@@ -17,12 +17,15 @@ const userSchema = new mongoose.Schema({
     unique: true
   },
   password: {
-    type: String,
-    required: true
+    type: String
   },
   level: {
     type: String,
     default: "user"
+  },
+  type: {
+    type: String,
+    default: "local"
   },
   companies: [{
     type: mongoose.Schema.Types.ObjectId,
