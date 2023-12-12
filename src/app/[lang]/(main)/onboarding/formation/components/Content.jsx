@@ -22,7 +22,6 @@ import { redirectToLastNullInternalFunnel, checkEqualPathName, clearPathnameLoca
 import { getRandomPackages } from '../utils/util'
 import { useTranslation } from '@/i18n/client'
 
-
 /**
  * Formation Content component
  * @type {function} 
@@ -31,41 +30,32 @@ import { useTranslation } from '@/i18n/client'
  * @returns {JSX.Element} 
 */
 
-const Content = ({ lang }) => {
+const Content = ({ lang, cookie, silverProduct, goldProduct, platProduct }) => {
+  // console.log(silverProduct, goldProduct, platProduct)
+
   const { t } = useTranslation(lang);
   const pathname = usePathname();
   const router = useRouter();
 
-  useEffect(() => {
-    clearPathnameLocalStorage('companyFormationCompleted');
+  // useEffect(() => {
+  //   clearPathnameLocalStorage('companyFormationCompleted');
 
-    const checkRedirection = redirectToLastNullInternalFunnel();
-    if (checkRedirection && !checkEqualPathName(pathname, checkRedirection)) {
-      router.push(`/${lang}/onboarding/${checkRedirection}`)
-    }
-  }, []);
+  //   const checkRedirection = redirectToLastNullInternalFunnel();
+  //   if (checkRedirection && !checkEqualPathName(pathname, checkRedirection)) {
+  //     router.push(`/${lang}/v2/onboarding/${checkRedirection}`)
+  //   }
+  // }, []);
 
   const [packagePrices, setPackagePrices] = useState([]);
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [selectedPackageIndex, setSelectedPackageIndex] = useState(-1);
-  const companyTypePlaceHolder = typeof window !== 'undefined' ? window.localStorage.getItem('companyType') : null;
-  const selectedCompanyType = companyTypePlaceHolder === 'LLC' ? 'LLC' : 'C-corp';
+  const selectedCompanyType = cookie.companyType === 'LLC' ? 'LLC' : 'C-corp';
   const selectedCompanyTypesEN = packageDataEN.packages.find((item) => item[selectedCompanyType]);
   const selectedCompanyTypesTR = packageDataTR.packages.find((item) => item[selectedCompanyType]);
   const selectedPackageVar = lang === 'en' ? selectedCompanyTypesEN : selectedCompanyTypesTR;
 
   const titles = selectedPackageVar[selectedCompanyType].map((item) => item.title);
   const [isLoading, setIsLoading] = useState(true);
-
-  // const [cookie, setCookie] = useState({});
-  // useEffect(()=> {
-  //   const fetchCookie = async () => {
-  //     const awaitCookie = await readCookie();
-  //     console.log(awaitCookie)
-  //     setCookie(awaitCookie);
-  //   }
-  //   fetchCookie();
-  // },[])
 
   const handlePackageSelection = (selectedPackage, selectedIndex) => {
     setSelectedPackage(selectedPackage);
@@ -77,30 +67,32 @@ const Content = ({ lang }) => {
       setSelectedPackage(packagePrices[index]);
 
       const packages = getRandomPackages(packagePrices[index], selectedCompanyType , selectedPackageVar);
+
       
       if (selectedPackage) {
-        if (typeof window !== 'undefined' && window.localStorage && window.location)
-          window.localStorage.setItem('selectedPackage', JSON.stringify([{...packagePrices[index], features: packages}]));
-          window.localStorage.setItem('companyFormationCompleted', true);
-          router.push(`/${lang}/onboarding/company-name`);
+        const cke = {
+          ...cookie,
+          selectedPackage: JSON.stringify([{ ...packagePrices[index], features: packages }])
+        };
+
+        const sendCookie = async () => { await submitCookie(cke) }
+        sendCookie();
+        router.push(`/${lang}/v2/onboarding/company-name`);
       }
     }
   }
 
   // Fetch Prices
   useEffect(() => {
-    const companyState = (typeof window !== 'undefined') ? localStorage.getItem('companyState') : '';
-    const companyType = (typeof window !== 'undefined') ? localStorage.getItem('companyType') : '';
-  
     const fetchPrices = async () => {
       try {
         const res = await axios.get('/api/prices', {
           params: { 
-            state: companyState,
-            type: companyType
+            state: cookie.companyState,
+            type: cookie.companyType
           }
         });
-        
+
         const JSONData = res.data[0];
 
         const pricesArray = Object.keys(JSONData).map(key => {
@@ -128,12 +120,15 @@ const Content = ({ lang }) => {
 
   return (
     <div className='bg-white'>
-      <BackButton linkHref={`/${lang}/onboarding/company-name`} buttonText={t('formation_back_button')} />
+      <BackButton linkHref={`/${lang}/v2/onboarding/company-name`} buttonText={t('formation_back_button')} />
  
       <div className='mx-auto max-w-5xl p-4'>
         <Heading title={t('formation_title')} />
 
         <Cards 
+          silverProduct={silverProduct}
+          goldProduct={goldProduct}
+          platProduct={platProduct}
           packagePrices={packagePrices}
           handlePackageSelection={handlePackageSelection}
           selectedPackageIndex={selectedPackageIndex}
@@ -141,6 +136,7 @@ const Content = ({ lang }) => {
         />
 
         <CardsFooter
+            cookie={cookie}
             selectedPackage={selectedPackage}
             selectedCompanyType={selectedCompanyType}
             selectedPackageVar={selectedPackageVar}

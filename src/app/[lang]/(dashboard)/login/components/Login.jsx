@@ -10,7 +10,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // Replace with useRef
-
 const Login = ({ lang }) => {
     const router = useRouter();
     const [email, setEmail] = useState('');
@@ -126,17 +125,17 @@ const Login = ({ lang }) => {
               </div>
             </form>
 
-            <button
-                  type="submit"
-                  className="flex w-full justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
-                  onClick={() => {
-                      const signInWithGoogle = async () => {
-                        await signIn('google', { callbackUrl: `/${lang}/dashboard` });
-                      }
-                      signInWithGoogle();
-                  }}
+            <button 
+              onClick={() => {
+                const signInWithGoogle = async () => {
+                  await signIn('google', { callbackUrl: `/${lang}/dashboard` });
+                }
+                signInWithGoogle();
+              }}
+              className="my-6 flex items-center justify-center w-full px-4 py-2 border gap-2 border-slate-200 dark:border-slate-700 rounded-lg text-black dark:text-black hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow transition duration-150"
             >
-              Sign in with Google
+                <Image className="w-6 h-6" width={100} height={100} src="https://www.svgrepo.com/show/475656/google-color.svg" loading="lazy" alt="google logo" />
+                <span>Login with Google</span>
             </button>
   
             <p className="mt-10 text-center text-sm text-gray-500">

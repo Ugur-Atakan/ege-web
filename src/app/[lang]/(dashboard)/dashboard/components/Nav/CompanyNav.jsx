@@ -7,9 +7,7 @@ const solutions = [
   { name: 'Analytics', href: '#' },
 ]
 
-const CompanyNav = ({ companies }) => {
-  // console.log(companies);
-
+const CompanyNav = () => {
   return (
     <Popover className="relative">
       <Popover.Button className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-white">
@@ -42,4 +40,4 @@ const CompanyNav = ({ companies }) => {
   )
 }
 
-export default CompanyNav
+export default CompanyNav;

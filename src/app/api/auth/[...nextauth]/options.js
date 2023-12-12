@@ -27,11 +27,7 @@ export const options = {
     // Optional: Customize the authentication flow
     callbacks: {
         async signIn({ user, account, profile }) {
-            // console.log('profile ', profile);
-            // console.log('signIn account ', account);
-
             if (account.provider === "google") {
-                console.log('Meow meow Google sign in');
                 const res = await login(profile.email, '', 'google');
 
                 if (res.status === 404) {
@@ -46,7 +42,7 @@ export const options = {
                 }
             }
             else if (account.provider === "credentials") {
-                console.log('Woof woof credentials sign in');
+                // do anything for credentials login
             }
             return true;
         },

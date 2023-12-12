@@ -20,7 +20,7 @@ function classNames(...classes) {
 const Sidebar = ({ lang, sidebarOpen, setSidebarOpen, user, companies }) => {
   const pathname = usePathname()
   const router = useRouter()
-  const navigation = getSidebarNav(pathname, user.level);
+  const navigation = getSidebarNav(pathname, 'user');
 
   return (
     <div>
@@ -69,7 +69,7 @@ const Sidebar = ({ lang, sidebarOpen, setSidebarOpen, user, companies }) => {
                   {/* Sidebar component, swap this element with another sidebar if you like */}
                   <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-4 ring-1 ring-white/10">
                     <div className="flex h-16 shrink-0 items-center">
-                      <CompanyNav companies={companies} />
+                      <CompanyNav />
                     </div>
                     <nav className="flex flex-1 flex-col">
                       <ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -139,7 +139,7 @@ const Sidebar = ({ lang, sidebarOpen, setSidebarOpen, user, companies }) => {
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-4">
             <div className="flex h-16 shrink-0 items-center">
-              <CompanyNav companies={companies} />
+              <CompanyNav />
             </div>
             <nav className="flex flex-1 flex-col">
               <ul role="list" className="flex flex-1 flex-col gap-y-7">

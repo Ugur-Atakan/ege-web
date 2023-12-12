@@ -34,7 +34,7 @@ const CompanyDetails = ({ lang, companyType, companyName, companyState }) => {
                     <p className='font-semibold text-sm leading-6 text-[#8A8A8A]'>{t("review_company_details_company_name")}</p>
                     <span className='font-semibold text-sm leading-6 text-[#222222]'>{companyName}</span>
                 </div>
-                <Link href={`/${lang}/company-name`} className='font-semibold text-sm leading-6 text-[#1649FF]' >
+                <Link href={`/${lang}/v2/onboarding/company-name`} className='font-semibold text-sm leading-6 text-[#1649FF]' >
                     {t("review_edit_button")}
                 </Link>
             </div>
@@ -43,7 +43,7 @@ const CompanyDetails = ({ lang, companyType, companyName, companyState }) => {
                     <p className='font-semibold text-sm leading-6 text-[#8A8A8A]'>{t("review_company_details_filing_juristiction")}</p>
                     <span className='font-semibold text-sm leading-6 text-[#222222]'>{companyState}</span>
                 </div>
-                <Link href={`/${lang}/state`} className='font-semibold text-sm leading-6 text-[#1649FF]' >
+                <Link href={`/${lang}/v2/onboarding/state`} className='font-semibold text-sm leading-6 text-[#1649FF]' >
                     {t("review_edit_button")}
                 </Link>
             </div>

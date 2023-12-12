@@ -1,7 +1,5 @@
-
 import mongoose from "mongoose";
 
-// superadmin, admin, user.
 const userSchema = new mongoose.Schema({
   firstName: {
     type: String,
@@ -26,13 +24,9 @@ const userSchema = new mongoose.Schema({
   type: {
     type: String,
     default: "local"
-  },
-  companies: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Company'
-  }]
+  }
 }, { timestamps: true });
 
-const User = mongoose.models.User ||  mongoose.model('User', userSchema);
+const User = mongoose.models.User || mongoose.model('User', userSchema);
 
 export default User;

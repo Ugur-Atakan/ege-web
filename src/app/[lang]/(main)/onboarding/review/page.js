@@ -1,5 +1,6 @@
 import React from 'react'
 import Content from './components/Content'
+import { readCookieFromStorageServerAction } from '@/app/lib/session/serverActions'
 
 /**
  * Page route for review page
@@ -9,9 +10,15 @@ import Content from './components/Content'
  * @returns {JSX.Element} 
 */
 
-const Page = ({ params: { lang } }) => {
+const Page = async ({ params: { lang } }) => {
+  const cookie = await readCookieFromStorageServerAction();
+  console.log(cookie);
+  
   return (
-    <Content lang={lang} />
+    <Content 
+      lang={lang}
+      cookie={cookie} 
+    />
   )
 }
 

@@ -1,6 +1,6 @@
 import { ChartPieIcon, DocumentDuplicateIcon, FolderIcon, HomeIcon, UsersIcon, CalendarIcon, UserIcon } from '@heroicons/react/24/outline'
 import { removeCookieFromStorageServerAction } from '@/app/lib/session/dashboardSession/serverActions'
-
+import { signOut  } from 'next-auth/react'
 export const navigation = [
     { name: 'Dashboard', href: '/en/dashboard/', icon: HomeIcon, current: true },
     { name: 'Company', href: '/en/dashboard/company', icon: FolderIcon, current: false, adminVisibility: false, userVisibility: true },
@@ -46,10 +46,8 @@ export const userNavigation = [
     { name: 'Your profile', href: '/' },
     { 
         name: 'Sign out', 
-        onClick: async (e) => {
-            e.preventDefault();
-            await removeCookieFromStorageServerAction();
-            window.location.href = '/en/login';
+        onClick: async () => {
+            await signOut();
         }
     }
 ]

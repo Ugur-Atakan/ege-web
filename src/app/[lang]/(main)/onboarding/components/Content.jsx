@@ -3,6 +3,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from '@/i18n/client'
+import { submitCookie } from '@/app/lib/session/clientActions'
 import { completelyClearLocalStorage, localStorageDataExists, redirectToLastNotNullFunnelLink } from '@/app/lib/utils'
 import { useRouter } from 'next/navigation'
 
@@ -28,38 +29,39 @@ const Content = ({ lang }) => {
     const [restartFunnel, setRestartFunnel] = useState(false);
     const [resumeFunnel, setResumeFunnel] = useState(false);
     
-    useEffect(() => {
-        const checkLocalStorage = localStorageDataExists();
+    // useEffect(() => {
+    //     const checkLocalStorage = localStorageDataExists();
     
-        if (checkLocalStorage) {
-            setShowModal(true);
-        }
+    //     if (checkLocalStorage) {
+    //         setShowModal(true);
+    //     }
 
-        if (resumeFunnel) {
-            const redirectionLink = redirectToLastNotNullFunnelLink();
-            router.push(`/${lang}/onboarding/${redirectionLink}`);
-        }
+    //     if (resumeFunnel) {
+    //         const redirectionLink = redirectToLastNotNullFunnelLink();
+    //         router.push(`/${lang}/v2/onboarding/${redirectionLink}`);
+    //     }
 
-        if (restartFunnel) {
-            setShowModal(false);
-            completelyClearLocalStorage();
+    //     if (restartFunnel) {
+    //         setShowModal(false);
+    //         completelyClearLocalStorage();
+    //     }
+    // }, [restartFunnel, resumeFunnel]);
+
+    useEffect(() => {
+        const sendCookie = async () => {
+            await submitCookie({ 'companyType': companyType });
         }
-    }, [restartFunnel, resumeFunnel]);
+        sendCookie();
+    }, [companyType]);
 
     const handleSelectLlc = () => {
         setCompanyType('LLC');
-        if (typeof window !== 'undefined' && window.localStorage) {
-            window.localStorage.setItem('companyType', 'LLC');
-        }
-        router.push(`/${lang}/onboarding/state`);
+        router.push(`/${lang}/v2/onboarding/state`);
     }
 
     const handleSelectCcorp = () => {
         setCompanyType('Corporation');
-        if (typeof window !== 'undefined' && window.localStorage) {
-            window.localStorage.setItem('companyType', 'Corporation');
-        }
-        router.push(`/${lang}/onboarding/state`);
+        router.push(`/${lang}/v2/onboarding/state`);
     }
 
     return (

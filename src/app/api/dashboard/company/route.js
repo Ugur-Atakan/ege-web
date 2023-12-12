@@ -4,7 +4,7 @@ import User from '@/app/lib/db/models/UserModel'
 
 // Creating a company
 export async function POST(request) {
-    const { companyName, state, companyPackage, userEmail } = await request.json();
+    const { companyName, state, companyPackage } = await request.json();
     await connectDB();
 
     try {
@@ -17,7 +17,7 @@ export async function POST(request) {
                     'Content-Type': 'application/json'
                 }
             });
-        }   
+        }
 
         const user = await User.findOne({ email: userEmail });
         if (!user) {
