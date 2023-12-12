@@ -12,8 +12,7 @@ import { readCookieFromStorageServerAction } from '@/app/lib/session/serverActio
 
 const Page = async ({ params: { lang } }) => {
   const cookie = await readCookieFromStorageServerAction();
-  console.log(cookie);
-  
+
   return (
     <Content 
       lang={lang}

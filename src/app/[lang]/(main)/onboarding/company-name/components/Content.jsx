@@ -30,7 +30,7 @@ const Content = ({ lang , cookie }) => {
 
   //   const checkRedirection = redirectToLastNullInternalFunnel();
   //   if (checkRedirection && !checkEqualPathName(pathname, checkRedirection)) {
-  //     router.push(`/${lang}/v2/onboarding/${checkRedirection}`)
+  //     router.push(`/${lang}/onboarding/${checkRedirection}`)
   //   }
   // }, []);
 
@@ -74,7 +74,8 @@ const Content = ({ lang , cookie }) => {
       await submitCookie(ckie);
     };
     sendCookie();
-    router.push(`/${lang}/v2/onboarding/review`);
+    router.push(`/${lang}/onboarding/review`);
+    router.refresh();
   }
 
   return (

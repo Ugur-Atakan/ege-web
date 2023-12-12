@@ -13,14 +13,16 @@ import { getLLCSilver, getLLCGold, getCorpSilver, getCorpGold, getCorpPlat } fro
 
 const Page = async ({ params: { lang } }) => {
     const cookie = await readCookieFromStorageServerAction();
+    console.log('Formation ', cookie);
+
     let silverProduct, goldProduct, platProduct;
     if (cookie.companyType === 'LLC') {
         silverProduct = await getLLCSilver(cookie.companyState);
-        goldProduct = await getLLCGold();
-    } else if (cookie.companyType === 'Corporation') {
-      silverProduct = await getCorpSilver();
-        goldProduct = await getCorpGold();
-        platProduct = await getCorpPlat();
+        goldProduct = await getLLCGold(cookie.companyState);
+    } else if (cookie.companyType === 'C-Corp') {
+        silverProduct = await getCorpSilver(cookie.companyState);
+        goldProduct = await getCorpGold(cookie.companyState);
+        platProduct = await getCorpPlat(cookie.companyState);
     }
 
     return (

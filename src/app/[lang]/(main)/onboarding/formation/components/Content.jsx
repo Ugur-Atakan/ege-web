@@ -1,15 +1,12 @@
 /* eslint-disable */
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
+import { submitCookie } from '@/app/lib/session/clientActions' 
 
 import { noinclude, arrowblack, arrowblue } from '@/assets/images'
 import BackButton from '../../components/common/BackButton'
-
-import axios from 'axios'
-//import { readCookie, submitCookie } from '../../../lib/session/clientActions'
-
 import Heading from './Heading'
 import Cards from './Cards'
 import CardsFooter from './CardsFooter'
@@ -31,10 +28,8 @@ import { useTranslation } from '@/i18n/client'
 */
 
 const Content = ({ lang, cookie, silverProduct, goldProduct, platProduct }) => {
-  // console.log(silverProduct, goldProduct, platProduct)
-
   const { t } = useTranslation(lang);
-  const pathname = usePathname();
+  // const pathname = usePathname();
   const router = useRouter();
 
   // useEffect(() => {
@@ -42,7 +37,7 @@ const Content = ({ lang, cookie, silverProduct, goldProduct, platProduct }) => {
 
   //   const checkRedirection = redirectToLastNullInternalFunnel();
   //   if (checkRedirection && !checkEqualPathName(pathname, checkRedirection)) {
-  //     router.push(`/${lang}/v2/onboarding/${checkRedirection}`)
+  //     router.push(`/${lang}/onboarding/${checkRedirection}`)
   //   }
   // }, []);
 
@@ -53,9 +48,7 @@ const Content = ({ lang, cookie, silverProduct, goldProduct, platProduct }) => {
   const selectedCompanyTypesEN = packageDataEN.packages.find((item) => item[selectedCompanyType]);
   const selectedCompanyTypesTR = packageDataTR.packages.find((item) => item[selectedCompanyType]);
   const selectedPackageVar = lang === 'en' ? selectedCompanyTypesEN : selectedCompanyTypesTR;
-
   const titles = selectedPackageVar[selectedCompanyType].map((item) => item.title);
-  const [isLoading, setIsLoading] = useState(true);
 
   const handlePackageSelection = (selectedPackage, selectedIndex) => {
     setSelectedPackage(selectedPackage);
@@ -66,9 +59,7 @@ const Content = ({ lang, cookie, silverProduct, goldProduct, platProduct }) => {
     if (packagePrices.length > 0) {
       setSelectedPackage(packagePrices[index]);
 
-      const packages = getRandomPackages(packagePrices[index], selectedCompanyType , selectedPackageVar);
-
-      
+      const packages = getRandomPackages(packagePrices[index], selectedCompanyType , selectedPackageVar);      
       if (selectedPackage) {
         const cke = {
           ...cookie,
@@ -77,50 +68,15 @@ const Content = ({ lang, cookie, silverProduct, goldProduct, platProduct }) => {
 
         const sendCookie = async () => { await submitCookie(cke) }
         sendCookie();
-        router.push(`/${lang}/v2/onboarding/company-name`);
+        router.push(`/${lang}/onboarding/company-name`);
+        router.refresh();
       }
     }
   }
 
-  // Fetch Prices
-  useEffect(() => {
-    const fetchPrices = async () => {
-      try {
-        const res = await axios.get('/api/prices', {
-          params: { 
-            state: cookie.companyState,
-            type: cookie.companyType
-          }
-        });
-
-        const JSONData = res.data[0];
-
-        const pricesArray = Object.keys(JSONData).map(key => {
-          return { type: key, price: JSONData[key] };
-        });
-
-        setPackagePrices(pricesArray);
-        setIsLoading(false);
-      } catch (error) {
-        console.log(error);
-        setIsLoading(false);
-      }
-    };
-
-    fetchPrices();
-  }, []);
-
-  if (isLoading) {
-    return (
-      <div className="absolute right-1/2 bottom-1/2  transform translate-x-1/2 translate-y-1/2 ">
-        <div className="border-t-transparent border-solid animate-spin  rounded-full border-[#1649FF] border-8 h-64 w-64"></div>
-      </div>
-    )
-  }
-
   return (
     <div className='bg-white'>
-      <BackButton linkHref={`/${lang}/v2/onboarding/company-name`} buttonText={t('formation_back_button')} />
+      <BackButton linkHref={`/${lang}/onboarding/state`} buttonText={t('formation_back_button')} />
  
       <div className='mx-auto max-w-5xl p-4'>
         <Heading title={t('formation_title')} />

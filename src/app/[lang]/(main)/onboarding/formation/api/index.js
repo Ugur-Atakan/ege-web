@@ -27,9 +27,10 @@ const getLLCSilver = async (state) => {
     }
 }
 
-const getLLCGold = async () => {
+const getLLCGold = async (state) => {
     try {
-        const res = await axios.get(`https://api.stripe.com/v1/prices/search?query=product:'prod_OhftO77vwfaxjp' AND lookup_key:'DC-llc-gold'`, {
+        const stateKey = getStateKey(state);
+        const res = await axios.get(`https://api.stripe.com/v1/prices/search?query=product:'prod_OhftO77vwfaxjp' AND lookup_key:'${stateKey}-llc-gold'`, {
           headers: {
               'Authorization': `Bearer ${process.env.STRIPE_SECRET_KEY}`
           }
@@ -42,9 +43,10 @@ const getLLCGold = async () => {
     }
 }
 
-const getCorpSilver = async () => {
+const getCorpSilver = async (state) => {
     try {
-        const res = await axios.get(`https://api.stripe.com/v1/prices/search?query=product:'prod_P0RY5nExt2q8nE' AND lookup_key:'WY-corp-silver'`, {
+        const stateKey = getStateKey(state);
+        const res = await axios.get(`https://api.stripe.com/v1/prices/search?query=product:'prod_P0RY5nExt2q8nE' AND lookup_key:'${stateKey}-corp-silver'`, {
           headers: {
               'Authorization': `Bearer ${process.env.STRIPE_SECRET_KEY}`
           }
@@ -57,9 +59,10 @@ const getCorpSilver = async () => {
     }
 }
 
-const getCorpGold = async () => {
+const getCorpGold = async (state) => {
     try {
-        const res = await axios.get(`https://api.stripe.com/v1/prices/search?query=product:'prod_Oj65yZwYrReuES' AND lookup_key:'WI-corp-gold'`, {
+        const stateKey = getStateKey(state);
+        const res = await axios.get(`https://api.stripe.com/v1/prices/search?query=product:'prod_Oj65yZwYrReuES' AND lookup_key:'${stateKey}-corp-gold'`, {
           headers: {
               'Authorization': `Bearer ${process.env.STRIPE_SECRET_KEY}`
           }
@@ -72,9 +75,10 @@ const getCorpGold = async () => {
     }
 }
 
-const getCorpPlat = async () => {
+const getCorpPlat = async (state) => {
     try {
-        const res = await axios.get(`https://api.stripe.com/v1/prices/search?query=product:'prod_Oj67AQ1Qc24s5x' AND lookup_key:'DE-corp-plat'`, {
+        const stateKey = getStateKey(state);
+        const res = await axios.get(`https://api.stripe.com/v1/prices/search?query=product:'prod_Oj67AQ1Qc24s5x' AND lookup_key:'${stateKey}-corp-plat'`, {
           headers: {
               'Authorization': `Bearer ${process.env.STRIPE_SECRET_KEY}`
           }

@@ -2,10 +2,11 @@ import { getIronSession, getServerActionIronSession } from 'iron-session'
 import { cookies } from 'next/headers';
 
 export const onboardingSessionOptions = {
-    password: 'change-this-this-is-not-a-secure-password',
+    password: process.env.IRONAUTH_SECRET,
     cookieName: 'registateOnboarding',
     cookieOptions: {
-        secure: process.env.NODE_ENV === 'production'
+        secure: process.env.NODE_ENV === 'production',
+        maxAge: 1 * 60 * 10 //! 10 minutes expiration duration
     }
 }
 

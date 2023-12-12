@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { useTranslation } from '@/i18n/client'
 import { submitCookie } from '@/app/lib/session/clientActions'
 import { completelyClearLocalStorage, localStorageDataExists, redirectToLastNotNullFunnelLink } from '@/app/lib/utils'
+import { removeCookieFromStorageServerAction } from '@/app/lib/session/serverActions'
 import { useRouter } from 'next/navigation'
 
 import Cards from './Cards/Cards'
@@ -20,11 +21,17 @@ import Modal from './Modal'
  * @returns {JSX.Element} Rendered content for the page
 */
 
-const Content = ({ lang }) => {
+const Content = ({ lang, cookie }) => {
+    useEffect(() => {
+        if (cookie) {
+            removeCookieFromStorageServerAction();
+        }
+    }, []);
+    
+    
     const { t } = useTranslation(lang);
     const router = useRouter();
 
-    const [companyType, setCompanyType] = useState('');
     const [showModal, setShowModal] = useState(false);
     const [restartFunnel, setRestartFunnel] = useState(false);
     const [resumeFunnel, setResumeFunnel] = useState(false);
@@ -38,7 +45,7 @@ const Content = ({ lang }) => {
 
     //     if (resumeFunnel) {
     //         const redirectionLink = redirectToLastNotNullFunnelLink();
-    //         router.push(`/${lang}/v2/onboarding/${redirectionLink}`);
+    //         router.push(`/${lang}/onboarding/${redirectionLink}`);
     //     }
 
     //     if (restartFunnel) {
@@ -47,21 +54,19 @@ const Content = ({ lang }) => {
     //     }
     // }, [restartFunnel, resumeFunnel]);
 
-    useEffect(() => {
-        const sendCookie = async () => {
-            await submitCookie({ 'companyType': companyType });
-        }
-        sendCookie();
-    }, [companyType]);
 
-    const handleSelectLlc = () => {
-        setCompanyType('LLC');
-        router.push(`/${lang}/v2/onboarding/state`);
+    const sendCookie = async (companyType) => {
+        await submitCookie({ 'companyType': companyType });
+    };
+    
+    const handleSelectLlc = async () => {
+        await sendCookie('LLC');
+        router.push(`/${lang}/onboarding/state`);
     }
 
-    const handleSelectCcorp = () => {
-        setCompanyType('Corporation');
-        router.push(`/${lang}/v2/onboarding/state`);
+    const handleSelectCcorp = async () => {
+        await sendCookie('C-Corp');
+        router.push(`/${lang}/onboarding/state`);
     }
 
     return (
@@ -80,7 +85,7 @@ const Content = ({ lang }) => {
                         <h1 className='text-[#222222] text-[26px] leading-8 md:text-[2.5rem] font-semibold md:leading-[2.75rem]'>{t('company_type_comparing_title')}</h1>
                     </div>
 
-                   <Comparison t={t} handleSelectCcorp={handleSelectCcorp} handleSelectLlc={handleSelectLlc}/>
+                   <Comparison t={t} handleSelectLlc={handleSelectLlc} handleSelectCcorp={handleSelectCcorp} />
                    <Footer t={t} takeQuizForm={() => router.push(`/${lang}/quiz`)} lang={lang} />
                 </div>
             </div>

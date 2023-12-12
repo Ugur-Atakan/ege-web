@@ -13,7 +13,8 @@ import Image from 'next/image'
 */
 
 const Features = ({ selectedPackage }) => {
-    const pkg = [selectedPackage];
+    const jsonPkg = JSON.parse(selectedPackage);
+    const pkg = [jsonPkg[0]];
 
     return (
         <div className='bg-white border rounded-[32px] p-6 my-6'>
@@ -27,7 +28,7 @@ const Features = ({ selectedPackage }) => {
                         {price.features && price.features.map((feature, innerIndex) => (
                             <div key={innerIndex} className='flex items-center gap-4 py-2'>
                                 <Image src={tick} className='w-5 h-5' alt='list' />
-                                <p className='font-semibold text-lg leading-6 text-[#222222]'>{feature.name}</p>
+                                <p className='font-semibold text-lg leading-6 text-[#222222]'>{feature}</p>
                             </div>
                         ))}
                     </div>

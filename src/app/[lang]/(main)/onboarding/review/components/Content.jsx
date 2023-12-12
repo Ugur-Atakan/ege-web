@@ -37,7 +37,7 @@ const Content = ({ lang, cookie }) => {
     // useEffect(() => {
     //   const checkRedirection = redirectToLastNullInternalFunnel();
     //   if (checkRedirection && !checkEqualPathName(pathname, checkRedirection)) {
-    //     router.push(`/${lang}/v2/onboarding/${checkRedirection}`)
+    //     router.push(`/${lang}/onboarding/${checkRedirection}`)
     //   }
     // }, []); 
     

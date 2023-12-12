@@ -9,8 +9,8 @@ const CardsFooter = ({ cookie, selectedPackage, selectedCompanyType, selectedPac
   const router = useRouter();
 
   //* Set Cookie function
-  const setCookie = (selectedPackage) => {
-    const ckie = { ...cookie, 'selectedPackage': selectedPackage};
+  const setCookie = (selectedPackage, features) => {
+    const ckie = { ...cookie, selectedPackage: JSON.stringify([{ ...selectedPackage, features: features }])};
     const sendCookie = async () => {
       await submitCookie(ckie);
     }
@@ -22,14 +22,11 @@ const CardsFooter = ({ cookie, selectedPackage, selectedCompanyType, selectedPac
         <button
             className='w-full flex flex-col items-center justify-center font-semibold bg-[#1649FF] text-white rounded-[20px] p-5 cursor-pointer'
             onClick={() => {
-                setCookie(selectedPackage);
                 const packages = getRandomPackages(selectedPackage, selectedCompanyType, selectedPackageVar);
                 if (selectedPackage) {
-                    if (typeof window !== 'undefined' && window.localStorage && window.location) {
-                        window.localStorage.setItem('selectedPackage', JSON.stringify([{...selectedPackage, features: packages}]));
-                        window.localStorage.setItem('companyFormationCompleted', true);
-                        router.push(`/${lang}/v2/onboarding/company-name`);
-                    }
+                    setCookie(selectedPackage, packages);
+                    router.push(`/${lang}/onboarding/company-name`);
+                    router.refresh();
                 }
             }}
         >

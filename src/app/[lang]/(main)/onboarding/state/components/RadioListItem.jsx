@@ -18,7 +18,7 @@ const RadioListItem = ({ id, companyType, companyState, state, title, text, chec
           </div>
         )}
 
-        {companyType === 'Corporation' && state === 'Delaware' && (
+        {companyType === 'C-Corp' && state === 'Delaware' && (
           <div className="absolute top-[-1rem] right-[1rem] bg-[#1649FF] text-white py-2 px-4 rounded-[20px]">
             Recommended for Corporation
           </div>

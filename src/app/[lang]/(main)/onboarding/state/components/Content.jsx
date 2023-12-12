@@ -27,7 +27,7 @@ const RadioListItem = dynamic(() => import('./RadioListItem'))
 const Content = ({ lang, companyType }) => {
   const { t } = useTranslation(lang);
   // const pathname = usePathname();
-  // const router = useRouter();
+  const router = useRouter();
   
   // useEffect(() => {
   //   clearPathnameLocalStorage('companyStateCompleted');
@@ -40,19 +40,16 @@ const Content = ({ lang, companyType }) => {
  
   const [companyState, setCompanyState] = useState('');
   const [otherStates, setOtherStates] = useState([]);
-  const selectedLLC = companyType === 'Corporation' ? true : false;
+  const selectedLLC = companyType === 'C-Corp' ? true : false;
   
   //* Use Effect to set the cookie
-  useEffect(() => { 
-    setCompanyState(companyState);
+  const handleSubmit = () => {
     const cookie = {...{companyType}, companyState: companyState};
-    const sendCookie = async () => {
-      await submitCookie(cookie);
-    }
-    sendCookie();
-  }), [companyState];
+    submitCookie(cookie);
+    router.push(`/${lang}/onboarding/formation`);
+    router.refresh();
+  }
 
- 
   //* API call to get the states
   useEffect(() => {
     const getState = async () => {
@@ -71,7 +68,7 @@ const Content = ({ lang, companyType }) => {
 
   return (
     <div className='bg-white'>
-      <BackButton linkHref={`/${lang}/v2/onboarding`} buttonText={t('companyname_back_button')} />
+      <BackButton linkHref={`/${lang}/onboarding`} buttonText={t('companyname_back_button')} />
      
       <div className='mx-auto max-w-2xl px-8 md:px-0'>
         <Heading t={t} />
@@ -85,7 +82,7 @@ const Content = ({ lang, companyType }) => {
                 companyState={companyState}
                 title={t('state_option1_title')}
                 text={t('state_option1_text')}
-                checked={selectedLLC === false}
+                checked={selectedLLC == false}
                 onClick={() => setCompanyState('Wyoming')}
               />   
 
@@ -96,7 +93,7 @@ const Content = ({ lang, companyType }) => {
                 companyState={companyState}
                 title={t('state_option2_title')}
                 text={t('state_option2_text')}
-                checked={selectedLLC === true}
+                checked={selectedLLC == true}
                 onClick={() => setCompanyState('Delaware')}
               />
 
@@ -110,13 +107,13 @@ const Content = ({ lang, companyType }) => {
               />
             </li>
 
-            <Link 
-              href={`/${lang}/v2/onboarding/formation`} 
+            <button 
+              onClick={handleSubmit}
               //className={`order-4 w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer ${companyState ? '' : 'opacity-50 cursor-not-allowed pointer-events-none'}`}
               className={`order-4 w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer`}
             >
                 {t('state_button')}
-            </Link>
+            </button>
           </ul>
         </div>
       </div>

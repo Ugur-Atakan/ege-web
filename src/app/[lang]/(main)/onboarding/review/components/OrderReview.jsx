@@ -3,7 +3,8 @@ import { useTranslation } from '@/i18n/client'
 
 const OrderReview = ({ lang , selectedPackage , couponcode, setCouponCode , displayForm , setDisplayForm , handleSubmit}) => {
     const { t } = useTranslation(lang);
-    const pkg = [selectedPackage];
+    const jsonPkg = JSON.parse(selectedPackage);
+    const pkg = [jsonPkg[0]];
 
     return (
         <div className='bg-white rounded-[32px] md:rounded-[32px] p-6 relative'>
