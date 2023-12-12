@@ -4,22 +4,23 @@
 // The dashboard template is copy paste from here: https://tailwindui.com/components/application-ui/application-shells/sidebar#component-5548358cb34897c6b28551f2ad885eec
 // Template name: Dark sidebar with header
 
-import React from 'react';
-import Image from 'next/image'
-import { Fragment, useState } from 'react'
+import React, { Fragment }  from 'react'
+import Link from 'next/link'
 import { Dialog, Transition } from '@headlessui/react'
 import { Cog6ToothIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
-import { bluelogo } from '@/assets/images'
-import { navigation, teams } from '../../const'
-
+import { usePathname, useRouter } from 'next/navigation'
+import { teams, getSidebarNav } from '../util/const'
+import CompanyNav from './CompanyNav'
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-const Sidebar = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+const Sidebar = ({ lang, sidebarOpen, setSidebarOpen, user, companies }) => {
+  const pathname = usePathname()
+  const router = useRouter()
+  const navigation = getSidebarNav(pathname, 'user');
 
   return (
     <div>
@@ -68,13 +69,7 @@ const Sidebar = () => {
                   {/* Sidebar component, swap this element with another sidebar if you like */}
                   <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-4 ring-1 ring-white/10">
                     <div className="flex h-16 shrink-0 items-center">
-                      <Image
-                        className="h-8 w-auto"
-                        height={8}
-                        width={8}
-                        src={bluelogo}
-                        alt="Registate"
-                      />
+                      <CompanyNav />
                     </div>
                     <nav className="flex flex-1 flex-col">
                       <ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -82,7 +77,7 @@ const Sidebar = () => {
                           <ul role="list" className="-mx-2 space-y-1">
                             {navigation.map((item) => (
                               <li key={item.name}>
-                                <a
+                                <Link
                                   href={item.href}
                                   className={classNames(
                                     item.current
@@ -93,12 +88,12 @@ const Sidebar = () => {
                                 >
                                   <item.icon className="h-6 w-6 shrink-0" aria-hidden="true" />
                                   {item.name}
-                                </a>
+                                </Link>
                               </li>
                             ))}
                           </ul>
                         </li>
-                        <li>
+                        {/* <li>
                           <div className="text-xs font-semibold leading-6 text-gray-400">Your teams</div>
                           <ul role="list" className="-mx-2 mt-2 space-y-1">
                             {teams.map((team) => (
@@ -120,7 +115,7 @@ const Sidebar = () => {
                               </li>
                             ))}
                           </ul>
-                        </li>
+                        </li> */}
                         <li className="mt-auto">
                           <a
                             href="#"
@@ -144,13 +139,7 @@ const Sidebar = () => {
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-4">
             <div className="flex h-16 shrink-0 items-center">
-              <Image
-                className="h-8 w-auto"
-                height={8}
-                width={8}
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                alt="Your Company"
-              />
+              <CompanyNav />
             </div>
             <nav className="flex flex-1 flex-col">
               <ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -158,53 +147,31 @@ const Sidebar = () => {
                   <ul role="list" className="-mx-2 space-y-1">
                     {navigation.map((item) => (
                       <li key={item.name}>
-                        <a
-                          href={item.href}
+                        <div
+                          onClick={() => router.push(item.href)} 
+                          // href={item.href}
                           className={classNames(
                             item.current
                               ? 'bg-gray-800 text-white'
                               : 'text-gray-400 hover:text-white hover:bg-gray-800',
-                            'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
+                            'cursor-pointer group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
                           )}
                         >
                           <item.icon className="h-6 w-6 shrink-0" aria-hidden="true" />
                           {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </li>
-                <li>
-                  <div className="text-xs font-semibold leading-6 text-gray-400">Your teams</div>
-                  <ul role="list" className="-mx-2 mt-2 space-y-1">
-                    {teams.map((team) => (
-                      <li key={team.name}>
-                        <a
-                          href={team.href}
-                          className={classNames(
-                            team.current
-                              ? 'bg-gray-800 text-white'
-                              : 'text-gray-400 hover:text-white hover:bg-gray-800',
-                            'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
-                          )}
-                        >
-                          <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-gray-400 group-hover:text-white">
-                            {team.initial}
-                          </span>
-                          <span className="truncate">{team.name}</span>
-                        </a>
+                        </div>
                       </li>
                     ))}
                   </ul>
                 </li>
                 <li className="mt-auto">
-                  <a
-                    href="#"
+                  <Link
+                    href={`/${lang}/dashboard/settings`}
                     className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white"
                   >
                     <Cog6ToothIcon className="h-6 w-6 shrink-0" aria-hidden="true" />
                     Settings
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </nav>

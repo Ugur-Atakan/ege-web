@@ -3,6 +3,8 @@ import { useTranslation } from '@/i18n/client'
 
 const OrderReview = ({ lang , selectedPackage , couponcode, setCouponCode , displayForm , setDisplayForm , handleSubmit}) => {
     const { t } = useTranslation(lang);
+    const jsonPkg = JSON.parse(selectedPackage);
+    const pkg = [jsonPkg[0]];
 
     return (
         <div className='bg-white rounded-[32px] md:rounded-[32px] p-6 relative'>
@@ -14,13 +16,13 @@ const OrderReview = ({ lang , selectedPackage , couponcode, setCouponCode , disp
                 <h4 className='font-semibold text-[15px] leading-6 text-[#545454]'>{t("review_preview")}</h4>
             </div>
             <div className='flex items-center justify-between py-4'>
-                {selectedPackage && selectedPackage.map((price, index) => (
+                {pkg && pkg.map((price, index) => (
                     <React.Fragment key={index}>
                         <div>
                             <h2 className='font-semibold text-[16px] leading-6 text-[#222222]'>{t("review_payment_type")}</h2>
-                            <p className='font-semibold capitalize text-[16px] leading-6 text-[#222222]'>{price.type}</p>
+                            <p className='font-semibold capitalize text-[16px] leading-6 text-[#222222]'>{price.product}</p>
                         </div>
-                        <div><h3 className='font-semibold text-[16px] leading-6 text-[#222222]'>{'$' + (price.price)}</h3></div>
+                        <div><h3 className='font-semibold text-[16px] leading-6 text-[#222222]'>{'$' + (price.unit_amount / 100)}</h3></div>
                     </React.Fragment>
                 ))}
             </div>
@@ -33,8 +35,8 @@ const OrderReview = ({ lang , selectedPackage , couponcode, setCouponCode , disp
                     <div>
                         <h4 className='font-semibold text-lg leading-6 text-[#222222]'>{t("review_total")}</h4>
                     </div>
-                    {selectedPackage && selectedPackage.map((price, index) => (
-                        <div key={index}><h5 className='font-semibold text-lg leading-6 text-[#222222]'>{'$' + (price.price)}</h5></div>
+                    {pkg && pkg.map((price, index) => (
+                        <div key={index}><h5 className='font-semibold text-lg leading-6 text-[#222222]'>{'$' + (price.unit_amount / 100)}</h5></div>
                     ))}
                 </div>
                 <div className='flex items-center justify-center py-4'>

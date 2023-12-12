@@ -29,17 +29,17 @@ const OrderReview = dynamic(() => import('./OrderReview'))
  * @returns {JSX.Element} 
 */
 
-const Content = ({ lang }) => {
+const Content = ({ lang, cookie }) => {
     const { t } = useTranslation(lang);
-    const pathname = usePathname();
-    const router = useRouter();
-    
-    useEffect(() => {
-      const checkRedirection = redirectToLastNullInternalFunnel();
-      if (checkRedirection && !checkEqualPathName(pathname, checkRedirection)) {
-        router.push(`/${lang}/onboarding/${checkRedirection}`)
-      }
-    }, []); 
+
+    // const pathname = usePathname();
+    // const router = useRouter();
+    // useEffect(() => {
+    //   const checkRedirection = redirectToLastNullInternalFunnel();
+    //   if (checkRedirection && !checkEqualPathName(pathname, checkRedirection)) {
+    //     router.push(`/${lang}/onboarding/${checkRedirection}`)
+    //   }
+    // }, []); 
     
     const [displayForm, setDisplayForm] = useState(false);
     const [name, setName] = useState('');
@@ -55,11 +55,6 @@ const Content = ({ lang }) => {
     const [countries, setCountries] = useState([]);
     const [states, setStates] = useState([]);
     const [couponcode, setCouponCode] = useState('');
-
-    const companyName = (typeof window !== 'undefined' ? window.localStorage.getItem('companyName') : '');
-    const companyState = (typeof window !== 'undefined' ? window.localStorage.getItem('companyState') : '');
-    const companyType = (typeof window !== 'undefined' ? window.localStorage.getItem('companyType') : '');
-    const selectedPackage = (typeof window !== 'undefined' ? JSON.parse(window.localStorage.getItem('selectedPackage')) : null);
 
     const formSubmitHandler = (e) => {
         e.preventDefault();
@@ -88,15 +83,16 @@ const Content = ({ lang }) => {
 
         let payload = {
             customerName: name + ' ' + lastname,
-            companyName: companyName,
-            companyType: companyType,
-            companyState: companyState,
+            companyName: cookie.companyName,
+            companyType: cookie.companyType,
+            companyState: cookie.companyState,
             companyContactEmail: email,
             companyContactAddress: street + ', ' + city + ', ' + zip + ', ' + country,
             companyZipCode: zip,
             companyCity: city,
             companyCountry: country,
-            selectedPackage: typeof window !== 'undefined' ? JSON.parse(window.localStorage.getItem('selectedPackage')) : null
+            //! FIX THIS
+            // selectedPackage: typeof window !== 'undefined' ? JSON.parse(window.localStorage.getItem('selectedPackage')) : null
         };  
 
         axios
@@ -132,8 +128,6 @@ const Content = ({ lang }) => {
 
     return (
         <div className="block md:flex items-start gap-12 bg-[#ECEFF1]">
-            {/* <BackButton buttonText={t('companyname_back_button')} linkHref={`/${lang}/onboarding/company-name`} /> */}
-
             <div className="w-full md:w-[45%]">
                 {displayForm ? (
                     <div className='py-8 px-4 md:pl-10 md:py-8'>
@@ -192,11 +186,11 @@ const Content = ({ lang }) => {
                         </h1>
                         <CompanyDetails
                             lang={lang}
-                            companyType={companyType}
-                            companyName={companyName}
-                            companyState={companyState}
+                            companyType={cookie.companyType}
+                            companyName={cookie.companyName}
+                            companyState={cookie.companyState}
                         />
-                        <Features selectedPackage={selectedPackage} />
+                        <Features selectedPackage={cookie.selectedPackage} />
                     </div>
                 )}
             </div>
@@ -204,7 +198,7 @@ const Content = ({ lang }) => {
             <div className="w-full pt-[6%] px-10 md:w-[55%]">
                 <OrderReview
                     lang={lang}
-                    selectedPackage={selectedPackage}
+                    selectedPackage={cookie.selectedPackage}
                     couponcode={couponcode}
                     setCouponCode={setCouponCode}
                     displayForm={displayForm}

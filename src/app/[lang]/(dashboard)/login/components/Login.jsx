@@ -2,43 +2,42 @@
 
 import React, { useState } from 'react'
 import Image from 'next/image'
-import axios from 'axios'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { submitCookie } from '@/app/lib/session/dashboardSession/clientActions'
-
+import { signIn } from 'next-auth/react'
 import { bluelogo } from '@/assets/images'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+// Replace with useRef
 const Login = ({ lang }) => {
     const router = useRouter();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        axios.post('/api/dashboard/login', {
-            email: email,
-            password: password
-        }).then((res) => {
-            const cookie = {'userEmail': email};
-            const sendCookie = async () => {
-              await submitCookie(cookie);
-            }
-            sendCookie();
-            router.push(`/${lang}/dashboard`);
-        }).catch((err) => {
-            toast.error(err.response.data, {
-              position: "top-right",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: false,
-              draggable: false,
-              progress: undefined,
-              theme: "light",
-            });
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const res = await signIn('credentials', {
+          email: email,
+          password: password,
+          redirect: false
         });
+
+        if (res.status === 401) {
+          toast.error('Wrong credentials', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            progress: undefined,
+            theme: "light",
+          });
+        } else {
+          router.push(`/${lang}/dashboard`);
+        };
     };
 
     return (
@@ -74,7 +73,7 @@ const Login = ({ lang }) => {
           </div>
   
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form className="space-y-6" action="#" method="POST">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                   Email address
@@ -120,18 +119,30 @@ const Login = ({ lang }) => {
                 <button
                   type="submit"
                   className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  onClick={handleSubmit}
                 >
                   Sign in
                 </button>
               </div>
             </form>
+
+            <button 
+              onClick={() => {
+                const signInWithGoogle = async () => {
+                  await signIn('google', { callbackUrl: `/${lang}/dashboard` });
+                }
+                signInWithGoogle();
+              }}
+              className="my-6 flex items-center justify-center w-full px-4 py-2 border gap-2 border-slate-200 dark:border-slate-700 rounded-lg text-black dark:text-black hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow transition duration-150"
+            >
+                <Image className="w-6 h-6" width={100} height={100} src="https://www.svgrepo.com/show/475656/google-color.svg" loading="lazy" alt="google logo" />
+                <span>Login with Google</span>
+            </button>
   
             <p className="mt-10 text-center text-sm text-gray-500">
               Not a member?{' '}
-              <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+              <Link href={`/${lang}/signup`} className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
                 Sign up now
-              </a>
+              </Link>
             </p>
           </div>
         </div>

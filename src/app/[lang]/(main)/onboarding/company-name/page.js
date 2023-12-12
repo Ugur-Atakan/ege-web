@@ -1,3 +1,4 @@
+import { readCookieFromStorageServerAction } from '@/app/lib/session/serverActions'
 import Content from './components/Content'
 
 /**
@@ -8,9 +9,14 @@ import Content from './components/Content'
  * @returns {JSX.Element} Rendered content for the page
 */
 
-const Page = ({ params: { lang } }) => {
+const Page = async ({ params: { lang } }) => {
+  const cookie = await readCookieFromStorageServerAction();
+
   return (
-    <Content lang={lang} />
+    <Content 
+      lang={lang} 
+      cookie={cookie}
+    />
   )
 }
 

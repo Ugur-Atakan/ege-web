@@ -6,14 +6,13 @@ import React, { useEffect, useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import { redirectToLastNullInternalFunnel, checkEqualPathName, clearPathnameLocalStorage } from '@/app/lib/utils'
 import { useTranslation } from '@/i18n/client'
+import { submitCookie } from '@/app/lib/session/clientActions'
 
 import BackButton from '../../components/common/BackButton'
 import Heading from './Heading'
 import DropDown from './DropDown'
 import dynamic from 'next/dynamic'
 import axios from 'axios'
-
-// import { readCookie, submitCookie } from '../../../lib/session/clientActions'
 
 const RadioListItem = dynamic(() => import('./RadioListItem'))
 
@@ -25,47 +24,31 @@ const RadioListItem = dynamic(() => import('./RadioListItem'))
  * @returns {JSX.Element}
 */
 
-const Content = ({ lang }) => {
+const Content = ({ lang, companyType }) => {
   const { t } = useTranslation(lang);
-  const pathname = usePathname();
+  // const pathname = usePathname();
   const router = useRouter();
   
-  useEffect(() => {
-    clearPathnameLocalStorage('companyStateCompleted');
-
-    const checkRedirection = redirectToLastNullInternalFunnel();
-    if (checkRedirection && !checkEqualPathName(pathname, checkRedirection)) {
-      router.push(`/${lang}/onboarding/${checkRedirection}`)
-    }
-  }, []); 
- 
-
-  const [otherStates, setOtherStates] = useState([]);
-
-  //* Session Logic commented out for now
-  // const [cookieState, setCookieState] = useState({});
   // useEffect(() => {
-  //   const fetchCookie = async () => {
-  //     const awaitCookie = await readCookie();
-  //     setCookieState(awaitCookie);
+  //   clearPathnameLocalStorage('companyStateCompleted');
+
+  //   const checkRedirection = redirectToLastNullInternalFunnel();
+  //   if (checkRedirection && !checkEqualPathName(pathname, checkRedirection)) {
+  //     router.push(`/${lang}/onboarding/${checkRedirection}`)
   //   }
-  //   fetchCookie();
-  // }, []);
-  // useEffect(() => { 
-  //   // setCompanyState(companyState);
-  //   // const cookie = {...cookieState, companyState: companyState};
-  //   // const sendCookie = async () => {
-  //   //   await submitCookie(cookie);
-  //   //   window.localStorage.setItem('companyState', companyState);
-  //   // }
-  //   // sendCookie();
-  // }), [companyState];
-
+  // }, []); 
+ 
+  const [companyState, setCompanyState] = useState('');
+  const [otherStates, setOtherStates] = useState([]);
+  const selectedLLC = companyType === 'C-Corp' ? true : false;
   
-  const companyType = (typeof window !== 'undefined') ? localStorage.getItem('companyType') : '';
-  const [companyState, setCompanyState] = useState((typeof window !== 'undefined') ? localStorage.getItem('companyState') : '');
-
-  const selectedLLC = companyType === 'Corporation' ? true : false;
+  //* Use Effect to set the cookie
+  const handleSubmit = () => {
+    const cookie = {...{companyType}, companyState: companyState};
+    submitCookie(cookie);
+    router.push(`/${lang}/onboarding/formation`);
+    router.refresh();
+  }
 
   //* API call to get the states
   useEffect(() => {
@@ -80,17 +63,8 @@ const Content = ({ lang }) => {
         console.log(error);
       });
     }
-
     getState();
   },[]);
-
-  const setStateInStorage = (state) => {
-    setCompanyState(state);
-    if (typeof window !== 'undefined' && window.localStorage) {
-      window.localStorage.setItem('companyState', state);
-      window.localStorage.setItem('companyStateCompleted', true);
-    }
-  }
 
   return (
     <div className='bg-white'>
@@ -108,8 +82,8 @@ const Content = ({ lang }) => {
                 companyState={companyState}
                 title={t('state_option1_title')}
                 text={t('state_option1_text')}
-                checked={selectedLLC === false}
-                onClick={() => setStateInStorage('Wyoming')}
+                checked={selectedLLC == false}
+                onClick={() => setCompanyState('Wyoming')}
               />   
 
               <RadioListItem
@@ -119,8 +93,8 @@ const Content = ({ lang }) => {
                 companyState={companyState}
                 title={t('state_option2_title')}
                 text={t('state_option2_text')}
-                checked={selectedLLC === true}
-                onClick={() => setStateInStorage('Delaware')}
+                checked={selectedLLC == true}
+                onClick={() => setCompanyState('Delaware')}
               />
 
             <li className="order-3">
@@ -129,22 +103,17 @@ const Content = ({ lang }) => {
                 value={companyState}
                 placeholder={t('state_option3_text')}
                 options={otherStates}
-                onChange={(e) => setStateInStorage(e.target.value)}
+                onChange={(e) => setCompanyState(e.target.value)}
               />
             </li>
 
-            <Link 
-              onClick={() => {
-                if (typeof window !== 'undefined' && window.localStorage) {
-                  window.localStorage.setItem('companyStateCompleted', true);
-                }
-              }}
-              href={`/${lang}/onboarding/formation`} 
+            <button 
+              onClick={handleSubmit}
               //className={`order-4 w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer ${companyState ? '' : 'opacity-50 cursor-not-allowed pointer-events-none'}`}
               className={`order-4 w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer`}
             >
                 {t('state_button')}
-            </Link>
+            </button>
           </ul>
         </div>
       </div>

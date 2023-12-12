@@ -1,10 +1,21 @@
 'use client'
+
 import React from 'react'
 import { getRandomPackages } from '../utils/util'
+import { submitCookie } from '@/app/lib/session/clientActions' 
 import { useRouter } from 'next/navigation'
 
-const CardsFooter = ({ selectedPackage, selectedCompanyType, selectedPackageVar, lang, buttonText, bottomText }) => {
+const CardsFooter = ({ cookie, selectedPackage, selectedCompanyType, selectedPackageVar, lang, buttonText, bottomText }) => {
   const router = useRouter();
+
+  //* Set Cookie function
+  const setCookie = (selectedPackage, features) => {
+    const ckie = { ...cookie, selectedPackage: JSON.stringify([{ ...selectedPackage, features: features }])};
+    const sendCookie = async () => {
+      await submitCookie(ckie);
+    }
+    sendCookie();
+  };
 
   return (
     <div className='mx-auto max-w-xs'>
@@ -12,13 +23,10 @@ const CardsFooter = ({ selectedPackage, selectedCompanyType, selectedPackageVar,
             className='w-full flex flex-col items-center justify-center font-semibold bg-[#1649FF] text-white rounded-[20px] p-5 cursor-pointer'
             onClick={() => {
                 const packages = getRandomPackages(selectedPackage, selectedCompanyType, selectedPackageVar);
-
                 if (selectedPackage) {
-                    if (typeof window !== 'undefined' && window.localStorage && window.location) {
-                        window.localStorage.setItem('selectedPackage', JSON.stringify([{...selectedPackage, features: packages}]));
-                        window.localStorage.setItem('companyFormationCompleted', true);
-                        router.push(`/${lang}/onboarding/company-name`);
-                    }
+                    setCookie(selectedPackage, packages);
+                    router.push(`/${lang}/onboarding/company-name`);
+                    router.refresh();
                 }
             }}
         >

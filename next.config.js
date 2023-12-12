@@ -21,7 +21,7 @@ const options = {
         ],
     },
     experimental: {
-          serverActions: true
+        serverActions: true
     }
 }
 

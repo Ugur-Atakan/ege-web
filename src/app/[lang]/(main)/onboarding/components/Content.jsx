@@ -3,7 +3,9 @@
 
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from '@/i18n/client'
+import { submitCookie } from '@/app/lib/session/clientActions'
 import { completelyClearLocalStorage, localStorageDataExists, redirectToLastNotNullFunnelLink } from '@/app/lib/utils'
+import { removeCookieFromStorageServerAction } from '@/app/lib/session/serverActions'
 import { useRouter } from 'next/navigation'
 
 import Cards from './Cards/Cards'
@@ -19,46 +21,51 @@ import Modal from './Modal'
  * @returns {JSX.Element} Rendered content for the page
 */
 
-const Content = ({ lang }) => {
+const Content = ({ lang, cookie }) => {
+    useEffect(() => {
+        if (cookie) {
+            removeCookieFromStorageServerAction();
+        }
+    }, []);
+    
+    
     const { t } = useTranslation(lang);
     const router = useRouter();
 
-    const [companyType, setCompanyType] = useState('');
     const [showModal, setShowModal] = useState(false);
     const [restartFunnel, setRestartFunnel] = useState(false);
     const [resumeFunnel, setResumeFunnel] = useState(false);
     
-    useEffect(() => {
-        const checkLocalStorage = localStorageDataExists();
+    // useEffect(() => {
+    //     const checkLocalStorage = localStorageDataExists();
     
-        if (checkLocalStorage) {
-            setShowModal(true);
-        }
+    //     if (checkLocalStorage) {
+    //         setShowModal(true);
+    //     }
 
-        if (resumeFunnel) {
-            const redirectionLink = redirectToLastNotNullFunnelLink();
-            router.push(`/${lang}/onboarding/${redirectionLink}`);
-        }
+    //     if (resumeFunnel) {
+    //         const redirectionLink = redirectToLastNotNullFunnelLink();
+    //         router.push(`/${lang}/onboarding/${redirectionLink}`);
+    //     }
 
-        if (restartFunnel) {
-            setShowModal(false);
-            completelyClearLocalStorage();
-        }
-    }, [restartFunnel, resumeFunnel]);
+    //     if (restartFunnel) {
+    //         setShowModal(false);
+    //         completelyClearLocalStorage();
+    //     }
+    // }, [restartFunnel, resumeFunnel]);
 
-    const handleSelectLlc = () => {
-        setCompanyType('LLC');
-        if (typeof window !== 'undefined' && window.localStorage) {
-            window.localStorage.setItem('companyType', 'LLC');
-        }
+
+    const sendCookie = async (companyType) => {
+        await submitCookie({ 'companyType': companyType });
+    };
+    
+    const handleSelectLlc = async () => {
+        await sendCookie('LLC');
         router.push(`/${lang}/onboarding/state`);
     }
 
-    const handleSelectCcorp = () => {
-        setCompanyType('Corporation');
-        if (typeof window !== 'undefined' && window.localStorage) {
-            window.localStorage.setItem('companyType', 'Corporation');
-        }
+    const handleSelectCcorp = async () => {
+        await sendCookie('C-Corp');
         router.push(`/${lang}/onboarding/state`);
     }
 
@@ -78,7 +85,7 @@ const Content = ({ lang }) => {
                         <h1 className='text-[#222222] text-[26px] leading-8 md:text-[2.5rem] font-semibold md:leading-[2.75rem]'>{t('company_type_comparing_title')}</h1>
                     </div>
 
-                   <Comparison t={t} handleSelectCcorp={handleSelectCcorp} handleSelectLlc={handleSelectLlc}/>
+                   <Comparison t={t} handleSelectLlc={handleSelectLlc} handleSelectCcorp={handleSelectCcorp} />
                    <Footer t={t} takeQuizForm={() => router.push(`/${lang}/quiz`)} lang={lang} />
                 </div>
             </div>

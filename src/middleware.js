@@ -10,9 +10,11 @@ import { fallbackLng, languages } from './i18n/settings'
 
 acceptLanguage.languages(languages)
 
-export const config = {
-  matcher: '/:lang*'
-}
+// export { default } from "next-auth/middleware"
+
+// export const config = {
+//   matcher: '/:lang*'
+// }
 
 const cookieName = 'i18next'
 

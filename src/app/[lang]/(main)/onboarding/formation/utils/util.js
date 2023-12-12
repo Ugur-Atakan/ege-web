@@ -1,5 +1,3 @@
-import React from 'react'
-
 /**
  * @param {object} selectedPackage - the selected package
  * @param {string} selectedCompanyType - the selected company type
@@ -8,7 +6,12 @@ import React from 'react'
 */
 
 export const getRandomPackages = (selectedPackage, selectedCompanyType, selectedPackageVar) => {
-    const packageName = selectedPackage.type;
+    let packageName;
+    if (selectedPackage.metadata.type.includes('silver')) {
+        packageName = 'silver';
+    } else if (selectedPackage.metadata.type.includes('gold')) {
+        packageName = 'gold';
+    } else packageName = 'platinum';
 
     const selectedPackageFeatures = selectedPackageVar[selectedCompanyType].map(
         (item) => (
@@ -17,7 +20,7 @@ export const getRandomPackages = (selectedPackage, selectedCompanyType, selected
             ))
         )
     )
-   
+
     const filteredFeatures = selectedPackageFeatures.map((item) => item.filter((feature) => feature !== null));
     const singleArr = filteredFeatures.reduce((acc, val) => acc.concat(val), []);
     const randomFeatures = singleArr.sort(() => Math.random() - Math.random()).slice(0, 12);
