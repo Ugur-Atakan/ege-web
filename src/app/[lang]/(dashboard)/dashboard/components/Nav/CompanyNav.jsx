@@ -7,7 +7,7 @@ const solutions = [
   { name: 'Analytics', href: '#' },
 ]
 
-const CompanyNav = () => {
+const CompanyNav = ({ lang }) => {
   return (
     <Popover className="relative">
       <Popover.Button className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-white">
@@ -32,7 +32,7 @@ const CompanyNav = () => {
               </a>
             ))}
             
-            <AddCompany />
+            <AddCompany lang={lang} />
           </div>
         </Popover.Panel>
       </Transition>

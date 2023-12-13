@@ -3,8 +3,8 @@ import React from 'react'
 import { dir } from 'i18next'
 import Navigation from './components/Nav/Navigation'
 import { redirect } from 'next/navigation'
-import { getServerSession } from 'next-auth'
 import SessionProvider from './SessionProvider'
+import { getServerSession } from 'next-auth'
 import { options } from '@/app/api/auth/[...nextauth]/options'
 
 export const metadata = {

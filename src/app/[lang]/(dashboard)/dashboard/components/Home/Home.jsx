@@ -1,6 +1,8 @@
 'use client'
 
 import React from 'react'
+import Stats from './Stats'
+import OpenCompany from './OpenCompany'
 import { useTranslation } from '@/i18n/client'
 
 const Home = ({ lang }) => {
@@ -8,7 +10,8 @@ const Home = ({ lang }) => {
 
   return (
     <React.Fragment>
-      <h1>Home Page</h1>
+      <Stats />
+      <OpenCompany lang={lang} />
     </React.Fragment>
   )
 }

@@ -3,17 +3,19 @@
 import React, { useState, useEffect } from 'react'
 import { useTranslation } from '@/i18n/client'
 import RadioListItem from './RadioListItem'
+import { useRouter } from 'next/navigation'
 import axios from 'axios'
 import DropDown from '@/app/[lang]/(main)/onboarding/state/components/DropDown'
 import Link from 'next/link'
+import { useSession } from 'next-auth/react'
 
-const CompanyStep = ({ lang }) => {
+const Page = ({ params: { lang } }) => {
   const { t } = useTranslation(lang);
-  const [otherStates, setOtherStates] = useState([]); 
-  const companyType = (typeof window !== 'undefined') ? localStorage.getItem('companyType') : '';
-  const [selectedLLC, setSelectedLLC] = useState(companyType === 'Corporation' ? true : false);
-  const [companyState, setCompanyState] = useState((typeof window !== 'undefined') ? localStorage.getItem('companyState') : '');
+  const router = useRouter();
+  const { data, update } = useSession();
 
+  const [otherStates, setOtherStates] = useState([]); 
+  const [companyState, setCompanyState] = useState();
 
   useEffect(() => {
     const getState = async () => {
@@ -27,14 +29,18 @@ const CompanyStep = ({ lang }) => {
         console.log(error);
       });
     }
-
     getState();
-  },[]);
+  },[]);  
+
+  const onSubmit = async () => {
+    const res = await update({ ...data, companyState: companyState });
+    router.push(`/${lang}/dashboard/onboarding/formation`);
+  }
 
   return (
     <div className='flex flex-col my-10'>
       <div className='text-left md:text-center'>
-        <h1 className='font-semibold  text-[26px] md:text-[40px] leading-[32px] md:leading-[44px] text-[#222222]'>{t('state_title')}</h1>
+        <h1 className='font-semibold  text-[22px] md:text-[40px] leading-[32px] md:leading-[44px] text-[#222222]'>{t('state_title')}</h1>
       </div>
 
       <div className='mx-auto max-w-xl py-12'>
@@ -42,23 +48,19 @@ const CompanyStep = ({ lang }) => {
               <RadioListItem
                 id="hosting-small"
                 state="Wyoming"
-                companyType={companyType}
                 companyState={companyState}
                 title={t('state_option1_title')}
                 text={t('state_option1_text')}
-                checked={selectedLLC === false}
-                onClick={() => setStateInStorage('Wyoming')}
+                onClick={() => setCompanyState('Wyoming')}
               />   
 
               <RadioListItem
                 id="hosting-big"
                 state="Delaware"
-                companyType={companyType}
                 companyState={companyState}
                 title={t('state_option2_title')}
                 text={t('state_option2_text')}
-                checked={selectedLLC === true}
-                onClick={() => setStateInStorage('Delaware')}
+                onClick={() => setCompanyState('Delaware')}
               />
 
             <li className="order-3">
@@ -67,26 +69,20 @@ const CompanyStep = ({ lang }) => {
                 value={companyState}
                 placeholder={t('state_option3_text')}
                 options={otherStates}
-                onChange={(e) => setStateInStorage(e.target.value)}
+                onChange={(e) => setCompanyState(e.target.value)}
               />
             </li>
 
-            <Link 
-              onClick={() => {
-                if (typeof window !== 'undefined' && window.localStorage) {
-                  window.localStorage.setItem('companyStateCompleted', true);
-                }
-              }}
-              href={`/${lang}/onboarding/formation`} 
-              //className={`order-4 w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer ${companyState ? '' : 'opacity-50 cursor-not-allowed pointer-events-none'}`}
+            <button 
+              onClick={onSubmit}
               className={`order-4 w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer`}
             >
                 {t('state_button')}
-            </Link>
+            </button>
           </ul>
         </div>
     </div>
   );
 };
 
-export default CompanyStep
+export default Page
