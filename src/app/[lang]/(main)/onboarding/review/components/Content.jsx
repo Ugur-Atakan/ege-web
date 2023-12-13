@@ -81,6 +81,8 @@ const Content = ({ lang, cookie }) => {
             return;
         }
 
+        const jsonSelectedPkg = JSON.parse(cookie.selectedPackage);
+        console.log(jsonSelectedPkg[0])
         let payload = {
             customerName: name + ' ' + lastname,
             companyName: cookie.companyName,
@@ -91,8 +93,7 @@ const Content = ({ lang, cookie }) => {
             companyZipCode: zip,
             companyCity: city,
             companyCountry: country,
-            //! FIX THIS
-            // selectedPackage: typeof window !== 'undefined' ? JSON.parse(window.localStorage.getItem('selectedPackage')) : null
+            selectedPackage: jsonSelectedPkg[0]
         };  
 
         axios

@@ -46,6 +46,14 @@ export async function POST(req) {
   const zipCode = data.payload.companyZipCode;
   const city = data.payload.companyCity;
   const country = data.payload.companyCountry;
+ 
+  //* To split the metadata and capitalize the first letter of each word
+  let words = selectedPackage.metadata.type.split('-');
+  // Capitalize the first letter of each word
+  words = words.map(word => word.charAt(0).toUpperCase() + word.slice(1));
+  // Join the words with a space
+  words = words.join(' ');
+  const name = data.payload.selectedPackage.nickname + ' - ' + words;
 
   try {
     const session = await stripe.checkout.sessions.create({
@@ -54,9 +62,9 @@ export async function POST(req) {
           price_data: {
             currency: 'USD',
             product_data: {
-              name: selectedPackage[0].type
+              name: name
             },
-            unit_amount: selectedPackage[0].price * 100, // Stripe requires price in cents
+            unit_amount: selectedPackage.unit_amount, // Stripe requires price in cents
           },
           quantity: 1,
         },
@@ -82,7 +90,7 @@ export async function POST(req) {
     logger.info({ message: `Stripe checkout session created - ${session.url}` })
     return new NextResponse(session.url, { status: 200 });
   } catch (error) {
-    logger.error({ message: `Error in creating Stripe checkout session - ${error.message}` })
+    logger.error({ message: `Error in creating Stripe checkout session , filename: /api/stripe/route.js - ${error.message}` })
     return new NextResponse(error, {
       status: 400,
     });
