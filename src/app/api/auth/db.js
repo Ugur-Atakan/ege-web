@@ -57,3 +57,7 @@ export const registerGoogleUser = async (firstName, lastName, email) => {
         });
     }
 }
+
+export const getUserWorkSpaceID = async (userID) => {
+    
+}

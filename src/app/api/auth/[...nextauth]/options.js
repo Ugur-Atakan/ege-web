@@ -46,6 +46,10 @@ export const options = {
             else if (account.provider === "credentials") {
                 // do anything for credentials login
             }
+
+            
+            console.log(user);
+
             return true;
         },
         async jwt({ token, user, trigger, session }){

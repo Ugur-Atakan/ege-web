@@ -1,17 +1,14 @@
-'use client'
-
 import React from 'react'
 import Stats from './Stats'
 import OpenCompany from './OpenCompany'
-import { useTranslation } from '@/i18n/client'
+import CompanyCards from './CompanyCards'
 
-const Home = ({ lang }) => {
-  const { t } = useTranslation(lang);
-
+const Home = ({ lang, companies }) => {
   return (
     <React.Fragment>
       <Stats />
       <OpenCompany lang={lang} />
+      <CompanyCards lang={lang} companies={companies} />
     </React.Fragment>
   )
 }

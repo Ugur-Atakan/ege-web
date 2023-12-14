@@ -1,6 +1,9 @@
-import { Fragment } from 'react'
+'use client'
+
+import React, { Fragment, useState, useEffect } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
+import { useSession } from 'next-auth/react'
 import AddCompany from './AddCompany'
 
 const solutions = [
@@ -8,10 +11,27 @@ const solutions = [
 ]
 
 const CompanyNav = ({ lang }) => {
+  const [companies, setCompanies] = useState(null);
+  const { data } = useSession(); 
+
+  useEffect(() => {
+    const getCompanies = async () => {
+      try {
+        const res = await fetch(`/api/dashboard/workspace/get-companies?email=${data.user.email}`);
+        const jsonData = await res.json();
+        setCompanies(jsonData);
+      } catch (err) {
+        console.log(err);
+        setCompanies(null);
+      }
+    }
+    getCompanies();
+  }, []);
+
   return (
     <Popover className="relative">
       <Popover.Button className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-white">
-        <span>{'Company'}</span>
+        <span>{'Your Companies'}</span>
         <ChevronDownIcon className="h-5 w-5" aria-hidden="true" />
       </Popover.Button>
 
@@ -26,10 +46,14 @@ const CompanyNav = ({ lang }) => {
       >
         <Popover.Panel className="absolute left-24 z-10 mt-5 flex w-screen max-w-min -translate-x-1/2 px-4">
           <div className="w-56 shrink rounded-xl bg-white p-4 text-sm font-semibold leading-6 text-gray-900 shadow-lg ring-1 ring-gray-900/5">
-            {solutions.map((item) => (
-              <a key={item.name} href={item.href} className="block p-2 hover:text-gray-500">
-                {item.name}
-              </a>
+            {companies && companies.map((item, index) => (
+              <button 
+                onClick={() => {}} 
+                key={index} 
+                className="block p-2 hover:text-gray-500"
+              >
+                {item.companyName}
+              </button>
             ))}
             
             <AddCompany lang={lang} />

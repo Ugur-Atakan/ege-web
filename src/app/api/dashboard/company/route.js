@@ -1,5 +1,5 @@
 import { connectDB } from '@/app/lib/db/mongodb'
-import Company from '@/app/lib/db/models/CompanyModel'
+import Company from '@/app/lib/db/models/CompanySchema'
 import User from '@/app/lib/db/models/UserModel'
 
 // Creating a company

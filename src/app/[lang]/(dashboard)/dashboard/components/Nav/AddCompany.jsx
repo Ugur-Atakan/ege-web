@@ -1,11 +1,9 @@
-'use client'
-
 import { PlusIcon } from '@heroicons/react/20/solid'
 import { useRouter } from 'next/navigation'
 
 const AddCompany = ({ lang }) => {
-  const router = useRouter()
-
+  const router = useRouter();
+  
   return (
     <button
       type="button"

@@ -7,7 +7,6 @@ import Card from './components/Card'
 import { umbrella, puzzle } from '@/assets/images/index'
 import { useSession } from "next-auth/react"
 
-
 const Page = ({ params: { lang } }) => {
   const router = useRouter();
   const { t } = useTranslation(lang);

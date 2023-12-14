@@ -12,8 +12,6 @@ const companySchema = new mongoose.Schema({
   companyPackage: {
     type: String
   }
-}, { timestamps: true });
+});
 
-const Company = mongoose.models.Company || mongoose.model('Company', companySchema);
-
-export default Company;
+export default companySchema;

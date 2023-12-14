@@ -1,10 +1,11 @@
 import { connectDB } from '@/app/lib/db/mongodb'
 import User from '@/app/lib/db/models/UserModel'
-import Company from '@/app/lib/db/models/CompanyModel'
+import Company from '@/app/lib/db/models/CompanySchema'
+import Workspace from '@/app/lib/db/models/WorkspaceModel'
 
 export const getCompanyData = async (companyId) => {
     await connectDB();
-    const company = user.companies.id(companyId);
+    const company = Company.find({ _id: companyId })
     return company;
 }
 
@@ -20,3 +21,9 @@ export const getUserData = async (userEmail) => {
     return user; 
 }
 
+export const getWorkspaceID = async (userEmail) => {
+    await connectDB();
+    const user = await User.findOne({ email: userEmail });
+    const workspaceID = await Workspace.findOne({ users: user._id });
+    return JSON.stringify(workspaceID._id);
+}

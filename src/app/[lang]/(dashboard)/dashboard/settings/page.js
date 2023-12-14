@@ -1,10 +1,12 @@
+'use client'
+
 import React from 'react'
 import Settings from './components/Settings'
 
-const Page = async ({ params: { lang } }) => {
+const Page = async (params) => {
   return(
     <React.Fragment>
-        <Settings lang={lang} />
+        <Settings />
     </React.Fragment>
   )
 }
