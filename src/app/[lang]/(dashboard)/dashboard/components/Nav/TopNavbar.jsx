@@ -95,7 +95,7 @@ const TopNavbar = ({ setSidebarOpen, user }) => {
                     ))}
                     </Menu.Items>
                 </Transition>
-                </Menu>
+              </Menu>
             </div>
         </div>
     </div>

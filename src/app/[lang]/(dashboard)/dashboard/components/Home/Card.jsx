@@ -9,7 +9,7 @@ const Card = ({ id, title, description, lang }) => {
   return (
     <div 
         onClick={() => router.push(`/${lang}/dashboard/company/${id}`)}
-        className="hover:scale-105 cursor-pointer max-w-sm mx-auto my-2 p-6 bg-white shadow-lg rounded-lg overflow-hidden"
+        className="hover:scale-105 cursor-pointer max-w-sm mx-2 my-2 p-6 bg-white shadow-lg rounded-lg overflow-hidden"
     >
       <div className="sm:flex sm:items-center px-6 py-4">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10">

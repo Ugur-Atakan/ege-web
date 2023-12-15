@@ -12,15 +12,17 @@ import { Cog6ToothIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { usePathname, useRouter } from 'next/navigation'
 import { teams, getSidebarNav } from '../util/const'
 import CompanyNav from './CompanyNav'
+import { useSession } from 'next-auth/react'
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-const Sidebar = ({ lang, sidebarOpen, setSidebarOpen, user, companies }) => {
+const Sidebar = ({ lang, sidebarOpen, setSidebarOpen }) => {
   const pathname = usePathname()
   const router = useRouter()
-  const navigation = getSidebarNav(pathname, 'user');
+  const { data, update } = useSession();
+  const navigation = getSidebarNav(pathname, data.user.level);
 
   return (
     <div>
@@ -77,8 +79,8 @@ const Sidebar = ({ lang, sidebarOpen, setSidebarOpen, user, companies }) => {
                           <ul role="list" className="-mx-2 space-y-1">
                             {navigation.map((item) => (
                               <li key={item.name}>
-                                <Link
-                                  href={item.href}
+                                <button
+                                  onClick={() => {}}
                                   className={classNames(
                                     item.current
                                       ? 'bg-gray-800 text-white'
@@ -88,7 +90,7 @@ const Sidebar = ({ lang, sidebarOpen, setSidebarOpen, user, companies }) => {
                                 >
                                   <item.icon className="h-6 w-6 shrink-0" aria-hidden="true" />
                                   {item.name}
-                                </Link>
+                                </button>
                               </li>
                             ))}
                           </ul>
@@ -148,8 +150,7 @@ const Sidebar = ({ lang, sidebarOpen, setSidebarOpen, user, companies }) => {
                     {navigation.map((item) => (
                       <li key={item.name}>
                         <div
-                          onClick={() => router.push(item.href)} 
-                          // href={item.href}
+                          onClick={() => router.push(item.href)}
                           className={classNames(
                             item.current
                               ? 'bg-gray-800 text-white'

@@ -6,7 +6,9 @@ const CompanyDetails = ({ company }) => {
   return (
     <div>
       <div className="px-4 sm:px-0">
-        <h3 className="text-base font-semibold leading-7 text-gray-900">Company Information</h3>
+          <h2 className=' text-2xl uppercase font-bold  tracking-wider sm:text-lg'>
+            Your Company
+          </h2>
         <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Info about your company</p>
       </div>
       <div className="mt-6 border-t border-gray-100">

@@ -47,9 +47,6 @@ export const options = {
                 // do anything for credentials login
             }
 
-            
-            console.log(user);
-
             return true;
         },
         async jwt({ token, user, trigger, session }){

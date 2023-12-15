@@ -23,9 +23,14 @@ const Page = async ({ params: { lang } }) => {
   const session = await getServerSession(options);
   const workspace = await getWorkspace(session.user.uid);
   
+  let workspaceJSON;
+  if (workspace) {
+    workspaceJSON = JSON.stringify(workspace.companies);
+  }
+
   return(
     <React.Fragment>
-        <Home lang={lang} companies={workspace.companies} />
+      <Home lang={lang} companies={workspaceJSON} />
     </React.Fragment>
   )
 }
