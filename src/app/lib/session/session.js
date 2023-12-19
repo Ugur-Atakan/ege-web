@@ -6,7 +6,7 @@ export const onboardingSessionOptions = {
     cookieName: 'registateOnboarding',
     cookieOptions: {
         secure: process.env.NODE_ENV === 'production',
-        maxAge: 1 * 60 * 10 //! 10 minutes expiration duration
+        maxAge: 1 * 60 * 30 //! 30 minutes expiration duration
     }
 }
 

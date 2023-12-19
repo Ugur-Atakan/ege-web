@@ -59,15 +59,20 @@ export async function POST(req) {
     const session = await stripe.checkout.sessions.create({
       line_items: [
         {
-          price_data: {
-            currency: 'USD',
-            product_data: {
-              name: name
-            },
-            unit_amount: selectedPackage.unit_amount, // Stripe requires price in cents
-          },
+          price: "price_1OCQHAJuNLcMU2PowXEQqCWB",
+          // price_data: {
+          //   currency: 'USD',
+          //   product_data: {
+          //     name: name
+          //   },
+          //   unit_amount: selectedPackage.unit_amount, // Stripe requires price in cents
+          // },
           quantity: 1,
         },
+        // {
+        //   price: "price_1OOygbJuNLcMU2PoXYAj3EiT",
+        //   quantity:1
+        // }
       ],
       mode: 'payment',
       success_url: process.env.SUCCESS_STRIPE_URL,

@@ -26,17 +26,7 @@ const RadioListItem = dynamic(() => import('./RadioListItem'))
 
 const Content = ({ lang, companyType }) => {
   const { t } = useTranslation(lang);
-  // const pathname = usePathname();
   const router = useRouter();
-  
-  // useEffect(() => {
-  //   clearPathnameLocalStorage('companyStateCompleted');
-
-  //   const checkRedirection = redirectToLastNullInternalFunnel();
-  //   if (checkRedirection && !checkEqualPathName(pathname, checkRedirection)) {
-  //     router.push(`/${lang}/onboarding/${checkRedirection}`)
-  //   }
-  // }, []); 
  
   const [companyState, setCompanyState] = useState('');
   const [otherStates, setOtherStates] = useState([]);

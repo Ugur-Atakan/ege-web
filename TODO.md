@@ -1,13 +1,3 @@
-[] Logging in main folders
-[] Session creation and replacing local storage with session
-[] Stripe products
-[] Google Tag Script
-[] Add prettier
-
-Friday: 
-
-[] Fixing funnel
-[] Fix video component
 [] Add subscription
 
 Looks like you have an order in progress
@@ -34,23 +24,22 @@ Office-space:  ONLY FOR DELAWARE + 250/month (recurring fee).
    2. Expedited EIN 
       1. 75 usd - Amerika  SSN olmayan
       2. 750 usd - Amerika SSN olan
-3. Expedited EIN upsell page (in funnel)
-    1. Automated word document sending by email to customer.
-4. Video component old guy:
+3. Video component old guy:
     1. Remove it 
     2. 60 day money back guarantee: put * and write (except state fee)
-5. Support buisness component:
+4. Support buisness component:
    1. Compact design of cards. 
    2. Fix broken stuff there.
    3. Each card is a funnel page.
 
 
 ## 29 - November - 2023 
+
 1. Remove the Your buisness your shield component.
 2. Add a new page before review and company name for upsells. 
    1. Compliance reminder:
-      1. Only will be added for silver packet.
-      2. Wont be shown on upsell page if a person has selected gold, plat package.
+      1. Only will be added for *SILVER PRODUCT*
+      2. Wont be shown on upsell page if a person has selected GOLD and PLAT product.
       3. State doesn't matter (need to confirm).
    2. EIN 
       1. Will be shown for all the packages.
@@ -63,9 +52,7 @@ Office-space:  ONLY FOR DELAWARE + 250/month (recurring fee).
    4. Office Space
       1. Only in delaware.
       2. 250 USD/month.
-   5. Aposittle
+   5. Apositle
       1. Only in delaware
-   6. Doing Buisness As (will talk later)
-   
-   Upsell products on same page or different pages? (Talk with Cihan abi)
+
 
