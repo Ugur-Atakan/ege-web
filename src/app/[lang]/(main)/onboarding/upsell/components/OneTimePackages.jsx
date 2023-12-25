@@ -1,8 +1,17 @@
+'use client'
+
 import PricingCard from './PricingCard'
 import { getPricing } from './one-time'
+import { useRouter } from 'next/navigation'
 
 const OneTimePackages = ({ lang, companyState,  EIN, apostille }) => {
   const pricing = getPricing(companyState, EIN, apostille);
+  const router = useRouter();
+
+  const handleSubmit = () => {
+    router.push(`/${lang}/onboarding/review`);
+    router.refresh();      
+  }
 
   return (
     <div className="bg-white">
@@ -29,8 +38,7 @@ const OneTimePackages = ({ lang, companyState,  EIN, apostille }) => {
         
         <div className='my-10 mx-auto max-w-xl py-12'>
             <button
-                href={`/${lang}/onboarding/review`} 
-                // onClick={handleSubmit}
+                onClick={handleSubmit}
                 className={`hover:bg-blue-500 order-4 w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer`}
             >
                 Continue

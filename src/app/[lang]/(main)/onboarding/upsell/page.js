@@ -19,7 +19,7 @@ const Page = async ({ params: { lang } }) => {
   const EIN = await getEIN();
   const complianceReminder = await getComplianceReminder();
   const apostille = await getApostille();
-  
+
   return (
     <React.Fragment>
         <Pricing 

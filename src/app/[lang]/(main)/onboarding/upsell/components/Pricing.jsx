@@ -57,10 +57,10 @@ const Pricing = ({ lang, companyState, complianceReminder, virtualMailBoxMonthly
                     <PricingCard key={tier.id} lang={lang} tier={tier} frequency={frequency} />
                 ))}
             </div>
-            </div>
+          </div>
         </div>
       </div>
-    </div>
+     </div>
     </main>
    </div>
   )

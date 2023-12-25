@@ -65,13 +65,13 @@ export const getPricing = (state, complianceReminder, virtualMailBoxMonthly, vir
         tier.price.monthly = virtualMailBoxMonthly.data[0].unit_amount / 100;
         tier.price.annually = virtualMailBoxYearly.data[0].unit_amount / 100;
     } else if (tier.id === 'office-space') {
-        tier.stripeIDs.monthly = virtualMailBoxMonthly.data[0].id;
-        tier.stripeIDs.annually = virtualMailBoxYearly.data[0].id;
+        tier.stripeIDs.monthly = officeSpaceMonthly.data[0].id;
+        tier.stripeIDs.annually = officeSpaceYearly.data[0].id;
         tier.stripeID = officeSpaceMonthly.data[0].id;
         tier.price.monthly = officeSpaceMonthly.data[0].unit_amount / 100;
         tier.price.annually = officeSpaceYearly.data[0].unit_amount / 100;
     } else if (tier.id === 'compliance-reminder') {
-        tier.stripeIDs.annually = virtualMailBoxYearly.data[0].id;
+        tier.stripeIDs.annually = complianceReminder.data[0].id;
         tier.price.annually = complianceReminder.data[0].unit_amount / 100;
     }
     return tier;

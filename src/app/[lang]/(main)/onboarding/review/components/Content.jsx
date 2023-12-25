@@ -8,8 +8,8 @@ import dynamic from 'next/dynamic'
 import { useTranslation } from '@/i18n/client'
 
 import FillInCompany from './form/FillInCompany'
-import BackButton from '../../components/common/BackButton'
 import FillinForm from './form/FillinForm'
+import Upsells from './Upsells'
 
 import { checkFormElements } from './utils/util'
 import ErrorLogo from './utils/ErrorLogo'
@@ -192,6 +192,7 @@ const Content = ({ lang, cookie }) => {
                             companyState={cookie.companyState}
                         />
                         <Features selectedPackage={cookie.selectedPackage} />
+                        <Upsells selectedPackage={cookie.selectedPackage} />
                     </div>
                 )}
             </div>

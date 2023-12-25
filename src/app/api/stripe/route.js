@@ -69,10 +69,10 @@ export async function POST(req) {
           // },
           quantity: 1,
         },
-        // {
-        //   price: "price_1OOygbJuNLcMU2PoXYAj3EiT",
-        //   quantity:1
-        // }
+        {
+          price: "price_1OOygbJuNLcMU2PoXYAj3EiT",
+          quantity:1
+        }
       ],
       mode: 'payment',
       success_url: process.env.SUCCESS_STRIPE_URL,
