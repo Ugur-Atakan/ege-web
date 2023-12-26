@@ -32,15 +32,6 @@ const OrderReview = dynamic(() => import('./OrderReview'))
 const Content = ({ lang, cookie }) => {
     const { t } = useTranslation(lang);
 
-    // const pathname = usePathname();
-    // const router = useRouter();
-    // useEffect(() => {
-    //   const checkRedirection = redirectToLastNullInternalFunnel();
-    //   if (checkRedirection && !checkEqualPathName(pathname, checkRedirection)) {
-    //     router.push(`/${lang}/onboarding/${checkRedirection}`)
-    //   }
-    // }, []); 
-    
     const [displayForm, setDisplayForm] = useState(false);
     const [name, setName] = useState('');
     const [lastname, setLastName] = useState('');
@@ -82,7 +73,6 @@ const Content = ({ lang, cookie }) => {
         }
 
         const jsonSelectedPkg = JSON.parse(cookie.selectedPackage);
-        console.log(jsonSelectedPkg[0])
         let payload = {
             customerName: name + ' ' + lastname,
             companyName: cookie.companyName,
@@ -93,14 +83,15 @@ const Content = ({ lang, cookie }) => {
             companyZipCode: zip,
             companyCity: city,
             companyCountry: country,
-            selectedPackage: jsonSelectedPkg[0]
+            selectedPackage: jsonSelectedPkg[0],
+            upsells: cookie.upsellIDs,
         };  
 
         axios
             .post('/api/stripe', { data: { payload } })
             .then((response) => {
                 let stripeURL = response.data;
-
+                
                 if (stripeURL) {    
                     if (typeof window !== 'undefined' && window.localStorage && window.location) {
                         window.location.href = stripeURL;
@@ -192,7 +183,7 @@ const Content = ({ lang, cookie }) => {
                             companyState={cookie.companyState}
                         />
                         <Features selectedPackage={cookie.selectedPackage} />
-                        <Upsells selectedPackage={cookie.selectedPackage} />
+                        {cookie.upsellIDs && <Upsells upsells={cookie.upsellIDs} />}
                     </div>
                 )}
             </div>
@@ -206,6 +197,7 @@ const Content = ({ lang, cookie }) => {
                     displayForm={displayForm}
                     handleSubmit={formSubmitHandler}
                     setDisplayForm={setDisplayForm}
+                    upsells={cookie.upsellIDs}
                 />
             </div>
         </div>

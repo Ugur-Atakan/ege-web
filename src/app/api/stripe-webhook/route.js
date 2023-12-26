@@ -1,6 +1,9 @@
 import Stripe from 'stripe';
 import { headers } from 'next/headers';
 import logger from '@/app/lib/logger'
+import nodemailer from 'nodemailer';
+import { transporter } from './util';
+
 import {
     createCustomer,
     createCustomerRequest,
@@ -38,8 +41,9 @@ export async function POST(req) {
     }
 
     if (event.type === 'checkout.session.completed') {
-        logger.info({ message: 'Checkout session started.' })
-        
+        logger.info({ message: 'Checkout session completed.' })
+        console.log('Checkout session completed');
+
         const session = event.data.object;
         const summary = `Start my Company - ${session.metadata.companyName}`;
         const description = `Please start my company - ${session.metadata.companyName}`;
@@ -59,13 +63,15 @@ export async function POST(req) {
             name,
             email
         );
-
+        
         if (accountId === null) {
             logger.error({ message : `Error creating customer in Jira - FileName: stripe-webhook-route.js` })
             return new Response('Error creating customer in Jira', {
                 status: 500
             });
         }
+        console.log('Customer with id: ', accountId, ' created')
+        console.log('companyType ', session.metadata.companyType);
 
         const customerReq = await createCustomerRequest(
             accountId,
@@ -90,6 +96,17 @@ export async function POST(req) {
             logger.info({ message : `Jira User with ${accountId} created` })
         }
         
+        console.log('Customer request with id: ', customerReq, ' created');
+
+        const mailInfo = await transporter.sendMail({
+            from: 'mailtrap@registate.com',
+            to: email,
+            subject: "Your Registate Dashboard Access",
+            text: "Hello world?", // plain text body
+            html: "No", // html body
+          });
+        
+        console.log("Message sent: %s", mailInfo.messageId);
 
         const invite = await resendInvitation(session.customer_details.email);
         // Future DB calls here.

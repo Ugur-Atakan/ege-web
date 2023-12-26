@@ -36,6 +36,7 @@ export async function GET() {
 export async function POST(req) {
   const { data } = await req.json();
 
+  console.log(data.payload.companyType);
   const selectedPackage = data.payload.selectedPackage;
   const companyName = data.payload.companyName;
   const companyState = data.payload.companyState;
@@ -46,7 +47,7 @@ export async function POST(req) {
   const zipCode = data.payload.companyZipCode;
   const city = data.payload.companyCity;
   const country = data.payload.companyCountry;
- 
+  
   //* To split the metadata and capitalize the first letter of each word
   let words = selectedPackage.metadata.type.split('-');
   // Capitalize the first letter of each word
@@ -59,20 +60,28 @@ export async function POST(req) {
     const session = await stripe.checkout.sessions.create({
       line_items: [
         {
-          price: "price_1OCQHAJuNLcMU2PowXEQqCWB",
-          // price_data: {
-          //   currency: 'USD',
-          //   product_data: {
-          //     name: name
-          //   },
-          //   unit_amount: selectedPackage.unit_amount, // Stripe requires price in cents
-          // },
+          // price: selectedPackage.id,
+          price_data: {
+            currency: 'USD',
+            product_data: {
+              name: name
+            },
+            unit_amount: selectedPackage.unit_amount, // Stripe requires price in cents
+          },
           quantity: 1,
-        },
-        {
-          price: "price_1OOygbJuNLcMU2PoXYAj3EiT",
-          quantity:1
         }
+        ,...data.payload.upsells.map(upsell => {
+          return {
+            price_data: {
+              currency: 'USD',
+              product_data: {
+                name: upsell.name
+              },
+              unit_amount: upsell.price * 100, 
+            },
+            quantity: 1,
+          }
+        })
       ],
       mode: 'payment',
       success_url: process.env.SUCCESS_STRIPE_URL,
@@ -89,7 +98,8 @@ export async function POST(req) {
         country
       },
       customer_creation: 'always',
-      customer_email: customerEmail
+      customer_email: customerEmail,
+      allow_promotion_codes: true
     });
 
     logger.info({ message: `Stripe checkout session created - ${session.url}` })

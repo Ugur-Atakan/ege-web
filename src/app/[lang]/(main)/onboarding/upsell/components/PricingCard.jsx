@@ -24,7 +24,6 @@ const PricingCard = ({ lang, tier, frequency }) => {
 
       const cookie = await readCookie();
       const upsellIDs = cookie.upsellIDs ? cookie.upsellIDs : [];
-
       if (upsellIDs.includes(tier.stripeIDs[frequency.value])) {
         const index = upsellIDs.indexOf(tier.stripeIDs[frequency.value]);
         if (index > -1) {
@@ -34,6 +33,7 @@ const PricingCard = ({ lang, tier, frequency }) => {
       else {
         const freq = frequency.value.charAt(0).toUpperCase() + frequency.value.slice(1);
         const upsell = {
+            id: tier.stripeIDs[frequency.value],
             name: tier.name + ' ' + freq,
             price: tier.price[frequency.value],
             description: tier.description,
