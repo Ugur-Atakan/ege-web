@@ -2,7 +2,7 @@ import Stripe from 'stripe';
 import { headers } from 'next/headers';
 import logger from '@/app/lib/logger'
 import nodemailer from 'nodemailer';
-import { transporter } from './util';
+import { transporter, mailBody, createUser } from './util';
 
 import {
     createCustomer,
@@ -63,7 +63,7 @@ export async function POST(req) {
             name,
             email
         );
-        
+
         if (accountId === null) {
             logger.error({ message : `Error creating customer in Jira - FileName: stripe-webhook-route.js` })
             return new Response('Error creating customer in Jira', {
@@ -96,17 +96,27 @@ export async function POST(req) {
             logger.info({ message : `Jira User with ${accountId} created` })
         }
         
-        console.log('Customer request with id: ', customerReq, ' created');
+        console.log('Customer request with id');
 
-        const mailInfo = await transporter.sendMail({
-            from: 'mailtrap@registate.com',
-            to: email,
-            subject: "Your Registate Dashboard Access",
-            text: "Hello world?", // plain text body
-            html: "No", // html body
-          });
+        const enableToken = await createUser(name, email);
         
-        console.log("Message sent: %s", mailInfo.messageId);
+        if (enableToken.status === 409) {
+            console.log('User already exists');
+        } else if (enableToken.status === 200) {
+            const token = await enableToken.text();
+            console.log('Token ', token);
+            const mBody = mailBody(token);
+    
+            const mailInfo = await transporter.sendMail({
+                from: 'mailtrap@registate.com',
+                to: email,
+                subject: "Your Registate Dashboard Access",
+                text: mBody, 
+                html: mBody
+            });
+
+            console.log("Message sent: %s", mailInfo.messageId);
+        }
 
         const invite = await resendInvitation(session.customer_details.email);
         // Future DB calls here.

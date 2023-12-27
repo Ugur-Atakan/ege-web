@@ -1,13 +1,11 @@
 import { connectDB } from '@/app/lib/db/mongodb'
 import User from '@/app/lib/db/models/UserModel'
 import Workspace from '@/app/lib/db/models/WorkspaceModel'
-import { hash } from 'bcryptjs'
-
-const saltRounds = 10; // for bcryptjs
+import crypto from 'crypto'
 
 //* Creating a user
 export async function POST(request) {
-    const { firstName, lastName , email , password, level } = await request.json();
+    const { firstName, lastName , email } = await request.json();
     await connectDB();
 
     try {
@@ -16,13 +14,13 @@ export async function POST(request) {
         if (existingUser) return new Response('User found in another workspace', { status: 409 });
         
         //! Create a new user 
-        const hashedPassword = await hash(password, saltRounds);
-        const user = await User.create({ firstName, lastName, level, email, password: hashedPassword });
-        
+        const enableToken = crypto.randomBytes(32).toString('hex');
+        const user = await User.create({ firstName, lastName, email, password: '', level: 'admin', enableToken: enableToken, active: false, type: 'local' });
+
         // Create a new workspace
         // Add the user to the workspace
         await Workspace.create({ users: [user._id] });
-        return new Response('New workspace created', {
+        return new Response(enableToken, {
             status: 200,
             headers: {
                 'Content-Type': 'application/json'

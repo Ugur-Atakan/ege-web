@@ -36,7 +36,7 @@ export async function GET() {
 export async function POST(req) {
   const { data } = await req.json();
 
-  console.log(data.payload.companyType);
+  // console.log(data.payload.companyType);
   const selectedPackage = data.payload.selectedPackage;
   const companyName = data.payload.companyName;
   const companyState = data.payload.companyState;

@@ -76,6 +76,9 @@ async function createCustomerRequest(
         const addressFirstHalf = addressParts.slice(0, halfLength).join(' ');
         const addressSecondHalf = addressParts.slice(halfLength).join(' ');
 
+        // if company type is C-Corp then set it to Corporation
+        const companyT = companyType === 'C-Corp' ? 'Corporation' : companyType;
+
         const response = await fetch(`${JIRA_BASE_URL}/rest/servicedeskapi/request`, {
             method: 'POST',
             headers: {
@@ -91,7 +94,7 @@ async function createCustomerRequest(
                     summary,
                     customfield_10047: companyName,
                     customfield_10046: { value: companyState },
-                    customfield_10045: { value: companyType },
+                    customfield_10045: { value: companyT },
                     customfield_10049:  email,
                     customfield_10050:  addressFirstHalf,
                     customfield_10051:  addressSecondHalf,

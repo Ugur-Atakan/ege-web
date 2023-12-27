@@ -54,7 +54,7 @@ const SignUp = ({ lang }) => {
                   const sendCookie = async () => {
                     await submitCookie(cookie);
                   }
-                  sendCookie();    
+                  sendCookie();
                   toast.success('Success!');
                   router.push(`/${lang}/dashboard`);
                 }
