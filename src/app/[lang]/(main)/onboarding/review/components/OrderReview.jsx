@@ -33,7 +33,7 @@ const OrderReview = ({ lang , selectedPackage , couponcode, setCouponCode , disp
                     </React.Fragment>
                 ))}
             </div>
-            {upsells.length !== 0 && <h2 className='pt-5 font-semibold text-[20px] uppercase leading-6 text-[#222222]'>Upsell Products</h2>}
+            {upsells && upsells.length !== 0 && <h2 className='pt-5 font-semibold text-[20px] uppercase leading-6 text-[#222222]'>Upsell Products</h2>}
             <div className='flex flex-col py-4'>
                 {upsells && upsells.map((upsell, index) => (
                     <React.Fragment key={index}>

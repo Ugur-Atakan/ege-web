@@ -1,12 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
 
-const secondaryNavigation = [
-  { name: 'Account', href: '#', current: true },
-  { name: 'Notifications', href: '#', current: false },
-  { name: 'Billing', href: '#', current: false }
-]
-
 const Settings = () => {
   return (
     <>

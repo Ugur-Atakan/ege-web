@@ -85,6 +85,7 @@ const Content = ({ lang, cookie }) => {
             companyCountry: country,
             selectedPackage: jsonSelectedPkg[0],
             upsells: cookie.upsellIDs,
+            packageName: jsonSelectedPkg[0].product
         };  
 
         axios

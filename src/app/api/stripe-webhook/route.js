@@ -1,8 +1,7 @@
 import Stripe from 'stripe';
 import { headers } from 'next/headers';
 import logger from '@/app/lib/logger'
-import nodemailer from 'nodemailer';
-import { transporter, mailBody, createUser } from './util';
+import { sendMail, mailBody, createUser, userAlreadyExists } from './util';
 
 import {
     createCustomer,
@@ -18,7 +17,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
  * to the customer. It also creates a customer request in Jira.
  * @param {Headers} stripe-signature - Stripe Signature
  * @returns {string} url - Redirect URL (Either success of failure)
- */
+*/
 
 export async function POST(req) {
     const headersList = headers();
@@ -97,25 +96,16 @@ export async function POST(req) {
         }
         
         console.log('Customer request with id');
-
-        const enableToken = await createUser(name, email);
+        const enableToken = await createUser(name, email, session.metadata.companyName, session.metadata.companyState, session.metadata.packageName);
         
         if (enableToken.status === 409) {
             console.log('User already exists');
+            const mBody = userAlreadyExists();
+            sendMail("Registate@gmail.com", email, "Congratulations on your company creation!", mBody);
         } else if (enableToken.status === 200) {
             const token = await enableToken.text();
-            console.log('Token ', token);
             const mBody = mailBody(token);
-    
-            const mailInfo = await transporter.sendMail({
-                from: 'mailtrap@registate.com',
-                to: email,
-                subject: "Your Registate Dashboard Access",
-                text: mBody, 
-                html: mBody
-            });
-
-            console.log("Message sent: %s", mailInfo.messageId);
+            const sendEmail = sendMail("Registate@gmail.com", email, "Congratulations! Your dashboard access", mBody);
         }
 
         const invite = await resendInvitation(session.customer_details.email);

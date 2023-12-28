@@ -39,6 +39,7 @@
     "iron-session": "github:renchris/iron-session#v8-as-dependency",
     "isomorphic-unfetch": "^4.0.2",
     "jsdoc": "^4.0.2",
+    "mailgun-js": "^0.22.0",
     "mongoose": "^8.0.2",
     "next": "13.5.6",
     "next-auth": "^4.24.5",

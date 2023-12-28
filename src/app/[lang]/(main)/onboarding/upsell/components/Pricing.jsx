@@ -21,7 +21,7 @@ const Pricing = ({ lang, companyState, complianceReminder, virtualMailBoxMonthly
         <div className="mx-auto max-w-7xl px-6 py-10 lg:px-8">
             <div className="relative z-10">
             <h1 className="mx-auto max-w-4xl text-center text-5xl font-bold tracking-tight text-black">
-                Upsell Packages
+                Add-ons
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-center text-lg leading-8 text-black/60">
                 Upgrade your package to get more features and benefits.
