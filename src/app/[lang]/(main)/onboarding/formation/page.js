@@ -12,37 +12,30 @@ import { getLLCSilver, getLLCGold, getCorpSilver, getCorpGold, getCorpPlat } fro
 */
 
 const Page = async ({ params: { lang } }) => {
-    const cookie = await readCookieFromStorageServerAction();
-    console.log('Formation ', cookie);
+  const cookie = await readCookieFromStorageServerAction();
+  console.log('Formation ', cookie);
 
-    let silverProduct, goldProduct, platProduct;
-    if (cookie.companyType === 'LLC') {
-        silverProduct = await getLLCSilver(cookie.companyState);
-        goldProduct = await getLLCGold(cookie.companyState);
-    } else if (cookie.companyType === 'C-Corp') {
-        silverProduct = await getCorpSilver(cookie.companyState);
-        goldProduct = await getCorpGold(cookie.companyState);
-        platProduct = await getCorpPlat(cookie.companyState);
-    }
+  let silverProduct = null, goldProduct, platProduct;
+  if (cookie.companyType === 'LLC') {
+      silverProduct = await getLLCSilver(cookie.companyState);
+      goldProduct = await getLLCGold(cookie.companyState);
+  } else if (cookie.companyType === 'C-Corp') {
+      silverProduct = await getCorpSilver(cookie.companyState);
+      goldProduct = await getCorpGold(cookie.companyState);
+      platProduct = await getCorpPlat(cookie.companyState);
+  }
 
-    return (
-        cookie.companyType === 'LLC' ? (
-          <Content
-            lang={lang}
-            cookie={cookie}
-            silverProduct={silverProduct}
-            goldProduct={goldProduct}
-          />
-        ) : (
-          <Content
-            lang={lang}
-            cookie={cookie}
-            silverProduct={silverProduct}
-            goldProduct={goldProduct}
-            platProduct={platProduct}
-          />
-        )
-    )
+  return (
+    silverProduct !== null && (
+      <Content
+        lang={lang}
+        cookie={cookie}
+        silverProduct={silverProduct}
+        goldProduct={goldProduct}
+        platProduct={platProduct}
+      />
+  )
+ )
 }
 
 export default Page
