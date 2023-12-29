@@ -8,7 +8,7 @@ const Card = ({ id, title, description, lang }) => {
 
   return (
     <div 
-        onClick={() => router.push(`/${lang}/dashboard/company/${id}`)}
+        onClick={() => router.push(`/${lang}/dashboard/${id}`)}
         className="hover:scale-105 cursor-pointer max-w-sm mx-2 my-2 p-6 bg-white shadow-lg rounded-lg overflow-hidden"
     >
       <div className="sm:flex sm:items-center px-6 py-4">

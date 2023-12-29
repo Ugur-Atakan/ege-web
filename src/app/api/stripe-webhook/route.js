@@ -98,6 +98,7 @@ export async function POST(req) {
         console.log('Customer request with id');
         const enableToken = await createUser(name, email, session.metadata.companyName, session.metadata.companyState, session.metadata.packageName);
         
+        //! PROBLEM HERE
         if (enableToken.status === 409) {
             console.log('User already exists');
             const mBody = userAlreadyExists();

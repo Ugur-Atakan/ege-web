@@ -29,7 +29,7 @@ const Cards = ({ silverProduct, goldProduct, platProduct, titles, handlePackageS
                 <p className={index === 0 ? 'text-lg font-semibold leading-6 text-[#222222]' : 'text-lg font-semibold leading-6 text-white'}>
                     {titles[index]}
                 </p>  
-                <p className={index === 0 ? 'font-semibold text-[28px] leading-8 text-[#222222]' : 'font-semibold text-[28px] leading-8 text-white'}>{'$' + (value.unit_amount/100)}</p>
+                <p className={index === 0 ? 'font-semibold text-[28px] leading-8 text-[#222222]' : 'font-semibold text-[28px] leading-8 text-white'}>{'$ ' + (value.unit_amount/100)}</p>
                 <Image src={index === 0 && bishopwhite || index === 1 && queencolor || index === 2 && kingblack} alt='llc package' />
             </div>
         ))}

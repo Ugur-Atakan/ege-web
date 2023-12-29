@@ -58,7 +58,10 @@ const Content = ({ lang , cookie }) => {
   }
 
   const finishNameCompletion = () => {
-    const ckie = { ...cookie, 'companyName': companyName + ' ' + abbreviation};
+    let ckie; 
+    if (abbreviation === '') ckie = { ...cookie, 'companyName': companyName + ' Inc'};
+    else ckie = { ...cookie, 'companyName': companyName + ' ' + abbreviation};
+
     const sendCookie = async () => {
       await submitCookie(ckie);
     };

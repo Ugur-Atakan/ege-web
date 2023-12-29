@@ -40,19 +40,5 @@ Office-space:  ONLY FOR DELAWARE + 250/month (recurring fee).
    1. Compliance reminder:
       1. Only will be added for *SILVER PRODUCT*
       2. Wont be shown on upsell page if a person has selected GOLD and PLAT product.
-      3. State doesn't matter (need to confirm).
-   2. EIN 
-      1. Will be shown for all the packages.
-      2. Expediated EIN (Fast processing time)
-      3. 750 USD. 
-      4. State doesn't matter.
-   3. Virtual Mailbox 
-      1. Only in delaware.
-      2. Show redirection link in review.
-   4. Office Space
-      1. Only in delaware.
-      2. 250 USD/month.
-   5. Apositle
-      1. Only in delaware
-
+     
 

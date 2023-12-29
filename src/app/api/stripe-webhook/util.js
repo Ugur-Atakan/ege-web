@@ -79,17 +79,27 @@ export const createUser = async (name, email, companyName, state, companyPackage
     
   try {
     const existingUser = await User.findOne({ email: email });
-    
-    let workSpace, enableToken = null;
-
+  
     if (existingUser) {
-      workSpace = await Workspace.findOne({ users: existingUser._id });
-    } else {
-      enableToken = crypto.randomBytes(32).toString('hex');
-      const user = await User.create({ firstName, lastName, email, password: '', level: 'user', enableToken: enableToken, active: false, type: 'local' });
-      workSpace = await Workspace.create({ users: [user._id] });
-    }
+      const workSpace = await Workspace.findOne({ users: existingUser._id });
+      const company = {
+        companyName: companyName,
+        state: state,
+        companyPackage: companyPackage
+      };
+      workSpace.companies.push(company);
+      await workSpace.save();
 
+      return new Response('', { 
+        status: 409,   
+        headers: {
+        'Content-Type': 'application/json'
+      }});
+    } 
+
+    const enableToken = crypto.randomBytes(32).toString('hex');
+    const user = await User.create({ firstName, lastName, email, password: '', level: 'user', enableToken: enableToken, active: false, type: 'local' });
+    const workSpace = await Workspace.create({ users: [user._id] });
     const company = {
       companyName: companyName,
       state: state,
@@ -97,10 +107,6 @@ export const createUser = async (name, email, companyName, state, companyPackage
     };
     workSpace.companies.push(company);
     await workSpace.save();
-    
-    if (enableToken != null) {
-      return new Response('', { status: 409 });
-    }
 
     return new Response(enableToken, {
         status: 200,

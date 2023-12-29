@@ -63,30 +63,17 @@ export async function POST(req) {
       session = await stripe.checkout.sessions.create({
         line_items: [
           {
-            // price: selectedPackage.id,
-            price_data: {
-              currency: 'USD',
-              product_data: {
-                name: name
-              },
-              unit_amount: selectedPackage.unit_amount, // Stripe requires price in cents
-            },
+            price: selectedPackage.id,
             quantity: 1,
           }
           ,...upsells.map(upsell => {
             return {
-              price_data: {
-                currency: 'USD',
-                product_data: {
-                  name: upsell.name
-                },
-                unit_amount: upsell.price * 100, 
-              },
+              price: upsell.id,
               quantity: 1,
             }
           })
         ],
-        mode: 'payment',
+        mode: 'subscription',
         success_url: process.env.SUCCESS_STRIPE_URL,
         cancel_url: process.env.FAIL_STRIPE_URL,
         metadata: {
@@ -101,7 +88,7 @@ export async function POST(req) {
           city,
           country
         },
-        customer_creation: 'always',
+        // customer_creation: 'if_required',
         customer_email: customerEmail,
         allow_promotion_codes: true
       });
@@ -109,14 +96,7 @@ export async function POST(req) {
       session = await stripe.checkout.sessions.create({
         line_items: [
           {
-            // price: selectedPackage.id,
-            price_data: {
-              currency: 'USD',
-              product_data: {
-                name: name
-              },
-              unit_amount: selectedPackage.unit_amount, // Stripe requires price in cents
-            },
+            price: selectedPackage.id,
             quantity: 1,
           }
         ],

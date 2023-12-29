@@ -11,14 +11,11 @@ export const pricing = {
         id: 'virtual-mailbox',
         state: 'Delaware',
         price: { monthly: '$ 90', annually: '$ 864' },
-        description: 'Dedicated support and infrastructure for your company.',
+        description: 'Email management and analytics for the modern business.',
         features: [
-          'Unlimited products',
-          'Unlimited subscribers',
-          'Advanced analytics',
-          '1-hour, dedicated support response time',
-          'Marketing automations',
-          'Custom reporting tools',
+          'Real Street Business Address',
+          'Scan and Upload items to dashboard',
+          'Full fledge email management'
         ],
         mostPopular: false,
       },
@@ -39,14 +36,11 @@ export const pricing = {
         state: 'Delaware',
         id: 'office-space',
         price: { monthly: '$ 60', annually: '$ 576' },
-        description: 'A plan that scales with your rapidly growing business.',
+        description: 'Professional business address for your company in Delaware!',
         features: [
-          '25 products',
-          'Up to 10,000 subscribers',
-          'Advanced analytics',
-          '24-hour support response time',
-          'Marketing automations',
-          'Tax Savings'
+          'Have a professional business address for your company in Delaware!',
+          'Use the lease on official documentation',
+          'Reliable, easy, fast-leasing transaction',
         ],
         mostPopular: false,
       },
@@ -57,6 +51,17 @@ export const getPricing = (state, complianceReminder, virtualMailBoxMonthly, vir
   const tierP = pricing.tiers.filter((tier) => {
       return tier.state === state || tier.state === 'any'
   });
+
+  let monthlyExists = false;
+  tierP.map((tier) => {
+    if (tier.price.monthly) monthlyExists = true;
+  });
+  
+  if (!monthlyExists) {
+    pricing.frequencies = pricing.frequencies.filter((frequency) => {
+      return frequency.value !== 'monthly';
+    });
+  }
 
   const tierP1 = tierP.map((tier) => {
     if (tier.id === 'virtual-mailbox') {

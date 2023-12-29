@@ -24,8 +24,10 @@ const PricingCard = ({ lang, tier, frequency }) => {
 
       const cookie = await readCookie();
       const upsellIDs = cookie.upsellIDs ? cookie.upsellIDs : [];
-      if (upsellIDs.includes(tier.stripeIDs[frequency.value])) {
-        const index = upsellIDs.indexOf(tier.stripeIDs[frequency.value]);
+      const currentIDs = upsellIDs.map((upsell) => upsell.id);
+
+      if (currentIDs.includes(tier.stripeIDs[frequency.value])) {
+        const index = currentIDs.indexOf(tier.stripeIDs[frequency.value]);
         if (index > -1) {
           upsellIDs.splice(index, 1);
         }

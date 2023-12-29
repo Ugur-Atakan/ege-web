@@ -10,14 +10,10 @@ export const pricing = {
         id: 'apostill',
         state: 'Delaware',
         price: { oneTime: '$ 500' },
-        description: 'Dedicated support and infrastructure for your company.',
+        description: 'Get notarized apostilled documents',
         features: [
-          'Unlimited products',
-          'Unlimited subscribers',
-          'Advanced analytics',
-          '1-hour, dedicated support response time',
-          'Marketing automations',
-          'Custom reporting tools',
+          'Use your documents abroad',
+          'Your documents will be shipped to you globally'
         ],
         mostPopular: false,
       },
@@ -27,7 +23,7 @@ export const pricing = {
         state: 'any',
         id: 'ein',
         price: { oneTime: '$ 750' },
-        description: 'The essentials to provide your best work for clients.',
+        description: 'Assistance in obtaining an EIN',
         features: ['Open Bank Account in US', 'Hire Employees', 'File your tax with EIN'],
         mostPopular: false,
       }

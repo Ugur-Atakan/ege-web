@@ -3,14 +3,43 @@ import { removeCookieFromStorageServerAction } from '@/app/lib/session/dashboard
 import { signOut  } from 'next-auth/react'
 
 export const navigation = [
-    { name: 'Dashboard', href: '/en/dashboard', icon: HomeIcon, current: true, mainDashboardVisibility: true, adminVisibility: true, userVisibility: true, customDashboardVisibility: true },
-    { name: 'Company', href: '/en/dashboard/company', icon: FolderIcon, current: false, adminVisibility: false, userVisibility: true , mainDashboardVisibility: false, customDashboardVisibility: true },
-    { name: 'Companies', href: '/en/dashboard/companies', icon: FolderIcon, current: false, adminVisibility: true, userVisibility: false, mainDashboardVisibility: false, customDashboardVisibility: true }
-    // { name: 'Projects', href: '#', icon: UserIcon, current: false },
-    // { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
-    // { name: 'Documents', href: '#', icon: DocumentDuplicateIcon, current: false },
-    // { name: 'Reports', href: '#', icon: ChartPieIcon, current: false },
+    { 
+        name: 'Dashboard', href: '/en/dashboard', icon: HomeIcon, current: true,  
+        adminVisibility: true, 
+        userVisibility: true, 
+        mainDashboardVisibility: true,
+        customDashboardVisibility: true 
+    },
+    // { 
+    //     name: 'Home', href: '/en/dashboard', icon: HomeIcon, current: true,  
+    //     adminVisibility: true, 
+    //     userVisibility: true, 
+    //     mainDashboardVisibility: true,
+    //     customDashboardVisibility: true 
+    // },
+    { 
+        name: 'Company Info', href: '/en/dashboard/company', icon: FolderIcon, current: false,
+        adminVisibility: false,
+        userVisibility: true,
+        mainDashboardVisibility: false,
+        customDashboardVisibility: true 
+    },
+    { 
+        name: 'Companies', href: '/en/dashboard/companies', icon: FolderIcon, current: false,
+        adminVisibility: true,
+        userVisibility: true,
+        mainDashboardVisibility: false,
+        customDashboardVisibility: false 
+    },
+    { 
+        name: 'Add new company', href: '/en/dashboard/onboarding', icon: FolderIcon, current: false,
+        adminVisibility: true,
+        userVisibility: true,
+        mainDashboardVisibility: true,
+        customDashboardVisibility: false 
+    }
 ]
+
 
 export const getSidebarNav = (pathName, userAccessLevel) => {
     const parts = pathName.split('/');
@@ -18,22 +47,22 @@ export const getSidebarNav = (pathName, userAccessLevel) => {
     const secondLastPart = parts.pop();
 
     const newNavigation = navigation.filter(nav => {
-        const userVisible = userAccessLevel === 'superadmin' ? nav.adminVisibility !== true : nav.userVisibility !== false;
+        const userVisible = userAccessLevel === 'admin' ? nav.adminVisibility !== true : nav.userVisibility !== false;
 
-        let isMainDashboardVisible;
-        let isCustomDashboardVisible;
-
-        //! A PROBLEM HERE 
-        if (lastPart !== nav.name.toLowerCase()) {
-            isCustomDashboardVisible = nav.customDashboardVisibility === true;
-            return userVisible && isCustomDashboardVisible;  
-        } else {
-            isMainDashboardVisible = nav.mainDashboardVisibility === true;
-            return userVisible && isMainDashboardVisible;       
+        //* Main dashboard visible
+        if (secondLastPart == 'en' || secondLastPart == 'tr') {
+            return userVisible && nav.mainDashboardVisibility;
         }
-        
+        //* Custom dashboard visible
+        else {
+            if (lastPart == 'onboarding') {
+                return userVisible && nav.mainDashboardVisibility && nav.customDashboardVisibility;
+            }
+            return userVisible && nav.customDashboardVisibility;
+        }
+       
     }).map(nav => {
-        // if last part is company UID.
+        //* if last part is company UID e.g /dashboard/1234567890
         if (lastPart !== nav.name.toLowerCase()){
             if (nav.name.toLowerCase() === secondLastPart) {    
                 nav.current = true
@@ -41,8 +70,7 @@ export const getSidebarNav = (pathName, userAccessLevel) => {
                 nav.current = false
             } 
             if (!nav.href.includes(lastPart)) nav.href = nav.href + '/' + lastPart;
-        } else {
-            //* else works if someone is on main dashboard WITHOUT /dashboard/:id
+        } else { //* else works if someone is on main dashboard WITHOUT /dashboard/:id
             if (nav.name.toLowerCase() === lastPart) {    
                 nav.current = true
             } else {

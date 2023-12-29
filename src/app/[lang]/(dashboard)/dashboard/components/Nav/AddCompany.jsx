@@ -7,7 +7,7 @@ const AddCompany = ({ lang }) => {
   return (
     <button
       type="button"
-      className="inline-flex items-center rounded-full bg-gray-900 p-1 text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+      className="inline-flex items-center rounded-full bg-[#0b2347] p-1 text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
       onClick={() => router.push(`/${lang}/dashboard/onboarding`)}
     >
       <PlusIcon className="h-5 w-5" aria-hidden="true" />

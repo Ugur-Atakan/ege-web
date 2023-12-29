@@ -31,7 +31,7 @@ const Pricing = ({ lang, companyState, complianceReminder, virtualMailBoxMonthly
                 <RadioGroup
                     value={frequency}
                     onChange={setFrequency}
-                    className="grid grid-cols-2 gap-x-1 rounded-full p-1 text-center text-xs font-semibold leading-5 ring-1 ring-inset ring-gray-200"
+                    className={pricing.frequencies.length === 1 ? `grid grid-cols-1 gap-x-1 rounded-full p-1 text-center text-xs font-semibold leading-5 ring-1 ring-inset ring-gray-200` : 'grid grid-cols-2 gap-x-1 rounded-full p-1 text-center text-xs font-semibold leading-5 ring-1 ring-inset ring-gray-200'}
                 >
                     <RadioGroup.Label className="sr-only">Payment frequency</RadioGroup.Label>
                     {pricing.frequencies.map((option) => (
