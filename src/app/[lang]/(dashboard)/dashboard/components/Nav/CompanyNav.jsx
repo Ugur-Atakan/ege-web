@@ -1,3 +1,4 @@
+/* eslint-disable */
 'use client'
 
 import React, { Fragment, useState, useEffect } from 'react'

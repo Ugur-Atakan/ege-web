@@ -71,9 +71,15 @@ export default function IncorporateBusiness({ lang }) {
                                     <div className="w-[293px] text-neutral-800 text-lg font-semibold font-['Inter'] leading-normal">{t('starter_packages_list1')} </div>
                                 </div>
 
-                                <div className='flex flex-row'> 
-                                    <Image src={tickIcon} className='w-6 h-6 mr-4' alt='tick icon' />
-                                    <div className="text-neutral-800 text-lg font-semibold font-['Inter'] leading-normal">{t('after_formation_footer3')}</div>
+                                <div className='flex flex-col'>
+                                    <div className='flex flex-row'> 
+                                        <Image src={tickIcon} className='w-6 h-6 mr-4' alt='tick icon' />
+                                        <div className="text-neutral-800 text-lg font-semibold font-['Inter'] leading-normal">{'7 Day Money back guarantee'}</div>
+                                        
+                                    </div>
+                                    <div className="text-sm text-gray-500 italic py-2 pl-10">
+                                            <sup className="mr-1">*</sup>except state fee
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { 
-  Compare, Compliance, Features, Footer, Faqs,
+  Compare, Compliance, Features, Footer, Faqs, Testimonials,
   GetStarted, Hero, IncorporateBusiness, SupportBusiness, TestimonialLogos 
 } from '@/components/index'
 
@@ -21,7 +21,8 @@ const Page = ({ params: { lang } }) => {
       <Compliance lang={lang} />
       <IncorporateBusiness lang={lang} />
       <SupportBusiness lang={lang} />
-      <Features lang={lang} />
+      {/* <Features lang={lang} /> */}
+      <Testimonials lang={lang} />
       <TestimonialLogos />
       <Faqs lang={lang} />
       <Footer lang={lang} /> 

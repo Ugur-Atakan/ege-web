@@ -29,17 +29,8 @@ import { useTranslation } from '@/i18n/client'
 
 const Content = ({ lang, cookie, silverProduct, goldProduct, platProduct }) => {
   const { t } = useTranslation(lang);
-  // const pathname = usePathname();
   const router = useRouter();
 
-  // useEffect(() => {
-  //   clearPathnameLocalStorage('companyFormationCompleted');
-
-  //   const checkRedirection = redirectToLastNullInternalFunnel();
-  //   if (checkRedirection && !checkEqualPathName(pathname, checkRedirection)) {
-  //     router.push(`/${lang}/onboarding/${checkRedirection}`)
-  //   }
-  // }, []);
 
   const [packagePrices, setPackagePrices] = useState([]);
   const [selectedPackage, setSelectedPackage] = useState(null);
@@ -55,6 +46,7 @@ const Content = ({ lang, cookie, silverProduct, goldProduct, platProduct }) => {
     setSelectedPackageIndex(selectedIndex);
   }
 
+  //! LOGIC HATASI VAR
   const continueWithSelectedPackage = (index) => {
     if (packagePrices.length > 0) {
       setSelectedPackage(packagePrices[index]);
@@ -69,7 +61,7 @@ const Content = ({ lang, cookie, silverProduct, goldProduct, platProduct }) => {
         const sendCookie = async () => { await submitCookie(cke) }
         sendCookie();
         router.push(`/${lang}/onboarding/company-name`);
-        router.refresh();
+        // router.refresh();
       }
     }
   }

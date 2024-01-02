@@ -8,6 +8,7 @@ import IncorporateBusiness from './IncorporateBusiness'
 import SupportBusiness from './SupportBusiness'
 import TestimonialLogos from './TestimonialLogos'
 import Faqs from './Faqs/Faqs'
+import Testimonials from './Testimonials/Testimonials'
 
 export {
     Compare,
@@ -18,6 +19,7 @@ export {
     Hero,
     IncorporateBusiness,
     SupportBusiness,
+    Testimonials,
     TestimonialLogos,
     Faqs
 }

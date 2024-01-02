@@ -33,11 +33,11 @@ const Content = ({ lang, companyType }) => {
   const selectedLLC = companyType === 'C-Corp' ? true : false;
   
   //* Use Effect to set the cookie
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const cookie = {...{companyType}, companyState: companyState};
-    submitCookie(cookie);
+    await submitCookie(cookie);
     router.push(`/${lang}/onboarding/formation`);
-    router.refresh();
+    // router.refresh();
   }
 
   //* API call to get the states

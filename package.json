@@ -1,6 +1,6 @@
 {
-  "name": "registate.com",
-  "version": "2.0.0",
+  "name": "registate",
+  "version": "2.3.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -14,8 +14,6 @@
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
     "@next/bundle-analyzer": "^14.0.1",
-    "@propelauth/nextjs": "^0.0.110",
-    "@propelauth/react": "^2.0.14",
     "@stripe/react-stripe-js": "^2.3.0",
     "@stripe/stripe-js": "^2.1.6",
     "@tailwindcss/aspect-ratio": "^0.4.2",

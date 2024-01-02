@@ -122,8 +122,16 @@ const SupportBusiness = ({ lang }) => {
             <p className="text-white font-bold text-lg leading-6">{t('after_formation_footer2')}</p>
           </div>
           <div className="flex items-start gap-3 justify-start lg:justify-center">
-            <Image src={protectionicon} className='w-8 h-8 lg:w-6 lg:h-6' alt="protection icon" />
-            <p className="text-white font-bold text-lg leading-6">{t('after_formation_footer3')}</p>
+              <div className='flex flex-col'>
+                  <div className='flex flex-row'> 
+                      <Image src={protectionicon} className='w-6 h-6 mr-4' alt='tick icon' />
+                      <div className="text-white text-lg font-semibold  leading-normal">{'7 Day Money back guarantee'}</div>
+                      
+                  </div>
+                  <div className="text-sm text-white py-2 italic pl-10">
+                          <sup className="mr-1">*</sup>except state fee
+                  </div>
+              </div>
           </div>
         </div>
       </div>
