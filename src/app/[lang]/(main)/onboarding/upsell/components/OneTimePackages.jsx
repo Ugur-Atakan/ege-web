@@ -10,7 +10,7 @@ const OneTimePackages = ({ lang, companyState,  EIN, apostille }) => {
 
   const handleSubmit = () => {
     router.push(`/${lang}/onboarding/review`);
-    router.refresh();      
+    // router.refresh();      
   }
 
   return (

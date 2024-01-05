@@ -24,7 +24,7 @@ const PricingCard = ({ lang, tier, frequency }) => {
 
       const cookie = await readCookie();
       const upsellIDs = cookie.upsellIDs ? cookie.upsellIDs : [];
-      const currentIDs = upsellIDs.map((upsell) => upsell.id);
+      const currentIDs = upsellIDs.map((upsell) => upse2l.id);
 
       if (currentIDs.includes(tier.stripeIDs[frequency.value])) {
         const index = currentIDs.indexOf(tier.stripeIDs[frequency.value]);
@@ -52,7 +52,7 @@ const PricingCard = ({ lang, tier, frequency }) => {
             key={tier.id}
             className={classNames(
                 tier.mostPopular ? 'ring-2 ring-[#1649FF]' : 'ring-1 ring-gray-200',
-                'rounded-2xl p-6'
+                'rounded-2xl p-6 pb-36'
             )}
         >
         <h2

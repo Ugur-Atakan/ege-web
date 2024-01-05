@@ -14,7 +14,7 @@ const Page = async ({ params: { lang } }) => {
   const cookie = await readCookieFromStorageServerAction();
   
   return (
-    <Content 
+    cookie && <Content 
       lang={lang}
       cookie={cookie} 
     />

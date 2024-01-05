@@ -740,7 +740,7 @@ body {
 }
 
 .media-query-description {
-  font-weight: bold;
+  /* font-weight: bold; */
   font-size: 1rem;
   line-height: 1.375rem;
   color: #222222;
@@ -843,3 +843,24 @@ body {
 * NEXT + PREVIOUS END
 **********************/
 
+/*********************
+* Carousel Animation
+**********************/
+
+
+.scroller-inner{
+  animation: scroll 15s linear infinite;
+}
+
+.scroller-inner:hover  {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

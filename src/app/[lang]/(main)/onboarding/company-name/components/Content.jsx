@@ -67,7 +67,7 @@ const Content = ({ lang , cookie }) => {
     };
     sendCookie();
     router.push(`/${lang}/onboarding/upsell`);
-    router.refresh();
+    // router.refresh();
   }
 
   return (

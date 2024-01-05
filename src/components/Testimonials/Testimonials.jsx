@@ -54,7 +54,7 @@ export default function Testimonials() {
             />
           </div>
           <figcaption className="text-base lg:col-start-1 lg:row-start-3">
-            <div className="font-semibold text-gray-900">Batu Şah</div>
+            <div className="font-semibold text-gray-900">Batu Şat</div>
             <div className="mt-1 text-gray-500">Co-founder of Mall IQ</div>
             
           </figcaption>

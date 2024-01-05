@@ -3,7 +3,7 @@ import {
   Compare, Compliance, Features, Footer, Faqs, Testimonials,
   GetStarted, Hero, IncorporateBusiness, SupportBusiness, TestimonialLogos 
 } from '@/components/index'
-
+import HoverMenu from '@/components/Hero/HoverMenu'
 /**
  * Home page route
  * @type {function} 
@@ -21,7 +21,8 @@ const Page = ({ params: { lang } }) => {
       <Compliance lang={lang} />
       <IncorporateBusiness lang={lang} />
       <SupportBusiness lang={lang} />
-      {/* <Features lang={lang} /> */}
+      {/* Old testimonials */}
+      {/* <Features lang={lang} /> */} 
       <Testimonials lang={lang} />
       <TestimonialLogos />
       <Faqs lang={lang} />
