@@ -3,7 +3,7 @@ import acceptLanguage from 'accept-language'
 import { fallbackLng, languages } from './i18n/settings'
 
 /**
- * @type {middleware}
+ * @type { middleware }
  * @description This middleware contains the setup for i18n-next package.
  * more info can be found here: https://dev.to/adrai/i18n-with-nextjs-13-and-app-directory-18dm
  */
@@ -12,9 +12,12 @@ acceptLanguage.languages(languages)
 
 // export { default } from "next-auth/middleware"
 
-// export const config = {
-//   matcher: '/:lang*'
-// }
+export const config = {
+  matcher: [
+    "/:lang*",
+    "/api/auth/(.*)"
+  ]  
+}
 
 const cookieName = 'i18next'
 
@@ -26,14 +29,11 @@ export function middleware(req) {
 
   const pathSegments = req.nextUrl.pathname.split('/').filter(Boolean)
   const firstSegment = pathSegments[0]
-
-
   const allowedSegments = ['en', 'tr', 'post-order', '_next', 'api', 'favicon.ico', 'robots.txt', 'sitemap.xml'];
 
   if (firstSegment && !allowedSegments.includes(firstSegment)) {
     return NextResponse.redirect(new URL(`/${lang}`, req.url));
   }
-
 
   if (req.nextUrl.pathname === '/') {
     return NextResponse.redirect(new URL(`/${lang}`, req.url))

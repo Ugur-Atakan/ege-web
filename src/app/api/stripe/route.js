@@ -37,6 +37,7 @@ export async function POST(req) {
   const { data } = await req.json();
 
   const selectedPackage = data.payload.selectedPackage;
+  const packageName = data.payload.packageName;
   const companyName = data.payload.companyName;
   const companyState = data.payload.companyState;
   const companyType = data.payload.companyType;
@@ -46,7 +47,8 @@ export async function POST(req) {
   const zipCode = data.payload.companyZipCode;
   const city = data.payload.companyCity;
   const country = data.payload.companyCountry;
- 
+  const upsells = data.payload.upsells;
+  
   //* To split the metadata and capitalize the first letter of each word
   let words = selectedPackage.metadata.type.split('-');
   // Capitalize the first letter of each word
@@ -56,37 +58,68 @@ export async function POST(req) {
   const name = data.payload.selectedPackage.nickname + ' - ' + words;
 
   try {
-    const session = await stripe.checkout.sessions.create({
-      line_items: [
-        {
-          price_data: {
-            currency: 'USD',
-            product_data: {
-              name: name
-            },
-            unit_amount: selectedPackage.unit_amount, // Stripe requires price in cents
-          },
-          quantity: 1,
+    let session;
+    if (upsells != null) {
+      session = await stripe.checkout.sessions.create({
+        line_items: [
+          {
+            price: selectedPackage.id,
+            quantity: 1,
+          }
+          ,...upsells.map(upsell => {
+            return {
+              price: upsell.id,
+              quantity: 1,
+            }
+          })
+        ],
+        mode: 'subscription',
+        success_url: process.env.SUCCESS_STRIPE_URL,
+        cancel_url: process.env.FAIL_STRIPE_URL,
+        metadata: {
+          packageName,
+          customerName,
+          companyName,
+          companyState,
+          companyType,
+          customerEmail,
+          address,
+          zipCode,
+          city,
+          country
         },
-      ],
-      mode: 'payment',
-      success_url: process.env.SUCCESS_STRIPE_URL,
-      cancel_url: process.env.FAIL_STRIPE_URL,
-      metadata: { 
-        customerName,
-        companyName,
-        companyState,
-        companyType,
-        customerEmail,
-        address,
-        zipCode,
-        city,
-        country
-      },
-      customer_creation: 'always',
-      customer_email: customerEmail
-    });
-
+        // customer_creation: 'if_required',
+        customer_email: customerEmail,
+        allow_promotion_codes: true
+      });
+    } else {
+      session = await stripe.checkout.sessions.create({
+        line_items: [
+          {
+            price: selectedPackage.id,
+            quantity: 1,
+          }
+        ],
+        mode: 'payment',
+        success_url: process.env.SUCCESS_STRIPE_URL,
+        cancel_url: process.env.FAIL_STRIPE_URL,
+        metadata: {
+          packageName,
+          customerName,
+          companyName,
+          companyState,
+          companyType,
+          customerEmail,
+          address,
+          zipCode,
+          city,
+          country
+        },
+        customer_creation: 'always',
+        customer_email: customerEmail,
+        allow_promotion_codes: true
+      });
+    }
     logger.info({ message: `Stripe checkout session created - ${session.url}` })
     return new NextResponse(session.url, { status: 200 });
   } catch (error) {

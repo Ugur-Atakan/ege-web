@@ -15,6 +15,12 @@ export const login = async (email, password, type) => {
             });
         }
 
+        if (user.active === false) {
+            return new Response('User not active', {
+                status: 401
+            });
+        }
+        
         return new Response(JSON.stringify(user), {
             status: 200,
             headers: {

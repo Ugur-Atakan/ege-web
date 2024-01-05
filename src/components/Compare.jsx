@@ -32,15 +32,15 @@ export default function Compare({ lang }) {
         <div className="bg-[#ECEFF1]">
             <div className="mx-auto max-w-[966px] p-6 lg:px-12">
                 <div className="text-left lg:text-center pt-12 lg:pt-8">
-                    <h2 className="font-bold text-[32px] lg:text-[64px] text-[#222222] leading-[38px] lg:leading-[64px]">{t('starter_packages_title_black')} <span className="text-[#1649FF] font-bold ">{t('starter_packages_title_blue')}</span></h2>
+                    <h2 className="font-bold text-[32px] lg:text-[34px] text-[#222222] leading-[38px] lg:leading-[64px]">{t('starter_packages_title_black')} <span className="text-[#1649FF] font-bold ">{t('starter_packages_title_blue')}</span></h2>
                 </div>
             </div>
-            <div className="mx-auto max-w-md px-6 py-0 lg:px-12">
+            {/* <div className="mx-auto max-w-md px-6 py-0 lg:px-12">
                 <div className="text-left lg:text-center">
                     <h3 className="font-bold text-[18px] text-[#222222]">{t('starter_packages_description_first')}<span className="text-[#1649FF] mr-1 font-bold ">{' ' + t('starter_packages_description_middle')}</span>{t('starter_packages_description_last')}</h3>
                 </div>
-            </div>
-            <div className="mx-auto max-w-7xl p-6 lg:px-12">
+            </div> */}
+            <div className="mx-auto max-w-7xl px-6 lg:px-12">
                 <div className="hidden lg:block">
                     <div className="mt-8 flow-root">
                         <div className="-mx-4 -my-2 sm:-mx-6 lg:-mx-8 ">
@@ -131,7 +131,7 @@ export default function Compare({ lang }) {
                             </div>
                         </div>
                     </div>
-                    <div className="flex items-center justify-center py-24">
+                    <div className="flex items-center justify-center pb-24 py-2">
                         <Link
                             href={`/${lang}/onboarding`}
                             className="rounded-2xl py-[14px] px-6 font-semibold text-lg text-[#222222] bg-[#9EE248]"

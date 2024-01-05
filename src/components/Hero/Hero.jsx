@@ -6,6 +6,7 @@ import rocket from '@/assets/images/rocket.png'
 import Navbar from './Navbar'
 import Mid from './Mid'
 import Bottom from './Bottom'
+import HoverMenu from './HoverMenu'
 
 import { useTranslation } from '@/i18n/client'
 
@@ -32,6 +33,7 @@ const Hero = ({ lang }) => {
 
   return (
     <div className="hero-section">
+      
       <Navbar
         isSticky={isSticky}
         t={t}

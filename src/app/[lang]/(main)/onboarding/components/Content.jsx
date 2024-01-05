@@ -54,18 +54,13 @@ const Content = ({ lang, cookie }) => {
     //     }
     // }, [restartFunnel, resumeFunnel]);
 
-
-    const sendCookie = async (companyType) => {
-        await submitCookie({ 'companyType': companyType });
-    };
-    
     const handleSelectLlc = async () => {
-        await sendCookie('LLC');
+        await submitCookie({ 'companyType': 'LLC' });
         router.push(`/${lang}/onboarding/state`);
     }
 
     const handleSelectCcorp = async () => {
-        await sendCookie('C-Corp');
+        await submitCookie({ 'companyType': 'C-Corp' });
         router.push(`/${lang}/onboarding/state`);
     }
 

@@ -12,15 +12,17 @@ import { Cog6ToothIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { usePathname, useRouter } from 'next/navigation'
 import { teams, getSidebarNav } from '../util/const'
 import CompanyNav from './CompanyNav'
+import { useSession } from 'next-auth/react'
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-const Sidebar = ({ lang, sidebarOpen, setSidebarOpen, user, companies }) => {
+const Sidebar = ({ lang, sidebarOpen, setSidebarOpen }) => {
   const pathname = usePathname()
   const router = useRouter()
-  const navigation = getSidebarNav(pathname, 'user');
+  const { data, update } = useSession();
+  const navigation = getSidebarNav(pathname, data.user.level);
 
   return (
     <div>
@@ -67,9 +69,9 @@ const Sidebar = ({ lang, sidebarOpen, setSidebarOpen, user, companies }) => {
                   </Transition.Child>
             
                   {/* Sidebar component, swap this element with another sidebar if you like */}
-                  <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-4 ring-1 ring-white/10">
+                  <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-[#0b2347] px-6 pb-4 ring-1 ring-white/10">
                     <div className="flex h-16 shrink-0 items-center">
-                      <CompanyNav />
+                      <CompanyNav lang={lang} />
                     </div>
                     <nav className="flex flex-1 flex-col">
                       <ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -77,18 +79,18 @@ const Sidebar = ({ lang, sidebarOpen, setSidebarOpen, user, companies }) => {
                           <ul role="list" className="-mx-2 space-y-1">
                             {navigation.map((item) => (
                               <li key={item.name}>
-                                <Link
-                                  href={item.href}
+                                <button
+                                  onClick={() => {}}
                                   className={classNames(
                                     item.current
                                       ? 'bg-gray-800 text-white'
                                       : 'text-gray-400 hover:text-white hover:bg-gray-800',
-                                    'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
+                                    'uppercase group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
                                   )}
                                 >
                                   <item.icon className="h-6 w-6 shrink-0" aria-hidden="true" />
                                   {item.name}
-                                </Link>
+                                </button>
                               </li>
                             ))}
                           </ul>
@@ -137,9 +139,9 @@ const Sidebar = ({ lang, sidebarOpen, setSidebarOpen, user, companies }) => {
         {/* Static sidebar for desktop */}
         <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
           {/* Sidebar component, swap this element with another sidebar if you like */}
-          <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-4">
+          <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-[#0b2347] px-6 pb-4">
             <div className="flex h-16 shrink-0 items-center">
-              <CompanyNav />
+              <CompanyNav lang={lang} />
             </div>
             <nav className="flex flex-1 flex-col">
               <ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -148,12 +150,11 @@ const Sidebar = ({ lang, sidebarOpen, setSidebarOpen, user, companies }) => {
                     {navigation.map((item) => (
                       <li key={item.name}>
                         <div
-                          onClick={() => router.push(item.href)} 
-                          // href={item.href}
+                          onClick={() => router.push(item.href)}
                           className={classNames(
                             item.current
-                              ? 'bg-gray-800 text-white'
-                              : 'text-gray-400 hover:text-white hover:bg-gray-800',
+                              ? 'bg-white/10 text-white'
+                              : 'text-white hover:text-white hover:bg-white/10',
                             'cursor-pointer group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
                           )}
                         >

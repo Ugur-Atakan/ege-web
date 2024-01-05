@@ -22,18 +22,7 @@ import { useTranslation } from '@/i18n/client'
 
 const Content = ({ lang , cookie }) => {
   const { t } = useTranslation(lang);
-  
-  // const pathname = usePathname();
   const router = useRouter();
-  // useEffect(() => {
-  //   clearPathnameLocalStorage('companyNameCompleted');
-
-  //   const checkRedirection = redirectToLastNullInternalFunnel();
-  //   if (checkRedirection && !checkEqualPathName(pathname, checkRedirection)) {
-  //     router.push(`/${lang}/onboarding/${checkRedirection}`)
-  //   }
-  // }, []);
-
   const [companyName, setCompanyName] = useState('');
   const [abbreviation, setAbbreviation] = useState('');
 
@@ -69,13 +58,16 @@ const Content = ({ lang , cookie }) => {
   }
 
   const finishNameCompletion = () => {
-    const ckie = { ...cookie, 'companyName': companyName + ' ' + abbreviation};
+    let ckie; 
+    if (abbreviation === '') ckie = { ...cookie, 'companyName': companyName + ' Inc'};
+    else ckie = { ...cookie, 'companyName': companyName + ' ' + abbreviation};
+
     const sendCookie = async () => {
       await submitCookie(ckie);
     };
     sendCookie();
-    router.push(`/${lang}/onboarding/review`);
-    router.refresh();
+    router.push(`/${lang}/onboarding/upsell`);
+    // router.refresh();
   }
 
   return (

@@ -50,6 +50,7 @@ import faqBackground from './faq-background.png'
 import searchIcon from './search.svg'
 import faqBackgroundWebP from './faq-background.webp'
 
+
 export { 
     whitelogo, 
     bluelogo, 

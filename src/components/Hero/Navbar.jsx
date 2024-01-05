@@ -9,10 +9,12 @@ import bluelogo from '@/assets/images/logo-blue.webp'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import LanguageChange from './LanguageChange'
+import HoverMenu from './HoverMenu'
 import i18next from 'i18next'
 
 const Navbar = ({ isSticky, t, lang }) => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [showMenu, setShowMenu] = useState(false);
 
     const changeLanguage = (lang) => {
         if (lang === "en" || lang === "tr") {
@@ -57,12 +59,15 @@ const Navbar = ({ isSticky, t, lang }) => {
             
                 {/* Mid navbar component */}
                 <div className="hidden lg:flex lg:gap-x-12">
-                    <Link href={`/${lang}/onboarding`} className={`px-2 text-sm font-medium leading-6 ${isSticky ? 'text-black' : 'text-white'}`}>
-                        {t('menu1_title')}
-                    </Link>
                     <Link href={`/${lang}/how-it-works`} className={`px-2 text-sm font-medium leading-6 ${isSticky ? 'text-black' : 'text-white'}`}>
                         {t('menu2_title')}
                     </Link>
+                    <button 
+                        onMouseEnter={() => setShowMenu(!showMenu)}
+                        className={`px-2 text-sm font-medium leading-6 ${isSticky ? 'text-black' : 'text-white'}`}>
+                        {t('menu1_title')}
+                        <HoverMenu showMenu={showMenu} setShowMenu={setShowMenu}/>
+                    </button>
                     <Link href={`/${lang}/blog`} className={`px-2 text-sm font-medium leading-6 ${isSticky ? 'text-black' : 'text-white'}`}>
                         {t('menu3_title')}
                     </Link>

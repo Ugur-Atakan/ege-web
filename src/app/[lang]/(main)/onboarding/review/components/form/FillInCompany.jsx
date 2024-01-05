@@ -12,15 +12,14 @@ const FillInCompany = (props) => {
 
     return ( 
         <div className='bg-white border rounded-[32px] p-6 my-6'>
-            <h2 className='font-semibold text-[24px] leading-[44px] text-[#222222]'>{t("review_company_details_title")}</h2>
-            <p className='font-semibold text-[16px] leading-6 text-[#222222]'>{t("review_company_details_description")}</p>
+            <h2 className='font-semibold text-[24px] leading-[44px] text-[#222222]'>{'Address Details'}</h2>
+            <p className='font-semibold text-[16px] leading-6 text-[#222222]'>{'Make sure to fill your correct address'}</p>
             <div className='py-4'>
                 <div className='flex item-center gap-4 md:gap-4 pb-4'>           
                         <div className="w-full md:w-1/2">
                             <label htmlFor="country" className="block font-semibold text-[14px] leading-6 text-[#222222]">
                                 {t("review_information_input5")}
                             </label>
-                            
                             <select
                                 id="country"
                                 name="country"

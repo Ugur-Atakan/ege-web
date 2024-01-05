@@ -19,7 +19,8 @@ const SignUp = ({ lang }) => {
         email: '',
         confirmEmail: '',
         password: '',
-        confirmPassword: ''
+        confirmPassword: '',
+        level: 'user'
     });
     const [agreedToTerms, setAgreedToTerms] = useState(false);
 
@@ -47,20 +48,15 @@ const SignUp = ({ lang }) => {
         console.log(formData);
         const signup = async () => {
             try {
-                const res = await axios.post('/api/dashboard/signup', formData);
+                const res = await axios.post('/api/dashboard/workspace/create-companyless-workspace', formData);
 
                 if (res.status == 200) {
-                  const cookie = {'userEmail': email};
-                  const sendCookie = async () => {
-                    await submitCookie(cookie);
-                  }
-                  sendCookie();    
                   toast.success('Success!');
-                  router.push(`/${lang}/dashboard`);
+                  router.push(`/${lang}/login`);
                 }
             } catch (err) {
-                toast.error('Something went wrong');
-                console.log(err);
+                toast.error(err.response.data);
+                console.log(err.response.data);
             }
         };
 
@@ -207,7 +203,7 @@ const SignUp = ({ lang }) => {
                                 type="submit"
                                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                             >
-                                Sign in
+                                Sign Up
                             </button>
                         </div>
                     </form>

@@ -1,6 +1,6 @@
 {
-  "name": "registate.com",
-  "version": "2.0.0",
+  "name": "registate",
+  "version": "2.3.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -37,11 +37,13 @@
     "iron-session": "github:renchris/iron-session#v8-as-dependency",
     "isomorphic-unfetch": "^4.0.2",
     "jsdoc": "^4.0.2",
+    "mailgun-js": "^0.22.0",
     "mongoose": "^8.0.2",
     "next": "13.5.6",
     "next-auth": "^4.24.5",
     "next-share": "^0.27.0",
     "next-videos": "^1.4.1",
+    "nodemailer": "^6.9.7",
     "postcss": "^8.4.29",
     "react": "18.2.0",
     "react-calendly": "^4.1.1",

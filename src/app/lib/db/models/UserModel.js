@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
+import crypto from "crypto";
 
+//* Three types of users: superadmin, admin, user
 const userSchema = new mongoose.Schema({
   firstName: {
     type: String,
@@ -24,6 +26,14 @@ const userSchema = new mongoose.Schema({
   type: {
     type: String,
     default: "local"
+  },
+  enableToken: {
+    type: String,
+    default: crypto.randomBytes(32).toString('hex')
+  },
+  active: {
+    type: Boolean,
+    default: false
   }
 }, { timestamps: true });
 

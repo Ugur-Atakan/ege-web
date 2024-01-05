@@ -1,6 +1,8 @@
 import Stripe from 'stripe';
 import { headers } from 'next/headers';
 import logger from '@/app/lib/logger'
+import { sendMail, mailBody, createUser, userAlreadyExists } from './util';
+
 import {
     createCustomer,
     createCustomerRequest,
@@ -15,7 +17,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
  * to the customer. It also creates a customer request in Jira.
  * @param {Headers} stripe-signature - Stripe Signature
  * @returns {string} url - Redirect URL (Either success of failure)
- */
+*/
 
 export async function POST(req) {
     const headersList = headers();
@@ -38,8 +40,9 @@ export async function POST(req) {
     }
 
     if (event.type === 'checkout.session.completed') {
-        logger.info({ message: 'Checkout session started.' })
-        
+        logger.info({ message: 'Checkout session completed.' })
+        console.log('Checkout session completed');
+
         const session = event.data.object;
         const summary = `Start my Company - ${session.metadata.companyName}`;
         const description = `Please start my company - ${session.metadata.companyName}`;
@@ -66,6 +69,8 @@ export async function POST(req) {
                 status: 500
             });
         }
+        console.log('Customer with id: ', accountId, ' created')
+        console.log('companyType ', session.metadata.companyType);
 
         const customerReq = await createCustomerRequest(
             accountId,
@@ -90,6 +95,19 @@ export async function POST(req) {
             logger.info({ message : `Jira User with ${accountId} created` })
         }
         
+        console.log('Customer request with id');
+        const enableToken = await createUser(name, email, session.metadata.companyName, session.metadata.companyState, session.metadata.packageName);
+        
+        //! PROBLEM HERE
+        if (enableToken.status === 409) {
+            console.log('User already exists');
+            const mBody = userAlreadyExists();
+            sendMail("Registate@gmail.com", email, "Congratulations on your company creation!", mBody);
+        } else if (enableToken.status === 200) {
+            const token = await enableToken.text();
+            const mBody = mailBody(token);
+            const sendEmail = sendMail("Registate@gmail.com", email, "Congratulations! Your dashboard access", mBody);
+        }
 
         const invite = await resendInvitation(session.customer_details.email);
         // Future DB calls here.

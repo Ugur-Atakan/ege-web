@@ -23,7 +23,10 @@ export const options = {
             }
         })
     ],
-
+    session: {
+        strategy:"jwt",
+        maxAge: 10 * 60, //! 10 minutes
+    },
     // Optional: Customize the authentication flow
     callbacks: {
         async signIn({ user, account, profile }) {
@@ -34,7 +37,6 @@ export const options = {
                     const res = await registerGoogleUser(profile.given_name, profile.family_name, profile.email);
                 } else if (res.status === 200) {
                     const data = await res.json();
-                    console.log('data ', data);
                     user._id = data._id;
                     user.firstName = data.firstName;
                     user.lastName = data.lastName;
@@ -44,9 +46,17 @@ export const options = {
             else if (account.provider === "credentials") {
                 // do anything for credentials login
             }
+
             return true;
         },
-        async jwt({ token, user }){
+        async jwt({ token, user, trigger, session }){
+            if (trigger === "update") {
+                if (session?.companyType) token.companyType = session.companyType;
+                if (session?.companyState) token.companyState = session.companyState;
+                if (session?.selectedPackage) token.selectedPackage = session.selectedPackage;
+                if (session?.companyName) token.companyName = session.companyName;
+            }
+
             // Assign the userid and role from the user object
             if (user) { 
                 token.uid = user._id;
@@ -68,6 +78,12 @@ export const options = {
                 session.user.email = token.email;
                 session.user.name = token.firstName + ' ' + token.lastName;
             }
+
+            if (token?.companyType) session.companyType = token.companyType;
+            if(token?.companyState) session.companyState = token.companyState;
+            if(token?.selectedPackage) session.selectedPackage = token.selectedPackage;
+            if(token?.companyName) session.companyName = token.companyName;
+            
             return session;
         }
     },
@@ -75,11 +91,6 @@ export const options = {
     // Optional: Customize the JWT token
     jwt: {
         // ...
-    },
-
-    // Optional: Customize the session
-    session: {
-        strategy:'jwt'
     },
     pages: {
         signIn: "/en/login"

@@ -37,6 +37,9 @@ jobs:
       GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
       GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
       NEXTAUTH_URL: ${{ vars.NEXTAUTH_URL_DEV }}
+      MAILGUN_DOMAIN: ${{ vars.MAILGUN_DOMAIN }}
+      MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
+      ACTIVATE_USER_URL: ${{ vars.ACTIVATE_USER_URL_DEV }}
     steps:
       - name: create environment file and upload to S3 app bucket
         run: |
@@ -61,6 +64,9 @@ jobs:
           GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
           GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
           NEXTAUTH_URL=${NEXTAUTH_URL}
+          MAILGUN_DOMAIN=${MAILGUN_DOMAIN}
+          MAILGUN_API_KEY=${MAILGUN_API_KEY}
+          ACTIVATE_USER_URL=${ACTIVATE_USER_URL}
           EOF
 
           /usr/local/bin/aws --region us-east-1 s3 cp $ENVIRONMENT_FILE s3://$S3_APP_BUCKET/$ENVIRONMENT_FILE
@@ -97,6 +103,9 @@ jobs:
       GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
       GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
       NEXTAUTH_URL: ${{ vars.NEXTAUTH_URL_PROD }}
+      MAILGUN_DOMAIN: ${{ vars.MAILGUN_DOMAIN }}
+      MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
+      ACTIVATE_USER_URL: ${{ vars.ACTIVATE_USER_URL_PROD }}
     steps:
       - name: create environment file and upload to S3 app bucket
         run: |
@@ -121,6 +130,9 @@ jobs:
           GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
           GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
           NEXTAUTH_URL=${NEXTAUTH_URL}
+          MAILGUN_DOMAIN=${MAILGUN_DOMAIN}
+          MAILGUN_API_KEY=${MAILGUN_API_KEY}
+          ACTIVATE_USER_URL=${ACTIVATE_USER_URL}
           EOF
 
           /usr/local/bin/aws --region us-east-1 s3 cp $ENVIRONMENT_FILE s3://$S3_APP_BUCKET/$ENVIRONMENT_FILE

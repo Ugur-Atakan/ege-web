@@ -5,9 +5,10 @@ import Footer from './Footer'
 import GetStarted from './GetStarted'
 import Hero from './Hero/Hero'
 import IncorporateBusiness from './IncorporateBusiness'
-import SupportBusiness from './SupportBusiness'
+import SupportBusiness from './SupportBusiness/SupportBusiness'
 import TestimonialLogos from './TestimonialLogos'
 import Faqs from './Faqs/Faqs'
+import Testimonials from './Testimonials/Testimonials'
 
 export {
     Compare,
@@ -18,6 +19,7 @@ export {
     Hero,
     IncorporateBusiness,
     SupportBusiness,
+    Testimonials,
     TestimonialLogos,
     Faqs
 }
