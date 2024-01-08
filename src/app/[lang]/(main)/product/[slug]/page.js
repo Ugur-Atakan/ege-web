@@ -20,9 +20,9 @@ const Page = ({ params: { lang, slug } }) => {
 
   return(
     <React.Fragment>
-      <Hero lang={lang} name={product.name} description={product.description}/>
+      <Hero lang={lang} id={product.id} name={product.name} description={product.description}/>
       <Features lang={lang} />
-      <BusinessShield />
+      {/* <BusinessShield /> */}
       <HowItWorks />
       <Pricing />
       <Faq lang={lang} faqs={product.faq} />

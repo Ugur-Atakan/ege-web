@@ -397,5 +397,9 @@
     "contact_us_header3_blank_2": "Last name",
     "name_checker_title": "Check your company name availability",
     "name_checker_footnote": "Company name checker only works for Delaware based companies.",
-    "take_survery_again": "Take the survery again"
+    "take_survery_again": "Take the survery again",
+    "how_it_works_step_4_silver_description": "Expedited Filing (1-3 business days). Everything you need to perfectly start your company.",
+    "how_it_works_step_4_silver_llc_description": "I want my business set up with essential services and documents.",
+    "how_it_works_step_4_gold_llc_description": "I want an expert to ensure my business runs smoothly even after creation.",
+    "every_thing_in_silver": "Everything in Silver, plus:"
 }

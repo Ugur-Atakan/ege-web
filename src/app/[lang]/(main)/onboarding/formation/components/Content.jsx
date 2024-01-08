@@ -31,7 +31,6 @@ const Content = ({ lang, cookie, silverProduct, goldProduct, platProduct }) => {
   const { t } = useTranslation(lang);
   const router = useRouter();
 
-
   const [packagePrices, setPackagePrices] = useState([]);
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [selectedPackageIndex, setSelectedPackageIndex] = useState(-1);
@@ -94,6 +93,7 @@ const Content = ({ lang, cookie, silverProduct, goldProduct, platProduct }) => {
         />
       </div>
           
+      {/* Comparison Table */}
       <div className='mx-auto max-w-5xl p-4'>
         <div className="px-6 lg:px-8 overflow-x-scroll overflow-y-hidden">
           <div className="mt-8 flow-root">

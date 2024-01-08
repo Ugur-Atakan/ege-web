@@ -53,7 +53,7 @@ const Step4 = ({ lang }) => {
               <div className='w-full bg-white rounded-[32px] p-6 relative overflow-hidden'>
                 <div className='flex flex-col gap-4'>
                   <h3 className='font-bold text-[32px] lg:text-[64px] leading-[38px] lg:leading-[64px] text-[#222222]'>Silver</h3>
-                  <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-[24px] text-[#222222] lg:w-2/3'>Expedited Filing (1-3 business days). Everything you need to perfectly start your company.</p>
+                  <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-[24px] text-[#222222] lg:w-2/3'>{t('how_it_works_step_4_silver_description')}</p>
                 </div>
                 <div className='py-8'>
                   <ul className='flex flex-col gap-3'>
@@ -156,7 +156,7 @@ const Step4 = ({ lang }) => {
               <div className='bg-white rounded-[32px] p-6 relative overflow-hidden'>
                 <div className='flex flex-col gap-4'>
                   <h6 className='font-bold text-[32px] lg:text-[64px] leading-[38px] lg:leading-[64px] text-[#222222]'>Silver</h6>
-                  <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-[24px] text-[#222222] lg:w-2/3'>I want my business set up with essential services and documents.</p>
+                  <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-[24px] text-[#222222] lg:w-2/3'>{t('how_it_works_step_4_silver_llc_description')}</p>
                 </div>
                 <div className='py-8'>
                   <ul className='flex flex-col gap-3'>
@@ -191,10 +191,10 @@ const Step4 = ({ lang }) => {
               <div className='bg-[#1649FF] rounded-[32px] p-6 relative overflow-hidden'>
                 <div className='flex flex-col gap-4'>
                   <h2 className='font-bold text-[32px] lg:text-[64px] leading-[38px] lg:leading-[64px] text-white'>Gold</h2>
-                  <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-[24px] text-white lg:w-2/3'>I want an expert to ensure my business runs smoothly even after creation.</p>
+                  <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-[24px] text-white lg:w-2/3'>{t('how_it_works_step_4_gold_llc_description')}</p>
                 </div>
                 <div className='py-8'>
-                  <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white pb-4'>Everything in Silver, plus:</p>
+                  <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white pb-4'>{t('every_thing_in_silver')}</p>
                   <ul className='flex flex-col gap-3'>
                     <li className='flex items-center gap-3'>
                       <Image src={tickblue} className='h-8 w-8' alt='Compliance Reminder' />

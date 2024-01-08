@@ -66,7 +66,7 @@ const Navbar = ({ isSticky, t, lang }) => {
                         onMouseEnter={() => setShowMenu(!showMenu)}
                         className={`px-2 text-sm font-medium leading-6 ${isSticky ? 'text-black' : 'text-white'}`}>
                         {t('menu1_title')}
-                        <HoverMenu showMenu={showMenu} setShowMenu={setShowMenu}/>
+                        <HoverMenu lang={lang} showMenu={showMenu} setShowMenu={setShowMenu}/>
                     </button>
                     <Link href={`/${lang}/blog`} className={`px-2 text-sm font-medium leading-6 ${isSticky ? 'text-black' : 'text-white'}`}>
                         {t('menu3_title')}

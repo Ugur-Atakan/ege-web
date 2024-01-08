@@ -13,43 +13,48 @@ import {
 
 // 0,2,4,6 for Reccurring Products
 // 1,3,5,7 for One Time
-const solutions = [
-  { 
-    name: 'Compliance Reminder', 
-    description: 'Get compliance reminders ', 
-    href: '#', 
-    icon: ChartPieIcon 
-  },
-  { 
-    name: 'Foreign Qualification', 
-    description: 'Foreign Qualification', 
-    href: '#', 
-    icon: ChartPieIcon 
-  },
-  { 
-    name: 'Registered Agent', 
-    description: 'Get a registered agent', 
-    href: '#', 
-    icon: ChartPieIcon 
-  },
-  {
-    name: 'Certificate of Good Standing',
-    description: 'Certificate of Good Standing',
-    href: '#',
-    icon: SquaresPlusIcon,
-  },
-  {
-    name: 'Virtual Mailbox',
-    description: 'Get virtual mailbox',
-    href: '#',
-    icon: CursorArrowRaysIcon,
-  },
-  { name: 'EIN', description: 'Get US EIN', href: '#', icon: ArrowPathIcon },
-  { name: 'Office Address', description: "Get office address in US", href: '#', icon: FingerPrintIcon },
+const getSolutions = (lang) => {
+  const sol = [
+    { 
+      name: 'Compliance Reminder', 
+      description: 'Get compliance reminders ', 
+      href: `/${lang}/product/compliance-reminder`, 
+      icon: ChartPieIcon 
+    },
+    { 
+      name: 'Foreign Qualification', 
+      description: 'Foreign Qualification', 
+      href: `/${lang}/product/foreign-qualification`,
+      icon: ChartPieIcon 
+    },
+    { 
+      name: 'Registered Agent', 
+      description: 'Get a registered agent', 
+      href: `/${lang}/product/registered-agent`,
+      icon: ChartPieIcon 
+    },
+    {
+      name: 'Certificate of Good Standing',
+      description: 'Certificate of Good Standing',
+      href: `/${lang}/product/certificate-of-good-standing`,
+      icon: SquaresPlusIcon,
+    },
+    {
+      name: 'Virtual Mailbox',
+      description: 'Get a virtual mailbox',
+      href: `/${lang}/product/virtual-mailbox`,
+      icon: CursorArrowRaysIcon,
+    },
+    { name: 'EIN', description: 'Get US EIN', href: '#', icon: ArrowPathIcon },
+    { name: 'Office Address', description: "Get an office address in US", href: '#', icon: FingerPrintIcon },
+  ];
+  return sol;
+};
 
-]
 
-export default function HoverMenu({ setShowMenu, showMenu }) {
+export default function HoverMenu({ lang, setShowMenu, showMenu }) {
+  const solutions = getSolutions(lang);
+
   return (
     <Popover 
       className="relative"

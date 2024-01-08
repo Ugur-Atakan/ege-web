@@ -26,7 +26,7 @@ const CardsFooter = ({ cookie, selectedPackage, selectedCompanyType, selectedPac
                 if (selectedPackage) {
                     setCookie(selectedPackage, packages);
                     router.push(`/${lang}/onboarding/company-name`);
-                    router.refresh();
+                    // router.refresh();
                 }
             }}
         >

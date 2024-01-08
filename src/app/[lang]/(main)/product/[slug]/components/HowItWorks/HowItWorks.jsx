@@ -4,7 +4,7 @@ import cover from './img/cover.png'
 
 const HowItWorks = () => {
   return (
-    <div className='px-8 py-[130px]'>
+    <div className='px-8 py-[130px] bg-gray-100'>
         <div className='flex justify-center items-center'>
             <h2 className="w-[550px] text-center text-neutral-800 text-[58px] font-bold leading-[58px]">
                 How it works in 3 steps
