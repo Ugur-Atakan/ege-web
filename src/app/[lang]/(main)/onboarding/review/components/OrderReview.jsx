@@ -3,13 +3,12 @@ import { useTranslation } from '@/i18n/client'
 
 const OrderReview = ({ lang , selectedPackage , couponcode, setCouponCode , displayForm , setDisplayForm , handleSubmit, upsells}) => {
     const { t } = useTranslation(lang);
-    const jsonPkg = JSON.parse(selectedPackage) || [];
-    const pkg = jsonPkg.length > 0 ? [jsonPkg[0]] : [];
+    const jsonPkg = selectedPackage ? JSON.parse(selectedPackage) : null;
 
     const calculateTotal = () => {
-        if (!upsells) return pkg[0].unit_amount/100;
+        if (!upsells) return jsonPkg[0].unit_amount/100;
         const upsellPrices = upsells.map((upsell) => upsell.price);
-        const total = upsellPrices.reduce((a, b) => a + b, 0) + (pkg[0].unit_amount/100);
+        const total = upsellPrices.reduce((a, b) => a + b, 0) + (jsonPkg[0].unit_amount/100);
         return total;
     }
 
@@ -23,15 +22,15 @@ const OrderReview = ({ lang , selectedPackage , couponcode, setCouponCode , disp
                 <h4 className='font-semibold text-[15px] leading-6 text-[#545454]'>{t("review_preview")}</h4>
             </div>
             <div className='flex items-center justify-between py-4'>
-                {pkg && pkg.map((price, index) => (
-                    <React.Fragment key={index}>
+                {jsonPkg && 
+                    <React.Fragment>
                         <div>
                             <h2 className='font-semibold text-[16px] leading-6 text-[#222222]'>{t("review_payment_type")}</h2>
-                            <p className='font-semibold capitalize text-[16px] leading-6 text-[#222222]'>{price.product}</p>
+                            <p className='font-semibold capitalize text-[16px] leading-6 text-[#222222]'>{jsonPkg[0].product}</p>
                         </div>
-                        <div><h3 className='font-semibold text-[16px] leading-6 text-[#222222]'>{'$ ' + (price.unit_amount / 100)}</h3></div>
+                        <div><h3 className='font-semibold text-[16px] leading-6 text-[#222222]'>{'$ ' + (jsonPkg[0].unit_amount / 100)}</h3></div>
                     </React.Fragment>
-                ))}
+                }
             </div>
             {upsells && upsells.length !== 0 && <h2 className='pt-5 font-semibold text-[20px] uppercase leading-6 text-[#222222]'>Upsell Products</h2>}
             <div className='flex flex-col py-4'>
