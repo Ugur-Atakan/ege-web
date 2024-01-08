@@ -1,10 +1,9 @@
 /* eslint-disable */
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState} from 'react'
 import { redirectToLastNullInternalFunnel, checkEqualPathName } from '@/app/lib/utils'
 import { usePathname, useRouter } from 'next/navigation'
-import dynamic from 'next/dynamic'
 import { useTranslation } from '@/i18n/client'
 
 import FillInCompany from './form/FillInCompany'
@@ -20,6 +19,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import CompanyDetails from './CompanyDetails'
 import Features from './Features'
 import OrderReview from './OrderReview'
+import { readCookie } from '@/app/lib/session/clientActions'
 
 /**
  * Main content component
@@ -29,8 +29,17 @@ import OrderReview from './OrderReview'
  * @returns {JSX.Element} 
 */
 
-const Content = ({ lang, cookie }) => {
+const Content = ({ lang }) => {
     const { t } = useTranslation(lang);
+
+    const [cookie, setCookie] = useState({});
+    useEffect(() => {
+      const readCkie = async () => {
+        const ckie = await readCookie();
+        setCookie(ckie);
+      }
+      readCkie();
+    }, []);
 
     const [displayForm, setDisplayForm] = useState(false);
     const [name, setName] = useState('');
