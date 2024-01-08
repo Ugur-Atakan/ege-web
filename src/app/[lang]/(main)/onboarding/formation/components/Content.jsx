@@ -30,7 +30,7 @@ import { useTranslation } from '@/i18n/client'
 const Content = ({ lang, cookie, silverProduct, goldProduct, platProduct }) => {
   const { t } = useTranslation(lang);
   const router = useRouter();
-  console.log('cookie on Client Side: ', cookie)
+  console.log('States: ', cookie)
 
   const [packagePrices, setPackagePrices] = useState([]);
   const [selectedPackage, setSelectedPackage] = useState(null);

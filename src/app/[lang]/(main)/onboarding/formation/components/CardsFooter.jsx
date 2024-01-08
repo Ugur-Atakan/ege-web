@@ -25,7 +25,8 @@ const CardsFooter = ({ cookie, selectedPackage, selectedCompanyType, selectedPac
                 const packages = getRandomPackages(selectedPackage, selectedCompanyType, selectedPackageVar);
                 if (selectedPackage) {
                     setCookie(selectedPackage, packages);
-                    // router.push(`/${lang}/onboarding/company-name`);
+                    router.push(`/${lang}/onboarding/company-name`);
+                    // window.href
                     // router.refresh();
                 }
             }}
