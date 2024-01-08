@@ -5,7 +5,7 @@ export const onboardingSessionOptions = {
     password: process.env.IRONAUTH_SECRET,
     cookieName: 'registateOnboarding',
     cookieOptions: {
-        secure: process.env.NODE_ENV === 'production',
+        // secure: process.env.NODE_ENV === 'production',
         maxAge: 1 * 60 * 30 //! 30 minutes expiration duration
     }
 }

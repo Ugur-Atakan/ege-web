@@ -17,9 +17,9 @@ import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const CompanyDetails = dynamic(() => import('./CompanyDetails'))
-const Features = dynamic(() => import('./Features'))
-const OrderReview = dynamic(() => import('./OrderReview'))
+import CompanyDetails from './CompanyDetails'
+import Features from './Features'
+import OrderReview from './OrderReview'
 
 /**
  * Main content component
@@ -72,7 +72,6 @@ const Content = ({ lang, cookie }) => {
             return;
         }
 
-        const jsonSelectedPkg = JSON.parse(cookie.selectedPackage);
         let payload = {
             customerName: name + ' ' + lastname,
             companyName: cookie.companyName,
@@ -83,9 +82,9 @@ const Content = ({ lang, cookie }) => {
             companyZipCode: zip,
             companyCity: city,
             companyCountry: country,
-            selectedPackage: jsonSelectedPkg[0],
+            selectedPackage: cookie.selectedPackage,
             upsells: cookie.upsellIDs,
-            packageName: jsonSelectedPkg[0].product
+            packageName: cookie.selectedPackage.product
         };  
 
         axios

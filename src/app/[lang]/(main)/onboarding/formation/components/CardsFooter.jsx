@@ -10,7 +10,7 @@ const CardsFooter = ({ cookie, selectedPackage, selectedCompanyType, selectedPac
 
   //* Set Cookie function
   const setCookie = (selectedPackage, features) => {
-    const ckie = { ...cookie, selectedPackage: JSON.stringify([{ ...selectedPackage, features: features }])};
+    const ckie = { ...cookie, 'selectedPackage': { ...selectedPackage, features }};
     const sendCookie = async () => {
       await submitCookie(ckie);
     }
@@ -26,8 +26,6 @@ const CardsFooter = ({ cookie, selectedPackage, selectedCompanyType, selectedPac
                 if (selectedPackage) {
                     setCookie(selectedPackage, packages);
                     router.push(`/${lang}/onboarding/company-name`);
-                    // window.href
-                    // router.refresh();
                 }
             }}
         >

@@ -10,12 +10,9 @@ import Content from './components/Content'
 */
 
 const Page = async ({ params: { lang } }) => {
-  const cookie = await readCookieFromStorageServerAction();
-
   return (
     <Content 
-      lang={lang} 
-      cookie={cookie}
+      lang={lang}
     />
   )
 }

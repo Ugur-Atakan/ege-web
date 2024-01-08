@@ -13,9 +13,12 @@ import { getLLCSilver, getLLCGold, getCorpSilver, getCorpGold, getCorpPlat } fro
 
 const Page = async ({ params: { lang } }) => {
   const cookie = await readCookieFromStorageServerAction();
-  console.log('Formation ', cookie);
+  // console.log('Cookie ', cookie);
 
-  let silverProduct = null, goldProduct, platProduct;
+  let silverProduct = null;
+  let platProduct = null;
+  let goldProduct = null;
+
   if (cookie.companyType === 'LLC') {
       silverProduct = await getLLCSilver(cookie.companyState);
       goldProduct = await getLLCGold(cookie.companyState);
