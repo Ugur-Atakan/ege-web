@@ -3,8 +3,8 @@ import { useTranslation } from '@/i18n/client'
 
 const OrderReview = ({ lang , selectedPackage , couponcode, setCouponCode , displayForm , setDisplayForm , handleSubmit, upsells}) => {
     const { t } = useTranslation(lang);
-    const jsonPkg = JSON.parse(selectedPackage);
-    const pkg = [jsonPkg[0]];
+    const jsonPkg = JSON.parse(selectedPackage) || [];
+    const pkg = jsonPkg.length > 0 ? [jsonPkg[0]] : [];
 
     const calculateTotal = () => {
         if (!upsells) return pkg[0].unit_amount/100;

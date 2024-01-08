@@ -5,7 +5,7 @@ const Mid = ({ t, lang }) => {
     return (
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-64 relative z-[3]">
           <div className="text-white text-left lg:text-center px-6 lg:px-0 lg:-mt-24">
-            <h1 className="font-inter text-7xl font-bold leading-16 tracking-tighter">
+            <h1 className="font-inter lg:text-7xl font-bold leading-16 tracking-tighter text-5xl">
               {t('hero_text_white1')} {t('hero_text_green')} <span className='text-[#9EE248]'>{t('hero_text_white2')}</span>
             </h1>
             <div className='flex items-center justify-center' >

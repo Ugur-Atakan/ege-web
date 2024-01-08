@@ -13,8 +13,8 @@ import Image from 'next/image'
 */
 
 const Features = ({ selectedPackage }) => {
-    const jsonPkg = JSON.parse(selectedPackage);
-    const pkg = [jsonPkg[0]];
+    const jsonPkg = JSON.parse(selectedPackage) || [];
+    const pkg = jsonPkg.length > 0 ? [jsonPkg[0]] : [];
 
     return (
         <div className='bg-white border rounded-[32px] p-6 my-6'>

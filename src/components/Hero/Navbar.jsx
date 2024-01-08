@@ -43,11 +43,11 @@ const Navbar = ({ isSticky, t, lang }) => {
                     }
                 </div>
                 <div className="flex gap-x-3 lg:hidden">
-                    {!mobileMenuOpen && (
+                    {/* {!mobileMenuOpen && (
                         <Link href={`/${lang}/onboarding`}  className='bg-white rounded-[28px] py-2 px-4 text-[16px] leading-[22px] font-semibold text-[#1649FF]'>
                             {t('menu_top_right_handcorner_button')}
                         </Link>
-                    )}
+                    )} */}
                     <button
                         type="button"
                         className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-400"
