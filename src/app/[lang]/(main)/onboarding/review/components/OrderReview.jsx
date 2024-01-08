@@ -6,9 +6,10 @@ const OrderReview = ({ lang , selectedPackage , couponcode, setCouponCode , disp
     const jsonPkg = selectedPackage ? JSON.parse(selectedPackage) : null;
 
     const calculateTotal = () => {
-        if (!upsells) return jsonPkg[0].unit_amount/100;
+        const packagePrice = jsonPkg ? jsonPkg[0].unit_amount/100 : 0;
+        if (!upsells) return packagePrice;
         const upsellPrices = upsells.map((upsell) => upsell.price);
-        const total = upsellPrices.reduce((a, b) => a + b, 0) + (jsonPkg[0].unit_amount/100);
+        const total = upsellPrices.reduce((a, b) => a + b, 0) + (packagePrice);
         return total;
     }
 
