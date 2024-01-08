@@ -1,12 +1,11 @@
 /* eslint-disable */
 'use client'
 
-import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import { usePathname, useRouter } from 'next/navigation'
-import { redirectToLastNullInternalFunnel, checkEqualPathName, clearPathnameLocalStorage } from '@/app/lib/utils'
+import {  useRouter } from 'next/navigation'
+// import { redirectToLastNullInternalFunnel, checkEqualPathName, clearPathnameLocalStorage } from '@/app/lib/utils'
 import { useTranslation } from '@/i18n/client'
-import { submitCookie } from '@/app/lib/session/clientActions'
+import { readCookie, submitCookie } from '@/app/lib/session/clientActions'
 
 import BackButton from '../../components/common/BackButton'
 import Heading from './Heading'
@@ -24,20 +23,34 @@ const RadioListItem = dynamic(() => import('./RadioListItem'))
  * @returns {JSX.Element}
 */
 
-const Content = ({ lang, companyType }) => {
+const Content = ({ lang }) => {
   const { t } = useTranslation(lang);
   const router = useRouter();
  
   const [companyState, setCompanyState] = useState('');
   const [otherStates, setOtherStates] = useState([]);
-  const selectedLLC = companyType === 'C-Corp' ? true : false;
+  let selectedLLC = false;
   
+  //* Read cookie
+  const [cookie, setCookie] = useState({});
+  useEffect(() => {
+    const readCkie = async () => {
+      const ckie = await readCookie();
+      selectedLLC =  ckie.companyType === 'C-Corp' ? true : false;
+      setCookie(ckie);
+    }
+    readCkie();
+  }, []);
+
+    
   //* Use Effect to set the cookie
-  const handleSubmit = async () => {
-    const cookie = {...{companyType}, companyState: companyState};
-    await submitCookie(cookie);
+  const handleSubmit = () => {
+    const ckie = {...cookie, companyState: companyState};
+    const setCookie = async (ckie) => {
+      await submitCookie(ckie);
+    }
+    setCookie(ckie);
     router.push(`/${lang}/onboarding/formation`);
-    // router.refresh();
   }
 
   //* API call to get the states
@@ -68,7 +81,7 @@ const Content = ({ lang, companyType }) => {
               <RadioListItem
                 id="hosting-small"
                 state="Wyoming"
-                companyType={companyType}
+                companyType={cookie.companyType}
                 companyState={companyState}
                 title={t('state_option1_title')}
                 text={t('state_option1_text')}
@@ -79,7 +92,7 @@ const Content = ({ lang, companyType }) => {
               <RadioListItem
                 id="hosting-big"
                 state="Delaware"
-                companyType={companyType}
+                companyType={cookie.companyType}
                 companyState={companyState}
                 title={t('state_option2_title')}
                 text={t('state_option2_text')}

@@ -8,7 +8,7 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-const PricingCard = ({ lang, tier, frequency }) => {
+const PricingCard = ({ lang, cookie, tier, frequency }) => {
     const [monthlyChecked, setMonthlyChecked] = useState(false);
     const [annuallyChecked, setAnnuallyChecked] = useState(false);
     const [oneTimeChecked, setOneTimeChecked] = useState(false);
@@ -22,9 +22,8 @@ const PricingCard = ({ lang, tier, frequency }) => {
         setOneTimeChecked(!oneTimeChecked);
       }
 
-      const cookie = await readCookie();
       const upsellIDs = cookie.upsellIDs ? cookie.upsellIDs : [];
-      const currentIDs = upsellIDs.map((upsell) => upse2l.id);
+      const currentIDs = upsellIDs.map((upsell) => upsell.id);
 
       if (currentIDs.includes(tier.stripeIDs[frequency.value])) {
         const index = currentIDs.indexOf(tier.stripeIDs[frequency.value]);
@@ -44,7 +43,11 @@ const PricingCard = ({ lang, tier, frequency }) => {
       }
       
       const cke = { ...cookie, upsellIDs: upsellIDs };
-      submitCookie(cke);
+
+      const sendCookie = async () => {
+        await submitCookie(cke);
+      }
+      sendCookie();
     };
 
     return tier.price[frequency.value] ? (

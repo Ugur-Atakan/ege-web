@@ -57,10 +57,12 @@ const Content = ({ lang  }) => {
     setCompanyName(e.target.value);
   }
 
+  //* Read cookie
   const [cookie, setCookie] = useState({});
   useEffect(() => {
     const readCkie = async () => {
       const ckie = await readCookie();
+      console.log('cookie', ckie);
       setCookie(ckie);
     }
     readCkie();

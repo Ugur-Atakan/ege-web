@@ -1,9 +1,9 @@
 /* eslint-disable */
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { submitCookie } from '@/app/lib/session/clientActions' 
+import { readCookie, submitCookie } from '@/app/lib/session/clientActions' 
 
 import { noinclude, arrowblack, arrowblue } from '@/assets/images'
 import BackButton from '../../components/common/BackButton'
@@ -14,7 +14,7 @@ import CardsFooter from './CardsFooter'
 import packageDataEN from '@/assets/json/packageDataEN.json'
 import packageDataTR from '@/assets/json/packageDataTR.json'
 
-import { usePathname, useRouter } from 'next/navigation'
+import {  useRouter } from 'next/navigation'
 import { redirectToLastNullInternalFunnel, checkEqualPathName, clearPathnameLocalStorage } from '@/app/lib/utils'
 import { getRandomPackages } from '../utils/util'
 import { useTranslation } from '@/i18n/client'
@@ -27,10 +27,18 @@ import { useTranslation } from '@/i18n/client'
  * @returns {JSX.Element} 
 */
 
-const Content = ({ lang, cookie, silverProduct, goldProduct, platProduct }) => {
+const Content = ({ lang, silverProduct, goldProduct, platProduct }) => {
   const { t } = useTranslation(lang);
   const router = useRouter();
-  // console.log('States: ', cookie);
+
+  const [cookie, setCookie] = useState({});
+  useEffect(() => {
+    const readCkie = async () => {
+      const ckie = await readCookie();
+      setCookie(ckie);
+    }
+    readCkie();
+  }, []);
 
   const [packagePrices, setPackagePrices] = useState([]);
   const [selectedPackage, setSelectedPackage] = useState(null);
@@ -84,13 +92,13 @@ const Content = ({ lang, cookie, silverProduct, goldProduct, platProduct }) => {
         />
 
         <CardsFooter
-            cookie={cookie}
-            selectedPackage={selectedPackage}
-            selectedCompanyType={selectedCompanyType}
-            selectedPackageVar={selectedPackageVar}
-            lang={lang}
-            buttonText={t('formation_continue')}
-            bottomText={t('formation_card_footer')}
+          cookie={cookie}
+          selectedPackage={selectedPackage}
+          selectedCompanyType={selectedCompanyType}
+          selectedPackageVar={selectedPackageVar}
+          lang={lang}
+          buttonText={t('formation_continue')}
+          bottomText={t('formation_card_footer')}
         />
       </div>
           
@@ -205,18 +213,18 @@ const Content = ({ lang, cookie, silverProduct, goldProduct, platProduct }) => {
                           <td>
                           </td>
                           <td>
-                            <div
+                            {/* <div
                               onClick={() => {continueWithSelectedPackage(0)}} 
                               className='flex items-center justify-center bg-[#9EE248] text-[#222222] font-semibold rounded-2xl p-2.5 m-5 cursor-pointer'>
                               Start with Gold
-                            </div>
+                            </div> */}
                           </td>
                           <td>
-                            <div
+                            {/* <div
                               onClick={() => {continueWithSelectedPackage(1)}}
                               className='flex items-center justify-center bg-[#1649FF] text-white font-semibold rounded-2xl p-2.5 m-5 cursor-pointer'>
                               Start with Silver
-                            </div>
+                            </div> */}
                           </td>
                         </tr>
                       </tbody>
@@ -226,26 +234,26 @@ const Content = ({ lang, cookie, silverProduct, goldProduct, platProduct }) => {
                           <td>
                           </td>
                           <td>
-                            <div
+                            {/* <div
                               onClick={() => {continueWithSelectedPackage(0)}}
                               className='flex items-center justify-center bg-[#9EE248] text-[#222222] font-semibold rounded-2xl p-2.5 m-5 cursor-pointer'>
                               Silver
-                            </div>
+                            </div> */}
                           </td>
                           <td>
-                            <div
+                            {/* <div
                               onClick={() => {continueWithSelectedPackage(1)}}
                               className='flex items-center justify-center bg-[#1649FF] text-white font-semibold rounded-2xl p-2.5 m-5 cursor-pointer'>
                               Gold
-                            </div>
+                            </div> */}
                           </td>
-                          {packagePrices.length >= 3 && <td>
+                          {/* {packagePrices.length >= 3 && <td>
                             <div
                               onClick={() => {continueWithSelectedPackage(2)}}
                               className='flex items-center justify-center bg-[#222222] text-white font-semibold rounded-2xl p-2.5 m-5 cursor-pointer'>
                               Platinum
                             </div>
-                          </td>}
+                          </td>} */}
                         </tr>
                       </tbody>
                     )

@@ -13,7 +13,6 @@ import { getLLCSilver, getLLCGold, getCorpSilver, getCorpGold, getCorpPlat } fro
 
 const Page = async ({ params: { lang } }) => {
   const cookie = await readCookieFromStorageServerAction();
-  // console.log('Cookie ', cookie);
 
   let silverProduct = null;
   let platProduct = null;
@@ -32,7 +31,6 @@ const Page = async ({ params: { lang } }) => {
     silverProduct !== null && (
       <Content
         lang={lang}
-        cookie={cookie}
         silverProduct={silverProduct}
         goldProduct={goldProduct}
         platProduct={platProduct}
