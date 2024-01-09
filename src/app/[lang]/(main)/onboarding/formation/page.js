@@ -13,7 +13,8 @@ import { getLLCSilver, getLLCGold, getCorpSilver, getCorpGold, getCorpPlat } fro
 
 const Page = async ({ params: { lang } }) => {
   const cookie = await readCookieFromStorageServerAction();
-
+  console.log('Cookie from formation page: ', cookie);
+  
   let silverProduct = null;
   let platProduct = null;
   let goldProduct = null;

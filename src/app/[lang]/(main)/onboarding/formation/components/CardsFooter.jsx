@@ -13,6 +13,7 @@ const CardsFooter = ({ cookie, selectedPackage, selectedCompanyType, selectedPac
     const ckie = { ...cookie, 'selectedPackage': { ...selectedPackage, features }};
     const sendCookie = async () => {
       await submitCookie(ckie);
+      router.refresh();
     }
     sendCookie();
   };

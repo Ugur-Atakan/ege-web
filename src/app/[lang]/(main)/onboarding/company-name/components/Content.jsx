@@ -62,7 +62,7 @@ const Content = ({ lang  }) => {
   useEffect(() => {
     const readCkie = async () => {
       const ckie = await readCookie();
-      console.log('cookie', ckie);
+      console.log('Cookie inside company-name ', ckie);
       setCookie(ckie);
     }
     readCkie();
@@ -75,6 +75,7 @@ const Content = ({ lang  }) => {
 
     const sendCookie = async () => {
       await submitCookie(ckie);
+      router.refresh();
     };
     sendCookie();
     router.push(`/${lang}/onboarding/upsell`);

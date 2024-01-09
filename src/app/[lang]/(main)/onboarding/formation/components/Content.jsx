@@ -19,6 +19,7 @@ import { redirectToLastNullInternalFunnel, checkEqualPathName, clearPathnameLoca
 import { getRandomPackages } from '../utils/util'
 import { useTranslation } from '@/i18n/client'
 
+
 /**
  * Formation Content component
  * @type {function} 
@@ -35,6 +36,7 @@ const Content = ({ lang, silverProduct, goldProduct, platProduct }) => {
   useEffect(() => {
     const readCkie = async () => {
       const ckie = await readCookie();
+      console.log('Cookie inside formation ', ckie)
       setCookie(ckie);
     }
     readCkie();

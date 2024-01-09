@@ -36,6 +36,7 @@ const Content = ({ lang }) => {
   useEffect(() => {
     const readCkie = async () => {
       const ckie = await readCookie();
+      console.log('Cookie inside state page ', ckie);
       selectedLLC =  ckie.companyType === 'C-Corp' ? true : false;
       setCookie(ckie);
     }
@@ -48,6 +49,7 @@ const Content = ({ lang }) => {
     const ckie = {...cookie, companyState: companyState};
     const setCookie = async (ckie) => {
       await submitCookie(ckie);
+      router.refresh();
     }
     setCookie(ckie);
     router.push(`/${lang}/onboarding/formation`);
