@@ -43,7 +43,7 @@ const Hero = ({ lang }) => {
       <div className="relative isolate overflow-hidden pt-14 hero-section">
         <Mid t={t} lang={lang} />
         <div className='absolute top-8 -right-[45rem] lg:top-36 lg:right-0 z-0 rocket-animation'>
-          <Image src={rocket} className='rocket' alt='rocket' />
+          {/* <Image src={rocket} className='rocket' alt='rocket' /> */}
         </div>
         <Bottom />
       </div>

@@ -11,6 +11,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import LanguageChange from './LanguageChange'
 import HoverMenu from './HoverMenu'
 import i18next from 'i18next'
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = ({ isSticky, t, lang }) => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -30,13 +31,18 @@ const Navbar = ({ isSticky, t, lang }) => {
     };
 
     return (
-        <header className={`absolute inset-x-0 top-0 z-50 ${isSticky ? 'lg:!fixed !bg-[#ECEFF1]' : ''}`}>
+        <motion.header
+            className={`absolute inset-x-0 top-0 z-50 ${isSticky ? 'lg:!fixed !bg-[#ECEFF1]' : ''}`}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+        >
             <Calendely isSticky={isSticky} lang={lang} />
 
             <nav className={`mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-2 lg:p-0 ${isSticky && 'border-b border-[#C8C8C8] lg:p-4 lg:py-4'}`} aria-label="Global">
                 <div className="flex lg:flex-1">
                     {!mobileMenuOpen &&
-                        <Link href="/" className="-m-1.5 p-1.5">
+                        <Link href="/" className="hover:scale-105 hv-m-1.5 p-1.5">
                             <span className="sr-only">Registate</span>
                             <Image className="w-[116px] h-[34px]" src={isSticky ? bluelogo : whitelogo} alt="" />
                         </Link>
@@ -59,16 +65,17 @@ const Navbar = ({ isSticky, t, lang }) => {
             
                 {/* Mid navbar component */}
                 <div className="hidden lg:flex lg:gap-x-12">
-                    <Link href={`/${lang}/how-it-works`} className={`px-2 text-sm font-medium leading-6 ${isSticky ? 'text-black' : 'text-white'}`}>
+                    <Link href={`/${lang}/how-it-works`} className={`hover:scale-105 px-2 text-sm font-medium leading-6 ${isSticky ? 'text-black' : 'text-white'}`}>
                         {t('menu2_title')}
                     </Link>
                     <button 
                         onMouseEnter={() => setShowMenu(!showMenu)}
-                        className={`px-2 text-sm font-medium leading-6 ${isSticky ? 'text-black' : 'text-white'}`}>
+                        className={`hover:scale-105 px-2 text-sm font-medium leading-6 ${isSticky ? 'text-black' : 'text-white'}`}
+                    >
                         {t('menu1_title')}
                         <HoverMenu lang={lang} showMenu={showMenu} setShowMenu={setShowMenu}/>
                     </button>
-                    <Link href={`/${lang}/blog`} className={`px-2 text-sm font-medium leading-6 ${isSticky ? 'text-black' : 'text-white'}`}>
+                    <Link href={`/${lang}/blog`} className={`hover:scale-105 px-2 text-sm font-medium leading-6 ${isSticky ? 'text-black' : 'text-white'}`}>
                         {t('menu3_title')}
                     </Link>
                 </div>
@@ -81,7 +88,7 @@ const Navbar = ({ isSticky, t, lang }) => {
                         <Link
                             href={`/${lang}/onboarding`}
                             id="header-fmc"
-                            className={`bg-white py-2 px-4 rounded-full text-[#1649FF] font-semibold text-[14px] leading-5' ${isSticky && '!bg-blue-600 !text-white'}`}
+                            className={`hover:scale-105 bg-white py-2 px-4 rounded-full text-[#1649FF] font-semibold text-[14px] leading-5' ${isSticky && '!bg-blue-600 !text-white'}`}
                         >
                             {t('menu_top_right_handcorner_button')}
                         </Link>
@@ -89,7 +96,7 @@ const Navbar = ({ isSticky, t, lang }) => {
                 </div>
             </nav>
             
-            {/* Mobile Menu Side */}
+            {/* Mobile Menu Right Sidebar */}
             <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
                 <div className="fixed inset-0 z-10" />
                     <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
@@ -128,7 +135,7 @@ const Navbar = ({ isSticky, t, lang }) => {
                         </div>
                 </Dialog.Panel>
             </Dialog>
-        </header>
+        </motion.header>
     );
 }
 

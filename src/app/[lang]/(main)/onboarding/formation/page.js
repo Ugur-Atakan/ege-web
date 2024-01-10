@@ -1,7 +1,10 @@
 import React from 'react'
 import Content from "./components/Content";
+import NewContent from './components/NewContent';
+import TwoPriceDisplay from './components/TwoPriceDisplay'
 import { readCookieFromStorageServerAction } from '@/app/lib/session/serverActions'
 import { getLLCSilver, getLLCGold, getCorpSilver, getCorpGold, getCorpPlat } from './api/index.js'
+
 
 /**
  * Page component for the formation page
@@ -14,7 +17,7 @@ import { getLLCSilver, getLLCGold, getCorpSilver, getCorpGold, getCorpPlat } fro
 const Page = async ({ params: { lang } }) => {
   const cookie = await readCookieFromStorageServerAction();
   console.log('Cookie from formation page: ', cookie);
-  
+
   let silverProduct = null;
   let platProduct = null;
   let goldProduct = null;
@@ -28,15 +31,20 @@ const Page = async ({ params: { lang } }) => {
       platProduct = await getCorpPlat(cookie.companyState);
   }
 
+
   return (
-    silverProduct !== null && (
-      <Content
+    platProduct == null ? 
+      <TwoPriceDisplay 
+        lang={lang}
+        silverProduct={silverProduct}
+        goldProduct={goldProduct}
+      /> :
+      <NewContent
         lang={lang}
         silverProduct={silverProduct}
         goldProduct={goldProduct}
         platProduct={platProduct}
       />
-  )
  )
 }
 

@@ -21,19 +21,15 @@ const OneTimePackages = ({ lang,  EIN, apostille }) => {
   }, []);
 
   return (
-    <div className="bg-white">
     <main>
     {/* Pricing section */}
       <div className="isolate overflow-hidden">
-        <div className="flow-root py-16 sm:pt-16 lg:pb-0">
+        <div className="flow-root ">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="relative z-10">
             <h1 className="mx-auto max-w-4xl text-center text-5xl font-bold tracking-tight text-black">
                One time Packages
             </h1>
-            <p className="mx-auto mt-4 max-w-2xl text-center text-lg leading-8 text-black/60">
-                Get these one time packages, pay once and enjoy the benefits.
-            </p>
             <div className="isolate mx-auto mt-10 grid max-w-md grid-cols-1 gap-8 md:max-w-2xl md:grid-cols-2 lg:max-w-4xl xl:mx-0 xl:max-w-none xl:grid-cols-3">
                 {pricing?.tiers && pricing.tiers.map((tier) => (
                     <PricingCard key={tier.id} cookie={cookie} tier={tier} frequency={pricing.frequencies[0]} />
@@ -53,7 +49,6 @@ const OneTimePackages = ({ lang,  EIN, apostille }) => {
         </div>
     </div>
     </main>
-   </div>
   )
 }
 

@@ -1,5 +1,5 @@
 import Content from './components/Content'
-
+import NewContent from './components/NewContent'
 /**
  * Page route for pricing page
  * @type {function}
@@ -10,7 +10,8 @@ import Content from './components/Content'
 
 const Page = async ({ params: { lang } }) => {
   return (
-    <Content lang={lang}  />
+    // <Content lang={lang}  />
+    <NewContent lang={lang} />
   )
 }
 

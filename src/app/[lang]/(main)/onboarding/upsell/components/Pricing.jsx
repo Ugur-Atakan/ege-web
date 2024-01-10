@@ -11,7 +11,6 @@ function classNames(...classes) {
 }
 
 const Pricing = ({ lang, complianceReminder, virtualMailBoxMonthly, virtualMailBoxYearly, officeSpaceMonthly, officeSpaceYearly }) => {  
- 
   const [pricing, setPrice] = useState(null);
   const [cookie, setCookie] = useState({});
   const [frequency, setFrequency] = useState({});
@@ -29,20 +28,12 @@ const Pricing = ({ lang, complianceReminder, virtualMailBoxMonthly, virtualMailB
 
 
   return (
-    <div className="bg-white">
     <main>
-      <div className="isolate overflow-hidden">
-        <div className="flow-root py-16 sm:pt-16 lg:pb-0">
-        <div className="mx-auto max-w-7xl px-6 py-10 lg:px-8">
+      <div className="isolate overflow-hidden pb-2">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="relative z-10">
-            <h1 className="mx-auto max-w-4xl text-center text-5xl font-bold tracking-tight text-black">
-                Add-ons
-            </h1>
-            <p className="mx-auto mt-4 max-w-2xl text-center text-lg leading-8 text-black/60">
-                Upgrade your package to get more features and benefits.
-            </p>
             {/* Pricing frequency */}
-            <div className="mt-16 flex justify-center">
+            <div className="flex justify-center">
                 
               {pricing?.frequencies && ( <RadioGroup
                     value={frequency}
@@ -76,10 +67,8 @@ const Pricing = ({ lang, complianceReminder, virtualMailBoxMonthly, virtualMailB
             </div>
           </div>
         </div>
-      </div>
      </div>
     </main>
-   </div>
   )
 }
 

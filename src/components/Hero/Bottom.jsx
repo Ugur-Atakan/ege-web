@@ -1,9 +1,23 @@
-import React from 'react'
+import React from 'react';
+import { motion } from 'framer-motion';
 
 const Bottom = () => {
-    return (
-        <div>
-            <div className='absolute bottom-0 w-full'>
+  return (
+    <div>
+      <motion.div
+        className='absolute bottom-0 w-full'
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className='w-full text-white text-[14px] leading-[28px] font-medium'>
+          <motion.div
+            className='flex flex-row justify-between h-20 lg:h-48 px-4 gap-3'
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+                     <div className='absolute bottom-0 w-full'>
                 <div className='w-full text-white text-[14px] leading-[28px] font-medium'>
                     <div className='flex flex-row justify-between h-20 lg:h-48 px-4 gap-3'>
                     <div className='flex flex-col justify-end h-[70%]'>
@@ -69,10 +83,19 @@ const Bottom = () => {
                     </div>
                 </div>
             </div>
-            <div className='absolute bottom-0 w-full h-[140px] bg-[#ECEFF1] circle'>
-            </div>
+          </motion.div>
         </div>
-    );
-}
+      </motion.div>
 
-export default Bottom
+      <div
+        className='absolute bottom-0 w-full h-[140px] bg-[#ECEFF1] circle'
+      />
+    </div>
+  );
+};
+
+export default Bottom;
+
+
+
+   
