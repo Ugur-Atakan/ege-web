@@ -82,7 +82,7 @@ const TwoPriceDisplay = ({ lang, silverProduct, goldProduct }) => {
                   className="hidden lg:absolute lg:inset-x-px lg:bottom-0 lg:top-4 lg:block lg:rounded-t-2xl lg:bg-gray-800/80 lg:ring-1 lg:ring-white/10"
                   aria-hidden="true"
                 />
-                <Cards pricing={pricing} />
+                <Cards lang={lang} pricing={pricing} cookie={cookie} />
               </div>
             </div>
           </div>

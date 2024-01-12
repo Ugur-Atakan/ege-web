@@ -21,7 +21,7 @@ const FillinForm = (params) => {
 
     return (
         <div>
-            <h2 className='font-semibold text-[40px] leading-[44px] text-[#222222]'>{t("review_information")}</h2>
+            <h2 className='font-semibold text-[40px] leading-[44px] text-white'>{t("review_information")}</h2>
 
             <div className='bg-white border rounded-[32px] p-6 my-6'>
                 <h2 className='font-semibold text-[24px] leading-[44px] text-[#222222]'>Account Owner</h2>

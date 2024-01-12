@@ -16,8 +16,8 @@ const Features = ({ selectedPackage }) => {
     return (
         selectedPackage && <div className='bg-white border rounded-[32px] p-6 my-6'>
             <div className='flex items-center justify-between'>
-                <h2 className='font-semibold capitalize text-[24px] leading-[44px] text-[#222222]'>{selectedPackage.product}</h2>
-                <h2 className='font-semibold text-[24px] leading-[44px] text-[#222222]'>{'$ ' + (selectedPackage.unit_amount / 100)}</h2>
+                <h2 className='font-semibold capitalize text-[24px] leading-[44px] text-[#222222]'>{selectedPackage.tierName}</h2>
+                <h2 className='font-semibold text-[24px] leading-[44px] text-[#222222]'>{'$ ' + (selectedPackage.price)}</h2>
             </div>
             <div className='block py-6'>
                 {selectedPackage.features && selectedPackage.features.map((feature, innerIndex) => (

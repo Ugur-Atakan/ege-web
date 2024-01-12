@@ -1,18 +1,14 @@
 'use client';
 
-import { useState } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
-import Slider from 'react-slick'
-import { calendar, hat, folder, protectionicon, tic, at, navigator,
-  mail, phone, travel, axe, wallet, filetext, sheild, dollar, locker
-} from '@/assets/images';
+import { calendar, hat, folder, protectionicon, tic, at, navigator, travel, axe, wallet, filetext } from '@/assets/images';
 import Card from './Card';
 import { useTranslation } from '@/i18n/client'
+import Slider from 'react-slick';
+import { useMediaQuery } from 'react-responsive';
 
 const SupportBusiness = ({ lang }) => {
   const { t } = useTranslation(lang);
-  const [showAllPackages, setShowAllPackages] = useState(false);
 
   const stayCompliantPackage = [
     { name: t('after_formation_package1_title'), description: t('after_formation_package1_description'), button: t('after_formation_package1_button'), href: `/${lang}/product/compliance-reminder`, img: hat },
@@ -30,17 +26,39 @@ const SupportBusiness = ({ lang }) => {
     { name: t('after_formation_package14_title'), description: t('after_formation_package14_description'), button: t('after_formation_package14_button'), href: `/${lang}/contact-us`, img: filetext }
   ]
   
+  const isMobile = useMediaQuery({ maxWidth: 767 }); 
+
   return (
     <div className="bg-[#1649FF] overflow-hidden">
       <div className="mx-auto max-w-5xl p-8 lg:px-12 lg:pt-24 pb-12">
         <h2 className="font-bold text-[32px] leading-[38px] lg:text-[64px] lg:leading-[64px] text-white text-left lg:text-center">{t('after_formation_title_white')}</h2><h3 className="font-bold text-[32px] leading-[38px] lg:text-[64px] lg:leading-[64px] text-[#9EE248] text-left lg:text-center">{t('after_formation_title_green')}</h3>
       </div>
-
-      <div className='flex flex-row gap-4  scroller-inner'>      
-        {stayCompliantPackage.map((pack, index) => (     
-          <Card key={index} index={index} pack={pack} />
-        ))}
-      </div>
+    
+      {isMobile ? (
+        <Slider
+          // dots={true}
+          infinite={true}
+          speed={500}
+          slidesToShow={1}
+          slidesToScroll={1}
+          swipeToSlide={true}
+          adaptiveHeight={true}
+          centerMode={true}
+          autoplay={true}
+          centerPadding="60px"
+        >
+          {stayCompliantPackage.map((pack, index) => (
+            <Card key={index} index={index} pack={pack} />
+          ))}
+        </Slider>
+      ) : (
+        <div className='flex flex-row gap-4 scroller-inner'>
+          {stayCompliantPackage.map((pack, index) => (
+            <Card key={index} index={index} pack={pack} />
+          ))}
+        </div>
+      )}
+        
 
       <div className="mx-auto max-w-5xl border-t mt-4 lg:mt-16 border-white border-opacity-[0.20] py-12 px-6 lg:px-0">
         <div className="grid grid-cols-1 md:grid-cols:2 lg:grid-cols-3 items-start gap-6 lg:gap-3">

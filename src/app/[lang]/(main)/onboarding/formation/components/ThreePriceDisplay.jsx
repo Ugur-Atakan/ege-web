@@ -2,20 +2,14 @@
 
 import { CheckIcon, XMarkIcon as XMarkIconMini } from '@heroicons/react/20/solid'
 import React, { useState, useEffect } from 'react'
-import Image from 'next/image'
 import { readCookie, submitCookie } from '@/app/lib/session/clientActions' 
 
-import { noinclude, arrowblack, arrowblue } from '@/assets/images'
-import BackButton from '../../components/common/BackButton'
-import Heading from './Heading'
 import Cards from './NewDesign/Cards'
-import CardsFooter from './CardsFooter'
 
 import packageDataEN from '@/assets/json/packageDataEN.json'
 import packageDataTR from '@/assets/json/packageDataTR.json'
 
 import {  useRouter } from 'next/navigation'
-import { redirectToLastNullInternalFunnel, checkEqualPathName, clearPathnameLocalStorage } from '@/app/lib/utils'
 import { getRandomPackages, getTriplePricing } from '../utils/util'
 import { useTranslation } from '@/i18n/client'
 
@@ -23,7 +17,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-const NewContent = ({ lang, silverProduct, goldProduct, platProduct }) => {
+const ThreePriceDisplay = ({ lang, silverProduct, goldProduct, platProduct }) => {
   const { t } = useTranslation(lang);
   const router = useRouter();
 
@@ -51,7 +45,7 @@ const NewContent = ({ lang, silverProduct, goldProduct, platProduct }) => {
     setSelectedPackageIndex(selectedIndex);
   }
 
-  const pricing = getPricing(silverProduct, goldProduct, platProduct)
+  const pricing = getTriplePricing(silverProduct, goldProduct, platProduct)
 
   return (
     <div className="bg-white">
@@ -87,7 +81,7 @@ const NewContent = ({ lang, silverProduct, goldProduct, platProduct }) => {
                   className="hidden lg:absolute lg:inset-x-px lg:bottom-0 lg:top-4 lg:block lg:rounded-t-2xl lg:bg-gray-800/80 lg:ring-1 lg:ring-white/10"
                   aria-hidden="true"
                 />
-                <Cards pricing={pricing} />
+                <Cards lang={lang} pricing={pricing} cookie={cookie} />
               </div>
             </div>
           </div>
@@ -327,4 +321,4 @@ const NewContent = ({ lang, silverProduct, goldProduct, platProduct }) => {
   )
 }
 
-export default NewContent
+export default ThreePriceDisplay

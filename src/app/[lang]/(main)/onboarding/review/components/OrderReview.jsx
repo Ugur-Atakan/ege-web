@@ -1,14 +1,13 @@
 import React from 'react'
 import { useTranslation } from '@/i18n/client'
 
-const OrderReview = ({ lang , selectedPackage , couponcode, setCouponCode , displayForm , setDisplayForm , handleSubmit, upsells}) => {
+const OrderReview = ({ lang , selectedPackage  , displayForm , setDisplayForm , handleSubmit, upsells}) => {
     const { t } = useTranslation(lang);
-
+    
     const calculateTotal = () => {
-        const packagePrice = selectedPackage ? selectedPackage.unit_amount/100 : 0;
-        if (!upsells) return packagePrice;
+        if (!upsells) return selectedPackage?.price || 0;
         const upsellPrices = upsells.map((upsell) => upsell.price);
-        const total = upsellPrices.reduce((a, b) => a + b, 0) + (packagePrice);
+        const total = upsellPrices.reduce((a, b) => a + b, 0) + (selectedPackage.price);
         return total;
     }
 
@@ -26,9 +25,9 @@ const OrderReview = ({ lang , selectedPackage , couponcode, setCouponCode , disp
                     <React.Fragment>
                         <div>
                             <h2 className='font-semibold text-[16px] leading-6 text-[#222222]'>{t("review_payment_type")}</h2>
-                            <p className='font-semibold capitalize text-[16px] leading-6 text-[#222222]'>{selectedPackage.product}</p>
+                            <p className='font-semibold capitalize text-[16px] leading-6 text-[#222222]'>{selectedPackage.tierName}</p>
                         </div>
-                        <div><h3 className='font-semibold text-[16px] leading-6 text-[#222222]'>{'$ ' + (selectedPackage.unit_amount / 100)}</h3></div>
+                        <div><h3 className='font-semibold text-[16px] leading-6 text-[#222222]'>{'$ ' + (selectedPackage.price)}</h3></div>
                     </React.Fragment>
                 }
             </div>

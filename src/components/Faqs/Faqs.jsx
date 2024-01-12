@@ -56,8 +56,8 @@ const Faqs = ({ lang }) => {
   ]
 
   return (
-      <section id="faqs" aria-labelledby="faqs-title">
-        <div className="bg-black pt-24">
+      <section id="faqs"  aria-labelledby="faqs-title">
+        <div className="bg-black py-12">
           <div className="mx-auto max-w-7xl py-12 px-4 sm:py-24 sm:px-6 lg:px-8">
             <div className='mx-auto max-w-[330px]'>
               <h2 className="text-center font-medium text-[26px] leading-[32px] lg:text-[40px] lg:leading-[44px] text-white">
@@ -71,7 +71,7 @@ const Faqs = ({ lang }) => {
         </div>
 
         {/* Fix this later */}
-        <div className='hidden faq-background pb-24'>
+        <div className='hidden faq-background '>
             <div className="mx-auto max-w-2xl pb-12 ">
               <div className='lg:-bottom-24 lg:-right-12'>
                 <Image src={navigatoricon} className='w-128 h-128 ' alt='navigator icon' />
@@ -82,7 +82,7 @@ const Faqs = ({ lang }) => {
               {/* <FooterComponent lang={lang} t={t} /> */}
             </div>
         </div>
-        <Bottom />      
+        {/* <Bottom />       */}
       </section>
   )
 }

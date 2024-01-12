@@ -128,7 +128,7 @@ const Content = ({ lang }) => {
     }, []);
 
     return (
-        <div className="block md:flex items-start gap-12 bg-[#ECEFF1]">
+        <div className="block md:flex items-start gap-12 bg-[#111827]">
             <div className="w-full md:w-[45%]">
                 {displayForm ? (
                     <div className='py-8 px-4 md:pl-10 md:py-8'>
@@ -182,7 +182,7 @@ const Content = ({ lang }) => {
                     </div>
                 ) : (
                     <div className="py-8 px-4 md:pl-10 md:py-8">
-                        <h1 className="font-semibold text-[26px] md:text-[40px] leading-[44px] text-[#222222]">
+                        <h1 className="font-semibold text-[26px] md:text-[40px] leading-[44px] text-white">
                             {t('review_title')}
                         </h1>
                         <CompanyDetails

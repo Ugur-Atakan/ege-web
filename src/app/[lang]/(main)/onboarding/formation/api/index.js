@@ -13,7 +13,7 @@ const getLLCSilver = async (state) => {
 
       if (res.data.data && res.data.data.length > 0) {
         res.data.data[0].product = 'Silver';
-        return res.data;
+        return res.data.data[0];
       } else {
         // Handle the case where data is not available
         console.error("No data received from Stripe API ");
@@ -37,7 +37,7 @@ const getLLCGold = async (state) => {
         });
         if (res.data.data && res.data.data.length > 0) {
             res.data.data[0].product = 'Silver';
-            return res.data;
+            return res.data.data[0];
           } else {
             // Handle the case where data is not available
             console.error("No data received from Stripe API ");
@@ -60,7 +60,7 @@ const getCorpSilver = async (state) => {
 
         if (res.data.data && res.data.data.length > 0) {
             res.data.data[0].product = 'Silver';
-            return res.data;
+            return res.data.data[0];
           } else {
             console.error("No data received from Stripe API ");
         
@@ -83,7 +83,7 @@ const getCorpGold = async (state) => {
 
         if (res.data.data && res.data.data.length > 0) {
             res.data.data[0].product = 'Gold';
-            return res.data;
+            return res.data.data[0];
         } else {
             console.error("No data received from Stripe API ");
         }
@@ -105,7 +105,7 @@ const getCorpPlat = async (state) => {
 
         if (res.data.data && res.data.data.length > 0) {
             res.data.data[0].product = 'Platinum';
-            return res.data;
+            return res.data.data[0];
         } 
         else {
             console.error("No data received from Stripe API ");

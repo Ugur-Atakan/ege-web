@@ -1,3 +1,4 @@
+
 /**
  * @param {object} selectedPackage - the selected package
  * @param {string} selectedCompanyType - the selected company type
@@ -28,26 +29,26 @@ export const getRandomPackages = (selectedPackage, selectedCompanyType, selected
     return randomFeatures;
 }
 
-export const pricing = {
+export const triplePricing = {
     tiers: [
       {
         name: 'Silver',
-        id: 'tier-starter',
-        href: '#',
+        id: 'tier-silver',
+        onClick: () => console.log('Silver tier was clicked'),
         featured: false,
         description: 'All your essential business finances, taken care of.',
         price: 15,
         mainFeatures: ['Basic invoicing', 'Easy to use accounting', 'Mutli-accounts'],
       },
       {
-        name: 'Gold',
-        id: 'tier-scale',
-        href: '#',
+        name: 'Platinum',
+        id: 'tier-platinum',
+        onClick: () => console.log('Platinum tier was clicked'),
         featured: true,
-        description: 'The best financial services for your thriving business.',
-        price: 25,
+        description: 'Convenient features to take your business to the next level.',
+        price: 30,
         mainFeatures: [
-          'Advanced invoicing',
+          'Basic invoicing',
           'Easy to use accounting',
           'Mutli-accounts',
           'Tax planning toolkit',
@@ -56,38 +57,55 @@ export const pricing = {
         ],
       },
       {
-        name: 'Platinum',
-        id: 'tier-growth',
-        href: '#',
+        name: 'Gold',
+        id: 'tier-gold',
+        onClick: () => console.log('Gold tier was clicked'),
         featured: false,
-        description: 'Convenient features to take your business to the next level.',
-        price: 30,
-        mainFeatures: ['Basic invoicing', 'Easy to use accounting', 'Mutli-accounts', 'Tax planning toolkit'],
-      },
+        description: 'The best financial services for your thriving business.',
+        price: 25,
+        mainFeatures: [
+          'Advanced invoicing',
+          'Easy to use accounting',
+          'Mutli-accounts',
+          'Tax planning toolkit'
+        ],
+      }
     ],
     sections: [
       {
-        name: 'Catered for business',
+        name: 'Business Formation and Compliance',
         features: [
-          { name: 'Tax Savings', tiers: { Starter: true, Scale: true, Growth: true } },
-          { name: 'Easy to use accounting', tiers: { Starter: true, Scale: true, Growth: true } },
-          { name: 'Multi-accounts', tiers: { Starter: '3 accounts', Scale: 'Unlimited accounts', Growth: '7 accounts' } },
-          { name: 'Invoicing', tiers: { Starter: '3 invoices', Scale: 'Unlimited invoices', Growth: '10 invoices' } },
-          { name: 'Exclusive offers', tiers: { Starter: false, Scale: true, Growth: true } },
-          { name: '6 months free advisor', tiers: { Starter: false, Scale: true, Growth: true } },
-          { name: 'Mobile and web access', tiers: { Starter: false, Scale: true, Growth: false } },
+          { name: 'Tax Savings', tiers: { Silver: true, Gold: true, Platinum: true } },
+          { name: 'Easy to use accounting', tiers: { Silver: true, Gold: true, Platinum: true } },
+          { name: 'Multi-accounts', tiers: { Silver: '3 accounts', Gold: 'Unlimited accounts', Platinum: '7 accounts' } },
+          { name: 'Invoicing', tiers: { Silver: '3 invoices', Gold: 'Unlimited invoices', Platinum: '10 invoices' } },
+          { name: 'Exclusive offers', tiers: { Silver: false, Gold: true, Platinum: true } },
+          { name: '6 months free advisor', tiers: { Silver: false, Gold: true, Platinum: true } },
+          { name: 'Mobile and web access', tiers: { Silver: false, Gold: true, Platinum: false } },
         ],
       },
       {
-        name: 'Other perks',
+        name: 'Document Management and Delivery',
         features: [
-          { name: '24/7 customer support', tiers: { Starter: true, Scale: true, Growth: true } },
-          { name: 'Instant notifications', tiers: { Starter: true, Scale: true, Growth: true } },
-          { name: 'Budgeting tools', tiers: { Starter: true, Scale: true, Growth: true } },
-          { name: 'Digital receipts', tiers: { Starter: true, Scale: true, Growth: true } },
-          { name: 'Pots to separate money', tiers: { Starter: false, Scale: true, Growth: true } },
-          { name: 'Free bank transfers', tiers: { Starter: false, Scale: true, Growth: false } },
-          { name: 'Business debit card', tiers: { Starter: false, Scale: true, Growth: false } },
+          { name: '24/7 customer support', tiers: { Silver: true, Gold: true, Platinum: true } },
+          { name: 'Instant notifications', tiers: { Silver: true, Gold: true, Platinum: true } },
+          { name: 'Budgeting tools', tiers: { Silver: true, Gold: true, Platinum: true } },
+          { name: 'Digital receipts', tiers: { Silver: true, Gold: true, Platinum: true } },
+          { name: 'Pots to separate money', tiers: { Silver: false, Gold: true, Platinum: true } },
+          { name: 'Free bank transfers', tiers: { Silver: false, Gold: true, Platinum: false } },
+          { name: 'Business debit card', tiers: { Silver: false, Gold: true, Platinum: false } },
+        ],
+      },
+      {
+        name: 'Legal and Administrative Support',
+        features: [
+          { name: '24/7 customer support', tiers: { Silver: true, Gold: true, Platinum: true } },
+          { name: 'Instant notifications', tiers: { Silver: true, Gold: true, Platinum: true } },
+          { name: 'Budgeting tools', tiers: { Silver: true, Gold: true, Platinum: true } },
+          { name: 'Digital receipts', tiers: { Silver: true, Gold: true, Platinum: true } },
+          { name: 'Pots to separate money', tiers: { Silver: false, Gold: true, Platinum: true } },
+          { name: 'Free bank transfers', tiers: { Silver: false, Gold: true, Platinum: false } },
+          { name: 'Business debit card', tiers: { Silver: false, Gold: true, Platinum: false } },
         ],
       },
     ],
@@ -95,9 +113,17 @@ export const pricing = {
 
 
 export const getTriplePricing = (silverProduct, goldProduct, platinumProduct) => {
-    // console.log(silverProduct, goldProduct, platinumProduct);
+  // Silver product features
+  triplePricing.tiers[0].price = silverProduct.unit_amount/100;
+  triplePricing.tiers[0].priceID = silverProduct.id;
+  // Gold product features 
+  triplePricing.tiers[1].price = goldProduct.unit_amount/100;
+  triplePricing.tiers[1].priceID = goldProduct.id;
 
-    return pricing;
+  // Plat product features
+  triplePricing.tiers[2].price = platinumProduct.unit_amount/100;
+  triplePricing.tiers[2].priceID = platinumProduct.id;
+  return triplePricing;
 }   
 
 
@@ -105,8 +131,8 @@ const doublePricing = {
     tiers: [
       {
         name: 'Silver',
-        id: 'tier-starter',
-        href: '#',
+        id: 'tier-silver',
+        onClick: () => console.log('Silver tier was clicked'),
         featured: false,
         description: 'All your essential business finances, taken care of.',
         price: 15,
@@ -114,8 +140,8 @@ const doublePricing = {
       },
       {
         name: 'Gold',
-        id: 'tier-scale',
-        href: '#',
+        id: 'tier-gold',
+        onClick: () => console.log('Gold tier was clicked'),
         featured: true,
         description: 'The best financial services for your thriving business.',
         price: 25,
@@ -158,5 +184,13 @@ const doublePricing = {
 }
 
 export const getDoublePricing = (silverProduct, goldProduct) => {
-    return doublePricing;
+  // Silver product features
+  doublePricing.tiers[0].price = silverProduct.unit_amount/100;
+  doublePricing.tiers[0].priceID = silverProduct.id;
+  
+  // Gold product features
+  doublePricing.tiers[1].price = goldProduct.unit_amount/100;
+  doublePricing.tiers[1].priceID = goldProduct.id;
+
+  return doublePricing;
 }

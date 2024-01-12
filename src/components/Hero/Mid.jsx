@@ -51,7 +51,7 @@ const Mid = ({ t, lang }) => {
                 {t('hero_text_white2')}
               </span>
               :
-              <span className="flex flex-row justify-center text-center text-[#9EE248]">
+              <span className="flex flex-row lg:justify-center lg:text-center text-[#9EE248]">
                 {t('hero_text_white2')}&nbsp;
                 <Typewriter
                   options={{

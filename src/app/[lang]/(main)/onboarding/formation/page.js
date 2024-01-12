@@ -1,6 +1,6 @@
 import React from 'react'
 import Content from "./components/Content";
-import NewContent from './components/NewContent';
+import ThreePriceDisplay from './components/ThreePriceDisplay';
 import TwoPriceDisplay from './components/TwoPriceDisplay'
 import { readCookieFromStorageServerAction } from '@/app/lib/session/serverActions'
 import { getLLCSilver, getLLCGold, getCorpSilver, getCorpGold, getCorpPlat } from './api/index.js'
@@ -39,7 +39,7 @@ const Page = async ({ params: { lang } }) => {
         silverProduct={silverProduct}
         goldProduct={goldProduct}
       /> :
-      <NewContent
+      <ThreePriceDisplay
         lang={lang}
         silverProduct={silverProduct}
         goldProduct={goldProduct}

@@ -15,16 +15,10 @@ import NewContent from './components/NewContent'
 */
 
 const Page = async ({ params: { lang } }) => {
-  const { t } = await useTranslation(lang)
-  const cookie = await readCookieFromStorageServerAction();
+  // const cookie = await readCookieFromStorageServerAction();
   
-  return (
-    <React.Fragment>
-        {/* <BackButton buttonText={t('company_type_leftcorner_button')} linkHref={'/'} /> */}
-        {/* <Content lang={lang} cookie={cookie} /> */}
-        <NewContent lang={lang} cookie={cookie} />
-
-    </React.Fragment>
+  return (  
+    <NewContent lang={lang}  />
   )
 }
 

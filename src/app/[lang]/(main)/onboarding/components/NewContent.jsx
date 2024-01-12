@@ -1,41 +1,43 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
-import { useTranslation } from '@/i18n/client'
-import { submitCookie } from '@/app/lib/session/clientActions'
-import { completelyClearLocalStorage, localStorageDataExists, redirectToLastNotNullFunnelLink } from '@/app/lib/utils'
+import React, { useEffect } from 'react'
+
 import { removeCookieFromStorageServerAction } from '@/app/lib/session/serverActions'
+import { readCookie, submitCookie } from '@/app/lib/session/clientActions'
 import { useRouter } from 'next/navigation'
+import { useTranslation } from '@/i18n/client'
 
 import Cards from './Cards/Cards'
 import Comparison from './Comparison/Comparison'
 import Footer from './Footer'
-import Modal from './Modal'
 
-const NewContent = ({ lang, cookie }) => {
+const NewContent = ({ lang }) => {
   useEffect(() => {
-    if (cookie) {
+    const readCkie = async () => {
+      const ckie = await readCookie();
+      if (ckie) {
         removeCookieFromStorageServerAction();
+      }
     }
+    readCkie();
   }, []);
-
 
   const { t } = useTranslation(lang);
   const router = useRouter();
 
-  const [showModal, setShowModal] = useState(false);
-  const [restartFunnel, setRestartFunnel] = useState(false);
-  const [resumeFunnel, setResumeFunnel] = useState(false);
+  const submitCkie = async (data) => {
+    await submitCookie({ 'companyType': data });
+    router.refresh();
+  }
 
-  
   const handleSelectLlc = async () => {
-    await submitCookie({ 'companyType': 'LLC' });
+    submitCkie('LLC');
     router.push(`/${lang}/onboarding/state`);
   }
 
   const handleSelectCcorp = async () => {
-      await submitCookie({ 'companyType': 'C-Corp' });
-      router.push(`/${lang}/onboarding/state`);
+    submitCkie('C-Corp');
+    router.push(`/${lang}/onboarding/state`);
   }
 
   return (
@@ -71,12 +73,6 @@ const NewContent = ({ lang, cookie }) => {
                     <div className="p-8 lg:pt-12 xl:p-10 xl:pt-14">
                       <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between lg:flex-col lg:items-stretch">
                         <div className='relative'>
-                            {showModal && 
-                                <Modal
-                                    setRestartFunnel={setRestartFunnel}
-                                    setResumeFunnel={setResumeFunnel}
-                                />
-                            }
                             <Cards t={t} lang={lang} handleSelectLlc={handleSelectLlc} handleSelectCcorp={handleSelectCcorp} />
 
                             <div className='bg-white'>
