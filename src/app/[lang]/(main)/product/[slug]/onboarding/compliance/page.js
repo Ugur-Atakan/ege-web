@@ -1,11 +1,11 @@
 import React from 'react';
+import Content from './components/Content';
 
 const Page = () => {
     return (
         <div>
-            <h1>onboarding-compliance-reminder</h1>
+            <Content />
         </div>
-    
     );
 };
 

@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import Navbar from './Navbar'
 import heroSvg from './heroSvg.svg'
+import heroImg from './heroImg.jpg'
 
 import { useTranslation } from '@/i18n/client'
 
@@ -41,25 +42,38 @@ const Hero = ({ lang, id, name, description }) => {
         t={t}
         lang={lang}
       />
-
-      <div className="my-[10%] mx-20">
-          <div className="rounded-3xl flex flex-col md:flex-row items-center justify-center overflow-hidden shadow-lg bg-gradient-to-r from-indigo-600 to-blue-500 text-white text-white">
-            <div className="w-full md:w-1/2 md:h-auto">
-              <Image src={heroSvg} alt="heroSvg" />
-            </div>
-            
-            <div className="w-full md:w-1/2 p-10 space-y-10">
-              <h1 className="text-3xl font-bold text-[64px] leading-[64px]">{name}</h1>
-              <p className="mt-3 mb-5 pb-10 opacity-50 text-lg font-medium leading-7">{description}</p>
-              <button 
-                onClick={() => {router.push(redirectUrl)}}  
-                className="bg-yellow-400 hover:bg-yellow-500 text-gray-800 font-bold py-4 px-6 rounded-full transition duration-300 inline-block">
-                Get started now
-              </button>
-              <div className="mt-2 font-semibold leading-7">
-                From $6.5/month*
+      
+      <div className="mt-[16%] lg:mt-[8%] lg:mx-20 mx-6">
+        <div className="flex flex-col border-b border-gray-200 lg:border-0">
+          <div className="relative">
+            <div aria-hidden="true" className="absolute hidden h-full w-1/2 lg:block" />
+            <div className="relative  lg:bg-transparent">
+              <div className="max-w-7xl px-4 rounded-t-3xl lg:rounded-l-3xl bg-gradient-to-r from-[#1649FF] to-[#3E79F4] sm:px-6 lg:grid lg:grid-cols-2 lg:px-8">
+                <div className="mx-auto max-w-3xl py-16 lg:max-w-none lg:py-24"> {/* Adjusted padding here */}
+                  <div className="lg:pr-16">
+                    <h1 className="text-3xl font-bold  text-white sm:text-5xl xl:text-6xl">
+                      {name}
+                    </h1>
+                    <p className="mt-4 text-xl text-white">
+                      {description}
+                    </p>
+                    <div className="mt-6">
+                      <button className='bg-white text-[#1649FF] px-8 py-3 rounded-3xl font-bold text-lg hover:bg-black hover:text-white transition duration-300 ease-in-out'>
+                        Get Started
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
+            <div className="h-48 w-full  sm:h-64 lg:absolute lg:right-0 lg:top-0 lg:h-full lg:w-1/2">
+              <Image
+                src={heroImg}
+                alt="hero-img"
+                className="rounded-b-3xl lg:rounded-r-3xl  h-full w-full object-cover object-center"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>

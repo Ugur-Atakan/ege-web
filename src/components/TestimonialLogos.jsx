@@ -28,7 +28,7 @@ const TestimonialLogos = () => {
                             </div>
                             <div className="col-span-1 flex justify-center md:col-span-3 lg:col-span-1">
                                 <Image className="h-12 w-48 grayscale" src={opsbeaconlogo} alt="opsbeacon"></Image>
-                                <span className="inline-block mt-2 -ml-1"><span className="text-[#808080] font-medium text-xl ">Ops</span><span className="text-[#808080] font-medium text-xl ">Beacon</span></span>
+                                <span className="inline-block mt-2 -ml-1"><span className="text-[#808080] font-medium text-xl ">OB2.AI</span></span>
                             </div>
                             <div className="col-span-2 flex justify-center md:col-span-3 lg:col-span-1">
                                 <Image className="h-12 w-48 grayscale" src={finedinelogo} alt="finedine"></Image>

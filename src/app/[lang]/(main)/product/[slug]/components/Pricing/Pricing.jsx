@@ -27,7 +27,7 @@ const Pricing = () => {
       {renderAnnual ? ( 
           <PricingCard />
         ) : ( 
-          <PricingCard />
+          <p className='text-center text-white text-[24px] font-semibold'>Coming soon</p>
       )}
         
       </div>

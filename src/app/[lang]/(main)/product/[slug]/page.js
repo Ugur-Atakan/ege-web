@@ -7,9 +7,11 @@ import Pricing from './components/Pricing/Pricing'
 import Faq from './components/Faq/Faq'
 import StartNow from './components/StartNow'
 import Footer from './components/Footer'
+import NewFeatures from './components/Features/NewFeatures'
 
 import products from '@/assets/json/products.json'
 import { Product } from './classes/Product'
+import HIWNew from './components/HowItWorks/HIWNew'
 
 const Page = ({ params: { lang, slug } }) => {
   const productJSON = products.find(product => product.slug === slug)
@@ -21,12 +23,11 @@ const Page = ({ params: { lang, slug } }) => {
   return(
     <React.Fragment>
       <Hero lang={lang} id={product.id} name={product.name} description={product.description}/>
-      <Features lang={lang} />
-      {/* <BusinessShield /> */}
-      <HowItWorks />
+      <NewFeatures lang={lang} />
+      <HIWNew lang={lang} />
       <Pricing />
       <Faq lang={lang} faqs={product.faq} />
-      <StartNow lang={lang} />
+      {/* <StartNow lang={lang} /> */}
       <Footer lang={lang} />
     </React.Fragment>
   )

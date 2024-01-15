@@ -12,15 +12,15 @@ import Comparison from './Comparison/Comparison'
 import Footer from './Footer'
 
 const NewContent = ({ lang }) => {
-  useEffect(() => {
-    const readCkie = async () => {
-      const ckie = await readCookie();
-      if (ckie) {
-        removeCookieFromStorageServerAction();
-      }
-    }
-    readCkie();
-  }, []);
+  // useEffect(() => {
+  //   const readCkie = async () => {
+  //     const ckie = await readCookie();
+  //     if (ckie) {
+  //       removeCookieFromStorageServerAction();
+  //     }
+  //   }
+  //   readCkie();
+  // }, []);
 
   const { t } = useTranslation(lang);
   const router = useRouter();

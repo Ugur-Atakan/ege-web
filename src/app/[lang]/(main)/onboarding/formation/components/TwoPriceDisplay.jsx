@@ -19,7 +19,6 @@ function classNames(...classes) {
 
 const TwoPriceDisplay = ({ lang, silverProduct, goldProduct }) => {
   const { t } = useTranslation(lang);
-  const router = useRouter();
 
   const [cookie, setCookie] = useState({});
   useEffect(() => {
@@ -31,20 +30,6 @@ const TwoPriceDisplay = ({ lang, silverProduct, goldProduct }) => {
     readCkie();
   }, []);
 
-  const [packagePrices, setPackagePrices] = useState([]);
-  const [selectedPackage, setSelectedPackage] = useState(null);
-  const [selectedPackageIndex, setSelectedPackageIndex] = useState(-1);
-  const selectedCompanyType = cookie.companyType === 'LLC' ? 'LLC' : 'C-corp';
-  const selectedCompanyTypesEN = packageDataEN.packages.find((item) => item[selectedCompanyType]);
-  const selectedCompanyTypesTR = packageDataTR.packages.find((item) => item[selectedCompanyType]);
-  const selectedPackageVar = lang === 'en' ? selectedCompanyTypesEN : selectedCompanyTypesTR;
-  const titles = selectedPackageVar[selectedCompanyType].map((item) => item.title);
-
-  const handlePackageSelection = (selectedPackage, selectedIndex) => {
-    setSelectedPackage(selectedPackage);
-    setSelectedPackageIndex(selectedIndex);
-  }
-
   const pricing = getDoublePricing(silverProduct, goldProduct);
 
   return (
@@ -52,17 +37,12 @@ const TwoPriceDisplay = ({ lang, silverProduct, goldProduct }) => {
       <main>
         {/* Pricing section */}
         <div className="isolate overflow-hidden">
-          <div className="flow-root bg-gray-900 py-16 sm:pt-32 lg:pb-0">
+          <div className="flow-root bg-gray-900 py-16 sm:pt-16 lg:pb-0">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
               <div className="relative z-10">
                 <h1 className="mx-auto max-w-4xl text-center text-5xl font-bold tracking-tight text-white">
-                  Simple pricing, no commitment
+                  Choose the right plan for you!
                 </h1>
-                <p className="mx-auto mt-4 max-w-2xl text-center text-lg leading-8 text-white/60">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit numquam eligendi quos odit doloribus
-                  molestiae voluptatum quos odit doloribus.
-                </p>
-                
               </div>
               <div className="relative mx-auto mt-10 grid max-w-md grid-cols-1 gap-y-8 lg:mx-0 lg:-mb-14 lg:max-w-none lg:grid-cols-2"> {/* //! changed here */}
                 <svg
