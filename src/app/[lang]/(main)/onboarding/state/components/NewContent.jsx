@@ -15,7 +15,7 @@ import axios from 'axios'
 
 const RadioListItem = dynamic(() => import('./RadioListItem'))
 
-const NewContent = ({ lang }) => {
+const NewContent = ({ cookie, lang }) => {
     const { t } = useTranslation(lang);
     const router = useRouter();
    
@@ -24,16 +24,16 @@ const NewContent = ({ lang }) => {
     let selectedLLC = false;
     
     //* Read cookie
-    const [cookie, setCookie] = useState({});
-    useEffect(() => {
-      const readCkie = async () => {
-        const ckie = await readCookie();
-        console.log('Cookie inside state page ', ckie);
-        selectedLLC =  ckie.companyType === 'C-Corp' ? true : false;
-        setCookie(ckie);
-      }
-      readCkie();
-    }, []);
+    // const [cookie, setCookie] = useState({});
+    // useEffect(() => {
+    //   const readCkie = async () => {
+    //     const ckie = await readCookie();
+    //     console.log('Cookie inside state page ', ckie);
+    //     selectedLLC =  ckie.companyType === 'C-Corp' ? true : false;
+    //     setCookie(ckie);
+    //   }
+    //   readCkie();
+    // }, []);
   
       
     //* Use Effect to set the cookie

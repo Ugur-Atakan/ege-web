@@ -54,7 +54,7 @@ export async function POST(req) {
         const zipCode = parseInt(session.metadata.zipCode) || 1234;
         const city = session.metadata.city;
         const country = session.metadata.country;
-        const upsells = session.metadata.upsells ? JSON.parse(session.metadata.upsells) : null;
+        const upsells = session.metadata.upsellsStr ? JSON.parse(session.metadata.upsellsStr) : null;
 
         if (!email || !name || !address || !zipCode || !city || !country) {
             logger.error({ message : `Missing required fields for creating Jira customer - FileName: stripe-webhook-route.js` })

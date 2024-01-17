@@ -93,11 +93,10 @@ const Content = ({ lang }) => {
             companyCity: city,
             companyCountry: country,
             selectedPackage: cookie.selectedPackage,
-            upsells: cookie.upsellIDs,
-            upsellIDs: cookie.upsellIDs || [],
+            upsells: cookie.upsellIDs || [],
             subscriptionFlag: cookie.subscriptionFlag || false
         };  
-        
+        console.log(payload);
         axios
             .post('/api/stripe', { data: { payload } })
             .then((response) => {

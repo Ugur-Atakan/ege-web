@@ -24,7 +24,7 @@ const companySchema = new mongoose.Schema({
     },
     frequency: {
       type: String,
-      enum: ['monthly', 'annually', 'one-time', 'free']
+      enum: ['monthly', 'annually', 'oneTime', 'free']
     }
   }],
   address: {
