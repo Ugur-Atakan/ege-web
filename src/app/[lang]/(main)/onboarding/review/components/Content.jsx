@@ -37,6 +37,7 @@ const Content = ({ lang }) => {
       const readCkie = async () => {
         const ckie = await readCookie();
         setCookie(ckie);
+        console.log(ckie);
       }
       readCkie();
     }, []);
@@ -93,22 +94,23 @@ const Content = ({ lang }) => {
             companyCountry: country,
             selectedPackage: cookie.selectedPackage,
             upsells: cookie.upsellIDs,
-            packageName: cookie.selectedPackage.product
+            upsellIDs: cookie.upsellIDs || [],
+            subscriptionFlag: cookie.subscriptionFlag || false
         };  
-
+        
         axios
             .post('/api/stripe', { data: { payload } })
             .then((response) => {
                 let stripeURL = response.data;
-                
-                if (stripeURL) {    
-                    if (typeof window !== 'undefined' && window.localStorage && window.location) {
-                        window.location.href = stripeURL;
-                    }
-                }
+                console.log(stripeURL)
+                // if (stripeURL) {    
+                //     if (typeof window !== 'undefined' && window.localStorage && window.location) {
+                //         window.location.href = stripeURL;
+                //     }
+                // }
             })
             .catch(function (error) {
-                console.log(error);
+                console.log(error.response.data);
             });
     };
 

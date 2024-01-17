@@ -3,17 +3,21 @@
 import React, { useState } from 'react'
 import { CheckIcon } from '@heroicons/react/20/solid'
 import { readCookie, submitCookie } from '@/app/lib/session/clientActions'
+import { useRouter } from 'next/navigation'
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-const PricingCard = ({ lang, cookie, tier, frequency }) => {
+const PricingCard = ({ lang,  tier, frequency }) => {
     const [monthlyChecked, setMonthlyChecked] = useState(false);
     const [annuallyChecked, setAnnuallyChecked] = useState(false);
     const [oneTimeChecked, setOneTimeChecked] = useState(false);
-
+    const router = useRouter();
+    
     const handleSubmit = async (e) => {
+      const cookie = await readCookie();
+             
       if (frequency.value === 'monthly') {
         setMonthlyChecked(!monthlyChecked);
       } else if (frequency.value === 'annually') {
@@ -24,7 +28,9 @@ const PricingCard = ({ lang, cookie, tier, frequency }) => {
 
       const upsellIDs = cookie.upsellIDs ? cookie.upsellIDs : [];
       const currentIDs = upsellIDs.map((upsell) => upsell.id);
+      let subscriptionFlag = cookie.subscriptionFlag ? cookie.subscriptionFlag : false;
 
+      // removal of the upsells
       if (currentIDs.includes(tier.stripeIDs[frequency.value])) {
         const index = currentIDs.indexOf(tier.stripeIDs[frequency.value]);
         if (index > -1) {
@@ -37,15 +43,18 @@ const PricingCard = ({ lang, cookie, tier, frequency }) => {
             id: tier.stripeIDs[frequency.value],
             name: tier.name + ' ' + freq,
             price: tier.price[frequency.value],
+            frequency: frequency.value,
             description: tier.description,
         };
+        console.log(frequency.value);
+        if (frequency.value != 'oneTime') subscriptionFlag = true;
         upsellIDs.push(upsell);
       }
       
-      const cke = { ...cookie, upsellIDs: upsellIDs };
-
+      const cke = { ...cookie, subscriptionFlag: subscriptionFlag, upsellIDs: upsellIDs };
       const sendCookie = async () => {
         await submitCookie(cke);
+        router.refresh();
       }
       sendCookie();
     };
@@ -55,7 +64,7 @@ const PricingCard = ({ lang, cookie, tier, frequency }) => {
             key={tier.id}
             className={classNames(
                 tier.mostPopular ? 'ring-2 ring-[#1649FF]' : 'ring-1 ring-gray-200',
-                'rounded-2xl p-6 pb-36'
+                'rounded-2xl p-6 pb-36 bg-white'
             )}
         >
         <h2

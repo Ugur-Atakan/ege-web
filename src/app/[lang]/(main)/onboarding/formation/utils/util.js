@@ -113,7 +113,6 @@ export const triplePricing = {
           { name: 'Customizable Corporation Bylwas', tiers: { Silver: true, Gold: true, Platinum: true } },
           { name: 'Stock Issuance to Shareholders', tiers: { Silver: false, Gold: true, Platinum: true } },
           { name: 'Stock Purchase Agreements', tiers: { Silver: false, Gold: true, Platinum: true } },
-          { name: 'Stock Purchase Agreements', tiers: { Silver: false, Gold: true, Platinum: true } },
           { name: 'Stock Certificates', tiers: { Silver: false, Gold: true, Platinum: true } },
           { name: 'Visiting Schedules for Recommended for Tech Founders', tiers: { Silver: false, Gold: true, Platinum: true } },
           { name: 'Captable/Stock Ledger', tiers: { Silver: false, Gold: true, Platinum: true } },

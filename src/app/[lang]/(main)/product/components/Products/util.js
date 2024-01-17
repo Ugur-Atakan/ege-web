@@ -9,10 +9,10 @@ import usa from './img/usa.jpg'
 export const products = [
     {
       id: 1,
-      name: 'Fusion',
-      category: 'UI Kit',
+      name: 'Compliance Reminder',
+      category: '',
       href: '#',
-      price: '$49',
+      price: 'Free',
       imageSrc: agreement,
       imageAlt:
         'Payment application dashboard screenshot with transaction table, financial highlights, and main clients on colorful purple background.',
@@ -20,7 +20,7 @@ export const products = [
     {
       id: 2,
       name: 'Registered Agent',
-      category: 'UI Kit',
+      category: '',
       color: 'Black',
       price: '$35',
       href: '#',
@@ -30,7 +30,7 @@ export const products = [
     {
       id: 3,
       name: 'Virtual Mailbox',
-      category: 'UI Kit',
+      category: '',
       color: 'Black',
       price: '$35',
       href: '#',
@@ -39,8 +39,8 @@ export const products = [
     },
     {
       id: 4,
-      name: 'Machined Pen',
-      category: 'UI Kit',
+      name: 'Office Address',
+      category: '',
       color: 'Black',
       price: '$35',
       href: '#',
@@ -50,7 +50,7 @@ export const products = [
     {
       id: 5,
       name: 'Foreign Qualification',
-      category: 'UI Kit',
+      category: '',
       color: 'Black',
       price: '$35',
       href: '#',
@@ -60,7 +60,7 @@ export const products = [
     {
       id: 6,
       name: 'Certificate of Good Standing',
-      category: 'UI Kit',
+      category: '',
       color: 'Black',
       price: '$35',
       href: '#',
@@ -70,7 +70,7 @@ export const products = [
     {
       id: 7,
       name: 'EIN',
-      category: 'UI Kit',
+      category: '',
       color: 'Black',
       price: '$35',
       href: '#',

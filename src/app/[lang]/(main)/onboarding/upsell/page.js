@@ -15,22 +15,22 @@ const Page = async ({ params: { lang } }) => {
   const virtualMailBoxMonthly = await getVirtualMailBoxMonthly();
 
   const EIN = await getEIN();
-  const complianceReminder = await getComplianceReminder();
   const apostille = await getApostille();
+  // const complianceReminder = await getComplianceReminder();
+
 
   return (
-    <React.Fragment>
-        <Content
-          lang={lang} 
+    <main className='bg-[#111827]'>
+        <Pricing 
+          lang={lang}
+          virtualMailBoxMonthly={virtualMailBoxMonthly}
+          virtualMailBoxYearly={virtualMailBoxYearly}
           officeSpaceMonthly={officeSpaceMonthly}
           officeSpaceYearly={officeSpaceYearly}
-          virtualMailBoxYearly={virtualMailBoxYearly}
-          virtualMailBoxMonthly={virtualMailBoxMonthly}
           EIN={EIN}
-          complianceReminder={complianceReminder}
           apostille={apostille}
         />
-    </React.Fragment>
+    </main>
   )
 }
 

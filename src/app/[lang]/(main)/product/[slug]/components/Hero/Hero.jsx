@@ -9,7 +9,7 @@ import heroImg from './heroImg.jpg'
 
 import { useTranslation } from '@/i18n/client'
 
-const Hero = ({ lang, id, name, description }) => {
+const Hero = ({ lang, id, name, description, pricing }) => {
   const { t } = useTranslation(lang);
   const router = useRouter();
   const [isSticky, setIsSticky] = useState(false);
@@ -31,7 +31,10 @@ const Hero = ({ lang, id, name, description }) => {
   }, []);
 
   const getRedirectUrl = (id) => {
-    if (id == 1) return `/${lang}/product/compliance-reminder/onboarding/compliance`;
+    if (id == 1) return `/${lang}/product/onboarding/compliance`;
+    else if(id == 2) return `/${lang}/product/onboarding/renewal-revival`;
+    else if (id == 3) return `/${lang}/product/onboarding/cofg`;
+    else if (id == 4) return `/${lang}/product/onboarding/registered-agent`;
   };
   const redirectUrl = getRedirectUrl(id);
 
@@ -57,8 +60,22 @@ const Hero = ({ lang, id, name, description }) => {
                     <p className="mt-4 text-xl text-white">
                       {description}
                     </p>
+                    <p className="mt-4 text-xl text-white">
+                      {pricing.oneTime === -1 ? '' : '$ ' + pricing.oneTime + ' one time fee'}
+                    </p>
+                    <p className="mt-4 text-xl text-white">
+                      {pricing.monthly === -1 ? '' : '$ ' + pricing.monthly + ' / month in Delaware'}
+                    </p>
+                    <p className="mt-4 text-xl text-white">
+                      {pricing.yearly === -1 ? '' : '$ ' + pricing.yearly + ' / year in Delaware'}
+                    </p>
+                    <p className="mt-4 text-xl text-white">
+                      {pricing.allStates === -1 ? '' : '$ ' + pricing.allStates + ' / year in all other States'}  
+                    </p>
                     <div className="mt-6">
-                      <button className='bg-white text-[#1649FF] px-8 py-3 rounded-3xl font-bold text-lg hover:bg-black hover:text-white transition duration-300 ease-in-out'>
+                      <button 
+                        onClick={() => router.push(redirectUrl)}
+                        className='bg-white text-[#1649FF] px-8 py-3 rounded-3xl font-bold text-lg hover:bg-black hover:text-white transition duration-300 ease-in-out'>
                         Get Started
                       </button>
                     </div>

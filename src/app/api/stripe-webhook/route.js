@@ -1,7 +1,9 @@
 import Stripe from 'stripe';
 import { headers } from 'next/headers';
 import logger from '@/app/lib/logger'
-import { sendMail, mailBody, createUser, userAlreadyExists } from './util';
+import { 
+    sendMail, createUserWithUpsells, 
+    createUserWithoutUpsells, userAlreadyExists } from './util';
 
 import {
     createCustomer,
@@ -52,12 +54,14 @@ export async function POST(req) {
         const zipCode = parseInt(session.metadata.zipCode) || 1234;
         const city = session.metadata.city;
         const country = session.metadata.country;
+        const upsells = session.metadata.upsells ? JSON.parse(session.metadata.upsells) : null;
 
         if (!email || !name || !address || !zipCode || !city || !country) {
             logger.error({ message : `Missing required fields for creating Jira customer - FileName: stripe-webhook-route.js` })
             return new Response('Missing required fields', { status: 400 });
         }
 
+        //* Jira User Creation
         const accountId = await createCustomer(
             name,
             email
@@ -96,8 +100,14 @@ export async function POST(req) {
         }
         
         console.log('Customer request with id');
-        const enableToken = await createUser(name, email, session.metadata.companyName, session.metadata.companyState, session.metadata.packageName);
-        
+        //* DB User creation
+        let enableToken = null;
+        if (upsells) {
+            enableToken = createUserWithUpsells(name, email, session.metadata.companyName, session.metadata.companyState, session.metadata.packageName, address, zipCode, city, country, upsells);
+        } else {
+            enableToken = createUserWithoutUpsells(name, email, session.metadata.companyName, session.metadata.companyState, session.metadata.packageName, address, zipCode, city, country);
+        }
+
         //! PROBLEM HERE
         if (enableToken.status === 409) {
             console.log('User already exists');

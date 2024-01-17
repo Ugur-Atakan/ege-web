@@ -11,7 +11,45 @@ const companySchema = new mongoose.Schema({
   },
   companyPackage: {
     type: String
+  },
+  products: [{
+    name: {
+      type: String
+    },
+    price: {
+      type: Number
+    }, 
+    stripePriceID: {
+      type: String
+    },
+    frequency: {
+      type: String,
+      enum: ['monthly', 'annually', 'one-time', 'free']
+    }
+  }],
+  address: {
+    country: {
+      type: String,
+      default: null
+    },
+    city: {
+      type: String,
+      default: null
+    },
+    state: {
+      type: String,
+      default: null
+    },
+    zipCode: {
+      type: String,
+      default: null
+    },
+    streetAddress: {
+      type: String,
+      default: null
+    }
   }
 });
+
 
 export default companySchema;

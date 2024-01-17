@@ -23,11 +23,11 @@ const OneTimePackages = ({ lang,  EIN, apostille }) => {
   return (
     <main>
     {/* Pricing section */}
-      <div className="isolate overflow-hidden">
+      <div className="isolate overflow-hidden pt-10">
         <div className="flow-root ">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="relative z-10">
-            <h1 className="mx-auto max-w-4xl text-center text-5xl font-bold tracking-tight text-black">
+            <h1 className="text-white mx-auto max-w-4xl text-center text-5xl font-bold tracking-tight ">
                One time Packages
             </h1>
             <div className="isolate mx-auto mt-10 grid max-w-md grid-cols-1 gap-8 md:max-w-2xl md:grid-cols-2 lg:max-w-4xl xl:mx-0 xl:max-w-none xl:grid-cols-3">

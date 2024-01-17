@@ -2,14 +2,10 @@
     {
         "id": 1,
         "name": "Compliance Reminder",
-        "description": "Navigate through legalities with ease - We're here to receive all your important business documents, keeping you stress-free and compliant!",
+        "description": "Navigate through legalities with ease - We're here to receive all your important business documents!",
         "slug": "compliance-reminder",
         "state": "all",
-        "type": "upsell",
-        "pricing": {
-            "monthly": 8.99,
-            "annual": 89
-        },
+        "type": "free",
         "features": [
             {
                 "id":1,
@@ -25,6 +21,24 @@
                 "id":3,
                 "title": "Spend your time on your business",
                 "description": "Skip the employee standby during business hours. We've got it!"
+            }
+        ],
+        "pricingFeatures": [
+            {
+                "id": 1,
+                "title": "Avoid the risk of non-compliance"
+            },
+            {
+                "id": 2,
+                "title": "Avoid the risk of non-compliance"
+            },
+            {
+                "id": 3,
+                "title": "Avoid the risk of non-compliance"
+            },
+            {
+                "id": 4,
+                "title": "Avoid the risk of non-compliance"
             }
         ],
         "faq": [
@@ -96,6 +110,24 @@
                 "description": "Skip the employee standby during business hours. We've got it!"
             }
         ],
+        "pricingFeatures": [
+            {
+                "id": 1,
+                "title": "Avoid the risk of non-compliance"
+            },
+            {
+                "id": 2,
+                "title": "Avoid the risk of non-compliance"
+            },
+            {
+                "id": 3,
+                "title": "Avoid the risk of non-compliance"
+            },
+            {
+                "id": 4,
+                "title": "Avoid the risk of non-compliance"
+            }
+        ],
         "faq": [
             {
                 "id": 1,
@@ -147,7 +179,7 @@
         "slug": "certificate-of-good-standing",
         "state": "all",
         "type": "one-time",
-        "pricing": 175,
+        "pricing": 700,
         "features": [
             {
                 "id":1,
@@ -163,6 +195,24 @@
                 "id":3,
                 "title": "Spend your time on your business",
                 "description": "Skip the employee standby during business hours. We've got it!"
+            }
+        ],
+        "pricingFeatures": [
+            {
+                "id": 1,
+                "title": "Avoid the risk of non-compliance"
+            },
+            {
+                "id": 2,
+                "title": "Avoid the risk of non-compliance"
+            },
+            {
+                "id": 3,
+                "title": "Avoid the risk of non-compliance"
+            },
+            {
+                "id": 4,
+                "title": "Avoid the risk of non-compliance"
             }
         ],
         "faq": [
@@ -182,6 +232,93 @@
                 "pricing_header2_Answer_2_1",
                 "pricing_header2_Answer_2_2",
                 "pricing_header2_Answer_2_3"
+                ]
+            },
+            {
+                "id": 3,
+                "question": "pricing_header2_Question_3",
+                "answers": [
+                "pricing_header2_Answer_3"
+                ]
+            },
+            {
+                "id": 4,
+                "question": "pricing_header2_Question_4",
+                "answers": [
+                "pricing_header2_Answer_4" 
+                ]
+            },
+            {
+                "id": 5,
+                "question": "pricing_header2_Question_5",
+                "answers": [
+                "pricing_header2_Answer_5_1",
+                "pricing_header2_Answer_5_2",
+                "pricing_header2_Answer_5_3"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Registered Agent",
+        "description": "Appoint us your Registered Agent today",
+        "slug": "registered-agent",
+        "state": "all",
+        "type": "recurring",
+        "pricing": 175,
+        "features": [
+            {
+                "id":1,
+                "title": "Make us your Registered Agent",
+                "description": "Registered Agents are required by law and they're the ones who get all your corporation's legal papers."
+            },
+            {
+                "id":2,
+                "title": "Save money and hassle",
+                "description": "Compliance tasks can take a lot of time and work, and sometimes involve filling out long, tricky forms."
+            }, 
+            {
+                "id":3,
+                "title": "Spend your time on your business",
+                "description": "Skip the employee standby during business hours. We've got it!"
+            }
+        ],
+        "pricingFeatures": [
+            {
+                "id": 1,
+                "title": "Avoid the risk of non-compliance"
+            },
+            {
+                "id": 2,
+                "title": "Avoid the risk of non-compliance"
+            },
+            {
+                "id": 3,
+                "title": "Avoid the risk of non-compliance"
+            },
+            {
+                "id": 4,
+                "title": "Avoid the risk of non-compliance"
+            }
+        ],
+        "faq": [
+            {
+                "id": 1,
+                "question": "pricing_header2_Question_1",
+                "answers": [
+                    "pricing_header2_Answer_1_1",
+                    "pricing_header2_Answer_1_2",
+                    "pricing_header2_Answer_1_3"
+                ]
+            },
+            {
+                "id": 2,
+                "question": "pricing_header2_Question_2",
+                "answers": [
+                    "pricing_header2_Answer_2_1",
+                    "pricing_header2_Answer_2_2",
+                    "pricing_header2_Answer_2_3"
                 ]
             },
             {

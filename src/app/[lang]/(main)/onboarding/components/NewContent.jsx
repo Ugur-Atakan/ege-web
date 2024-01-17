@@ -25,18 +25,23 @@ const NewContent = ({ lang }) => {
   const { t } = useTranslation(lang);
   const router = useRouter();
 
-  const submitCkie = async (data) => {
-    await submitCookie({ 'companyType': data });
-    router.refresh();
-  }
-
-  const handleSelectLlc = async () => {
-    submitCkie('LLC');
+  const handleSelectLlc = () => {
+    const ckie = {companyType: 'LLC'};
+    const setCookie = async (ckie) => {
+      await submitCookie(ckie);
+      router.refresh();
+    }
+    setCookie(ckie);
     router.push(`/${lang}/onboarding/state`);
   }
 
-  const handleSelectCcorp = async () => {
-    submitCkie('C-Corp');
+  const handleSelectCcorp = () => {
+    const ckie = {companyType: 'C-Corp'};
+    const setCookie = async (ckie) => {
+      await submitCookie(ckie);
+      router.refresh();
+    }
+    setCookie(ckie);
     router.push(`/${lang}/onboarding/state`);
   }
 
