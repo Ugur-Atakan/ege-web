@@ -3,9 +3,9 @@ import User from '@/app/lib/db/models/UserModel'
 import Workspace from '@/app/lib/db/models/WorkspaceModel'
 import crypto from 'crypto'
 
-//* Creating a user in workspace
+//* Creating a user in workspace without a company
 export async function POST(request) {
-    const { firstName, lastName , email } = await request.json();
+    const { firstName, lastName , email, password  } = await request.json();
     await connectDB();
 
     try {
@@ -13,14 +13,11 @@ export async function POST(request) {
         const existingUser = await User.findOne({ email: email }).select('-password');
         if (existingUser) return new Response('User found in another workspace', { status: 409 });
         
-        //! Create a new user 
-        const enableToken = crypto.randomBytes(32).toString('hex');
-        const user = await User.create({ firstName, lastName, email, password: '', level: 'admin', enableToken: enableToken, active: false, type: 'local' });
+        //! Create new admin user 
+        await User.create({ firstName, lastName, email, password: password, level: 'admin', active: true, type: 'local' });
 
         // Create a new workspace
-        // Add the user to the workspace
-        await Workspace.create({ users: [user._id] });
-        return new Response(enableToken, {
+        return new Response('Admin created', {
             status: 200,
             headers: {
                 'Content-Type': 'application/json'
@@ -29,7 +26,7 @@ export async function POST(request) {
     }
     catch (err) {
         console.log(err)
-        return new Response('Error creating workspace', {
+        return new Response('Error creating admin user', {
             status: 500
         })
     }

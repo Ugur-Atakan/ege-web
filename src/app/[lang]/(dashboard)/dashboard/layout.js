@@ -15,16 +15,16 @@ export const metadata = {
 
 const DashboardLayout = async (params) => {
   const session = await getServerSession(options);
-    
+  
   if (!session) {
     redirect(`/${params.params.lang}/login`);
   }
-
+  
   return (
     <html dir={dir(params.params.lang)} >
       <body>
         <SessionProvider session={session} >
-            <Navigation lang={params.params.lang} />
+            <Navigation lang={params.params.lang}  />
             <div className="lg:pl-72">
               <main className="py-10">
                 <div className="px-4 sm:px-6 lg:px-8">

@@ -108,6 +108,7 @@ export async function POST(req) {
             enableToken = createUserWithoutUpsells(name, email, session.metadata.companyName, session.metadata.companyState, session.metadata.packageName, address, zipCode, city, country);
         }
 
+        consolo.log('enableToken ', enableToken);
         //! PROBLEM HERE
         if (enableToken.status === 409) {
             console.log('User already exists');

@@ -96,17 +96,17 @@ const Content = ({ lang }) => {
             upsells: cookie.upsellIDs || [],
             subscriptionFlag: cookie.subscriptionFlag || false
         };  
-        console.log(payload);
+        // console.log(payload);
         axios
             .post('/api/stripe', { data: { payload } })
             .then((response) => {
                 let stripeURL = response.data;
                 console.log(stripeURL)
-                // if (stripeURL) {    
-                //     if (typeof window !== 'undefined' && window.localStorage && window.location) {
-                //         window.location.href = stripeURL;
-                //     }
-                // }
+                if (stripeURL) {    
+                    if (typeof window !== 'undefined' && window.localStorage && window.location) {
+                        window.location.href = stripeURL;
+                    }
+                }
             })
             .catch(function (error) {
                 console.log(error.response.data);

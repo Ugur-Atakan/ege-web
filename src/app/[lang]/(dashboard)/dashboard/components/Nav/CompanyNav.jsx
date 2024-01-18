@@ -76,7 +76,7 @@ const CompanyNav = ({ lang }) => {
               </button>
             ))}
             
-            <AddCompany lang={lang} />
+            {/* <AddCompany lang={lang} /> */}
           </div>
         </Popover.Panel>
       </Transition>

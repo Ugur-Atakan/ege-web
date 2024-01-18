@@ -12,6 +12,18 @@ const companySchema = new mongoose.Schema({
   companyPackage: {
     type: String
   },
+  companyType: {
+    type: String
+  },
+  createdBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },
+  status: {
+    type: String,
+    enum: ['active', 'inactive', 'paid', 'payment-pending', 'inprogress', 'approved', 'rejected' ],
+    default: 'payment-pending'
+  },
   products: [{
     name: {
       type: String

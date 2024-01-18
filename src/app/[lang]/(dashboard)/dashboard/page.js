@@ -3,6 +3,7 @@ import Home from './components/Home/Home'
 import { connectDB } from '@/app/lib/db/mongodb'
 import mongoose from 'mongoose'
 import Company from '@/app/lib/db/models/CompanySchema'
+import AdminHome from './components/AdminHome/AdminHome'
 import Workspace from '@/app/lib/db/models/WorkspaceModel'
 import { getServerSession } from 'next-auth'
 import { options } from '@/app/api/auth/[...nextauth]/options'
@@ -21,6 +22,8 @@ const getWorkspace = async (userID) => {
 
 const Page = async ({ params: { lang } }) => {
   const session = await getServerSession(options);
+  console.log(session);
+
   const workspace = await getWorkspace(session.user.uid);
   
   let workspaceJSON;
@@ -30,7 +33,10 @@ const Page = async ({ params: { lang } }) => {
 
   return(
     <React.Fragment>
-      <Home lang={lang} companies={workspaceJSON} />
+      {session.user.level === 'admin' ?
+        <AdminHome lang={lang} companies={workspaceJSON} /> :
+        <Home lang={lang} companies={workspaceJSON} />
+      }
     </React.Fragment>
   )
 }

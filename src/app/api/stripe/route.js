@@ -55,7 +55,7 @@ export async function POST(req) {
   if (upsells != null) {
     upsellsIDs = upsells.map(upsell => upsell.id);
   }
-  console.log(upsells);
+
   try {
     let session;
     if (subscriptionFlag === true) {
