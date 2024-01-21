@@ -3,12 +3,12 @@
 import React from 'react'
 import { useRouter } from 'next/navigation'
 
-const Card = ({ title, description, lang , href }) => {
+const Card = ({ id, title, description, lang }) => {
   const router = useRouter();
 
   return (
     <div 
-        onClick={() => console.log(href)}
+        onClick={() => router.push(`/${lang}/dashboard/${id}`)}
         className="hover:scale-105 cursor-pointer max-w-sm mx-2 my-2 p-6 bg-white shadow-lg rounded-lg overflow-hidden"
     >
       <div className="sm:flex sm:items-center px-6 py-4">
@@ -18,7 +18,7 @@ const Card = ({ title, description, lang , href }) => {
 
         <div className="mt-4 sm:mt-0 sm:ml-4">
           <h2 className="uppercase  text-xl font-bold text-gray-800">{title}</h2>
-          <p className="text-gray-600">{description}</p>
+          <p className="text-gray-600">{description + ' '} Package </p>
         </div>
       </div>
     </div>

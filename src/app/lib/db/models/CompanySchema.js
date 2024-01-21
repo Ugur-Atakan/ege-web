@@ -61,7 +61,8 @@ const companySchema = new mongoose.Schema({
       default: null
     }
   }
+}, {
+  timestamps: true // This option adds createdAt and updatedAt fields automatically
 });
-
 
 export default companySchema;

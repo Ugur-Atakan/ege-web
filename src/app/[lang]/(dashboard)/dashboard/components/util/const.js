@@ -25,18 +25,32 @@ export const navigation = [
         customDashboardVisibility: false 
     },
     { 
-        name: 'Add new company', href: '/en/dashboard/onboarding', icon: FolderIcon, current: false,
+        name: 'Onboard Company', href: '/en/dashboard/onboarding', icon: FolderIcon, current: false,
         adminVisibility: false,
         userVisibility: true,
         mainDashboardVisibility: true,
         customDashboardVisibility: false 
+    },
+    { 
+        name: 'Onboard Company', href: '/en/dashboard/create-company', icon: FolderIcon, current: false,
+        adminVisibility: true,
+        userVisibility: false,
+        mainDashboardVisibility: true,
+        customDashboardVisibility: true 
+    },
+    { 
+        name: 'Search Company', href: '/en/dashboard/search-companies', icon: FolderIcon, current: false,
+        adminVisibility: true,
+        userVisibility: false,
+        mainDashboardVisibility: true,
+        customDashboardVisibility: true  
     },
     {
         name: 'Products',
         href: '/en/dashboard/products',
         icon: ChartPieIcon,
         current: false,
-        adminVisibility: true,
+        adminVisibility: false,
         userVisibility: true,
         mainDashboardVisibility: false,
         customDashboardVisibility: true,

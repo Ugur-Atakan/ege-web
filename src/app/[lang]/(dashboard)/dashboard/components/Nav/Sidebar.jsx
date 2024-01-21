@@ -22,7 +22,10 @@ const Sidebar = ({ lang, sidebarOpen, setSidebarOpen }) => {
   const pathname = usePathname()
   const router = useRouter()
   const { data, update } = useSession();
-  
+  if (data.user === undefined) {
+    router.push(`/${lang}/dashboard/login`);
+  } 
+
   const navigation = getSidebarNav(pathname, data.user.level);
   const [showSubNav, setShowSubNav] = React.useState(false);
 
@@ -73,7 +76,7 @@ const Sidebar = ({ lang, sidebarOpen, setSidebarOpen }) => {
                   {/* Sidebar component, swap this element with another sidebar if you like */}
                   <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-[#0b2347] px-6 pb-4 ring-1 ring-white/10">
                     <div className="flex h-16 shrink-0 items-center">
-                      <CompanyNav lang={lang} />
+                      {data.user.level !== 'admin' && <CompanyNav lang={lang} />}
                     </div>
                     <nav className="flex flex-1 flex-col">
                       <ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -120,7 +123,7 @@ const Sidebar = ({ lang, sidebarOpen, setSidebarOpen }) => {
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-[#0b2347] px-6 pb-4">
             <div className="flex h-16 shrink-0 items-center">
-              <CompanyNav lang={lang} />
+              {data.user.level !== 'admin' && <CompanyNav lang={lang} />}
             </div>
             <nav className="flex flex-1 flex-col">
               <ul role="list" className="flex flex-1 flex-col gap-y-7">

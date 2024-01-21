@@ -22,7 +22,7 @@ const getWorkspace = async (userID) => {
 
 const Page = async ({ params: { lang } }) => {
   const session = await getServerSession(options);
-  console.log(session);
+  // console.log(session);
 
   const workspace = await getWorkspace(session.user.uid);
   
