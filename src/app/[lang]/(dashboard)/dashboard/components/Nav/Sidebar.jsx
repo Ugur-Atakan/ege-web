@@ -22,7 +22,8 @@ const Sidebar = ({ lang, sidebarOpen, setSidebarOpen }) => {
   const pathname = usePathname()
   const router = useRouter()
   const { data, update } = useSession();
-  if (data.user === undefined) {
+
+  if (data === undefined || data === null) {
     router.push(`/${lang}/dashboard/login`);
   } 
 

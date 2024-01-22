@@ -12,7 +12,7 @@ export const navigation = [
     },
     { 
         name: 'Company Info', href: '/en/dashboard/company', icon: FolderIcon, current: false,
-        adminVisibility: false,
+        adminVisibility: true,
         userVisibility: true,
         mainDashboardVisibility: false,
         customDashboardVisibility: true 
@@ -32,7 +32,7 @@ export const navigation = [
         customDashboardVisibility: false 
     },
     { 
-        name: 'Onboard Company', href: '/en/dashboard/create-company', icon: FolderIcon, current: false,
+        name: 'Onboard Admin Company', href: '/en/dashboard/create-company', icon: FolderIcon, current: false,
         adminVisibility: true,
         userVisibility: false,
         mainDashboardVisibility: true,
@@ -50,7 +50,7 @@ export const navigation = [
         href: '/en/dashboard/products',
         icon: ChartPieIcon,
         current: false,
-        adminVisibility: false,
+        adminVisibility: true,
         userVisibility: true,
         mainDashboardVisibility: false,
         customDashboardVisibility: true,

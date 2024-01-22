@@ -3,7 +3,11 @@ import mongoose from 'mongoose';
 import Workspace from '@/app/lib/db/models/WorkspaceModel';
 
 export async function POST(request) {
-    const { companyName, state, companyPackage, workspaceID } = await request.json();
+    const { 
+        companyName, mainState, companyPackage, companyType, 
+        userID, address, workspaceID } = await request.json();
+    const { country, city, zipCode, state, streetAddress } = address;
+
     await connectDB();
 
     try {
@@ -12,12 +16,21 @@ export async function POST(request) {
             return new Response('Invalid workspaceID', { status: 400 });
         }
 
-        const objId = new mongoose.Types.ObjectId(workspaceID);
-        const workspace = await Workspace.findById(objId);
+        const moongoWorkSpaceID = new mongoose.Types.ObjectId(workspaceID);
+        const workspace = await Workspace.findById(moongoWorkSpaceID);
 
         if (!workspace) {
             return new Response('Workspace not found', { status: 404 });
         }
+
+        // find user in same workspace
+        const uID = new mongoose.Types.ObjectId(userID);
+        // const userExists = workspace.users.some((user) => user.equals(uID));
+
+        // // if not found in same workspace find in other workspaces and check user level
+        // if (!userExists) {
+            
+        // }
 
         // Check if company exists in any workspace
         const companyExists = workspace.companies.some((company) => company.companyName === companyName);
@@ -29,8 +42,18 @@ export async function POST(request) {
         // Create company from Schema
         const newCompany = {
             companyName,
-            state,
+            state: mainState,
             companyPackage,
+            companyType,
+            createdBy: uID,
+            status: 'payment-pending',
+            address: {
+                country,
+                city,
+                zipCode,
+                streetAddress,
+                state,
+            },
         };
 
         // Add the new company to the workspace

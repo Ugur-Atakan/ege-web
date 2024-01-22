@@ -138,7 +138,7 @@ export const createUserWithoutUpsells = async (name, email, companyName, state, 
   }
 }
 
-export const createUserWithUpsells = async (name, email, companyName, state, companyPackage, address, zipCode, city, country, upsells) => {
+export const createUserWithUpsells = async (name, email, companyName, state, companyType, companyPackage, address, zipCode, city, country, upsells) => {
   // Splitting the name into first and last name
   const nameParts = name.split(' ');
   let firstName = '';
@@ -170,6 +170,7 @@ export const createUserWithUpsells = async (name, email, companyName, state, com
         state: state,
         products: products,
         companyPackage: companyPackage,
+        companyType: companyType,
         address: {
           country: country,
           city: city,

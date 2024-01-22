@@ -9,6 +9,11 @@ const companySchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  monetaryValue: {
+    type: Number,
+    required: true,
+    default: 0
+  },
   companyPackage: {
     type: String
   },
