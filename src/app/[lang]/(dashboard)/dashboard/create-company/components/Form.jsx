@@ -76,7 +76,7 @@ const Form = () => {
           <button 
               onClick={handleAddUpsellForm}
               type="button"
-              className='text-sm py-2 px-4 rounded-2xl mt-4 font-semibold leading-6 bg-[#0B2347] text-white'
+              className='text-sm py-2 px-4 rounded mt-4 font-semibold leading-6 bg-[#0B2347] text-white'
             >
               Add Upsell
           </button>

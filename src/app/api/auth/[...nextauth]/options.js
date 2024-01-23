@@ -25,7 +25,7 @@ export const options = {
     ],
     session: {
         strategy:"jwt",
-        maxAge: 10 * 60, //! 10 minutes
+        maxAge: 60 * 60, //! 60 minutes
     },
     // Optional: Customize the authentication flow
     callbacks: {

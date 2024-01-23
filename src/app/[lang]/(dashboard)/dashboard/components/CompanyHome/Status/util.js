@@ -1,4 +1,44 @@
 
+export const getFileUploadList = (companyID) => {
+    return [
+    { 
+        name: 'Certificate of incorporation - Incorporation',
+        fileName: `certificate_of_incorporation_${companyID}.pdf`,
+    },
+    {
+        name: 'Statement of incorporator - Incorporation',
+        fileName: `statement_of_incorporator_${companyID}.pdf`,
+    },
+    {
+        name: 'Office address agreement -  Add-on',
+        fileName: `office_address_agreement_${companyID}.pdf`,
+    },
+    {
+        name: 'Certificate of good standing - Add-on',
+        fileName: `certificate_of_good_standing_${companyID}.pdf`,
+    },
+    {
+        name: 'Certificate of formation - LLC',
+        fileName: `certificate_of_formation_${companyID}.pdf`,
+    },
+    {
+        name: 'Certificate of Formation - Gold',    
+        fileName: `certificate_of_formation_${companyID}.pdf`,
+    },
+    {
+        name: 'Operation agreement - Gold',
+        fileName: `operation_agreement_${companyID}.pdf`,
+    },
+    {
+        name: 'IRS Letter - EIN',
+        fileName: `irs_letter_${companyID}.pdf`,
+    },
+    {
+        name: 'EFTPS Letter - EIN',
+        fileName: `eftps_letter_${companyID}.pdf`,
+    }]
+};
+
 export const attachments = [
     { name: 'resume_back_end_developer.pdf', size: '2.4mb' },
     { name: 'coverletter_back_end_developer.pdf', size: '4.5mb' },

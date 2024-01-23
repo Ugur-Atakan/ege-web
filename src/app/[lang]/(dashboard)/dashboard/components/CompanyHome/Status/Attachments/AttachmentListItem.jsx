@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react';
+import React, { useCallback } from 'react';
 import { PaperClipIcon } from '@heroicons/react/20/solid'
 
 const AttachmentListItem = ({ name, size, onUpdate, onRemove }) => {
