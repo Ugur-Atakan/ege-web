@@ -8,6 +8,7 @@ export async function POST(req) {
     }
 
     const file = formData.get('file');
+    const fileBuffer = Buffer.from(await file.arrayBuffer());
     const fileName = formData.get('fileName');
 
     const client = new S3Client({
@@ -17,7 +18,7 @@ export async function POST(req) {
     const command = new PutObjectCommand({
         Bucket: "registate-dashboard", // Replace with your own bucket name
         Key: fileName,
-        Body: file,
+        Body: fileBuffer,
     });
 
     try {
