@@ -12,7 +12,7 @@ const UploadForm = ({ companyID }) => {
             console.log('inside send to backend ' + acceptedFiles[0]);
             const formData = new FormData();
             formData.append('file', acceptedFiles[0]);
-            formData.append('fileName', fileName);
+            formData.append('fileName', fileName.fileName);
 
             const res = await axios.post('/api/upload', formData, {
                 headers: {

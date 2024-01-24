@@ -10,13 +10,13 @@ export async function POST(req) {
     const file = formData.get('file');
     const fileBuffer = Buffer.from(await file.arrayBuffer());
     const fileName = formData.get('fileName');
-
+    
     const client = new S3Client({
-        region: "eu-central-1", // Replace with your actual AWS region, e.g., "us-east-1"
+        region: "eu-central-1",
     });
 
     const command = new PutObjectCommand({
-        Bucket: "registate-dashboard", // Replace with your own bucket name
+        Bucket: "registate-dashboard", 
         Key: fileName,
         Body: fileBuffer,
     });
@@ -31,8 +31,6 @@ export async function POST(req) {
         console.log(err);
         return new Response('Error uploading file', { status: 500 });
     }
-
-    return new Response('File uploaded', { status: 200 });
 }
 
 
