@@ -5,11 +5,13 @@
 // Template name: Dark sidebar with header
 
 import React, { Fragment }  from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { Dialog, Transition } from '@headlessui/react'
 import { Cog6ToothIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
 import { usePathname, useRouter } from 'next/navigation'
+import registateLogo from '@/assets/images/logos/registate-white-logo.png'
 import { teams, getSidebarNav } from '../util/const'
 import CompanyNav from './CompanyNav'
 import { useSession } from 'next-auth/react'
@@ -124,7 +126,16 @@ const Sidebar = ({ lang, sidebarOpen, setSidebarOpen }) => {
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-[#0b2347] px-6 pb-4">
             <div className="flex h-16 shrink-0 items-center">
-              {data.user.level !== 'admin' && <CompanyNav lang={lang} />}
+              {data.user.level !== 'admin' ? 
+                <CompanyNav lang={lang} /> : 
+                <Image 
+                  src={registateLogo}
+                  alt="Registate Logo"
+                  width={120}
+                  className='mx-auto'
+                  height={90}
+                />
+              }
             </div>
             <nav className="flex flex-1 flex-col">
               <ul role="list" className="flex flex-1 flex-col gap-y-7">

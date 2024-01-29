@@ -51,12 +51,14 @@ const Status = ({ company }) => {
                     <AttachmentList attachments={attachments} />
                 </dd>
             </div>
-            <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                <dt className="text-md font-medium leading-6 text-gray-900">File Upload</dt>
-                <dd className="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                    <UploadFile  companyID={company._id} />
-                </dd>
-            </div>
+            {isAdmin && 
+              <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                  <dt className="text-md font-medium leading-6 text-gray-900">File Upload</dt>
+                  <dd className="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                      <UploadFile  companyID={company._id} />
+                  </dd>
+              </div>
+            }
         </div>
     </div>
   );

@@ -49,30 +49,32 @@ export async function POST(req) {
   const selectedPackage = data.payload.selectedPackage;
   const subscriptionFlag = data.payload.subscriptionFlag;
   const upsells = data.payload.upsells;
-  const upsellsStr = JSON.stringify(upsells);
+  const upsellsStr = JSON.stringify(upsells); // to send as metadata for webhook
+  const totalPrice = data.payload.totalPrice;
 
   let upsellsIDs = null;
   if (upsells != null) {
     upsellsIDs = upsells.map(upsell => upsell.id);
   }
 
-  try {
-    let session;
-    if (subscriptionFlag === true) {
-      session = await stripe.checkout.sessions.create({
+  const hasMultipleBillingInterval = upsells.some(item => item.frequency === "monthly") && upsells.some(item => item.frequency === "annually");  
+
+  if (hasMultipleBillingInterval) {
+    try{
+      const session = await stripe.checkout.sessions.create({
         line_items: [
           {
-            price: selectedPackage.priceID,
+            price_data: {
+              currency: 'usd',
+              product_data: {
+                name: selectedPackage.tierName,
+              },
+              unit_amount: totalPrice,
+            },
             quantity: 1,
           }
-          ,...upsellsIDs.map(upsell => {
-            return {
-              price: upsell,
-              quantity: 1,
-            }
-          })
         ],
-        mode: 'subscription',
+        mode: 'payment',
         success_url: process.env.SUCCESS_STRIPE_URL,
         cancel_url: process.env.FAIL_STRIPE_URL,
         metadata: {
@@ -86,54 +88,41 @@ export async function POST(req) {
           zipCode,
           city,
           country,
-          upsellsStr
+          upsellsStr,
+          multiBilling: true
         },
-        // customer_creation: 'if_required',
+        customer_creation: 'always',
         customer_email: customerEmail,
         allow_promotion_codes: true
       });
-    } else {
-      if (upsellsIDs == null) {
+
+      return new NextResponse(session.url, { status: 200 });
+    }
+    catch(error) {
+      logger.error({ message: `Error in creating Stripe checkout session , filename: /api/stripe/route.js - ${error.message}` })
+      return new NextResponse(error, {
+        status: 400,
+      });
+    }
+  }
+  else {
+    try {
+      let session;
+      if (subscriptionFlag === true) {
         session = await stripe.checkout.sessions.create({
           line_items: [
             {
               price: selectedPackage.priceID,
               quantity: 1,
             }
-          ],
-          mode: 'payment',
-          success_url: process.env.SUCCESS_STRIPE_URL,
-          cancel_url: process.env.FAIL_STRIPE_URL,
-          metadata: {
-            packageName,
-            customerName,
-            companyName,
-            companyState,
-            companyType,
-            customerEmail,
-            address,
-            zipCode,
-            city,
-            country
-          },
-          customer_creation: 'always',
-          customer_email: customerEmail,
-          allow_promotion_codes: true
-        });
-      } else {
-        session = await stripe.checkout.sessions.create({
-          line_items: [
-            {
-              price: selectedPackage.priceID,
-              quantity: 1,
-            },...upsellsIDs.map(upsell => {
+            ,...upsellsIDs.map(upsell => {
               return {
                 price: upsell,
                 quantity: 1,
               }
             })
           ],
-          mode: 'payment',
+          mode: 'subscription',
           success_url: process.env.SUCCESS_STRIPE_URL,
           cancel_url: process.env.FAIL_STRIPE_URL,
           metadata: {
@@ -147,13 +136,77 @@ export async function POST(req) {
             zipCode,
             city,
             country,
-            upsellsStr
+            upsellsStr,
+            mutliBilling: false,
           },
-          customer_creation: 'always',
+          // customer_creation: 'if_required',
           customer_email: customerEmail,
           allow_promotion_codes: true
         });
-      }
+      } else {
+        if (upsellsIDs == null) {
+          session = await stripe.checkout.sessions.create({
+            line_items: [
+              {
+                price: selectedPackage.priceID,
+                quantity: 1,
+              }
+            ],
+            mode: 'payment',
+            success_url: process.env.SUCCESS_STRIPE_URL,
+            cancel_url: process.env.FAIL_STRIPE_URL,
+            metadata: {
+              packageName,
+              customerName,
+              companyName,
+              companyState,
+              companyType,
+              customerEmail,
+              address,
+              zipCode,
+              city,
+              country,
+              mutliBilling: false
+            },
+            customer_creation: 'always',
+            customer_email: customerEmail,
+            allow_promotion_codes: true
+          });
+        } else {
+          session = await stripe.checkout.sessions.create({
+            line_items: [
+              {
+                price: selectedPackage.priceID,
+                quantity: 1,
+              },...upsellsIDs.map(upsell => {
+                return {
+                  price: upsell,
+                  quantity: 1,
+                }
+              })
+            ],
+            mode: 'payment',
+            success_url: process.env.SUCCESS_STRIPE_URL,
+            cancel_url: process.env.FAIL_STRIPE_URL,
+            metadata: {
+              packageName,
+              customerName,
+              companyName,
+              companyState,
+              companyType,
+              customerEmail,
+              address,
+              zipCode,
+              city,
+              country,
+              upsellsStr,
+              mutliBilling: false
+            },
+            customer_creation: 'always',
+            customer_email: customerEmail,
+            allow_promotion_codes: true
+          });
+        }
     }
     logger.info({ message: `Stripe checkout session created - ${session.url}` })
     return new NextResponse(session.url, { status: 200 });
@@ -162,5 +215,6 @@ export async function POST(req) {
     return new NextResponse(error, {
       status: 400,
     });
+   }
   }
 }

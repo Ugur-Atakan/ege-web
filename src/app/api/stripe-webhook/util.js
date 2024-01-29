@@ -64,7 +64,7 @@ export const mailBody = (enableToken) => {
   </html>`
 )};
 
-export const createUserWithoutUpsells = async (name, email, companyName, state, companyPackage, address, zipCode, city, country) => {
+export const createUserWithoutUpsells = async (name, email, companyName, state, companyType, companyPackage, address, zipCode, city, country, customerStripeID, monetaryValue) => {
   // Splitting the name into first and last name
   const nameParts = name.split(' ');
   let firstName = '';
@@ -75,7 +75,6 @@ export const createUserWithoutUpsells = async (name, email, companyName, state, 
   }
   
   await connectDB();
-    
   try {
     const existingUser = await User.findOne({ email: email });
   
@@ -91,7 +90,10 @@ export const createUserWithoutUpsells = async (name, email, companyName, state, 
           state: state,
           zipCode: zipCode,
           streetAddress: address
-        }
+        },
+        monetaryValue: monetaryValue,
+        companyType: companyType,
+        status: 'paid'
       };
 
       workSpace.companies.push(company);
@@ -105,7 +107,7 @@ export const createUserWithoutUpsells = async (name, email, companyName, state, 
     } 
 
     const enableToken = crypto.randomBytes(32).toString('hex');
-    const user = await User.create({ firstName, lastName, email, password: '', level: 'user', enableToken: enableToken, active: false, type: 'local' });
+    const user = await User.create({ firstName, lastName, email, password: '', level: 'user', enableToken: enableToken, active: false, type: 'local', customerStripeID: customerStripeID });
     const workSpace = await Workspace.create({ users: [user._id] });
 
     const company = {
@@ -118,8 +120,12 @@ export const createUserWithoutUpsells = async (name, email, companyName, state, 
         state: state,
         zipCode: zipCode,
         streetAddress: address
-      }
+      },
+      monetaryValue: monetaryValue,
+      companyType: companyType,
+      status: 'paid'
     };
+
     workSpace.companies.push(company);
     await workSpace.save();
 
@@ -138,7 +144,7 @@ export const createUserWithoutUpsells = async (name, email, companyName, state, 
   }
 }
 
-export const createUserWithUpsells = async (name, email, companyName, state, companyType, companyPackage, address, zipCode, city, country, upsells) => {
+export const createUserWithUpsells = async (name, email, companyName, state, companyType, companyPackage, address, zipCode, city, country, upsells, customerStripeID, monetaryValue) => {
   // Splitting the name into first and last name
   const nameParts = name.split(' ');
   let firstName = '';
@@ -149,6 +155,7 @@ export const createUserWithUpsells = async (name, email, companyName, state, com
   }
 
   await connectDB();
+
   try {
     const existingUser = await User.findOne({ email: email });
   
@@ -177,7 +184,9 @@ export const createUserWithUpsells = async (name, email, companyName, state, com
           state: state,
           zipCode: zipCode,
           streetAddress: address
-        }
+        },
+        monetaryValue: monetaryValue,
+        status: 'paid'
       };
 
       workSpace.companies.push(company);
@@ -192,7 +201,7 @@ export const createUserWithUpsells = async (name, email, companyName, state, com
 
     // new user creation process
     const enableToken = crypto.randomBytes(32).toString('hex');
-    const user = await User.create({ firstName, lastName, email, password: '', level: 'user', enableToken: enableToken, active: false, type: 'local' });
+    const user = await User.create({ firstName, lastName, email, password: '', level: 'user', enableToken: enableToken, active: false, type: 'local', customerStripeID: customerStripeID });
     const workSpace = await Workspace.create({ users: [user._id] });
 
     const products = upsells.map(upsell => { 
@@ -216,7 +225,10 @@ export const createUserWithUpsells = async (name, email, companyName, state, com
         state: state,
         zipCode: zipCode,
         streetAddress: address
-      }
+      },
+      monetaryValue: monetaryValue,
+      companyType: companyType,
+      status: 'paid'
     };
 
     workSpace.companies.push(company);

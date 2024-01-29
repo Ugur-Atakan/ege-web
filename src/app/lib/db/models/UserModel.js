@@ -35,6 +35,10 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
+  customerStripeID: {
+    type: String, 
+    default: null
+  },
   address: {
     country: {
       type: String,

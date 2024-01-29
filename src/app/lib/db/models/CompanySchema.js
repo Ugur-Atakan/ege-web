@@ -65,7 +65,18 @@ const companySchema = new mongoose.Schema({
       type: String,
       default: null
     }
-  }
+  },
+  documents: [{
+    name: {
+      type: String
+    },
+    key: {
+      type: String
+    },
+    bucketName: {
+      type: String
+    }
+  }],
 }, {
   timestamps: true // This option adds createdAt and updatedAt fields automatically
 });

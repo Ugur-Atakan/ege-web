@@ -82,6 +82,20 @@ const Content = ({ lang }) => {
             return;
         }
 
+        let totalPrice = cookie.selectedPackage.price * 100 || 0;
+        // remove description from cookie.upsellIDs 
+        if (cookie.upsellIDs) {
+            cookie.upsellIDs.forEach((upsell, index) => {
+                if (upsell.description) {
+                    delete cookie.upsellIDs[index].description;
+                }
+            }); 
+            // calculate total price
+            cookie.upsellIDs.forEach(upsell => {
+                totalPrice += upsell.price * 100 || 0;
+            });
+        }
+
         let payload = {
             customerName: name + ' ' + lastname,
             companyName: cookie.companyName,
@@ -94,14 +108,15 @@ const Content = ({ lang }) => {
             companyCountry: country,
             selectedPackage: cookie.selectedPackage,
             upsells: cookie.upsellIDs || [],
-            subscriptionFlag: cookie.subscriptionFlag || false
+            subscriptionFlag: cookie.subscriptionFlag || false,
+            totalPrice: totalPrice,
         };  
         // console.log(payload);
         axios
             .post('/api/stripe', { data: { payload } })
             .then((response) => {
                 let stripeURL = response.data;
-                console.log(stripeURL)
+
                 if (stripeURL) {    
                     if (typeof window !== 'undefined' && window.localStorage && window.location) {
                         window.location.href = stripeURL;

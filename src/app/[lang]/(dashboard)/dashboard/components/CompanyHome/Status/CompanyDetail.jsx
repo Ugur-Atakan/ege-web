@@ -85,20 +85,20 @@ const CompanyDetail = ({ detail, companyID, isAdmin }) => {
         )}
 
         {(isAdmin && !isEditing) ? (
-            <span className="ml-4 flex-shrink-0">
+            <span className="flex-shrink-0">
                 <button 
                     type="button"
-                    className="rounded-md bg-white font-medium text-indigo-600 hover:text-indigo-500" 
+                    className="rounded-md text-white bg-[#0B2347] px-5 py-2 font-medium hover:scale-105" 
                     onClick={() => setIsEditing(true)}
                 >
                     Edit
                 </button>
             </span>
             ) : (
-            <span className="ml-4 flex-shrink-0">
+            isAdmin && <span className="ml-4 flex-shrink-0">
                 <button 
                     type="button"
-                    className="rounded-md bg-white font-medium text-indigo-600 hover:text-indigo-500" 
+                    className="rounded-md text-white bg-red-500 px-5 py-2 font-medium hover:scale-105" 
                     onClick={() => setIsEditing(false)} 
                 >
                     Cancel
@@ -106,11 +106,11 @@ const CompanyDetail = ({ detail, companyID, isAdmin }) => {
             </span>
         )}
 
-        {isAdmin && (
+        {(isAdmin && isEditing) && (
             <span className="ml-4 flex-shrink-0">
                 <button 
                     type="button"
-                    className="rounded-md bg-white font-medium text-indigo-600 hover:text-indigo-500" 
+                    className="rounded-md text-white bg-gray-600 px-5 py-2 font-medium hover:scale-105" 
                     onClick={() => updateField()}
                 >
                     Update
