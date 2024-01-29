@@ -1,32 +1,34 @@
 import React from 'react'
 import Hero from './components/Hero/Hero'
-import Features from './components/Features/Features'
-import BusinessShield from './components/BusinessShield/BusinessShield'
-import HowItWorks from './components/HowItWorks/HowItWorks'
 import Pricing from './components/Pricing/Pricing'
 import Faq from './components/Faq/Faq'
-import StartNow from './components/StartNow'
 import Footer from './components/Footer'
+import NewFeatures from './components/Features/NewFeatures'
+import { getProduct } from './util/util'
+import HIWNew from './components/HowItWorks/HIWNew'
 
-import products from '@/assets/json/products.json'
-import { Product } from './classes/Product'
-
-const Page = ({ params: { lang, slug } }) => {
-  const productJSON = products.find(product => product.slug === slug)
-
-  const product = new Product(productJSON.id, productJSON.name, productJSON.description, 
-                              productJSON.slug, productJSON.state, productJSON.type,
-                              productJSON.pricing, productJSON.features, productJSON.faq)
+const Page = async ({ params: { lang, slug } }) => {
+  const product = await getProduct(slug);
 
   return(
     <React.Fragment>
-      <Hero lang={lang} name={product.name} description={product.description}/>
-      <Features lang={lang} />
-      <BusinessShield />
-      <HowItWorks />
-      <Pricing />
+      <Hero 
+        lang={lang} 
+        id={product.id}
+        name={product.name} 
+        description={product.description}
+        pricing={product?.pricing}
+      />
+      <NewFeatures lang={lang} />
+      <HIWNew lang={lang} />
+      <Pricing 
+        lang={lang}
+        name={product.name}
+        pricing={product?.pricing}
+        type={product.type}
+        pricingFeatures={product?.pricingFeatures}
+      />
       <Faq lang={lang} faqs={product.faq} />
-      <StartNow lang={lang} />
       <Footer lang={lang} />
     </React.Fragment>
   )

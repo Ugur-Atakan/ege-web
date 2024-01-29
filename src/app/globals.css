@@ -160,6 +160,7 @@ body {
   .rocket-animation {
     transform: translate(5rem, 3%);
     animation-duration: 6s;
+    
     animation-name: rocket;
   }
 }

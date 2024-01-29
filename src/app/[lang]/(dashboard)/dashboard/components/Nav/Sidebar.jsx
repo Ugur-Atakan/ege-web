@@ -5,11 +5,13 @@
 // Template name: Dark sidebar with header
 
 import React, { Fragment }  from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { Dialog, Transition } from '@headlessui/react'
 import { Cog6ToothIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
 import { usePathname, useRouter } from 'next/navigation'
+import registateLogo from '@/assets/images/logos/registate-white-logo.png'
 import { teams, getSidebarNav } from '../util/const'
 import CompanyNav from './CompanyNav'
 import { useSession } from 'next-auth/react'
@@ -22,7 +24,13 @@ const Sidebar = ({ lang, sidebarOpen, setSidebarOpen }) => {
   const pathname = usePathname()
   const router = useRouter()
   const { data, update } = useSession();
+
+  if (data === undefined || data === null) {
+    router.push(`/${lang}/dashboard/login`);
+  } 
+
   const navigation = getSidebarNav(pathname, data.user.level);
+  const [showSubNav, setShowSubNav] = React.useState(false);
 
   return (
     <div>
@@ -71,7 +79,7 @@ const Sidebar = ({ lang, sidebarOpen, setSidebarOpen }) => {
                   {/* Sidebar component, swap this element with another sidebar if you like */}
                   <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-[#0b2347] px-6 pb-4 ring-1 ring-white/10">
                     <div className="flex h-16 shrink-0 items-center">
-                      <CompanyNav lang={lang} />
+                      {data.user.level !== 'admin' && <CompanyNav lang={lang} />}
                     </div>
                     <nav className="flex flex-1 flex-col">
                       <ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -95,29 +103,6 @@ const Sidebar = ({ lang, sidebarOpen, setSidebarOpen }) => {
                             ))}
                           </ul>
                         </li>
-                        {/* <li>
-                          <div className="text-xs font-semibold leading-6 text-gray-400">Your teams</div>
-                          <ul role="list" className="-mx-2 mt-2 space-y-1">
-                            {teams.map((team) => (
-                              <li key={team.name}>
-                                <a
-                                  href={team.href}
-                                  className={classNames(
-                                    team.current
-                                      ? 'bg-gray-800 text-white'
-                                      : 'text-gray-400 hover:text-white hover:bg-gray-800',
-                                    'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
-                                  )}
-                                >
-                                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-gray-400 group-hover:text-white">
-                                    {team.initial}
-                                  </span>
-                                  <span className="truncate">{team.name}</span>
-                                </a>
-                              </li>
-                            ))}
-                          </ul>
-                        </li> */}
                         <li className="mt-auto">
                           <a
                             href="#"
@@ -141,7 +126,16 @@ const Sidebar = ({ lang, sidebarOpen, setSidebarOpen }) => {
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-[#0b2347] px-6 pb-4">
             <div className="flex h-16 shrink-0 items-center">
-              <CompanyNav lang={lang} />
+              {data.user.level !== 'admin' ? 
+                <CompanyNav lang={lang} /> : 
+                <Image 
+                  src={registateLogo}
+                  alt="Registate Logo"
+                  width={120}
+                  className='mx-auto'
+                  height={90}
+                />
+              }
             </div>
             <nav className="flex flex-1 flex-col">
               <ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -155,16 +149,49 @@ const Sidebar = ({ lang, sidebarOpen, setSidebarOpen }) => {
                             item.current
                               ? 'bg-white/10 text-white'
                               : 'text-white hover:text-white hover:bg-white/10',
-                            'cursor-pointer group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
+                            'cursor-pointer group flex flex-col gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
                           )}
                         >
-                          <item.icon className="h-6 w-6 shrink-0" aria-hidden="true" />
-                          {item.name}
-                        </div>
+                          <div className='flex gap-x-3 flex-row'>
+                              <item.icon className="h-6 w-6 shrink-0" aria-hidden="true" />
+                              {item.name}
+                              {item.subNav ? ( 
+                                  <React.Fragment>
+                                      <button onClick={() => setShowSubNav(!showSubNav) }>
+                                          <svg className="text-gray-400 ml-28 h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                              <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
+                                          </svg>
+                                      </button>
+                                  </React.Fragment>
+                              ) : null}
+                            </div>
+                          </div>
+
+                          {showSubNav && item.subNav ? (
+                            <div className='mt-1'>
+                            {item.subNav.map((subItem) => (
+                              <div key={subItem.name} className="flex flex-col">
+                                <div
+                                  onClick={() => router.push(subItem.href)}
+                                  className={classNames(
+                                    subItem.current
+                                      ? 'bg-white/10 text-white'
+                                      : 'text-white hover:text-white hover:bg-white/10',
+                                    'cursor-pointer group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
+                                  )}
+                                >
+                                  <subItem.icon className="h-6 w-6 shrink-0" aria-hidden="true" />
+                                  {subItem.name}
+                                </div>
+                              </div>
+                            ))}
+                            </div> 
+                          ) : null}
                       </li>
                     ))}
                   </ul>
                 </li>
+               
                 <li className="mt-auto">
                   <Link
                     href={`/${lang}/dashboard/settings`}

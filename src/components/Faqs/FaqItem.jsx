@@ -23,7 +23,7 @@ const FaqItem = ({ faq }) => {
           </dt>
           <Disclosure.Panel as="dd" className="mt-2 lg:pr-12">
             {faq.answers.map((answer, index) => (
-              <p className="text-lg text-white" key={faq.id + index}>{answer}</p>
+              <p className="text-lg text-white text-justify" key={faq.id + index}>{answer}</p>
             ))}
           </Disclosure.Panel>
         </>

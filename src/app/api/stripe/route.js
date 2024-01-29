@@ -36,8 +36,7 @@ export async function GET() {
 export async function POST(req) {
   const { data } = await req.json();
 
-  const selectedPackage = data.payload.selectedPackage;
-  const packageName = data.payload.packageName;
+  const packageName = data.payload.selectedPackage.tierName;
   const companyName = data.payload.companyName;
   const companyState = data.payload.companyState;
   const companyType = data.payload.companyType;
@@ -47,56 +46,31 @@ export async function POST(req) {
   const zipCode = data.payload.companyZipCode;
   const city = data.payload.companyCity;
   const country = data.payload.companyCountry;
+  const selectedPackage = data.payload.selectedPackage;
+  const subscriptionFlag = data.payload.subscriptionFlag;
   const upsells = data.payload.upsells;
-  
-  //* To split the metadata and capitalize the first letter of each word
-  let words = selectedPackage.metadata.type.split('-');
-  // Capitalize the first letter of each word
-  words = words.map(word => word.charAt(0).toUpperCase() + word.slice(1));
-  // Join the words with a space
-  words = words.join(' ');
-  const name = data.payload.selectedPackage.nickname + ' - ' + words;
+  const upsellsStr = JSON.stringify(upsells); // to send as metadata for webhook
+  const totalPrice = data.payload.totalPrice;
 
-  try {
-    let session;
-    if (upsells != null) {
-      session = await stripe.checkout.sessions.create({
+  let upsellsIDs = null;
+  if (upsells != null) {
+    upsellsIDs = upsells.map(upsell => upsell.id);
+  }
+
+  const hasMultipleBillingInterval = upsells.some(item => item.frequency === "monthly") && upsells.some(item => item.frequency === "annually");  
+
+  if (hasMultipleBillingInterval) {
+    try{
+      const session = await stripe.checkout.sessions.create({
         line_items: [
           {
-            price: selectedPackage.id,
-            quantity: 1,
-          }
-          ,...upsells.map(upsell => {
-            return {
-              price: upsell.id,
-              quantity: 1,
-            }
-          })
-        ],
-        mode: 'subscription',
-        success_url: process.env.SUCCESS_STRIPE_URL,
-        cancel_url: process.env.FAIL_STRIPE_URL,
-        metadata: {
-          packageName,
-          customerName,
-          companyName,
-          companyState,
-          companyType,
-          customerEmail,
-          address,
-          zipCode,
-          city,
-          country
-        },
-        // customer_creation: 'if_required',
-        customer_email: customerEmail,
-        allow_promotion_codes: true
-      });
-    } else {
-      session = await stripe.checkout.sessions.create({
-        line_items: [
-          {
-            price: selectedPackage.id,
+            price_data: {
+              currency: 'usd',
+              product_data: {
+                name: selectedPackage.tierName,
+              },
+              unit_amount: totalPrice,
+            },
             quantity: 1,
           }
         ],
@@ -113,12 +87,126 @@ export async function POST(req) {
           address,
           zipCode,
           city,
-          country
+          country,
+          upsellsStr,
+          multiBilling: true
         },
         customer_creation: 'always',
         customer_email: customerEmail,
         allow_promotion_codes: true
       });
+
+      return new NextResponse(session.url, { status: 200 });
+    }
+    catch(error) {
+      logger.error({ message: `Error in creating Stripe checkout session , filename: /api/stripe/route.js - ${error.message}` })
+      return new NextResponse(error, {
+        status: 400,
+      });
+    }
+  }
+  else {
+    try {
+      let session;
+      if (subscriptionFlag === true) {
+        session = await stripe.checkout.sessions.create({
+          line_items: [
+            {
+              price: selectedPackage.priceID,
+              quantity: 1,
+            }
+            ,...upsellsIDs.map(upsell => {
+              return {
+                price: upsell,
+                quantity: 1,
+              }
+            })
+          ],
+          mode: 'subscription',
+          success_url: process.env.SUCCESS_STRIPE_URL,
+          cancel_url: process.env.FAIL_STRIPE_URL,
+          metadata: {
+            packageName,
+            customerName,
+            companyName,
+            companyState,
+            companyType,
+            customerEmail,
+            address,
+            zipCode,
+            city,
+            country,
+            upsellsStr,
+            mutliBilling: false,
+          },
+          // customer_creation: 'if_required',
+          customer_email: customerEmail,
+          allow_promotion_codes: true
+        });
+      } else {
+        if (upsellsIDs == null) {
+          session = await stripe.checkout.sessions.create({
+            line_items: [
+              {
+                price: selectedPackage.priceID,
+                quantity: 1,
+              }
+            ],
+            mode: 'payment',
+            success_url: process.env.SUCCESS_STRIPE_URL,
+            cancel_url: process.env.FAIL_STRIPE_URL,
+            metadata: {
+              packageName,
+              customerName,
+              companyName,
+              companyState,
+              companyType,
+              customerEmail,
+              address,
+              zipCode,
+              city,
+              country,
+              mutliBilling: false
+            },
+            customer_creation: 'always',
+            customer_email: customerEmail,
+            allow_promotion_codes: true
+          });
+        } else {
+          session = await stripe.checkout.sessions.create({
+            line_items: [
+              {
+                price: selectedPackage.priceID,
+                quantity: 1,
+              },...upsellsIDs.map(upsell => {
+                return {
+                  price: upsell,
+                  quantity: 1,
+                }
+              })
+            ],
+            mode: 'payment',
+            success_url: process.env.SUCCESS_STRIPE_URL,
+            cancel_url: process.env.FAIL_STRIPE_URL,
+            metadata: {
+              packageName,
+              customerName,
+              companyName,
+              companyState,
+              companyType,
+              customerEmail,
+              address,
+              zipCode,
+              city,
+              country,
+              upsellsStr,
+              mutliBilling: false
+            },
+            customer_creation: 'always',
+            customer_email: customerEmail,
+            allow_promotion_codes: true
+          });
+        }
     }
     logger.info({ message: `Stripe checkout session created - ${session.url}` })
     return new NextResponse(session.url, { status: 200 });
@@ -127,5 +215,6 @@ export async function POST(req) {
     return new NextResponse(error, {
       status: 400,
     });
+   }
   }
 }

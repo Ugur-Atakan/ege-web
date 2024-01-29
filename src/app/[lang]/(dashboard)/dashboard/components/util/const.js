@@ -10,16 +10,9 @@ export const navigation = [
         mainDashboardVisibility: true,
         customDashboardVisibility: true 
     },
-    // { 
-    //     name: 'Home', href: '/en/dashboard', icon: HomeIcon, current: true,  
-    //     adminVisibility: true, 
-    //     userVisibility: true, 
-    //     mainDashboardVisibility: true,
-    //     customDashboardVisibility: true 
-    // },
     { 
         name: 'Company Info', href: '/en/dashboard/company', icon: FolderIcon, current: false,
-        adminVisibility: false,
+        adminVisibility: true,
         userVisibility: true,
         mainDashboardVisibility: false,
         customDashboardVisibility: true 
@@ -32,11 +25,40 @@ export const navigation = [
         customDashboardVisibility: false 
     },
     { 
-        name: 'Add new company', href: '/en/dashboard/onboarding', icon: FolderIcon, current: false,
-        adminVisibility: true,
+        name: 'Onboard Company', href: '/en/dashboard/onboarding', icon: FolderIcon, current: false,
+        adminVisibility: false,
         userVisibility: true,
         mainDashboardVisibility: true,
         customDashboardVisibility: false 
+    },
+    { 
+        name: 'Onboard Admin Company', href: '/en/dashboard/create-company', icon: FolderIcon, current: false,
+        adminVisibility: true,
+        userVisibility: false,
+        mainDashboardVisibility: true,
+        customDashboardVisibility: true 
+    },
+    { 
+        name: 'Search Company', href: '/en/dashboard/search-companies', icon: FolderIcon, current: false,
+        adminVisibility: true,
+        userVisibility: false,
+        mainDashboardVisibility: true,
+        customDashboardVisibility: true  
+    },
+    {
+        name: 'Products',
+        href: '/en/dashboard/products',
+        icon: ChartPieIcon,
+        current: false,
+        adminVisibility: true,
+        userVisibility: true,
+        mainDashboardVisibility: false,
+        customDashboardVisibility: true,
+        subNav: [
+            { name: 'Compliance Reminder', href: '/en/dashboard/products/compliance-reminder', icon: DocumentDuplicateIcon, current: false },
+            { name: 'Registered Agent', href: '/en/dashboard/products/registered-agent', icon: FolderIcon, current: false },
+            { name: 'Certificate of Good Standing', href: '/en/dashboard/products/cofg', icon: FolderIcon, current: false },
+        ]
     }
 ]
 
@@ -47,8 +69,14 @@ export const getSidebarNav = (pathName, userAccessLevel) => {
     const secondLastPart = parts.pop();
 
     const newNavigation = navigation.filter(nav => {
-        const userVisible = userAccessLevel === 'admin' ? nav.adminVisibility !== true : nav.userVisibility !== false;
-
+        // setting the visibility on bases of user level
+        let userVisible = false;
+        if (userAccessLevel === 'admin') {
+            userVisible = nav.adminVisibility !== false;
+        } else {
+            userVisible = nav.userVisibility !== false;
+        }
+        
         //* Main dashboard visible
         if (secondLastPart == 'en' || secondLastPart == 'tr') {
             return userVisible && nav.mainDashboardVisibility;
@@ -62,14 +90,29 @@ export const getSidebarNav = (pathName, userAccessLevel) => {
         }
        
     }).map(nav => {
+        //* for /products/compliance-reminder/:id etc
+        if (secondLastPart == 'products') {
+            if (nav.name.toLowerCase() === secondLastPart) {    
+                nav.current = true
+                nav.subNav.href = nav.subNav.map(subNav => {
+                    if (!subNav.href.includes(lastPart))
+                        subNav.href = subNav.href + '/' + lastPart;
+                })
+            } else {
+                nav.current = false
+            }
+            
+        }
         //* if last part is company UID e.g /dashboard/1234567890
-        if (lastPart !== nav.name.toLowerCase()){
+        else if (lastPart !== nav.name.toLowerCase()){
             if (nav.name.toLowerCase() === secondLastPart) {    
                 nav.current = true
             } else {
                 nav.current = false
             } 
             if (!nav.href.includes(lastPart)) nav.href = nav.href + '/' + lastPart;
+            // if (lastPart == 'products') nav.href = nav.href + '/' + lastPart;
+        
         } else { //* else works if someone is on main dashboard WITHOUT /dashboard/:id
             if (nav.name.toLowerCase() === lastPart) {    
                 nav.current = true
@@ -82,12 +125,6 @@ export const getSidebarNav = (pathName, userAccessLevel) => {
 
     return newNavigation;
 }
-
-export const teams = [
-    { id: 1, name: 'Heroicons', href: '#', initial: 'H', current: false },
-    { id: 2, name: 'Tailwind Labs', href: '#', initial: 'T', current: false },
-    { id: 3, name: 'Workcation', href: '#', initial: 'W', current: false },
-]
 
 export const userNavigation = [
     { name: 'Your profile', href: '/' },

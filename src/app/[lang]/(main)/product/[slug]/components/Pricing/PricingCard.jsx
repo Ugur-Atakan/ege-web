@@ -1,44 +1,32 @@
-import React from 'react'
+import React from 'react';
+import FeatureItem from './FeatureItem';
 
-const PricingCard = () => {
+const PricingCard = ({ name, priceMonthly, priceYearly, priceOneTime, features }) => {
   return (
-    <div className="flex justify-center items-center"> 
-        <div className="w-[1104px] h-[448px] relative bg-white rounded-[32px]">
-            <div className="w-[484.86px] left-[32px] top-[32px] absolute text-neutral-800 text-[40px] font-semibold font-['Inter'] leading-[44px]">Registered Agent</div>
-            <div className="left-[32px] top-[85px] absolute text-blue-600 text-[40px] font-semibold font-['Inter'] leading-[44px]">$6,5/month*</div>
-            <div className="h-[248px] left-[517px] top-[36px] absolute flex-col justify-start items-start gap-4 inline-flex">
-                <div className="w-[526px] justify-start items-start gap-[18px] inline-flex">
-                <div className="w-5 h-5 relative" />
-                    <div className="grow shrink basis-0 text-neutral-800 text-lg font-semibold font-['Inter'] leading-normal">Registered agent available during business hours</div>
-                </div>
-                <div className="w-[526px] justify-start items-start gap-[18px] inline-flex">
-                    <div className="w-5 h-5 relative" />
-                        <div className="w-[488px] text-neutral-800 text-lg font-semibold font-['Inter'] leading-normal">Centralized dashboard with all documentation</div>
-                    </div>
-                    <div className="w-[526px] justify-start items-start gap-[18px] inline-flex">
-                        <div className="w-5 h-5 relative" />
-                    <div className="grow shrink basis-0 text-neutral-800 text-lg font-semibold font-['Inter'] leading-normal">Providing updates about all paperwork requiring attention</div>
-                </div>
-                <div className="w-[526px] justify-start items-start gap-[18px] inline-flex">
-                    <div className="w-5 h-5 relative" />
-                    <div className="w-[488px] text-neutral-800 text-lg font-semibold font-['Inter'] leading-normal">Maintaining good standing to avoid fines</div>
-                </div>
-                <div className="w-[526px] justify-start items-start gap-[18px] inline-flex">
-                    <div className="w-5 h-5 relative" />
-                    <div className="w-[488px] text-neutral-800 text-lg font-semibold font-['Inter'] leading-normal">Pre-filling all required state and federal forms</div>
-                </div>
-                <div className="w-[526px] justify-start items-start gap-[18px] inline-flex">
-                    <div className="w-5 h-5 relative" />
-                    <div className="w-[488px] text-neutral-800 text-lg font-semibold font-['Inter'] leading-normal">Operation in any chosen state</div>
-                </div>
-            </div>
-            <div className="px-10 py-4 left-[32px] top-[364px] absolute bg-black rounded-2xl justify-center items-center gap-2 inline-flex">
-                <div className="text-center text-white text-lg font-semibold font-['Inter'] leading-normal">Get started</div>
-            </div>
-            <div className="left-[555px] top-[396px] absolute text-blue-600 text-lg font-semibold font-['Inter'] leading-normal">*Free with Your Business Formation Packages </div>
+      <div className="mx-auto w-full md:w-[80%] lg:w-[60%] xl:w-[70%] bg-white rounded-[32px] p-8 md:p-12 lg:p-16">
+        <div className="flex mx-auto flex-col md:flex-row items-center">
+        <div className='flex flex-col pr-10'>
+          <h2 className="text-black text-3xl md:text-5xl lg:text-5xl font-semibold leading-[1.1] mb-4">{name} </h2>
+          <div className="text-blue-600 text-2xl md:text-3xl lg:text-3xl font-semibold leading-[1.1] mb-6">
+            {priceMonthly != undefined && priceMonthly != -1 ? `$${priceMonthly} /month` : ''}
+            {priceYearly != undefined ? `$${priceYearly} /year` : ''}
+            {priceOneTime !== -1  && priceOneTime != undefined ? `$${priceOneTime} /once` : ''}
+          </div>
+          <div className="mt-6">
+            <button className='bg-[#1649FF] text-white px-8 py-3 rounded-3xl font-bold text-lg hover:bg-black hover:text-white  transition duration-300 ease-in-out'>
+                Get Started
+            </button>
+          </div>
         </div>
+        <div className="flex flex-col gap-4 pt-4">
+          {features.map((feature) => (
+            <FeatureItem key={feature.id} text={feature.title} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
 
-export default PricingCard
+
+export default PricingCard;

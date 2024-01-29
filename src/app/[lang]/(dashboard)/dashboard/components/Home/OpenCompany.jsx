@@ -16,7 +16,7 @@ const OpenCompany = ({ lang }) => {
             </svg>
         
             <button 
-                className='bg-gray-900/80 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded'
+                className='bg-[#0B2347] hover:bg-gray-600 text-white font-bold py-2 px-4 rounded'
                 onClick={() => router.push(`/${lang}/dashboard/onboarding`)}
             >
                 Create Company

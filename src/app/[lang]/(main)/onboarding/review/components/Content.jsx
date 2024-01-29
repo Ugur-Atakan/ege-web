@@ -1,10 +1,9 @@
 /* eslint-disable */
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState} from 'react'
 import { redirectToLastNullInternalFunnel, checkEqualPathName } from '@/app/lib/utils'
 import { usePathname, useRouter } from 'next/navigation'
-import dynamic from 'next/dynamic'
 import { useTranslation } from '@/i18n/client'
 
 import FillInCompany from './form/FillInCompany'
@@ -17,9 +16,10 @@ import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const CompanyDetails = dynamic(() => import('./CompanyDetails'))
-const Features = dynamic(() => import('./Features'))
-const OrderReview = dynamic(() => import('./OrderReview'))
+import CompanyDetails from './CompanyDetails'
+import Features from './Features'
+import OrderReview from './OrderReview'
+import { readCookie } from '@/app/lib/session/clientActions'
 
 /**
  * Main content component
@@ -29,8 +29,18 @@ const OrderReview = dynamic(() => import('./OrderReview'))
  * @returns {JSX.Element} 
 */
 
-const Content = ({ lang, cookie }) => {
+const Content = ({ lang }) => {
     const { t } = useTranslation(lang);
+
+    const [cookie, setCookie] = useState({});
+    useEffect(() => {
+      const readCkie = async () => {
+        const ckie = await readCookie();
+        setCookie(ckie);
+        console.log(ckie);
+      }
+      readCkie();
+    }, []);
 
     const [displayForm, setDisplayForm] = useState(false);
     const [name, setName] = useState('');
@@ -72,7 +82,20 @@ const Content = ({ lang, cookie }) => {
             return;
         }
 
-        const jsonSelectedPkg = JSON.parse(cookie.selectedPackage);
+        let totalPrice = cookie.selectedPackage.price * 100 || 0;
+        // remove description from cookie.upsellIDs 
+        if (cookie.upsellIDs) {
+            cookie.upsellIDs.forEach((upsell, index) => {
+                if (upsell.description) {
+                    delete cookie.upsellIDs[index].description;
+                }
+            }); 
+            // calculate total price
+            cookie.upsellIDs.forEach(upsell => {
+                totalPrice += upsell.price * 100 || 0;
+            });
+        }
+
         let payload = {
             customerName: name + ' ' + lastname,
             companyName: cookie.companyName,
@@ -83,16 +106,17 @@ const Content = ({ lang, cookie }) => {
             companyZipCode: zip,
             companyCity: city,
             companyCountry: country,
-            selectedPackage: jsonSelectedPkg[0],
-            upsells: cookie.upsellIDs,
-            packageName: jsonSelectedPkg[0].product
+            selectedPackage: cookie.selectedPackage,
+            upsells: cookie.upsellIDs || [],
+            subscriptionFlag: cookie.subscriptionFlag || false,
+            totalPrice: totalPrice,
         };  
-
+        // console.log(payload);
         axios
             .post('/api/stripe', { data: { payload } })
             .then((response) => {
                 let stripeURL = response.data;
-                
+
                 if (stripeURL) {    
                     if (typeof window !== 'undefined' && window.localStorage && window.location) {
                         window.location.href = stripeURL;
@@ -100,7 +124,7 @@ const Content = ({ lang, cookie }) => {
                 }
             })
             .catch(function (error) {
-                console.log(error);
+                console.log(error.response.data);
             });
     };
 
@@ -120,7 +144,7 @@ const Content = ({ lang, cookie }) => {
     }, []);
 
     return (
-        <div className="block md:flex items-start gap-12 bg-[#ECEFF1]">
+        <div className="block md:flex items-start gap-12 bg-[#111827]">
             <div className="w-full md:w-[45%]">
                 {displayForm ? (
                     <div className='py-8 px-4 md:pl-10 md:py-8'>
@@ -174,7 +198,7 @@ const Content = ({ lang, cookie }) => {
                     </div>
                 ) : (
                     <div className="py-8 px-4 md:pl-10 md:py-8">
-                        <h1 className="font-semibold text-[26px] md:text-[40px] leading-[44px] text-[#222222]">
+                        <h1 className="font-semibold text-[26px] md:text-[40px] leading-[44px] text-white">
                             {t('review_title')}
                         </h1>
                         <CompanyDetails

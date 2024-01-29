@@ -3,7 +3,7 @@
     "topbar_middle_part": " ücretsiz",
     "topbar_last_part": "görüşme ayarla",
     "menu_top_right_handcorner_button": "Şirketini Kur",
-    "hero_text_white1": "Dünya'nın heryerinden",
+    "hero_text_white1": "Dünya'nın Her Yerinden",
     "hero_text_green": "24 saat içinde",
     "hero_text_white2": "ABD'de şirketinizi kurun",
     "hero_description": "ABD'de şirket kurup hayallerinizi gerçekleştirmeniz için ihtiyacınız olan tüm hizmetler",
@@ -397,5 +397,9 @@
     "contact_us_header3_blank_2": "Soyadı",
     "name_checker_title": "Şirket Adı Kontrol edin",
     "name_checker_footnote": "Şirket ismi yalnızca Delaware state şirketler için kontrol edilir.",
-    "take_survery_again": "Anketi tekrar doldurun"
+    "take_survery_again": "Anketi tekrar doldurun",
+    "how_it_works_step_4_silver_description": "Hızlandırılmış Başvuru (1-3 iş günü). Şirketinizi mükemmel bir şekilde başlatmanız için ihtiyacınız olan her şey.",
+    "how_it_works_step_4_silver_llc_description": "İşletmemin temel hizmetler ve belgelerle kurulmasını istiyorum.",
+    "how_it_works_step_4_gold_llc_description": "İşletmemin oluşturulmasından sonra bile sorunsuz bir şekilde işlemesini sağlamak istiyorum.",
+    "every_thing_in_silver": "Silver paket, içindekilerin hepsi ve daha fazlası:"
 }

@@ -3,7 +3,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
-import { submitCookie } from '@/app/lib/session/clientActions'
+import { submitCookie, readCookie } from '@/app/lib/session/clientActions'
 import axios from 'axios'
 
 import BackButton from '../../components/common/BackButton'
@@ -20,7 +20,7 @@ import { useTranslation } from '@/i18n/client'
  * @returns {JSX.Element} Rendered content for the page
 */
 
-const Content = ({ lang , cookie }) => {
+const Content = ({ lang  }) => {
   const { t } = useTranslation(lang);
   const router = useRouter();
   const [companyName, setCompanyName] = useState('');
@@ -57,17 +57,28 @@ const Content = ({ lang , cookie }) => {
     setCompanyName(e.target.value);
   }
 
+  //* Read cookie
+  const [cookie, setCookie] = useState({});
+  useEffect(() => {
+    const readCkie = async () => {
+      const ckie = await readCookie();
+      console.log('Cookie inside company-name ', ckie);
+      setCookie(ckie);
+    }
+    readCkie();
+  }, []);
+
   const finishNameCompletion = () => {
-    let ckie; 
+    let ckie;
     if (abbreviation === '') ckie = { ...cookie, 'companyName': companyName + ' Inc'};
     else ckie = { ...cookie, 'companyName': companyName + ' ' + abbreviation};
 
     const sendCookie = async () => {
       await submitCookie(ckie);
+      router.refresh();
     };
     sendCookie();
     router.push(`/${lang}/onboarding/upsell`);
-    // router.refresh();
   }
 
   return (

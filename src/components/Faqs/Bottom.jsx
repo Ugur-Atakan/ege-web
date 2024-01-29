@@ -2,7 +2,7 @@ import React from 'react'
 
 const Bottom = () => {
     return (    
-        <div className='w-full h-[200px] bg-[#020507] circle-inverse relative'>
+        <div className='hidden sm:hidden lg:flex w-full h-[200px] bg-[#020507] circle-inverse relative'>
             <div className='w-full text-white text-[14px] leading-[28px] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
             <div className='flex flex-row justify-between h-20 lg:h-48 px-4 gap-3'>
                 <div className='flex flex-col justify-end h-[70%]'>

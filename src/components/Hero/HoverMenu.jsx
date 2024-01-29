@@ -13,43 +13,48 @@ import {
 
 // 0,2,4,6 for Reccurring Products
 // 1,3,5,7 for One Time
-const solutions = [
-  { 
-    name: 'Compliance Reminder', 
-    description: 'Get compliance reminders ', 
-    href: '#', 
-    icon: ChartPieIcon 
-  },
-  { 
-    name: 'Foreign Qualification', 
-    description: 'Foreign Qualification', 
-    href: '#', 
-    icon: ChartPieIcon 
-  },
-  { 
-    name: 'Registered Agent', 
-    description: 'Get a registered agent', 
-    href: '#', 
-    icon: ChartPieIcon 
-  },
-  {
-    name: 'Certificate of Good Standing',
-    description: 'Certificate of Good Standing',
-    href: '#',
-    icon: SquaresPlusIcon,
-  },
-  {
-    name: 'Virtual Mailbox',
-    description: 'Get virtual mailbox',
-    href: '#',
-    icon: CursorArrowRaysIcon,
-  },
-  { name: 'EIN', description: 'Get US EIN', href: '#', icon: ArrowPathIcon },
-  { name: 'Office Address', description: "Get office address in US", href: '#', icon: FingerPrintIcon },
+const getSolutions = (lang) => {
+  const sol = [
+    { 
+      name: 'Compliance Reminder', 
+      description: 'Compliance Reminder', 
+      href: `/${lang}/product/compliance-reminder`, 
+      icon: ChartPieIcon 
+    },
+    { 
+      name: 'Foreign Qualification', 
+      description: 'Foreign Qualification', 
+      href: `/${lang}/product/foreign-qualification`,
+      icon: ChartPieIcon 
+    },
+    { 
+      name: 'Registered Agent', 
+      description: 'Registered Agent', 
+      href: `/${lang}/product/registered-agent`,
+      icon: ChartPieIcon 
+    },
+    {
+      name: 'Certificate of Good Standing',
+      description: 'Certificate of Good Standing',
+      href: `/${lang}/product/certificate-of-good-standing`,
+      icon: SquaresPlusIcon,
+    },
+    {
+      name: 'Virtual Mailbox',
+      description: 'Virtual Mailbox',
+      href: `/${lang}/product/virtual-mailbox`,
+      icon: CursorArrowRaysIcon,
+    },
+    { name: 'EIN', description: 'EIN', href: '#', icon: ArrowPathIcon },
+    { name: 'Office Address', description: "Office Address", href: '#', icon: FingerPrintIcon },
+  ];
+  return sol;
+};
 
-]
 
-export default function HoverMenu({ setShowMenu, showMenu }) {
+export default function HoverMenu({ lang, setShowMenu, showMenu }) {
+  const solutions = getSolutions(lang);
+
   return (
     <Popover 
       className="relative"
@@ -76,12 +81,12 @@ export default function HoverMenu({ setShowMenu, showMenu }) {
               {solutions.map((item) => (
                 <div key={item.name} className="group relative flex gap-x-3 rounded-lg p-4 hover:bg-gray-50">
                   <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                    <item.icon className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
+                    <item.icon className="h-6 w-6 text-gray-600 group-hover:text-blue-500" aria-hidden="true" />
                   </div>
                   <div>
-                    <a href={item.href} className="font-semibold text-gray-900">
+                    <a href={item.href} className="font-semibold  text-gray-900">
                       {item.name}
-                      <span className="absolute inset-0" />
+                      {/* <span className="absolute inset-0" /> */}
                     </a>
                     <p className="mt-1 text-gray-600">{item.description}</p>
                   </div>

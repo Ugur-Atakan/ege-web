@@ -27,7 +27,7 @@ const Navbar = ({ isSticky, t, lang }) => {
     };
 
     return (
-        <header className={`absolute inset-x-0 top-0 py-5 z-50 ${isSticky ? 'lg:!fixed !bg-[#ECEFF1]' : ''}`}>
+        <header className={`absolute mb-24 inset-x-0 top-0 py-5 z-50 ${isSticky ? 'lg:!fixed !bg-[#ECEFF1]' : ''}`}>
             <nav className={`mx-auto flex max-w-[90%] items-center justify-between lg:px-2 lg:p-0`} aria-label="Global">
                 <div className="flex lg:flex-1">
                     {!mobileMenuOpen &&
@@ -39,7 +39,7 @@ const Navbar = ({ isSticky, t, lang }) => {
                 </div>
                 <div className="flex gap-x-3 lg:hidden">
                     {!mobileMenuOpen && (
-                        <Link href={`/${lang}/onboarding`}  className='bg-white rounded-[28px] py-2 px-4 text-[16px] leading-[22px] font-semibold text-[#1649FF]'>
+                        <Link href={`/${lang}/onboarding`}  className='bg-[#1649FF] rounded-[28px] py-2 px-4 text-[16px] leading-[22px] font-semibold text-white'>
                             {t('menu_top_right_handcorner_button')}
                         </Link>
                     )}

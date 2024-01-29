@@ -1,5 +1,6 @@
 import { readCookieFromStorageServerAction } from '@/app/lib/session/serverActions'
 import Content from './components/Content'
+import Test from './components/NewContent'
 
 /**
  * Page route for the company name page
@@ -10,13 +11,11 @@ import Content from './components/Content'
 */
 
 const Page = async ({ params: { lang } }) => {
-  const cookie = await readCookieFromStorageServerAction();
-
   return (
-    <Content 
-      lang={lang} 
-      cookie={cookie}
-    />
+    // <Content 
+    //   lang={lang}
+    // />
+    <Test lang={lang} />
   )
 }
 

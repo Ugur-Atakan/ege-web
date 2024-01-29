@@ -64,8 +64,7 @@ export const mailBody = (enableToken) => {
   </html>`
 )};
 
-
-export const createUser = async (name, email, companyName, state, companyPackage) => {
+export const createUserWithoutUpsells = async (name, email, companyName, state, companyType, companyPackage, address, zipCode, city, country, customerStripeID, monetaryValue) => {
   // Splitting the name into first and last name
   const nameParts = name.split(' ');
   let firstName = '';
@@ -76,7 +75,6 @@ export const createUser = async (name, email, companyName, state, companyPackage
   }
   
   await connectDB();
-    
   try {
     const existingUser = await User.findOne({ email: email });
   
@@ -85,8 +83,19 @@ export const createUser = async (name, email, companyName, state, companyPackage
       const company = {
         companyName: companyName,
         state: state,
-        companyPackage: companyPackage
+        companyPackage: companyPackage,
+        address: {
+          country: country,
+          city: city,
+          state: state,
+          zipCode: zipCode,
+          streetAddress: address
+        },
+        monetaryValue: monetaryValue,
+        companyType: companyType,
+        status: 'paid'
       };
+
       workSpace.companies.push(company);
       await workSpace.save();
 
@@ -98,13 +107,130 @@ export const createUser = async (name, email, companyName, state, companyPackage
     } 
 
     const enableToken = crypto.randomBytes(32).toString('hex');
-    const user = await User.create({ firstName, lastName, email, password: '', level: 'user', enableToken: enableToken, active: false, type: 'local' });
+    const user = await User.create({ firstName, lastName, email, password: '', level: 'user', enableToken: enableToken, active: false, type: 'local', customerStripeID: customerStripeID });
     const workSpace = await Workspace.create({ users: [user._id] });
+
     const company = {
       companyName: companyName,
       state: state,
-      companyPackage: companyPackage
+      companyPackage: companyPackage,
+      address: {
+        country: country,
+        city: city,
+        state: state,
+        zipCode: zipCode,
+        streetAddress: address
+      },
+      monetaryValue: monetaryValue,
+      companyType: companyType,
+      status: 'paid'
     };
+
+    workSpace.companies.push(company);
+    await workSpace.save();
+
+    return new Response(enableToken, {
+        status: 200,
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    
+  } catch (err) {
+      console.error(err);
+      return new Response('Error creating a Google user', {
+          status: 500
+      });
+  }
+}
+
+export const createUserWithUpsells = async (name, email, companyName, state, companyType, companyPackage, address, zipCode, city, country, upsells, customerStripeID, monetaryValue) => {
+  // Splitting the name into first and last name
+  const nameParts = name.split(' ');
+  let firstName = '';
+  let lastName = '';
+  if (nameParts.length > 0) {
+      firstName = nameParts[0];
+      lastName = nameParts.slice(1).join(' ');
+  }
+
+  await connectDB();
+
+  try {
+    const existingUser = await User.findOne({ email: email });
+  
+    // if exisiting user is there
+    if (existingUser) {
+      const workSpace = await Workspace.findOne({ users: existingUser._id });
+
+      const products = upsells.map(upsell => { 
+        return {
+          name: upsell.name,
+          price: upsell.price,
+          frequency: upsell.frequency,
+          stripePriceID: upsell.id
+        };
+      });
+      
+      const company = {
+        companyName: companyName,
+        state: state,
+        products: products,
+        companyPackage: companyPackage,
+        companyType: companyType,
+        address: {
+          country: country,
+          city: city,
+          state: state,
+          zipCode: zipCode,
+          streetAddress: address
+        },
+        monetaryValue: monetaryValue,
+        status: 'paid'
+      };
+
+      workSpace.companies.push(company);
+      await workSpace.save();
+
+      return new Response('', { 
+        status: 409,   
+        headers: {
+        'Content-Type': 'application/json'
+      }});
+    } 
+
+    // new user creation process
+    const enableToken = crypto.randomBytes(32).toString('hex');
+    const user = await User.create({ firstName, lastName, email, password: '', level: 'user', enableToken: enableToken, active: false, type: 'local', customerStripeID: customerStripeID });
+    const workSpace = await Workspace.create({ users: [user._id] });
+
+    const products = upsells.map(upsell => { 
+      return {
+        name: upsell.name,
+        price: upsell.price,
+        frequency: upsell.frequency,
+        stripePriceID: upsell.id
+      };
+    });
+    
+
+    const company = {
+      companyName: companyName,
+      state: state,
+      products: products,
+      companyPackage: companyPackage,
+      address: {
+        country: country,
+        city: city,
+        state: state,
+        zipCode: zipCode,
+        streetAddress: address
+      },
+      monetaryValue: monetaryValue,
+      companyType: companyType,
+      status: 'paid'
+    };
+
     workSpace.companies.push(company);
     await workSpace.save();
 

@@ -3,7 +3,7 @@ import User from '@/app/lib/db/models/UserModel'
 import Workspace from '@/app/lib/db/models/WorkspaceModel'
 import crypto from 'crypto'
 
-//* Creating a user
+//* Creating a user in workspace
 export async function POST(request) {
     const { firstName, lastName , email } = await request.json();
     await connectDB();

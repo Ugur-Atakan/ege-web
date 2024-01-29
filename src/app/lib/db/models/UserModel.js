@@ -34,6 +34,32 @@ const userSchema = new mongoose.Schema({
   active: {
     type: Boolean,
     default: false
+  },
+  customerStripeID: {
+    type: String, 
+    default: null
+  },
+  address: {
+    country: {
+      type: String,
+      default: null
+    },
+    city: {
+      type: String,
+      default: null
+    },
+    state: {
+      type: String,
+      default: null
+    },
+    zipCode: {
+      type: String,
+      default: null
+    },
+    streetAddress: {
+      type: String,
+      default: null
+    }
   }
 }, { timestamps: true });
 

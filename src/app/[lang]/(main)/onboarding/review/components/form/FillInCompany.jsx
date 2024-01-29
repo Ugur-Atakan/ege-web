@@ -12,7 +12,7 @@ const FillInCompany = (props) => {
 
     return ( 
         <div className='bg-white border rounded-[32px] p-6 my-6'>
-            <h2 className='font-semibold text-[24px] leading-[44px] text-[#222222]'>{'Address Details'}</h2>
+            <h2 className='font-semibold text-[24px] leading-[44px] text-[#222222]'>{'Company Address Details'}</h2>
             <p className='font-semibold text-[16px] leading-6 text-[#222222]'>{'Make sure to fill your correct address'}</p>
             <div className='py-4'>
                 <div className='flex item-center gap-4 md:gap-4 pb-4'>           

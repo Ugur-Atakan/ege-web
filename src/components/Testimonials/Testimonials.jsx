@@ -35,7 +35,7 @@ export default function Testimonials() {
               </svg>
             <blockquote className="text-xl text-justify first-letter leading-8 text-gray-900 sm:text-2xl sm:leading-9">
               <p className='pb-5'>
-                "I am extremely pleased with the exceptional service provided by Registate in helping me establish my LLC in America. As a first-time entrepreneur, the process of setting up a business seemed overwhelming, but Registate made it seamless and stress-free."
+                "I cannot thank Registate enough for how quickly they worked, and I just recommend them so much to every person that needs help on their business journey. Don't make the mistake of thinking you can do it yourself. There are experts to help you for a reason. I only wish I had known about Registate sooner."
               </p>
               <a href="https://www.youtube.com/watch?v=_zj-Bh5SjK0&ab_channel=Registate" target="_blank" >
                 <p className="text-[18px] font-semibold text-blue-600 hover:text-blue-500">
@@ -68,8 +68,8 @@ export default function Testimonials() {
             <Image className="h-14 w-[100px] rounded-xl self-start" src={funverseLogo} alt="funverse-logo" />
             <figure className="mt-10 flex flex-auto flex-col justify-between">
               <blockquote className="text-lg leading-8 text-gray-900">
-                <p>
-                  Registate made establishing my LLC in the U.S. a breeze. Their team's expertise and seamless process stood out. I highly recommend Registate for their efficient and personalized approach. Thanks to them, my journey to set up an LLC was smooth.
+                <p className='text-justify'>
+                  "I had so much anxiety, so knowing that this is done and that any time I have any other business legal-related issues, I can just put it in the good hands of Registate. Their services elevate business matters; it's like having your own personal business lawyer without the headaches. Thank you so much, Registate"
                 </p>
               </blockquote>
               <a href="https://www.youtube.com/watch?v=ggWsTwawg4o&ab_channel=Registate" target="_blank" className="mt-3">
@@ -95,8 +95,8 @@ export default function Testimonials() {
             <Image className="h-14 w-[100px] self-start rounded-xl" src={wellbeesLogo} alt="well-bees" />
             <figure className="mt-10 flex flex-auto flex-col justify-between">
               <blockquote className="text-lg leading-8 text-gray-900">
-                <p>
-                  “Registate has been a game-changer in helping me set up my LLC in the U.S. The entire process was made effortless by their knowledgeable team. Their expertise and attention to detail ensured a smooth journey from start to finish. I confidently recommend Registate for their personalized service and commitment to client satisfaction.”
+                <p className='text-justify'>
+                  “Registate made forming my company a breeze. Their user-friendly platform and quick solutions simplified the process. Ongoing support for documents and compliance made them an invaluable partner. Highly recommended for a stress-free business journey!”
                 </p>
               </blockquote>
               

@@ -21,10 +21,10 @@ const Calendely = ({ isSticky, lang }) => {
             <div className='flex items-center justify-center -mt-4 pb-2 border-[#ECEFF1] border-b-[1px] border-opacity-10'>
                 <div className='flex items-center gap-2'>
                     <PopupButton
-                    url="https://calendly.com/registate/intro"
-                    rootElement={rootEl}
-                    text={<CalendlyText lang={lang} />}
-                    className="font-semibold text-xs leading-4 text-white cursor-pointer outline-none border-none"
+                        url="https://calendly.com/registate/intro"
+                        rootElement={rootEl}
+                        text={<CalendlyText lang={lang} />}
+                        className="hover:scale-105 font-semibold text-xs leading-4 text-white cursor-pointer outline-none border-none"
                     >
                     </PopupButton>
                 </div>

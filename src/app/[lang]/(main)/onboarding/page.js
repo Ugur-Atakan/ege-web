@@ -5,6 +5,7 @@ import BackButton from './components/common/BackButton'
 import Content from './components/Content'
 import { readCookieFromStorageServerAction, removeCookieFromStorageServerAction } from '@/app/lib/session/serverActions'
 import { useTranslation } from '@/i18n/server'
+import NewContent from './components/NewContent'
 /**
  * Page route for the company type page
  * @type {function}
@@ -14,14 +15,10 @@ import { useTranslation } from '@/i18n/server'
 */
 
 const Page = async ({ params: { lang } }) => {
-  const { t } = await useTranslation(lang)
-  const cookie = await readCookieFromStorageServerAction();
+  // const cookie = await readCookieFromStorageServerAction();
   
-  return (
-    <React.Fragment>
-        <BackButton buttonText={t('company_type_leftcorner_button')} linkHref={'/'} />
-        <Content lang={lang} cookie={cookie} />
-    </React.Fragment>
+  return (  
+    <NewContent lang={lang}  />
   )
 }
 
