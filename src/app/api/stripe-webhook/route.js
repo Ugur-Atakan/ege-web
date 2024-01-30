@@ -5,12 +5,8 @@ import {
     sendMail, createUserWithUpsells, mailBody,
     createUserWithoutUpsells, userAlreadyExists } from './util';
 
-import {
-    createCustomer,
-    createCustomerRequest,
-    resendInvitation
-} from '@/app/lib/jira';
-
+import { createCustomer, createCustomerRequest, resendInvitation } from '@/app/lib/jira';
+import { handleSubscriptions } from './subscriptions/subscriptions';
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 /**
@@ -182,6 +178,10 @@ export async function POST(req) {
 
         // const invite = await resendInvitation(session.customer_details.email);
         return new Response(session.url, { status: 200 });
+    } else if (event.type.includes('subscription')) {
+        handleSubscriptions(event);
+        logger.info({ message : `Subscription event handled :)` })
+        return new Response('Subscription event handled', { status: 200 });
     } else {
         logger.error({ message : `No action taken on webhook - FileName: stripe-webhook-route.js` })
         return new Response('No action taken', { status: 400 });

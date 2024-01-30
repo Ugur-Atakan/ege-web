@@ -6,37 +6,16 @@ import AttachmentList from './Attachments/AttachmentList';
 import { getCompanyDetails, attachments, getAttachments } from './util';
 import { useSession } from 'next-auth/react'
 import UploadFile from './Attachments/UploadFile/UploadFile';
+import Products from './Products/Products'
 
 const Status = ({ company }) => {
   const { data } = useSession();
   const isAdmin = data.user.level === 'admin';
   
-  // For testing purposes
-  // let modifiedCompany = company;
-  // modifiedCompany['products'] = [
-  //   {  
-  //     "name": "Virtual Mailbox Monthly",
-  //     "price": 25,
-  //     "stripePriceID": "price_1OOfeQJuNLcMU2PopMecvhvJ",
-  //     "frequency": "monthly",
-  //     "_id": "65a83d9f8bf329556a370821"
-  //   },
-  //   {
-  //     "name": "Apostill OneTime",
-  //     "price": 500,
-  //     "stripePriceID": "price_1OOygbJuNLcMU2PoXYAj3EiT",
-  //     "frequency": "oneTime",
-  //     "_id": "65a83d9f8bf329556a370822"
-  //   }
-  // ]
-  // const docs = [
-  //   'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
-  //   'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
-  // ]
-
   const companyDetails = getCompanyDetails(company);
-  // console.log(company)
   const attachments = getAttachments(company.documents) || null;
+
+//  console.log(company);
 
   return (
     <div className='pt-10'>
@@ -56,6 +35,15 @@ const Status = ({ company }) => {
                 <dt className="text-md font-medium leading-6 text-gray-900">Attachments</dt>
                 <dd className="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <AttachmentList attachments={attachments} />
+                </dd>
+              </div>
+            }
+
+            {company.products && company.products.length > 0 &&
+              <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <dt className="text-md font-medium leading-6 text-gray-900">Products</dt>
+                <dd className="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                    <Products products={company.products} />
                 </dd>
               </div>
             }

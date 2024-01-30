@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useCallback } from 'react';
+import React from 'react';
 import { PaperClipIcon } from '@heroicons/react/20/solid';
 import axios from 'axios';
 

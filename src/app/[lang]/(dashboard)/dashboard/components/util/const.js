@@ -59,6 +59,16 @@ export const navigation = [
             { name: 'Registered Agent', href: '/en/dashboard/products/registered-agent', icon: FolderIcon, current: false },
             { name: 'Certificate of Good Standing', href: '/en/dashboard/products/cofg', icon: FolderIcon, current: false },
         ]
+    },
+    {
+        name: 'Billing',
+        href: '/en/dashboard/billing',
+        icon: UsersIcon,
+        current: false,
+        adminVisibility: true,
+        userVisibility: true,
+        mainDashboardVisibility: false,
+        customDashboardVisibility: true,
     }
 ]
 
