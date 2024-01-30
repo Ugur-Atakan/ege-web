@@ -1,4 +1,6 @@
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
+import Workspace from '@/app/lib/db/models/WorkspaceModel'
+import mongoose from 'mongoose'
 
 export async function POST(req) { 
     const formData = await req.formData();
@@ -24,6 +26,11 @@ export async function POST(req) {
     try {
         const res = await client.send(command);
         console.log(res);
+        
+        //* Add the file to the database 
+        const workspace = await Workspace.findOne({ 'companies._id': cID });
+        const company = workspace.companies.find(company => company._id.equals(cID));
+        company.documents.push(fileName);
         
         return new Response('File uploaded', { status: 200 });
     }

@@ -9,12 +9,11 @@ const UploadForm = ({ companyID }) => {
 
     const sendToBackend = async (acceptedFiles) => {
         try {
-            console.log('inside send to backend ' + acceptedFiles[0]);
             const formData = new FormData();
             formData.append('file', acceptedFiles[0]);
             formData.append('fileName', fileName.fileName);
-
-            const res = await axios.post('/api/upload', formData, {
+    
+            const res = await axios.post('/api/s3/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

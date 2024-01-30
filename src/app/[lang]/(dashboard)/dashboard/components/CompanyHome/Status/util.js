@@ -45,6 +45,14 @@ export const attachments = [
     { name: 'references.pdf', size: '1.2mb' },
 ];
 
+export const getAttachments = (documents) => {
+    return documents.map((doc) => {
+        return {
+            name: doc,
+        }
+    })
+}
+
 export const getCompanyDetails = (company) => {
     let status;
     if (company.status == 'active') status = '🟢 Active';
