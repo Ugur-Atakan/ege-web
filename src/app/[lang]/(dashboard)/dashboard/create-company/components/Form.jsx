@@ -1,13 +1,34 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
+import clipboardCopy from 'clipboard-copy';
 
+import  { getLLCSilver, getLLCGold, getCorpSilver, getCorpGold, getCorpPlat } from '../api'
+import { MdContentCopy } from "react-icons/md";
 import UpsellForm from './UpsellForm'
+import { stripeURLEmailBody } from '../api/mailgun'
 
 const Form = () => {
   const [upsellForms, setUpsellForms] = useState([]);
+
+  // Fetch states from state API 
+  const [states, setStates] = useState([]);
+  const [countries, setCountries] = useState([]);
+
+  useEffect(() => {
+    const getStatesAndCountries = async () => {
+      const states = await axios.get('/api/states/');
+      setStates(states.data);
+      const countries = await axios.get('/api/countries/');
+      setCountries(countries.data);
+    }
+    getStatesAndCountries();
+  }, []);
+
+  const [stripeURL, setStripeURL] = useState('');
   const [formValues, setFormValues] = useState({
     companyName: '',
     companyType: 'LLC',
@@ -24,6 +45,7 @@ const Form = () => {
     postalCode: ''
   });
 
+
   const upsellOptions = [
     'Virtual Mailbox',
     'Office Space'
@@ -31,20 +53,119 @@ const Form = () => {
 
   const handleAddUpsellForm = () => {
     setUpsellForms(prevForms => [...prevForms, <UpsellForm upsellOptions={upsellOptions} formValues={formValues} setFormValues={setFormValues} key={prevForms.length} />]);
+    // if upsell is already added, don't add it again
+    
+    // if (!formValues.upsells.some((upsell) => upsell.upsell === 'Virtual Mailbox')) {
+    //   setFormValues((prev) => ({ 
+    //     ...prev,
+    //     upsells: [
+    //       ...prev.upsells,
+    //       {
+    //         upsell: 'Virtual Mailbox',
+    //         frequency: 'Monthly',
+    //       },
+    //     ],
+    //   }));
+    // }
   };
   
   const handleRemoveUpsellForm = (index) => {
     setUpsellForms(prevForms => [...prevForms.filter((_, i) => i !== index)]);
+    // remove the duplicate upsell from the formValues
   };
 
-  const handleUpsellFormSubmit = () => {
+  const handleUpsellFormSubmit = async () => {
     // if any form value is empty
     if (Object.values(formValues).includes('')) {
       toast.error('Please fill in all the fields');
       console.log(formValues)
       return; 
     }
-    console.log(formValues)
+    
+    //* Get the prices from stripe API to fetch the priceID
+    //? Change to API internal later on
+    const getStripePrice = async () => {
+      let stripePrice = '';
+      if (formValues.companyType === 'LLC') {
+        if (formValues.package === 'Silver') {
+          stripePrice = await getLLCSilver(formValues.state);
+        } else if (formValues.package === 'Gold') {
+          stripePrice = await getLLCGold(formValues.state);
+        }
+      } else if (formValues.companyType === 'Corp') {
+        if (formValues.package === 'Silver') {
+          stripePrice = await getCorpSilver(formValues.state);
+        } else if (formValues.package === 'Gold') {
+          stripePrice = await getCorpGold(formValues.state);
+        } else if (formValues.package === 'Platinum') {
+          stripePrice = await getCorpPlat(formValues.state);
+        }
+      }
+      return stripePrice;
+    }
+    const stripePrice = await getStripePrice();
+
+    const sendFormValues = async () => {
+      const stripePayload = {
+        subscriptionFlag: false,
+        upsells: formValues.upsells || null,
+        priceID: stripePrice.id,
+        customerEmail: formValues.email,
+      }
+
+      const companyPayload = {
+        companyName: formValues.companyName,
+        companyType: formValues.companyType,
+        package: formValues.package,
+        mainState: formValues.state,
+        upsells: formValues.upsells,
+        customerFirstName: formValues.firstName,
+        customerLastName: formValues.lastName,
+        email: formValues.email,
+        address: {
+          country: formValues.country,
+          streetAddress: formValues.streetAddress,
+          city: formValues.city,
+          state: region, 
+          postalCode: formValues.postalCode
+        }
+      }
+
+      try {
+        const stripeRES = await axios.post('/api/stripe/dashboard/created-by-admin', stripePayload);
+        const url = stripeRES.data;
+        setStripeURL(url);
+        toast.success('Company created successfully');
+
+        const companyRES = await axios.post('/api/dashboard/workspace/create-company-by-admin', companyPayload);
+        console.log(companyRES.data);
+
+      } catch (error) {
+        toast.error('An error occured while creating the company');
+      }
+    }
+
+    sendFormValues();
+  }
+
+  const sendStripeURLByEmail = async () => {
+    const emailBody = stripeURLEmailBody(stripeURL);
+    const payload = {
+      sender_email: 'Registate@gmail.com',
+      receiver_email: formValues.email,
+      email_subject: 'Complete your company registration with Registate',
+      email_body: emailBody
+    }
+
+    axios.post('/api/mailgun', payload)
+      .then(() => {
+        console.log('Email sent successfully')
+        toast.success('Email sent successfully');
+      })
+      .catch(() => {
+        console.log('An error occured while sending the email');
+        toast.error('An error occured while sending the email');
+      });
   }
 
   return (
@@ -131,8 +252,9 @@ const Form = () => {
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#0B2347] sm:text-sm sm:leading-6"
                       onChange={(e) => setFormValues({...formValues, state: e.target.value})}
                     >
-                      <option>Delaware</option>
-                      <option>New York</option>
+                      {states.map((state, index) => (
+                        <option key={index}>{state.state}</option>
+                      ))}
                     </select>
                   </div>
                 </div>
@@ -209,10 +331,10 @@ const Form = () => {
                         <select 
                           id="country" name="country" autoComplete="country-name" className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-[#0B2347] sm:max-w-xs sm:text-sm sm:leading-6"
                           onChange={(e) => setFormValues({...formValues, country: e.target.value})}  
-                        >
-                          <option>United States</option>
-                          <option>Canada</option>
-                          <option>Mexico</option>
+                        > 
+                          {countries.map((country, index) => (
+                            <option key={index}>{country.name}</option>
+                          ))}
                         </select>
                     </div>
                 </div>
@@ -264,6 +386,36 @@ const Form = () => {
           </div>
       </div>
 
+      {stripeURL && <div className="border-b border-gray-900/10 pb-12">
+            <h2 className="mt-4 text-2xl font-semibold leading-7 text-gray-900">Stripe URL</h2>
+            <p className="mt-1 text-sm leading-6 text-gray-600">Copy Stripe URL or Email them</p>
+            <div className="mt-2 col-span-full flex items-center">
+              <input 
+                type="text" 
+                name="stripeUrl" 
+                id="stripe-url" 
+                autoComplete="stripe-url" 
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#0B2347] sm:text-sm sm:leading-6"
+                disabled
+                value={stripeURL}
+              />
+              <MdContentCopy className="cursor-pointer text-2xl ml-2" 
+                onClick={() => {
+                  clipboardCopy(stripeURL);
+                  toast.success('Copied to clipboard');
+                }}
+              />
+              <button 
+                className='ml-5 text-sm py-2 px-4 rounded font-semibold leading-6 bg-[#0B2347] text-white'
+                onClick={() => sendStripeURLByEmail()}
+              >
+                Email
+              </button>
+            </div>
+      </div> 
+      }
+      
+
       <div className="mt-6 flex items-center justify-end gap-x-6">
         <button type="button" className="text-sm font-semibold leading-6 text-gray-900">
           Cancel
@@ -272,7 +424,7 @@ const Form = () => {
           className="rounded-md bg-[#0B2347] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#0B2347] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0B2347]"
           onClick={handleUpsellFormSubmit}
         >
-          Save
+          Create Company
         </button>
       </div>
     </React.Fragment>

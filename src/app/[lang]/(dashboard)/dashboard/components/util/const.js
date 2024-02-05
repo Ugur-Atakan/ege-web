@@ -27,7 +27,7 @@ export const navigation = [
     { 
         name: 'Onboard Company', href: '/en/dashboard/onboarding', icon: FolderIcon, current: false,
         adminVisibility: false,
-        userVisibility: true,
+        userVisibility: false,
         mainDashboardVisibility: true,
         customDashboardVisibility: false 
     },

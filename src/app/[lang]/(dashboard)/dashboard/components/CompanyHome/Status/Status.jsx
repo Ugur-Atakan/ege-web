@@ -11,7 +11,7 @@ import Products from './Products/Products'
 const Status = ({ company }) => {
   const { data } = useSession();
   const isAdmin = data.user.level === 'admin';
-  
+
   const companyDetails = getCompanyDetails(company);
   const attachments = getAttachments(company.documents) || null;
 
@@ -34,7 +34,7 @@ const Status = ({ company }) => {
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <dt className="text-md font-medium leading-6 text-gray-900">Attachments</dt>
                 <dd className="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                    <AttachmentList attachments={attachments} />
+                    <AttachmentList attachments={attachments}  />
                 </dd>
               </div>
             }
@@ -43,7 +43,7 @@ const Status = ({ company }) => {
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <dt className="text-md font-medium leading-6 text-gray-900">Products</dt>
                 <dd className="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                    <Products products={company.products} />
+                    <Products products={company.products} companyID={company._id} />
                 </dd>
               </div>
             }

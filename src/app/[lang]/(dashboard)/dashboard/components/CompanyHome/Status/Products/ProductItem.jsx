@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react';
+import Link from 'next/link';
 import axios from 'axios';
 
 const ProductItem = (product) => {
@@ -13,13 +14,13 @@ const ProductItem = (product) => {
         </div>
       </div>
       <div className="ml-4 flex flex-shrink-0 space-x-4">
-        <button
+        <Link
           type="button"
           className="rounded-md bg-white font-medium text-indigo-600 hover:text-indigo-500"
-        //   onClick={download}
+          href={'/en/dashboard/billing/' + product.companyID}
         >
           Upgrade
-        </button>
+        </Link>
         <span className="text-gray-200" aria-hidden="true">
           |
         </span>
