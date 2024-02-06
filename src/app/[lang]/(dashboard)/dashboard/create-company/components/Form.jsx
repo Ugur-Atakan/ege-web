@@ -10,9 +10,12 @@ import  { getLLCSilver, getLLCGold, getCorpSilver, getCorpGold, getCorpPlat } fr
 import { MdContentCopy } from "react-icons/md";
 import UpsellForm from './UpsellForm'
 import { stripeURLEmailBody } from '../api/mailgun'
+import { useSession } from 'next-auth/react';
 
 const Form = () => {
+  const { data } = useSession();
   const [upsellForms, setUpsellForms] = useState([]);
+  const [disableCreateButton, setDisableCreateButton] = useState(false);
 
   // Fetch states from state API 
   const [states, setStates] = useState([]);
@@ -116,31 +119,34 @@ const Form = () => {
       const companyPayload = {
         companyName: formValues.companyName,
         companyType: formValues.companyType,
-        package: formValues.package,
+        companyPackage: formValues.package,
         mainState: formValues.state,
         upsells: formValues.upsells,
         customerFirstName: formValues.firstName,
         customerLastName: formValues.lastName,
         email: formValues.email,
+        userID: data.user.uid,
         address: {
           country: formValues.country,
           streetAddress: formValues.streetAddress,
           city: formValues.city,
-          state: region, 
-          postalCode: formValues.postalCode
+          state: formValues.region,
+          zipCode: formValues.postalCode 
         }
       }
 
       try {
-        const stripeRES = await axios.post('/api/stripe/dashboard/created-by-admin', stripePayload);
-        const url = stripeRES.data;
-        setStripeURL(url);
-        toast.success('Company created successfully');
-
         const companyRES = await axios.post('/api/dashboard/workspace/create-company-by-admin', companyPayload);
-        console.log(companyRES.data);
-
+        setDisableCreateButton(true);
+        if (companyRES.status === 200) {
+          stripePayload.companyID = companyRES.data.companyID;
+          const stripeRES = await axios.post('/api/stripe/dashboard/created-by-admin', stripePayload);
+          const url = stripeRES.data;
+          setStripeURL(url);
+          toast.success('Company created successfully');
+        }
       } catch (error) {
+        console.log(error)
         toast.error('An error occured while creating the company');
       }
     }
@@ -417,12 +423,10 @@ const Form = () => {
       
 
       <div className="mt-6 flex items-center justify-end gap-x-6">
-        <button type="button" className="text-sm font-semibold leading-6 text-gray-900">
-          Cancel
-        </button>
         <button
           className="rounded-md bg-[#0B2347] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#0B2347] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0B2347]"
           onClick={handleUpsellFormSubmit}
+          disabled={disableCreateButton}
         >
           Create Company
         </button>
