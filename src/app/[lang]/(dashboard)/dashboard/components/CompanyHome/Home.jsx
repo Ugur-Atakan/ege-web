@@ -2,9 +2,11 @@ import React from 'react'
 import Stats from './Stats'
 import Status from './Status/Status'
 
-const Home = ({ lang, company }) => {
+const Home = ({ lang, company, usersInfo }) => {
   const companyJSON = JSON.parse(company);
-  
+  const usersJSON = JSON.parse(usersInfo);
+  if (companyJSON === null) return (<div>Company not found</div>);
+
   return (
     <React.Fragment>
       <div className='my-10'>
@@ -12,7 +14,7 @@ const Home = ({ lang, company }) => {
             {companyJSON.companyName + ' '} Dashboard
         </h1>
         <Stats />
-        <Status company={companyJSON} />
+        <Status company={companyJSON} users={usersJSON} />
       </div>
     </React.Fragment>
   )

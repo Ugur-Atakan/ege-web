@@ -25,11 +25,11 @@ const Page = async ({ params: { lang } }) => {
   // console.log(session);
 
   const workspace = await getWorkspace(session.user.uid);
-  
   let workspaceJSON;
   if (workspace) {
     workspaceJSON = JSON.stringify(workspace.companies);
   }
+
 
   return(
     <React.Fragment>

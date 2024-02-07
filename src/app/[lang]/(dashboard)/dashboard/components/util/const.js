@@ -15,7 +15,7 @@ export const navigation = [
         adminVisibility: true,
         userVisibility: true,
         mainDashboardVisibility: false,
-        customDashboardVisibility: true 
+        customDashboardVisibility: false 
     },
     { 
         name: 'Companies', href: '/en/dashboard/companies', icon: FolderIcon, current: false,
@@ -43,7 +43,7 @@ export const navigation = [
         adminVisibility: true,
         userVisibility: false,
         mainDashboardVisibility: true,
-        customDashboardVisibility: true  
+        customDashboardVisibility: false  
     },
     {
         name: 'Products',
@@ -120,8 +120,7 @@ export const getSidebarNav = (pathName, userAccessLevel) => {
             } else {
                 nav.current = false
             } 
-            if (!nav.href.includes(lastPart)) nav.href = nav.href + '/' + lastPart;
-            // if (lastPart == 'products') nav.href = nav.href + '/' + lastPart;
+            // if (!nav.href.includes(lastPart)) nav.href = nav.href + '/' + lastPart;
         
         } else { //* else works if someone is on main dashboard WITHOUT /dashboard/:id
             if (nav.name.toLowerCase() === lastPart) {    

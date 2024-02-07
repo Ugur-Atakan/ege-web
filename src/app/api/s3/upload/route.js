@@ -31,7 +31,10 @@ export async function POST(req) {
         const match = fileName.match(/_([^_]+)\.pdf/);
         const cID = new mongoose.Types.ObjectId(match[1]);  
         const workspace = await Workspace.findOne({ 'companies._id': cID });
+        console.log(workspace)
         const company = workspace.companies.find(company => company._id.equals(cID));
+        console.log(company)
+        console.log(fileName)
         company.documents.push(fileName);
         
         return new Response('File uploaded', { status: 200 });

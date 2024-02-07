@@ -1,22 +1,21 @@
 'use client'
 
-import React from 'react'
+import React, { use } from 'react'
 import CompanyDetail from './CompanyDetail';
 import AttachmentList from './Attachments/AttachmentList';
 import { getCompanyDetails, attachments, getAttachments } from './util';
 import { useSession } from 'next-auth/react'
 import UploadFile from './Attachments/UploadFile/UploadFile';
 import Products from './Products/Products'
+import Users from './Users/Users'
 
-const Status = ({ company }) => {
+const Status = ({ company, users }) => {
   const { data } = useSession();
   const isAdmin = data.user.level === 'admin';
 
   const companyDetails = getCompanyDetails(company);
   const attachments = getAttachments(company.documents) || null;
-
-//  console.log(company);
-
+  // console.log(company)
   return (
     <div className='pt-10'>
         <h2 className='text-2xl font-bold text-gray-900'>Status</h2>
@@ -30,6 +29,7 @@ const Status = ({ company }) => {
                     <CompanyDetail key={index} isAdmin={isAdmin} detail={detail} companyID={company._id} />
                 ))}
             </dl>
+
             {attachments && attachments.length > 0 &&
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <dt className="text-md font-medium leading-6 text-gray-900">Attachments</dt>
@@ -44,6 +44,15 @@ const Status = ({ company }) => {
                 <dt className="text-md font-medium leading-6 text-gray-900">Products</dt>
                 <dd className="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <Products products={company.products} companyID={company._id} />
+                </dd>
+              </div>
+            }
+
+            {users.length > 0 &&
+              <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <dt className="text-md font-medium leading-6 text-gray-900">Users</dt>
+                <dd className="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                    <Users users={users} companyID={company._id} />
                 </dd>
               </div>
             }

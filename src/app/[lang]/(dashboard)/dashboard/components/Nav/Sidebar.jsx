@@ -132,8 +132,9 @@ const Sidebar = ({ lang, sidebarOpen, setSidebarOpen }) => {
                   src={registateLogo}
                   alt="Registate Logo"
                   width={120}
-                  className='mx-auto'
+                  className='cursor-pointer my-10 pt-10  mx-auto'
                   height={90}
+                  onClick={() => router.push(`/${lang}/dashboard`)}
                 />
               }
             </div>
