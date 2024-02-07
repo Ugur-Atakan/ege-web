@@ -40,7 +40,7 @@ jobs:
       MAILGUN_DOMAIN: ${{ vars.MAILGUN_DOMAIN }}
       MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
       ACTIVATE_USER_URL: ${{ vars.ACTIVATE_USER_URL_DEV }}
-      NEXT_PUBLIC_STRIPE_SECRET_KEY: ${{ var.NEXT_PUBLIC_STRIPE_SECRET_KEY }}
+      NEXT_PUBLIC_STRIPE_SECRET_KEY: ${{ vars.NEXT_PUBLIC_STRIPE_SECRET_KEY }}
     steps:
       - name: create environment file and upload to S3 app bucket
         run: |
@@ -108,7 +108,7 @@ jobs:
       MAILGUN_DOMAIN: ${{ vars.MAILGUN_DOMAIN }}
       MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
       ACTIVATE_USER_URL: ${{ vars.ACTIVATE_USER_URL_PROD }}
-      NEXT_PUBLIC_STRIPE_SECRET_KEY: ${{ var.NEXT_PUBLIC_STRIPE_SECRET_KEY }}
+      NEXT_PUBLIC_STRIPE_SECRET_KEY: ${{ vars.NEXT_PUBLIC_STRIPE_SECRET_KEY }}
     steps:
       - name: create environment file and upload to S3 app bucket
         run: |
