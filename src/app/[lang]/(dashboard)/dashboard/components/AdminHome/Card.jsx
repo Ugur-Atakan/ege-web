@@ -8,7 +8,7 @@ const Card = ({ title, description, lang , href }) => {
 
   return (
     <div 
-        onClick={() => console.log(href)}
+        onClick={() => router.push(href)}
         className="hover:scale-105 cursor-pointer max-w-sm mx-2 my-2 p-6 bg-white shadow-lg rounded-lg overflow-hidden"
     >
       <div className="sm:flex sm:items-center px-6 py-4">

@@ -15,7 +15,7 @@ export const navigation = [
         adminVisibility: true,
         userVisibility: true,
         mainDashboardVisibility: false,
-        customDashboardVisibility: true 
+        customDashboardVisibility: false 
     },
     { 
         name: 'Companies', href: '/en/dashboard/companies', icon: FolderIcon, current: false,
@@ -27,7 +27,7 @@ export const navigation = [
     { 
         name: 'Onboard Company', href: '/en/dashboard/onboarding', icon: FolderIcon, current: false,
         adminVisibility: false,
-        userVisibility: true,
+        userVisibility: false,
         mainDashboardVisibility: true,
         customDashboardVisibility: false 
     },
@@ -43,7 +43,7 @@ export const navigation = [
         adminVisibility: true,
         userVisibility: false,
         mainDashboardVisibility: true,
-        customDashboardVisibility: true  
+        customDashboardVisibility: false  
     },
     {
         name: 'Products',
@@ -59,6 +59,16 @@ export const navigation = [
             { name: 'Registered Agent', href: '/en/dashboard/products/registered-agent', icon: FolderIcon, current: false },
             { name: 'Certificate of Good Standing', href: '/en/dashboard/products/cofg', icon: FolderIcon, current: false },
         ]
+    },
+    {
+        name: 'Billing',
+        href: '/en/dashboard/billing',
+        icon: UsersIcon,
+        current: false,
+        adminVisibility: true,
+        userVisibility: true,
+        mainDashboardVisibility: false,
+        customDashboardVisibility: true,
     }
 ]
 
@@ -110,8 +120,7 @@ export const getSidebarNav = (pathName, userAccessLevel) => {
             } else {
                 nav.current = false
             } 
-            if (!nav.href.includes(lastPart)) nav.href = nav.href + '/' + lastPart;
-            // if (lastPart == 'products') nav.href = nav.href + '/' + lastPart;
+            // if (!nav.href.includes(lastPart)) nav.href = nav.href + '/' + lastPart;
         
         } else { //* else works if someone is on main dashboard WITHOUT /dashboard/:id
             if (nav.name.toLowerCase() === lastPart) {    

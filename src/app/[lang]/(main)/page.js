@@ -12,7 +12,7 @@ import HoverMenu from '@/components/Hero/HoverMenu'
  * @returns {JSX.Element} 
 */
 
-const Page = ({ params: { lang } }) => {
+const Page = ({ params: { lang  } }) => {
   return(
     <React.Fragment>
       <Hero lang={lang} />

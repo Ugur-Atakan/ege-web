@@ -213,7 +213,6 @@ export const createUserWithUpsells = async (name, email, companyName, state, com
       };
     });
     
-
     const company = {
       companyName: companyName,
       state: state,

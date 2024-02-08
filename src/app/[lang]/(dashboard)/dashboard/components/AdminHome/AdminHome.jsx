@@ -8,9 +8,9 @@ const AdminHome = ({ lang }) => {
             Welcome to admin dashboard!
         </h2>
         <div className="flex flex-wrap justify-start">
-            <Card lang={lang} title='Search Companies' description='Manage companies' href='/admin/companies' />
-            <Card lang={lang} title='Users' description='Manage users' href='/admin/users' />
-            <Card lang={lang} title='Packages' description='Manage packages' href='/admin/packages' />
+            <Card lang={lang} title='Search Companies' description='Manage companies' href={`/${lang}/dashboard/search-companies`} />
+            <Card lang={lang} title='Users' description='Manage users' href={`/${lang}/dashboard/search-companies`}  />
+            <Card lang={lang} title='Packages' description='Manage packages' href={`/${lang}/dashboard/search-companies`} />
         </div>
     </React.Fragment>
   )

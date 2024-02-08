@@ -1,9 +1,22 @@
 'use client'
 
-import React, { useCallback } from 'react';
-import { PaperClipIcon } from '@heroicons/react/20/solid'
+import React from 'react';
+import { PaperClipIcon } from '@heroicons/react/20/solid';
+import axios from 'axios';
 
-const AttachmentListItem = ({ name, size, onUpdate, onRemove }) => {
+const AttachmentListItem = ({ name, size }) => {
+  const download = () => {
+    const getFromS3 = async () => {
+      const res = await axios.get('/api/s3/download', {
+        params: {
+          fileName: name
+        }
+      });
+      console.log(res);
+    }
+    getFromS3();
+  }
+
   return (
     <li className="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
       <div className="flex w-0 flex-1 items-center">
@@ -17,9 +30,9 @@ const AttachmentListItem = ({ name, size, onUpdate, onRemove }) => {
         <button
           type="button"
           className="rounded-md bg-white font-medium text-indigo-600 hover:text-indigo-500"
-          onClick={onUpdate}
+          onClick={download}
         >
-          Update
+          Download
         </button>
         <span className="text-gray-200" aria-hidden="true">
           |
@@ -27,7 +40,7 @@ const AttachmentListItem = ({ name, size, onUpdate, onRemove }) => {
         <button
           type="button"
           className="rounded-md bg-white font-medium text-gray-900 hover:text-gray-800"
-          onClick={onRemove}
+          // onClick={onRemove}
         >
           Remove
         </button>

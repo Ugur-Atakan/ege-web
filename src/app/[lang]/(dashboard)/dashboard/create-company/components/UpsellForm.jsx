@@ -7,31 +7,36 @@ const UpsellForm = ({ upsellOptions, formValues, setFormValues }) => {
     const addtoUpsell = (e) => {
       const { name, value } = e.target;
 
-      if (name === 'upsellFrequency') {
-        setFrequency(value);
-        setFormValues((prev) => ({
-         ...prev,
-        upsells: [
-           ...prev.upsells,
-           {
-            upsell: upsell,
-            frequency: value,
-           },
-         ],
-        }));
-      } else {
-         setUpsell(value);
-         setFormValues((prev) => ({
-           ...prev,
-           upsells: [
-            ...prev.upsells,
-            {
-              upsell: value,
-              frequency: frequency,
-            },
-           ],
-         }));
-      }
+      const upsellExists = formValues.upsells.find(
+        (upsell) => upsell.upsell === upsell && upsell.frequency === frequency
+      );
+
+      if (!upsellExists) {
+        if (name === 'upsellFrequency') {
+            setFrequency(value);
+            setFormValues((prev) => ({
+                    upsells: [
+                    ...prev.upsells,
+                    {
+                        upsell: upsell,
+                        frequency: value,
+                    },
+                ],
+            }));
+        } 
+        else {
+            setUpsell(value);
+            setFormValues((prev) => ({
+                upsells: [
+                    ...prev.upsells,
+                    {
+                        upsell: value,
+                        frequency: frequency,
+                    },
+                ],
+              }));
+            }
+        }
     }
 
     return (
@@ -46,7 +51,10 @@ const UpsellForm = ({ upsellOptions, formValues, setFormValues }) => {
                         name="upsellType"
                         autoComplete="country-type"
                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                        onChange={(e) => addtoUpsell(e)}
+                        onChange={(e) => {
+                            setUpsell(e.target.value)
+                            addtoUpsell(e)
+                        }}
                     >
                         {upsellOptions.map((option) => (
                             <option key={option} value={option}>
@@ -66,7 +74,10 @@ const UpsellForm = ({ upsellOptions, formValues, setFormValues }) => {
                         name="upsellFrequency"
                         autoComplete="country-type"
                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                        onChange={(e) => addtoUpsell(e)}
+                        onChange={(e) => {
+                            setFrequency(e.target.value)
+                            addtoUpsell(e)
+                        }}
                     >
                         <option>Monthly</option>
                         <option>Annually</option>
@@ -74,7 +85,7 @@ const UpsellForm = ({ upsellOptions, formValues, setFormValues }) => {
                     </select>
                 </div>
             </div>
-      </React.Fragment>
+        </React.Fragment>
     );
 };
 

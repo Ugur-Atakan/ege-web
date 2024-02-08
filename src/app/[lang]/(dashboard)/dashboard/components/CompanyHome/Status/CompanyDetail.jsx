@@ -48,6 +48,16 @@ const CompanyDetail = ({ detail, companyID, isAdmin }) => {
                 <option>🔴 Disapproved</option>
             </select>
         )}
+        
+        {detail.dbLabel === 'status' && isAdmin && (
+            <button 
+                type="button"
+                className="mr-8 rounded-md text-white bg-[#0B2347] px-5 py-2 font-medium hover:scale-105"
+                onClick={() => console.log('Payment Link')}
+            >
+                Payment Link
+            </button>
+        )}
     
         {(isEditing && detail.dbLabel === 'companyName') &&  (
             <input

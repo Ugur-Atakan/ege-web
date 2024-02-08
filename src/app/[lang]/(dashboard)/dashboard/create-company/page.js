@@ -1,7 +1,8 @@
 import React from 'react';
 import Content from './components/Content'
 
-const Page = () => {
+const Page = ({ params: { slug }}) => {
+    
     return (
         <div>
             <Content />
