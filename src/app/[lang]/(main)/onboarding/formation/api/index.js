@@ -5,7 +5,7 @@ const getLLCSilver = async (state) => {
     try {
       console.log('State from cookie in getLLCSilver func: ', state);
       const stateKey = getStateKey(state);
-      const res = await axios.get(`https://api.stripe.com/v1/prices/search?query=product:'prod_P0QsJHkXZg2yQB' AND lookup_key:'${stateKey}-llc-silver'`, {
+      const res = await axios.get(`https://api.stripe.com/v1/prices/search?query=product:'${process.env.LLC_SILVER_ID}' AND lookup_key:'${stateKey}-llc-silver'`, {
         headers: {
             'Authorization': `Bearer ${process.env.STRIPE_SECRET_KEY}`
         }
@@ -30,7 +30,7 @@ const getLLCGold = async (state) => {
     try {
         console.log('State from cookie in getLLCGold func: ', state);
         const stateKey = getStateKey(state);
-        const res = await axios.get(`https://api.stripe.com/v1/prices/search?query=product:'prod_OhftO77vwfaxjp' AND lookup_key:'${stateKey}-llc-gold'`, {
+        const res = await axios.get(`https://api.stripe.com/v1/prices/search?query=product:'${process.env.LLC_GOLD_ID}' AND lookup_key:'${stateKey}-llc-gold'`, {
           headers: {
               'Authorization': `Bearer ${process.env.STRIPE_SECRET_KEY}`
           }
@@ -52,7 +52,7 @@ const getCorpSilver = async (state) => {
     try {
         console.log('State from cookie in getCorpSilver func: ', state);
         const stateKey = getStateKey(state);
-        const res = await axios.get(`https://api.stripe.com/v1/prices/search?query=product:'prod_P0RY5nExt2q8nE' AND lookup_key:'${stateKey}-corp-silver'`, {
+        const res = await axios.get(`https://api.stripe.com/v1/prices/search?query=product:'${process.env.CORP_SILVER_ID}' AND lookup_key:'${stateKey}-corp-silver'`, {
           headers: {
               'Authorization': `Bearer ${process.env.STRIPE_SECRET_KEY}`
           }
@@ -75,7 +75,7 @@ const getCorpGold = async (state) => {
     try {
         console.log('State from cookie in getCorpGold func: ', state);
         const stateKey = getStateKey(state);
-        const res = await axios.get(`https://api.stripe.com/v1/prices/search?query=product:'prod_Oj65yZwYrReuES' AND lookup_key:'${stateKey}-corp-gold'`, {
+        const res = await axios.get(`https://api.stripe.com/v1/prices/search?query=product:'${process.env.CORP_GOLD_ID}' AND lookup_key:'${stateKey}-corp-gold'`, {
           headers: {
               'Authorization': `Bearer ${process.env.STRIPE_SECRET_KEY}`
           }
@@ -97,7 +97,7 @@ const getCorpPlat = async (state) => {
     try {
         console.log('State from cookie in getCorpPlat func: ', state);
         const stateKey = getStateKey(state);
-        const res = await axios.get(`https://api.stripe.com/v1/prices/search?query=product:'prod_Oj67AQ1Qc24s5x' AND lookup_key:'${stateKey}-corp-plat'`, {
+        const res = await axios.get(`https://api.stripe.com/v1/prices/search?query=product:'${process.env.CORP_PLAT_ID}' AND lookup_key:'${stateKey}-corp-plat'`, {
           headers: {
               'Authorization': `Bearer ${process.env.STRIPE_SECRET_KEY}`
           }

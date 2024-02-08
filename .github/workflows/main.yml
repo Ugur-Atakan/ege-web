@@ -41,6 +41,16 @@ jobs:
       MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
       ACTIVATE_USER_URL: ${{ vars.ACTIVATE_USER_URL_DEV }}
       NEXT_PUBLIC_STRIPE_SECRET_KEY: ${{ vars.NEXT_PUBLIC_STRIPE_SECRET_KEY }}
+      LLC_SILVER_ID: ${{ vars.LLC_SILVER_ID_DEV }}
+      LLC_GOLD_ID: ${{ vars.LLC_GOLD_ID_DEV }}
+      CORP_SILVER_ID: ${{ vars.CORP_SILVER_ID_DEV }}
+      CORP_GOLD_ID: ${{ vars.CORP_GOLD_ID_DEV }}
+      CORP_PLAT_ID: ${{ vars.CORP_PLAT_ID_DEV }}
+      VIRTUAL_MAILBOX_ID: ${{ vars.VIRTUAL_MAILBOX_ID_DEV }}
+      OFFICE_SPACE_ID: ${{ vars.OFFICE_SPACE_ID_DEV }}
+      EIN_ID: ${{ vars.EIN_ID_DEV }}
+      COMPLIANCE_REMINDER_ID: ${{ vars.COMPLIANCE_REMINDER_ID_DEV }}
+      APOSTILLE_ID: ${{ vars.APOSTILLE_ID_DEV }}
     steps:
       - name: create environment file and upload to S3 app bucket
         run: |
@@ -69,6 +79,16 @@ jobs:
           MAILGUN_API_KEY=${MAILGUN_API_KEY}
           ACTIVATE_USER_URL=${ACTIVATE_USER_URL}
           NEXT_PUBLIC_STRIPE_SECRET_KEY=${NEXT_PUBLIC_STRIPE_SECRET_KEY}
+          LLC_SILVER_ID=${LLC_SILVER_ID}
+          LLC_GOLD_ID=${LLC_GOLD_ID}
+          CORP_SILVER_ID=${CORP_SILVER_ID}
+          CORP_GOLD_ID=${CORP_GOLD_ID}
+          CORP_PLAT_ID=${CORP_PLAT_ID}
+          VIRTUAL_MAILBOX_ID=${VIRTUAL_MAILBOX_ID}
+          OFFICE_SPACE_ID=${OFFICE_SPACE_ID}
+          EIN_ID=${EIN_ID}
+          COMPLIANCE_REMINDER_ID=${COMPLIANCE_REMINDER_ID}
+          APOSTILLE_ID=${APOSTILLE_ID}
           EOF
 
           /usr/local/bin/aws --region us-east-1 s3 cp $ENVIRONMENT_FILE s3://$S3_APP_BUCKET/$ENVIRONMENT_FILE
@@ -109,6 +129,16 @@ jobs:
       MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
       ACTIVATE_USER_URL: ${{ vars.ACTIVATE_USER_URL_PROD }}
       NEXT_PUBLIC_STRIPE_SECRET_KEY: ${{ vars.NEXT_PUBLIC_STRIPE_SECRET_KEY }}
+      LLC_SILVER_ID: ${{ vars.LLC_SILVER_ID_PROD }}
+      LLC_GOLD_ID: ${{ vars.LLC_GOLD_ID_PROD }}
+      CORP_SILVER_ID: ${{ vars.CORP_SILVER_ID_PROD }}
+      CORP_GOLD_ID: ${{ vars.CORP_GOLD_ID_PROD }}
+      CORP_PLAT_ID: ${{ vars.CORP_PLAT_ID_PROD }}
+      VIRTUAL_MAILBOX_ID: ${{ vars.VIRTUAL_MAILBOX_ID_PROD }}
+      OFFICE_SPACE_ID: ${{ vars.OFFICE_SPACE_ID_PROD }}
+      EIN_ID: ${{ vars.EIN_ID_PROD }}
+      COMPLIANCE_REMINDER_ID: ${{ vars.COMPLIANCE_REMINDER_ID_PROD }}
+      APOSTILLE_ID: ${{ vars.APOSTILLE_ID_PROD }}
     steps:
       - name: create environment file and upload to S3 app bucket
         run: |
@@ -137,6 +167,16 @@ jobs:
           MAILGUN_API_KEY=${MAILGUN_API_KEY}
           ACTIVATE_USER_URL=${ACTIVATE_USER_URL}
           NEXT_PUBLIC_STRIPE_SECRET_KEY=${NEXT_PUBLIC_STRIPE_SECRET_KEY}
+          LLC_SILVER_ID=${LLC_SILVER_ID}
+          LLC_GOLD_ID=${LLC_GOLD_ID}
+          CORP_SILVER_ID=${CORP_SILVER_ID}
+          CORP_GOLD_ID=${CORP_GOLD_ID}
+          CORP_PLAT_ID=${CORP_PLAT_ID}
+          VIRTUAL_MAILBOX_ID=${VIRTUAL_MAILBOX_ID}
+          OFFICE_SPACE_ID=${OFFICE_SPACE_ID}
+          EIN_ID=${EIN_ID}
+          COMPLIANCE_REMINDER_ID=${COMPLIANCE_REMINDER_ID}
+          APOSTILLE_ID=${APOSTILLE_ID}
           EOF
 
           /usr/local/bin/aws --region us-east-1 s3 cp $ENVIRONMENT_FILE s3://$S3_APP_BUCKET/$ENVIRONMENT_FILE
