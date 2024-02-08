@@ -2,7 +2,7 @@
 export const getVirtualMailBoxYearly = async () => {
     try {
         const res = await fetch(
-            `https://api.stripe.com/v1/prices/search?query=product:'prod_PD5qzXIw3sTvdq' AND lookup_key:'virtual-mailbox-yearly'`,
+            `https://api.stripe.com/v1/prices/search?query=product:'${process.env.VIRTUAL_MAILBOX_ID}' AND lookup_key:'virtual-mailbox-yearly'`,
             {
                 method: 'GET',
                 headers: {
@@ -21,7 +21,7 @@ export const getVirtualMailBoxYearly = async () => {
 export const getVirtualMailBoxMonthly = async () => {
     try {
         const res = await fetch(
-            `https://api.stripe.com/v1/prices/search?query=product:'prod_PD5qzXIw3sTvdq' AND lookup_key:'virtual-mailbox-monthly'`,
+            `https://api.stripe.com/v1/prices/search?query=product:'${process.env.VIRTUAL_MAILBOX_ID}' AND lookup_key:'virtual-mailbox-monthly'`,
             {
                 method: 'GET',
                 headers: {
@@ -40,7 +40,7 @@ export const getVirtualMailBoxMonthly = async () => {
 export const getOfficeSpaceYearly = async () => {
     try {
         const res = await fetch(
-            `https://api.stripe.com/v1/prices/search?query=product:'prod_PD5p1V4izG3HdZ' AND lookup_key:'office-space-yearly'`,
+            `https://api.stripe.com/v1/prices/search?query=product:'${process.env.OFFICE_SPACE_ID}' AND lookup_key:'office-space-yearly'`,
             {
                 method: 'GET',
                 headers: {
@@ -59,7 +59,7 @@ export const getOfficeSpaceYearly = async () => {
 export const getOfficeSpaceMonthly = async () => {
     try {
         const res = await fetch(
-            `https://api.stripe.com/v1/prices/search?query=product:'prod_PD5p1V4izG3HdZ' AND lookup_key:'office-space-monthly'`,
+            `https://api.stripe.com/v1/prices/search?query=product:'${process.env.OFFICE_SPACE_ID}' AND lookup_key:'office-space-monthly'`,
             {
                 method: 'GET',
                 headers: {
@@ -79,7 +79,7 @@ export const getOfficeSpaceMonthly = async () => {
 export const getEIN = async () => {
     try {
         const res = await fetch(
-            `https://api.stripe.com/v1/prices/search?query=product:'prod_PD5p0LvcijzpwV'`,
+            `https://api.stripe.com/v1/prices/search?query=product:'${process.env.EIN_ID}'`,
             {
                 method: 'GET',
                 headers: {
@@ -98,7 +98,7 @@ export const getEIN = async () => {
 export const getComplianceReminder = async () => {
     try {
         const res = await fetch(
-            `https://api.stripe.com/v1/prices/search?query=product:'prod_PD5pPJsEJm05tX'`,
+            `https://api.stripe.com/v1/prices/search?query=product:'${process.env.COMPLIANCE_REMINDER_ID}'`,
             {
                 method: 'GET',
                 headers: {
@@ -117,7 +117,7 @@ export const getComplianceReminder = async () => {
 export const getApostille = async () => {
     try {
         const res = await fetch(
-            `https://api.stripe.com/v1/prices/search?query=product:'prod_PDPV87HVXXu9cj'`,
+            `https://api.stripe.com/v1/prices/search?query=product:'${process.env.APOSTILLE_ID}'`,
             {
                 method: 'GET',
                 headers: {
