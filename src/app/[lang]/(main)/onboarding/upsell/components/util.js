@@ -16,7 +16,7 @@ export const pricing = {
         features: [
           'Real Street Business Address',
           'Scan and Upload items to dashboard',
-          'Full fledge email management'
+          'Mail Management'
         ],
         mostPopular: false,
       },
@@ -31,22 +31,23 @@ export const pricing = {
           'Have a professional business address for your company in Delaware!',
           'Use the lease on official documentation',
           'Reliable, easy, fast-leasing transaction',
+          'Required by most banks'
         ],
         mostPopular: false,
       },
-      {
-        stripeIDs: { oneTime: '' },
-        name: 'Apostill',
-        id: 'apostill',
-        state: 'Delaware',
-        price: { oneTime: '500' },
-        description: 'Get notarized apostilled documents',
-        features: [
-          'Use your documents abroad',
-          'Your documents will be shipped to you globally'
-        ],
-        mostPopular: false,
-      },
+      // {
+      //   stripeIDs: { oneTime: '' },
+      //   name: 'Apostille',
+      //   id: 'apostill',
+      //   state: 'Delaware',
+      //   price: { oneTime: '500' },
+      //   description: 'Get notarized apostilled documents',
+      //   features: [
+      //     'Use your documents abroad',
+      //     'Your documents will be shipped to you globally'
+      //   ],
+      //   mostPopular: false,
+      // },
       {
         stripeIDs: { oneTime: '' },
         name: 'EIN',
@@ -62,7 +63,7 @@ export const pricing = {
 
 export const getPricing = (state, EIN, apostille, virtualMailBoxMonthly, virtualMailBoxYearly, officeSpaceMonthly, officeSpaceYearly) => {
   const tierP = pricing.tiers.filter((tier) => {
-      return tier.state === state || tier.state === 'any'
+      return tier.state === 'Delaware' || tier.state === 'any'
   });
 
   let monthlyExists = false;

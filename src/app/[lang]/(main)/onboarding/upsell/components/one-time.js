@@ -4,19 +4,19 @@ export const pricing = {
       { value: 'oneTime', label: 'One Time', priceSuffix: '/only once'}
     ],
     tiers: [
-      {
-        stripeIDs: { oneTime: '' },
-        name: 'Apostill',
-        id: 'apostill',
-        state: 'Delaware',
-        price: { oneTime: '$ 500' },
-        description: 'Get notarized apostilled documents',
-        features: [
-          'Use your documents abroad',
-          'Your documents will be shipped to you globally'
-        ],
-        mostPopular: false,
-      },
+      // {
+      //   stripeIDs: { oneTime: '' },
+      //   name: 'Apostille',
+      //   id: 'apostill',
+      //   state: 'Delaware',
+      //   price: { oneTime: '$ 500' },
+      //   description: 'Get notarized apostilled documents',
+      //   features: [
+      //     'Use your documents abroad',
+      //     'Your documents will be shipped to you globally'
+      //   ],
+      //   mostPopular: false,
+      // },
       {
         stripeIDs: { oneTime: '' },
         name: 'EIN',

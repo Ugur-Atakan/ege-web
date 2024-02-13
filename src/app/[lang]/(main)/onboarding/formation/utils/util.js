@@ -100,9 +100,7 @@ export const triplePricing = {
           { name: 'Access to Digital Copies of the Documents', tiers: { Silver: true, Gold: true, Platinum: true } },
           { name: 'Customizable Corporate Meeting Minutes', tiers: { Silver: true, Gold: true, Platinum: true } },
           { name: 'Electronic Delivery of State Documents', tiers: { Silver: true, Gold: true, Platinum: true } },
-          { name: '1 Year business address fee', tiers: { Silver: true, Gold: true, Platinum: true } },
-          { name: '1 Year Virtual Mailbox Fee', tiers: { Silver: false, Gold: true, Platinum: true } },
-          { name: '1 Year Free Compliance Calender', tiers: { Silver: false, Gold: true, Platinum: false } },
+          { name: '1 Year business address included', tiers: { Silver: true, Gold: true, Platinum: true } },
         ],
       },
       {
@@ -187,8 +185,8 @@ const doublePricing = {
           { name: 'EIN Application Fee', tiers: { Silver: true, Gold: true } },
           { name: 'Certification of Formation', tiers: { Silver: true, Gold: true} },
           { name: 'Company Formation State Filing Fees', tiers: { Silver: true, Gold: true } },
+          { name: 'Franchise tax reminder', tiers: { Silver: true, Gold: true } },
           { name: 'Operating Agreement', tiers: { Silver: false, Gold: true } },
-          { name: 'Assisting payment of franchise tax and annual report filing fee', tiers: { Silver: false, Gold: true } },
         ],
       },
       {
@@ -197,18 +195,15 @@ const doublePricing = {
           { name: 'Access to Digital Copies of the Documents', tiers: { Silver: true, Gold: true } },
           { name: 'Customizable Member Meeting Minutes', tiers: { Silver: true, Gold: true } },
           { name: 'Electronic Delivery of State Documents', tiers: { Silver: true, Gold: true } },
-          { name: '1 Year Business Address Fee', tiers: { Silver: false, Gold: true } },
-          { name: '1 Year Virtual Mailbox Fee', tiers: { Silver: false, Gold: true } },
+  
         ],
       },
       {
         name: 'Legal and Administrative Support',
         features: [
           { name: 'Lifetime Customer Support (Phone and Email)', tiers: { Silver: true, Gold: true } },
-          { name: 'Customizable Banking Resolution', tiers: { Silver: true, Gold: true } },
           { name: 'LLC Membership Certificate', tiers: { Silver: false, Gold: true } },
           { name: 'LLC Interest Purchase Agreement', tiers: { Silver: false, Gold: true } },
-          { name: 'Business Contact Templates', tiers: { Silver: false, Gold: true } },
         ],
       },
     ],
