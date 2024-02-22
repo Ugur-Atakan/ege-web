@@ -16,22 +16,25 @@ import { getLLCSilver, getLLCGold, getCorpSilver, getCorpGold, getCorpPlat } fro
 
 const Page = async ({ params: { lang } }) => {
   const cookie = await readCookieFromStorageServerAction();
-  console.log('Cookie from formation page: ', cookie);
-
+  console.log('Cookie on formation page: ', cookie);
+  
   let silverProduct = null;
   let platProduct = null;
   let goldProduct = null;
 
-  if (cookie.companyType === 'LLC') {
-      silverProduct = await getLLCSilver(cookie.companyState);
-      goldProduct = await getLLCGold(cookie.companyState);
-  } else if (cookie.companyType === 'C-Corp') {
-      silverProduct = await getCorpSilver(cookie.companyState);
-      goldProduct = await getCorpGold(cookie.companyState);
-      platProduct = await getCorpPlat(cookie.companyState);
+  if (cookie.companyState) {
+    if (cookie.companyType === 'LLC') {
+        silverProduct = await getLLCSilver(cookie.companyState);
+        goldProduct = await getLLCGold(cookie.companyState);
+    } else if (cookie.companyType === 'C-Corp') {
+        silverProduct = await getCorpSilver(cookie.companyState);
+        goldProduct = await getCorpGold(cookie.companyState);
+        platProduct = await getCorpPlat(cookie.companyState);
+    }
   }
 
-
+  if (!cookie.companyState) return (<h1>Test</h1>)
+  
   return (
     platProduct == null ? 
       <TwoPriceDisplay 
