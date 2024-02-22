@@ -25,7 +25,7 @@ const Cards = ({ t, lang, handleSelectLlc, handleSelectCcorp  }) => {
                     <Image src={search} className='relative -top-20 -right-8 md:w-64 md:h-64 md:static rotate-360 md:rotate-45' alt='llc' />
                     <div className='-mt-48 md:mt-0'>
                         <h4 className='text-[#222222] text-[20px] md:text-[1.75rem] font-semibold leading-[2rem]'>{t('company_type_package3_name')}</h4>
-                        <p className='text-[#222222] text-[16px] md:text-[1.125rem] font-semibold leading-[22px] md:leading-[1.5rem] pt-4'>{t('company_type_package3_description')}</p>
+                        {/* <p className='text-[#222222] text-[16px] md:text-[1.125rem] font-semibold leading-[22px] md:leading-[1.5rem] pt-4'>{t('company_type_package3_description')}</p> */}
                     </div>
                 </Link>
             </div>
