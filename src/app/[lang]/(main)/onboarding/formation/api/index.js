@@ -4,6 +4,8 @@ import { getStateKey } from '@/app/lib/stateLookUp';
 const getLLCSilver = async (state) => {  
     try {
       console.log('State from cookie in getLLCSilver func: ', state);
+      console.log('Stripe key ', process.env.STRIPE_SECRET_KEY);
+
       const stateKey = getStateKey(state);
       const res = await axios.get(`https://api.stripe.com/v1/prices/search?query=product:'${process.env.LLC_SILVER_ID}' AND lookup_key:'${stateKey}-llc-silver'`, {
         headers: {
@@ -16,7 +18,7 @@ const getLLCSilver = async (state) => {
         return res.data.data[0];
       } else {
         // Handle the case where data is not available
-        console.error("No data received from Stripe API ");
+        console.error("No data received from Stripe API", res);
       }
       
       return stateInfo.data;

@@ -84,8 +84,8 @@ export const triplePricing = {
       {
         name: 'Business Formation and Compliance',
         features: [
-          { name: '1 Year Registered Agent Fee', tiers: { Silver: true, Gold: true, Platinum: true } },
-          { name: 'EIN Application Fee', tiers: { Silver: true, Gold: true, Platinum: true } },
+          { name: '1 Year Registered Agent', tiers: { Silver: true, Gold: true, Platinum: true } },
+          { name: 'EIN Application', tiers: { Silver: true, Gold: true, Platinum: true } },
           { name: 'Free Company Name Check', tiers: {Silver: true, Gold: true, Platinum: true } },
           { name: 'Certifciation of InCorporation', tiers: { Silver: true, Gold: true, Platinum: true } },
           { name: 'Statement of Incorporator', tiers: { Silver: true, Gold: true, Platinum: true } },
@@ -181,8 +181,8 @@ const doublePricing = {
       {
         name: 'Business Formaiton anad Compliance',
         features: [
-          { name: '1 Year Registered Agent Fee', tiers: { Silver: true, Gold: true } },
-          { name: 'EIN Application Fee', tiers: { Silver: true, Gold: true } },
+          { name: '1 Year Registered Agent', tiers: { Silver: true, Gold: true } },
+          { name: 'EIN Application', tiers: { Silver: true, Gold: true } },
           { name: 'Certification of Formation', tiers: { Silver: true, Gold: true} },
           { name: 'Company Formation State Filing Fees', tiers: { Silver: true, Gold: true } },
           { name: 'Franchise tax reminder', tiers: { Silver: true, Gold: true } },
