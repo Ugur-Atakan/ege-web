@@ -6,7 +6,6 @@ const getLLCSilver = async (state) => {
       console.log('State from cookie in getLLCSilver func: ', state);
       const stateKey = getStateKey(state);
       const reqURL = `https://api.stripe.com/v1/prices/search?query=product:'${process.env.LLC_SILVER_ID}' AND lookup_key:'${stateKey}-llc-silver'`
-      console.log('reqURL: ', reqURL)
       
       const res = await axios.get(reqURL, {
         headers: {

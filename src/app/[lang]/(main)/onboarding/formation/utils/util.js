@@ -39,7 +39,7 @@ export const triplePricing = {
         description: 'All your essential business finances, taken care of.',
         price: 15,
         mainFeatures: [
-          'One day formation', 
+          'Same day formation', 
           'Dashboard access',
           'Lifetime customer support',
           'One year registered agent'
@@ -53,7 +53,7 @@ export const triplePricing = {
         description: 'The best financial services for your thriving business.',
         price: 25,
         mainFeatures: [
-          'One day formation',
+          'Same day formation',
           'Dashboard access',
           'Lifetime customer support',
           'One year registered agent',
@@ -69,13 +69,13 @@ export const triplePricing = {
         description: 'Convenient features to take your business to the next level.',
         price: 30,
         mainFeatures: [
-          'One day formation',
+          'Same day formation',
           'Dashboard access',
           'Lifetime customer support',
           'One year registered agent',
           'Stock issues assistance',
           'Initial board and stockholder resolutions',
-          'Free financing document templates',
+          'Financing document templates',
           'ESOP templates',
         ],
       }
@@ -87,7 +87,7 @@ export const triplePricing = {
           { name: '1 Year Registered Agent', tiers: { Silver: true, Gold: true, Platinum: true } },
           { name: 'EIN Application', tiers: { Silver: true, Gold: true, Platinum: true } },
           { name: 'Free Company Name Check', tiers: {Silver: true, Gold: true, Platinum: true } },
-          { name: 'Certifciation of InCorporation', tiers: { Silver: true, Gold: true, Platinum: true } },
+          { name: 'Certification of Incorporation', tiers: { Silver: true, Gold: true, Platinum: true } },
           { name: 'Statement of Incorporator', tiers: { Silver: true, Gold: true, Platinum: true } },
           { name: 'Company Formation State Filing Fees', tiers: { Silver: true, Gold: true, Platinum: true } },
           { name: 'Franchise tax and annual report filing assistance', tiers: { Silver: false, Gold: true, Platinum: true } },
@@ -100,14 +100,13 @@ export const triplePricing = {
           { name: 'Access to Digital Copies of the Documents', tiers: { Silver: true, Gold: true, Platinum: true } },
           { name: 'Customizable Corporate Meeting Minutes', tiers: { Silver: true, Gold: true, Platinum: true } },
           { name: 'Electronic Delivery of State Documents', tiers: { Silver: true, Gold: true, Platinum: true } },
-          { name: '1 Year business address included', tiers: { Silver: true, Gold: true, Platinum: true } },
         ],
       },
       {
         name: 'Legal and Administrative Support',
         features: [
           { name: 'Lifetime Customer Support (Phone & Email)', tiers: { Silver: true, Gold: true, Platinum: true } },
-          { name: 'Customizable Corporrate Banking Resolution', tiers: { Silver: true, Gold: true, Platinum: true } },
+          { name: 'Customizable Corporate Banking Resolution', tiers: { Silver: true, Gold: true, Platinum: true } },
           { name: 'Customizable Corporation Bylwas', tiers: { Silver: true, Gold: true, Platinum: true } },
           { name: 'Stock Issuance to Shareholders', tiers: { Silver: false, Gold: true, Platinum: true } },
           { name: 'Stock Purchase Agreements', tiers: { Silver: false, Gold: true, Platinum: true } },
@@ -122,7 +121,8 @@ export const triplePricing = {
           { name: 'Stock Option Grant Contract Templates', tiers: { Silver: false, Gold: false, Platinum: true } },
           { name: 'Template for Option Plan for Employees/Consultants and Advisors', tiers: { Silver: false, Gold: false, Platinum: true } },
           { name: 'SAFE FInancing Documents Templates', tiers: { Silver: false, Gold: false, Platinum: true } },
-          { name: 'Convertible Note Financing Documents Templates', tiers: { Silver: false, Gold: false, Platinum: true } }
+          { name: 'Convertible Note Financing Documents Templates', tiers: { Silver: false, Gold: false, Platinum: true } },
+          { name: 'Franchise tax and annual report filing assistance', tiers: { Silver: false, Gold: true, Platinum: true } },
         ],
       },
     ],
@@ -154,7 +154,7 @@ const doublePricing = {
         description: 'All your essential business finances, taken care of.',
         price: 15,
         mainFeatures: [
-          'One day formation',
+          'Same day formation',
           'Dashboard access',
           'Lifetime customer support',
           'One year registered agent'
@@ -168,7 +168,7 @@ const doublePricing = {
         description: 'The best financial services for your thriving business.',
         price: 25,
         mainFeatures: [
-          'One day formation',
+          'Same day formation',
           'Dashboard access',
           'Lifetime customer support',
           'One year registered agent',
@@ -204,6 +204,9 @@ const doublePricing = {
           { name: 'Lifetime Customer Support (Phone and Email)', tiers: { Silver: true, Gold: true } },
           { name: 'LLC Membership Certificate', tiers: { Silver: false, Gold: true } },
           { name: 'LLC Interest Purchase Agreement', tiers: { Silver: false, Gold: true } },
+          { name: 'Stock issuance certificate', tiers: { Silver: false, Gold: true } },
+          { name: 'Share Purchase agreement', tiers: { Silver: false, Gold: true } },
+          { name: 'Customizable Corporate Banking Resolution', tiers: { Silver: false, Gold: true } },
         ],
       },
     ],
