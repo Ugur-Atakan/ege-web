@@ -1,6 +1,46 @@
+'use client'
+
+import React, { useState } from 'react'
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Form = () => {
+  const [form , setForm] = useState({
+    companyName: '',
+    companyType: '',
+    companyType: 'LLC',
+    firstName: '',
+    lastName: '',
+    email: '',
+    authorizedOfficerFirstName: '',
+    authorizedOfficerLastName: '',
+    authorizedOfficerTitle: ''
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(form);
+    
+    if (form.companyName === '' || form.companyType === '' || form.firstName === '' || form.lastName === '' || form.email === '') {
+      toast.error(`Please fill the complete form`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        progressStyle: { background: '#1649FF' }
+      });
+      return;
+    }
+
+    //! implement API call here
+    
+  };
+
   return (
     <form className='py-10'>
       <div className="space-y-12">
@@ -22,6 +62,7 @@ const Form = () => {
                     name="companyName"
                     id="company-name"
                     autoComplete="companyName"
+                    onChange={(e) => setForm({...form, companyName: e.target.value})}
                     className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                     placeholder="Kittens Co."
                   />
@@ -35,6 +76,7 @@ const Form = () => {
                   id="company-type"
                   name="companyType"
                   autoComplete="country-type"
+                  onChange={(e) => setForm({...form, companyType: e.target.value})}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                 >
                   <option>LLC</option>
@@ -51,6 +93,7 @@ const Form = () => {
                   id="company-type"
                   name="companyType"
                   autoComplete="country-type"
+                  onChange={(e) => setForm({...form, companyType: e.target.value})}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                 >
                   <option>Delaware</option>
@@ -76,6 +119,7 @@ const Form = () => {
                   name="first-name"
                   id="first-name"
                   autoComplete="given-name"
+                  onChange={(e) => setForm({...form, firstName: e.target.value})}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -91,6 +135,7 @@ const Form = () => {
                   name="last-name"
                   id="last-name"
                   autoComplete="family-name"
+                  onChange={(e) => setForm({...form, lastName: e.target.value})}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -106,6 +151,7 @@ const Form = () => {
                   name="email"
                   type="email"
                   autoComplete="email"
+                  onChange={(e) => setForm({...form, email: e.target.value})}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -128,6 +174,7 @@ const Form = () => {
                   name="first-name"
                   id="first-name"
                   autoComplete="given-name"
+                  onChange={(e) => setForm({...form, authorizedOfficerFirstName: e.target.value})}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -143,6 +190,7 @@ const Form = () => {
                   name="surname"
                   id="last-name"
                   autoComplete="family-name"
+                  onChange={(e) => setForm({...form, authorizedOfficerLastName: e.target.value})}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -158,6 +206,7 @@ const Form = () => {
                   name="title"
                   type="title"
                   autoComplete="title"
+                  onChange={(e) => setForm({...form, authorizedOfficerTitle: e.target.value})}
                   className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -167,14 +216,12 @@ const Form = () => {
       </div>
 
       <div className="mt-6 flex items-center justify-end gap-x-6">
-        <button type="button" className="text-sm font-semibold leading-6 text-gray-900">
-          Cancel
-        </button>
         <button
           type="submit"
+          onClick={handleSubmit}
           className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
-          Save
+          Buy now
         </button>
       </div>
     </form>

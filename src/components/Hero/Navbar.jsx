@@ -73,7 +73,7 @@ const Navbar = ({ isSticky, t, lang }) => {
                         className={`hover:scale-105 px-2 text-sm font-medium leading-6 ${isSticky ? 'text-black' : 'text-white'}`}
                     >
                         {t('menu1_title')}
-                        <HoverMenu lang={lang} showMenu={showMenu} setShowMenu={setShowMenu}/>
+                        {/* <HoverMenu lang={lang} showMenu={showMenu} setShowMenu={setShowMenu}/> */}
                     </button>
                     <Link href={`/${lang}/blog`} className={`hover:scale-105 px-2 text-sm font-medium leading-6 ${isSticky ? 'text-black' : 'text-white'}`}>
                         {t('menu3_title')}
