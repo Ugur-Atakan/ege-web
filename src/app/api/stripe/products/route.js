@@ -10,120 +10,49 @@ export async function GET() {
 
 export async function POST(req) {
   const { data } = await req.json();
-
-  const packageName = data.payload;
-  const companyName = data.payload.companyName;
-  const companyState = data.payload.companyState;
-  const companyType = data.payload.companyType;
-  const customerName = data.payload.customerName;
-  const customerEmail = data.payload.companyContactEmail;
-  const address = data.payload.companyContactAddress;
-  const zipCode = data.payload.companyZipCode;
-  const city = data.payload.companyCity;
-  const country = data.payload.companyCountry;
-
+  console.log(data.payload)
+  
+  let priceID; 
+  if (data.payload.type == 'registered-agent') {
+    priceID = data.payload.recurrencePeriod;
+    const companyType = data.payload.companyType;
+    const firstName = data.payload.firstName;
+    const lastName = data.payload.lastName;
+    const email = data.payload.email;
+    const authorizedOfficerFirstName = data.payload.authorizedOfficerFirstName;
+    const authorizedOfficerLastName = data.payload.authorizedOfficerLastName;
+    const authorizedOfficerTitle = data.payload.authorizedOfficerTitle;
+  }
+  
   try {
-      let session;
-      if (subscriptionFlag === true) {
-        session = await stripe.checkout.sessions.create({
-          line_items: [
+      const session = await stripe.checkout.sessions.create({
+        line_items: [
             {
-              price: selectedPackage.priceID,
+              price: priceID,
               quantity: 1,
             }
-            ,...upsellsIDs.map(upsell => {
-              return {
-                price: upsell,
-                quantity: 1,
-              }
-            })
           ],
           mode: 'subscription',
           success_url: process.env.SUCCESS_STRIPE_URL,
           cancel_url: process.env.FAIL_STRIPE_URL,
           metadata: {
-            packageName,
-            customerName,
-            companyName,
-            companyState,
-            companyType,
-            customerEmail,
-            address,
-            zipCode,
-            city,
-            country,
-            upsellsStr,
-            mutliBilling: false,
-          },
-          // customer_creation: 'if_required',
-          customer_email: customerEmail,
-          allow_promotion_codes: true
-        });
-      } else {
-        if (upsellsIDs == null) {
-          session = await stripe.checkout.sessions.create({
-            line_items: [
-              {
-                price: selectedPackage.priceID,
-                quantity: 1,
-              }
-            ],
-            mode: 'payment',
-            success_url: process.env.SUCCESS_STRIPE_URL,
-            cancel_url: process.env.FAIL_STRIPE_URL,
-            metadata: {
-              packageName,
-              customerName,
-              companyName,
-              companyState,
-              companyType,
-              customerEmail,
-              address,
-              zipCode,
-              city,
-              country,
-              mutliBilling: false
+              // packageName,
+              // customerebru ucak Name,
+              // companyName,
+              // companyState,
+              // companyType,
+              // customerEmail,
+              // address,
+              // zipCode,
+              // city,
+              // country,
+              // mutliBilling: false
             },
-            customer_creation: 'always',
-            customer_email: customerEmail,
+            // customer_creation: 'always',
+            customer_email: 'waasiqmasood@gmail.com',
             allow_promotion_codes: true
-          });
-        } else {
-          session = await stripe.checkout.sessions.create({
-            line_items: [
-              {
-                price: selectedPackage.priceID,
-                quantity: 1,
-              },...upsellsIDs.map(upsell => {
-                return {
-                  price: upsell,
-                  quantity: 1,
-                }
-              })
-            ],
-            mode: 'payment',
-            success_url: process.env.SUCCESS_STRIPE_URL,
-            cancel_url: process.env.FAIL_STRIPE_URL,
-            metadata: {
-              packageName,
-              customerName,
-              companyName,
-              companyState,
-              companyType,
-              customerEmail,
-              address,
-              zipCode,
-              city,
-              country,
-              upsellsStr,
-              mutliBilling: false
-            },
-            customer_creation: 'always',
-            customer_email: customerEmail,
-            allow_promotion_codes: true
-          });
-        }
-    }
+      });
+    
     logger.info({ message: `Stripe checkout session created - ${session.url}` })
     return new NextResponse(session.url, { status: 200 });
   } catch (error) {
