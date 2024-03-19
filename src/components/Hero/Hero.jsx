@@ -33,7 +33,6 @@ const Hero = ({ lang }) => {
 
   return (
     <div className="hero-section">
-      
       <Navbar
         isSticky={isSticky}
         t={t}

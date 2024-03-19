@@ -5,7 +5,6 @@ import TwoPriceDisplay from './components/TwoPriceDisplay'
 import { readCookieFromStorageServerAction } from '@/app/lib/session/serverActions'
 import { getLLCSilver, getLLCGold, getCorpSilver, getCorpGold, getCorpPlat } from './api/index.js'
 
-
 /**
  * Page component for the formation page
  * @type {function} 
@@ -33,7 +32,7 @@ const Page = async ({ params: { lang } }) => {
     }
   }
 
-  if (!cookie.companyState) return (<h1>Test</h1>)
+  if (!cookie.companyState) return (<h1>404</h1>)
   
   return (
     platProduct == null ? 
