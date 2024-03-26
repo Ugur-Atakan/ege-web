@@ -21,7 +21,9 @@ export const login = async (email, password, type) => {
             });
         }
         
+    
         const isMatch = await compare(password, user.password);
+        
         if (!isMatch) {
             return new Response(JSON.stringify('Invalid credentials'), {
                 status: 401,
