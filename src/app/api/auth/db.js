@@ -10,17 +10,27 @@ export const login = async (email, password, type) => {
         const user = await User.findOne({ email: email, type:type });
 
         if (!user) {
-            return new Response('User not found', {
+            return new Response(JSON.stringify('User not found'), {
                 status: 404 
             });
         }
 
         if (user.active === false) {
-            return new Response('User not active', {
+            return new Response(JSON.stringify('User not active'), {
                 status: 401
             });
         }
         
+        const isMatch = await compare(password, user.password);
+        if (!isMatch) {
+            return new Response(JSON.stringify('Invalid credentials'), {
+                status: 401,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+        }
+
         return new Response(JSON.stringify(user), {
             status: 200,
             headers: {

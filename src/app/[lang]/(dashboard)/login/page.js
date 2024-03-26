@@ -1,5 +1,4 @@
 import React from 'react'
-import { readCookieFromStorageServerAction } from '@/app/lib/session/dashboardSession/serverActions'
 import { redirect } from 'next/navigation'
 import Login from './components/Login'
 

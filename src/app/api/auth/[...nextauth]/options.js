@@ -13,11 +13,13 @@ export const options = {
             name: "Credentials",
             async authorize(credentials, req) {
                 const res = await login(credentials.email, credentials.password, 'local');
-    
+   
                 if (res.status === 200) {
                     const user = await res.json();
                     return user;
                 } else {
+                    const error = await res.json();
+                    console.log('Error in logging in: ' + error);
                     return null;
                 }
             }

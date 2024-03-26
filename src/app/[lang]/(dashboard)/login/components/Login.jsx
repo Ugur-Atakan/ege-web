@@ -17,14 +17,16 @@ const Login = ({ lang }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log('Pressed login');
 
         const res = await signIn('credentials', {
           email: email,
           password: password,
           redirect: false
         });
-
+  
         if (res.status === 401) {
+          console.log(res);
           toast.error('Wrong credentials', {
             position: "top-right",
             autoClose: 5000,
