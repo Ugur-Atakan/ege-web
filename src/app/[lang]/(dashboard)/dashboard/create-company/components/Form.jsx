@@ -6,7 +6,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import clipboardCopy from 'clipboard-copy';
 
-import  { getLLCSilver, getLLCGold, getCorpSilver, getCorpGold, getCorpPlat } from '../api'
 import { MdContentCopy } from "react-icons/md";
 import UpsellForm from './UpsellForm'
 import { stripeURLEmailBody } from '../api/mailgun'
@@ -86,27 +85,32 @@ const Form = () => {
     }
     
     //* Get the prices from stripe API to fetch the priceID
-    //? Change to API internal later on
     const getStripePrice = async () => {
       let stripePrice = '';
       if (formValues.companyType === 'LLC') {
         if (formValues.package === 'Silver') {
-          stripePrice = await getLLCSilver(formValues.state);
+          const res = await axios.get(`/api/dashboard/package-prices/get-llc-silver?state=${formValues.state}`);
+          stripePrice = res.data;
         } else if (formValues.package === 'Gold') {
-          stripePrice = await getLLCGold(formValues.state);
+          const res = await axios.get(`/api/dashboard/package-prices/get-llc-gold?state=${formValues.state}`);
+          stripePrice = res.data;
         }
       } else if (formValues.companyType === 'Corp') {
         if (formValues.package === 'Silver') {
-          stripePrice = await getCorpSilver(formValues.state);
+          const res = await axios.get(`/api/dashboard/package-prices/get-corp-silver?state=${formValues.state}`); 
+          stripePrice = res.data;
         } else if (formValues.package === 'Gold') {
-          stripePrice = await getCorpGold(formValues.state);
+          const res = await axios.get(`/api/dashboard/package-prices/get-corp-gold?state=${formValues.state}`);
+          stripePrice = res.data;
         } else if (formValues.package === 'Platinum') {
-          stripePrice = await getCorpPlat(formValues.state);
+          const res = await axios.get(`/api/dashboard/package-prices/get-corp-plat?state=${formValues.state}`);
+          stripePrice = res.data;
         }
       }
       return stripePrice;
     }
     const stripePrice = await getStripePrice();
+
 
     const sendFormValues = async () => {
       const stripePayload = {

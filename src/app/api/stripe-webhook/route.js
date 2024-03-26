@@ -59,7 +59,7 @@ export async function POST(req) {
             
             // const createCustomer = await createProductCustomer();
             
-            logger.info({ message : `Product event handled` })
+            logger.info({ message : `Product event handled` });
             return new Response('Product event handled', { status: 200 });
         }
 

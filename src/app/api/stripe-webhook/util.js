@@ -249,7 +249,7 @@ export const createUserWithUpsells = async (name, email, companyName, state, com
   }
 }
 
-
+// Create a customer who buys a product /product
 export const createProductCustomer = async (firstName, lastName, email, companyName, companyState, companyType, customerStripeID, productName) => {
   await connectDB();
 
@@ -260,10 +260,18 @@ export const createProductCustomer = async (firstName, lastName, email, companyN
     if (existingUser) {
       const workSpace = await Workspace.findOne({ users: existingUser._id });
       
+      const product = {
+        name: productName,
+        price: price,
+        frequency: frequency,
+        stripePriceID: priceID
+      };
+
       const company = {
         companyName: companyName,
-        state: companyState,
-        products: products,
+        state: state,
+        products: [product],
+        // companyPackage: companyPackage,
         companyType: companyType,
         status: 'paid'
       };
@@ -283,6 +291,9 @@ export const createProductCustomer = async (firstName, lastName, email, companyN
     const user = await User.create({ firstName, lastName, email, password: '', level: 'user', enableToken: enableToken, active: false, type: 'local', customerStripeID: customerStripeID });
     const workSpace = await Workspace.create({ users: [user._id] });
 
+    const getPrice = await stripe.prices.retrieve(priceID);
+    const price = getPrice.unit_amount / 100;
+
     // get price from price ID
     const product = {
       name: productName,
@@ -291,19 +302,10 @@ export const createProductCustomer = async (firstName, lastName, email, companyN
       stripePriceID: priceID
     };
 
-    // const products = upsells.map(upsell => { 
-    //   return {
-    //     name: upsell.name,
-    //     price: upsell.price,
-    //     frequency: upsell.frequency,
-    //     stripePriceID: upsell.id
-    //   };
-    // });
-    
     const company = {
       companyName: companyName,
       state: state,
-      products: products,
+      products: [product],
       // companyPackage: companyPackage,
       companyType: companyType,
       status: 'paid'
