@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const Form = () => {
   const [form , setForm] = useState({
     companyName: '',
-    companyType: '',
+    companyState: 'Delaware',
     companyType: 'LLC',
     firstName: '',
     lastName: '',
@@ -48,7 +48,9 @@ const Form = () => {
       authorizedOfficerLastName: form.authorizedOfficerLastName,
       authorizedOfficerTitle: form.authorizedOfficerTitle,
       type: 'registered-agent',
-      recurrencePeriod: form.recurrencePeriod === 'monthly' ? 'price_1OZCQSJuNLcMU2Po2zG3ROGB' : 'price_1OZCXyJuNLcMU2Pojkij8Wk3'
+      productName: 'Registered Agent',
+      priceID: form.recurrencePeriod === 'monthly' ? 'price_1OZCQSJuNLcMU2Po2zG3ROGB' : 'price_1OZCXyJuNLcMU2Pojkij8Wk3',
+      priceType: 'subscription'
     }
 
     const submitToStripe = async () => {
@@ -171,7 +173,7 @@ const Form = () => {
                   id="company-type"
                   name="companyType"
                   autoComplete="country-type"
-                  onChange={(e) => setForm({...form, companyType: e.target.value})}
+                  onChange={(e) => setForm({...form, companyState: e.target.value})}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                 >
                   <option>Delaware</option>

@@ -2,7 +2,7 @@ import Stripe from 'stripe';
 import { headers } from 'next/headers';
 import logger from '@/app/lib/logger'
 import { 
-    sendMail, createUserWithUpsells, mailBody,
+    sendMail, createUserWithUpsells, mailBody, createProductCustomer,
     createUserWithoutUpsells, userAlreadyExists } from './util';
 
 import { createCustomer, createCustomerRequest, resendInvitation } from '@/app/lib/jira';
@@ -41,8 +41,29 @@ export async function POST(req) {
         logger.info({ message: 'Checkout session completed.' })
 
         const session = event.data.object;
-        const createdByAdmin = session.metadata.createdByAdmin || false;
+        //* Type differentiates between product or the funnel
+        const type = session.metadata.type === 'product' ? 'product' : 'funnel';
 
+        //* Handle the webhook if a customer buys a product
+        if (type === 'product') {
+            const companyName = session.metadata.companyName;
+            const companyState = session.metadata.companyState;
+            const companyType = session.metadata.companyType;
+            const priceID = session.metadata.priceID;
+            const customerFirstName = session.metadata.firstName;
+            const customerLastName = session.metadata.lastName;
+            const customerEmail = session.metadata.email;
+            const customerStripeID = session.customer;
+            const productName = session.metadata.productName;
+            
+            
+            // const createCustomer = await createProductCustomer();
+            
+            logger.info({ message : `Product event handled` });
+            return new Response('Product event handled', { status: 200 });
+        }
+
+        const createdByAdmin = session.metadata.createdByAdmin || false;
         const currentUnixTimestamp = Math.floor(Date.now() / 1000);
         const nextYearUnixTimestamp = currentUnixTimestamp + (365 * 24 * 60 * 60);
 
@@ -182,6 +203,7 @@ export async function POST(req) {
             return new Response(session.url, { status: 200 });
         } else if (event.type.includes('subscription')) {
             handleSubscriptions(event);
+            //! Todo complete the subscription handling
             // logger.info({ message : `Subscription event handled :)` })
             return new Response('Subscription event handled', { status: 200 });
         } else {

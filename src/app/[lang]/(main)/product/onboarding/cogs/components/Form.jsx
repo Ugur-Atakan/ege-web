@@ -1,20 +1,19 @@
 'use client'
 
 import React, { useState } from  'react'
+import axios from 'axios'
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
+import { Bounce, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Form = () => {
   const [form , setForm] = useState({
     companyName: '',
-    companyType: '',
     companyType: 'LLC',
+    companyState: 'Delaware',
     firstName: '',
     lastName: '',
-    email: '',
-    authorizedOfficerFirstName: '',
-    authorizedOfficerLastName: '',
-    authorizedOfficerTitle: '',
-    recurrencePeriod: ''
+    email: ''
   });
 
   const handleSubmit = (e) => {
@@ -41,13 +40,12 @@ const Form = () => {
       firstName: form.firstName,
       lastName: form.lastName,
       email: form.email,
-      authorizedOfficerFirstName: form.authorizedOfficerFirstName,
-      authorizedOfficerLastName: form.authorizedOfficerLastName,
-      authorizedOfficerTitle: form.authorizedOfficerTitle,
-      type: 'registered-agent',
-      recurrencePeriod: form.recurrencePeriod === 'monthly' ? 'price_1OZCQSJuNLcMU2Po2zG3ROGB' : 'price_1OZCXyJuNLcMU2Pojkij8Wk3'
+      type: 'cogs',
+      productName: 'Certificate of Good Standing',
+      priceID: 'price_1OZCVNJuNLcMU2PoIPkRnDOO',
+      priceType: 'payment'
     }
-
+    
     const submitToStripe = async () => {
       axios
       .post('/api/stripe/products', { data: { payload } })
@@ -63,12 +61,25 @@ const Form = () => {
   };
 
   return (
-    <form className='py-10'>
+    <div className='py-10'>
+      <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+      />
+
       <div className="space-y-12">
         <div className="border-b border-gray-900/10 pb-12">
           <h2 className="text-2xl font-semibold leading-7 text-gray-900">Information</h2>
           <p className="mt-1 text-sm leading-6 text-gray-600">
-            To appoint us your registered agent we need information regarding your company
+            To get a certificate of good standing we need information regarding your company
           </p>
 
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
@@ -183,13 +194,13 @@ const Form = () => {
 
       <div className="mt-6 flex items-center justify-end gap-x-6">
         <button
-          type="submit"
+          onClick={handleSubmit}
           className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
           Buy now
         </button>
       </div>
-    </form>
+    </div>
   )
 }
 
