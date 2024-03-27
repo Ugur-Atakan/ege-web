@@ -11,7 +11,7 @@ export const products = [
       id: 1,
       name: 'Compliance Reminder',
       category: '',
-      href: '#',
+      href: 'product/compliance-reminder',
       price: 'Free',
       imageSrc: agreement,
       imageAlt:
@@ -22,82 +22,29 @@ export const products = [
       name: 'Registered Agent',
       category: '',
       color: 'Black',
-      price: '$35',
-      href: '#',
+      price: '',
+      href: '/product/compliance-reminder',
       imageSrc: buildingTwo,
-      imageAlt: 'Black machined steel pen with hexagonal grip and small white logo at top.'
-    },
-    {
-      id: 3,
-      name: 'Virtual Mailbox',
-      category: '',
-      color: 'Black',
-      price: '$35',
-      href: '#',
-      imageSrc: mail,
-      imageAlt: 'Black machined steel pen with hexagonal grip and small white logo at top.'
-    },
-    {
-      id: 4,
-      name: 'Office Address',
-      category: '',
-      color: 'Black',
-      price: '$35',
-      href: '#',
-      imageSrc: sign,
-      imageAlt: 'Black machined steel pen with hexagonal grip and small white logo at top.'
-    },
-    {
-      id: 5,
-      name: 'Foreign Qualification',
-      category: '',
-      color: 'Black',
-      price: '$35',
-      href: '#',
-      imageSrc: usa,
-      imageAlt: 'Black machined steel pen with hexagonal grip and small white logo at top.'
+      imageAlt: 'Compliance reminder'
     },
     {
       id: 6,
       name: 'Certificate of Good Standing',
       category: '',
       color: 'Black',
-      price: '$35',
-      href: '#',
+      price: '',
+      href: 'product/certificate-of-good-standing',
       imageSrc: building,
-      imageAlt: 'Black machined steel pen with hexagonal grip and small white logo at top.'
+      imageAlt: 'Certificate of good standing'
     },
     {
       id: 7,
-      name: 'EIN',
+      name: 'Renewal and Revival',
       category: '',
       color: 'Black',
-      price: '$35',
-      href: '#',
+      price: '',
+      href: 'product/renewal-and-revival',
       imageSrc: contract,
-      imageAlt: 'Black machined steel pen with hexagonal grip and small white logo at top.'
-    }
+      imageAlt: 'Renewal and revival'
+    },
   ]
-  const collections = [
-    {
-      name: 'Desk and Office',
-      description: 'Work from home accessories',
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-01.jpg',
-      imageAlt: 'Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug.',
-      href: '#',
-    },
-    {
-      name: 'Self-Improvement',
-      description: 'Journals and note-taking',
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-02.jpg',
-      imageAlt: 'Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant.',
-      href: '#',
-    },
-    {
-      name: 'Travel',
-      description: 'Daily commute essentials',
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-03.jpg',
-      imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
-      href: '#',
-    },
-]

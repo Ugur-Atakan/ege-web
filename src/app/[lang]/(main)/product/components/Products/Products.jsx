@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { products } from './util';
 
 const Product = () => {
@@ -22,10 +23,10 @@ const Product = () => {
                   </div>
                   <div className="mt-4 flex items-center justify-between space-x-8 text-base font-medium text-gray-900">
                     <h3>
-                      <a href="#">
+                      <Link href={product.href}>
                         <span aria-hidden="true" className="absolute inset-0" />
                         {product.name}
-                      </a>
+                      </Link>
                     </h3>
                     <p>{product.price}</p>
                   </div>

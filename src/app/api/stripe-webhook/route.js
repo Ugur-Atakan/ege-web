@@ -41,9 +41,13 @@ export async function POST(req) {
         logger.info({ message: 'Checkout session completed.' })
 
         const session = event.data.object;
+        // change the customers name in stripe to one from custom field
+        const customer = await stripe.customers.update(session.customer, {
+            name: session.custom_fields[0].text.value,
+        });
+
         //* Type differentiates between product or the funnel
         const type = session.metadata.type === 'product' ? 'product' : 'funnel';
-
         //* Handle the webhook if a customer buys a product
         if (type === 'product') {
             const companyName = session.metadata.companyName;
@@ -56,8 +60,10 @@ export async function POST(req) {
             const customerStripeID = session.customer;
             const productName = session.metadata.productName;
             
-            
+            //! Need to complete this
             // const createCustomer = await createProductCustomer();
+            //const createCustomer = await createProductCustomer(customerFirstName, customerLastName, customerEmail, companyName, companyState, companyType, customerStripeID, productName, priceID);
+            //console.log(createCustomer);
             
             logger.info({ message : `Product event handled` });
             return new Response('Product event handled', { status: 200 });
