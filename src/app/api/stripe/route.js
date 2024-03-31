@@ -75,8 +75,22 @@ export async function POST(req) {
           }
         ],
         mode: 'payment',
+        billing_address_collection: 'required',
         success_url: process.env.SUCCESS_STRIPE_URL,
         cancel_url: process.env.FAIL_STRIPE_URL,
+        custom_fields: [
+          {
+            key: 'customer_name',
+            label: { 
+              type: 'custom',
+              custom: 'Customers name'
+            },
+            type: 'text'
+          }
+        ],
+        invoice_creation: {
+          enabled: true,
+        },
         metadata: {
           packageName,
           customerName,
@@ -93,6 +107,7 @@ export async function POST(req) {
         },
         customer_creation: 'always',
         customer_email: customerEmail,
+          
         allow_promotion_codes: true
       });
 
@@ -122,9 +137,23 @@ export async function POST(req) {
               }
             })
           ],
+          custom_fields: [
+            {
+              key: 'customer_name',
+              label: { 
+                type: 'custom',
+                custom: 'Customers name'
+              },
+              type: 'text'
+            }
+          ],
           mode: 'subscription',
+          billing_address_collection: 'required',
           success_url: process.env.SUCCESS_STRIPE_URL,
           cancel_url: process.env.FAIL_STRIPE_URL,
+          invoice_creation: {
+            enabled: true,
+          },
           metadata: {
             packageName,
             customerName,
@@ -152,9 +181,23 @@ export async function POST(req) {
                 quantity: 1,
               }
             ],
+            custom_fields: [
+              {
+                key: 'customer_name',
+                label: { 
+                  type: 'custom',
+                  custom: 'Customers name'
+                },
+                type: 'text'
+              }
+            ],
             mode: 'payment',
+            billing_address_collection: 'required',
             success_url: process.env.SUCCESS_STRIPE_URL,
             cancel_url: process.env.FAIL_STRIPE_URL,
+            invoice_creation: {
+              enabled: true,
+            },
             metadata: {
               packageName,
               customerName,
@@ -185,9 +228,23 @@ export async function POST(req) {
                 }
               })
             ],
+            custom_fields: [
+              {
+                key: 'customer_name',
+                label: { 
+                  type: 'custom',
+                  custom: 'Customers name'
+                },
+                type: 'text'
+              }
+            ],
             mode: 'payment',
+            billing_address_collection: 'required',
             success_url: process.env.SUCCESS_STRIPE_URL,
             cancel_url: process.env.FAIL_STRIPE_URL,
+            invoice_creation: {
+              enabled: true,
+            },
             metadata: {
               packageName,
               customerName,

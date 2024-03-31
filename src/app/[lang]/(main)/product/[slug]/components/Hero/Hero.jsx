@@ -33,7 +33,7 @@ const Hero = ({ lang, id, name, description, pricing }) => {
   const getRedirectUrl = (id) => {
     if (id == 1) return `/${lang}/product/onboarding/compliance`;
     else if(id == 2) return `/${lang}/product/onboarding/renewal-revival`;
-    else if (id == 3) return `/${lang}/product/onboarding/cofg`;
+    else if (id == 3) return `/${lang}/product/onboarding/cogs`;
     else if (id == 4) return `/${lang}/product/onboarding/registered-agent`;
   };
   const redirectUrl = getRedirectUrl(id);

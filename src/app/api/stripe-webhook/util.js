@@ -249,8 +249,8 @@ export const createUserWithUpsells = async (name, email, companyName, state, com
   }
 }
 
-// Create a customer who buys a product /product
-export const createProductCustomer = async (firstName, lastName, email, companyName, companyState, companyType, customerStripeID, productName) => {
+//* Create a customer who buys one of our products /product
+export const createProductCustomer = async (firstName, lastName, email, companyName, companyState, companyType, customerStripeID, productName, priceID) => {
   await connectDB();
 
   try {
@@ -260,16 +260,19 @@ export const createProductCustomer = async (firstName, lastName, email, companyN
     if (existingUser) {
       const workSpace = await Workspace.findOne({ users: existingUser._id });
       
+      const getPrice = await stripe.prices.retrieve(priceID);
+      const price = getPrice.unit_amount / 100;
+  
       const product = {
         name: productName,
         price: price,
-        frequency: frequency,
+        // frequency: frequency,
         stripePriceID: priceID
       };
 
       const company = {
         companyName: companyName,
-        state: state,
+        state: companyState,
         products: [product],
         // companyPackage: companyPackage,
         companyType: companyType,
@@ -298,7 +301,7 @@ export const createProductCustomer = async (firstName, lastName, email, companyN
     const product = {
       name: productName,
       price: price,
-      frequency: frequency,
+      //frequency: frequency,
       stripePriceID: priceID
     };
 
