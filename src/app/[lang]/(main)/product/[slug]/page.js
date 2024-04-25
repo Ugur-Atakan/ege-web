@@ -19,15 +19,15 @@ const Page = async ({ params: { lang, slug } }) => {
         description={product.description}
         pricing={product?.pricing}
       />
-      <NewFeatures lang={lang} />
-      <HIWNew lang={lang} />
-      <Pricing 
+      <NewFeatures lang={lang} features={product.features }/>
+      <HIWNew lang={lang} features={product.hiw} />
+      {/* <Pricing 
         lang={lang}
         name={product.name}
         pricing={product?.pricing}
         type={product.type}
         pricingFeatures={product?.pricingFeatures}
-      />
+      /> */}
       <Faq lang={lang} faqs={product.faq} />
       <Footer lang={lang} />
     </React.Fragment>

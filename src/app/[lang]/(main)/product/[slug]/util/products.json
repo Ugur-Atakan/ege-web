@@ -9,78 +9,69 @@
         "features": [
             {
                 "id":1,
+                "image": "hammer",
                 "title": "Avoid the risk of non-compliance",
                 "description": "Registered Agents are required by law and they're the ones who get all your corporation's legal papers."
             },
             {
                 "id":2,
-                "title": "Save money and hassle",
-                "description": "Compliance tasks can take a lot of time and work, and sometimes involve filling out long, tricky forms."
+                "image": "horse",
+                "title": "Never miss your deadlines",
+                "description": "We will notify you for all your compliance deadlines."
             }, 
             {
                 "id":3,
+                "image": "board",
                 "title": "Spend your time on your business",
-                "description": "Skip the employee standby during business hours. We've got it!"
+                "description": "Stop worrying about missing your deadlines. Just trust us and spend your time on your business."
             }
         ],
-        "pricingFeatures": [
+        "hiw": [
             {
                 "id": 1,
-                "title": "Avoid the risk of non-compliance"
+                "name": "Sign up for our plan",
+                "icon": "CloudArrowUpIcon"
             },
             {
                 "id": 2,
-                "title": "Avoid the risk of non-compliance"
+                "name": "Provide your details",
+                "description": "Share your business information with us to ensure accurate and compliant representation.",
+                "icon": "LockClosedIcon"
             },
             {
                 "id": 3,
-                "title": "Avoid the risk of non-compliance"
-            },
-            {
-                "id": 4,
-                "title": "Avoid the risk of non-compliance"
+                "name": "Relax, we've got it covered",
+                "description": "Sit back and focus on your business, we will keep track of the deadlines for you.",
+                "icon": "ServerIcon"
             }
         ],
         "faq": [
             {
                 "id": 1,
-                "question": "pricing_header2_Question_1",
+                "question": "What exactly does your compliance reminder product offer?",
                 "answers": [
-                "pricing_header2_Answer_1_1",
-                "pricing_header2_Answer_1_2",
-                "pricing_header2_Answer_1_3"
+                    "Our compliance reminder product is designed to help businesses stay on top of their regulatory requirements by sending timely notifications about important deadlines, such as filing annual reports, renewing licenses, and fulfilling other compliance obligations. We track key dates specific to your business and provide customized reminders so you can focus on running your business while ensuring you meet all necessary legal obligations." 
                 ]
             },
             {
                 "id": 2,
-                "question": "pricing_header2_Question_2",
+                "question": "How does your compliance reminder service work?",
                 "answers": [
-                "pricing_header2_Answer_2_1",
-                "pricing_header2_Answer_2_2",
-                "pricing_header2_Answer_2_3"
+                    "Our service is simple yet effective. Once you sign up, you'll provide us with information about your business, including key compliance deadlines and relevant details. Our system will then track these dates and send you automated reminders well in advance of each deadline, ensuring you have ample time to take necessary actions. You'll receive reminders via email, SMS, or whichever communication method you prefer, keeping you informed and organized without the hassle of manual tracking."
                 ]
             },
             {
                 "id": 3,
-                "question": "pricing_header2_Question_3",
+                "question": "Is your compliance reminder product tailored to specific states or jurisdictions?",
                 "answers": [
-                "pricing_header2_Answer_3"
+                    "Yes, our product is adaptable to various states and jurisdictions, including Delaware, where you're registered. We understand that compliance requirements can vary significantly depending on your location and industry, so we customize our reminders to align with the specific regulations that apply to your business. Whether you operate solely in Delaware or have a multi-state presence, our system can accommodate your compliance needs."
                 ]
             },
             {
                 "id": 4,
-                "question": "pricing_header2_Question_4",
+                "question": "How does your compliance reminder product differ from other similar services?",
                 "answers": [
-                "pricing_header2_Answer_4" 
-                ]
-            },
-            {
-                "id": 5,
-                "question": "pricing_header2_Question_5",
-                "answers": [
-                "pricing_header2_Answer_5_1",
-                "pricing_header2_Answer_5_2",
-                "pricing_header2_Answer_5_3"
+                    "Our compliance reminder product stands out for its reliability, accuracy, and user-friendly interface. Unlike generic calendar apps or reminder tools, we specialize in compliance tracking, meaning we focus solely on ensuring you meet your legal obligations. Our system is continuously updated to reflect any changes in regulations, and our customer support team is always available to address any questions or concerns you may have. With our product, you can have peace of mind knowing that your compliance needs are being taken care of efficiently and effectively." 
                 ]
             }
         ]
@@ -110,64 +101,42 @@
                 "description": "Skip the employee standby during business hours. We've got it!"
             }
         ],
-        "pricingFeatures": [
+        "hiw": [
             {
-                "id": 1,
-                "title": "Avoid the risk of non-compliance"
+                "name": "Contact us",
+                "icon": "CloudArrowUpIcon"
             },
             {
-                "id": 2,
-                "title": "Avoid the risk of non-compliance"
+                "name": "Provide your details",
+                "description": "Share your business information with us to investigate your company situation.",
+                "icon": "LockClosedIcon"
             },
             {
-                "id": 3,
-                "title": "Avoid the risk of non-compliance"
-            },
-            {
-                "id": 4,
-                "title": "Avoid the risk of non-compliance"
+                "name": "Relax, we've got it covered",
+                "description": "Share your business information with us, sit back and just wait for us to find the perfect solution for your company.",
+                "icon": "ServerIcon"
             }
         ],
         "faq": [
             {
                 "id": 1,
-                "question": "pricing_header2_Question_1",
+                "question": "What are Renewal and Revival services, and how can they help my company?",
                 "answers": [
-                "pricing_header2_Answer_1_1",
-                "pricing_header2_Answer_1_2",
-                "pricing_header2_Answer_1_3"
+                    "Renewal and Revival services are designed to assist companies that have lost their good standing status due to state regulations. We specialize in helping businesses navigate the process of regaining compliance and restoring their standing with state authorities. Our services include identifying the specific regulatory issues that led to the loss of good standing, developing a tailored action plan to address these issues, and guiding the company through the necessary steps to achieve reinstatement. By partnering with us, businesses can regain their legal status and resume normal operations with confidence."
                 ]
             },
             {
                 "id": 2,
-                "question": "pricing_header2_Question_2",
+                "question": "What types of situations can lead to a company losing its good standing status?",
                 "answers": [
-                "pricing_header2_Answer_2_1",
-                "pricing_header2_Answer_2_2",
-                "pricing_header2_Answer_2_3"
+                    "There are various reasons why a company may lose its good standing status, including failure to file annual reports or pay required fees, non-compliance with state tax obligations, or failure to maintain a registered agent. Additionally, changes in ownership structure, business name, or operational scope that are not properly documented with state authorities can also result in loss of good standing. Regardless of the specific circumstances, our Renewal and Revival services are equipped to address the root causes of non-compliance and guide companies toward reinstatement and regulatory compliance."
                 ]
             },
             {
                 "id": 3,
-                "question": "pricing_header2_Question_3",
+                "question": "Can your Renewal and Revival services help if my company is facing legal action or penalties due to its loss of good standing status?",
                 "answers": [
-                "pricing_header2_Answer_3"
-                ]
-            },
-            {
-                "id": 4,
-                "question": "pricing_header2_Question_4",
-                "answers": [
-                "pricing_header2_Answer_4" 
-                ]
-            },
-            {
-                "id": 5,
-                "question": "pricing_header2_Question_5",
-                "answers": [
-                "pricing_header2_Answer_5_1",
-                "pricing_header2_Answer_5_2",
-                "pricing_header2_Answer_5_3"
+                    "Absolutely. Our Renewal and Revival services are designed to address a wide range of issues that can arise from a loss of good standing status, including legal action or penalties imposed by state authorities. We work closely with our clients to understand the specific circumstances of their situation and develop strategies to mitigate any legal consequences. Whether it involves negotiating with state agencies, addressing outstanding penalties, or resolving compliance issues, our team is dedicated to helping your company navigate through these challenges and achieve reinstatement in good standing."
                 ]
             }
         ]
@@ -184,77 +153,65 @@
             {
                 "id":1,
                 "title": "Avoid the risk of non-compliance",
+                "image": "hammer",
                 "description": "Registered Agents are required by law and they're the ones who get all your corporation's legal papers."
             },
             {
                 "id":2,
                 "title": "Save money and hassle",
+                "image": "horse",
                 "description": "Compliance tasks can take a lot of time and work, and sometimes involve filling out long, tricky forms."
             }, 
             {
                 "id":3,
                 "title": "Spend your time on your business",
+                "image": "board",
                 "description": "Skip the employee standby during business hours. We've got it!"
             }
         ],
-        "pricingFeatures": [
+        "hiw": [
             {
-                "id": 1,
-                "title": "Avoid the risk of non-compliance"
+                "name": "Sign up for our plan",
+                "icon": "CloudArrowUpIcon"
             },
             {
-                "id": 2,
-                "title": "Avoid the risk of non-compliance"
+                "name": "Provide your details",
+                "description": "Share your business information with us to ensure accurate and compliant representation.",
+                "icon": "LockClosedIcon"
             },
             {
-                "id": 3,
-                "title": "Avoid the risk of non-compliance"
-            },
-            {
-                "id": 4,
-                "title": "Avoid the risk of non-compliance"
+                "name": "Relax, we've got it covered",
+                "description": "Sit back and focus on your business while we handle all your legal document needs seamlessly.",
+                "icon": "ServerIcon"
             }
         ],
         "faq": [
             {
                 "id": 1,
-                "question": "pricing_header2_Question_1",
+                "question": "What is a Certificate of Good Standing, and why is it important for my business?",
                 "answers": [
-                "pricing_header2_Answer_1_1",
-                "pricing_header2_Answer_1_2",
-                "pricing_header2_Answer_1_3"
+                    "A Certificate of Good Standing, also known as a Certificate of Existence or Certificate of Authorization, is an official document issued by the state government indicating that your business entity is compliant with all state requirements and is authorized to conduct business in that state. This certificate serves as proof that your business is in good standing with the state and is up to date with filings, taxes, and other obligations. It is often required for various business transactions, such as obtaining financing, entering into contracts, or expanding operations into new jurisdictions."
                 ]
             },
             {
                 "id": 2,
-                "question": "pricing_header2_Question_2",
+                "question": "How do I obtain a Certificate of Good Standing for my business?",
                 "answers": [
-                "pricing_header2_Answer_2_1",
-                "pricing_header2_Answer_2_2",
-                "pricing_header2_Answer_2_3"
+                    "Obtaining a Certificate of Good Standing typically involves submitting a request to the state agency responsible for business filings, usually the Secretary of State's office or a similar entity. The specific process may vary depending on the state, but generally, you will need to complete an application form, pay any required fees, and provide information about your business, such as its name and entity type. Once your request is processed and it is confirmed that your business is in good standing, the state will issue the certificate, which may be delivered electronically or in hard copy format."
                 ]
             },
             {
                 "id": 3,
-                "question": "pricing_header2_Question_3",
+                "question": "What information is included in a Certificate of Good Standing?",
                 "answers": [
-                "pricing_header2_Answer_3"
+                    "A Certificate of Good Standing typically contains essential information about your business, such as its legal name, entity type (e.g., LLC, corporation), date of formation, and current status with the state. It also confirms that your business has complied with all necessary filing requirements, paid any applicable fees or taxes, and is authorized to conduct business within the state. Additionally, the certificate may include a statement from the state attesting to the authenticity of the document and its validity for a specific period."
                 ]
             },
             {
                 "id": 4,
-                "question": "pricing_header2_Question_4",
+                "question": "How long is a Certificate of Good Standing valid, and do I need to renew it?",
                 "answers": [
-                "pricing_header2_Answer_4" 
-                ]
-            },
-            {
-                "id": 5,
-                "question": "pricing_header2_Question_5",
-                "answers": [
-                "pricing_header2_Answer_5_1",
-                "pricing_header2_Answer_5_2",
-                "pricing_header2_Answer_5_3"
+                    "The validity period of a Certificate of Good Standing varies depending on the state's regulations and the purpose for which it is being used. In most cases, the certificate is valid for a specific period, such as 30, 60, or 90 days from the date of issuance. Some states may offer longer validity periods or require more frequent renewals. If you need a certificate for ongoing business transactions or compliance requirements, you may need to renew it periodically to ensure it remains current. We offer assistance with obtaining initial certificates and can also help with renewal requests to ensure your business always has up-to-date documentation when needed." 
                 ]
             }
         ]
@@ -270,8 +227,8 @@
         "features": [
             {
                 "id":1,
-                "title": "Make us your Registered Agent",
-                "description": "Registered Agents are required by law and they're the ones who get all your corporation's legal papers."
+                "title": "Reliable. Responsive. Registered. ",
+                "description": "Let us be your trusted partner in your State."
             },
             {
                 "id":2,
@@ -284,64 +241,49 @@
                 "description": "Skip the employee standby during business hours. We've got it!"
             }
         ],
-        "pricingFeatures": [
+        "hiw": [
             {
-                "id": 1,
-                "title": "Avoid the risk of non-compliance"
+                "name": "Sign up for our plan",
+                "icon": "CloudArrowUpIcon"
             },
             {
-                "id": 2,
-                "title": "Avoid the risk of non-compliance"
+                "name": "Provide your details",
+                "description": "Share your business information with us to ensure accurate and compliant representation.",
+                "icon": "LockClosedIcon"
             },
             {
-                "id": 3,
-                "title": "Avoid the risk of non-compliance"
-            },
-            {
-                "id": 4,
-                "title": "Avoid the risk of non-compliance"
+                "name": "Relax, we've got it covered",
+                "description": "Sit back and focus on your business while we serve as your registered agent.",
+                "icon": "ServerIcon"
             }
         ],
         "faq": [
             {
                 "id": 1,
-                "question": "pricing_header2_Question_1",
+                "question": "What is a Registered Agent, and why do I need one for my business?",
                 "answers": [
-                    "pricing_header2_Answer_1_1",
-                    "pricing_header2_Answer_1_2",
-                    "pricing_header2_Answer_1_3"
+                    "A Registered Agent is an individual or entity designated to receive legal documents and official correspondence on behalf of a business entity, such as an LLC or corporation. State laws typically require businesses to have a Registered Agent to ensure that they have a reliable point of contact for important legal notices, such as service of process and tax notifications. Having a Registered Agent also helps maintain compliance with state regulations and enables businesses to focus on their operations while ensuring they don't miss critical communications."
                 ]
             },
             {
                 "id": 2,
-                "question": "pricing_header2_Question_2",
+                "question": "What are the requirements for serving as a Registered Agent?",
                 "answers": [
-                    "pricing_header2_Answer_2_1",
-                    "pricing_header2_Answer_2_2",
-                    "pricing_header2_Answer_2_3"
+                    "To serve as a Registered Agent, an individual or entity must have a physical address within the state where the business is registered. Additionally, the Registered Agent must be available during regular business hours to receive legal documents and must ensure that these documents are promptly forwarded to the business entity. Many businesses choose to use professional Registered Agent services like ours to ensure continuous compliance and reliable handling of legal notices."
                 ]
             },
             {
                 "id": 3,
-                "question": "pricing_header2_Question_3",
+                "question": "How does your Registered Agent service benefit my business?",
                 "answers": [
-                "pricing_header2_Answer_3"
+                    "Our Registered Agent service provides several benefits to your business. Firstly, we offer a physical address in the state where your business is registered, ensuring compliance with state regulations. Secondly, our team is available during business hours to receive and promptly forward any legal documents or official correspondence to you, helping you stay informed and responsive to legal matters. Lastly, by entrusting your Registered Agent responsibilities to us, you can focus on growing your business without the administrative burden of managing legal notices."
                 ]
             },
             {
                 "id": 4,
-                "question": "pricing_header2_Question_4",
+                "question": "Can I change my Registered Agent, and how does the process work?",
                 "answers": [
-                "pricing_header2_Answer_4" 
-                ]
-            },
-            {
-                "id": 5,
-                "question": "pricing_header2_Question_5",
-                "answers": [
-                "pricing_header2_Answer_5_1",
-                "pricing_header2_Answer_5_2",
-                "pricing_header2_Answer_5_3"
+                    "Yes, you can change your Registered Agent at any time by filing the necessary paperwork with the state agency responsible for business filings, typically the Secretary of State's office. The process for changing your Registered Agent may vary depending on the state's requirements, but it generally involves submitting a formal amendment or updating your business's information with the state. Once the change is processed, your new Registered Agent will assume responsibility for receiving legal documents on behalf of your business. If you choose to switch to our service, we can assist you with the seamless transition and ensure uninterrupted Registered Agent representation for your business." 
                 ]
             }
         ]

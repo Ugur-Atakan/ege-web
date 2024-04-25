@@ -2,6 +2,8 @@ import products from './products.json'
 import axios from 'axios'
 import { Product } from '../classes/Product'
 
+//# Change the prices w.r.t to production 
+
 export const getProduct = async (slug) => {
     const productJSON = products.find(product => product.slug === slug);
     const product = new Product(productJSON.id, productJSON.name, productJSON.description, 
@@ -10,7 +12,7 @@ export const getProduct = async (slug) => {
             monthly: productJSON.pricing?.monthly || -1,
             yearly: productJSON.pricing?.yearly || -1,
             allStates: productJSON.pricing?.allStates || -1
-        }, productJSON.features, productJSON.pricingFeatures, productJSON.faq);
+        }, productJSON.features, productJSON.pricingFeatures, productJSON.faq, productJSON.hiw);
 
     if (slug == 'registered-agent') {
         const res = await axios.get(`https://api.stripe.com/v1/prices/search?query=product:'prod_P0S4rDwBGueBoq'`, {
