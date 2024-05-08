@@ -72,7 +72,12 @@ const SupportBusiness = ({ lang }) => {
           </div>
           <div className="flex items-start gap-3 justify-start lg:justify-center">
             <Image src={protectionicon} className='w-8 h-8 lg:w-6 lg:h-6' alt="protection icon" />
-            <p className="text-white font-bold text-lg leading-6">{t('after_formation_footer3')}</p>
+            <div>
+              <p className="text-white font-bold text-lg leading-6">{t('after_formation_footer3')}</p>
+              <div className="text-sm text-white italic py-2">
+                <sup>*</sup>except state fee
+              </div>
+            </div>
           </div>
         </div>
       </div>

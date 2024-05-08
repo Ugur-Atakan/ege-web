@@ -23,20 +23,7 @@ const NewContent = ({ cookie, lang }) => {
     const [otherStates, setOtherStates] = useState([]);
     let selectedLLC = false;
     
-    //* Read cookie
-    // const [cookie, setCookie] = useState({});
-    // useEffect(() => {
-    //   const readCkie = async () => {
-    //     const ckie = await readCookie();
-    //     console.log('Cookie inside state page ', ckie);
-    //     selectedLLC =  ckie.companyType === 'C-Corp' ? true : false;
-    //     setCookie(ckie);
-    //   }
-    //   readCkie();
-    // }, []);
-  
-      
-    //* Use Effect to set the cookie
+    //* Button click
     const handleSubmit = () => {
       const ckie = {...cookie, companyState: companyState};
       const setCookie = async (ckie) => {
@@ -131,11 +118,11 @@ const NewContent = ({ cookie, lang }) => {
                             </li>
 
                             <button 
-                            onClick={handleSubmit}
-                            //className={`order-4 w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer ${companyState ? '' : 'opacity-50 cursor-not-allowed pointer-events-none'}`}
-                            className={`order-4 w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer`}
+                              onClick={handleSubmit}
+                              className={`order-4 w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer ${companyState ? '' : 'opacity-50 cursor-not-allowed pointer-events-none'}`}
+                              // className={`order-4 w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer`}
                             >
-                                {t('state_button')}
+                              {t('state_button')}
                             </button>
                         </ul>
                         </div>

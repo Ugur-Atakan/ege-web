@@ -43,10 +43,6 @@ const OrderReview = ({ lang , selectedPackage  , displayForm , setDisplayForm , 
                 ))}
             </div>
             <div className='md:mt-96'>
-                {/* <div className='flex flex-col gap-6'>
-                    <button className='font-semibold  text-left text-[16px] leading-6 text-[#1649FF]' onClick={() => setCouponCode(true)}>{t("review_coupon_code")}</button>
-                    {couponcode && <input type='text' name="couponCode" id="couponCode" className="-mt-2 mb-4 md:mb-0 md:mt-1 block w-full md:w-1/2 rounded-[20px] border-[#C8C8C8] py-2 shadow-sm" onChange={couponcode} />}
-                </div> */}
                 <div className='flex items-center justify-between py-4'>
                     <div>
                         <h4 className='font-semibold text-lg leading-6 text-[#222222]'>Total Price</h4>

@@ -213,7 +213,7 @@ const Content = ({ lang }) => {
                 )}
             </div>
 
-            <div className="w-full pt-[6%] px-10 md:w-[55%]">
+            <div className="w-full mb-10 pt-[6%] px-10 md:w-[55%]">
                 <OrderReview
                     lang={lang}
                     selectedPackage={cookie.selectedPackage}
