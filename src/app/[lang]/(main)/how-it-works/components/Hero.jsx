@@ -41,7 +41,7 @@ const Hero = async ({ lang }) => {
           </div>
         </div>
         <div className='relative z-30 -top-6 lg:-top-[5.5rem]'>
-          <Link href={`/${lang}/company-type`} className="absolute px-4 py-3 text-center transform -translate-x-1/2 -translate-y-1/2 bg-[#1649FF] text-white font-semibold text-[18px] leading-6 rounded-[16px] top-0 left-1/2">
+          <Link href={`/${lang}/onboarding`} className="absolute px-4 py-3 text-center transform -translate-x-1/2 -translate-y-1/2 bg-[#1649FF] text-white font-semibold text-[18px] leading-6 rounded-[16px] top-0 left-1/2">
             {t("how_it_works_button")}
           </Link>
         </div>

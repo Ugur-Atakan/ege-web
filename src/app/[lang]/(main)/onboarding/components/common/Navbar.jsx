@@ -54,7 +54,7 @@ export default function Navbar({ lang }) {
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <div className='hidden lg:flex items-center gap-4'>
               <Link
-                href={`/${lang}/onboarding/state`}
+                href={`/${lang}/contact-us`}
                 id="header-fmc"
                 className='bg-white flex items-center gap-2 py-2 px-4 text-[1.125rem] font-semibold leading-[1.5rem] text-[#1649FF]'
               >
@@ -73,7 +73,7 @@ export default function Navbar({ lang }) {
                 <Image
                   className="h-8 w-auto"
                   src={logo}
-                  alt=""
+                  alt="registate"
                 />
               </Link>
               <button

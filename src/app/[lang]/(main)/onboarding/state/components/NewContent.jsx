@@ -3,7 +3,6 @@
 
 import React, { useEffect, useState } from 'react'
 import {  useRouter } from 'next/navigation'
-// import { redirectToLastNullInternalFunnel, checkEqualPathName, clearPathnameLocalStorage } from '@/app/lib/utils'
 import { useTranslation } from '@/i18n/client'
 import { readCookie, submitCookie } from '@/app/lib/session/clientActions'
 
@@ -108,19 +107,24 @@ const NewContent = ({ cookie, lang }) => {
                             />
 
                             <li className="order-3">
-                            <DropDown
-                                id="companyState"
-                                value={companyState}
-                                placeholder={t('state_option3_text')}
-                                options={otherStates}
-                                onChange={(e) => setCompanyState(e.target.value)}
-                            />
+                              <div className="text-center">
+                                <h3 className="text-lg font-medium text-gray-900">Or</h3>
+                              </div>
+                            </li>
+
+                            <li className="order-4">
+                              <DropDown
+                                  id="companyState"
+                                  value={companyState}
+                                  placeholder={t('state_option3_text')}
+                                  options={otherStates}
+                                  onChange={(e) => setCompanyState(e.target.value)}
+                              />
                             </li>
 
                             <button 
                               onClick={handleSubmit}
-                              className={`order-4 w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer ${companyState ? '' : 'opacity-50 cursor-not-allowed pointer-events-none'}`}
-                              // className={`order-4 w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer`}
+                              className={`order-5 w-full bg-[#1649FF] text-white text-center py-4 rounded-[20px] font-semibold text-[22px] leading-[26px] cursor-pointer ${companyState ? '' : 'opacity-50 cursor-not-allowed pointer-events-none'}`}
                             >
                               {t('state_button')}
                             </button>
