@@ -31,7 +31,7 @@ const SupportBusiness = ({ lang }) => {
   return (
     <div className="bg-[#1649FF] overflow-hidden">
       <div className="mx-auto max-w-5xl p-8 lg:px-12 lg:pt-24 pb-12">
-        <h2 className="font-bold text-[32px] leading-[38px] lg:text-[64px] lg:leading-[64px] text-white text-left lg:text-center">{t('after_formation_title_white')}</h2><h3 className="font-bold text-[32px] leading-[38px] lg:text-[64px] lg:leading-[64px] text-[#9EE248] text-left lg:text-center">{t('after_formation_title_green')}</h3>
+        <h2 className="font-bold text-[28px] leading-[28px] lg:text-[44px] lg:leading-[64px] text-white text-left lg:text-center">{t('after_formation_title_white')}</h2><h3 className="font-bold text-[32px] leading-[38px] lg:text-[44px] lg:leading-[28px] text-[#9EE248] text-left lg:text-center">{t('after_formation_title_green')}</h3>
       </div>
     
       {isMobile ? (
