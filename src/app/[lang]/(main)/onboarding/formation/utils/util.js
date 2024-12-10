@@ -214,12 +214,12 @@ const doublePricing = {
 
 export const getDoublePricing = (silverProduct, goldProduct) => {
   // Silver product features
-  doublePricing.tiers[0].price = silverProduct.unit_amount/100;
-  doublePricing.tiers[0].priceID = silverProduct.id;
+  doublePricing.tiers[0].price = silverProduct?.unit_amount/100 || 0;
+  doublePricing.tiers[0].priceID = silverProduct?.id || 'fake_id';
   
   // Gold product features
-  doublePricing.tiers[1].price = goldProduct.unit_amount/100;
-  doublePricing.tiers[1].priceID = goldProduct.id;
+  doublePricing.tiers[1].price = goldProduct?.unit_amount/100 || 0;
+  doublePricing.tiers[1].priceID = goldProduct?.id || 'fake_id';
 
   return doublePricing;
 }

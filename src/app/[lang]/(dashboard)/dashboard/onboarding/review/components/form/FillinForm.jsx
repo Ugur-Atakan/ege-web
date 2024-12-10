@@ -103,13 +103,13 @@ const FillinForm = (params) => {
                                     type="tel"
                                     name="phonenumber"
                                     id="phonenumber"
+                                    inputMode="numeric"
                                     autoComplete="tel"
                                     required
                                     value={phone}
-                                    onChange={(e) => {                                   
-                                        if (e.target.value === '' || isNumber(e.target.value)) {
-                                            setPhone(e.target.value)
-                                        }
+                                    onChange={(e) => {
+                                        const numericValue = e.target.value.replace(/\D/g, '');
+                                        setPhone(numericValue);
                                     }}
                                     className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
                                     placeholder="(123) 111-22-33"

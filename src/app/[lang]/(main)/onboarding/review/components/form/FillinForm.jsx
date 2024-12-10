@@ -104,18 +104,15 @@ const FillinForm = (params) => {
                             <div className="relative mt-1 rounded-md shadow-sm">
                             <input
                                 type="tel"
+                                inputMode="numeric"
                                 name="phonenumber"
                                 id="phonenumber"
                                 autoComplete="tel"
                                 required
                                 value={phone}
                                 onChange={(e) => {
-                                    // regex 
-                                    const regex = /^\d{0,10}$/;
-                                    const { value } = e.target;
-                                    if (value === '' || regex.test(value.replace(/\D/g, ''))) {
-                                        setPhone(value)
-                                    }
+                                    const numericValue = e.target.value.replace(/\D/g, '');
+                                    setPhone(numericValue);
                                 }}
                                 className="mt-1 block w-full rounded-[20px] border-[#C8C8C8] py-3 shadow-sm"
                                 placeholder="(123) 111-22-33"

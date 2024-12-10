@@ -7,6 +7,7 @@ import tickicon from '@/assets/images/tick.png'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useTranslation } from '@/i18n/client'
+import { sign } from 'crypto'
 
 /**
  * Content for start my business page
@@ -325,7 +326,7 @@ const Content = ({ lang }) => {
                   </ul>}
               </div>
               <div className="py-6">
-                <Link onClick={handleCompanyType} href={`/${lang}/onboarding/company-name`}>
+                <Link onClick={handleCompanyType} href={`/${lang}/onboarding/formation`}>
                   <button className="py-6 px-6 text-center bg-[#1649FF] rounded-[1.25rem] border border-blue-600 text-white text-[1.375rem] leading-[1.625rem] w-full font-semibold">
                     <h4>{t('help_me_choose_widget_answer1_button')}</h4>
                   </button>

@@ -1,4 +1,18 @@
+    
 {
+
+    "registered_agent": "Registered Agent",
+    "show_all_differences": "Show all differences",
+    "expedited_ein": "Expedited EIN",
+    "all_formation_documents": "All formation documents",
+    "access_to_registate_dashboard": "Access to Registate Dashboad",
+    "lifetime_support": "Lifetime Support",
+    "compliance_reminder": "Compliance Reminder",
+    "membership_certificates": "Membership Certificates",
+    "expedited_filling": "Expedited filling",
+    "free_mailbox": "Free mailbox",
+    "everything_in_silver": "Everything in Silver, plus:",
+    "choose_company_name_title": "Choose the name for your company!",
     "topbar_first_part": "✨ Book a ",
     "topbar_middle_part": "free call",
     "topbar_last_part": "with an expert to get started",

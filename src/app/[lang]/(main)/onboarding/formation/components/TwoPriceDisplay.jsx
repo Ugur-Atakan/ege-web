@@ -6,10 +6,6 @@ import { readCookie, submitCookie } from '@/app/lib/session/clientActions'
 
 import Cards from './NewDesign/Cards'
 
-import packageDataEN from '@/assets/json/packageDataEN.json'
-import packageDataTR from '@/assets/json/packageDataTR.json'
-
-import {  useRouter } from 'next/navigation'
 import { getRandomPackages, getDoublePricing } from '../utils/util'
 import { useTranslation } from '@/i18n/client'
 
@@ -31,7 +27,6 @@ const TwoPriceDisplay = ({ lang, silverProduct, goldProduct }) => {
   }, []);
 
   const pricing = getDoublePricing(silverProduct, goldProduct);
-
   return (
     <div className="bg-white">
       <main>

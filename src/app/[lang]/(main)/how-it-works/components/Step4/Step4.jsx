@@ -59,23 +59,23 @@ const Step4 = ({ lang }) => {
                   <ul className='flex flex-col gap-3'>
                     <li className='flex items-center gap-3'>
                       <Image src={tick} className='h-8 w-8' alt='Registered Agent' />
-                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-[#222222]'>Registered Agent</p>
+                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-[#222222]'>{t('registered_agent')}</p>
                     </li>
                     <li className='flex items-center gap-3'>
                       <Image src={tick} className='h-8 w-8' alt='Registered Agent' />
-                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-[#222222]'>Expedited EIN</p>
+                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-[#222222]'>{t('expedited_ein')}</p>
                     </li>
                     <li className='flex items-center gap-3'>
                       <Image src={tick} className='h-8 w-8' alt='Registered Agent' />
-                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-[#222222]'>All formation documents</p>
+                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-[#222222]'>{t('all_formation_documents')}</p>
                     </li>
                     <li className='flex items-center gap-3'>
                       <Image src={tick} className='h-8 w-8' alt='Registered Agent' />
-                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-[#222222]'>Access to Registate Dashboad</p>
+                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-[#222222]'>{t('access_to_registate_dashboard')}</p>
                     </li>
                     <li className='flex items-center gap-3'>
                       <Image src={tick} className='h-8 w-8' alt='Registered Agent' />
-                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-[#222222]'>Lifetime Support</p>
+                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-[#222222]'>{t('lifetime_support')}</p>
                     </li>
                   </ul>
                   <div className='float-right -mb-56'>
@@ -89,26 +89,26 @@ const Step4 = ({ lang }) => {
                 <div className='flex flex-col gap-4'>
                   <h4 className='font-bold text-[32px] lg:text-[64px] leading-[38px] lg:leading-[64px] text-white'>Gold</h4>
                   <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-[24px] text-white lg:w-2/3'>
-                    Expedited Filing (1-3 business days). Everything you need to diligently operate and manage your company.</p>
+                    {t('how_it_works_step_4_gold_description')}</p>
                 </div>
                 <div className='py-8'>
-                  <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white pb-4'>Everything in Silver, plus:</p>
+                  <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white pb-4'>{t('everything_in_silver')}</p>
                   <ul className='flex flex-col gap-3'>
                     <li className='flex items-center gap-3'>
                       <Image src={tickblue} className='h-8 w-8' alt='Compliance Reminder' />
-                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white'>Compliance Reminder</p>
+                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white'>{t('compliance_reminder')}</p>
                     </li>
                     <li className='flex items-center gap-3'>
                       <Image src={tickblue} className='h-8 w-8' alt='Membership Certificates' />
-                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white'>Membership Certificates</p>
+                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white'>{t('membership_certificates')}</p>
                     </li>
                     <li className='flex items-center gap-3'>
                       <Image src={tickblue} className='h-8 w-8' alt='Expedited filling' />
-                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white'>Expedited filling</p>
+                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white'>{t('expedited_filling')}</p>
                     </li>
                     <li className='flex items-center gap-3'>
                       <Image src={tickblue} className='h-8 w-8' alt='Free mailbox' />
-                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white'>Free mailbox</p>
+                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white'>{t('free_mailbox')}</p>
                     </li>
                   </ul>
                 </div>
@@ -121,26 +121,26 @@ const Step4 = ({ lang }) => {
               <div className='w-full bg-[#222222] rounded-[32px] p-6 relative overflow-hidden'>
                 <div className='flex flex-col gap-4'>
                   <h5 className='font-bold text-[32px] lg:text-[64px] leading-[38px] lg:leading-[64px] text-white'>Platinum</h5>
-                  <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-[24px] text-white lg:w-2/3'>Expedited Filing (1-3 business days). Everything you need to operate, manage and grow your company.</p>
+                  <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-[24px] text-white lg:w-2/3'>{t('how_it_works_step_4_platinum_description')}</p>
                 </div>
                 <div className='py-8'>
-                  <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white pb-4'>Everything in Silver, plus:</p>
+                  <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white pb-4'>{t('everything_in_silver')}</p>
                   <ul className='flex flex-col gap-3'>
                     <li className='flex items-center gap-3'>
                       <Image src={tickblue} className='h-8 w-8' alt='Compliance Reminder' />
-                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white'>Compliance Reminder</p>
+                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white'>{t('compliance_reminder')}</p>
                     </li>
                     <li className='flex items-center gap-3'>
                       <Image src={tickblue} className='h-8 w-8' alt='Membership Certificates' />
-                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white'>Membership Certificates</p>
+                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white'>{t('membership_certificates')}</p>
                     </li>
                     <li className='flex items-center gap-3'>
                       <Image src={tickblue} className='h-8 w-8' alt='Expedited filling' />
-                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white'>Expedited filling</p>
+                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white'>{t('expedited_filling')}</p>
                     </li>
                     <li className='flex items-center gap-3'>
                       <Image src={tickblue} className='h-8 w-8' alt='Free mailbox' />
-                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white'>Free mailbox</p>
+                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white'>{t('free_mailbox')}</p>
                     </li>
                   </ul>
                 </div>
@@ -162,23 +162,23 @@ const Step4 = ({ lang }) => {
                   <ul className='flex flex-col gap-3'>
                     <li className='flex items-center gap-3'>
                       <Image src={tick} className='h-8 w-8' alt='Registered Agent' />
-                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-[#222222]'>Registered Agent</p>
+                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-[#222222]'>{t('registered_agent')}</p>
                     </li>
                     <li className='flex items-center gap-3'>
                       <Image src={tick} className='h-8 w-8' alt='Registered Agent' />
-                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-[#222222]'>Expedited EIN</p>
+                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-[#222222]'>{t('expedited_ein')}</p>
                     </li>
                     <li className='flex items-center gap-3'>
                       <Image src={tick} className='h-8 w-8' alt='Registered Agent' />
-                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-[#222222]'>All formation documents</p>
+                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-[#222222]'>{t('all_formation_documents')}</p>
                     </li>
                     <li className='flex items-center gap-3'>
                       <Image src={tick} className='h-8 w-8' alt='Registered Agent' />
-                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-[#222222]'>Access to Registate Dashboad</p>
+                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-[#222222]'>{t('access_to_registate_dashboard')}</p>
                     </li>
                     <li className='flex items-center gap-3'>
                       <Image src={tick} className='h-8 w-8' alt='Registered Agent' />
-                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-[#222222]'>Lifetime Support</p>
+                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-[#222222]'>{t('lifetime_support')}</p>
                     </li>
                   </ul>
                   <div className='float-right -mb-56'>
@@ -198,19 +198,19 @@ const Step4 = ({ lang }) => {
                   <ul className='flex flex-col gap-3'>
                     <li className='flex items-center gap-3'>
                       <Image src={tickblue} className='h-8 w-8' alt='Compliance Reminder' />
-                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white'>Compliance Reminder</p>
+                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white'>{t('compliance_reminder')}</p>
                     </li>
                     <li className='flex items-center gap-3'>
                       <Image src={tickblue} className='h-8 w-8' alt='Membership Certificates' />
-                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white'>Membership Certificates</p>
+                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white'>{t('membership_certificates')}</p>
                     </li>
                     <li className='flex items-center gap-3'>
                       <Image src={tickblue} className='h-8 w-8' alt='Expedited filling' />
-                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white'>Expedited filling</p>
+                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white'>{t('expedited_filling')}</p>
                     </li>
                     <li className='flex items-center gap-3'>
                       <Image src={tickblue} className='h-8 w-8' alt='Free mailbox' />
-                      <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white'>Free mailbox</p>
+                        <p className='font-semibold text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-white'>{t('free_mailbox')}</p>
                     </li>
                   </ul>
                 </div>
@@ -439,7 +439,7 @@ const Step4 = ({ lang }) => {
               <div
                 onClick={() => setShowAllDifferences(true)}
                 className={`w-full lg:w-auto cursor-pointer absolute px-4 py-3 text-center transform -translate-x-1/2 -translate-y-1/2 bg-white hover:bg-[#9EE248] text-[#1649FF] font-semibold text-[18px] leading-6 rounded-[16px] -top-12 left-1/2 ${showAllDifferences ? 'hidden' : 'block'}`}>
-                Show all differences
+                {t('show_all_differences')}
               </div>
             </div>
         </div>

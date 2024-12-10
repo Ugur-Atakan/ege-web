@@ -103,6 +103,7 @@ const FillinForm = (params) => {
                                     type="tel"
                                     name="phonenumber"
                                     id="phonenumber"
+                                    inputMode="numeric"
                                     autoComplete="tel"
                                     required
                                     value={phone}

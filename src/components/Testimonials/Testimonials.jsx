@@ -1,11 +1,38 @@
 /* eslint-disable */
-import React from 'react'
+'use client'
+import React, { useState,useEffect } from 'react'
 import Image from 'next/image'
 import { batuSatImg, melisImg, tolgaOzturk } from '@/assets/images/index'
 import wellbeesLogo from '@/assets/images/logos/wellbees-logo.jpg'
 import funverseLogo from '@/assets/images/logos/funverse-logo.jpg'
 
 export default function Testimonials() { 
+  const [videoUrl, setVideoUrl] = useState('')
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const openVideoModal = (url) => {
+    setVideoUrl(url)
+    setIsModalOpen(true)
+  }
+    // ESC tuşu için event listener
+    useEffect(() => {
+      const handleEsc = (event) => {
+        if (event.keyCode === 27) {
+          setIsModalOpen(false)
+        }
+      }
+      window.addEventListener('keydown', handleEsc)
+  
+      return () => {
+        window.removeEventListener('keydown', handleEsc)
+      }
+    }, [])
+
+  const handleBackdropClick = (e) => {
+    if (e.target === e.currentTarget) {
+      setIsModalOpen(false)
+    }
+  }
   return (
     <section className="bg-white py-24 sm:py-24">
       <div className="mx-auto max-w-xl text-center mb-10">
@@ -37,7 +64,8 @@ export default function Testimonials() {
               <p className='pb-5'>
                 "I cannot thank Registate enough for how quickly they worked, and I just recommend them so much to every person that needs help on their business journey. Don't make the mistake of thinking you can do it yourself. There are experts to help you for a reason. I only wish I had known about Registate sooner."
               </p>
-              <a href="https://www.youtube.com/watch?v=_zj-Bh5SjK0&ab_channel=Registate" target="_blank" >
+              <a onClick={() => openVideoModal('https://www.youtube.com/embed/_zj-Bh5SjK0')} 
+                 className="cursor-pointer">
                 <p className="text-[18px] font-semibold text-blue-600 hover:text-blue-500">
                   Video Testimonial
                 </p>
@@ -72,7 +100,8 @@ export default function Testimonials() {
                   "I had so much anxiety, so knowing that this is done and that any time I have any other business legal-related issues, I can just put it in the good hands of Registate. Their services elevate business matters; it's like having your own personal business lawyer without the headaches. Thank you so much, Registate"
                 </p>
               </blockquote>
-              <a href="https://www.youtube.com/watch?v=ggWsTwawg4o&ab_channel=Registate" target="_blank" className="mt-3">
+              <a onClick={() => openVideoModal('https://www.youtube.com/embed/ggWsTwawg4o')} 
+                 className="mt-3 cursor-pointer">
                   <p className="text-base font-semibold text-blue-600 hover:text-blue-500">
                     Video Testimonial
                   </p>
@@ -100,7 +129,8 @@ export default function Testimonials() {
                 </p>
               </blockquote>
               
-              <a href="https://www.youtube.com/watch?v=QiqVTtFDjYY&t=2s&ab_channel=Registate" target="_blank" className="mt-3">
+              <a onClick={() => openVideoModal('https://www.youtube.com/embed/QiqVTtFDjYY')} 
+                 className="mt-3 cursor-pointer">
                   <p className="text-base font-semibold text-blue-600 hover:text-blue-500">
                     Video Testimonial
                   </p>
@@ -120,6 +150,30 @@ export default function Testimonials() {
           </div>
         </div>
       </div>
+
+      {isModalOpen && (
+      <div 
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4"
+        onClick={handleBackdropClick} // Dışarı tıklama için
+      >
+        <div className="relative w-full max-w-3xl">
+          <button
+            onClick={() => setIsModalOpen(false)}
+            className="absolute -top-12 right-0 flex items-center justify-center rounded-full bg-white px-4 py-2 font-bold text-gray-800 shadow-lg transition-all hover:bg-gray-100"
+          >
+            <span className="mr-2">×</span> Kapat
+          </button>
+          <div className="relative pt-[56.25%]">
+            <iframe
+              className="absolute inset-0 h-full w-full"
+              src={videoUrl}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      </div>
+    )}
     </section>
   )
 }

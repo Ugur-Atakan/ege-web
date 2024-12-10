@@ -75,9 +75,9 @@ const Navbar = ({ lang }) => {
             </div>
 
             <div className='hidden lg:flex lg:justify-between lg:items-center space-x-4'>
-                <Link href={`/${lang}/company-type`} className="text-neutral-800 text-sm font-semibold leading-tight">Get Started</Link>
-                <Link href={`/${lang}/how-it-works`} className="text-neutral-800 text-sm font-semibold leading-tight">How it Works</Link>
-                <Link href={`/${lang}/blog`} className="text-neutral-800 text-sm font-semibold leading-tight">Blog</Link>
+                <Link href={`/${lang}/company-type`} className="text-neutral-800 text-sm font-semibold leading-tight">{t('menu1_title')}</Link>
+                <Link href={`/${lang}/how-it-works`} className="text-neutral-800 text-sm font-semibold leading-tight">{t('menu2_title')}</Link>
+                <Link href={`/${lang}/blog`} className="text-neutral-800 text-sm font-semibold leading-tight">{t('menu3_title')}</Link>
             </div> 
         
   

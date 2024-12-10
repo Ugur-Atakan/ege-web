@@ -18,7 +18,7 @@ const Footer = ({ t, takeQuizForm , lang }) => {
                         </div>
                     </div>
                     <div>
-                        <Link href={t(`/${lang}/onboarding/start-my-business`)} className='rounded-[1.25rem] bg-white py-6 px-[4.25rem] text-black text-[1.375rem] font-semibold leading-[1.625rem]'>
+                        <Link href={t(`/${lang}/start-my-business`)} className='rounded-[1.25rem] bg-white py-6 px-[4.25rem] text-black text-[1.375rem] font-semibold leading-[1.625rem]'>
                             {t('company_type_banner_button')}
                         </Link>
                     </div>

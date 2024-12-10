@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { useTranslation } from '@/i18n/client'
-import axios from 'axios'
 
 const FillInCompany = (props) => {
     const { lang, setCity ,setCountry, country,setStreet, zip, setZip, countries, states } = props;

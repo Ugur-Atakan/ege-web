@@ -77,7 +77,7 @@ const NewContent = ({ lang }) => {
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="relative z-10">
                 <h1 className="mx-auto max-w-4xl text-center text-5xl font-bold tracking-tight text-white">
-                    Choose the name for your company!
+                    {t('choose_company_name_title')}
                 </h1>
             </div>
             <div className="flex items-center justify-center relative mt-10 ">
